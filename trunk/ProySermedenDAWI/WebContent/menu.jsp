@@ -43,12 +43,16 @@
 		  <TR><td>&nbsp;</td></TR>	
 		    <TR>
 			    <TD class="TextoMenu">
-                  <s:if test="#session.b_usuario.sexo == \"H\"">
+                   <s:if test='#session.b_usuario.sexo == "H"'>
                             Bienvenido  Sr:<br>
                     </s:if>
-                    <s:if test="#session.b_usuario.sexo == \"M\"">
+                    <s:if test='#session.b_usuario.sexo == "M"'>
                             Bienvenida  Sra:<br>
-                    </s:if>
+                    </s:if> 
+                    
+                    <s:property value="#session.b_usuario.nombre"/>
+                    
+                    <s:property value="#session.b_usuario.apepat"/>
 				</TD>
 		  </TR>		  
 </TABLE>

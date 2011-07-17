@@ -86,7 +86,7 @@ public class LogueoAction extends ActionSupport{
 					Map<String, Object> lasession=
 						ActionContext.getContext().getSession();
 					
-					//lasession.put("b_usuario", clienteAux);
+					lasession.put("b_usuario", clienteAux);
 					lasession.put("b_menu",listadoMenu);
 					
 				/*}else{
