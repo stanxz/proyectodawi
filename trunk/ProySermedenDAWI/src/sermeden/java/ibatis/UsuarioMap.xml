@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="usuario">
+
+	<select id="buscarUsuario" parameterType="sermeden.java.bean.UsuarioDTO" resultType="sermeden.java.bean.UsuarioDTO">
+		select p.idPersona,p.dni,p.nombre,p.apepat,p.apemat,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad
+		from persona p inner join usuario u
+		on p.idPersona=u.idPersona
+		where u.user = #{user} and u.contrasena=#{contrasena}
+	</select>
+
+	<select id="selectUserxDNI" resultType="sermeden.java.bean.UsuarioDTO">
+	
+		select p.*,u.* from persona p inner join usuario u on p.idpersona=u.idpersona
+		where p.dni like #{filtro}
+
+	</select>
+
+	<select id="selectUserxApellido" resultType="sermeden.java.bean.UsuarioDTO">
+	
+		select p.*,u.* from persona p inner join usuario u on p.idpersona=u.idpersona
+		where p.apepat like #{filtro}
+
+	</select>
+</mapper>
