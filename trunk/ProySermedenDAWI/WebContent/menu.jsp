@@ -43,7 +43,12 @@
 		  <TR><td>&nbsp;</td></TR>	
 		    <TR>
 			    <TD class="TextoMenu">
-                  
+                  <s:if test="#session.b_usuario.sexo == \"H\"">
+                            Bienvenido  Sr:<br>
+                    </s:if>
+                    <s:if test="#session.b_usuario.sexo == \"M\"">
+                            Bienvenida  Sra:<br>
+                    </s:if>
 				</TD>
 		  </TR>		  
 </TABLE>
