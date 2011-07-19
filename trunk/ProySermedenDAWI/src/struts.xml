@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+
+	<include file="ajax-struts2.xml"></include>
+
+	<package name="default" namespace="/" extends="struts-default,tiles-default">
+		<action name="logueo" 
+				class="sermeden.java.action.LogueoAction">
+				<result name="exito">/bienvenida.jsp</result>
+				<result name="error">/LogueoSistema.jsp</result>
+		</action>
+	
+		<action name="recuperarPassAction">
+			<result>/Seguridad/RecuperarContrasena.jsp</result>
+		</action>
+		
+		<action name="NuevoUsuarioAction">
+			<result>/Seguridad/NuevoUsuario.jsp</result>
+		</action>
+		
+		<action name="ListadoAction">
+			<result>/Seguridad/ListadodeUsuarios.jsp</result>
+		</action>
+		
+		<action name="buscarUserxId" 
+				class="sermeden.java.action.UsuarioAction"
+				method="cargaDatosUser">
+				<result name="exito">/Seguridad/ModificarUsuario.jsp</result>
+		</action>
+		
+		<action name="RegistrarUsuarioAction" 
+				class="sermeden.java.action.UsuarioAction" method="registrarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/NuevoUsuario.jsp</result>
+		</action>
+		
+		<action name="ActualizarUsuarioAction" 
+				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
+		</action>
+		
+		<action name="cambiarEstadoUser" 
+				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
+		</action>
+		
+		<action name="RecuperaPassAction" 
+				class="sermeden.java.action.UsuarioAction" method="recuperaPassUser">
+				<result name="exito">LogueoSistema.jsp</result>
+<!--				<result name="input">/Seguridad/RecuperarContrasena.jsp</result>-->
+		</action>
+		
+		
+	</package>
+	
+
+</struts>
