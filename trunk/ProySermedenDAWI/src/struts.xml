@@ -6,7 +6,7 @@
 <struts>
 
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
 
 	<include file="ajax-struts2.xml"></include>
 
@@ -34,6 +34,31 @@
 				method="cargaDatosUser">
 				<result name="exito">/Seguridad/ModificarUsuario.jsp</result>
 		</action>
+		
+		<action name="RegistrarUsuarioAction" 
+				class="sermeden.java.action.UsuarioAction" method="registrarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/NuevoUsuario.jsp</result>
+		</action>
+		
+		<action name="ActualizarUsuarioAction" 
+				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
+		</action>
+		
+		<action name="cambiarEstadoUser" 
+				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
+		</action>
+		
+		<action name="RecuperaPassAction" 
+				class="sermeden.java.action.UsuarioAction" method="recuperaPassUser">
+				<result name="exito">LogueoSistema.jsp</result>
+<!--				<result name="input">/Seguridad/RecuperarContrasena.jsp</result>-->
+		</action>
+		
 		
 	</package>
 	
