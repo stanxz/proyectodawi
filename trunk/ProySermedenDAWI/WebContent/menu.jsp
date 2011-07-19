@@ -4,7 +4,7 @@
 
 <TABLE width="100%" border="0">
 		  <TR><td>&nbsp;</td></TR>
-		 <!--   <TR>
+		<TR>
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
@@ -12,7 +12,7 @@
 				</ul>
 				</div>
 	           </TD>
-		  </TR>	-->
+		  </TR>
 		 		
 		   <TR><td>&nbsp;</td></TR>
 		   <s:iterator value="#session.b_menu">
@@ -28,7 +28,7 @@
 		   </s:iterator>
 
 		  <TR><td>&nbsp;</td></TR>
-		 <!--   <TR>
+		  <TR>
 			    <TD>
 			    <div>
 					<ul id="navlist">
@@ -38,7 +38,7 @@
 				</ul>
 				</div>	
 				</TD>
-		  </TR>	-->
+		  </TR>
 		  <TR><td>&nbsp;</td></TR>
 		  <TR><td>&nbsp;</td></TR>	
 		   <TR>
