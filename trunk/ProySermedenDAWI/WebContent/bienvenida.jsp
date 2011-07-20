@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Bienvido a Sermeden</title>
 <sj:head jqueryui="true"/>
 </head>
 <body>
@@ -33,17 +33,6 @@
 		<tr>
 			<td >  
 				<jsp:include page="menu.jsp"></jsp:include>
-				<!--  <a href="NuevoUsuarioAction"  >
-				  Nuevo Usuario
-				</a>
-			</td>
-		</tr>
-		<tr>
-			<td >  
-				<a href="ListadoAction"  >
-				  Modificar Usuario
-				</a>
-				-->
 			</td>
 		</tr>
 	</table>
