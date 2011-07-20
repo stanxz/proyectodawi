@@ -4,7 +4,7 @@
 
 <TABLE width="100%" border="0">
 		  <TR><td>&nbsp;</td></TR>
-		<TR>
+		<!--  <TR>
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
@@ -12,7 +12,7 @@
 				</ul>
 				</div>
 	           </TD>
-		  </TR>
+		  </TR>-->
 		 		
 		   <TR><td>&nbsp;</td></TR>
 		   <s:iterator value="#session.b_menu">
@@ -28,7 +28,7 @@
 		   </s:iterator>
 
 		  <TR><td>&nbsp;</td></TR>
-		  <TR>
+		  <!--  <TR>
 			    <TD>
 			    <div>
 					<ul id="navlist">
@@ -38,10 +38,10 @@
 				</ul>
 				</div>	
 				</TD>
-		  </TR>
+		  </TR>-->
 		  <TR><td>&nbsp;</td></TR>
 		  <TR><td>&nbsp;</td></TR>	
-		   <TR>
+		  <!--   <TR>
 			    <TD class="TextoMenu">
                    <s:if test='#session.b_usuario.sexo == "H"'>
                             Bienvenido  Sr:<br>
@@ -54,5 +54,5 @@
                     
                     <s:property value="#session.b_usuario.apepat"/>
 				</TD>
-		  </TR>	 
+		  </TR>-->	 
 </TABLE>
