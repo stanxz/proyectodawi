@@ -15,7 +15,7 @@
 		  </TR> 
 		   <TR><td>&nbsp;</td></TR>
 		   <s:iterator value="#session.b_menu">
-		   	 <TR>
+		   	 <TR> 
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
