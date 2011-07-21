@@ -17,7 +17,7 @@
 				<result name="error">/LogueoSistema.jsp</result>
 		</action>
 	
-		<action name="recuperarPassAction">
+		<action name="a_recuperarPassword">
 			<result>/Seguridad/RecuperarContrasena.jsp</result>
 		</action>
 		

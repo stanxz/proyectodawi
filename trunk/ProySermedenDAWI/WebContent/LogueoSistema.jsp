@@ -25,7 +25,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td> <s:a href="recuperarPassAction">Olvido su contraseña?</s:a> </td>
+				<td> <s:a href="a_recuperarPassword">Olvido su contraseña?</s:a> </td>
 			</tr>
 			<tr>
 				<td><s:property value="mensaje"/></td>
