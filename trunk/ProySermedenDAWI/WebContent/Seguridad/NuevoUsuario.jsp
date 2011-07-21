@@ -68,7 +68,7 @@
 			</tr>
 			<tr>
 				<td>Tipo Usuario</td>
-				<td> <s:select name="usuario.idPerfil" list="#{'1':'Administrador','2':'Registrante','3':'Auxiliar','4':'Recepcionista','5':'Técnico Imágenes','6':'M. Tratante','7':'M. Especialista'}" 
+				<td> <s:select name="usuario.idPerfil" list="#{'1':'Administrador','2':'Auxiliar','3':'Recepcionista','4':'Técnico Imágenes','5':'M. Tratante','6':'M. Especialista'}" 
 								headerValue="----- Seleccione -----"
 								headerKey="0">				
 							</s:select>
