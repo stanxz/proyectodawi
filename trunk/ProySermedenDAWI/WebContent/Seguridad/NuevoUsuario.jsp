@@ -12,7 +12,7 @@
 <body>
 <h2>Nuevo Usuario</h2>
 
-	<form action="RegistrarUsuarioAction" method="post">
+	<form action="RegistrarUsuarioAction" method="post" >
 		<table align="center">
 			<tr>
 				<td>Nombre</td>
@@ -92,9 +92,14 @@
 				<td> <s:textarea name="usuario.observaciones"></s:textarea> </td>
 				<td> <s:fielderror fieldName="usuario.observaciones"></s:fielderror></td>
 			</tr>
-			<tr>
+			<tr>			
 				<td colspan="2">
-					<s:submit value="Registrar"></s:submit>
+					<!--<s:submit value="Registrar"></s:submit>-->
+					<sj:submit 
+				    	value="Registrar" 
+				    	button="true"
+				    />
+					
 				</td>
 			</tr>
 		</table>
