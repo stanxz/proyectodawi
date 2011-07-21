@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="strutsPaciente" namespace="/" extends="struts-default,tiles-default">
+		
+		<!--  <action name="RegistrarPacienteAction" class="sermeden.java.action.UsuarioAction" method="listarUsuarios">
+			<result name="exito">/Seguridad/listadoUsuario-result.jsp</result>
+		</action>-->
+		
+		<action name="a_registrarPaciente">
+			<result>/Paciente/RegistrarPaciente.jsp</result>
+		</action>
+	</package>
+</struts>
