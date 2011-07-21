@@ -135,13 +135,18 @@ public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 					usuario.setUser(usuario.getDni());
 					usuario.setContrasena(usuario.getDni());
 					usuario .setEstado(1);
-					idnuevousuario=usuarioService.registrarUsuarioxPersona(usuario);	
+					idnuevousuario=usuarioService.registrarUsuarioxPersona(usuario);
+					mensaje="El usuario con DNI "+usuario.getDni()+"se registró con exito";
+				}
+				else{
+					mensaje="Error al registrar al usuario con DNI "+usuario.getDni();
 				}
 					
 				System.out.println("idPersona: "+usuario.getIdPersona());
 			}
 			else{
 				System.out.println("El usuario con DNI "+usuario.getDni()+" ya existe en la BD !");
+				mensaje="El usuario con DNI "+usuario.getDni()+" ya existe en la BD !";
 			}
 			
 			//listadoUsuarios = usuarioService.listado(filtro);
