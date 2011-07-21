@@ -43,7 +43,7 @@
 			</tr>
 			<tr>
 				<td>Sexo</td>
-				<td> <s:radio name="usuario.sexo" list="#{'M':'Masculino','F':'Femenino'}" value="M"  ></s:radio> </td>
+				<td> <s:radio name="usuario.sexo" list="#{'H':'Masculino','M':'Femenino'}" value="M"  ></s:radio> </td>
 				<td> <s:fielderror fieldName="usuario.sexo"></s:fielderror></td>
 			</tr>
 			<tr>
