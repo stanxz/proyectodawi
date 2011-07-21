@@ -11,8 +11,7 @@
 </head>
 <body> 
 <h2>
-
-	<TABLE width="100%" border="0">
+<TABLE width="100%" border="0">
 		<tr>
 			<TD class="TextoMenu">
                    <s:if test='#session.b_usuario.sexo == "H"'>

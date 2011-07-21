@@ -4,20 +4,15 @@
 
 <TABLE width="100%" border="0">
 		  <TR><td>&nbsp;</td></TR>
-		<!--  <TR>
+          <TR>
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
-						<li><A class=SiteLinkBold href="intranetPrincipal.jsp">Principal</A></li>
+						<li><A class=SiteLinkBold href="#">Principal</A></li>
 				</ul>
 				</div>
 	           </TD>
-<<<<<<< .mine
 		  </TR> 
-=======
-		  </TR>-->
->>>>>>> .r13
-		 		
 		   <TR><td>&nbsp;</td></TR>
 		   <s:iterator value="#session.b_menu">
 		   	 <TR>
@@ -32,20 +27,19 @@
 		   </s:iterator>
 
 		  <TR><td>&nbsp;</td></TR>
-		  <!--  <TR>
+		  <TR>
 			    <TD>
 			    <div>
 					<ul id="navlist">
 						<li>
-						<A class="SiteLinkBold" HREF="login?metodo=logout">Salir</A>
+						<A class="SiteLinkBold" HREF="#">Salir</A>
 						</li>
 				</ul>
 				</div>	
 				</TD>
-		  </TR>-->
-		  <TR><td>&nbsp;</td></TR>
-		  <TR><td>&nbsp;</td></TR>	
-		  <!--   <TR>
+		  </TR>
+		<!--  <TR><td>&nbsp;</td></TR>
+		  <TR>
 			    <TD class="TextoMenu">
                    <s:if test='#session.b_usuario.sexo == "H"'>
                             Bienvenido  Sr:<br>
@@ -58,5 +52,5 @@
                     
                     <s:property value="#session.b_usuario.apepat"/>
 				</TD>
-		  </TR>-->	 
+		  </TR>	 -->  
 </TABLE>
