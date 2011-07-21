@@ -9,7 +9,7 @@
 <title>Bienvido a Sermeden</title>
 <sj:head jqueryui="true"/>
 </head>
-<body>
+<body> 
 <h2>
 
 	<TABLE width="100%" border="0">

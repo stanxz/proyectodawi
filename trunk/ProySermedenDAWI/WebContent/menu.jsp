@@ -12,7 +12,11 @@
 				</ul>
 				</div>
 	           </TD>
+<<<<<<< .mine
+		  </TR> 
+=======
 		  </TR>-->
+>>>>>>> .r13
 		 		
 		   <TR><td>&nbsp;</td></TR>
 		   <s:iterator value="#session.b_menu">
