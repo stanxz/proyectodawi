@@ -277,7 +277,6 @@ public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 	}
 	
 	public String recuperaPassUser(){
-		String emailuser="";
 		String vista="exito";
 		System.out.println("Dentro del metodo desactivar - Struts2");
 		System.out.println("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
@@ -286,7 +285,7 @@ public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 			auxiliar=(UsuarioDTO)usuarioService.listadoUsuariosXDNI(dniBuscado).get(0);
 			System.out.println("email Destino del pass: "+auxiliar.getEmail());
 			
-			//logica para envio de correos
+			//logica para envio de correos debe ir aqui
 			
 			 
 			//
