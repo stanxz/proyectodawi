@@ -52,5 +52,5 @@
                     
                     <s:property value="#session.b_usuario.apepat"/>
 				</TD>
-		  </TR>	 -->  
+		  </TR>	 Este cambio es mio-->  
 </TABLE>
