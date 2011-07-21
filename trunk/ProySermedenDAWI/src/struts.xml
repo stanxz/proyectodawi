@@ -37,7 +37,10 @@
 		
 		<action name="RegistrarUsuarioAction" 
 				class="sermeden.java.action.UsuarioAction" method="registrarUser">
-				<result name="exito">bienvenida.jsp</result>
+				<!--  <result name="exito">/Seguridad/UsuarioRegistrado-result.jsp</result>-->
+				 <param name="mensaje"></param>
+				 <result name="exito">bienvenida.jsp
+				 </result>
 				<result name="input">/Seguridad/NuevoUsuario.jsp</result>
 		</action>
 		
