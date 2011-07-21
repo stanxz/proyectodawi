@@ -6,9 +6,11 @@
 <struts>
 	<package name="strutsPaciente" namespace="/" extends="struts-default,tiles-default">
 		
-		<!--  <action name="RegistrarPacienteAction" class="sermeden.java.action.UsuarioAction" method="listarUsuarios">
-			<result name="exito">/Seguridad/listadoUsuario-result.jsp</result>
-		</action>-->
+		 <action name="registrarPacienteAction" class="sermeden.java.action.PacienteAction" method="registrarPatient">
+			<param name="mensaje"></param>
+			<result name="exito">bienvenida.jsp</result>
+			<result name="input">/Paciente/RegistrarPaciente.jsp</result>
+		</action>
 		
 		<action name="a_registrarPaciente">
 			<result>/Paciente/RegistrarPaciente.jsp</result>
