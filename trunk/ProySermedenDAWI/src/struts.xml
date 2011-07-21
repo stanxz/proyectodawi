@@ -9,6 +9,7 @@
     <constant name="struts.devMode" value="false" />
 
 	<include file="ajax-struts2.xml"></include>
+	<include file="strutsPaciente.xml"></include>
 
 	<package name="default" namespace="/" extends="struts-default,tiles-default">
 		<action name="logueo" 
