@@ -10,7 +10,7 @@
 </head>
 <body>
 <table id="EstiloTable" border="3">
-<tr><td>dsdfsfsfsfsfs</td></tr>
+<tr><td></td></tr>
 
 </table>
 </body>
