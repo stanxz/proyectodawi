@@ -10,7 +10,6 @@
 <sj:head jqueryui="true"/>
 <!--  Rodrigo, este metodo javascript lo uso para un popup q puse al registrar una persona-->
 <script type="text/javascript">
-	
 	function okButton(){
        $('#mybuttondialog').dialog('close');
      };
