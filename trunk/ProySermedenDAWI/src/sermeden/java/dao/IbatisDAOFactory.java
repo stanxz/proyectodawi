@@ -12,4 +12,10 @@ public class IbatisDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return new IbatisMenuDAO();
 	}
+
+	@Override
+	public FichaDAO getFichaDAO() {
+		// TODO Auto-generated method stub
+		return new IbatisFichaDAO();
+	}
 }
