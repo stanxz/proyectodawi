@@ -15,5 +15,9 @@ public class PaqueteBusinessDelegate {
 		// TODO Auto-generated method stub
 		return new MenuService();
 	}
+	
+	public static FichaService_I getFichaService(){
+		return new FichaService();
+	}
 
 }
