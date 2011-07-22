@@ -10,7 +10,8 @@ public interface UsuarioService_I {
 	UsuarioDTO validarUsuario(UsuarioDTO clienteAux) throws Exception;
 
 	List<UsuarioDTO> listadoUsuariosXDNI(String filtro);
-
+	
+	//lista x Apellido Paterno
 	List<UsuarioDTO> listadoUsuariosXApellido(String filtro);
 
 	//registra la persona
