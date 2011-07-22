@@ -10,6 +10,14 @@ import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.PaqueteBusinessDelegate;
 import sermeden.java.service.UsuarioService_I;
 
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class UsuarioAction extends ActionSupport{
 	
 /**
@@ -307,7 +315,35 @@ public void setTitulo(String titulo) {
 			System.out.println("email Destino del pass: "+auxiliar.getEmail());
 			
 			//logica para envio de correos debe ir aqui
-			
+			 // Propiedades de la conexión
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+            props.setProperty("mail.smtp.auth", "true");
+
+            // Preparamos la sesion
+            Session session = Session.getDefaultInstance(props);
+       
+            // Construimos el mensaje
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress("proylp2@gmail.com"));
+            message.addRecipient(
+                Message.RecipientType.TO,
+                new InternetAddress(auxiliar.getEmail()));
+            message.setSubject("ProyectoLPII");
+            message.setText("Estimado "+auxiliar.getNombre() + " " + 
+            		auxiliar.getApepat() + " su contraseña es: " + auxiliar.getContrasena());
+ 
+            // Lo enviamos.
+            Transport t = session.getTransport("smtp");
+            t.connect("proylp2@gmail.com", "cibertec");
+            t.sendMessage(message, message.getAllRecipients());
+            System.out.println("Mensaje Enviado Correctamente");
+
+         // Cierre.
+            t.close();
 			
 			 
 			//
