@@ -25,6 +25,7 @@ public class PacienteAction extends ActionSupport{
 	private UsuarioDTO paciente;
 	private String mensaje;
 	private String dniBuscado;
+	
 	public List<UsuarioDTO> getListadoPacientes() {
 		return listadoPacientes;
 	}
@@ -58,7 +59,6 @@ public class PacienteAction extends ActionSupport{
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
 		System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
-		//System.out.println("Nombre " + usuario.getUsuario());
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
@@ -109,25 +109,114 @@ public class PacienteAction extends ActionSupport{
 
 				}
 				else{
-					mensaje="Error al registrar al usuario con DNI "+paciente.getDni();
+					mensaje="Error al registrar al paciente con DNI "+paciente.getDni();
 				}
 					
 				System.out.println("idPersona: "+paciente.getIdPersona());
 			}
 			else{
-				System.out.println("El usuario con DNI "+paciente.getDni()+" ya existe en la BD !");
-				mensaje="El usuario con DNI "+paciente.getDni()+" ya existe en la BD !";
+				System.out.println("El paciente con DNI "+paciente.getDni()+" ya existe en la BD !");
+				mensaje="El paciente con DNI "+paciente.getDni()+" ya existe en la BD !";
 			}
-			
-			//listadoUsuarios = usuarioService.listado(filtro);
-			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
+		return vista;
+	}
+	
+	
+	public String buscarPatient(){
 		
+		String vista="exito";
+		System.out.println("Dentro del metodo buscarPaciente - Struts 2");
+		System.out.println("Parametro filtro : " + dniBuscado);
+		
+		//Logica de listado de clientes
+		
+		try {
+			if( dniBuscado!=null && !dniBuscado.equalsIgnoreCase("")){
+				if(pacienteService.listadoUsuariosXDNI(dniBuscado).size()>0){
+					paciente = (UsuarioDTO) pacienteService.listadoUsuariosXDNI(dniBuscado).get(0);
+				}else{
+					mensaje="Lo sentimos. No existe ese DNI registrado en el Sistema";
+					vista="error";
+				}
+			}else{
+				mensaje="Ingrese un numero válido de DNI (8 cifras)";
+				vista="error";
+			}
+		
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			System.out.println("e: "+e.getMessage());
+		}
 		
 		return vista;
-	
 	}
+	
+public void validate(){
+		
+		if(paciente!=null){
+			
+			if(paciente.getNombre().length()==0){
+				addFieldError("paciente.nombre", getText("Ingrese un nombre"));
+			}
+			
+			if(paciente.getApepat().length()==0){
+				addFieldError("paciente.apepat", getText("Ingrese un apellido paterno"));
+			}
+
+			if(paciente.getApemat().length()==0){
+				addFieldError("paciente.apemat", getText("Ingrese un apellido materno"));
+			}
+			
+			if(paciente.getDni().length()==0){
+				addFieldError("paciente.dni", getText("Ingrese un DNI"));
+			}else if(paciente.getDni().length()>8){
+				addFieldError("paciente.dni", getText("El DNI solo permite 8 digitos"));
+			}
+			
+			try {
+				int x=Integer.parseInt(paciente.getDni());
+				if(x<10000000 || x>99999999){
+					addFieldError("paciente.dni", getText("DNI incorrecto"));
+				}
+			} catch (Exception e) {
+				addFieldError("paciente.dni", getText("El DNI solo permite digitos del 0 al 9"));
+			}
+			
+			if(paciente.getSexo()==null){
+				addFieldError("paciente.sexo", getText("Seleccione sexo"));
+			}
+			
+			if(paciente.getEmail().length()==0){
+				addFieldError("paciente.email", getText("Ingrese un email"));
+			}
+			else if(!paciente.getEmail().contains("@")){
+				addFieldError("paciente.email", getText("Email con formato incorrecto"));
+			}
+			
+			if(paciente.getFijo().length()==0){
+				addFieldError("paciente.fijo", getText("Ingrese un numero de telefono fijo"));
+			}else if(paciente.getFijo().length()>7){
+				addFieldError("paciente.fijo", getText("El numero de telefono debe tener como maximo 7 digitos"));
+			}
+			
+			if(paciente.getCelular().length()==0){
+				addFieldError("paciente.celular", getText("Ingrese un numero de celular"));
+			}else if(paciente.getCelular().length()>15){
+				addFieldError("paciente.celular", getText("El numero de celular debe tener como maximo 15 digitos"));
+			}
+			
+			if(paciente.getDireccion().length()==0){
+				addFieldError("paciente.direccion", getText("Ingrese una direccion"));
+			}
+			if(paciente.getObservaciones().length()>500){
+				addFieldError("paciente.observaciones", getText("Las observaciones no pueden sobrepasar los 500 caracteres"));
+			}
+		}
+	}
+
 }
