@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registrar Nuevo Paciente</title>
+<sj:head jqueryui="true"/>
 </head>
 <body>
 <h4 align="center" >Registrar Nuevo Paciente</h4>
