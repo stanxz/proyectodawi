@@ -46,7 +46,7 @@ public class PacienteAction extends ActionSupport{
 	UsuarioService_I pacienteService = 
 			PaqueteBusinessDelegate.getUsuarioService();
 	
-	public String registrarUser(){
+	public String registrarPatient(){
 		int idnuevousuario=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
