@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<table id="EstiloTable" border="3">
+<tr><td>dsdfsfsfsfsfs</td></tr>
 
+</table>
 </body>
 </html>
