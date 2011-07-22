@@ -16,11 +16,5 @@
 			<result>/Paciente/RegistrarPaciente.jsp</result>
 		</action>
 		
-		<action name="a_registrarFicha">
-			<result>/Tratamiento/RegistrarFicha.jsp</result>
-		</action>
-		
-		
-		
 	</package>
 </struts>
