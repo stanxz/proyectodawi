@@ -206,7 +206,7 @@ public void setTitulo(String titulo) {
 			
 			try {
 				int x=Integer.parseInt(usuario.getDni());
-				if(x<0){
+				if(x<10000000 || x>99999999){
 					addFieldError("usuario.dni", getText("DNI incorrecto"));
 				}
 			} catch (Exception e) {
