@@ -308,6 +308,7 @@ public void setTitulo(String titulo) {
 			
 			//logica para envio de correos debe ir aqui
 			
+			
 			 
 			//
 		} catch (Exception e) {
