@@ -10,6 +10,7 @@ public abstract class DAOFactory {
 	
 	 public abstract UsuarioDAO getUsuarioDAO();
 	 public abstract MenuDAO getMenuDAO(); 
+	 public abstract FichaDAO getFichaDAO();
 	
 	 public static DAOFactory getDAOFactory(int whichFactory){
 	       switch(whichFactory){
