@@ -2,6 +2,8 @@ package sermeden.java.action;
 
 import java.util.List;
 
+import org.apache.catalina.connector.Request;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import sermeden.java.bean.UsuarioDTO;
@@ -20,6 +22,7 @@ private String tipocriterio;
 private List<UsuarioDTO> listadoUsuarios;
 private UsuarioDTO usuario;
 private String mensaje;
+private String titulo;
 private String dniBuscado;
 
 public String getDniBuscado() {
@@ -64,6 +67,14 @@ public List<UsuarioDTO> getListadoUsuarios() {
 public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 	this.listadoUsuarios = listadoUsuarios;
 }
+public String getTitulo() {
+	return titulo;
+}
+public void setTitulo(String titulo) {
+	this.titulo = titulo;
+}
+
+
 
 	UsuarioService_I usuarioService = 
 	PaqueteBusinessDelegate.getUsuarioService();
@@ -131,12 +142,14 @@ public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 				System.out.println("llego hasta aqui");
 				idnuevousuario=usuarioService.registrarUsuario(usuario);
 				System.out.println("1 idnuevousuario: "+idnuevousuario+" registrado en la BD");
+				
 				if(idnuevousuario>0){
 					usuario.setUser(usuario.getDni());
 					usuario.setContrasena(usuario.getDni());
 					usuario .setEstado(1);
 					idnuevousuario=usuarioService.registrarUsuarioxPersona(usuario);
-					mensaje="El usuario con DNI "+usuario.getDni()+"se registró con exito";
+					titulo = "Registro de Usuario";
+					mensaje="El usuario con DNI " + usuario.getDni() + " se registró con exito";
 				}
 				else{
 					mensaje="Error al registrar al usuario con DNI "+usuario.getDni();
@@ -250,6 +263,9 @@ public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 				System.out.println("2 actualiza: "+resultado);
 				System.out.println("dni: "+usuario.getDni());
 				System.out.println("---------");
+				titulo = "Actualización de Usuario";
+				mensaje="El usuario con DNI " + usuario.getDni() + " se actualizó con exito";
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

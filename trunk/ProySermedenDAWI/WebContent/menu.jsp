@@ -32,7 +32,7 @@
 			    <div>
 					<ul id="navlist">
 						<li>
-						<A class="SiteLinkBold" HREF="#">Salir</A>
+						<A class="SiteLinkBold" HREF="LogueoSistema.jsp">Salir</A>
 						</li>
 				</ul>
 				</div>	

@@ -94,12 +94,10 @@
 			</tr>
 			<tr>			
 				<td colspan="2">
-					<!--<s:submit value="Registrar"></s:submit>-->
 					<sj:submit 
 				    	value="Registrar" 
 				    	button="true"
 				    />
-					
 				</td>
 			</tr>
 		</table>

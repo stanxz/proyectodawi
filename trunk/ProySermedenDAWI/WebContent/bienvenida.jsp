@@ -53,8 +53,7 @@
 					    		}" 
 					    	autoOpen="true" 
 					    	modal="true" 
-					    	title="Registro de Usuario"
-					    >
+					    	title="%{titulo}">
 					     <!--  Usuario Registrado con Exito !-->
 					     <jsp:include page="/Seguridad/UsuarioRegistrado-result.jsp"></jsp:include>
 					 </sj:dialog>
