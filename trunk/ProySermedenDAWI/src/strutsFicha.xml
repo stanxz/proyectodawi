@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
     
 <struts>
-	<package name="strutsFicha" namespace="/" extends="struts-default,tiles-default">
+	<package name="strutsFicha" namespace="/" extends="struts-default,tiles-default,json-default">
 		
 		 <action name="registrarFichaAction" class="sermeden.java.action.FichaAction" method="registrarFicha">
 			<param name="mensaje"></param>
