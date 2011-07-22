@@ -9,8 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+<sj:div>
 <table id="EstiloTable" border="3">
-<tr><td></td></tr>
+<tr>
+<td><h4>Registrar Cita</h4></td>
+</tr>
+<tr>
+<td></sj:div> </td>
+<td>Registrar Cita</td>
+</tr>
+
 
 </table>
 </body>
