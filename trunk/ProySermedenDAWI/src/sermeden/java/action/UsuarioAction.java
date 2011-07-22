@@ -332,7 +332,7 @@ public void setTitulo(String titulo) {
             message.addRecipient(
                 Message.RecipientType.TO,
                 new InternetAddress(auxiliar.getEmail()));
-            message.setSubject("ProyectoLPII");
+            message.setSubject("Recuperación de Contraseña");
             message.setText("Estimado "+auxiliar.getNombre() + " " + 
             		auxiliar.getApepat() + " su contraseña es: " + auxiliar.getContrasena());
  

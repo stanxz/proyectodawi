@@ -66,6 +66,8 @@ public class PacienteAction extends ActionSupport{
 					paciente.setEstado(1);
 					idnuevousuario=pacienteService.registrarUsuarioxPersona(paciente);
 					mensaje="El paciente con DNI "+paciente.getDni()+" se registró con exito !";
+					
+					
 				}
 				else{
 					mensaje="Error al registrar al usuario con DNI "+paciente.getDni();
