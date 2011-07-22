@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registrar Ficha</title>
+<sj:head jqueryui="true"/>
 </head>
 <body>
 <h4>Registrar Ficha</h4>
@@ -16,8 +17,8 @@
 			<td>Paciente</td>
 			<td> <s:textfield name="paciente.dni"></s:textfield> </td>
 			<td>
-				<s:url id="buscarPaciente"  action="buscarPacienteAction" value="ajax1.action">
-					<s:param name="dniBuscar">
+				<s:url id="buscarPaciente"  action="buscarPacienteAction">
+					<s:param name="dniBuscado">
 						 <s:property value="paciente.dni"/>
 					</s:param>
 				</s:url>
@@ -36,20 +37,24 @@
 				<sj:radio
 					href="%{remoteurl}" 
 					id="remoteRadiobuttons" 
-					name="echo" 
-					list="languageMap" 
-					label="Language"
+					name="remoteRadiobuttons" 
+					list="#{'1':'Si','2':'No'}" 
+					label="Registrar Nueva Cita?"
 					onChangeTopics="submitForm1"
-				/>
+				></sj:radio>
 				<sj:submit 
 	            	id="form2button"
 	            	targets="formResult" 
-	            	value="AJAX Submit" 
 	            	indicator="indicator"
 	            	button="true"
 	            	listenTopics="submitForm1"
 	            	cssStyle="display:none;"
 	            	/>			
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="formResult" class="result ui-widget-content ui-corner-all" >Seleccione un botón</div>
 			</td>
 		</tr>
 	</table>
