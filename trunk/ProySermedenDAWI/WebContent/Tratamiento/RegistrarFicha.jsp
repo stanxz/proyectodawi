@@ -12,7 +12,7 @@
 <body>
 <h4>Registrar Ficha</h4>
 	<s:form id="form1" action="buscarPacienteAction" >
-		<s:text name="lblDNIbuscado">DNI Buscado: </s:text>
+		<s:text name="lblDNIbuscado">DNI Paciente: </s:text>
  		<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
 		<sj:submit targets="resultado1" value="Buscar Paciente">
 		</sj:submit>
