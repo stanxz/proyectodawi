@@ -204,11 +204,6 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return usuarios;
 	}
 
-	@Override
-	public UsuarioDTO buscarDMPaciente(String idBuscar) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public int registrarDMPaciente(DMPacienteDTO dmpaciente) {
@@ -223,6 +218,16 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		sesion.close();
 		System.out.println("Registro de DM de Nuevo Paciente por mybatis: "+resultado);
 		return resultado;
+	}
+
+	@Override
+	public DMPacienteDTO DMxIdPaciente(String idBuscar) {
+		// TODO Auto-generated method stub
+		System.out.println("Cargando DM del paciente con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		DMPacienteDTO dmpaciente=(DMPacienteDTO) sesion.selectOne("cargarDMPaciente", idBuscar);
+		sesion.close();
+		return dmpaciente;
 	}
 
 }
