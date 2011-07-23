@@ -203,4 +203,10 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return usuarios;
 	}
 
+	@Override
+	public UsuarioDTO buscarDMPaciente(String idBuscar) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
