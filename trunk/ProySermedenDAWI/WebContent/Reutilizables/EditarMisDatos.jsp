@@ -15,15 +15,15 @@
 		<table align="center">
 			<tr>
 				<td>Nombre</td>
-				<td> <s:textfield name="usuario.nombre"></s:textfield> </td>
+				<td><s:label name="usuario.nombre"></s:label></td>
 			</tr>
 			<tr>
 				<td>Apellido Paterno</td>
-				<td> <s:textfield name="usuario.apepat"></s:textfield> </td>
+				<td><s:label name="usuario.apepat"></s:label></td>
 			</tr>
 			<tr>
 				<td>Apellido Materno</td>
-				<td> <s:textfield name="usuario.apemat"></s:textfield> </td>
+				<td><s:label name="usuario.apemat"></s:label></td>
 			</tr>
 			<tr>
 				<td>DNI</td>
