@@ -6,5 +6,5 @@ public interface FichaDAO {
 
 	public int registrarFicha(FichaDTO ficha) throws Exception;
 	
-	int cambiarEstadoFichaActual();
+	int cambiarEstadoFichaActual(int idPersona);
 }
