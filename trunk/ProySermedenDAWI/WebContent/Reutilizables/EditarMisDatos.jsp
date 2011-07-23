@@ -14,57 +14,61 @@
 <form action="ActualizarUsuarioAction" method="post">
 		<table align="center">
 			<tr>
-				<td>Nombre</td>
-				<td><s:label name="usuario.nombre"></s:label></td>
+				<td>Nombre           :</td>
+				<td><s:label name="#session.b_usuario.nombre"></s:label></td>
 			</tr>
 			<tr>
-				<td>Apellido Paterno</td>
-				<td><s:label name="usuario.apepat"></s:label></td>
+				<td>Apellido Paterno :</td>
+				<td><s:label name="#session.b_usuario.apepat"></s:label></td>
 			</tr>
 			<tr>
-				<td>Apellido Materno</td>
-				<td><s:label name="usuario.apemat"></s:label></td>
+				<td>Apellido Materno :</td>
+				<td><s:label name="#session.b_usuario.apemat"></s:label></td>
+			</tr>
+			<tr>
+				<td>Sexo             :</td>
+				<td>
+				<s:if test='#session.b_usuario.sexo == "H"'>
+				<s:label value="Masculino"></s:label>
+				</s:if><s:else>
+				<s:label value="Femenino"></s:label>
+				</s:else>
+				</td>
 			</tr>
 			<tr>
 				<td>DNI</td>
-				<td> <s:textfield name="usuario.dni"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.dni"></s:fielderror></td>
+				<td> <s:textfield name="#session.b_usuario.dni"></s:textfield> </td>
+				<td> <s:fielderror fieldName="#session.b_usuario.dni"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td>Fecha de Nacimiento</td>
-				<td> <sj:datepicker name="usuario.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"
-								value="today" ></sj:datepicker> 
-			   </td>
-			   
+				<td> <sj:datepicker name="#session.b_usuario.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"></sj:datepicker> 
 			</tr>
-			<tr>
-				<td>Sexo</td>
-				<td> <s:radio name="usuario.sexo" list="#{'H':'Masculino','M':'Femenino'}"  ></s:radio> </td>
-			</tr>
+			
 			<tr>
 				<td>Email</td>
-				<td> <s:textfield name="usuario.email"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.email"></s:textfield> </td>
 			</tr>
 			<tr>
 				<td>Telf. Fijo</td>
-				<td> <s:textfield name="usuario.fijo"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.fijo"></s:textfield> </td>
 			</tr>
 			<tr>
 				<td>Celular</td>
-				<td> <s:textfield name="usuario.celular"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.celular"></s:textfield> </td>
 			</tr>
 			<tr>
 				<td>Dirección</td>
-				<td> <s:textfield name="usuario.direccion"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.direccion"></s:textfield> </td>
 			</tr>
 			<tr>
 				<td>Usuario Sistema</td>
-				<td> <s:textfield name="usuario.user"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.user"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.user"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td>Contraseña</td>
-				<td> <s:textfield name="usuario.contrasena"></s:textfield> </td>
+				<td> <s:textfield name="#session.b_usuario.contrasena"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.contrasena"></s:fielderror></td>
 			</tr>
 			<tr>
