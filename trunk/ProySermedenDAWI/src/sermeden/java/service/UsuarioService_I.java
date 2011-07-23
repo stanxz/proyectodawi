@@ -38,6 +38,11 @@ public interface UsuarioService_I {
 	String recuperaPassUser(String dniBuscado);
 
 	//busca SOLO a pacientes x DNI
-	Object pacienteXDNI(String dniBuscado);
+	UsuarioDTO pacienteXDNI(String dniBuscado);
+
+	//lista SOLO pacientes por apellido paterno
+	List<UsuarioDTO> listadoPacienteXApellido(String filtro);
+
+	List<UsuarioDTO> listadoPacienteXDNI(String filtro);
 
 }
