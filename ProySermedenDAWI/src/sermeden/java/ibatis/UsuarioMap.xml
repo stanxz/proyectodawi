@@ -109,4 +109,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{idPersona},#{Cefalea},#{Asma},#{Alergia},#{Otros},#{Especificacion},#{Peso},#{Talla},#{PresionArterial},#{GrupoSanguineo},#{Observaciones})
 	</insert>
 		
+	<select id="cargarDMPaciente" parameterType="Integer" resultType="sermeden.java.bean.DMPacienteDTO">
+	
+		select * from datosmedicospersona
+		where idPersona=#{idBuscar}
+
+	</select>
 </mapper>
