@@ -75,31 +75,45 @@ public class FichaAction extends ActionSupport {
 		//Invocamos al servicio requerido para registrar cliente
 		
 		try {
-			if(pacienteService.pacienteXDNI(dniBuscado)!=null){
-				paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dniBuscado);
-				System.out.println("paciente registrado en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+			paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dniBuscado);
+			if(paciente!=null){
 				
-				ficha.setIdPersona(paciente.getIdPersona());
+				System.out.println("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+				System.out.println("aaaa "+paciente.getIdPersona());
+				
+				ficha=new FichaDTO();
+				
 				ficha.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
+				System.out.println(ficha.getFechaRegistro());
 				ficha.setEstado(1);
-				ficha.setObservaciones(observaciones);
-				
+				System.out.println(ficha.getEstado());
+				if(observaciones!=null)
+					ficha.setObservaciones(observaciones);
+				else
+					ficha.setObservaciones("");
+				System.out.println(ficha.getObservaciones());
+				ficha.setIdPersona(paciente.getIdPersona());
+				System.out.println(""+paciente.getDni());
 				idnuevaficha=fichaService.registrarFicha(ficha);
 				
 				if(idnuevaficha>0){
 					System.out.println(" idnuevaficha: "+idnuevaficha+" registrado en la BD");
 					mensaje="La ficha con id ["+ficha.getIdFicha()+"] se registró con exito !";
+					vista = "exito";
 				}
 				else{
-					mensaje="No se registró la Ficha porque el usuario no es valido";
+					mensaje="No se registró la Ficha";
+					vista = "error";
 				}
 			}
 			else{
-				System.out.println("La ficha con id ["+ficha.getIdFicha()+"] ya existe en la BD !");
-				mensaje="La ficha con id ["+ficha.getIdFicha()+"] ya existe en la BD !";
+				System.out.println("El paciente con DNI ["+dniBuscado+"] no esta registrado en la BD !");
+				mensaje="El paciente con DNI ["+dniBuscado+"] no esta registrado en la BD !";
+				vista = "error";
 			}
 		} catch (Exception e) {
-			
+			vista = "error";
+			mensaje="Errores al procesar: "+e.getMessage();
 			e.printStackTrace();
 		}
 		return vista;
