@@ -352,13 +352,13 @@ public void validate(){
 		// Invocar a los servicios necesarios	
 		try {
 			
-			paciente = pacienteService.pacienteXDNI(dniBuscado);
-			System.out.println("usuario a buscar " + paciente.getSexo());
-			if(paciente.getSexo().equalsIgnoreCase("H")){
+			paciente = pacienteService.buscarUsuario(idBuscar) ; 
+			System.out.println("usuario a buscar " + paciente.getDni());
+			/*if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
 			}else{
 				paciente.setSexo("Femenino");
-			}
+			}*/
 			dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
 			dmpaciente.setDni(paciente.getDni());
 			
