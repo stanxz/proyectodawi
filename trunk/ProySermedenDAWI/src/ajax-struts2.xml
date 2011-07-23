@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>	
+	<package name="json" namespace="/" extends="struts-default,json-default">
+	
+		
+		
+		<!-- Autocomplete -->
+<!--		<action name="autocompleteAction" class="sermeden.java.util.AutocompleteAction">-->
+<!--			<result>/ajax-struts2/autoComplete.jsp</result>-->
+<!--		</action>-->
+<!--		-->
+<!--		<action name="seleccionarCurso" class="sermeden.java.util.AutocompleteAction">-->
+<!--			<result type="json">-->
+<!--				<param name="root">cursoFavorito</param>-->
+<!--			</result>-->
+<!--		</action>-->
+		
+		<!-- Listado de Usuarios-->
+		<action name="listarUsuariosxNombre" class="sermeden.java.action.UsuarioAction" method="listarUsuarios">
+			<result name="exito">/Seguridad/listadoUsuario-result.jsp</result>
+		</action>
+		
+		<!-- Listado de Pacientes-->
+		<action name="listarPacientesxNombre" class="sermeden.java.action.PacienteAction" method="listarPacientes">
+			<result name="exito">/Paciente/listadoPaciente-result.jsp</result>
+		</action>
+
+	</package>
+	
+	
+</struts>

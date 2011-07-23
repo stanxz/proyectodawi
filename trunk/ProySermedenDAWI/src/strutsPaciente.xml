@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="strutsPaciente" namespace="/" extends="struts-default,tiles-default,json-default">
+		
+		 <action name="registrarPacienteAction" class="sermeden.java.action.PacienteAction" method="registrarPatient">
+			<param name="mensaje"></param>
+			<result name="exito">bienvenida.jsp</result>
+			<result name="input">/Paciente/RegistrarPaciente.jsp</result>
+		</action>
+		
+		<action name="a_registrarPaciente">
+			<result>/Paciente/RegistrarPaciente.jsp</result>
+		</action>
+		
+		
+		<action name="buscarPacienteAction" class="sermeden.java.action.PacienteAction" method="buscarPatient">
+			<result name="exito">/Paciente/buscarPaciente-result.jsp</result>
+			<result name="error">/Paciente/buscarPaciente-result.jsp</result>
+		</action>
+		
+		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="buscarPatient">
+			<result name="exito">/Reutilizables/EditarMisDatos.jsp</result>
+		</action>
+		
+		
+	   <action name="ActualizarPacienteAction" 
+				class="sermeden.java.action.PacienteAction" method="actualizarPatient">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="input">/Reutilizables/EditarMisDatos.jsp</result>
+		</action>
+
+		<action name="a_ActualizarDMPaciente">
+			<result>/Paciente/ListadodePacientes.jsp</result>
+		</action>
+
+	</package>
+</struts>
