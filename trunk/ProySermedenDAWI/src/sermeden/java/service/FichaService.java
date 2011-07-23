@@ -23,4 +23,10 @@ public class FichaService implements FichaService_I {
 		return objfichaDAO.cambiarEstadoFichaActual(idPersona);
 	}
 
+	@Override
+	public FichaDTO buscarFichaActualxPersona(String dniBuscado) {
+		// TODO Auto-generated method stub
+		return objfichaDAO.buscarFichaActualxPersona(dniBuscado);
+	}
+
 }
