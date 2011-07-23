@@ -8,7 +8,7 @@
 </head>
 <body>
 <h2>Busqueda de Pacientes</h2>
-	<s:form action="listarUsuariosxNombre">
+	<s:form action="listarPacientesxNombre">
 		<s:textfield name="filtro" label="Criterio:">
 		</s:textfield>
 		<br>
