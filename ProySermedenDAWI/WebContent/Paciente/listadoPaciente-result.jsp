@@ -30,7 +30,7 @@
 			<td align="center"><s:property value="idPerfil"/> </td>
 			<td align="center"><s:property value="estado"/> </td>
 			<td align="center">
-				<s:url id="cargaDatos" action="buscarUserxId">					    	
+				<s:url id="cargaDatos" action="buscarPacientexId">					    	
 					<s:param name="idBuscar">
 						 <s:property value="idPersona"/>
 					</s:param>
