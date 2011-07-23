@@ -24,6 +24,7 @@ public class PacienteAction extends ActionSupport{
 	private List<UsuarioDTO> listadoPacientes;
 	private UsuarioDTO paciente;
 	private String mensaje;
+	private String titulo;
 	private String dniBuscado;
 	private String nombreCompletoPaciente;
 	
@@ -58,7 +59,14 @@ public class PacienteAction extends ActionSupport{
 	public void setDniBuscado(String dniBuscado) {
 		this.dniBuscado = dniBuscado;
 	}
-	
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+
 	UsuarioService_I pacienteService = 
 			PaqueteBusinessDelegate.getUsuarioService();
 	
@@ -225,10 +233,39 @@ public void validate(){
 			if(paciente.getDireccion().length()==0){
 				addFieldError("paciente.direccion", getText("Ingrese una direccion"));
 			}
+			/*
 			if(paciente.getObservaciones().length()>500){
 				addFieldError("paciente.observaciones", getText("Las observaciones no pueden sobrepasar los 500 caracteres"));
-			}
+			}*/
 		}
 	}
+
+	public String actualizarPatient(){
+	int resultado=-1;
+	String vista="exito";
+	System.out.println("Dentro del metodo actualizar Usuario - Struts2");
+	try {
+		
+		System.out.println("DNI de Usuario a modificar: " +paciente.getNombre());
+		System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
+		resultado= pacienteService.modificarPersona(paciente);
+		System.out.println("1 actualiza: "+resultado);
+		System.out.println("dni: "+paciente.getDni());
+		System.out.println("---------");
+		if(resultado>0){
+			resultado=pacienteService.modificarUsuarioxPersona(paciente);
+			System.out.println("2 actualiza: "+resultado);
+			System.out.println("dni: "+paciente.getDni());
+			System.out.println("---------");
+			titulo = "Actualización de Usuario";
+			mensaje="El usuario con DNI " + paciente.getDni() + " se actualizó con exito";
+			
+		}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return vista;
+}
 
 }

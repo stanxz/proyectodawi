@@ -2,7 +2,6 @@ package sermeden.java.action;
 
 import java.util.List;
 
-import org.apache.catalina.connector.Request;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -25,6 +24,7 @@ public class UsuarioAction extends ActionSupport{
 	 */
 	private static final long serialVersionUID = 1L;
 private String filtro;
+private String condicion;
 private String idBuscar;
 private String tipocriterio;
 private List<UsuarioDTO> listadoUsuarios;
@@ -80,6 +80,12 @@ public String getTitulo() {
 }
 public void setTitulo(String titulo) {
 	this.titulo = titulo;
+}
+public String getCondicion() {
+	return condicion;
+}
+public void setCondicion(String condicion) {
+	this.condicion = condicion;
 }
 
 
@@ -260,8 +266,10 @@ public void setTitulo(String titulo) {
 		int resultado=-1;
 		String vista="exito";
 		System.out.println("Dentro del metodo actualizar Usuario - Struts2");
-		System.out.println("DNI de Usuario a modificar: " +usuario.getDni());
 		try {
+			
+			System.out.println("DNI de Usuario a modificar: " +usuario.getNombre());
+			System.out.println("DNI de Usuario a modificar: " +usuario.getDni());
 			resultado=usuarioService.modificarPersona(usuario);
 			System.out.println("1 actualiza: "+resultado);
 			System.out.println("dni: "+usuario.getDni());

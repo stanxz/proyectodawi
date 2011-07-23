@@ -51,7 +51,7 @@
 				<result name="exito">bienvenida.jsp</result>
 				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
 		</action>
-		
+
 		<action name="cambiarEstadoUser" 
 				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
 				<result name="exito">bienvenida.jsp</result>

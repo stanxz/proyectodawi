@@ -19,7 +19,19 @@
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
-						<li><A class=SiteLinkBold href="<s:property value="enlace"/>" id="current"><s:property value="descripcion"/></A></li>
+						<li>
+						<s:if test="descripcion == 'Editar Mis Datos'">
+						<s:url id="cargarDatos" action="buscarDatosPaciente">
+							<s:param name="dniBuscado">
+						 		<s:property value="#session.b_usuario.dni"/>
+							</s:param>
+						</s:url>
+						<s:a href="%{cargarDatos}" id="current"><s:property value="descripcion"/></s:a>
+						</s:if>
+						<s:else>
+						<A class=SiteLinkBold href="<s:property value="enlace"/>" id="current"><s:property value="descripcion"/></A>
+						</s:else>
+						</li>
 				</ul>
 				</div>
 	           </TD>

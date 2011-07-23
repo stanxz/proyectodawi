@@ -59,8 +59,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			email=#{email},
 			fijo=#{fijo},
 			celular=#{celular},
-			direccion=#{direccion},
+			direccion=#{direccion}
+			<if test="observaciones != null">
 			observaciones=#{observaciones}
+			</if>
 			<if test="idEspecialidad != null">
 				,idEspecialidad=#{idEspecialidad} 
 			</if>
