@@ -48,4 +48,7 @@ public interface UsuarioService_I {
 	//para Cargar los Datos Medicos del Paciente
 	UsuarioDTO buscarDMPaciente(String idBuscar);
 
+	//para generar un registro de DM del Paciente
+	int registrarDMPaciente(int idPersona);
+
 }
