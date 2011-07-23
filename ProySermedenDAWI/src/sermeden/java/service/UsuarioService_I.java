@@ -46,10 +46,10 @@ public interface UsuarioService_I {
 
 	List<UsuarioDTO> listadoPacienteXDNI(String filtro);
 
-	//para Cargar los Datos Medicos del Paciente
-	UsuarioDTO buscarDMPaciente(String idBuscar);
-
 	//para generar un registro de DM del Paciente
 	int registrarDMPaciente(DMPacienteDTO dmpaciente);
+
+	//carga los DM del Paciente
+	DMPacienteDTO DMxIdPaciente(String idBuscar);
 
 }
