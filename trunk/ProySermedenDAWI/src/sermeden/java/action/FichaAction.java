@@ -17,6 +17,24 @@ public class FichaAction extends ActionSupport {
 	private FichaDTO ficha;
 	private UsuarioDTO paciente;
 	private String mensaje;
+	private String dniBuscado;
+	private String observaciones;
+	
+	public String getObservaciones() {
+		return observaciones;
+	}
+
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+
+	public String getDniBuscado() {
+		return dniBuscado;
+	}
+
+	public void setDniBuscado(String dniBuscado) {
+		this.dniBuscado = dniBuscado;
+	}
 
 	public FichaDTO getFicha() {
 		return ficha;
@@ -51,13 +69,20 @@ public class FichaAction extends ActionSupport {
 		int idnuevaficha=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
-		System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
+		//System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
 		try {
-			if(pacienteService.validarUsuarioRegistrado(paciente)==false){
+			if(pacienteService.pacienteXDNI(dniBuscado)!=null){
+				paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dniBuscado);
 				System.out.println("paciente registrado en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+				
+				ficha.setIdPersona(paciente.getIdPersona());
+				ficha.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
+				ficha.setEstado(1);
+				ficha.setObservaciones(observaciones);
+				
 				idnuevaficha=fichaService.registrarFicha(ficha);
 				
 				if(idnuevaficha>0){
@@ -65,7 +90,7 @@ public class FichaAction extends ActionSupport {
 					mensaje="La ficha con id ["+ficha.getIdFicha()+"] se registró con exito !";
 				}
 				else{
-					mensaje="No se registró la Ficha";
+					mensaje="No se registró la Ficha porque el usuario no es valido";
 				}
 			}
 			else{
