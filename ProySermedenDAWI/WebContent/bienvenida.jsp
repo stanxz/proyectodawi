@@ -14,7 +14,7 @@
        $('#mybuttondialog').dialog('close');
      };
 </script>
-<!-- fin de cambios -->
+<!-- fin de cambios --> 
 </head>
 <body> 
 <h2>
