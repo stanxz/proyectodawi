@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		
 		<mapper resource="sermeden/java/ibatis/UsuarioMap.xml"/>
 		<mapper resource="sermeden/java/ibatis/MenuMap.xml"/>
-		
+		<mapper resource="sermeden/java/ibatis/FichaMap.xml"/>
 	</mappers>
 	
 </configuration>
