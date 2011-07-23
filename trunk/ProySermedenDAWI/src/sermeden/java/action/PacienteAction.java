@@ -86,6 +86,7 @@ public class PacienteAction extends ActionSupport{
 	
 	public String registrarPatient(){
 		int idnuevousuario=-1;
+		int iddmpaciente=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
 		System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
@@ -104,6 +105,9 @@ public class PacienteAction extends ActionSupport{
 					idnuevousuario=pacienteService.registrarUsuarioxPersona(paciente);
 					mensaje="El paciente con DNI "+paciente.getDni()+" se registró con exito !";
 					
+					//logica para insertar los datos medicos iniciales del paciente
+					 iddmpaciente=pacienteService.registrarDMPaciente(paciente.getIdPersona());
+					System.out.println("iddmpaciente: "+iddmpaciente);
 					//logica para envio de correos debe ir aqui
 					 // Propiedades de la conexión
 		            Properties props = new Properties();
