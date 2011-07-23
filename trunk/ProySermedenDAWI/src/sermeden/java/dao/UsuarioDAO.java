@@ -35,8 +35,8 @@ public interface UsuarioDAO {
 
 	public List<UsuarioDTO> listadoPacienteXDNI(String filtro);
 
-	public UsuarioDTO buscarDMPaciente(String idBuscar);
-
 	public int registrarDMPaciente(DMPacienteDTO dmpaciente);
+
+	public DMPacienteDTO DMxIdPaciente(String idBuscar);
 	
 }
