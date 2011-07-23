@@ -2,6 +2,7 @@ package sermeden.java.service;
 
 import java.util.List;
 
+import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.dao.DAOFactory;
 import sermeden.java.dao.UsuarioDAO;
@@ -103,9 +104,9 @@ public class UsuarioService implements UsuarioService_I {
 	}
 
 	@Override
-	public int registrarDMPaciente(int idPersona) {
+	public int registrarDMPaciente(DMPacienteDTO dmpaciente) {
 		// TODO Auto-generated method stub
-		return objUsuarioDAO.registrarDMPaciente(idPersona);
+		return objUsuarioDAO.registrarDMPaciente(dmpaciente);
 	}
 
 }
