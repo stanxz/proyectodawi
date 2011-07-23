@@ -21,31 +21,32 @@
 	<sj:div id="resultado1">
 	</sj:div>
 	
-<%-- 	<s:form action="registrarFichaAction" method="post"> --%>
+	<s:form  id="form2" action="registrarFichaAction" method="post">
+		<table>
+			<tr>
+				<td>Observaciones: </td>
+				<td> <s:textarea name="observaciones"></s:textarea> </td>
+			</tr>
+			<sj:submit value="Registrar Ficha">
+			</sj:submit>
+		</table>
+	
 <!-- 	 <table align="center"> -->
-<!-- 		<tr> -->
-<!-- 			<td> -->
-				
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<%-- 			<td colspan="3"> <s:fielderror fieldName="paciente.dni"></s:fielderror></td> --%>
-<!-- 		</tr> -->
 <!-- 		<tr> -->
 <!-- 			<td align="center" colspan="3"> <img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/></td> -->
 <!-- 		</tr> -->
 <!-- 		<tr> -->
 <!-- 			<td colspan="3"> -->
-<%-- 				<s:url id="remoteurl"/>  --%>
+<%-- 				<s:url id="remoteurl" action=""/>  --%>
 <%-- 				<sj:radio --%>
-<!-- 					href="%{remoteurl}"  -->
+<!-- 					href="%{remoteurl}"   -->
 <!-- 					id="remoteRadiobuttons"  -->
 <!-- 					name="remoteRadiobuttons"  -->
-<%-- 					list="#{'1':'Si','2':'No'}"  --%>
+<%--  					list="#{'1':'Si','2':'No'}"   --%>
 <!-- 					label="Registrar Nueva Cita?" -->
 <!-- 					onChangeTopics="submitForm1" -->
-<%-- 				></sj:radio> --%>
-<%-- 				<sj:submit  --%>
+<%-- 				></sj:radio>  --%>
+<%-- 				<sj:submit   --%>
 <!-- 	            	id="form2button" -->
 <!-- 	            	targets="formResult"  -->
 <!-- 	            	indicator="indicator" -->
@@ -61,6 +62,6 @@
 <!-- 			</td> -->
 <!-- 		</tr> -->
 <!-- 		</table> -->
-<%-- 	</s:form> --%>
+	</s:form>
 </body>
 </html>
