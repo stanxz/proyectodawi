@@ -15,4 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where idPersona=#{idPersona} and estado=1
 	</update>
 	
+	<select id="buscarFichaxDNIPaciente" parameterType="Integer" resultType="sermeden.java.bean.FichaDTO">
+		SELECT * FROM ficha f inner join persona p
+		on f.idPersona=p.idPersona
+		where f.estado=1 and p.dni=#{dniBuscado}
+	</select>
+	
 </mapper>
