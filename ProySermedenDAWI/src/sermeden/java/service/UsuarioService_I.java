@@ -2,6 +2,7 @@ package sermeden.java.service;
 
 import java.util.List;
 
+import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.UsuarioDTO;
 
 public interface UsuarioService_I {
@@ -49,6 +50,6 @@ public interface UsuarioService_I {
 	UsuarioDTO buscarDMPaciente(String idBuscar);
 
 	//para generar un registro de DM del Paciente
-	int registrarDMPaciente(int idPersona);
+	int registrarDMPaciente(DMPacienteDTO dmpaciente);
 
 }
