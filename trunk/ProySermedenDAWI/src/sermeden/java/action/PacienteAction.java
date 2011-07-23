@@ -26,14 +26,21 @@ public class PacienteAction extends ActionSupport{
 	private String mensaje;
 	private String titulo;
 	private String dniBuscado;
-	private String nombreCompletoPaciente;
+	private String tipocriterio;
+	private String filtro;
+
 	
-	
-	public String getNombreCompletoPaciente() {
-		return nombreCompletoPaciente;
+	public String getTipocriterio() {
+		return tipocriterio;
 	}
-	public void setNombreCompletoPaciente(String nombreCompletoPaciente) {
-		this.nombreCompletoPaciente = nombreCompletoPaciente;
+	public void setTipocriterio(String tipocriterio) {
+		this.tipocriterio = tipocriterio;
+	}
+	public String getFiltro() {
+		return filtro;
+	}
+	public void setFiltro(String filtro) {
+		this.filtro = filtro;
 	}
 	public List<UsuarioDTO> getListadoPacientes() {
 		return listadoPacientes;
@@ -266,6 +273,36 @@ public void validate(){
 		e.printStackTrace();
 	}
 	return vista;
-}
+	}
+	
+	public String listarPacientes(){
+		
+		String vista="exito";
+		
+		System.out.println("Dentro del metodo listarPacientes - Struts 2");
+		System.out.println("Parametro filtro : " + filtro);
+		System.out.println("Parametro criterio : " + tipocriterio);
+		
+		//Logica de listado de clientes
+		
+		try {
+			if( tipocriterio!=null && tipocriterio.equalsIgnoreCase("1")){
+				listadoPacientes = pacienteService.listadoPacienteXDNI(filtro);
+			}else if(tipocriterio!=null && tipocriterio.equalsIgnoreCase("2")){
+				listadoPacientes = pacienteService.listadoPacienteXApellido(filtro);
+			}
+			
+			if( listadoPacientes!=null && listadoPacientes.size()>0)
+				System.out.println("Numero de usuarios : " + listadoPacientes.size());
+			else
+				System.out.println("Lista de usuarios vacia");
+		
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return vista;
+	}
 
 }
