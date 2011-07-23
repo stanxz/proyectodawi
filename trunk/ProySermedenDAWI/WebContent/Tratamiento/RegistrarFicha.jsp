@@ -11,57 +11,28 @@
 </head>
 <body>
 <h4>Registrar Ficha</h4>
-	<s:form id="form1" action="buscarPacienteAction" >
-		<s:text name="lblDNIbuscado">DNI Paciente: </s:text>
- 		<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
-		<sj:submit targets="resultado1" value="Buscar Paciente">
-		</sj:submit>
-	</s:form>
-	
-	<sj:div id="resultado1">
-	</sj:div>
-	
-	<s:form  id="form2" action="registrarFichaAction" method="post">
+	<s:form id="form1" action="registrarFichaAction" method="post">
+		
 		<table>
+			<tr>
+				<td colspan="2">
+					<s:text name="lblDNIbuscado">DNI Paciente: </s:text>
+ 					<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
+				</td>
+			</tr>
 			<tr>
 				<td>Observaciones: </td>
 				<td> <s:textarea name="observaciones"></s:textarea> </td>
 			</tr>
-			<sj:submit value="Registrar Ficha">
+			<tr>
+				<td colspan="2">
+				<sj:submit value="Registrar Ficha"  >
 			</sj:submit>
+				</td>
+			</tr>
+			
 		</table>
-	
-<!-- 	 <table align="center"> -->
-<!-- 		<tr> -->
-<!-- 			<td align="center" colspan="3"> <img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/></td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td colspan="3"> -->
-<%-- 				<s:url id="remoteurl" action=""/>  --%>
-<%-- 				<sj:radio --%>
-<!-- 					href="%{remoteurl}"   -->
-<!-- 					id="remoteRadiobuttons"  -->
-<!-- 					name="remoteRadiobuttons"  -->
-<%--  					list="#{'1':'Si','2':'No'}"   --%>
-<!-- 					label="Registrar Nueva Cita?" -->
-<!-- 					onChangeTopics="submitForm1" -->
-<%-- 				></sj:radio>  --%>
-<%-- 				<sj:submit   --%>
-<!-- 	            	id="form2button" -->
-<!-- 	            	targets="formResult"  -->
-<!-- 	            	indicator="indicator" -->
-<!-- 	            	button="true" -->
-<!-- 	            	listenTopics="submitForm1" -->
-<!-- 	            	cssStyle="display:none;" -->
-<!-- 	            	/>			 -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		<tr> -->
-<!-- 			<td> -->
-<!-- 				<div id="formResult" class="result ui-widget-content ui-corner-all" >Seleccione un botón</div> -->
-<!-- 			</td> -->
-<!-- 		</tr> -->
-<!-- 		</table> -->
+		<s:property value="mensaje"/>
 	</s:form>
 </body>
 </html>
