@@ -25,5 +25,8 @@
 			<result name="error">/Paciente/buscarPaciente-result.jsp</result>
 		</action>
 		
+		<action name="a_ActualizarDMPaciente">
+			<result>/Paciente/ListadodePacientes.jsp</result>
+		</action>
 	</package>
 </struts>
