@@ -7,7 +7,6 @@
 	<package name="strutsFicha" namespace="/" extends="struts-default,tiles-default,json-default">
 		
 		 <action name="registrarFichaAction" class="sermeden.java.action.FichaAction" method="registrarFicha">
-			<param name="mensaje"></param>
 			<result name="exito">bienvenida.jsp</result>
 			<result name="input">/Tratamiento/RegistrarFicha.jsp</result>
 		</action>
