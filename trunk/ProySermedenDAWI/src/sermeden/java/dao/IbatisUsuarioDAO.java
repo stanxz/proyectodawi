@@ -211,8 +211,18 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 
 	@Override
 	public int registrarDMPaciente(int idPersona) {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado =-1;
+		
+		System.out.println("insertamos los DM del Paciente Nuevo con el mybatis");
+		
+		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
+
+			resultado=sesion.insert("insertaDMPaciente", idPersona);
+
+		//	resultado=sesion.insert("insertCliente2", usuario);
+		sesion.close();
+		System.out.println("Registro de DM de Nuevo Paciente por mybatis: "+resultado);
+		return resultado;
 	}
 
 }
