@@ -43,5 +43,11 @@
 				<result name="exito">/Paciente/ModificarDMPaciente.jsp</result>
 		</action>
 		
+		 <action name="ActualizarDMPacienteAction" 
+				class="sermeden.java.action.PacienteAction" method="actualizarDMPatient">
+				<result name="exito">bienvenida.jsp</result>
+				<result name="error">/Paciente/ModificarDMPaciente.jsp</result>
+		</action>
+		
 	</package>
 </struts>
