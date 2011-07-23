@@ -25,6 +25,7 @@ public class PacienteAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private List<UsuarioDTO> listadoPacientes;
 	private UsuarioDTO paciente;
+	private DMPacienteDTO dmpaciente;
 	private String mensaje;
 	private String titulo;
 	private String dniBuscado;
@@ -62,6 +63,13 @@ public class PacienteAction extends ActionSupport{
 	}
 	public void setPaciente(UsuarioDTO paciente) {
 		this.paciente = paciente;
+	}
+	
+	public DMPacienteDTO getDmpaciente() {
+		return dmpaciente;
+	}
+	public void setDmpaciente(DMPacienteDTO dmpaciente) {
+		this.dmpaciente = dmpaciente;
 	}
 	public String getMensaje() {
 		return mensaje;
