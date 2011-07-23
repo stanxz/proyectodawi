@@ -36,6 +36,12 @@
 		<action name="a_ActualizarDMPaciente">
 			<result>/Paciente/ListadodePacientes.jsp</result>
 		</action>
-
+		
+		<action name="buscarPacientexId" 
+				class="sermeden.java.action.PacienteAction"
+				method="cargaDatosPatient">
+				<result name="exito">/Paciente/ModificarDMPaciente.jsp</result>
+		</action>
+		
 	</package>
 </struts>
