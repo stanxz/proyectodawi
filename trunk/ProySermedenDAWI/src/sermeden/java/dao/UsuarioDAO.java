@@ -27,5 +27,7 @@ public interface UsuarioDAO {
 	public int cambiarEstadoUsuario(UsuarioDTO auxiliar);
 
 	public String recuperaPassUser(String dniBuscado);
+
+	public Object pacienteXDNI(String dniBuscado);
 	
 }
