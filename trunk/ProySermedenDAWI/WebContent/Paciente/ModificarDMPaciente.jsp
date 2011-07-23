@@ -23,13 +23,17 @@
 			<tr>
 				<td>Cefalea</td>
 				<!--   <td> <s:textfield name="dmpaciente.Cefalea"></s:textfield> </td>-->
-				<td> <s:checkbox name="dmpaciente.dni" 
-					<s:if test="usuario.Cefalea==1">
-					fieldValue="true"
-					</s:if>
-					label="Check me !!"
-				 > 
-				</s:checkbox> </td>
+				<td> 
+				<s:if test="dmpaciente.Cefalea==1">
+					<s:checkbox name="dmpaciente.Cefalea" fieldValue="true">
+					</s:checkbox> 
+				</s:if>
+				<s:if test="usuario.Cefalea==0">
+					<s:checkbox name="dmpaciente.Cefalea" fieldValue="false">
+					</s:checkbox> 
+				</s:if>
+				
+				</td>
 				
 			</tr>
 			<tr>
