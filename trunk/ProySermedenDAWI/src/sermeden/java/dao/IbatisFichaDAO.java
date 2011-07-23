@@ -1,19 +1,37 @@
 package sermeden.java.dao;
 
+import org.apache.ibatis.session.SqlSession;
+
 import sermeden.java.bean.FichaDTO;
+import sermeden.java.ibatis.MyIbatisManager;
 
 public class IbatisFichaDAO implements FichaDAO {
 
 	@Override
 	public int registrarFicha(FichaDTO ficha) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		int resultado =-1;
+		
+		System.out.println("insertamos la ficha con el mybatis");
+		
+		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
+			resultado=sesion.insert("insertFichaNueva", ficha);
+		sesion.close();
+		System.out.println("Registro de una ficha por mybatis: "+resultado);
+		return resultado;
+	
 	}
 
-	@Override
-	public int cambiarEstadoFichaActual(FichaDTO ficha) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int cambiarEstadoFichaActual() {
+		System.out.println("Dentro del cambiarEstadoFichaActual con Mybatis");
+		
+		int resultado = -1;
+		System.out.println("...");
+		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
+		resultado=sesion.update("cambiarEstadoFichaActual");
+		sesion.close();
+		
+		System.out.println("Cambiar el estado del usuario en mybatis");
+		return resultado;
 	}
 
 }
