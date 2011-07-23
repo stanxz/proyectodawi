@@ -14,7 +14,7 @@
 	<s:form id="form1" action="buscarPacienteAction" theme="simple">
 	<table align="center">
 		<tr>
-			<td>Paciente</td>
+			<td>DNI de Paciente</td>
 			<td> <s:textfield name="dniBuscado"></s:textfield> </td>
 			<td>
 <%-- 				<s:url id="buscarPaciente"  action="buscarPacienteAction" > --%>
