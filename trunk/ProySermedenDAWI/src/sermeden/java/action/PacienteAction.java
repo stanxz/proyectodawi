@@ -15,7 +15,6 @@ import sermeden.java.service.PaqueteBusinessDelegate;
 import sermeden.java.service.UsuarioService_I;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.bcel.internal.generic.GETSTATIC;
 
 public class PacienteAction extends ActionSupport{
 
@@ -360,6 +359,8 @@ public void validate(){
 			}else{
 				paciente.setSexo("Femenino");
 			}
+			dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
+			dmpaciente.setDni(paciente.getDni());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
