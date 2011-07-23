@@ -16,6 +16,10 @@
 			<result>/Paciente/RegistrarPaciente.jsp</result>
 		</action>
 		
+		<action name="a_MisDatos">
+			<result>/Reutilizables/EditarMisDatos.jsp</result>
+		</action>
+		
 		<action name="buscarPacienteAction" class="sermeden.java.action.PacienteAction" method="buscarPatient">
 			<param name="mensaje"></param>
 			<result name="exito">/Paciente/buscarPaciente-result.jsp</result>
