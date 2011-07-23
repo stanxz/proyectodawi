@@ -304,5 +304,23 @@ public void validate(){
 		
 		return vista;
 	}
+	
+	public String cargaDatosPatient(){
+		String vista = "exito";
+		System.out.println("Ingresando al metodo cargaDatos");	
+		//System.out.println("usuario a buscar " + idBuscar);
+		// Invocar a los servicios necesarios	
+		try {
+			
+			//usuario = usuarioService.buscarUsuario(idBuscar);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vista;
+	
+	}
+	
 
 }
