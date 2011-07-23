@@ -7,9 +7,9 @@ import sermeden.java.bean.UsuarioDTO;
 
 public interface FichaService_I {
 	
-		//registra la persona ficha
+		//registra la  ficha
 		int registrarFicha(FichaDTO ficha) throws Exception;
 		
 		//para versionar las fichas
-		int cambiarEstadoFichaActual(FichaDTO ficha);
+		int cambiarEstadoFichaActual();
 }
