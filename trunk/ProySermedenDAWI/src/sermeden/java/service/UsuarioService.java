@@ -102,4 +102,10 @@ public class UsuarioService implements UsuarioService_I {
 		return objUsuarioDAO.buscarDMPaciente(idBuscar);
 	}
 
+	@Override
+	public int registrarDMPaciente(int idPersona) {
+		// TODO Auto-generated method stub
+		return objUsuarioDAO.registrarDMPaciente(idPersona);
+	}
+
 }
