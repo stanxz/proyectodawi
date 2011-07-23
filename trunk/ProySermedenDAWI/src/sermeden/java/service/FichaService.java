@@ -18,9 +18,9 @@ public class FichaService implements FichaService_I {
 	}
 
 	@Override
-	public int cambiarEstadoFichaActual(FichaDTO ficha) {
+	public int cambiarEstadoFichaActual() {
 		// TODO Auto-generated method stub
-		return objfichaDAO.cambiarEstadoFichaActual(ficha);
+		return objfichaDAO.cambiarEstadoFichaActual();
 	}
 
 }
