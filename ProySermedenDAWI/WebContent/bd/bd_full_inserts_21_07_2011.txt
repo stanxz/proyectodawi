@@ -86,21 +86,45 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `datosmedicospersona`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `datosmedicospersona` (
-  `idPersona` int(11) NOT NULL,
-  `Cefalea` int(11) DEFAULT NULL,
-  `Asma` int(11) DEFAULT NULL,
-  `Alergia` int(11) DEFAULT NULL,
-  `Otros` int(11) DEFAULT NULL,
-  `Especificacion` varchar(254) DEFAULT NULL,
-  `Peso` varchar(15) DEFAULT NULL,
-  `Talla` varchar(15) DEFAULT NULL,
-  `PresionArterial` varchar(50) DEFAULT NULL,
-  `GrupoSanguineo` varchar(45) DEFAULT NULL,
-  `Observaciones` varchar(254) DEFAULT NULL,
-  PRIMARY KEY (`idPersona`),
-  CONSTRAINT `fk_DatosMédicos_persona1` FOREIGN KEY (`idPersona`) REFERENCES `persona` (`idPersona`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+CREATE  TABLE IF NOT EXISTS `bdsermeden`.`DatosMedicosPersona` (
+
+  `idPersona` INT NOT NULL ,
+
+  `Cefalea` INT NULL ,
+
+  `Asma` INT NULL ,
+
+  `Alergia` INT NULL ,
+
+  `Otros` INT NULL ,
+
+  `Especificacion` VARCHAR(254) NULL ,
+
+  `Peso` VARCHAR(15) NULL ,
+
+  `Talla` VARCHAR(15) NULL ,
+
+  `PresionArterial` VARCHAR(50) NULL ,
+
+  `GrupoSanguineo` VARCHAR(45) NULL ,
+
+  `Observaciones` VARCHAR(254) NULL ,
+
+  `idDMPaciente` INT NOT NULL AUTO_INCREMENT ,
+
+  PRIMARY KEY (`idDMPaciente`, `idPersona`) ,
+
+  CONSTRAINT `fk_DatosMédicos_persona1`
+
+    FOREIGN KEY (`idPersona` )
+
+    REFERENCES `bdsermeden`.`persona` (`idPersona` )
+
+    ON DELETE NO ACTION
+
+    ON UPDATE NO ACTION)
+
+ENGINE = InnoDB;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
