@@ -11,5 +11,5 @@ public interface FichaService_I {
 		int registrarFicha(FichaDTO ficha) throws Exception;
 		
 		//para versionar las fichas
-		int cambiarEstadoFichaActual();
+		int cambiarEstadoFichaActual(int idPersona);
 }
