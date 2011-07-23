@@ -28,6 +28,10 @@ public interface UsuarioDAO {
 
 	public String recuperaPassUser(String dniBuscado);
 
-	public Object pacienteXDNI(String dniBuscado);
+	public UsuarioDTO pacienteXDNI(String dniBuscado);
+
+	public List<UsuarioDTO> listadoPacienteXApellido(String filtro);
+
+	public List<UsuarioDTO> listadoPacienteXDNI(String filtro);
 	
 }

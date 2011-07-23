@@ -173,4 +173,34 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return cliente;
 	}
 
+	@Override
+	public List<UsuarioDTO> listadoPacienteXApellido(String filtro) {
+		System.out.println("Listando SOLO pacientes x Apellido con Mybatis");
+		
+		SqlSession sesion = 
+			MyIbatisManager.getSqlSessionFactory().openSession(true);
+		
+		List<UsuarioDTO> usuarios =
+			sesion.selectList("selectPacientexApellido", "%"+filtro+"%");
+		
+		sesion.close();
+			
+		return usuarios;
+	}
+
+	@Override
+	public List<UsuarioDTO> listadoPacienteXDNI(String filtro) {
+		System.out.println("Listando SOLO pacientes x DNI con Mybatis");
+		System.out.println("---- filtro dni: "+filtro);
+		SqlSession sesion = 
+			MyIbatisManager.getSqlSessionFactory().openSession(true);
+		
+		List<UsuarioDTO> usuarios =
+			sesion.selectList("selectPacientexDNI", filtro);
+		
+		sesion.close();
+			
+		return usuarios;
+	}
+
 }
