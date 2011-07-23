@@ -281,11 +281,18 @@ public void validate(){
 		
 		System.out.println("DNI de Usuario a modificar: " +paciente.getNombre());
 		System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
+		System.out.println("sexo: "+paciente.getSexo());
+		if(paciente.getSexo().equalsIgnoreCase("Masculino")){
+			paciente.setSexo("H");
+		}else{
+			paciente.setSexo("M");
+		}
 		resultado= pacienteService.modificarPersona(paciente);
 		System.out.println("1 actualiza: "+resultado);
 		System.out.println("dni: "+paciente.getDni());
 		System.out.println("---------");
 		if(resultado>0){
+			
 			resultado=pacienteService.modificarUsuarioxPersona(paciente);
 			System.out.println("2 actualiza: "+resultado);
 			System.out.println("dni: "+paciente.getDni());
@@ -338,7 +345,7 @@ public void validate(){
 		// Invocar a los servicios necesarios	
 		try {
 			
-			paciente = pacienteService.buscarDMPaciente(idBuscar);
+			paciente = pacienteService.pacienteXDNI(dniBuscado);
 			System.out.println("usuario a buscar " + paciente.getSexo());
 			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
