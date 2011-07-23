@@ -11,67 +11,56 @@
 </head>
 <body>
 <h4>Registrar Ficha</h4>
-	<s:form id="form1" action="buscarPacienteAction" theme="simple">
-	<table align="center">
-		<tr>
-			<td>DNI de Paciente</td>
-			<td> <s:textfield name="dniBuscado"></s:textfield> </td>
-			<td>
-<%-- 				<s:url id="buscarPaciente"  action="buscarPacienteAction" > --%>
-<%-- 					<s:param name="dniBuscado"> --%>
-<%-- 						 <s:property value="paciente.dni"/> --%>
-<%-- 					</s:param> --%>
-<%-- 				</s:url> --%>
-<%-- 				<s:a  href="%{buscarPaciente}"> Buscar Paciente </s:a> --%>
-				<sj:submit targets="resultado1" value="Buscar Paciente">
-				</sj:submit>
-			</td>
-		</tr>
-		</table>
+	<s:form id="form1" action="buscarPacienteAction" >
+		<s:text name="lblDNIbuscado">DNI Buscado: </s:text>
+ 		<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
+		<sj:submit targets="resultado1" value="Buscar Paciente">
+		</sj:submit>
 	</s:form>
+	
 	<sj:div id="resultado1">
 	</sj:div>
 	
-	<s:form action="registrarFichaAction" method="post">
-	 <table align="center">
-		<tr>
-			<td>
+<%-- 	<s:form action="registrarFichaAction" method="post"> --%>
+<!-- 	 <table align="center"> -->
+<!-- 		<tr> -->
+<!-- 			<td> -->
 				
-			</td>
-		</tr>
-		<tr>
-			<td colspan="3"> <s:fielderror fieldName="paciente.dni"></s:fielderror></td>
-		</tr>
-		<tr>
-			<td align="center" colspan="3"> <img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<s:url id="remoteurl" action="jsonsample"/> 
-				<sj:radio
-					href="%{remoteurl}" 
-					id="remoteRadiobuttons" 
-					name="remoteRadiobuttons" 
-					list="#{'1':'Si','2':'No'}" 
-					label="Registrar Nueva Cita?"
-					onChangeTopics="submitForm1"
-				></sj:radio>
-				<sj:submit 
-	            	id="form2button"
-	            	targets="formResult" 
-	            	indicator="indicator"
-	            	button="true"
-	            	listenTopics="submitForm1"
-	            	cssStyle="display:none;"
-	            	/>			
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<div id="formResult" class="result ui-widget-content ui-corner-all" >Seleccione un botón</div>
-			</td>
-		</tr>
-		</table>
-	</s:form>
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<%-- 			<td colspan="3"> <s:fielderror fieldName="paciente.dni"></s:fielderror></td> --%>
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td align="center" colspan="3"> <img id="indicator" src="images/indicator.gif" alt="Loading..." style="display:none"/></td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td colspan="3"> -->
+<%-- 				<s:url id="remoteurl"/>  --%>
+<%-- 				<sj:radio --%>
+<!-- 					href="%{remoteurl}"  -->
+<!-- 					id="remoteRadiobuttons"  -->
+<!-- 					name="remoteRadiobuttons"  -->
+<%-- 					list="#{'1':'Si','2':'No'}"  --%>
+<!-- 					label="Registrar Nueva Cita?" -->
+<!-- 					onChangeTopics="submitForm1" -->
+<%-- 				></sj:radio> --%>
+<%-- 				<sj:submit  --%>
+<!-- 	            	id="form2button" -->
+<!-- 	            	targets="formResult"  -->
+<!-- 	            	indicator="indicator" -->
+<!-- 	            	button="true" -->
+<!-- 	            	listenTopics="submitForm1" -->
+<!-- 	            	cssStyle="display:none;" -->
+<!-- 	            	/>			 -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 		<tr> -->
+<!-- 			<td> -->
+<!-- 				<div id="formResult" class="result ui-widget-content ui-corner-all" >Seleccione un botón</div> -->
+<!-- 			</td> -->
+<!-- 		</tr> -->
+<!-- 		</table> -->
+<%-- 	</s:form> --%>
 </body>
 </html>
