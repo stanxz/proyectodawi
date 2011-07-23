@@ -18,8 +18,7 @@
 		
 		<action name="buscarPacienteAction" class="sermeden.java.action.PacienteAction" method="buscarPatient">
 			<param name="mensaje"></param>
-			<result name="exito">bienvenida.jsp</result>
-			<result name="input">/Paciente/RegistrarPaciente.jsp</result>
+			<result name="exito">/Paciente/buscarPaciente-result.jsp</result>
 		</action>
 		
 	</package>
