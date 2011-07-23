@@ -164,4 +164,13 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return elpass;
 	}
 
+	@Override
+	public Object pacienteXDNI(String dniBuscado) {
+		System.out.println("Buscando paciente x DNI con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		UsuarioDTO cliente=(UsuarioDTO) sesion.selectOne("buscarPacientexDNI", dniBuscado);
+		sesion.close();
+		return cliente;
+	}
+
 }
