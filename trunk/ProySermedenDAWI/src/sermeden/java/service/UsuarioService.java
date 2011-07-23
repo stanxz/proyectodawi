@@ -98,15 +98,15 @@ public class UsuarioService implements UsuarioService_I {
 	}
 
 	@Override
-	public UsuarioDTO buscarDMPaciente(String idBuscar) {
-		// TODO Auto-generated method stub
-		return objUsuarioDAO.buscarDMPaciente(idBuscar);
-	}
-
-	@Override
 	public int registrarDMPaciente(DMPacienteDTO dmpaciente) {
 		// TODO Auto-generated method stub
 		return objUsuarioDAO.registrarDMPaciente(dmpaciente);
+	}
+
+	@Override
+	public DMPacienteDTO DMxIdPaciente(String idBuscar) {
+		// TODO Auto-generated method stub
+		return objUsuarioDAO.DMxIdPaciente(idBuscar);
 	}
 
 }
