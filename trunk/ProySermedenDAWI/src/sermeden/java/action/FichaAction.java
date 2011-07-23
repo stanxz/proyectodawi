@@ -69,7 +69,8 @@ public class FichaAction extends ActionSupport {
 		int idnuevaficha=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
-		//System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
+		System.out.println("dniBuscado: " +dniBuscado);
+		System.out.println("observaciones: "+observaciones);
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
