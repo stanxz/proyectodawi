@@ -75,8 +75,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td>Telf. Fijo</td>
-				<td> <s:textfield name="dmpaciente.Especificacion"></s:textfield> </td>
+				<td>Especificacion</td>
+				<td> <s:textarea name="dmpaciente.Especificacion"></s:textarea> </td>
 				<td> <s:fielderror fieldName="usuario.fijo"></s:fielderror></td>
 			</tr>
 			<tr>
