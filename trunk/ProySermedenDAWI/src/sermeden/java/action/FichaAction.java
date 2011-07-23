@@ -67,6 +67,7 @@ public class FichaAction extends ActionSupport {
 	
 	public String registrarFicha(){
 		int idnuevaficha=-1;
+		int resultupdate=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
 		System.out.println("dniBuscado: " +dniBuscado);
@@ -84,17 +85,22 @@ public class FichaAction extends ActionSupport {
 				ficha=new FichaDTO();
 				
 				ficha.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				System.out.println(ficha.getFechaRegistro());
+				//System.out.println(ficha.getFechaRegistro());
 				ficha.setEstado(1);
-				System.out.println(ficha.getEstado());
+				//System.out.println(ficha.getEstado());
 				if(observaciones!=null)
 					ficha.setObservaciones(observaciones);
 				else
 					ficha.setObservaciones("");
-				System.out.println(ficha.getObservaciones());
+				//System.out.println(ficha.getObservaciones());
 				ficha.setIdPersona(paciente.getIdPersona());
-				System.out.println(""+paciente.getDni());
+				//System.out.println(""+paciente.getDni());
+				
+				System.out.println("actualizando ficha antigua ... ");
+				resultupdate=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
+				System.out.println("registrando ficha ... ");
 				idnuevaficha=fichaService.registrarFicha(ficha);
+				
 				
 				if(idnuevaficha>0){
 					System.out.println(" idnuevaficha: "+idnuevaficha+" registrado en la BD");
