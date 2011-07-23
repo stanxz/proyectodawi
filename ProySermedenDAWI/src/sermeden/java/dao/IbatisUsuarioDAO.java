@@ -209,4 +209,10 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return null;
 	}
 
+	@Override
+	public int registrarDMPaciente(int idPersona) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
