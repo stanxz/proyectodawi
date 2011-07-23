@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bienvido a Sermeden</title>
 <sj:head jqueryui="true"/>
-<!--  Rodrigo, este metodo javascript lo uso para un popup q puse al registrar una persona-->
+<!--  Rodrigo, este metodo javascript lo uso para un popup q puse al registrar una persona XD-->
 <script type="text/javascript">
 	function okButton(){
        $('#mybuttondialog').dialog('close');
