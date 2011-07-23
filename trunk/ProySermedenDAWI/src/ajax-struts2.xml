@@ -19,14 +19,15 @@
 <!--			</result>-->
 <!--		</action>-->
 		
-		<!-- Listado -->
+		<!-- Listado de Usuarios-->
 		<action name="listarUsuariosxNombre" class="sermeden.java.action.UsuarioAction" method="listarUsuarios">
 			<result name="exito">/Seguridad/listadoUsuario-result.jsp</result>
 		</action>
 		
-<!--		<action name="listadoUusuariosxNombreAjax">-->
-<!--			<result>/Seguridad/listado.jsp</result>-->
-<!--		</action>-->
+		<!-- Listado de Pacientes-->
+		<action name="listarPacientesxNombre" class="sermeden.java.action.PacienteAction" method="listarPacientes">
+			<result name="exito">/Paciente/listadoPaciente-result.jsp</result>
+		</action>
 
 	</package>
 	
