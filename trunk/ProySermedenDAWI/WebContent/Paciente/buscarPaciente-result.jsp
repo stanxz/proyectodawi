@@ -1,6 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <table align="center">
 	<tr>
-		<td>Paciente encontrado: <s:property value="nombreCompletoPaciente"/></td>
+		<td> <s:property value="mensaje"/></td>
 	</tr>
 </table>
