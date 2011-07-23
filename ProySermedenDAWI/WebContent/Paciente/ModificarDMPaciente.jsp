@@ -22,14 +22,13 @@
 			</tr>
 			<tr>
 				<td>Cefalea</td>
-				<!--   <td> <s:textfield name="dmpaciente.Cefalea"></s:textfield> </td>-->
 				<td> 
 					<s:if test="dmpaciente.Cefalea==1">
 						<s:checkbox name="dmpaciente.Cefalea" fieldValue="true">
 						</s:checkbox> 
 					</s:if>
 					<s:else>
-					<s:checkbox name="dmpaciente.Cefalea" fieldValue="false">
+						<s:checkbox name="dmpaciente.Cefalea" fieldValue="false">
 						</s:checkbox> 
 					</s:else>
 				</td>
@@ -37,16 +36,43 @@
 			</tr>
 			<tr>
 				<td>Asma</td>
-				<td> <s:textfield name="dmpaciente.Asma"></s:textfield> </td>
+				<td> 
+					<s:if test="dmpaciente.Asma==1">
+						<s:checkbox name="dmpaciente.Asma" fieldValue="true">
+						</s:checkbox> 
+					</s:if>
+					<s:else>
+						<s:checkbox name="dmpaciente.Asma" fieldValue="false">
+						</s:checkbox> 
+					</s:else>
+				</td>
 			</tr>
 			<tr>
 				<td>Alergia</td>
-				<td> <s:textfield name="dmpaciente.Alergia"></s:textfield> </td>
+				<td> 
+					<s:if test="dmpaciente.Alergia==1">
+						<s:checkbox name="dmpaciente.Alergia" fieldValue="true">
+						</s:checkbox> 
+					</s:if>
+					<s:else>
+						<s:checkbox name="dmpaciente.Alergia" fieldValue="false">
+						</s:checkbox> 
+					</s:else>
+				</td>
 			</tr>
 
 			<tr>
 				<td>Otros</td>
-				<td> <s:textfield name="dmpaciente.Otros"></s:textfield> </td>
+				<td> 
+					<s:if test="dmpaciente.Otros==1">
+						<s:checkbox name="dmpaciente.Otros" fieldValue="true">
+						</s:checkbox> 
+					</s:if>
+					<s:else>
+					<s:checkbox name="dmpaciente.Otros" fieldValue="false">
+						</s:checkbox> 
+					</s:else>
+				</td>
 			</tr>
 			<tr>
 				<td>Telf. Fijo</td>
