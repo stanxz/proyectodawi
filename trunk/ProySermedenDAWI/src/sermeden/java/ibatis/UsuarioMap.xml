@@ -103,5 +103,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where p.apepat like #{filtro} and u.idPerfil=0
 
 	</select>
-	
+
+	<insert id="insertaDMPaciente" parameterType="sermeden.java.bean.DMPacienteDTO" useGeneratedKeys="true" keyProperty="idDMPaciente" flushCache="true">
+		insert into datosmedicospersona(idPersona,Cefalea,Asma,Alergia,Otros,Especificacion,Peso,Talla,PresionArterial,GrupoSanguineo,Observaciones) 
+		values (#{idPersona},#{Cefalea},#{Asma},#{Alergia},#{Otros},#{Especificacion},#{Peso},#{Talla},#{PresionArterial},#{GrupoSanguineo},#{Observaciones})
+	</insert>
+		
 </mapper>
