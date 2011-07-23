@@ -9,6 +9,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.PaqueteBusinessDelegate;
 import sermeden.java.service.UsuarioService_I;
@@ -105,8 +106,21 @@ public class PacienteAction extends ActionSupport{
 					idnuevousuario=pacienteService.registrarUsuarioxPersona(paciente);
 					mensaje="El paciente con DNI "+paciente.getDni()+" se registró con exito !";
 					
+					//creamos el objeto  DM del paciente
+					DMPacienteDTO dmpaciente=new DMPacienteDTO();
+					dmpaciente.setIdPersona(paciente.getIdPersona());
+					dmpaciente.setCefalea(0);
+					dmpaciente.setAsma(0);
+					dmpaciente.setAlergia(0);
+					dmpaciente.setOtros(0);
+					dmpaciente.setEspecificacion("");
+					dmpaciente.setPeso("");
+					dmpaciente.setTalla("");
+					dmpaciente.setPresionArterial("");
+					dmpaciente.setGrupoSanguineo("");
+					dmpaciente.setObservaciones("");
 					//logica para insertar los datos medicos iniciales del paciente
-					 iddmpaciente=pacienteService.registrarDMPaciente(paciente.getIdPersona());
+					 iddmpaciente=pacienteService.registrarDMPaciente(dmpaciente);
 					System.out.println("iddmpaciente: "+iddmpaciente);
 					//logica para envio de correos debe ir aqui
 					 // Propiedades de la conexión
