@@ -37,4 +37,7 @@ public interface UsuarioService_I {
 	//para enviar mail con el pass
 	String recuperaPassUser(String dniBuscado);
 
+	//busca SOLO a pacientes x DNI
+	Object pacienteXDNI(String dniBuscado);
+
 }
