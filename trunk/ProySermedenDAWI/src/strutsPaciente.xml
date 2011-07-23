@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
     
 <struts>
-	<package name="strutsPaciente" namespace="/" extends="struts-default,tiles-default">
+	<package name="strutsPaciente" namespace="/" extends="struts-default,tiles-default,json-default">
 		
 		 <action name="registrarPacienteAction" class="sermeden.java.action.PacienteAction" method="registrarPatient">
 			<param name="mensaje"></param>
@@ -21,8 +21,8 @@
 		</action>
 		
 		<action name="buscarPacienteAction" class="sermeden.java.action.PacienteAction" method="buscarPatient">
-			<param name="mensaje"></param>
 			<result name="exito">/Paciente/buscarPaciente-result.jsp</result>
+			<result name="error">/Paciente/buscarPaciente-result.jsp</result>
 		</action>
 		
 	</package>
