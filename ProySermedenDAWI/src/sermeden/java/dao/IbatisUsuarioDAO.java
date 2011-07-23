@@ -206,7 +206,11 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 	@Override
 	public UsuarioDTO buscarDMPaciente(String idBuscar) {
 		// TODO Auto-generated method stub
-		return null;
+				System.out.println("Cargando Datos Medicos de Paciente con MyBatis");
+				SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+				UsuarioDTO usuario=(UsuarioDTO) sesion.selectOne("cargarDMPaciente", idBuscar);
+				sesion.close();
+				return usuario;
 	}
 
 }
