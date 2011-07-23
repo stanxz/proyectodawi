@@ -165,7 +165,7 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 	}
 
 	@Override
-	public Object pacienteXDNI(String dniBuscado) {
+	public UsuarioDTO pacienteXDNI(String dniBuscado) {
 		System.out.println("Buscando paciente x DNI con MyBatis");
 		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
 		UsuarioDTO cliente=(UsuarioDTO) sesion.selectOne("buscarPacientexDNI", dniBuscado);
