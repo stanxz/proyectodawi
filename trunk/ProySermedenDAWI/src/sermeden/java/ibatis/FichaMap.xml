@@ -9,4 +9,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{idPersona},#{fechaRegistro},#{estado},#{Observaciones})
 	</insert>
 	
+	<update id="cambiarEstadoFichaActual" parameterType="Integer">
+	   update ficha  
+			set estado=0 
+			where idPersona=#{idPersona} and estado=1
+	</update>
+	
 </mapper>
