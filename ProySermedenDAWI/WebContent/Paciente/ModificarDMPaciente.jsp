@@ -17,94 +17,68 @@
 				<td colspan="3"> <s:property value="mensaje"/></td>
 			</tr>
 			<tr>
-				<td>Nombre</td>
-				<td> <s:textfield name="usuario.nombre"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.nombre"></s:fielderror></td>
+				<td>DNI Paciente</td>
+				   <td> <s:textfield name="dmpaciente.dni"></s:textfield> </td>
 			</tr>
 			<tr>
-				<td>Apellido Paterno</td>
-				<td> <s:textfield name="usuario.apepat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.apepat"></s:fielderror></td>
+				<td>Cefalea</td>
+				<!--   <td> <s:textfield name="dmpaciente.Cefalea"></s:textfield> </td>-->
+				<td> <s:checkbox name="dmpaciente.dni" 
+					<s:if test="usuario.Cefalea==1">
+					fieldValue="true"
+					</s:if>
+					label="Check me !!"
+				 > 
+				</s:checkbox> </td>
+				
 			</tr>
 			<tr>
-				<td>Apellido Materno</td>
-				<td> <s:textfield name="usuario.apemat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.apemat"></s:fielderror></td>
+				<td>Asma</td>
+				<td> <s:textfield name="dmpaciente.Asma"></s:textfield> </td>
 			</tr>
 			<tr>
-				<td>DNI</td>
-				<td> <s:textfield name="usuario.dni"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.dni"></s:fielderror></td>
+				<td>Alergia</td>
+				<td> <s:textfield name="dmpaciente.Alergia"></s:textfield> </td>
 			</tr>
+
 			<tr>
-				<td>Fecha de Nacimiento</td>
-				<td> <sj:datepicker name="usuario.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"
-					 ></sj:datepicker> 
-			   </td>
-			   
-			</tr>
-			<tr>
-				<td>Sexo</td>
-				<td> <s:radio name="usuario.sexo" list="#{'H':'Masculino','M':'Femenino'}"  ></s:radio> </td>
-				<td> <s:fielderror fieldName="usuario.sexo"></s:fielderror></td>
-			</tr>
-			<tr>
-				<td>Email</td>
-				<td> <s:textfield name="usuario.email"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.email"></s:fielderror></td>
+				<td>Otros</td>
+				<td> <s:textfield name="dmpaciente.Otros"></s:textfield> </td>
 			</tr>
 			<tr>
 				<td>Telf. Fijo</td>
-				<td> <s:textfield name="usuario.fijo"></s:textfield> </td>
+				<td> <s:textfield name="dmpaciente.Especificacion"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.fijo"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Celular</td>
-				<td> <s:textfield name="usuario.celular"></s:textfield> </td>
+				<td>Peso</td>
+				<td> <s:textfield name="dmpaciente.Peso"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.celular"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Dirección</td>
-				<td> <s:textfield name="usuario.direccion"></s:textfield> </td>
+				<td>Talla</td>
+				<td> <s:textfield name="dmpaciente.Talla"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.direccion"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Tipo Usuario</td>
-				<td> <s:select name="usuario.idPerfil" list="#{'1':'Administrador','2':'Auxiliar','3':'Recepcionista','4':'Técnico Imágenes','5':'M. Tratante','6':'M. Especialista'}" >				
-							</s:select>
-			    </td>
-			    <td> <s:fielderror fieldName="usuario.idPerfil"></s:fielderror></td>
-			</tr>
-			<s:if test="usuario.idPerfil==6">
-				<tr>
-				<td>Especialidad <br>(solo en el caso de Medicos)</td>
-				<td> <s:select name="usuario.idEspecialidad" list="#{'1':'Odontopediatria','2':'Endodoncia','3':'Cirugia Oral','4':'Ortodoncia','5':'Periodoncia','6':'Protesis Dental'}" 
-								headerValue="----- Seleccione -----"
-								headerKey="0">				
-							</s:select>
-			    </td>
-			    <td> <s:fielderror fieldName="usuario.idEspecialidad"></s:fielderror></td>
-				</tr>
-			</s:if>
-			<tr>
-				<td>Usuario Sistema</td>
-				<td> <s:textfield name="usuario.user"></s:textfield> </td>
+				<td>Presión Arterial</td>
+				<td> <s:textfield name="dmpaciente.PresionArterial"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.user"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Contraseña</td>
-				<td> <s:textfield name="usuario.contrasena"></s:textfield> </td>
+				<td>Grupo Sanguineo</td>
+				<td> <s:textfield name="dmpaciente.GrupoSanguineo"></s:textfield> </td>
 				<td> <s:fielderror fieldName="usuario.contrasena"></s:fielderror></td>
 			</tr>
 			
 			<tr>
 				<td>Observaciones</td>
-				<td> <s:textarea name="usuario.observaciones"></s:textarea> </td>
+				<td> <s:textarea name="dmpaciente.Observaciones"></s:textarea> </td>
 				<td> <s:fielderror fieldName="usuario.observaciones"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<s:submit value="Actualizar"></s:submit>
+					<s:submit value="Actualizar DM"></s:submit>
 				</td>
 			</tr>
 		</table>
