@@ -314,12 +314,12 @@ public void validate(){
 	
 	public String cargaDatosPatient(){
 		String vista = "exito";
-		System.out.println("Ingresando al metodo cargaDatos");	
-		//System.out.println("usuario a buscar " + idBuscar);
+		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
+		System.out.println("usuario a buscar " + idBuscar);
 		// Invocar a los servicios necesarios	
 		try {
 			
-			//usuario = usuarioService.buscarUsuario(idBuscar);
+			paciente = pacienteService.buscarDMPaciente(idBuscar);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
