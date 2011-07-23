@@ -80,9 +80,9 @@ public class UsuarioService implements UsuarioService_I {
 	}
 
 	@Override
-	public Object pacienteXDNI(String dniBuscado) {
+	public UsuarioDTO pacienteXDNI(String dniBuscado) {
 		// TODO Auto-generated method stub
-		return objUsuarioDAO.pacienteXDNI(dniBuscado);
+		return (UsuarioDTO) objUsuarioDAO.pacienteXDNI(dniBuscado);
 	}
 
 }
