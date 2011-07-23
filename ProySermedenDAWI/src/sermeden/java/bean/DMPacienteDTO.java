@@ -20,6 +20,14 @@ public class DMPacienteDTO implements Serializable{
 	private String GrupoSanguineo;
 	private String Observaciones;
 	private int idDMPaciente;
+	private String dni;
+	
+	public String getDni() {
+		return dni;
+	}
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 	public int getIdPersona() {
 		return idPersona;
 	}
