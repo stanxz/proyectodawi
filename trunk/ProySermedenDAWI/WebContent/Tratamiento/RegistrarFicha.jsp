@@ -11,18 +11,32 @@
 </head>
 <body>
 <h4>Registrar Ficha</h4>
-<s:form id="form1" action="registrarFichaAction" theme="simple">
+	<s:form id="form1" action="buscarPacienteAction" theme="simple">
 	<table align="center">
 		<tr>
 			<td>Paciente</td>
-			<td> <s:textfield name="paciente.dni"></s:textfield> </td>
+			<td> <s:textfield name="dniBuscado"></s:textfield> </td>
 			<td>
-				<s:url id="buscarPaciente"  action="buscarPacienteAction">
-					<s:param name="dniBuscado">
-						 <s:property value="paciente.dni"/>
-					</s:param>
-				</s:url>
-				<s:a href="%{buscarPaciente}"> Buscar Paciente </s:a>
+<%-- 				<s:url id="buscarPaciente"  action="buscarPacienteAction" > --%>
+<%-- 					<s:param name="dniBuscado"> --%>
+<%-- 						 <s:property value="paciente.dni"/> --%>
+<%-- 					</s:param> --%>
+<%-- 				</s:url> --%>
+<%-- 				<s:a  href="%{buscarPaciente}"> Buscar Paciente </s:a> --%>
+				<sj:submit targets="resultado1" value="Buscar Paciente">
+				</sj:submit>
+			</td>
+		</tr>
+		</table>
+	</s:form>
+	<sj:div id="resultado1">
+	</sj:div>
+	
+	<s:form action="registrarFichaAction" method="post">
+	 <table align="center">
+		<tr>
+			<td>
+				
 			</td>
 		</tr>
 		<tr>
@@ -57,7 +71,7 @@
 				<div id="formResult" class="result ui-widget-content ui-corner-all" >Seleccione un botón</div>
 			</td>
 		</tr>
-	</table>
-</s:form>
+		</table>
+	</s:form>
 </body>
 </html>
