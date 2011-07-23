@@ -2,6 +2,7 @@ package sermeden.java.dao;
 
 import java.util.List;
 
+import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.UsuarioDTO;
 
 public interface UsuarioDAO {
@@ -36,6 +37,6 @@ public interface UsuarioDAO {
 
 	public UsuarioDTO buscarDMPaciente(String idBuscar);
 
-	public int registrarDMPaciente(int idPersona);
+	public int registrarDMPaciente(DMPacienteDTO dmpaciente);
 	
 }
