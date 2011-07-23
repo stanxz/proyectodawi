@@ -104,11 +104,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	</select>
 	
-	<select id="cargarDMPaciente" parameterType="Integer" resultType="sermeden.java.bean.UsuarioDTO">
-		select p.idPersona,p.dni,p.nombre,p.apepat,p.apemat,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad,u.user,u.contrasena
-		from persona p inner join usuario u
-		on p.idPersona=u.idPersona
-		where p.idPersona = #{idBuscar}
-	</select>
-	
 </mapper>
