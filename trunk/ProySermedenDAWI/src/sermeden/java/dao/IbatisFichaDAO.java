@@ -21,13 +21,13 @@ public class IbatisFichaDAO implements FichaDAO {
 	
 	}
 
-	public int cambiarEstadoFichaActual() {
+	public int cambiarEstadoFichaActual(int idPersona) {
 		System.out.println("Dentro del cambiarEstadoFichaActual con Mybatis");
 		
 		int resultado = -1;
 		System.out.println("...");
 		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
-		resultado=sesion.update("cambiarEstadoFichaActual");
+		resultado=sesion.update("cambiarEstadoFichaActual",idPersona);
 		sesion.close();
 		
 		System.out.println("Cambiar el estado del usuario en mybatis");
