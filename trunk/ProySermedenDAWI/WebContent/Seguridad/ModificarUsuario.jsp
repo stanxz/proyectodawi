@@ -36,7 +36,7 @@
 			<tr>
 				<td>Fecha de Nacimiento</td>
 				<td> <sj:datepicker name="usuario.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"
-								value="today" ></sj:datepicker> 
+					 ></sj:datepicker> 
 			   </td>
 			   
 			</tr>
