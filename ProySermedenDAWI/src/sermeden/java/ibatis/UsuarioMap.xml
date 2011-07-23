@@ -61,10 +61,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			celular=#{celular},
 			direccion=#{direccion}
 			<if test="observaciones != null">
-			observaciones=#{observaciones}
+			,observaciones=#{observaciones}
 			</if>
 			<if test="idEspecialidad != null">
-				,idEspecialidad=#{idEspecialidad} 
+			,idEspecialidad=#{idEspecialidad} 
 			</if>
 			where dni=#{dni} 
 	</update>
