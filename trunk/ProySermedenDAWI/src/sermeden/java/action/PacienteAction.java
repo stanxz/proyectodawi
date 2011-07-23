@@ -25,7 +25,15 @@ public class PacienteAction extends ActionSupport{
 	private UsuarioDTO paciente;
 	private String mensaje;
 	private String dniBuscado;
+	private String nombreCompletoPaciente;
 	
+	
+	public String getNombreCompletoPaciente() {
+		return nombreCompletoPaciente;
+	}
+	public void setNombreCompletoPaciente(String nombreCompletoPaciente) {
+		this.nombreCompletoPaciente = nombreCompletoPaciente;
+	}
 	public List<UsuarioDTO> getListadoPacientes() {
 		return listadoPacientes;
 	}
@@ -136,12 +144,16 @@ public class PacienteAction extends ActionSupport{
 		
 		try {
 			if( dniBuscado!=null && !dniBuscado.equalsIgnoreCase("")){
-				if(pacienteService.listadoUsuariosXDNI(dniBuscado).size()>0){
-					paciente = (UsuarioDTO) pacienteService.listadoUsuariosXDNI(dniBuscado).get(0);
+				
+				if(pacienteService.pacienteXDNI(dniBuscado)!=null){
+					paciente = (UsuarioDTO) pacienteService.pacienteXDNI(dniBuscado);
+					mensaje="Paciente encontrado: "+paciente.getNombre()+" "+paciente.getApepat()+" "+paciente.getApemat();
 				}else{
 					mensaje="Lo sentimos. No existe ese DNI registrado en el Sistema";
 					vista="error";
 				}
+				
+				
 			}else{
 				mensaje="Ingrese un numero válido de DNI (8 cifras)";
 				vista="error";
