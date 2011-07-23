@@ -79,4 +79,10 @@ public class UsuarioService implements UsuarioService_I {
 		return objUsuarioDAO.recuperaPassUser(dniBuscado);
 	}
 
+	@Override
+	public Object pacienteXDNI(String dniBuscado) {
+		// TODO Auto-generated method stub
+		return objUsuarioDAO.pacienteXDNI(dniBuscado);
+	}
+
 }
