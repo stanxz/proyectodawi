@@ -28,8 +28,15 @@ public class PacienteAction extends ActionSupport{
 	private String dniBuscado;
 	private String tipocriterio;
 	private String filtro;
-
+	private String idBuscar;
 	
+	
+	public String getIdBuscar() {
+		return idBuscar;
+	}
+	public void setIdBuscar(String idBuscar) {
+		this.idBuscar = idBuscar;
+	}
 	public String getTipocriterio() {
 		return tipocriterio;
 	}
