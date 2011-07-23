@@ -4,4 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ficha">
 
+	<insert id="insertFichaNueva" parameterType="sermeden.java.bean.FichaDTO" useGeneratedKeys="true" keyProperty="idFicha" flushCache="true">
+		insert into ficha(idPersona,fechaRegistro,estado,Observaciones) 
+		values (#{idPersona},#{fechaRegistro},#{estado},#{Observaciones})
+	</insert>
+	
 </mapper>
