@@ -12,4 +12,7 @@ public interface FichaService_I {
 		
 		//para versionar las fichas
 		int cambiarEstadoFichaActual(int idPersona);
+		
+		//para buscar las fichas actuales
+		FichaDTO buscarFichaActualxPersona(String dniBuscado);
 }
