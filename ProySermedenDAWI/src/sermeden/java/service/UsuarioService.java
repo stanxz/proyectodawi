@@ -96,4 +96,10 @@ public class UsuarioService implements UsuarioService_I {
 		return objUsuarioDAO.listadoPacienteXDNI(filtro);
 	}
 
+	@Override
+	public UsuarioDTO buscarDMPaciente(String idBuscar) {
+		// TODO Auto-generated method stub
+		return objUsuarioDAO.buscarDMPaciente(idBuscar);
+	}
+
 }
