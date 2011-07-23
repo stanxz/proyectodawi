@@ -22,7 +22,7 @@
 			<result name="error">/Paciente/buscarPaciente-result.jsp</result>
 		</action>
 		
-		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="buscarPatient">
+		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="cargaDatosPatient">
 			<result name="exito">/Reutilizables/EditarMisDatos.jsp</result>
 		</action>
 		
