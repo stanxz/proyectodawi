@@ -345,7 +345,7 @@ public void validate(){
 		return vista;
 	}
 	
-	public String cargaDatosPatient(){
+	public String cargaDatosPatientxID(){
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
 		System.out.println("usuario a buscar " + idBuscar);
@@ -354,13 +354,38 @@ public void validate(){
 			
 			paciente = pacienteService.buscarUsuario(idBuscar) ; 
 			System.out.println("usuario a buscar " + paciente.getDni());
-			/*if(paciente.getSexo().equalsIgnoreCase("H")){
+			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
 			}else{
 				paciente.setSexo("Femenino");
-			}*/
+			}
 			dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
 			dmpaciente.setDni(paciente.getDni());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vista;
+	
+	}
+	
+	public String cargaDatosPatient(){
+		String vista = "exito";
+		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
+		System.out.println("usuario a buscar " + dniBuscado);
+		// Invocar a los servicios necesarios	
+		try {
+			
+			paciente = pacienteService.pacienteXDNI(dniBuscado) ; 
+			System.out.println("usuario a buscar " + paciente.getDni());
+			if(paciente.getSexo().equalsIgnoreCase("H")){
+				paciente.setSexo("Masculino");
+			}else{
+				paciente.setSexo("Femenino");
+			}
+			//dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
+			//dmpaciente.setDni(paciente.getDni());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
