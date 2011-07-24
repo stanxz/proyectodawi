@@ -38,5 +38,7 @@ public interface UsuarioDAO {
 	public int registrarDMPaciente(DMPacienteDTO dmpaciente);
 
 	public DMPacienteDTO DMxIdPaciente(String idBuscar);
+
+	public int modificarDMPaciente(DMPacienteDTO dmpaciente);
 	
 }
