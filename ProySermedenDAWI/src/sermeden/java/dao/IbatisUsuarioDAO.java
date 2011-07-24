@@ -230,4 +230,18 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		return dmpaciente;
 	}
 
+	@Override
+	public int modificarDMPaciente(DMPacienteDTO dmpaciente) {
+		System.out.println("Dentro del modificarDMPaciente");
+		
+		int resultado = -1;
+		System.out.println("actualizando ...");
+		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
+		resultado=sesion.update("actualizarDMPaciente", dmpaciente);
+		sesion.close();
+		
+		System.out.println("Modificar DM de paciente en mybatis");
+		return resultado;
+	}
+
 }
