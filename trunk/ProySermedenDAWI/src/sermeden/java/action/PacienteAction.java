@@ -371,4 +371,38 @@ public void validate(){
 	}
 	
 
+	public String actualizarDMPatient(){
+		int resultado=-1;
+		String vista="exito";
+		System.out.println("Dentro del metodo actualizar DM del Paciente - Struts2");
+			try {
+			System.out.println("DNI de Usuario a modificar su DM : " +dmpaciente.getDni());
+			/*System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
+			System.out.println("sexo: "+paciente.getSexo());
+			if(paciente.getSexo().equalsIgnoreCase("Masculino")){
+				paciente.setSexo("H");
+			}else{
+				paciente.setSexo("M");
+			}*/
+			resultado= pacienteService.modificarDMPaciente(dmpaciente);
+			System.out.println("1 actualiza: "+resultado);
+			System.out.println("dni: "+dmpaciente.getDni());
+			System.out.println("---------");
+			if(resultado>0){
+				
+				resultado=pacienteService.modificarUsuarioxPersona(paciente);
+				System.out.println("2 actualiza: "+resultado);
+				System.out.println("dni: "+paciente.getDni());
+				System.out.println("---------");
+				titulo = "Actualización de Usuario";
+				mensaje="El usuario con DNI " + paciente.getDni() + " se actualizó con exito";
+				
+			}
+			} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			return vista;
+		}
+	
 }
