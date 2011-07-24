@@ -390,16 +390,21 @@ public void validate(){
 			System.out.println("---------");
 			if(resultado>0){
 				
-				resultado=pacienteService.modificarUsuarioxPersona(paciente);
+				/*resultado=pacienteService.modificarUsuarioxPersona(paciente);
 				System.out.println("2 actualiza: "+resultado);
 				System.out.println("dni: "+paciente.getDni());
 				System.out.println("---------");
-				titulo = "Actualización de Usuario";
-				mensaje="El usuario con DNI " + paciente.getDni() + " se actualizó con exito";
+				titulo = "Actualización de Usuario";*/
+				mensaje="Los DM del usuario con DNI " + paciente.getDni() + " se actualizaron con exito: "+resultado;
 				
+			}else{
+				mensaje="No se pudo actualizar los DM del usuario: "+resultado;
 			}
+				
 			} catch (Exception e) {
 			// TODO Auto-generated catch block
+				mensaje="No se pudo actualizar los DM del usuario: "+resultado;
+				vista="error";
 			e.printStackTrace();
 			}
 			return vista;
