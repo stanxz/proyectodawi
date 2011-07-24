@@ -52,4 +52,7 @@ public interface UsuarioService_I {
 	//carga los DM del Paciente
 	DMPacienteDTO DMxIdPaciente(String idBuscar);
 
+	//modificar los DM del Paciente
+	int modificarDMPaciente(DMPacienteDTO dmpaciente);
+
 }
