@@ -384,6 +384,19 @@ public void validate(){
 			}else{
 				paciente.setSexo("M");
 			}*/
+			System.out.println("dmpaciente.getIdPersona(): "+dmpaciente.getIdPersona());
+			System.out.println("dmpaciente.getCefalea(): "+dmpaciente.getCefalea());
+			System.out.println("dmpaciente.getAsma(): "+dmpaciente.getAsma());
+			System.out.println("dmpaciente.getAlergia(): "+dmpaciente.getAlergia());
+			System.out.println("dmpaciente.getOtros(): "+dmpaciente.getOtros());
+			System.out.println("dmpaciente.getEspecificacion(): "+dmpaciente.getEspecificacion());
+			System.out.println("dmpaciente.getPeso(): "+dmpaciente.getPeso());
+			System.out.println("dmpaciente.getTalla(): "+dmpaciente.getTalla());
+			System.out.println("dmpaciente.getPresionArterial(): "+dmpaciente.getPresionArterial());
+			System.out.println("dmpaciente.getGrupoSanguineo(): "+dmpaciente.getGrupoSanguineo());
+			System.out.println("dmpaciente.getObservaciones(): "+dmpaciente.getObservaciones());
+			System.out.println("dmpaciente.getIdDMPaciente(): "+dmpaciente.getIdDMPaciente());
+			
 			resultado= pacienteService.modificarDMPaciente(dmpaciente);
 			System.out.println("1 actualiza: "+resultado);
 			System.out.println("dni: "+dmpaciente.getDni());
