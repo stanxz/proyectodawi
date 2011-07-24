@@ -118,17 +118,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="actualizarDMPaciente" parameterType="sermeden.java.bean.DMPacienteDTO">
 	   update datosmedicospersona 
-			set Cefalea=#{nombre},
-			Asma=#{apepat}, 
-			Alergia=#{apemat},
-			Otros=#{fechanac}, 
-			Especificacion=#{sexo},
-			Peso=#{email},
-			Talla=#{fijo},
-			PresionArterial=#{celular},
-			GrupoSanguineo=#{direccion}
+			set Cefalea=#{Cefalea},
+			Asma=#{Asma}, 
+			Alergia=#{Alergia},
+			Otros=#{Otros},
+			<if test="Otros != null"> 
+			Especificacion=#{Especificacion},
+			</if>
+			Peso=#{Peso},
+			Talla=#{Talla},
+			PresionArterial=#{PresionArterial},
+			GrupoSanguineo=#{GrupoSanguineo}
 			<if test="observaciones != null">
-			,observaciones=#{observaciones}
+			,Observaciones=#{Observaciones}
 			</if>
 			where idPersona=#{idPersona} 
 	</update>
