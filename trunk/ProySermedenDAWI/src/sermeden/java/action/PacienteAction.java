@@ -117,10 +117,10 @@ public class PacienteAction extends ActionSupport{
 					//creamos el objeto  DM del paciente
 					DMPacienteDTO dmpaciente=new DMPacienteDTO();
 					dmpaciente.setIdPersona(paciente.getIdPersona());
-					dmpaciente.setCefalea(0);
-					dmpaciente.setAsma(0);
-					dmpaciente.setAlergia(0);
-					dmpaciente.setOtros(0);
+					dmpaciente.setCefalea("0");
+					dmpaciente.setAsma("0");
+					dmpaciente.setAlergia("0");
+					dmpaciente.setOtros("0");
 					dmpaciente.setEspecificacion("");
 					dmpaciente.setPeso("");
 					dmpaciente.setTalla("");
