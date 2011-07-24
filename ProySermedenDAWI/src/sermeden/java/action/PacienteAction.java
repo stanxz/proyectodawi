@@ -280,6 +280,7 @@ public void validate(){
 		}
 	}
 
+   //Actualiza paciente
 	public String actualizarPatient(){
 	int resultado=-1;
 	String vista="exito";
@@ -289,6 +290,7 @@ public void validate(){
 		System.out.println("DNI de Usuario a modificar: " +paciente.getNombre());
 		System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
 		System.out.println("sexo: "+paciente.getSexo());
+		//Dependiendo del jsp enviamos el dato correcto a la BD
 		if(paciente.getSexo().equalsIgnoreCase("Masculino")){
 			paciente.setSexo("H");
 		}else{
