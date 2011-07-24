@@ -345,6 +345,7 @@ public void validate(){
 		return vista;
 	}
 	
+	//Carga los datos de pacientes por ID
 	public String cargaDatosPatientxID(){
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
@@ -370,6 +371,7 @@ public void validate(){
 	
 	}
 	
+	//Carga los datos de pacientes por DNI
 	public String cargaDatosPatient(){
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
@@ -384,8 +386,6 @@ public void validate(){
 			}else{
 				paciente.setSexo("Femenino");
 			}
-			//dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
-			//dmpaciente.setDni(paciente.getDni());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
