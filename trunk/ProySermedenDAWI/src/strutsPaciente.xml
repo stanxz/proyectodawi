@@ -39,7 +39,7 @@
 		
 		<action name="buscarPacientexId" 
 				class="sermeden.java.action.PacienteAction"
-				method="cargaDatosPatient">
+				method="cargaDatosPatientxId">
 				<result name="exito">/Paciente/ModificarDMPaciente.jsp</result>
 		</action>
 		
