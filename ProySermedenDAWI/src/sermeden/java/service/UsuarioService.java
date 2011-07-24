@@ -109,4 +109,10 @@ public class UsuarioService implements UsuarioService_I {
 		return objUsuarioDAO.DMxIdPaciente(idBuscar);
 	}
 
+	@Override
+	public int modificarDMPaciente(DMPacienteDTO dmpaciente) {
+		// TODO Auto-generated method stub
+		return objUsuarioDAO.modificarDMPaciente(dmpaciente);
+	}
+
 }
