@@ -9,10 +9,14 @@ public class DMPacienteDTO implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int idPersona;
-	private String Cefalea;
+	/*private String Cefalea;
 	private String Asma;
 	private String Alergia;
-	private String Otros;
+	private String Otros;*/
+	private boolean Cefalea;
+	private boolean Asma;
+	private boolean Alergia;
+	private boolean Otros;
 	private String Especificacion;
 	private String Peso;
 	private String Talla;
@@ -35,7 +39,33 @@ public class DMPacienteDTO implements Serializable{
 		this.idPersona = idPersona;
 	}
 
-	public String getCefalea() {
+	
+	
+	public boolean isCefalea() {
+		return Cefalea;
+	}
+	public void setCefalea(boolean cefalea) {
+		Cefalea = cefalea;
+	}
+	public boolean isAsma() {
+		return Asma;
+	}
+	public void setAsma(boolean asma) {
+		Asma = asma;
+	}
+	public boolean isAlergia() {
+		return Alergia;
+	}
+	public void setAlergia(boolean alergia) {
+		Alergia = alergia;
+	}
+	public boolean isOtros() {
+		return Otros;
+	}
+	public void setOtros(boolean otros) {
+		Otros = otros;
+	}
+	/*public String getCefalea() {
 		return Cefalea;
 	}
 	public void setCefalea(String cefalea) {
@@ -58,7 +88,7 @@ public class DMPacienteDTO implements Serializable{
 	}
 	public void setOtros(String otros) {
 		Otros = otros;
-	}
+	}*/
 	public String getEspecificacion() {
 		return Especificacion;
 	}
