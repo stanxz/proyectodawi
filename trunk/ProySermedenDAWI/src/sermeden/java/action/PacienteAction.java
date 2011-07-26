@@ -115,20 +115,25 @@ public class PacienteAction extends ActionSupport{
 					mensaje="El paciente con DNI "+paciente.getDni()+" se registró con exito !";
 					
 					//creamos el objeto  DM del paciente
-					DMPacienteDTO dmpaciente=new DMPacienteDTO();
-					dmpaciente.setIdPersona(paciente.getIdPersona());
-					dmpaciente.setCefalea("0");
-					dmpaciente.setAsma("0");
-					dmpaciente.setAlergia("0");
-					dmpaciente.setOtros("0");
-					dmpaciente.setEspecificacion("");
-					dmpaciente.setPeso("");
-					dmpaciente.setTalla("");
-					dmpaciente.setPresionArterial("");
-					dmpaciente.setGrupoSanguineo("");
-					dmpaciente.setObservaciones("");
+					DMPacienteDTO dmpaciente1=new DMPacienteDTO();
+					dmpaciente1.setIdPersona(paciente.getIdPersona());
+					/*dmpaciente1.setCefalea("0");
+					dmpaciente1.setAsma("0");
+					dmpaciente1.setAlergia("0");
+					dmpaciente1.setOtros("0");*/
+					dmpaciente1.setCefalea(false);
+					dmpaciente1.setAsma(false);
+					dmpaciente1.setAlergia(false);
+					dmpaciente1.setOtros(false);
+					
+					dmpaciente1.setEspecificacion("");
+					dmpaciente1.setPeso("");
+					dmpaciente1.setTalla("");
+					dmpaciente1.setPresionArterial("");
+					dmpaciente1.setGrupoSanguineo("");
+					dmpaciente1.setObservaciones("");
 					//logica para insertar los datos medicos iniciales del paciente
-					 iddmpaciente=pacienteService.registrarDMPaciente(dmpaciente);
+					 iddmpaciente=pacienteService.registrarDMPaciente(dmpaciente1);
 					System.out.println("iddmpaciente: "+iddmpaciente);
 					//logica para envio de correos debe ir aqui
 					 // Propiedades de la conexión
@@ -348,22 +353,42 @@ public void validate(){
 	}
 	
 	//Carga los datos de pacientes por ID
-	public String cargaDatosPatientxID(){
+	public String cargaDatosPatientxId(){
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
-		System.out.println("usuario a buscar " + idBuscar);
+		System.out.println("ID de usuario a buscar DM " + idBuscar);
 		// Invocar a los servicios necesarios	
 		try {
-			
 			paciente = pacienteService.buscarUsuario(idBuscar) ; 
-			System.out.println("usuario a buscar " + paciente.getDni());
-			if(paciente.getSexo().equalsIgnoreCase("H")){
-				paciente.setSexo("Masculino");
-			}else{
-				paciente.setSexo("Femenino");
-			}
+			System.out.println("DNI usuario a buscar DM " + paciente.getDni());
+			
 			dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
-			dmpaciente.setDni(paciente.getDni());
+			if(dmpaciente!=null){
+				System.out.println("dump DMPaciente");
+				System.out.println(""+dmpaciente.getIdPersona());
+				System.out.println(""+dmpaciente.getIdDMPaciente());
+				//le asignamos el valor del DNI del paciente al DM buscado
+				dmpaciente.setDni(paciente.getDni());
+				System.out.println(""+dmpaciente.getDni());
+				/*System.out.println(""+dmpaciente.getAlergia());
+				System.out.println(""+dmpaciente.getAsma());
+				System.out.println(""+dmpaciente.getCefalea());
+				System.out.println(""+dmpaciente.getOtros());*/
+				
+				System.out.println(""+dmpaciente.isAlergia());
+				System.out.println(""+dmpaciente.isAsma());
+				System.out.println(""+dmpaciente.isCefalea());
+				System.out.println(""+dmpaciente.isOtros());
+				
+				System.out.println(""+dmpaciente.getEspecificacion());
+				System.out.println(""+dmpaciente.getGrupoSanguineo());
+				System.out.println(""+dmpaciente.getPeso());
+				System.out.println("fin dump");
+				
+			}else{
+				System.out.println("dmpaciente es nulo !!!");
+			}
+			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -381,7 +406,7 @@ public void validate(){
 		// Invocar a los servicios necesarios	
 		try {
 			
-			paciente = pacienteService.pacienteXDNI(dniBuscado) ; 
+			paciente = pacienteService.pacienteXDNI(dniBuscado); 
 			System.out.println("usuario a buscar " + paciente.getDni());
 			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
@@ -403,19 +428,25 @@ public void validate(){
 		String vista="exito";
 		System.out.println("Dentro del metodo actualizar DM del Paciente - Struts2");
 			try {
+			//DMPacienteDTO temporaldm=new DMPacienteDTO();
+			//temporaldm.setDni(dmpaciente.getDni());
+			
 			System.out.println("DNI de Usuario a modificar su DM : " +dmpaciente.getDni());
-			/*System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
-			System.out.println("sexo: "+paciente.getSexo());
-			if(paciente.getSexo().equalsIgnoreCase("Masculino")){
-				paciente.setSexo("H");
-			}else{
-				paciente.setSexo("M");
-			}*/
+			paciente = pacienteService.pacienteXDNI(dmpaciente.getDni());
+			
+			//asignamos el idPersona de paciente a dmpaciente
+			dmpaciente.setIdPersona(paciente.getIdPersona());
+			
 			System.out.println("dmpaciente.getIdPersona(): "+dmpaciente.getIdPersona());
-			System.out.println("dmpaciente.getCefalea(): "+dmpaciente.getCefalea());
+			/*System.out.println("dmpaciente.getCefalea(): "+dmpaciente.getCefalea());
 			System.out.println("dmpaciente.getAsma(): "+dmpaciente.getAsma());
 			System.out.println("dmpaciente.getAlergia(): "+dmpaciente.getAlergia());
-			System.out.println("dmpaciente.getOtros(): "+dmpaciente.getOtros());
+			System.out.println("dmpaciente.getOtros(): "+dmpaciente.getOtros());*/
+			System.out.println("dmpaciente.isCefalea(): "+dmpaciente.isCefalea());
+			System.out.println("dmpaciente.isAsma(): "+dmpaciente.isAsma());
+			System.out.println("dmpaciente.isAlergia(): "+dmpaciente.isAlergia());
+			System.out.println("dmpaciente.isOtros(): "+dmpaciente.isOtros());
+			
 			System.out.println("dmpaciente.getEspecificacion(): "+dmpaciente.getEspecificacion());
 			System.out.println("dmpaciente.getPeso(): "+dmpaciente.getPeso());
 			System.out.println("dmpaciente.getTalla(): "+dmpaciente.getTalla());
@@ -425,7 +456,7 @@ public void validate(){
 			System.out.println("dmpaciente.getIdDMPaciente(): "+dmpaciente.getIdDMPaciente());
 			
 			resultado= pacienteService.modificarDMPaciente(dmpaciente);
-			System.out.println("1 actualiza: "+resultado);
+			System.out.println("1 actualizo??: "+resultado);
 			System.out.println("dni: "+dmpaciente.getDni());
 			System.out.println("---------");
 			if(resultado>0){
