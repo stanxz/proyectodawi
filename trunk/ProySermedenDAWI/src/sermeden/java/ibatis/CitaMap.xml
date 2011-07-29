@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cita">
+
+	<select id="cargarTurnosMT" resultType="hashmap">
+	
+		select t.Dia,t.HoraInicio,t.HoraFin,concat(p.nombre," ",p.apepat," ",p.apemat) as ncompleto from persona p 
+		inner join turnoxmtratante tm on p.idPersona=tm.idPersona 
+		inner join turno t on t.idTurno=tm.idTurno
+		order by tm.idTurno;
+
+	</select>
+
+
+</mapper>
