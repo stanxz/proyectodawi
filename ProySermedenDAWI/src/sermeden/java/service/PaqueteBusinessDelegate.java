@@ -20,4 +20,9 @@ public class PaqueteBusinessDelegate {
 		return new FichaService();
 	}
 
+	public static CitaService_I getCitaService() {
+		// TODO Auto-generated method stub
+		return new CitaService();
+	}
+
 }
