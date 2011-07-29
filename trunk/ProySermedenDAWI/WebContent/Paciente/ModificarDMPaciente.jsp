@@ -135,17 +135,17 @@
 						</s:checkbox> 
 					</s:if>
 					<s:else>
-					<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" fieldValue="false" onkeydown="esconder()">
+					<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" fieldValue="false" >
 						</s:checkbox> 
 					</s:else>
 				</td>
 			</tr>
 				<tr>
-						<td>xD</td>
+						<td>Especificacion</td>
 						<td> 
-							<div align="center" id="midiv" style="display:none;">
+							<!--   <div align="center" id="midiv" style="display:none;">-->
 								<s:textarea id="dmpaciente.Especificacion" name="dmpaciente.Especificacion"></s:textarea>
-							</div>
+							<!--  </div>-->
 						 </td>
 						<!--  <td> <s:fielderror fieldName="usuario.fijo"></s:fielderror></td>-->
 				</tr>
