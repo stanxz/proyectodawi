@@ -169,7 +169,7 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 	public UsuarioDTO pacienteXDNI(String dniBuscado) {
 		System.out.println("Buscando paciente x DNI con MyBatis");
 		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
-		UsuarioDTO cliente=(UsuarioDTO) sesion.selectOne("buscarPacientexDNI", dniBuscado);
+		UsuarioDTO cliente=(UsuarioDTO) sesion.selectOne("buscarUsuarioxDNI", dniBuscado);
 		sesion.close();
 		return cliente;
 	}
