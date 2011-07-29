@@ -13,7 +13,7 @@
 	<form action="RecuperaPassAction">
 		<table align="center">
 			<tr>
-				<td colspan="2">Al darle click a recuperar, se enviara le enviara un mail al correo si es que se encuentra registrado</td>
+				<td colspan="2">Al darle click a recuperar, se enviará un mail al correo  registrado</td>
 			</tr>
 			<tr>
 				<td align="right">
