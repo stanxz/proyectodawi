@@ -90,6 +90,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where p.dni=#{dniBuscado} and u.idPerfil=0
 	</select>
 	
+	<select id="buscarUsuarioxDNI" parameterType="String" resultType="sermeden.java.bean.UsuarioDTO">
+		select p.idPersona,p.dni,p.nombre,p.apepat,p.apemat,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad,u.user,u.contrasena 
+		from persona p inner join usuario u
+		on p.idPersona=u.idPersona
+		where p.dni=#{dniBuscado}
+	</select>
+	
 	<select id="selectPacientexDNI" resultType="sermeden.java.bean.UsuarioDTO">
 	
 		select p.*,u.* from persona p inner join usuario u on p.idpersona=u.idpersona
