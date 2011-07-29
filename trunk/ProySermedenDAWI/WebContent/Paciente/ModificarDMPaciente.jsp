@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
 
-document.cookie='none';
+//document.cookie='none';
  function esconder(){
  	/*$(document).ready(function(){
  
@@ -31,14 +31,14 @@ document.cookie='none';
   cerrar();
   }*/
   
-   if (document.cookie=="none"){
+   /*if (document.cookie=="none"){
    	 document.getElementById("midiv").style.display="";
    	 document.cookie="block";
    }
    else if (document.cookie=="block"){
    	 document.getElementById("midiv").style.display="none";
    	 document.cookie="none";
-   }
+   }*/
               
  }
  
@@ -137,7 +137,6 @@ document.cookie='none';
 					<s:else>
 					<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" fieldValue="false" onkeydown="esconder()">
 						</s:checkbox> 
-						<!--<jsp:include page="../Pruebacheckbox.jsp"></jsp:include>-->
 					</s:else>
 				</td>
 			</tr>
