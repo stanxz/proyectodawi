@@ -8,68 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Datos Medicos de Paciente</title>
 <sj:head jqueryui="true"/>
-
-<script type="text/javascript">
-
-//document.cookie='none';
- function esconder(){
- 	/*$(document).ready(function(){
- 
-    $("#dmpaciente.Otros").click(function () {
- 
-		
- 		$('#dmpaciente.Otros').is(':checked'){
- 			//document.getElementById('midiv').attr('visible',true);
- 			mostrardiv();
- 		};
- 		alert($('#dmpaciente.Otros').is(':checked'));
-    });
-  });*/
-  /*if(document.getElementById('dmpaciente.Otros').getAttribute('checked')){
-  mostrardiv();
-  }else{
-  cerrar();
-  }*/
-  
-   /*if (document.cookie=="none"){
-   	 document.getElementById("midiv").style.display="";
-   	 document.cookie="block";
-   }
-   else if (document.cookie=="block"){
-   	 document.getElementById("midiv").style.display="none";
-   	 document.cookie="none";
-   }*/
-              
- }
- 
-  /*function micookieta() {
-	if (document.cookie == "none"){
-       //document.getElementById( 'midiv' ).style.display = 'none';
-       document.cookie = "block";
-    }   
-    else if (document.cookie == "block"){
-       //document.getElementById( 'midiv' ).style.display = 'block';
-       document.cookie = "none";
-    }   
-  }*/
- 
- 
- /*function mostrardiv() {
-
-	div = document.getElementById("midiv");
-	
-	div.style.display='';
-	
- }
-
- function cerrar() {
-	
-	div = document.getElementById("midiv");
-	
-	div.style.display='none';
-	
- }*/
-  
+<script type="text/javascript"></script>   
+<script>
+$(document).ready(function(){
+	$("#dmpaciente.Otros").click(function(event){
+		alert("WAAAAA");
+		if ($("#dmpaciente.Otros").attr("checked")){
+			$("#midiv").css("display", "block");
+		}else{
+			$("#midiv").css("display", "none");
+		}
+	});
+});
 </script>
 
 
@@ -131,7 +81,7 @@
 				<td>Otros</td>
 				<td> 
 					<s:if test="dmpaciente.Otros==1">
-						<s:checkbox name="dmpaciente.Otros" value="true" >
+						<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" value="true" >
 						</s:checkbox> 
 					</s:if>
 					<s:else>
@@ -141,15 +91,11 @@
 				</td>
 			</tr>
 				<tr>
-						<td>Especificacion</td>
-						<td> 
-							<!--   <div align="center" id="midiv" style="display:none;">-->
-								<s:textarea id="dmpaciente.Especificacion" name="dmpaciente.Especificacion"></s:textarea>
-							<!--  </div>-->
-						 </td>
-						<!--  <td> <s:fielderror fieldName="usuario.fijo"></s:fielderror></td>-->
+					<td>Especificacion</td>
+					<td>
+						<s:textarea id="dmpaciente.Especificacion" name="dmpaciente.Especificacion"></s:textarea>
+					</td>
 				</tr>
-			
 			
 			<tr>
 				<td>Peso</td>
@@ -182,7 +128,11 @@
 					<s:submit value="Actualizar DM"></s:submit>
 				</td>
 			</tr>
+				
 		</table>
+		<div  id="midiv" style="display: none; ">
+			HOLAAAA
+		</div>
 	</form>
 </body>
 </html>
