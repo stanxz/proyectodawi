@@ -18,4 +18,10 @@ public class IbatisDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return new IbatisFichaDAO();
 	}
+
+	@Override
+	public CitaDAO getCitaDAO() {
+		// TODO Auto-generated method stub
+		return new IbatisCitaDAO();
+	}
 }
