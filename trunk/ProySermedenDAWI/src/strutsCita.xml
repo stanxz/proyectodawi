@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+    
+<struts>
+	<package name="strutsCita" namespace="/" extends="struts-default,tiles-default,json-default">
+		
+		 <action name="a_registrarCita" class="sermeden.java.action.CitaAction" method="listarTurnos">
+			<result name="exito">/Cita/RegistrarCita.jsp</result>
+		</action>
+		
+	</package>
+</struts>
