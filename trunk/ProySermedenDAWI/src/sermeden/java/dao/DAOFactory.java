@@ -11,6 +11,7 @@ public abstract class DAOFactory {
 	 public abstract UsuarioDAO getUsuarioDAO();
 	 public abstract MenuDAO getMenuDAO(); 
 	 public abstract FichaDAO getFichaDAO();
+	 public abstract CitaDAO getCitaDAO();
 	
 	 public static DAOFactory getDAOFactory(int whichFactory){
 	       switch(whichFactory){
@@ -33,5 +34,4 @@ public abstract class DAOFactory {
 	       	    return null;
 	       }
 	    }
-	 
 }
