@@ -11,22 +11,22 @@
 </head>
 <body>
 <h4>Turnos</h4>
-	<table align="center">
+	<table align="center" border="1">
 		<tr>
 			<td>Dia</td>
-			<td>HoraInicio</td>
+			<td>Hora Inicio</td>
 			<td>Hora Fin</td>
 			<td>Médico Tratante</td>
 		</tr>
 		
-		<s:iterator value="listadoTurnos">
+		<s:iterator value="listadoTurnos" >
 		<tr>
-			<td align="center"><s:property value="dni"/> </td>
-			<td align="center"><s:property value="nombre"/> </td>
-			<td align="center"><s:property value="apepat"/> </td>
-			<td align="center"><s:property value="apemat"/> </td>
+			<td align="center"><s:property value="Dia"/> </td>
+			<td align="center"><s:property value="HoraInicio"/>p.m. </td>
+			<td align="center"><s:property value="HoraFin"/>p.m. </td>
+			<td align="center"><s:property value="ncompleto"/> </td>
 		</tr>
-	</s:iterator>
+		</s:iterator>
 </table>
 	
 
