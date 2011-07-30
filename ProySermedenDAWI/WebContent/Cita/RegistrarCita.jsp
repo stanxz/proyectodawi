@@ -6,21 +6,42 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Registro de Nueva Cita</title>
 </head>
 <body>
-<sj:div>
-<table id="EstiloTable" border="3">
-<tr>
-<td><h4>Registrar Cita</h4></td>
-</tr>
-<tr>
-<td></sj:div> </td>
-<td>Registrar Cita</td>
-</tr>
 
+<h4>Nueva Cita</h4>
+<form action="">
+	<table align="center">
+	<tr><td> <s:property value="#session.b_usuario.idPerfil"  /> </td> </tr>
+		<tr>
+			 <s:if test="#session.b_usuario.idPerfil==3">
+			 <td>
+			 Código de Paciente: 
+			 </td>
+			 <td>
+			 	<s:textfield name="dnibuscado" required="true"></s:textfield>
+			  </td>	
+			  
+			 </s:if>
+			 
+			 <s:if test="#session.b_usuario.idPerfil==0">
+			 	<td></td>
+			 	<td>
+			 	<s:hidden name="dnibuscado" value= "#session.b_usuario.dni"></s:hidden>
+			 	</td>		 	
+			 </s:if>
+			
+		</tr>
+		<tr>
+			<td>
+				<jsp:include page="/Cita/Turnos-result.jsp"></jsp:include>
+			</td>
+		</tr>
+		
+	</table>
+</form>
 
-</table>
 </body>
 </html> 
 
