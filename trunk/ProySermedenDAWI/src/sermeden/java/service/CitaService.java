@@ -1,5 +1,7 @@
 package sermeden.java.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import sermeden.java.dao.CitaDAO;
@@ -13,7 +15,7 @@ public class CitaService implements CitaService_I {
 	CitaDAO objcitaDAO=fabrica.getCitaDAO();
 
 	@Override
-	public Map<String, Object> listadoTurnos() {
+	public ArrayList<HashMap<String, Object>> listadoTurnos() {
 		// TODO Auto-generated method stub
 		return objcitaDAO.listarTurnosMT();
 	}
