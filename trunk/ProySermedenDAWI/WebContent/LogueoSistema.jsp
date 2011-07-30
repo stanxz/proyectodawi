@@ -5,7 +5,7 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Ingresar al Sistema</title>
+<title>Ingresar al Sistema</title> 
 
     <link rel="stylesheet" href="css/jquery.ui.all.css">
 	
