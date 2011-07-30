@@ -14,31 +14,31 @@
 <form action="ActualizarPacienteAction" method="post">
 		<table align="center">
 			<tr>
-				<td>Nombre           :</td>
-				<td><s:textfield name="paciente.nombre"></s:textfield>
+				<td>Nombre</td>
+				<td><s:textfield name="paciente.nombre" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Apellido Paterno :</td>
-				<td><s:textfield name="paciente.apepat" ></s:textfield>
+				<td>Apellido Paterno</td>
+				<td><s:textfield name="paciente.apepat"  readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Apellido Materno :</td>
-				<td><s:textfield name="paciente.apemat"></s:textfield>
+				<td>Apellido Materno</td>
+				<td><s:textfield name="paciente.apemat" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Sexo             :</td>
+				<td>Sexo</td>
 				<td>
-				<s:textfield name="paciente.sexo" ></s:textfield>
+				<s:textfield name="paciente.sexo" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 		 	<tr>
 				<td>DNI</td>
-				<td><s:textfield name="paciente.dni"></s:textfield>
+				<td><s:textfield name="paciente.dni" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
-				<td> <s:fielderror fieldName="paciente.dni"></s:fielderror></td>
+				<td>
 			</tr>
 			<tr>
 				<td>Fecha de Nacimiento</td>
