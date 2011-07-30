@@ -74,7 +74,7 @@
 			</tr>
 			<s:if test="usuario.idPerfil==6">
 				<tr>
-				<td>Especialidad <br>(solo en el caso de Medicos)</td>
+				<td>Especialidad <br>(solo en el caso de Especialistas)</td>
 				<td> <s:select name="usuario.idEspecialidad" list="#{'1':'Odontopediatria','2':'Endodoncia','3':'Cirugia Oral','4':'Ortodoncia','5':'Periodoncia','6':'Protesis Dental'}" 
 								headerValue="----- Seleccione -----"
 								headerKey="0">				
