@@ -1,5 +1,7 @@
 package sermeden.java.action;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import sermeden.java.service.CitaService_I;
@@ -13,19 +15,27 @@ public class CitaAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private Map<String, Object> listadoTurnos;
+	private ArrayList<HashMap<String, Object>> listadoTurnos;
+	private String dnibuscado;
 	
-	public Map<String, Object> getListadoTurnos() {
+	public ArrayList<HashMap<String, Object>> getListadoTurnos() {
 		return listadoTurnos;
 	}
-	public void setListadoTurnos(Map<String, Object> listadoTurnos) {
+	public void setListadoTurnos(ArrayList<HashMap<String, Object>> listadoTurnos) {
 		this.listadoTurnos = listadoTurnos;
 	}
 	
+	public String getDnibuscado() {
+		return dnibuscado;
+	}
+	public void setDnibuscado(String dnibuscado) {
+		this.dnibuscado = dnibuscado;
+	}
+
 	CitaService_I citaService = 
 			PaqueteBusinessDelegate.getCitaService();
 	
-public String listarTurnos(){
+	public String listarTurnos(){
 		
 		String vista="exito";
 		
