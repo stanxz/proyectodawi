@@ -1,18 +1,19 @@
 package sermeden.java.dao;
 
-import java.util.Map;
-
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.apache.ibatis.session.SqlSession;
 import sermeden.java.ibatis.MyIbatisManager;
 
 public class IbatisCitaDAO implements CitaDAO {
 
 	@Override
-	public Map<String, Object> listarTurnosMT() {
+	public ArrayList<HashMap<String, Object>> listarTurnosMT() {
 		// TODO Auto-generated method stub
 		System.out.println("Cargando turnos con MyBatis");
 		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
-		Map<String, Object> hashTurnos=(Map) sesion.selectMap("buscarFichaxDNIPaciente",null);
+		 ArrayList<HashMap<String, Object>>  hashTurnos=(ArrayList<HashMap<String,Object>>) sesion.selectList("cargarTurnosMT");
+
 		sesion.close();
 		return hashTurnos;
 	}

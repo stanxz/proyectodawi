@@ -1,9 +1,10 @@
 package sermeden.java.dao;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface CitaDAO {
 
-	Map<String, Object> listarTurnosMT();
+	ArrayList<HashMap<String, Object>> listarTurnosMT();
 
 }
