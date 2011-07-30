@@ -23,7 +23,7 @@ public class LogueoAction extends ActionSupport {
 	private String mensaje;
 	private UsuarioDTO elusuario;
 	private List<MenuDTO> listadoMenu;
-	private Map<String, Object> lasession;
+	public Map<String, Object> lasession;
 	
 	public String getMensaje() {
 		return mensaje;

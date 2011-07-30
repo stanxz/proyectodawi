@@ -29,6 +29,12 @@
 			<result name="exito">/Paciente/listadoPaciente-result.jsp</result>
 		</action>
 
+		<!-- Listado de Medicos -->
+		<action name="listarMedicosAction"
+   				class="sermeden.java.action.CitaAction" method="listarMedicos">
+   			<result type="json"/>
+   		</action>
+   		
 	</package>
 	
 	

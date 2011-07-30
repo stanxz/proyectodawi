@@ -127,11 +127,12 @@ public void setCondicion(String condicion) {
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos");	
 		System.out.println("usuario a buscar " + idBuscar);
+		
 		// Invocar a los servicios necesarios	
 		try {
 			
 			usuario = usuarioService.buscarUsuario(idBuscar);
-			
+			System.out.println("$$$$$ idPerfil del usuario: "+usuario.getIdPerfil());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -319,44 +320,55 @@ public void setCondicion(String condicion) {
 		System.out.println("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
 		try {
 			UsuarioDTO auxiliar=new UsuarioDTO();
-			auxiliar=(UsuarioDTO)usuarioService.listadoUsuariosXDNI(dniBuscado).get(0);
-			System.out.println("email Destino del pass: "+auxiliar.getEmail());
 			
-			//logica para envio de correos debe ir aqui
-			 // Propiedades de la conexión
-            Properties props = new Properties();
-            props.setProperty("mail.smtp.host", "smtp.gmail.com");
-            props.setProperty("mail.smtp.starttls.enable", "true");
-            props.setProperty("mail.smtp.port", "587");
-            props.setProperty("mail.smtp.user", "proylp2@gmail.com");
-            props.setProperty("mail.smtp.auth", "true");
+			
+			if(usuarioService.listadoUsuariosXDNI(dniBuscado).size()>0){
+				auxiliar=(UsuarioDTO)usuarioService.listadoUsuariosXDNI(dniBuscado).get(0);
+				System.out.println("email Destino del pass: "+auxiliar.getEmail());
+				
+				//logica para envio de correos debe ir aqui
+				 // Propiedades de la conexión
+	            Properties props = new Properties();
+	            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+	            props.setProperty("mail.smtp.starttls.enable", "true");
+	            props.setProperty("mail.smtp.port", "587");
+	            props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+	            props.setProperty("mail.smtp.auth", "true");
 
-            // Preparamos la sesion
-            Session session = Session.getDefaultInstance(props);
-       
-            // Construimos el mensaje
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("proylp2@gmail.com"));
-            message.addRecipient(
-                Message.RecipientType.TO,
-                new InternetAddress(auxiliar.getEmail()));
-            message.setSubject("Recuperación de Contraseña");
-            message.setText("Estimado "+auxiliar.getNombre() + " " + 
-            		auxiliar.getApepat() + " su contraseña es: " + auxiliar.getContrasena());
- 
-            // Lo enviamos.
-            Transport t = session.getTransport("smtp");
-            t.connect("proylp2@gmail.com", "cibertec");
-            t.sendMessage(message, message.getAllRecipients());
-            System.out.println("Mensaje Enviado Correctamente");
+	            // Preparamos la sesion
+	            Session session = Session.getDefaultInstance(props);
+	       
+	            // Construimos el mensaje
+	            MimeMessage message = new MimeMessage(session);
+	            message.setFrom(new InternetAddress("proylp2@gmail.com"));
+	            message.addRecipient(
+	                Message.RecipientType.TO,
+	                new InternetAddress(auxiliar.getEmail()));
+	            message.setSubject("Recuperación de Contraseña");
+	            message.setText("Estimado "+auxiliar.getNombre() + " " + 
+	            		auxiliar.getApepat() + " su contraseña es: " + auxiliar.getContrasena());
+	 
+	            // Lo enviamos.
+	            Transport t = session.getTransport("smtp");
+	            t.connect("proylp2@gmail.com", "cibertec");
+	            t.sendMessage(message, message.getAllRecipients());
+	            System.out.println("Mensaje Enviado Correctamente");
 
-         // Cierre.
-            t.close();
+	         // Cierre.
+	            t.close();
+				
+			}else{
+				mensaje="El DNI no se encuentra registrado en el Sistema";
+				vista="error";
+			}
+			
+			
 			
 			 
 			//
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			vista="error";
 			e.printStackTrace();
 		}
 		return vista;
