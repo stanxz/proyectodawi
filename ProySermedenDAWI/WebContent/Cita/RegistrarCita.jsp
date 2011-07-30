@@ -7,38 +7,94 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registro de Nueva Cita</title>
+<sj:head jqueryui="true" compressed="false"/>
 </head>
 <body>
 
-<h4>Nueva Cita</h4>
-<form action="">
+<h4 align="center">Nueva Cita</h4>
+
+<form id="formNuevaCita" action="RegistrarNuevaCitaAction">
 	<table align="center">
-	<tr><td> <s:property value="#session.b_usuario.idPerfil"  /> </td> </tr>
-		<tr>
-			 <s:if test="#session.b_usuario.idPerfil==3">
+	<tr>
 			 <td>
-			 Código de Paciente: 
+			 DNI de Paciente: 
 			 </td>
 			 <td>
 			 	<s:textfield name="dnibuscado" required="true"></s:textfield>
 			  </td>	
-			  
-			 </s:if>
-			 
-			 <s:if test="#session.b_usuario.idPerfil==0">
-			 	<td></td>
-			 	<td>
-			 	<s:hidden name="dnibuscado" value= "#session.b_usuario.dni"></s:hidden>
-			 	</td>		 	
-			 </s:if>
-			
 		</tr>
+		
 		<tr>
-			<td>
+			<td colspan="2">
 				<jsp:include page="/Cita/Turnos-result.jsp"></jsp:include>
 			</td>
 		</tr>
-		
+		<fieldset>
+		<tr>
+			<td>
+				Elija Medico Tratante:
+			</td>
+			<td>
+				<div>
+					<s:url id="opcionesUrl" action="listarMedicosAction"/>
+					<sj:select	
+						href="%{opcionesUrl}"
+						id="medicoCita"
+						name="medicoCita"
+						onChangeTopics="reloadFechas"
+						list="listamedicos"
+						listKey="idPersona"
+						listValue="idPersona"
+						headerKey="-1"
+						headerValue="--Seleccione un Médico Tratante--"/>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Elija Fecha para Cita:
+			</td>
+			<td>
+			    <div>
+					<sj:select 
+						href="%{opcionesUrl}"
+						id="fechaCita"
+						formIds="formNuevaCita"
+						reloadTopics="reloadFechas"
+						onChangeTopics="reloadHoras"
+						name="fechaCita"
+						list="listafechasxmedico"
+						listKey="idPersona"
+						listValue="hora"
+						headerKey="-1"
+						headerValue="- Seleccione una fechadisponible -"/>
+				
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Elija Hora:
+			</td>
+			<td>
+				   <div>
+					<sj:select 
+						href="%{opcionesUrl}"
+						id="fechaCita"
+						formIds="formNuevaCita"
+						reloadTopics="reloadHoras"
+						name="fechaCita"
+						list="listahorasxfechasxmedico"
+						headerKey="-1"
+						headerValue="- Seleccione una hora -"/>
+				
+				</div>
+			</td>
+		</tr>
+		</fieldset>
+		<tr>
+			<td colspan="2"><sj:submit value="Registrar"></sj:submit> </td>
+		</tr>
 	</table>
 </form>
 
