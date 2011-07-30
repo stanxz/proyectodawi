@@ -26,6 +26,11 @@
 			<tr>
 				<td colspan="2"><s:submit value="Recuperar"></s:submit> </td>
 			</tr>
+			<tr>
+				<td colspan="2">
+					<s:property value="mensaje"/>
+				</td>
+			</tr>
 		</table>
 	</form>
 </body>
