@@ -63,7 +63,7 @@
 		<action name="RecuperaPassAction" 
 				class="sermeden.java.action.UsuarioAction" method="recuperaPassUser">
 				<result name="exito">LogueoSistema.jsp</result>
-<!--				<result name="input">/Seguridad/RecuperarContrasena.jsp</result>-->
+				<result name="error">/Seguridad/RecuperarContrasena.jsp</result>
 		</action>
 		
 		

@@ -11,5 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by tm.idTurno;
 	</select>
 
+	<select id="cargarMedicos" resultType="sermeden.java.bean.UsuarioDTO">
+		select p.idPersona,p.dni,concat(p.nombre," ",p.apepat," ",p.apemat) as ncompleto,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad,u.user,u.contrasena 
+		from persona p inner join usuario u
+		on p.idPersona=u.idPersona 
+		where u.idPerfil=5
+	</select>
 
 </mapper>
