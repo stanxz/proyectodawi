@@ -3,16 +3,19 @@ package sermeden.java.action;
 import java.util.List;
 import java.util.Map;
 
+
+
 import sermeden.java.bean.MenuDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.MenuService_I;
 import sermeden.java.service.PaqueteBusinessDelegate;
 import sermeden.java.service.UsuarioService_I;
 
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
-public class LogueoAction extends ActionSupport{
+public class LogueoAction extends ActionSupport {
 	/**
 	 * 
 	 */
@@ -20,7 +23,7 @@ public class LogueoAction extends ActionSupport{
 	private String mensaje;
 	private UsuarioDTO elusuario;
 	private List<MenuDTO> listadoMenu;
-	
+	private Map<String, Object> lasession;
 	
 	public String getMensaje() {
 		return mensaje;
@@ -45,11 +48,19 @@ public class LogueoAction extends ActionSupport{
 	}
 	
 	
+	public Map<String, Object> getLasession() {
+		return lasession;
+	}
+	public void setLasession(Map<String, Object> lasession) {
+		this.lasession = lasession;
+	}
+	
 	public String execute(){
 
 
 		String vista="exito";
-
+		
+		
 		System.out.println("Dentro del primer Action "+
 				"con Struts 2");
 		
@@ -89,7 +100,8 @@ public class LogueoAction extends ActionSupport{
 				/*if(clienteAux.getContrasena().equals(elusuario.getContrasena())){*/
 					
 					//Referenciando a la session con Struts 2
-					Map<String, Object> lasession=
+					//Map<String, Object> lasession=
+						lasession=
 						ActionContext.getContext().getSession();
 					
 					lasession.put("b_usuario", clienteAux);
@@ -113,4 +125,7 @@ public class LogueoAction extends ActionSupport{
 		return vista;	
 	
 	}
+	
+	
+	
 }
