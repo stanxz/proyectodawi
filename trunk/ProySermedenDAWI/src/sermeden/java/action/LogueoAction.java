@@ -21,6 +21,7 @@ public class LogueoAction extends ActionSupport {
 	 */
 	private static final long serialVersionUID = 1L;
 	private String mensaje;
+	private String mensaje2;
 	private UsuarioDTO elusuario;
 	private List<MenuDTO> listadoMenu;
 	public Map<String, Object> lasession;
@@ -33,6 +34,12 @@ public class LogueoAction extends ActionSupport {
 	}
 	
 	
+	public String getMensaje2() {
+		return mensaje2;
+	}
+	public void setMensaje2(String mensaje2) {
+		this.mensaje2 = mensaje2;
+	}
 	public UsuarioDTO getElusuario() {
 		return elusuario;
 	}
@@ -115,7 +122,7 @@ public class LogueoAction extends ActionSupport {
 				
 			}else{
 				vista="error";
-				mensaje = "Usuario o clave inválidos";
+				mensaje2 = "Usuario o clave inválidos";
 			}
 			
 		} catch (Exception e) {
