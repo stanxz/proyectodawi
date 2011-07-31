@@ -28,13 +28,14 @@
 	});
 	
 	</script>
-
-<sj:head jqueryui="true"/>
 <script type="text/javascript">
 	function okButton(){
        $('#mybuttondialog').dialog('close');
      };
 </script>
+<!-- El problema con la interfaz que puse es este 
+<sj:head jqueryui="true"/>
+-->
 </head>
 <h1>Sermeden</h1>
 <body>
