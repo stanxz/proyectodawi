@@ -346,7 +346,7 @@ public void setCondicion(String condicion) {
 	                new InternetAddress(auxiliar.getEmail()));
 	            message.setSubject("Recuperación de Contraseña");
 	            message.setText("Estimado "+auxiliar.getNombre() + " " + 
-	            		auxiliar.getApepat() + " su contraseña es: " + auxiliar.getContrasena());
+	            		auxiliar.getApepat() + " su usuario es: " + auxiliar.getUser()+" y su contraseña es: " + auxiliar.getContrasena());
 	 
 	            // Lo enviamos.
 	            Transport t = session.getTransport("smtp");
@@ -356,7 +356,7 @@ public void setCondicion(String condicion) {
 
 	         // Cierre.
 	            t.close();
-				
+	            mensaje="El Sistema ha enviado un correo a "+auxiliar.getNombre()+ " "+auxiliar.getApepat()+" con su usuario y clave";
 			}else{
 				mensaje="El DNI no se encuentra registrado en el Sistema";
 				vista="error";
