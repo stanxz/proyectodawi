@@ -13,17 +13,19 @@
 <h4>Turnos</h4>
 	<table align="center" border="1">
 		<tr>
-			<td>Dia</td>
-			<td>Hora Inicio</td>
-			<td>Hora Fin</td>
-			<td>Médico Tratante</td>
+			<td align="center" >Dia</td>
+			<td align="center">Hora Inicio</td>
+			<td align="center">Hora Fin</td>
+			<td align="center">Id Medico</td>
+			<td align="center">Médico Tratante</td>
 		</tr>
 		
 		<s:iterator value="listadoTurnos" >
 		<tr>
 			<td align="center"><s:property value="Dia"/> </td>
-			<td align="center"><s:property value="HoraInicio"/>p.m. </td>
-			<td align="center"><s:property value="HoraFin"/>p.m. </td>
+			<td align="center"><s:property value="HoraInicio"/> p.m. </td>
+			<td align="center"><s:property value="HoraFin"/> p.m. </td>
+			<td align="center"><s:property value="idPersona"/> </td>
 			<td align="center"><s:property value="ncompleto"/> </td>
 		</tr>
 		</s:iterator>
