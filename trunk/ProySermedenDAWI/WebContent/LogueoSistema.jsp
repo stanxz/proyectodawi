@@ -63,7 +63,7 @@
 				<td> <s:a href="a_recuperarPassword">Olvido su contraseña?</s:a> </td>
 			</tr>
 			<tr>
-				<td><s:property value="mensaje"/></td>
+				<td><s:property value="mensaje2"/></td>
 				<td>
 				<s:if test='mensaje != null'>
 					<sj:dialog 
