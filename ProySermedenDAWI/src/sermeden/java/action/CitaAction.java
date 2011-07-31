@@ -24,11 +24,17 @@ public class CitaAction extends ActionSupport {
 	
 	private List<UsuarioDTO> listamedicos;
 	private String medicoCita;
-	//private List<CursoDTO> listafechaxmedicos;
+	private List<String> listafechaxmedicos;
 	private List<String> listahorasxfechaxmedicos;
 	
 	
 	
+	public List<String> getListafechaxmedicos() {
+		return listafechaxmedicos;
+	}
+	public void setListafechaxmedicos(List<String> listafechaxmedicos) {
+		this.listafechaxmedicos = listafechaxmedicos;
+	}
 	public List<String> getListahorasxfechaxmedicos() {
 		return listahorasxfechaxmedicos;
 	}
@@ -92,27 +98,27 @@ public class CitaAction extends ActionSupport {
 		System.out.println("entraaaaaaaa .... ");
 		listamedicos = cargarMedicos();
 		System.out.println("tamaño listamedicos : " + listamedicos.size());
-		/*if(cursoFavorito != null){
+		if(medicoCita != null){
 			
-			System.out.println("Listando Frameworks");
+			System.out.println("Listando Fechas");
 			
-			listaFrameworks = new ArrayList<String>();
+			listafechaxmedicos = new ArrayList<String>();
 			
-			if(cursoFavorito.equals("01")){
+			if(medicoCita.equals("1")){
 				
-				listaFrameworks.add("Struts 2");
-				listaFrameworks.add("Myibatis");
-				listaFrameworks.add("JQuery");
+				listafechaxmedicos.add("Struts 2");
+				listafechaxmedicos.add("Myibatis");
+				listafechaxmedicos.add("JQuery");
 				
-			}else if(cursoFavorito.equals("02")){
+			}else if(medicoCita.equals("2")){
 				
-				listaFrameworks.add("Java Server Faces");
-				listaFrameworks.add("JPA");
+				listafechaxmedicos.add("Java Server Faces");
+				listafechaxmedicos.add("JPA");
 	
 			}
 			
 			
-		}*/
+		}
 		
 		return Action.SUCCESS;
 	
