@@ -13,7 +13,7 @@
 	<script src="js/jquery-1.4.4.js"></script>
 	<script src="js/jquery.ui.widget.js"></script>	
 	<script src="js/jquery.ui.tabs.js"></script>
-	<script src="js/jquery.ui.button.js"></script>
+	<script src="js/jquery.ui.button.js"></script> 
 
 	<link rel="stylesheet" href="css/demos.css">
 	<script type="text/javascript" src="js/util.js"></script>
