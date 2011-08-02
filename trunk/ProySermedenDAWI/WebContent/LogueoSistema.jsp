@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ingresar al Sistema</title> 
 <link href="css/jquery-ui.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript">
+<script type="text/javascript">  
 	function okButton(){
        $('#mybuttondialog').dialog('close');
      };
