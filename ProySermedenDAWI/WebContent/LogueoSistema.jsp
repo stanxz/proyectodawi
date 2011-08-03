@@ -36,8 +36,9 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-				<div class="ui-corner-all">
-					 <s:submit value="Ingresar"></s:submit>
+				<div>
+					 <s:submit value="Ingresar"
+					style="font-weight: bold;color: blue;height: 30px;width: 120px;text-align: center;"></s:submit>
 				</div>					
 				</td>
 			</tr>
