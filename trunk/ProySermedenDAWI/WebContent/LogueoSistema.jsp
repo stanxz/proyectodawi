@@ -7,7 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ingresar al Sistema</title> 
-<link href="css/misEstilos.css" rel="stylesheet" type="text/css" />
+	
+<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
+
 <script type="text/javascript">  
 	function okButton(){
        $('#mybuttondialog').dialog('close');
@@ -17,12 +19,12 @@
 </head>
 <h1>Sermeden</h1>
 <body>
-	<form action="logueo">
-<table align="center" class="box degradado blue"
-		style="border-style: outset;border-color: #2382a1;">
+<form action="logueo">
+<table align="center">
   <tr valign="top">
     <td>
-	<div >
+	<div class="ui-tabs ui-widget ui-corner-all"
+	style="border: 1px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
 				<td><s:label value="Usuario"></s:label></td>
@@ -34,8 +36,8 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-				<div class="btn">
-					<s:submit value="Ingresar" class="boton"></s:submit>
+				<div>
+					 <s:submit value="Ingresar" class="boton"></s:submit>
 				</div>					
 				</td>
 			</tr>
