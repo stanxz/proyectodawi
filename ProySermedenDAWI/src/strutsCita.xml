@@ -7,7 +7,7 @@
 	<package name="strutsCita" namespace="/" extends="struts-default,tiles-default,json-default">
 		
 		 <action name="a_registrarCita" class="sermeden.java.action.CitaAction" method="listarTurnos">
-			<result name="exito">/Cita/RegistrarCita.jsp</result>
+			<result name="exito" type="tiles">d_registrarCita</result>
 		</action>
 		
 	</package>

@@ -7,27 +7,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ingresar al Sistema</title> 
-	
-<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
-
 <script type="text/javascript">  
 	function okButton(){
        $('#mybuttondialog').dialog('close');
      };
 </script>
 <sj:head jqueryui="true"/>
+<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
 </head>
 <h1>Sermeden</h1>
 <body>
-<form action="logueo">
-<table align="center">
+<form action="logueo" method="post">
+<table align="center"">
   <tr valign="top">
     <td>
 	<div class="ui-tabs ui-widget ui-corner-all"
-	style="border: 1px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
+	style="border: 3px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
-				<td><s:label value="Usuario"></s:label></td>
+				<td align="left"><s:label value="Usuario"></s:label></td>
 				<td><s:textfield name="elusuario.user"></s:textfield> </td>
 			</tr>
 			<tr>
@@ -36,10 +34,9 @@
 			</tr>
 			<tr>
 				<td align="center" colspan="2">
-				<div>
-					 <s:submit value="Ingresar"
-					style="font-weight: bold;color: blue;height: 30px;width: 120px;text-align: center;"></s:submit>
-				</div>					
+					 <sj:submit 
+					 value="Ingresar" 
+					 button="true"/>		
 				</td>
 			</tr>
 			<tr>

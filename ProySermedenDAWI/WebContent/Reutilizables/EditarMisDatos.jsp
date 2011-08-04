@@ -8,86 +8,96 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Editar Mis Datos</title>
 <sj:head jqueryui="true"/>
+<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h2>Editar Mis Datos</h2>
 <form action="ActualizarPacienteAction" method="post">
+<table align="center"">
+  <tr valign="top">
+    <td>
+<div class="ui-tabs ui-widget ui-corner-all"
+	style="border: 3px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
-				<td>Nombre</td>
-				<td><s:textfield name="paciente.nombre" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
+				<td align="left">Nombre:</td>
+				<td colspan="2"><s:textfield name="paciente.nombre" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Apellido Paterno</td>
-				<td><s:textfield name="paciente.apepat"  readonly="true" style="background-color: #D8D8D8;"></s:textfield>
+				<td align="left">Apellido Paterno:</td>
+				<td colspan="2"><s:textfield name="paciente.apepat"  readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Apellido Materno</td>
-				<td><s:textfield name="paciente.apemat" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
+				<td align="left">Apellido Materno:</td>
+				<td colspan="2"><s:textfield name="paciente.apemat" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 			<tr>
-				<td>Sexo</td>
-				<td>
+				<td align="left">Sexo:</td>
+				<td colspan="2">
 				<s:textfield name="paciente.sexo" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
 			</tr>
 		 	<tr>
-				<td>DNI</td>
-				<td><s:textfield name="paciente.dni" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
+				<td align="left">DNI:</td>
+				<td colspan="2"><s:textfield name="paciente.dni" readonly="true" style="background-color: #D8D8D8;"></s:textfield>
 				</td>
-				<td>
 			</tr>
 			<tr>
-				<td>Fecha de Nacimiento</td>
-				<td> <sj:datepicker name="paciente.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"></sj:datepicker> 
+				<td align="left">Fecha de Nacimiento:</td>
+				<td colspan="2"> <sj:datepicker name="paciente.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"></sj:datepicker> 
 				</td>
 			</tr>
 			
 			<tr>
-				<td>Email</td>
+				<td align="left">Email:</td>
 				<td> <s:textfield name="paciente.email"></s:textfield>
 				 </td>
 				 <td> <s:fielderror fieldName="paciente.email"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Telf. Fijo</td>
+				<td align="left">Telf. Fijo:</td>
 				<td> <s:textfield name="paciente.fijo"></s:textfield>
 				 </td>
 				<td> <s:fielderror fieldName="paciente.fijo"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Celular</td>
+				<td align="left">Celular:</td>
 				<td> <s:textfield name="paciente.celular"></s:textfield>
 				 </td>
 				<td> <s:fielderror fieldName="paciente.celular"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Dirección</td>
+				<td align="left">Dirección:</td>
 				<td> <s:textfield name="paciente.direccion"></s:textfield> 
 				</td>
 				<td> <s:fielderror fieldName="paciente.direccion"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Usuario Sistema</td>
+				<td align="left">Usuario Sistema:</td>
 				<td> <s:textfield name="paciente.user"></s:textfield>
 				</td>
 				<td> <s:fielderror fieldName="paciente.user"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Contraseña</td>
+				<td align="left">Contraseña:</td>
 				<td> <s:textfield name="paciente.contrasena"></s:textfield> 
 				</td>
 				<td> <s:fielderror fieldName="paciente.contrasena"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<s:submit value="Actualizar"></s:submit>
+					<sj:submit value="Actualizar"
+					button="true"/>
 				</td>
 			</tr>
 		</table>
+		</div>
+		</td>
+		</tr>
+	</table>
 	</form>
 </body>
 </html>
