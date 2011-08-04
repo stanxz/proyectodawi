@@ -17,7 +17,7 @@
 
 		<action name="logueo" 
 				class="sermeden.java.action.LogueoAction">
-				<result name="exito">/bienvenida.jsp</result>
+				<result name="exito" type="tiles">d_bienvenida</result>
 				<result name="error">/LogueoSistema.jsp</result>
 		</action>
 	
@@ -26,7 +26,7 @@
 		</action>
 		
 		<action name="NuevoUsuarioAction">
-			<result>/Seguridad/NuevoUsuario.jsp</result>
+			<result type="tiles">d_NuevoUsuario</result>
 		</action>
 		
 		<action name="ListadoAction">

@@ -7,16 +7,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Recuperar contraseña</title>
-<link href="../css/miEstilo.css" rel="stylesheet" type="text/css" />
+<sj:head jqueryui="true"/>
+<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<h2>Recuperar Contraseña</h2>
-	<form action="RecuperaPassAction">
+	<form action="RecuperaPassAction" method="post">
 <table align="center">
   <tr valign="top">
     <td>
 	<div class="ui-tabs ui-widget ui-corner-all"
-	style="border: 1px solid #dddddd; background: #f2f5f7 url(../images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
+	style="border: 3px solid #dddddd; background: #f2f5f7 url(../images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
 				<td colspan="2" style="font-weight: bold;">
@@ -39,10 +40,7 @@
 			</tr>
 			<tr>
 			<td colspan="2" align="center">
-				<div>
-				<s:submit value="Recuperar" 
-				style="font-weight: bold;color: blue;height: 30px;width: 100px;text-align: center;"></s:submit>
-				</div> 
+				<sj:submit value="Recuperar" button="true"/>
 			</td>
 			</tr>
 			<tr>

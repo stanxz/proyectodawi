@@ -23,7 +23,7 @@
 		</action>
 		
 		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="cargaDatosPatient">
-			<result name="exito">/Reutilizables/EditarMisDatos.jsp</result>
+			<result name="exito" type="tiles">d_MisDatos</result>
 		</action>
 		
 		

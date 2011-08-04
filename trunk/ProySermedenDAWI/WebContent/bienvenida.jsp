@@ -15,6 +15,7 @@
      };
 </script>
 <!-- fin de cambios --> 
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
 </head>
 <body> 
 <h2>
@@ -28,17 +29,64 @@
                             Bienvenida  Sra:<br>
                     </s:if> 
                     
-                    <s:property value="#session.b_usuario.nombre"/>
-                    
-                    <s:property value="#session.b_usuario.apepat"/>
-				</TD>
+                    <s:property value="#session.b_usuario.nombre"/>&nbsp;<s:property value="#session.b_usuario.apepat"/>
+                
+			</TD>
 		</tr>
-	</TABLE>
+</TABLE>
 </h2>
 	<table align="center">
 		<tr>
 			<td >  
-				<jsp:include page="menu.jsp"></jsp:include>
+				<TABLE width="100%" border="0" height="100%">
+		  <TR><td>&nbsp;</td></TR>
+          <TR>
+		  	   <TD>
+		  	   <div>
+					<ul id="navlist">
+						<li><A class=SiteLinkBold href="#">Principal</A></li>
+				</ul>
+				</div>
+	           </TD>
+		  </TR> 
+		   <TR><td>&nbsp;</td></TR>
+		   <s:iterator value="#session.b_menu">
+		   	 <TR> 
+		  	   <TD>
+		  	   <div>
+					<ul id="navlist">
+						<li>
+						<s:if test="descripcion == 'Editar Mis Datos'">
+						<s:url id="cargarDatos" action="buscarDatosPaciente">
+							<s:param name="dniBuscado">
+						 		<s:property value="#session.b_usuario.dni"/>
+							</s:param>
+						</s:url>
+						<s:a href="%{cargarDatos}" id="current"><s:property value="descripcion"/></s:a>
+						</s:if>
+						<s:else>
+						<A class=SiteLinkBold href="<s:property value="enlace"/>" id="current"><s:property value="descripcion"/></A>
+						</s:else>
+						</li>
+				</ul>
+				</div>
+	           </TD>
+		  </TR>
+		   </s:iterator>
+
+		  <TR><td>&nbsp;</td></TR>
+		  <TR>
+			    <TD>
+			    <div>
+					<ul id="navlist">
+						<li>
+						<A class="SiteLinkBold" HREF="LogueoSistema.jsp">Salir</A>
+						</li>
+				</ul>
+				</div>	
+				</TD>
+		  </TR>
+</TABLE>
 			</td>
 		</tr>
 		<tr>
