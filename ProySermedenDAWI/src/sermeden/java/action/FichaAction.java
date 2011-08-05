@@ -104,7 +104,7 @@ public class FichaAction extends ActionSupport {
 				
 				if(idnuevaficha>0){
 					System.out.println(" idnuevaficha: "+idnuevaficha+" registrado en la BD");
-					mensaje="La ficha con id ["+ficha.getIdFicha()+"] se registró con exito !";
+					mensaje="La ficha del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+ficha.getIdFicha()+")";
 					vista = "exito";
 				}
 				else{
@@ -113,8 +113,8 @@ public class FichaAction extends ActionSupport {
 				}
 			}
 			else{
-				System.out.println("El paciente con DNI ["+dniBuscado+"] no esta registrado en la BD !");
-				mensaje="El paciente con DNI ["+dniBuscado+"] no esta registrado en la BD !";
+				System.out.println("El paciente con DNI "+dniBuscado+" no se encuentra registrado en el Sistema !");
+				mensaje="El paciente con DNI "+dniBuscado+" no se encuentra registrado en el Sistema !";
 				vista = "error";
 			}
 		} catch (Exception e) {
