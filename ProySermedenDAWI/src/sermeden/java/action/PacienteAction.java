@@ -449,7 +449,6 @@ public void validate(){
 	
 	}
 	
-
 	public String actualizarDMPatient(){
 		int resultado=-1;
 		String vista="exito";
@@ -502,7 +501,6 @@ public void validate(){
 			} catch (Exception e) {
 			// TODO Auto-generated catch block
 				mensaje="No se pudo actualizar los DM del usuario: "+resultado;
-				vista="error";
 			e.printStackTrace();
 			}
 			return vista;
