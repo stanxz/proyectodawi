@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<sj:submit value="Registrar Ficha"  >
+				<sj:submit value="Registrar Ficha" onclick="return confirm('Se desactivara la Ficha Actual del Usuario si la tuviera y se creara una nueva.¿Seguro que desea continuar?')" >
 			</sj:submit>
 				</td>
 			</tr>
