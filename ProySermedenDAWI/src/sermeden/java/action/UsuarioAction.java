@@ -22,7 +22,7 @@ public class UsuarioAction extends ActionSupport{
 /**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 private String filtro;
 private String condicion;
 private String idBuscar;
