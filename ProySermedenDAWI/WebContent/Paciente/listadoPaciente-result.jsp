@@ -1,5 +1,6 @@
 <%@ taglib uri="/struts-tags" prefix="s" %>
-<table align="center">
+<link rel="stylesheet" type="text/css" href="./css/tablas.css" />
+<!--  <table align="center">
 	<tr>
 		<td>
 		Dato Ingresado: <s:property value="filtro"/>
@@ -9,16 +10,16 @@
 		</td>
 	</tr>
 </table>
-
-<table align="center">
+ -->
+<table class="lista">
 	<tr>
-		<td><s:text name="D.N.I."></s:text> </td>
-		<td><s:text name="Nombre"></s:text> </td>
-		<td><s:text name="Paterno"></s:text> </td>
-		<td><s:text name="Materno"></s:text> </td>
-		<td><s:text name="Perfil"></s:text> </td>
-		<td><s:text name="Estado"></s:text> </td>
-		<td><s:text name="Datos Medicos"></s:text> </td>
+		<th><s:text name="D.N.I."></s:text> </th>
+		<th><s:text name="Nombre"></s:text> </th>
+		<th><s:text name="Paterno"></s:text> </th>
+		<th><s:text name="Materno"></s:text> </th>
+		<th><s:text name="Perfil"></s:text> </th>
+		<th><s:text name="Estado"></s:text> </th>
+		<th><s:text name="Datos Medicos"></s:text> </th>
 	</tr>
 	
 	<s:iterator value="listadoPacientes">
@@ -36,7 +37,7 @@
 					</s:param>
 				</s:url>
 						    	
-				<s:a href="%{cargaDatos}">Modificar</s:a>
+				<s:a href="%{cargaDatos}"><img src="images/modificar.gif" border="0"></s:a>
 			</td>
 		</tr>
 	</s:iterator>

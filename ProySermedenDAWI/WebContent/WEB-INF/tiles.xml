@@ -29,7 +29,7 @@
 		<put-attribute name="cuerpo" value="/Seguridad/NuevoUsuario.jsp"/>	
 	</definition>
 	
-	<!-- Realizamos la definicion de la pagina de listado -->
+	<!-- Realizamos la definicion de la pagina de listado Usuario-->
 	<definition name="d_listadoUsuario" extends="d_bienvenida">	
 		<put-attribute name="cuerpo" value="/Seguridad/ListadodeUsuarios.jsp"/>	
 	</definition>
@@ -45,8 +45,13 @@
 	</definition>
 	
 	<!-- Realizamos la definicion de la pagina de Busca Paciente -->
-	<definition name="d_buscaPaciente" extends="d_bienvenida">	
+	<definition name="d_modificaPaciente" extends="d_bienvenida">	
 		<put-attribute name="cuerpo" value="/Paciente/ModificarDMPaciente.jsp"/>	
+	</definition>
+	
+	<!-- Realizamos la definicion de la pagina de listado Paciente-->
+	<definition name="d_listadoPaciente" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Paciente/ListadodePacientes.jsp"/>	
 	</definition>
 	
 	

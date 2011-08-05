@@ -157,7 +157,8 @@ public class PacienteAction extends ActionSupport{
 		            message.setText("Estimado "+paciente.getNombre() + " " + 
 		            		paciente.getApepat() + ", Sermeden le da la bienvenida \n" + 
 		            		"Usuario   : " + paciente.getUser() + "\n" +
-		            		"Contraseña: "  + paciente.getContrasena());
+		            		"Contraseña: "  + paciente.getContrasena() + "\n" +
+            		        "Recomendamos ingrese al portal para cambiar su usuario y contraseña");
 		 
 		            // Lo enviamos.
 		            Transport t = session.getTransport("smtp");
@@ -399,7 +400,7 @@ public void validate(){
 	}
 	
 	//Carga los datos de pacientes por DNI
-	public String cargaDatosPatient(){
+	/*public String cargaDatosPatient(){
 		String vista = "exito";
 		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
 		System.out.println("usuario a buscar " + dniBuscado);
@@ -407,6 +408,32 @@ public void validate(){
 		try {
 			
 			paciente = pacienteService.pacienteXDNI(dniBuscado); 
+			System.out.println("usuario a buscar " + paciente.getDni());
+			if(paciente.getSexo().equalsIgnoreCase("H")){
+				paciente.setSexo("Masculino");
+			}else{
+				paciente.setSexo("Femenino");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return vista;
+	
+	}*/
+	
+	//NUEVO NO BORRAR CARGA DATOS DE LOS USUARIOS PARA QUE ELLOS MISMOS LO EDITEN
+	//HICE EL CAMBIO POR QUE EL USABAMOS SOLO CARGAR DATOS DE LO PACIENTES (0)
+	//Carga los datos de usuarios por DNI
+	public String cargaDatosUser(){
+		String vista = "exito";
+		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
+		System.out.println("usuario a buscar " + dniBuscado);
+		// Invocar a los servicios necesarios	
+		try {
+			
+			paciente = pacienteService.usuarioXDNI(dniBuscado); 
 			System.out.println("usuario a buscar " + paciente.getDni());
 			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");

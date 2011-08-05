@@ -40,5 +40,7 @@ public interface UsuarioDAO {
 	public DMPacienteDTO DMxIdPaciente(String idBuscar);
 
 	public int modificarDMPaciente(DMPacienteDTO dmpaciente);
+
+	public UsuarioDTO usuarioXDNI(String dniBuscado);
 	
 }

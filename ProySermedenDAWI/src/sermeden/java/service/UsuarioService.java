@@ -85,6 +85,11 @@ public class UsuarioService implements UsuarioService_I {
 		// TODO Auto-generated method stub
 		return (UsuarioDTO) objUsuarioDAO.pacienteXDNI(dniBuscado);
 	}
+	
+	public UsuarioDTO usuarioXDNI(String dniBuscado) {
+		// TODO Auto-generated method stub
+		return (UsuarioDTO) objUsuarioDAO.usuarioXDNI(dniBuscado);
+	}
 
 	@Override
 	public List<UsuarioDTO> listadoPacienteXApellido(String filtro) {

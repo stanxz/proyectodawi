@@ -37,7 +37,6 @@
 				<table align="center">
 					<tr>
 						<td colspan="2">
-							<jsp:include page="/Cita/Turnos-result.jsp"></jsp:include>
 						</td>
 					</tr>
 	

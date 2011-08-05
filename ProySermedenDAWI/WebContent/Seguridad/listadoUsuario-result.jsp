@@ -47,7 +47,7 @@
 					</s:param>
 					
 				</s:url>
-				<s:a href="%{desactivar}" onclick="return confirm('¿Seguro que quieres cambiar de estado este usuario?')"><img src="images/eliminar.gif" border="0"></s:a>
+				<s:a href="%{desactivar}" onclick="return confirm('¿Seguro que quieres cambiar de estado este usuario?')"><img src="images/estado.png" border="0"></s:a>
 			</td>
 		</tr>
 	</s:iterator>

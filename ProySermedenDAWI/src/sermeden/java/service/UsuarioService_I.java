@@ -40,6 +40,9 @@ public interface UsuarioService_I {
 
 	//busca SOLO a pacientes x DNI
 	UsuarioDTO pacienteXDNI(String dniBuscado);
+	
+	//busca SOLO a pacientes x DNI
+	UsuarioDTO usuarioXDNI(String dniBuscado);
 
 	//lista SOLO pacientes por apellido paterno
 	List<UsuarioDTO> listadoPacienteXApellido(String filtro);

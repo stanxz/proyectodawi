@@ -69,7 +69,6 @@
 				<result name="error">/Seguridad/RecuperarContrasena.jsp</result>
 		</action>
 		
-		
 	</package>
 	
 
