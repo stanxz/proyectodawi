@@ -8,79 +8,87 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registrar Nuevo Paciente</title>
 <sj:head jqueryui="true"/>
+<link href="./css/miEstilo.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<h4 align="center" >Registrar Nuevo Paciente</h4>
-
+<h2 align="center" >Registrar Nuevo Paciente</h2>
 <form action="registrarPacienteAction" method="post" >
+<table align="center"">
+  <tr valign="top">
+    <td>
+	<div class="ui-tabs ui-widget ui-corner-all"
+	style="border: 3px solid #dddddd; background: #f2f5f7 url(./images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
-				<td>Nombre</td>
+				<td align="left">Nombre:</td>
 				<td> <s:textfield name="paciente.nombre"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.nombre"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.nombre"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Apellido Paterno</td>
+				<td align="left">Apellido Paterno:</td>
 				<td> <s:textfield name="paciente.apepat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.apepat"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.apepat"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Apellido Materno</td>
+				<td align="left">Apellido Materno:</td>
 				<td> <s:textfield name="paciente.apemat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.apemat"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.apemat"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>DNI</td>
+				<td align="left">DNI:</td>
 				<td> <s:textfield name="paciente.dni"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.dni"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.dni"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Fecha de Nacimiento</td>
+				<td align="left">Fecha de Nacimiento:</td>
 				<td> <sj:datepicker name="paciente.fechanac" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="-55:-15"
 								value="today" ></sj:datepicker> 
 			   </td>
 			   
 			</tr>
 			<tr>
-				<td>Sexo</td>
+				<td align="left">Sexo:</td>
 				<td> <s:radio name="paciente.sexo" list="#{'H':'Masculino','M':'Femenino'}" value="H"  ></s:radio> </td>
-				<td> <s:fielderror fieldName="paciente.sexo"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.sexo"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Email</td>
+				<td align="left">Email:</td>
 				<td> <s:textfield name="paciente.email"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.email"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.email"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Telf. Fijo</td>
+				<td align="left">Telf. Fijo:</td>
 				<td> <s:textfield name="paciente.fijo"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.fijo"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.fijo"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Celular</td>
+				<td align="left">Celular:</td>
 				<td> <s:textfield name="paciente.celular"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.celular"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.celular"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td>Dirección</td>
+				<td align="left">Dirección:</td>
 				<td> <s:textfield name="paciente.direccion"></s:textfield> </td>
-				<td> <s:fielderror fieldName="paciente.direccion"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.direccion"></s:fielderror></td>
 			</tr>		
 			<tr>
-				<td>Observaciones</td>
+				<td align="left">Observaciones:</td>
 				<td> <s:textarea name="paciente.observaciones"></s:textarea> </td>
-				<td> <s:fielderror fieldName="paciente.observaciones"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.observaciones"></s:fielderror></td>
 			</tr>
 			<tr>			
-				<td colspan="2">
-					<!--<s:submit value="Registrar"></s:submit>-->
+				<td colspan="3" align="center">
 					<sj:submit 
 				    	value="Registrar" 
 				    	button="true"
+				    	effect="highlight"
 				    />
-					
 				</td>
 			</tr>
+		</table>
+		</div>
+		</td>
+		</tr>
 		</table>
 	</form>
 	

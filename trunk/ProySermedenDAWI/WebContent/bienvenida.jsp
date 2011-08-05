@@ -67,7 +67,7 @@
 		  	   <TD>
 		  	   <div>
 					<ul id="navlist">
-						<li><A class=SiteLinkBold href="#">Principal</A></li>
+						<li><A class=SiteLinkBold href="a_principal">Principal</A></li>
 				</ul>
 				</div>
 	           </TD>
