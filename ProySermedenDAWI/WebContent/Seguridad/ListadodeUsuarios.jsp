@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Listado de Usuarios</title>
 <sj:head jqueryui="true"/>
-<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
+<link href="./css/miEstilo.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <s:form action="listarUsuariosxNombre">
@@ -16,7 +16,7 @@
   <tr valign="top">
     <td>
 	<div class="ui-tabs ui-widget ui-corner-all"
-	style="border: 3px solid #dddddd; background: #f2f5f7 url(../images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
+	style="border: 3px solid #dddddd; background: #f2f5f7 url(./images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
 			<td><h2>Busqueda de Usuarios</h2></td>
@@ -46,7 +46,6 @@
 			</tr>
 		</table>
 	</s:form>
-	
 	 <sj:div id="resultado">
     </sj:div>
 </body>
