@@ -16,8 +16,8 @@
 		<table>
 			<tr>
 				<td colspan="2">
-					<s:text name="lblDNIbuscado">DNI Paciente: </s:text>
- 					<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
+                            <s:text name="lblDNIbuscado">DNI Paciente: </s:text>
+ 							<s:textfield name="dniBuscado" label="DNI Paciente: "></s:textfield>
 				</td>
 			</tr>
 			<tr>
@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<sj:submit value="Registrar Ficha" onclick="return confirm('Se desactivara la Ficha Actual del Usuario si la tuviera y se creara una nueva.¿Seguro que desea continuar?')" >
+				<sj:submit value="Registrar Ficha" onclick="return confirm('Se desactivará la Ficha Actual del Usuario si la tuviera y se creará una nueva.¿Seguro que desea continuar?')" >
 			</sj:submit>
 				</td>
 			</tr>

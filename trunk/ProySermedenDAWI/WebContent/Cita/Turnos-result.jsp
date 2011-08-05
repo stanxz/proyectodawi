@@ -16,16 +16,14 @@
 			<td align="center" >Dia</td>
 			<td align="center">Hora Inicio</td>
 			<td align="center">Hora Fin</td>
-			<td align="center">Id Medico</td>
 			<td align="center">Médico Tratante</td>
 		</tr>
 		
 		<s:iterator value="listadoTurnos" >
 		<tr>
 			<td align="center"><s:property value="Dia"/> </td>
-			<td align="center"><s:property value="HoraInicio"/> p.m. </td>
-			<td align="center"><s:property value="HoraFin"/> p.m. </td>
-			<td align="center"><s:property value="idPersona"/> </td>
+			<td align="center"><s:property value="HoraInicio"/> <s:if test="HoraInicio<=12">a.m.</s:if><s:else>p.m.</s:else>  </td>
+			<td align="center"><s:property value="HoraFin"/> <s:if test="HoraFin<=12">a.m.</s:if><s:else>p.m.</s:else> </td>
 			<td align="center"><s:property value="ncompleto"/> </td>
 		</tr>
 		</s:iterator>

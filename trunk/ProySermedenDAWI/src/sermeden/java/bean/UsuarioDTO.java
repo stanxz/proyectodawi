@@ -24,6 +24,8 @@ public class UsuarioDTO implements Serializable{
 	private int estado;
 	private int idPerfil;
 	
+	private String ncompleto;
+	
 	public int getIdPersona() {
 		return idPersona;
 	}
@@ -127,6 +129,12 @@ public class UsuarioDTO implements Serializable{
 	}
 	public void setIdPerfil(int idPerfil) {
 		this.idPerfil = idPerfil;
+	}
+	public String getNcompleto() {
+		return ncompleto;
+	}
+	public void setNcompleto(String ncompleto) {
+		this.ncompleto = ncompleto;
 	}
 
 
