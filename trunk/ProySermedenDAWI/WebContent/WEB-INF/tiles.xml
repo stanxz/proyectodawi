@@ -24,9 +24,14 @@
 		<put-attribute name="cuerpo" value="/Reutilizables/EditarMisDatos.jsp"/>	
 	</definition>
 	
-	<!-- Realizamos la definicion de la pagina de listado -->
+	<!-- Realizamos la definicion de la pagina de Nuevo Usuario -->
 	<definition name="d_NuevoUsuario" extends="d_bienvenida">	
 		<put-attribute name="cuerpo" value="/Seguridad/NuevoUsuario.jsp"/>	
+	</definition>
+	
+	<!-- Realizamos la definicion de la pagina de listado -->
+	<definition name="d_listadoUsuario" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Seguridad/ListadodeUsuarios.jsp"/>	
 	</definition>
 	
 	<!-- Realizamos la definicion de la pagina de modificar
