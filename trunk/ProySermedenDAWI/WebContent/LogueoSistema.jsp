@@ -21,7 +21,7 @@
 <table align="center"">
   <tr valign="top">
     <td>
-	<div class="ui-tabs ui-widget ui-corner-all"
+	<div class="ui-tabs ui-widget ui-corner-all" 
 	style="border: 3px solid #dddddd; background: #f2f5f7 url(images/ui-bg_highlight-hard_100_f2f5f7_1x100.png) 50% top repeat-x; color: #362b36;">
 		<table align="center">
 			<tr>
