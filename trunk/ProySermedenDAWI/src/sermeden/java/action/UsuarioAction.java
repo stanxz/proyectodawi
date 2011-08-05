@@ -163,8 +163,44 @@ public void setCondicion(String condicion) {
 					usuario.setContrasena(usuario.getDni());
 					usuario .setEstado(1);
 					idnuevousuario=usuarioService.registrarUsuarioxPersona(usuario);
+					
 					titulo = "Registro de Usuario";
 					mensaje="El usuario con DNI " + usuario.getDni() + " se registró con exito";
+					
+					//logica para envio de correos debe ir aqui
+					 // Propiedades de la conexión
+		            Properties props = new Properties();
+		            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+		            props.setProperty("mail.smtp.starttls.enable", "true");
+		            props.setProperty("mail.smtp.port", "587");
+		            props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+		            props.setProperty("mail.smtp.auth", "true");
+
+		            // Preparamos la sesion
+		            Session session = Session.getDefaultInstance(props);
+		       
+		            // Construimos el mensaje
+		            MimeMessage message = new MimeMessage(session);
+		            message.setFrom(new InternetAddress("proylp2@gmail.com"));
+		            message.addRecipient(
+		                Message.RecipientType.TO,
+		                new InternetAddress(usuario.getEmail()));
+		            message.setSubject("Bienvenida");
+		            message.setText("Estimado "+usuario.getNombre() + " " + 
+		            		usuario.getApepat() + ", Sermeden le da la bienvenida \n" + 
+		            		"Usuario   : " + usuario.getUser() + "\n" +
+		            		"Contraseña: "  + usuario.getContrasena() + "\n" +
+		            		"Recomendamos ingrese al portal para cambiar su usuario y contraseña");
+		 
+		            // Lo enviamos.
+		            Transport t = session.getTransport("smtp");
+		            t.connect("proylp2@gmail.com", "cibertec");
+		            t.sendMessage(message, message.getAllRecipients());
+		            System.out.println("Mensaje Enviado Correctamente");
+
+		         // Cierre.
+		            t.close();
+
 				}
 				else{
 					mensaje="Error al registrar al usuario con DNI "+usuario.getDni();
@@ -374,6 +410,5 @@ public void setCondicion(String condicion) {
 		return vista;
 
 	}
-	
 	
 }

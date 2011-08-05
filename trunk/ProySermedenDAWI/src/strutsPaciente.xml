@@ -22,7 +22,8 @@
 			<result name="error">/Paciente/buscarPaciente-result.jsp</result>
 		</action>
 		
-		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="cargaDatosPatient">
+		<!--  Edita Datos Personales Usuarios-->
+		<action name="buscarDatosPaciente" class="sermeden.java.action.PacienteAction" method="cargaDatosUser">
 			<result name="exito" type="tiles">d_MisDatos</result>
 		</action>
 		
@@ -34,19 +35,19 @@
 		</action>
 
 		<action name="a_ActualizarDMPaciente">
-			<result>/Paciente/ListadodePacientes.jsp</result>
+			<result type="tiles">d_listadoPaciente</result>
 		</action>
 		
 		<action name="buscarPacientexId" 
 				class="sermeden.java.action.PacienteAction"
 				method="cargaDatosPatientxId">
-				<result name="exito">/Paciente/ModificarDMPaciente.jsp</result>
+				<result name="exito" type="tiles">d_modificaPaciente</result>
 		</action>
 		
 		 <action name="ActualizarDMPacienteAction" 
 				class="sermeden.java.action.PacienteAction" method="actualizarDMPatient">
-				<result name="exito">bienvenida.jsp</result>
-				<result name="error">/Paciente/ModificarDMPaciente.jsp</result>
+				<result name="exito" type="tiles">d_bienvenida</result>
+				<result name="input" type="tiles">d_modificaPaciente</result>
 		</action>
 		
 	</package>

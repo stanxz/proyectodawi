@@ -105,7 +105,7 @@
 				<td> <s:textarea name="usuario.observaciones"></s:textarea> </td>
 				<td align="left"> <s:fielderror fieldName="usuario.observaciones"></s:fielderror></td>
 			</tr>
-			<tr>
+			<tr align="center">
 				<td colspan="3">
 					<sj:submit 
 					value="Actualizar" 

@@ -173,6 +173,15 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		sesion.close();
 		return cliente;
 	}
+	
+	@Override
+	public UsuarioDTO usuarioXDNI(String dniBuscado) {
+		System.out.println("Buscando paciente x DNI con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		UsuarioDTO cliente=(UsuarioDTO) sesion.selectOne("buscarUsuarioxDNI", dniBuscado);
+		sesion.close();
+		return cliente;
+	}
 
 	@Override
 	public List<UsuarioDTO> listadoPacienteXApellido(String filtro) {
@@ -243,5 +252,7 @@ public class IbatisUsuarioDAO implements UsuarioDAO {
 		System.out.println("Modificar DM de paciente en mybatis");
 		return resultado;
 	}
+
+	
 
 }
