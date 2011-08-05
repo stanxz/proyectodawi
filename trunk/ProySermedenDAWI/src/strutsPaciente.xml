@@ -31,7 +31,7 @@
 	   <action name="ActualizarPacienteAction" 
 				class="sermeden.java.action.PacienteAction" method="actualizarPatient">
 				<result name="exito" type="tiles">d_bienvenida</result>
-				<result name="input" type="tiles"></result>
+				<result name="input" type="tiles">d_modificaPaciente</result>
 		</action>
 
 		<action name="a_ActualizarDMPaciente">

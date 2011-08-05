@@ -54,6 +54,11 @@
 		<put-attribute name="cuerpo" value="/Paciente/ListadodePacientes.jsp"/>	
 	</definition>
 	
+	<!-- Realizamos la definicion de la pagina de Registrar Ficha-->
+	<definition name="d_registrarFicha" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Tratamiento/RegistrarFicha.jsp"/>	
+	</definition>
+	
 	
 
 
