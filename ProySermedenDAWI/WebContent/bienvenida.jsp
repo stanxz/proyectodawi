@@ -5,6 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bienvido a Sermeden</title>
 <sj:head jqueryui="true"/>
@@ -30,7 +31,29 @@
                     </s:if> 
                     
                     <s:property value="#session.b_usuario.nombre"/>&nbsp;<s:property value="#session.b_usuario.apepat"/>
-                
+                	<br>
+                	<s:if test='#session.b_usuario.idPerfil == 0'>
+                            <h6> <font color="#87A1B8">Paciente</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 1'>
+                            <h6> <font color="#87A1B8">Administrador del Sistema</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 2'>
+                            <h6> <font color="#87A1B8">Auxiliar</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 3'>
+                            <h6> <font color="#87A1B8">Recepcionista</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 4'>
+                            <h6> <font color="#87A1B8">Tecnico de Imagenes</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 5'>
+                            <h6> <font color="#87A1B8">Medico Tratante</font> </h6> <br>
+                    </s:if>
+                    <s:if test='#session.b_usuario.idPerfil == 6'>
+                            <h6> <font color="#87A1B8">Medico Especialista</font> </h6> <br>
+                    </s:if>
+                    
 			</TD>
 		</tr>
 </TABLE>
