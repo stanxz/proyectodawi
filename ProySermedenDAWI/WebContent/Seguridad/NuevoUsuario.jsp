@@ -22,22 +22,22 @@
 			<tr>
 				<td align="left">Nombre:</td>
 				<td> <s:textfield name="usuario.nombre"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.nombre"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.nombre"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Apellido Paterno:</td>
 				<td> <s:textfield name="usuario.apepat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.apepat"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.apepat"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Apellido Materno:</td>
 				<td> <s:textfield name="usuario.apemat"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.apemat"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.apemat"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">DNI:</td>
 				<td> <s:textfield name="usuario.dni"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.dni"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.dni"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Fecha de Nacimiento:</td>
@@ -49,12 +49,12 @@
 			<tr>
 				<td align="left">Sexo:</td>
 				<td> <s:radio name="usuario.sexo" list="#{'H':'Masculino','M':'Femenino'}" value="M"  ></s:radio> </td>
-				<td> <s:fielderror fieldName="usuario.sexo"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.sexo"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Email:</td>
 				<td> <s:textfield name="usuario.email"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.email"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.email"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Telf. Fijo:</td>
@@ -64,12 +64,12 @@
 			<tr>
 				<td align="left">Celular:</td>
 				<td> <s:textfield name="usuario.celular"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.celular"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.celular"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Dirección:</td>
 				<td> <s:textfield name="usuario.direccion"></s:textfield> </td>
-				<td> <s:fielderror fieldName="usuario.direccion"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.direccion"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Tipo Usuario:</td>
@@ -78,7 +78,7 @@
 								headerKey="0">				
 							</s:select>
 			    </td>
-			    <td> <s:fielderror fieldName="usuario.idPerfil"></s:fielderror></td>
+			    <td align="left"> <s:fielderror fieldName="usuario.idPerfil"></s:fielderror></td>
 			</tr>
 				<tr>
 				<td align="left">Especialidad: <br>(solo en el caso de Especialistas)</td>
@@ -86,19 +86,20 @@
 								headerValue="----- Seleccione -----"
 								headerKey="0">				
 							</s:select>
-			    </td>
-			    <td> <s:fielderror fieldName="usuario.idEspecialidad"></s:fielderror></td>
+			    </td >
+			    <td align="left"> <s:fielderror fieldName="usuario.idEspecialidad"></s:fielderror></td>
 				</tr>			
 			<tr>
 				<td align="left">Observaciones:</td>
 				<td> <s:textarea name="usuario.observaciones"></s:textarea> </td>
-				<td> <s:fielderror fieldName="usuario.observaciones"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="usuario.observaciones"></s:fielderror></td>
 			</tr>
 			<tr>			
-				<td colspan="2">
+				<td colspan="3">
 					<sj:submit 
 				    	value="Registrar" 
 				    	button="true"
+				    	effect="highlight"
 				    />
 				</td>
 			</tr>

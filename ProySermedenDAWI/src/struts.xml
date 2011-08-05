@@ -25,6 +25,10 @@
 			<result>/Seguridad/RecuperarContrasena.jsp</result>
 		</action>
 		
+		<action name="a_principal">
+			<result type="tiles">d_bienvenida</result>
+		</action>
+		
 		<action name="NuevoUsuarioAction">
 			<result type="tiles">d_NuevoUsuario</result>
 		</action>
@@ -36,27 +40,26 @@
 		<action name="buscarUserxId" 
 				class="sermeden.java.action.UsuarioAction"
 				method="cargaDatosUser">
-				<result name="exito">/Seguridad/ModificarUsuario.jsp</result>
+				<result name="exito" type="tiles">d_modificarUsuario</result>
 		</action>
 		
 		<action name="RegistrarUsuarioAction" 
 				class="sermeden.java.action.UsuarioAction" method="registrarUser">
 				<!--  <result name="exito">/Seguridad/UsuarioRegistrado-result.jsp</result>-->
 				 <param name="mensaje"></param>
-				 <result name="exito">bienvenida.jsp
-				 </result>
-				<result name="input">/Seguridad/NuevoUsuario.jsp</result>
+				<result name="exito" type="tiles">d_bienvenida</result>
+				<result name="input" type="tiles">d_NuevoUsuario</result>
 		</action>
 		
 		<action name="ActualizarUsuarioAction" 
 				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
-				<result name="exito">bienvenida.jsp</result>
-				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
+				<result name="exito" type="tiles">d_bienvenida</result>
+				<result name="input" type="tiles">d_modificarUsuario</result>
 		</action>
 
 		<action name="cambiarEstadoUser" 
 				class="sermeden.java.action.UsuarioAction" method="actualizarUser">
-				<result name="exito">bienvenida.jsp</result>
+				<result name="exito" type="tiles">d_bienvenida</result>
 				<result name="input">/Seguridad/ModificarUsuario.jsp</result>
 		</action>
 		

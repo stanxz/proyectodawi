@@ -55,19 +55,19 @@
 				<td align="left">Email:</td>
 				<td> <s:textfield name="paciente.email"></s:textfield>
 				 </td>
-				 <td> <s:fielderror fieldName="paciente.email"></s:fielderror></td>
+				 <td align="left"> <s:fielderror fieldName="paciente.email"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Telf. Fijo:</td>
 				<td> <s:textfield name="paciente.fijo"></s:textfield>
-				 </td>
-				<td> <s:fielderror fieldName="paciente.fijo"></s:fielderror></td>
+				 </td >
+				<td align="left"> <s:fielderror fieldName="paciente.fijo"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Celular:</td>
 				<td> <s:textfield name="paciente.celular"></s:textfield>
 				 </td>
-				<td> <s:fielderror fieldName="paciente.celular"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.celular"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Dirección:</td>
@@ -79,16 +79,16 @@
 				<td align="left">Usuario Sistema:</td>
 				<td> <s:textfield name="paciente.user"></s:textfield>
 				</td>
-				<td> <s:fielderror fieldName="paciente.user"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.user"></s:fielderror></td>
 			</tr>
 			<tr>
 				<td align="left">Contraseña:</td>
 				<td> <s:textfield name="paciente.contrasena"></s:textfield> 
 				</td>
-				<td> <s:fielderror fieldName="paciente.contrasena"></s:fielderror></td>
+				<td align="left"> <s:fielderror fieldName="paciente.contrasena"></s:fielderror></td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td colspan="3">
 					<sj:submit value="Actualizar"
 					button="true"/>
 				</td>
