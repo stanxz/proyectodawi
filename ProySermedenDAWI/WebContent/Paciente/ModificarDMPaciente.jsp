@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Datos Medicos de Paciente</title>
 <sj:head jqueryui="true"/>
-<script type="text/javascript"></script>   
+<script type="text/javascript" src="jquery-1.6.2.js"></script>   
 <script>
 $(document).ready(function(){
 	$("#dmpaciente.Otros").click(function(event){
