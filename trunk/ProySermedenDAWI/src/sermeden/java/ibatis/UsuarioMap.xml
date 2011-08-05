@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="usuario">
 
 	<select id="buscarUsuario" parameterType="sermeden.java.bean.UsuarioDTO" resultType="sermeden.java.bean.UsuarioDTO">
-		select p.idPersona,p.dni,p.nombre,p.apepat,p.apemat,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad,u.user,u.contrasena 
+		select p.idPersona,p.dni,p.nombre,p.apepat,p.apemat,p.fechanac,p.sexo,p.email,p.fijo,p.celular,p.direccion,p.observaciones,p.idEspecialidad,u.idPerfil,u.user,u.contrasena 
 		from persona p inner join usuario u
 		on p.idPersona=u.idPersona
 		where u.user = #{user} and u.contrasena=#{contrasena}

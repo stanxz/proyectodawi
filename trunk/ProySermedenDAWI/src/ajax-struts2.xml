@@ -31,7 +31,7 @@
 
 		<!-- Listado de Medicos -->
 		<action name="listarMedicosAction"
-   				class="sermeden.java.action.CitaAction" method="listarMedicos">
+   				class="sermeden.java.action.CitaAction">
    			<result type="json"/>
    		</action>
    		
