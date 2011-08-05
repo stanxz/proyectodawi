@@ -15,14 +15,16 @@
 
 <form id="formNuevaCita" action="RegistrarNuevaCitaAction">
 	<table align="center">
-	<tr><td> <s:property value="#session.b_usuario.idPerfil"/> </td> </tr>
 	<tr>
-			 <td>
+			<s:if test='#session.b_usuario.idPerfil == 3'>
+                <td>
 			 DNI de Paciente: 
 			 </td>
 			 <td>
 			 	<s:textfield name="dnibuscado" required="true"></s:textfield>
-			  </td>	
+			  </td>        
+            </s:if>
+			 	
 	</tr>
 	
 	<tr>
@@ -41,7 +43,7 @@
 	
 					<tr>
 						<td>
-							Elija un ID Medico Tratante:
+							Elija un  Medico Tratante:
 						</td>
 						<td>
 							<div>
@@ -53,7 +55,7 @@
 									onChangeTopics="reloadFechas"
 									list="listamedicos"
 									listKey="idPersona"
-									listValue="idPersona"
+									listValue="ncompleto"
 									headerKey="-1"
 									headerValue="--Seleccione un Id de Médico Tratante--" required="true" />
 							</div>
