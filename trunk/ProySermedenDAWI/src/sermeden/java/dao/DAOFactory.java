@@ -12,6 +12,7 @@ public abstract class DAOFactory {
 	 public abstract MenuDAO getMenuDAO(); 
 	 public abstract FichaDAO getFichaDAO();
 	 public abstract CitaDAO getCitaDAO();
+	 public abstract OdontogramaDAO getOdontogramaDAO();
 	
 	 public static DAOFactory getDAOFactory(int whichFactory){
 	       switch(whichFactory){

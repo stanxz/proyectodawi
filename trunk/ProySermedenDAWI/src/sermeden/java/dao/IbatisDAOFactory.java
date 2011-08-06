@@ -24,4 +24,10 @@ public class IbatisDAOFactory extends DAOFactory {
 		// TODO Auto-generated method stub
 		return new IbatisCitaDAO();
 	}
+
+	@Override
+	public OdontogramaDAO getOdontogramaDAO() {
+		// TODO Auto-generated method stub
+		return new IbatisOdontogramaDAO();
+	}
 }

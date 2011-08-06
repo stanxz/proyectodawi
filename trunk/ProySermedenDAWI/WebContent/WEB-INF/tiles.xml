@@ -54,9 +54,19 @@
 		<put-attribute name="cuerpo" value="/Paciente/ListadodePacientes.jsp"/>	
 	</definition>
 	
+	<!-- Realizamos la definicion de la pagina de listado Paciente-->
+	<definition name="d_listadoPacienteOdontograma" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Odontograma/ListadodePacientes.jsp"/>	
+	</definition>
+	
 	<!-- Realizamos la definicion de la pagina de Registrar Ficha-->
 	<definition name="d_registrarFicha" extends="d_bienvenida">	
 		<put-attribute name="cuerpo" value="/Tratamiento/RegistrarFicha.jsp"/>	
+	</definition>
+	
+	<!-- Realizamos la definicion de la pagina de Odontograma-->
+	<definition name="d_odontograma" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Odontograma/Odontograma.jsp"/>	
 	</definition>
 	
 	

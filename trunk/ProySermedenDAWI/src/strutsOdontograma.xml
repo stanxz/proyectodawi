@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="strutsOdontograma" namespace="/" extends="struts-default,tiles-default,json-default">
+
+		<action name="a_odontograma">
+			<result type="tiles">d_listadoPacienteOdontograma</result>
+		</action>
+		
+		
+		<action name="buscarPacientexIdOdontograma" 
+				class="sermeden.java.action.PacienteAction"
+				method="cargaDatosPatientxId">
+				<result name="exito" type="tiles">d_odontograma</result>
+		</action>
+		
+		<action name="GenerarOdontograma" 
+				class="sermeden.java.action.OdontogramaAction" method="generarOdontograma">
+				<param name="mensaje"></param>
+				<result name="exito" type="tiles">d_bienvenida</result>
+				<result name="input" type="tiles">d_odontograma</result>
+		</action>
+		
+
+	</package>
+	
+
+</struts>
+

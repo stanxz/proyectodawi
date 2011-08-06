@@ -79,7 +79,7 @@
 		  	   <div>
 					<ul id="navlist">
 						<li>
-						<s:if test="descripcion == 'Editar Mis Datos'">
+						<s:if test="idFuncionalidad == 9">
 						<s:url id="cargarDatos" action="buscarDatosPaciente">
 							<s:param name="dniBuscado">
 						 		<s:property value="#session.b_usuario.dni"/>

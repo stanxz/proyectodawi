@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Datos Medicos de Paciente</title>
 <sj:head jqueryui="true"/>
-<link href="css/miEstilo.css" rel="stylesheet" type="text/css" /> 
+<link href="./css/miEstilo.css" rel="stylesheet" type="text/css" /> 
 <script>
 $(document).ready(function(){
 	$("#dmpaciente.Otros").click(function(event){

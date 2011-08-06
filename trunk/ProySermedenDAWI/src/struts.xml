@@ -12,7 +12,8 @@
 	<include file="strutsPaciente.xml"></include>
 	<include file="strutsFicha.xml"></include>
 	<include file="strutsCita.xml"></include>
-
+	<include file="strutsOdontograma.xml"></include>
+ 
 	<package name="default" namespace="/" extends="struts-default,tiles-default">
 
 		<action name="logueo" 
