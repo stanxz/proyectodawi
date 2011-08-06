@@ -36,7 +36,9 @@
 			<td colspan="2">
 				<table align="center">
 					<tr>
-						<td colspan="2">
+						
+						<td align="center" colspan="2">holaaa
+						<jsp:include page="../Cita/turnos-result.jsp"></jsp:include>
 						</td>
 					</tr>
 	
