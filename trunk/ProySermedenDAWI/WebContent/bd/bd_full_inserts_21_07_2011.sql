@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 5.5.9, for Win32 (x86)
+﻿-- MySQL dump 10.13  Distrib 5.5.9, for Win32 (x86)
 --
 -- Host: localhost    Database: bdsermeden
 -- ------------------------------------------------------
@@ -46,7 +46,7 @@ CREATE TABLE `acceso` (
 
 LOCK TABLES `acceso` WRITE;
 /*!40000 ALTER TABLE `acceso` DISABLE KEYS */;
-INSERT INTO `acceso` (`idFuncionalidad`, `idPerfil`) VALUES (4,0),(5,0),(9,0),(1,1),(2,1),(6,2),(9,2),(11,2),(3,3),(4,3),(5,3),(9,3),(9,4),(7,5),(8,5),(9,5),(9,6),(11,5),(12,4),(13,6);
+INSERT INTO `acceso` (`idFuncionalidad`, `idPerfil`) VALUES (4,0),(5,0),(9,0),(1,1),(2,1),(6,2),(9,2),(11,2),(3,3),(4,3),(5,3),(9,3),(9,4),(7,5),(8,5),(9,5),(9,6),(11,5),(12,4),(13,6),(14,2);
 /*!40000 ALTER TABLE `acceso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,7 +211,7 @@ CREATE TABLE `funcionalidad` (
 
 LOCK TABLES `funcionalidad` WRITE;
 /*!40000 ALTER TABLE `funcionalidad` DISABLE KEYS */;
-INSERT INTO `funcionalidad` (`idFuncionalidad`, `descripcion`, `enlace`) VALUES (1,'Nuevo Usuario','NuevoUsuarioAction'),(2,'Modificar Usuario','ListadoAction'),(3,'Registrar Paciente','a_registrarPaciente'),(4,'Registrar Cita','a_registrarCita'),(5,'Buscar Cita','a_listarCitas'),(6,'Actualizar Datos Medicos Paciente','a_ActualizarDMPaciente'),(7,'Actualizar Cita','a_ActualizarCita'),(8,'Registrar Interconsulta','a_registrarInterconsulta'),(9,'Editar Mis Datos','a_MisDatos'),(10,'Buscar Historial Clinico','a_ListaHC'),(11,'Registrar Ficha','a_registrarFicha'),(12,'Cargar Imagenes','a_cargarImagenes'),(13,'Responder Interconsulta','a_registrarRespuesta');
+INSERT INTO `funcionalidad` (`idFuncionalidad`, `descripcion`, `enlace`) VALUES (1,'Nuevo Usuario','NuevoUsuarioAction'),(2,'Modificar Usuario','ListadoAction'),(3,'Registrar Paciente','a_registrarPaciente'),(4,'Registrar Cita','a_registrarCita'),(5,'Buscar Cita','a_listarCitas'),(6,'Actualizar Datos Medicos Paciente','a_ActualizarDMPaciente'),(7,'Actualizar Cita','a_ActualizarCita'),(8,'Registrar Interconsulta','a_registrarInterconsulta'),(9,'Editar Mis Datos','a_MisDatos'),(10,'Buscar Historial Clinico','a_ListaHC'),(11,'Registrar Ficha','a_registrarFicha'),(12,'Cargar Imagenes','a_cargarImagenes'),(14,'Generar Odontograma','a_odontograma');
 /*!40000 ALTER TABLE `funcionalidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
