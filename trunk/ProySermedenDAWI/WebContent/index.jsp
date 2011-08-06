@@ -38,8 +38,8 @@
         <div class="mainMenu">
         	<ul>
         <li id="active"><a href="#">Home</a></li>
-                <li><a href="#">xxxxxxx</a></li>
-                <li><a href="#">xxxxxxx</a></li>
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#">Reconocimientos</a></li>
                 <li><a href="a_logueo">Intranet</a></li>
                 <li><a href="#">Contactenos</a></li>
             </ul>
