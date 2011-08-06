@@ -36,8 +36,7 @@
 			<td colspan="2">
 				<table align="center">
 					<tr>
-						
-						<td align="center" colspan="2">holaaa
+						<td align="center" colspan="2">
 						<jsp:include page="../Cita/turnos-result.jsp"></jsp:include>
 						</td>
 					</tr>
@@ -53,7 +52,7 @@
 									href="%{opcionesUrl}"
 									id="medicoCita"
 									name="medicoCita"
-									onChangeTopics="reloadFechas"
+									
 									list="listamedicos"
 									listKey="idPersona"
 									listValue="ncompleto"
@@ -68,18 +67,22 @@
 						</td>
 						<td>
 						    <div>
+						    	<!-- <s:url id="opcionesUrl2" action="listarFechasAction"/> -->
+								<sj:datepicker id="fechaCita" name="fechaCita" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="+00:+01"
+							    disabled="false" onChange="reloadHoras"></sj:datepicker> 
+								<!--  onChangeTopics="reloadFechas" onChangeTopics="reloadHoras"  onCompleteTopics="reloadHoras"
 								<sj:select 
-									href="%{opcionesUrl}"
+									href="%{opcionesUrl2}"
 									id="fechaCita"
 									formIds="formNuevaCita"
 									reloadTopics="reloadFechas"
 									onChangeTopics="reloadHoras"
 									name="fechaCita"
-									list="listafechasxmedico"
+									list="listafechaxmedicos"
 									listKey="idPersona"
 									listValue="hora"
 									headerKey="-1"
-									headerValue="- Seleccione una fechadisponible -"/>
+									headerValue="- Seleccione una fechadisponible -"/> -->
 							
 							</div>
 						</td>
@@ -89,13 +92,14 @@
 							Elija Hora:
 						</td>
 						<td>
-							   <div>
+							     <div>
+							   <!--<s:url id="opcionesUrl2" action="listarHorasAction"/>-->
 								<sj:select 
 									href="%{opcionesUrl}"
-									id="fechaCita"
+									id="horaCita"
 									formIds="formNuevaCita"
-									reloadTopics="reloadHoras"
-									name="fechaCita"
+									reloadTopics="reloadHoras" 
+									name="horaCita"
 									list="listahorasxfechasxmedico"
 									headerKey="-1"
 									headerValue="- Seleccione una hora -"/>

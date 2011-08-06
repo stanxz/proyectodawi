@@ -22,6 +22,12 @@
    			<result type="json"/>
    		</action>
    		
+   		<!-- Listar horas por Medico segun dia elegido -->
+   		<action name="listarHorasAction"
+   				class="sermeden.java.action.CitaAction">
+   			<result type="json"/>
+   		</action>
+   		
 	</package>
 	
 	
