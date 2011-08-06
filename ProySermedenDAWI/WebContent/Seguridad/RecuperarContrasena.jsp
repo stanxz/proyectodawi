@@ -9,10 +9,38 @@
 <title>Recuperar contraseña</title>
 <sj:head jqueryui="true"/>
 <link href="./css/miEstilo.css" rel="stylesheet" type="text/css" />
+<link href="./css/stylesWeb.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<h2>Recuperar Contraseña</h2>
-	<form action="RecuperaPassAction" method="post">
+<div id="container">
+	<!-- begin #header -->
+    <table width="100%;">
+    	<tr>
+        	<td>
+            <div class="logo">
+            	<a href="#"><img src="./images/logo.png" alt="" width="179" height="77" /></a>Sermeden
+            </div>
+             </td>
+        </tr>
+        <tr>
+        	<td>
+            	<div id="header"></div>
+        <div class="mainMenu">
+        	<ul>
+        <li id="active"><a href="../index.jsp">Home</a></li>
+                <li><a href="#">xxxxxxx</a></li>
+                <li><a href="#">xxxxxxx</a></li>
+                <li><a href="../LogueoSistema.jsp">Intranet</a></li>
+                <li><a href="#">Contactenos</a></li>
+            </ul>
+        </div>          
+            </td>
+        </tr>
+         <tr>
+        	<td>
+          <h2>Recuperar Contraseña</h2>
+          <br/><br/><br/><br/><br/><br/>
+<form action="RecuperaPassAction" method="post">
 <table align="center">
   <tr valign="top">
     <td>
@@ -53,6 +81,25 @@
 	</td>
 	</tr>
 	</table>
-	</form>
+</form>
+        	<br/><br/><br/><br/><br/><br/>
+            </td>
+        </tr>
+        <tr>
+        	<td>
+        	<div id="footer">
+    	  <p>
+        	Copyright &copy; 2011. Designed by <a href="http://www.facebookpagetemplates.com" title="Facebook Templates">XXXXXXXX</a><br />
+            <a title="This page validates as XHTML 1.0 Strict" href="#" class="footerLink"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | 
+            <a title="This page validates as CSS" href="#" class="footerLink"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+          </p>
+           </div>
+        	</td>
+        </tr>
+    </table>
+    </div>
+    <div class="allContent">
+        <!-- begin #sidebar1 -->
+</div>
 </body>
 </html>

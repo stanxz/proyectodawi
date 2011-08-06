@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Sistema de Atencion Medica Odontologica SERMEDEN</title>
-</head>
-<body>
+<link href="css/stylesWeb.css" rel="stylesheet" type="text/css" />
 
-</body>
-</html>
+<table width="100%;">
+    	<tr>
+        	<td>
+            <div class="logo">
+            	<a href="#"><img src="./images/logo.png" alt="" width="179" height="77" /></a>Sermeden
+            </div>
+             </td>
+        </tr>
+</table>

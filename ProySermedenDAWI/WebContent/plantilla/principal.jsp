@@ -12,7 +12,10 @@
 <body>
 <table>
 	<tr>
-		<td colspan="2">
+	    <td>
+				&nbsp;
+		</td>
+		<td>
 			<tiles:insertAttribute name="cabecera"></tiles:insertAttribute>	
 		</td>
 	</tr>
@@ -27,7 +30,10 @@
 	</tr>
 	
 	<tr>
-		<td colspan="2">
+	    <td>
+				&nbsp;
+		</td>
+		<td >
 			<tiles:insertAttribute name="pie"></tiles:insertAttribute>	
 		</td>
 	</tr>
