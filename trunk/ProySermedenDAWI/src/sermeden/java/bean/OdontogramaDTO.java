@@ -37,7 +37,7 @@ public class OdontogramaDTO {
     private boolean d30;
     private boolean d31;
     private boolean d32;
-    private transient Date fechanac;
+    private transient Date fechareg;
     
 	public String getDni() {
 		return dni;
@@ -237,11 +237,11 @@ public class OdontogramaDTO {
 	public void setD32(boolean d32) {
 		this.d32 = d32;
 	}
-	public Date getFechanac() {
-		return fechanac;
+	public Date getFechareg() {
+		return fechareg;
 	}
-	public void setFechanac(Date fechanac) {
-		this.fechanac = fechanac;
+	public void setFechareg(Date fechareg) {
+		this.fechareg = fechareg;
 	}
 	
 }
