@@ -7,7 +7,7 @@
 	<package name="strutsFicha" namespace="/" extends="struts-default,tiles-default,json-default">
 		
 		 <action name="registrarFichaAction" class="sermeden.java.action.FichaAction" method="registrarFicha">
-			<result name="exito">d_bienvenida</result>
+			<result name="exito" type="tiles">d_bienvenida</result>
 			<result name="error" type="tiles">d_registrarFicha</result>
 		</action>
 		
