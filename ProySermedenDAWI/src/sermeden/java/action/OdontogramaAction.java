@@ -1,16 +1,17 @@
 package sermeden.java.action;
 
-import java.util.List;
-import java.util.Properties;
 
+import com.opensymphony.xwork2.ActionSupport;
+
+import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.OdontogramaDTO;
 import sermeden.java.service.OdontogramaService_I;
 import sermeden.java.service.PaqueteBusinessDelegate;
-import sermeden.java.service.UsuarioService_I;
 
-public class OdontogramaAction {
+public class OdontogramaAction extends ActionSupport{
 	
 	private OdontogramaDTO odontograma;
+	private DMPacienteDTO dmpaciente;
 	private String mensaje;
 	private String titulo;
 	
@@ -32,6 +33,13 @@ public class OdontogramaAction {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	public DMPacienteDTO getDmpaciente() {
+		return dmpaciente;
+	}
+	public void setDmpaciente(DMPacienteDTO dmpaciente) {
+		this.dmpaciente = dmpaciente;
+	}
+
 
 	OdontogramaService_I odontogramaService = 
 	PaqueteBusinessDelegate.getOdontogramaService();
@@ -43,14 +51,19 @@ public class OdontogramaAction {
 		
 		
 		try {
+			System.out.println("-->" + dmpaciente.getDni());
 				
+				odontograma.setDni(dmpaciente.getDni());
+				odontograma.setFechareg(new java.sql.Date(new java.util.Date().getTime()));
+			
 			    nuevoOdontograma = odontogramaService.generarOdontograma(odontograma);
 				
 				
 				if(nuevoOdontograma>0){									
 					titulo = "Generar de Odontograma";
-					mensaje="Se ha generado correctamente el odontograma para el usuario con DNI " + 
-					odontograma.getDni();
+					mensaje = "Se ha generado correctamente el odontograma " +
+					"para el usuario con Dni " + odontograma.getDni();
+					System.out.println("mensaje-->" + mensaje);
 
 				}
 		
@@ -58,7 +71,6 @@ public class OdontogramaAction {
 			
 			e.printStackTrace();
 		}
-		
 		
 		return vista;
 	

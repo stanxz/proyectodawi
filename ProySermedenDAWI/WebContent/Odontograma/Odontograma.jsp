@@ -9,13 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" type="text/css" href="./css/tablas.css" />
 <title>Insert title here</title>
+<sj:head jqueryui="true"/>
+<link href="css/miEstilo.css" rel="stylesheet" type="text/css" />
+<link href="css/stylesWeb.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <h2>Odontograma</h2>
-<s:form action="insertaOdontograma">
+<s:form action="insertaOdontograma" method="post">
 <table width="10%">
 	        <tr >
 				<td align="center" colspan="16">DNI: <s:textfield name="dmpaciente.dni" readonly="true" style="background-color: #D8D8D8;"></s:textfield></td>
+		   		<td><input type="text" name="dni" value="dmpaciente.dni"/></td>
 		    </tr>
 	<tr>
 		<td><img alt="" src="./images/diente.png"></td>
@@ -36,22 +40,22 @@
 		<td><img alt="" src="./images/diente.png"></td>
 	</tr>
 	<tr>
-		<td align="left"><s:checkbox name="d1"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d2"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d3"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d4"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d5"></s:checkbox></td>
-		<td align="left"><s:checkbox name="c6"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d7"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d8"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d9"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d10"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d11"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d12"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d13"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d14"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d15"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d16"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d1"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d2"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d3"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d4"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d5"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d6"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d7"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d8"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d9"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d10"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d11"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d12"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d13"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d14"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d15"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d16"></s:checkbox></td>
 	</tr>
 	<tr>
 		<td><img alt="" src="./images/diente.png"></td>
@@ -72,25 +76,29 @@
 		<td><img alt="" src="./images/diente.png"></td>
 	</tr>
 	<tr>
-		<td align="left"><s:checkbox name="d17"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d18"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d19"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d20"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d21"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d22"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d23"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d24"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d25"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d26"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d27"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d28"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d29"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d30"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d31"></s:checkbox></td>
-		<td align="left"><s:checkbox name="d32"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d17"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d18"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d19"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d20"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d21"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d22"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d23"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d24"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d25"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d26"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d27"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d28"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d29"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d30"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d31"></s:checkbox></td>
+		<td align="left"><s:checkbox name="odontograma.d32"></s:checkbox></td>
 	</tr>
-	<tr><sj:submit value="Registrar" 
-				   button="true"/></tr>
+	<tr>
+	<td colspan="16" align="center">
+	<sj:submit value="Registrar" 
+				   button="true"/>
+	</td>			   
+	</tr>
 </table>
 </s:form>
 </body>

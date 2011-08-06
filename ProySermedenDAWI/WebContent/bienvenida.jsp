@@ -115,6 +115,7 @@
 		<tr>
 			<!-- Rodrigo, esta parte yo la agregue para que me muestre un mensaje al registrar como dijo el profe
 			     es un dialog con jquery -->
+			<td><s:property value="mensaje"/></td>
 			<td>
 				<s:if test='mensaje != null'>
 					<sj:dialog 

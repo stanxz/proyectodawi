@@ -18,11 +18,9 @@
 				<result name="exito" type="tiles">d_odontograma</result>
 		</action>
 		
-		<action name="GenerarOdontograma" 
+		<action name="insertaOdontograma" 
 				class="sermeden.java.action.OdontogramaAction" method="generarOdontograma">
-				<param name="mensaje"></param>
 				<result name="exito" type="tiles">d_bienvenida</result>
-				<result name="input" type="tiles">d_odontograma</result>
 		</action>
 		
 
