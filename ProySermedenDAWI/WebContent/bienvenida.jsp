@@ -33,25 +33,25 @@
                     <s:property value="#session.b_usuario.nombre"/>&nbsp;<s:property value="#session.b_usuario.apepat"/>
                 	<br>
                 	<s:if test='#session.b_usuario.idPerfil == 0'>
-                            <h6> <font color="#87A1B8">Paciente</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Paciente</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 1'>
-                            <h6> <font color="#87A1B8">Administrador del Sistema</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Administrador del Sistema</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 2'>
-                            <h6> <font color="#87A1B8">Auxiliar</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Auxiliar</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 3'>
-                            <h6> <font color="#87A1B8">Recepcionista</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Recepcionista</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 4'>
-                            <h6> <font color="#87A1B8">Tecnico de Imagenes</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Tecnico de Imagenes</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 5'>
-                            <h6> <font color="#87A1B8">Medico Tratante</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Medico Tratante</font> </h6> <br>
                     </s:if>
                     <s:if test='#session.b_usuario.idPerfil == 6'>
-                            <h6> <font color="#87A1B8">Medico Especialista</font> </h6> <br>
+                            <h6> <font color="#04FAEE">Medico Especialista</font> </h6> <br>
                     </s:if>
                     
 			</TD>
