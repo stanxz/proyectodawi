@@ -24,5 +24,10 @@ public class PaqueteBusinessDelegate {
 		// TODO Auto-generated method stub
 		return new CitaService();
 	}
+	
+	public static OdontogramaService_I getOdontogramaService() {
+		// TODO Auto-generated method stub
+		return new OdontogramaService();
+	}
 
 }

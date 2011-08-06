@@ -15,6 +15,11 @@
 		<action name="listarPacientesxNombre" class="sermeden.java.action.PacienteAction" method="listarPacientes">
 			<result name="exito">/Paciente/listadoPaciente-result.jsp</result>
 		</action>
+		
+		<!-- Listado de Pacientes Odontograma-->
+		<action name="listarPacientesxNombreOdontograma" class="sermeden.java.action.PacienteAction" method="listarPacientes">
+			<result name="exito">/Odontograma/listadoPaciente-result.jsp</result>
+		</action>
 
 		<!-- Listado de Medicos -->
 		<action name="listarMedicosAction"
