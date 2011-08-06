@@ -12,4 +12,9 @@ public interface CitaDAO {
 
 	List<UsuarioDTO> cargarMedicos();
 
+	List<HashMap<String, Object>> cargarHorasDispXFechaXMedico(String medicoCita,
+			String fechaCita);
+
+	List<Integer> cargarHorariosCitasHechas(String medicoCita, String fechaCita);
+
 }

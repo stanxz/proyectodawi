@@ -31,4 +31,27 @@ public class IbatisCitaDAO implements CitaDAO {
 		return medicos;
 	}
 
+	@Override
+	public List<HashMap<String, Object>> cargarHorasDispXFechaXMedico(String medicoCita,
+			String fechaCita) {
+		// TODO Auto-generated method stub
+		System.out.println("Cargando Horas Disp x Medico x fecha con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		List<HashMap<String, Object>>  milista= sesion.selectList("cargarHorasxFechaxMedico");
+		sesion.close();
+		return milista;
+	}
+
+	@Override
+	public List<Integer> cargarHorariosCitasHechas(String medicoCita,
+			String fechaCita) {
+		// TODO Auto-generated method stub
+		System.out.println("Cargando Horas de " +
+				"citas guardadas en BD con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		List<Integer>  milista= sesion.selectList("cargarHorasxCitasxFecha");
+		sesion.close();
+		return milista;
+	}
+
 }

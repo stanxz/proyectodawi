@@ -13,4 +13,9 @@ public interface CitaService_I {
 
 	List<UsuarioDTO> cargarMedicos();
 
+	List<HashMap<String, Object>> cargarHorasDispXFechaXMedico(String medicoCita,
+			String fechaCita);
+
+	List<Integer> cargarHorariosCitasHechas(String medicoCita, String fechaCita);
+
 }

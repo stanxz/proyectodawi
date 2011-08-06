@@ -27,5 +27,21 @@ public class CitaService implements CitaService_I {
 		// TODO Auto-generated method stub
 		return objcitaDAO.cargarMedicos();
 	}
+
+	@Override
+	public List<HashMap<String, Object>> cargarHorasDispXFechaXMedico(String medicoCita,
+			String fechaCita) {
+		// TODO Auto-generated method stub
+		return objcitaDAO.cargarHorasDispXFechaXMedico(medicoCita,
+				fechaCita);
+	}
+
+	@Override
+	public List<Integer> cargarHorariosCitasHechas(String medicoCita,
+			String fechaCita) {
+		// TODO Auto-generated method stub
+		return objcitaDAO.cargarHorariosCitasHechas(medicoCita,
+				fechaCita);
+	}
 	
 }
