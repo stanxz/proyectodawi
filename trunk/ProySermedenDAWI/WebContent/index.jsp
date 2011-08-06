@@ -40,7 +40,7 @@
         <li id="active"><a href="#">Home</a></li>
                 <li><a href="#">xxxxxxx</a></li>
                 <li><a href="#">xxxxxxx</a></li>
-                <li><a href="LogueoSistema.jsp">Intranet</a></li>
+                <li><a href="a_logueo">Intranet</a></li>
                 <li><a href="#">Contactenos</a></li>
             </ul>
         </div>          
@@ -67,11 +67,12 @@
         <tr>
         	<td>
         	<div id="footer">
-    	<p>
+    	  <p>
         	Copyright &copy; 2011. Designed by <a href="http://www.facebookpagetemplates.com" title="Facebook Templates">XXXXXXXX</a><br />
             <a title="This page validates as XHTML 1.0 Strict" href="#" class="footerLink"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | 
             <a title="This page validates as CSS" href="#" class="footerLink"><abbr title="Cascading Style Sheets">CSS</abbr></a>
-    </div>
+          </p>
+           </div>
         	</td>
         </tr>
     </table>

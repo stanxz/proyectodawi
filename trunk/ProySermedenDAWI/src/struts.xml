@@ -20,9 +20,14 @@
 				<result name="exito" type="tiles">d_bienvenida</result>
 				<result name="error">/LogueoSistema.jsp</result>
 		</action>
-	
+		
+		
 		<action name="a_recuperarPassword">
-			<result>/Seguridad/RecuperarContrasena.jsp</result>
+			<result>Seguridad/RecuperarContrasena.jsp</result>
+		</action>
+	 
+		<action name="a_logueo">
+			<result>/LogueoSistema.jsp</result>
 		</action>
 		
 		<action name="a_principal">
@@ -65,7 +70,7 @@
 		
 		<action name="RecuperaPassAction" 
 				class="sermeden.java.action.UsuarioAction" method="recuperaPassUser">
-				<result name="exito">LogueoSistema.jsp</result>
+				<result name="exito">/LogueoSistema.jsp</result>
 				<result name="error">/Seguridad/RecuperarContrasena.jsp</result>
 		</action>
 		
