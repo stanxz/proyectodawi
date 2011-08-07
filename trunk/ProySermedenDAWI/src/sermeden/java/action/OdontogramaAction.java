@@ -131,8 +131,9 @@ public class OdontogramaAction extends ActionSupport{
 				
 	            vista="exito";
 			}else{
-				System.out.println("ES ERROR");
+				
 				mensajeOdontograma = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
+				System.out.println(mensajeOdontograma);
 				vista="error";
 			}
 			

@@ -42,9 +42,8 @@
 		</td>
 		</tr>
 		</table>
-	</s:form>
+	</s:form> 
 	<sj:div id="resultado">
 	</sj:div>
-
 </body>
 </html>

@@ -22,7 +22,10 @@
 		</action>
 		
 	    <!-- Listado de Pacientes Ver Odontograma-->
-		<action name="listarPacientesxNombreVerOdontograma" class="sermeden.java.action.OdontogramaAction" method="listarOdontograma">
+		<action name="listarPacientesxNombreVerOdontograma" 
+		class="sermeden.java.action.OdontogramaAction" 
+		method="listarOdontograma"> 
+			<param name="mensajeOdontograma"></param>
 			<result name="exito">/Odontograma/listadoPacienteVerOdontograma-result.jsp</result>
 			<result name="error" type="tiles">d_listadoPacienteVerOdontograma</result> 
 		</action>
