@@ -11,6 +11,10 @@
 			<result type="tiles">d_listadoPacienteOdontograma</result>
 		</action>
 		
+		<action name="a_verodontograma">
+			<result type="tiles">d_listadoPacienteVerOdontograma</result>
+		</action>
+		
 		
 		<action name="buscarPacientexIdOdontograma" 
 				class="sermeden.java.action.PacienteAction"
@@ -22,6 +26,7 @@
 				class="sermeden.java.action.OdontogramaAction" method="generarOdontograma">
 				<result name="exito" type="tiles">d_bienvenida</result>
 		</action>
+		
 		
 
 	</package>

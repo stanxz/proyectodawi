@@ -38,12 +38,12 @@ public class IbatisOdontogramaDAO implements OdontogramaDAO {
 		SqlSession sesion = 
 			MyIbatisManager.getSqlSessionFactory().openSession(true);
 		
-		List<OdontogramaDTO> usuarios =
+		List<OdontogramaDTO> odontograma =
 			sesion.selectList("selectOdontogramaxDNI", filtro);
 		
 		sesion.close();
 			
-		return usuarios;
+		return odontograma;
 	}
 }
 
