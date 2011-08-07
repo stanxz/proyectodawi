@@ -33,8 +33,8 @@
         <div class="mainMenu">
         	<ul>
         <li id="active"><a href="index.jsp">Home</a></li>
-                <li><a href="#">xxxxxxx</a></li>
-                <li><a href="#">xxxxxxx</a></li>
+                <li><a href="#">Quienes Somos</a></li>
+                <li><a href="#"></a></li>
                 <li><a href="LogueoSistema.jsp">Intranet</a></li>
                 <li><a href="#">Contactenos</a></li>
             </ul>
@@ -104,9 +104,9 @@
         	<td>
         	<div id="footer">
     	  <p>
-        	Copyright &copy; 2011. Designed by <a href="http://www.facebookpagetemplates.com" title="Facebook Templates">XXXXXXXX</a><br />
-            <a title="This page validates as XHTML 1.0 Strict" href="#" class="footerLink"><abbr title="eXtensible HyperText Markup Language">XHTML</abbr></a> | 
-            <a title="This page validates as CSS" href="#" class="footerLink"><abbr title="Cascading Style Sheets">CSS</abbr></a>
+        	Copyright &copy; 2011. Designed by <a href="http://www.facebookpagetemplates.com" title="Facebook Templates">Rodrigo Berrospi - Rhandy Muguruza</a><br />
+            <a title="This page validates as XHTML 1.0 Strict" href="#" class="footerLink"><abbr title="eXtensible HyperText Markup Language">Diseño de Aplicaciones Web I</abbr></a> | 
+            <a title="This page validates as CSS" href="#" class="footerLink"><abbr title="Cascading Style Sheets">5to ciclo CIBERTEC</abbr></a>
           </p>
            </div>
         	</td>

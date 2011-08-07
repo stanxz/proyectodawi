@@ -19,6 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="cargarHorasxFechaxMedico" parameterType="hashmap" resultType="hashmap" statementType="CALLABLE">
-		 call `obtienerango` ('2011-05-07',5);
+		 call `obtienerango` (#{fechaCita},#{medicoCita});
+	</select>
+
+	<select id="cargarHorasxCitasxFecha" parameterType="hashmap" resultType="hashmap">
+		 SELECT HoraCita FROM cita where idMedico=#{medicoCita} and fechaCita=#{fechaCita};
 	</select>
 </mapper>

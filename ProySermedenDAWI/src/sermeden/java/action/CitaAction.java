@@ -3,15 +3,11 @@ package sermeden.java.action;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.CitaService_I;
 import sermeden.java.service.PaqueteBusinessDelegate;
 
 import com.opensymphony.xwork2.Action;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CitaAction extends ActionSupport {
@@ -29,14 +25,15 @@ public class CitaAction extends ActionSupport {
 	//private List<String> listafechaxmedicos;
 	private List<String> listahorasxfechaxmedicos;
 	private List<HashMap<String, Object>> temporal;
-	private List<Integer> horascitasalmacenadas;
+	private List<HashMap<String, Object>> horascitasalmacenadas;
 	
 	
-	
-	public List<Integer> getHorascitasalmacenadas() {
+
+	public List<HashMap<String, Object>> getHorascitasalmacenadas() {
 		return horascitasalmacenadas;
 	}
-	public void setHorascitasalmacenadas(List<Integer> horascitasalmacenadas) {
+	public void setHorascitasalmacenadas(
+			List<HashMap<String, Object>> horascitasalmacenadas) {
 		this.horascitasalmacenadas = horascitasalmacenadas;
 	}
 	public List<String> getListahorasxfechaxmedicos() {
@@ -126,13 +123,13 @@ public class CitaAction extends ActionSupport {
 		if(medicoCita != null && fechaCita!=null ){
 			System.out.println("cargando horasdisp x fecha x medico");
 			temporal=citaService.cargarHorasDispXFechaXMedico(medicoCita,fechaCita);
-			System.out.println("tamañooooooo : "+temporal.size());
+			System.out.println("1 tamañooooooo : "+temporal.size());
 			System.out.println("un elemento: "+ temporal .get(0).get("HoraInicio"));
 			
-			
+			System.out.println("ahora cargaremos las horas de las citas almacenadas para comparar ....");
 			horascitasalmacenadas=citaService.cargarHorariosCitasHechas(medicoCita,fechaCita);
 			
-			
+			System.out.println("(tempo)horascitasalmacenadas.size(): "+horascitasalmacenadas.size());
 			
 			
 			
@@ -147,6 +144,36 @@ public class CitaAction extends ActionSupport {
 					
 				}
 				
+				
+				/*for(int j=0;j<miarreglo.length;j++){
+					if(!listahorasxfechaxmedicos.contains(String.valueOf(miarreglo[j]))){
+						listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
+						System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
+					}
+					else{
+						System.out.println("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
+					}
+					
+				}*/
+				System.out.println("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
+				if(horascitasalmacenadas.size()>0){
+					System.out.println("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
+					
+					for(int j=0;j<miarreglo.length;j++){
+						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).toString())){
+							listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
+							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
+						}
+						else{
+							System.out.println("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
+						}
+						
+					}
+					System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
+				}else{
+					System.out.println("No pasa nada ... ");
+				}
+					
 			}
 			
 			
@@ -175,14 +202,14 @@ public class CitaAction extends ActionSupport {
 	
 	}
 	
-	private List<HashMap<String, Object>> cargarFechasXMedico(String medicoCita2) {
+	/*private List<HashMap<String, Object>> cargarFechasXMedico(String medicoCita2) {
 		
 		System.out.println("Dentro del metodo cargarFechasXMedicos");
 
 		
 		List<HashMap<String, Object>> lista1;
 		
-		/*try {
+		try {
 			lista1 = citaService.cargarFechasXMedicos(medicoCita2);
 			
 			if( lista1!=null && lista1.size()>0)
@@ -193,12 +220,12 @@ public class CitaAction extends ActionSupport {
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-		}**/
+		}*
 		List lista11=null;
 		return lista11;
 		
 	}
-	
+	*/
 	private List<UsuarioDTO> cargarMedicos() {
 		
 		System.out.println("Dentro del metodo cargarMedicos");

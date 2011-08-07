@@ -15,6 +15,6 @@ public interface CitaDAO {
 	List<HashMap<String, Object>> cargarHorasDispXFechaXMedico(String medicoCita,
 			String fechaCita);
 
-	List<Integer> cargarHorariosCitasHechas(String medicoCita, String fechaCita);
+	List<HashMap<String, Object>> cargarHorariosCitasHechas(String medicoCita, String fechaCita);
 
 }
