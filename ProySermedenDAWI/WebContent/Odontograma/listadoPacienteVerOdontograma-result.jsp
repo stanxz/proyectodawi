@@ -21,7 +21,7 @@
 		<th><s:text name="Materno"></s:text> </th>
 		<th><s:text name="Perfil"></s:text> </th>
 		<th><s:text name="Estado"></s:text> </th>
-		<th><s:text name="Generar Odontograma"></s:text></th>
+		<th><s:text name="Ver Odontograma"></s:text></th>
 	</tr>
 	
 	<s:iterator value="listadoUsuarios">
@@ -33,12 +33,12 @@
 			<td align="center"><s:property value="idPerfil"/> </td>
 			<td align="center"><s:property value="estado"/> </td>
 			<td align="center">
-					<s:url id="cargaDatos" action="buscarPacientexIdOdontograma">					    	
-					<s:param name="idBuscar">
-						 <s:property value="idPersona"/>
+					<s:url id="cargaDatos" action="buscarOdontogramaXDni">					    	
+					<s:param name="dniBuscado">
+						 <s:property value="dni"/>
 					</s:param>
 					</s:url>    	
-				<s:a href="%{cargaDatos}"><img src="images/modificar.gif" border="0"></s:a>
+				<s:a href="%{cargaDatos}"><img src="./images/ver.png" border="0"></s:a>
 			</td>
 		</tr>
 	</s:iterator>
