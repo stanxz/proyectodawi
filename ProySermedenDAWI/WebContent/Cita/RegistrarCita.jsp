@@ -52,7 +52,7 @@
 									href="%{opcionesUrl}"
 									id="medicoCita"
 									name="medicoCita"
-									
+									onChangeTopics="reloadHoras"
 									list="listamedicos"
 									listKey="idPersona"
 									listValue="ncompleto"

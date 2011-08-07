@@ -153,27 +153,67 @@ public class CitaAction extends ActionSupport {
 					
 				}
 				
-				
-				/*for(int j=0;j<miarreglo.length;j++){
-					if(!listahorasxfechaxmedicos.contains(String.valueOf(miarreglo[j]))){
-						listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
-						System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
-					}
-					else{
-						System.out.println("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
-					}
-					
-				}*/
-				
-			
-				
 				System.out.println("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
 				if(horascitasalmacenadas.size()>0){
 					System.out.println("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
 					
 					for(int j=0;j<miarreglo.length;j++){
 						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).toString())){
-							listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
+							String cadenita=String.valueOf(miarreglo[j]);
+							
+							if(cadenita.equalsIgnoreCase("8.0")){
+								listahorasxfechaxmedicos.add("8:00 am");
+							}else if(cadenita.equalsIgnoreCase("8.5")){
+								listahorasxfechaxmedicos.add("8:30 am");
+							}else if(cadenita.equalsIgnoreCase("9.0")){
+								listahorasxfechaxmedicos.add("9:00 am");
+							}else if(cadenita.equalsIgnoreCase("9.5")){
+								listahorasxfechaxmedicos.add("9:30 am");
+							}else if(cadenita.equalsIgnoreCase("10.0")){
+								listahorasxfechaxmedicos.add("10:00 am");
+							}else if(cadenita.equalsIgnoreCase("10.5")){
+								listahorasxfechaxmedicos.add("10:30 am");
+							}else if(cadenita.equalsIgnoreCase("11.0")){
+								listahorasxfechaxmedicos.add("11:00 am");
+							}else if(cadenita.equalsIgnoreCase("11.5")){
+								listahorasxfechaxmedicos.add("11:30 am");
+							}else if(cadenita.equalsIgnoreCase("12.0")){
+								listahorasxfechaxmedicos.add("12:00 m");
+							}else if(cadenita.equalsIgnoreCase("12.5")){
+								listahorasxfechaxmedicos.add("12:30 pm");
+							}else if(cadenita.equalsIgnoreCase("13.0")){
+								listahorasxfechaxmedicos.add("1:00 pm");
+							}else if(cadenita.equalsIgnoreCase("13.5")){
+								listahorasxfechaxmedicos.add("1:30 pm");
+							}else if(cadenita.equalsIgnoreCase("14.0")){
+								listahorasxfechaxmedicos.add("2:00 pm");
+							}else if(cadenita.equalsIgnoreCase("14.5")){
+								listahorasxfechaxmedicos.add("2:30 pm");
+							}else if(cadenita.equalsIgnoreCase("15.0")){
+								listahorasxfechaxmedicos.add("3:00 pm");
+							}else if(cadenita.equalsIgnoreCase("15.5")){
+								listahorasxfechaxmedicos.add("3:30 pm");
+							}else if(cadenita.equalsIgnoreCase("16.0")){
+								listahorasxfechaxmedicos.add("4:00 pm");
+							}else if(cadenita.equalsIgnoreCase("16.5")){
+								listahorasxfechaxmedicos.add("4:30 pm");
+							}else if(cadenita.equalsIgnoreCase("17.0")){
+								listahorasxfechaxmedicos.add("5:00 pm");
+							}else if(cadenita.equalsIgnoreCase("17.5")){
+								listahorasxfechaxmedicos.add("5:30 pm");
+							}else if(cadenita.equalsIgnoreCase("18.0")){
+								listahorasxfechaxmedicos.add("6:00 pm");
+							}else if(cadenita.equalsIgnoreCase("18.5")){
+								listahorasxfechaxmedicos.add("6:30 pm");
+							}else if(cadenita.equalsIgnoreCase("19.0")){
+								listahorasxfechaxmedicos.add("7:00 pm");
+							}else if(cadenita.equalsIgnoreCase("19.5")){
+								listahorasxfechaxmedicos.add("7:30 pm");
+							}else if(cadenita.equalsIgnoreCase("20.0")){
+								listahorasxfechaxmedicos.add("8:00 pm");
+							}
+
+							//listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
 							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
 						}
 						else{
@@ -190,7 +230,62 @@ public class CitaAction extends ActionSupport {
 						for(int j=0;j<miarreglo.length;j++){
 							
 							System.out.println("aaaaa");
-							listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
+							//listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
+							String cadenita=String.valueOf(miarreglo[j]);
+							//inicio if
+							if(cadenita.equalsIgnoreCase("8.0")){
+								listahorasxfechaxmedicos.add("8:00 am");
+							}else if(cadenita.equalsIgnoreCase("8.5")){
+								listahorasxfechaxmedicos.add("8:30 am");
+							}else if(cadenita.equalsIgnoreCase("9.0")){
+								listahorasxfechaxmedicos.add("9:00 am");
+							}else if(cadenita.equalsIgnoreCase("9.5")){
+								listahorasxfechaxmedicos.add("9:30 am");
+							}else if(cadenita.equalsIgnoreCase("10.0")){
+								listahorasxfechaxmedicos.add("10:00 am");
+							}else if(cadenita.equalsIgnoreCase("10.5")){
+								listahorasxfechaxmedicos.add("10:30 am");
+							}else if(cadenita.equalsIgnoreCase("11.0")){
+								listahorasxfechaxmedicos.add("11:00 am");
+							}else if(cadenita.equalsIgnoreCase("11.5")){
+								listahorasxfechaxmedicos.add("11:30 am");
+							}else if(cadenita.equalsIgnoreCase("12.0")){
+								listahorasxfechaxmedicos.add("12:00 m");
+							}else if(cadenita.equalsIgnoreCase("12.5")){
+								listahorasxfechaxmedicos.add("12:30 pm");
+							}else if(cadenita.equalsIgnoreCase("13.0")){
+								listahorasxfechaxmedicos.add("1:00 pm");
+							}else if(cadenita.equalsIgnoreCase("13.5")){
+								listahorasxfechaxmedicos.add("1:30 pm");
+							}else if(cadenita.equalsIgnoreCase("14.0")){
+								listahorasxfechaxmedicos.add("2:00 pm");
+							}else if(cadenita.equalsIgnoreCase("14.5")){
+								listahorasxfechaxmedicos.add("2:30 pm");
+							}else if(cadenita.equalsIgnoreCase("15.0")){
+								listahorasxfechaxmedicos.add("3:00 pm");
+							}else if(cadenita.equalsIgnoreCase("15.5")){
+								listahorasxfechaxmedicos.add("3:30 pm");
+							}else if(cadenita.equalsIgnoreCase("16.0")){
+								listahorasxfechaxmedicos.add("4:00 pm");
+							}else if(cadenita.equalsIgnoreCase("16.5")){
+								listahorasxfechaxmedicos.add("4:30 pm");
+							}else if(cadenita.equalsIgnoreCase("17.0")){
+								listahorasxfechaxmedicos.add("5:00 pm");
+							}else if(cadenita.equalsIgnoreCase("17.5")){
+								listahorasxfechaxmedicos.add("5:30 pm");
+							}else if(cadenita.equalsIgnoreCase("18.0")){
+								listahorasxfechaxmedicos.add("6:00 pm");
+							}else if(cadenita.equalsIgnoreCase("18.5")){
+								listahorasxfechaxmedicos.add("6:30 pm");
+							}else if(cadenita.equalsIgnoreCase("19.0")){
+								listahorasxfechaxmedicos.add("7:00 pm");
+							}else if(cadenita.equalsIgnoreCase("19.5")){
+								listahorasxfechaxmedicos.add("7:30 pm");
+							}else if(cadenita.equalsIgnoreCase("20.0")){
+								listahorasxfechaxmedicos.add("8:00 pm");
+							}
+							//fin if
+							
 							System.out.println("bbbbb");
 							//listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
 							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));						
