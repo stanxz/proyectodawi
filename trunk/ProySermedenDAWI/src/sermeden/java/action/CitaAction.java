@@ -9,6 +9,7 @@ import sermeden.java.service.PaqueteBusinessDelegate;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class CitaAction extends ActionSupport {
 
@@ -23,12 +24,20 @@ public class CitaAction extends ActionSupport {
 	private String medicoCita;
 	private String fechaCita;
 	//private List<String> listafechaxmedicos;
-	private List<String> listahorasxfechaxmedicos;
+	//private List<String> listahorasxfechaxmedicos;
+	//private List<String> listahorasxfechaxmedicosprueba;
+	private ArrayList listahorasxfechaxmedicos;
 	private List<HashMap<String, Object>> temporal;
 	private List<HashMap<String, Object>> horascitasalmacenadas;
 	
 	
-
+	
+	public ArrayList getListahorasxfechaxmedicos() {
+		return listahorasxfechaxmedicos;
+	}
+	public void setListahorasxfechaxmedicos(ArrayList listahorasxfechaxmedicos) {
+		this.listahorasxfechaxmedicos = listahorasxfechaxmedicos;
+	}
 	public List<HashMap<String, Object>> getHorascitasalmacenadas() {
 		return horascitasalmacenadas;
 	}
@@ -36,12 +45,12 @@ public class CitaAction extends ActionSupport {
 			List<HashMap<String, Object>> horascitasalmacenadas) {
 		this.horascitasalmacenadas = horascitasalmacenadas;
 	}
-	public List<String> getListahorasxfechaxmedicos() {
+	/*public List<String> getListahorasxfechaxmedicos() {
 		return listahorasxfechaxmedicos;
 	}
 	public void setListahorasxfechaxmedicos(List<String> listahorasxfechaxmedicos) {
 		this.listahorasxfechaxmedicos = listahorasxfechaxmedicos;
-	}
+	}*/
 	public String getFechaCita() {
 		return fechaCita;
 	}
@@ -131,10 +140,10 @@ public class CitaAction extends ActionSupport {
 			
 			System.out.println("(tempo)horascitasalmacenadas.size(): "+horascitasalmacenadas.size());
 			
-			
+			double miarreglo[]=new double[12];
 			
 			if (temporal.size()>0){
-				double miarreglo[]=new double[12];
+				
 				double aux=Double.parseDouble(temporal.get(0).get("HoraInicio").toString());
 				//int aux2=Integer.parseInt(temporal.get(0).get("HoraFin").toString());
 				for(int pr=0;pr<miarreglo.length;pr++){
@@ -155,6 +164,9 @@ public class CitaAction extends ActionSupport {
 					}
 					
 				}*/
+				
+			
+				
 				System.out.println("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
 				if(horascitasalmacenadas.size()>0){
 					System.out.println("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
@@ -171,12 +183,29 @@ public class CitaAction extends ActionSupport {
 					}
 					System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
 				}else{
-					System.out.println("No pasa nada ... ");
+					System.out.println("****** horascitasalmacenadas esta vacia");
+					System.out.println("miarreglo.length: "+miarreglo.length);
+					try {
+						listahorasxfechaxmedicos=new ArrayList();
+						for(int j=0;j<miarreglo.length;j++){
+							
+							System.out.println("aaaaa");
+							listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
+							System.out.println("bbbbb");
+							//listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
+							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));						
+						}
+					} catch (Exception e) {
+						// TODO: handle exception
+						System.out.println(""+e.getMessage());
+					}
+					
+					
 				}
 					
 			}
 			
-			
+			System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
 			
 			System.out.println("otraaaaaaa :p : "+listahorasxfechaxmedicos.size());
 			/*listafechaxmedicos = new ArrayList<String>();

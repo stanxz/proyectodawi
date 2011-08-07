@@ -100,7 +100,7 @@
 									formIds="formNuevaCita"
 									reloadTopics="reloadHoras" 
 									name="horaCita"
-									list="listahorasxfechasxmedico"
+									list="listahorasxfechaxmedicos"
 									headerKey="-1"
 									headerValue="- Seleccione una hora -"/>
 							
