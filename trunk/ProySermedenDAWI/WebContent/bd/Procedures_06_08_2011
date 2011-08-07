@@ -1,0 +1,24 @@
+DELIMITER $$
+CREATE PROCEDURE `obtienerango`(
+eldia varchar(50),
+elid int
+)
+begin
+DECLARE midia varchar(50);
+select case DAYNAME(eldia)
+when 'Sunday' then 'Domingo' 
+when 'Monday' then 'Lunes'
+when 'Tuesday' then 'Martes'
+when 'Wednesday' then 'Miércoles'
+when 'Thursday' then 'Jueves' 
+when 'Friday' then 'Viernes'
+when 'Saturday' then 'Sábado'
+end into midia;
+select * from turno t inner join turnoxmtratante mt
+on t.idTurno=mt.idTurno
+where mt.idPersona=elid and t.Dia=midia;
+end $$
+DELIMITER ;
+
+
+--call obtienerango ('2011-05-07',5);
