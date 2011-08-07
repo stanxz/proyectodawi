@@ -69,6 +69,11 @@
 		<put-attribute name="cuerpo" value="/Odontograma/Odontograma.jsp"/>	
 	</definition>
 	
+	<!-- Realizamos la definicion de la pagina de Ver Odontograma-->
+	<definition name="d_listadoPacienteVerOdontograma" extends="d_bienvenida">	
+		<put-attribute name="cuerpo" value="/Odontograma/ListadodePacientesVerOdontograma.jsp"/>	
+	</definition>
+	
 	
 
 

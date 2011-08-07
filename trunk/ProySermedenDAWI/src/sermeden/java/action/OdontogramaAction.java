@@ -1,6 +1,7 @@
 package sermeden.java.action;
 
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -21,6 +22,8 @@ import sermeden.java.service.UsuarioService_I;
 public class OdontogramaAction extends ActionSupport{
 	
 	private OdontogramaDTO odontograma;
+	private UsuarioDTO usuario;
+	private List<UsuarioDTO> listadoUsuarios;
 	private DMPacienteDTO dmpaciente;
 	private String mensaje;
 	private String titulo;
@@ -56,11 +59,33 @@ public class OdontogramaAction extends ActionSupport{
 	public void setDniBuscado(String dniBuscado) {
 		this.dniBuscado = dniBuscado;
 	}
+	public UsuarioDTO getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(UsuarioDTO usuario) {
+		this.usuario = usuario;
+	}
+	
+
+
+
+
+	public List<UsuarioDTO> getListadoUsuarios() {
+		return listadoUsuarios;
+	}
+	public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
+		this.listadoUsuarios = listadoUsuarios;
+	}
+
+
 
 
 
 	OdontogramaService_I odontogramaService = 
 	PaqueteBusinessDelegate.getOdontogramaService();
+	
+	UsuarioService_I usuarioService = 
+		PaqueteBusinessDelegate.getUsuarioService();
 	
 	public String generarOdontograma(){
 
@@ -95,7 +120,7 @@ public class OdontogramaAction extends ActionSupport{
 	
 	}
 	
-	public String verOdontograma(){
+	public String listarOdontograma(){
 		String vista="exito";
 		System.out.println("Dentro del metodo desactivar - Struts2");
 		System.out.println("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
@@ -104,8 +129,12 @@ public class OdontogramaAction extends ActionSupport{
 			
 			if(odontogramaService.listadoOdontogramaXDNI(dniBuscado).size()>0){
 				
-	            
+				  listadoUsuarios = usuarioService.listadoPacienteXDNI(dniBuscado);
+				
+	            vista="exito";
 			}else{
+				System.out.println("ES ERROR");
+				mensaje = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
 				vista="error";
 			}
 			

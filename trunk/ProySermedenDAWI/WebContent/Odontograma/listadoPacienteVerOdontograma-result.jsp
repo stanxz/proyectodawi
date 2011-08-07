@@ -24,7 +24,7 @@
 		<th><s:text name="Generar Odontograma"></s:text></th>
 	</tr>
 	
-	<s:iterator value="listadoPacientes">
+	<s:iterator value="listadoUsuarios">
 		<tr>
 			<td align="center"><s:property value="dni"/> </td>
 			<td align="center"><s:property value="nombre"/> </td>

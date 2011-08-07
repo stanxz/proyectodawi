@@ -22,7 +22,7 @@
 			<td colspan="2"><h2>Busqueda de Pacientes</h2></td>
 		</tr>
 		<tr>
-			<td><s:label name="Criterio:"></s:label></td>
+			<td><s:label name="">Criterio:</s:label></td>
 			<td><s:textfield name="dniBuscado" label=""></s:textfield></td>
 		</tr>
 		<tr align="center">
@@ -31,6 +31,11 @@
 						value="Listar" 
 						button="true"/>
 			</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<s:property value="mensaje"/>
+				</td>
 			</tr>
 		</table>
 		</div>
