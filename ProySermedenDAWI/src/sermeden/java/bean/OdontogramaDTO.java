@@ -1,6 +1,7 @@
 package sermeden.java.bean;
 
 import java.util.Date;
+import java.util.Hashtable;
 
 public class OdontogramaDTO {
   
@@ -243,5 +244,6 @@ public class OdontogramaDTO {
 	public void setFechareg(Date fechareg) {
 		this.fechareg = fechareg;
 	}
+	
 	
 }
