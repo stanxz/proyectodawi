@@ -26,6 +26,7 @@ public class OdontogramaAction extends ActionSupport{
 	private List<UsuarioDTO> listadoUsuarios;
 	private DMPacienteDTO dmpaciente;
 	private String mensaje;
+	private String mensajeOdontograma;
 	private String titulo;
 	private String dniBuscado;
 	
@@ -34,12 +35,11 @@ public class OdontogramaAction extends ActionSupport{
 	}
 	public void setOdontograma(OdontogramaDTO odontograma) {
 		this.odontograma = odontograma;
+	}public String getMensajeOdontograma() {
+		return mensajeOdontograma;
 	}
-	public String getMensaje() {
-		return mensaje;
-	}
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
+	public void setMensajeOdontograma(String mensajeOdontograma) {
+		this.mensajeOdontograma = mensajeOdontograma;
 	}
 	public String getTitulo() {
 		return titulo;
@@ -65,20 +65,18 @@ public class OdontogramaAction extends ActionSupport{
 	public void setUsuario(UsuarioDTO usuario) {
 		this.usuario = usuario;
 	}
-	
-
-
-
-
 	public List<UsuarioDTO> getListadoUsuarios() {
 		return listadoUsuarios;
 	}
 	public void setListadoUsuarios(List<UsuarioDTO> listadoUsuarios) {
 		this.listadoUsuarios = listadoUsuarios;
 	}
-
-
-
+	public String getMensaje() {
+		return mensaje;
+	}
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
 
 
 	OdontogramaService_I odontogramaService = 
@@ -134,7 +132,7 @@ public class OdontogramaAction extends ActionSupport{
 	            vista="exito";
 			}else{
 				System.out.println("ES ERROR");
-				mensaje = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
+				mensajeOdontograma = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
 				vista="error";
 			}
 			

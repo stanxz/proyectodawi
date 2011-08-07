@@ -34,7 +34,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<s:property value="mensaje"/>
+					<s:property value="mensajeOdontograma"/>
 				</td>
 			</tr>
 		</table>
@@ -43,8 +43,8 @@
 		</tr>
 		</table>
 	</s:form>
-	
 	<sj:div id="resultado">
 	</sj:div>
+
 </body>
 </html>

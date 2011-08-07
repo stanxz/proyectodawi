@@ -4,7 +4,7 @@
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>	
-	<package name="json" namespace="/" extends="struts-default,json-default">
+	<package name="json" namespace="/" extends="struts-default,json-default,tiles-default">
 		
 		<!-- Listado de Usuarios-->
 		<action name="listarUsuariosxNombre" class="sermeden.java.action.UsuarioAction" method="listarUsuarios">
@@ -24,7 +24,7 @@
 	    <!-- Listado de Pacientes Ver Odontograma-->
 		<action name="listarPacientesxNombreVerOdontograma" class="sermeden.java.action.OdontogramaAction" method="listarOdontograma">
 			<result name="exito">/Odontograma/listadoPacienteVerOdontograma-result.jsp</result>
-			<!-- <result name="error" type="tiles">d_listadoPacienteVerOdontograma</result> -->
+			<result name="error" type="tiles">d_listadoPacienteVerOdontograma</result> 
 		</action>
 
 		<!-- Listado de Medicos -->
