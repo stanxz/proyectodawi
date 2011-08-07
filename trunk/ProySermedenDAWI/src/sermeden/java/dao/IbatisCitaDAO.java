@@ -36,21 +36,34 @@ public class IbatisCitaDAO implements CitaDAO {
 			String fechaCita) {
 		// TODO Auto-generated method stub
 		System.out.println("Cargando Horas Disp x Medico x fecha con MyBatis");
+		System.out.println("medicoCita: "+medicoCita);
+		System.out.println("fechaCita: "+fechaCita);
 		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
-		List<HashMap<String, Object>>  milista= sesion.selectList("cargarHorasxFechaxMedico");
+		
+		HashMap<String, Object> mimapita=new HashMap<String, Object>();
+		mimapita.put("medicoCita", medicoCita);
+		mimapita.put("fechaCita", fechaCita);
+		
+		
+		List<HashMap<String, Object>>  milista= sesion.selectList("cargarHorasxFechaxMedico",mimapita);
 		sesion.close();
+		System.out.println("xxx milista:"+milista.size());
 		return milista;
 	}
 
 	@Override
-	public List<Integer> cargarHorariosCitasHechas(String medicoCita,
+	public List<HashMap<String, Object>> cargarHorariosCitasHechas(String medicoCita,
 			String fechaCita) {
 		// TODO Auto-generated method stub
-		System.out.println("Cargando Horas de " +
-				"citas guardadas en BD con MyBatis");
+		HashMap<String, Object> mimapita2=new HashMap<String, Object>();
+		mimapita2.put("medicoCita", medicoCita);
+		mimapita2.put("fechaCita", fechaCita);
+		
+		System.out.println("Cargando Horas de citas guardadas en BD con MyBatis");
 		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
-		List<Integer>  milista= sesion.selectList("cargarHorasxCitasxFecha");
+		List<HashMap<String, Object>>  milista= sesion.selectList("cargarHorasxCitasxFecha",mimapita2);
 		sesion.close();
+		System.out.println("yyy milista:"+milista.size());
 		return milista;
 	}
 

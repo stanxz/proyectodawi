@@ -37,7 +37,7 @@ public class CitaService implements CitaService_I {
 	}
 
 	@Override
-	public List<Integer> cargarHorariosCitasHechas(String medicoCita,
+	public List<HashMap<String, Object>> cargarHorariosCitasHechas(String medicoCita,
 			String fechaCita) {
 		// TODO Auto-generated method stub
 		return objcitaDAO.cargarHorariosCitasHechas(medicoCita,

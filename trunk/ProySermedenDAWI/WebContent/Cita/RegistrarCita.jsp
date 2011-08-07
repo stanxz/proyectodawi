@@ -68,8 +68,8 @@
 						<td>
 						    <div>
 						    	<!-- <s:url id="opcionesUrl2" action="listarFechasAction"/> -->
-								<sj:datepicker id="fechaCita" name="fechaCita" displayFormat="dd/mm/yy" changeYear="true" changeMonth="true" yearRange="+00:+01"
-							    disabled="false" onChange="reloadHoras"></sj:datepicker> 
+								<sj:datepicker id="fechaCita" name="fechaCita" displayFormat="yy-mm-dd" changeYear="true" changeMonth="true" yearRange="+00:+01"
+							    disabled="false" onChangeTopics="reloadHoras"></sj:datepicker> 
 								<!--  onChangeTopics="reloadFechas" onChangeTopics="reloadHoras"  onCompleteTopics="reloadHoras"
 								<sj:select 
 									href="%{opcionesUrl2}"
