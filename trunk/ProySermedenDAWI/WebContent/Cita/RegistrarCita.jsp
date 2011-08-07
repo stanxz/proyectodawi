@@ -70,20 +70,6 @@
 						    	<!-- <s:url id="opcionesUrl2" action="listarFechasAction"/> -->
 								<sj:datepicker id="fechaCita" name="fechaCita" displayFormat="yy-mm-dd" changeYear="true" changeMonth="true" yearRange="+00:+01"
 							    disabled="false" onChangeTopics="reloadHoras"></sj:datepicker> 
-								<!--  onChangeTopics="reloadFechas" onChangeTopics="reloadHoras"  onCompleteTopics="reloadHoras"
-								<sj:select 
-									href="%{opcionesUrl2}"
-									id="fechaCita"
-									formIds="formNuevaCita"
-									reloadTopics="reloadFechas"
-									onChangeTopics="reloadHoras"
-									name="fechaCita"
-									list="listafechaxmedicos"
-									listKey="idPersona"
-									listValue="hora"
-									headerKey="-1"
-									headerValue="- Seleccione una fechadisponible -"/> -->
-							
 							</div>
 						</td>
 					</tr>
