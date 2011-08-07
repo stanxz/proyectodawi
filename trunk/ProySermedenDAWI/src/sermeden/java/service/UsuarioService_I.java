@@ -1,8 +1,10 @@
 package sermeden.java.service;
 
+import java.util.Hashtable;
 import java.util.List;
 
 import sermeden.java.bean.DMPacienteDTO;
+import sermeden.java.bean.OdontogramaDTO;
 import sermeden.java.bean.UsuarioDTO;
 
 public interface UsuarioService_I {
@@ -57,5 +59,6 @@ public interface UsuarioService_I {
 
 	//modificar los DM del Paciente
 	int modificarDMPaciente(DMPacienteDTO dmpaciente);
+
 
 }

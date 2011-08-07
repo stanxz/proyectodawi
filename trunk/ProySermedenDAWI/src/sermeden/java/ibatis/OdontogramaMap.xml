@@ -11,5 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{d17},#{d18},#{d19},#{d20},#{d21},#{d22},#{d23},#{d24},#{d25},#{d26},#{d27},#{d28},#{d29},#{d30},#{d31},#{d32},#{fechareg})
 	</insert>
 	
+	<select id="selectUserxDNI" resultType="sermeden.java.bean.UsuarioDTO">	
+		select * from odontograma where dni=#{filtro}
+	</select>
+	
 </mapper>
 

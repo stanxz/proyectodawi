@@ -19,7 +19,6 @@
 <table width="10%">
 	        <tr >
 				<td align="center" colspan="16">DNI: <s:textfield name="dmpaciente.dni" readonly="true" style="background-color: #D8D8D8;"></s:textfield></td>
-		   		<td><input type="text" name="dni" value="dmpaciente.dni"/></td>
 		    </tr>
 	<tr>
 		<td><img alt="" src="./images/diente.png"></td>
