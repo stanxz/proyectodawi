@@ -3,8 +3,6 @@ package sermeden.java.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.dao.CitaDAO;
 import sermeden.java.dao.DAOFactory;

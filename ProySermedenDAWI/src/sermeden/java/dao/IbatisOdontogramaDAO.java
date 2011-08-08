@@ -6,7 +6,6 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import sermeden.java.bean.OdontogramaDTO;
-import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.ibatis.MyIbatisManager;
 
 public class IbatisOdontogramaDAO implements OdontogramaDAO {

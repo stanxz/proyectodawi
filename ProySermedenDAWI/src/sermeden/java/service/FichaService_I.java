@@ -1,7 +1,6 @@
 package sermeden.java.service;
 
 import sermeden.java.bean.FichaDTO;
-import sermeden.java.bean.UsuarioDTO;
 
 
 
