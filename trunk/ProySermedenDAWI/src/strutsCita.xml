@@ -10,5 +10,10 @@
 			<result name="exito" type="tiles">d_registrarCita</result>
 		</action>
 		
+		<action name="RegistrarNuevaCitaAction" class="sermeden.java.action.CitaAction" method="registrarCita">
+			<result name="exito" type="tiles">d_bienvenida</result>
+			<result name="error" type="tiles">d_registrarCita</result>
+		</action>
+		
 	</package>
 </struts>

@@ -3,9 +3,13 @@ package sermeden.java.action;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import sermeden.java.bean.CitaDTO;
+import sermeden.java.bean.FichaDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.CitaService_I;
 import sermeden.java.service.PaqueteBusinessDelegate;
+import sermeden.java.service.UsuarioService_I;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,19 +22,43 @@ public class CitaAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<HashMap<String, Object>> listadoTurnos;
 	private String dnibuscado;
-	
+	private UsuarioDTO paciente;
 	private List<UsuarioDTO> listamedicos;
 	private String medicoCita;
 	private String fechaCita;
-	//private List<String> listafechaxmedicos;
-	//private List<String> listahorasxfechaxmedicos;
-	//private List<String> listahorasxfechaxmedicosprueba;
+	private String horaCita;
+	private CitaDTO cita;
+	private String mensaje;
+	
 	private ArrayList listahorasxfechaxmedicos;
 	private List<HashMap<String, Object>> temporal;
 	private List<HashMap<String, Object>> horascitasalmacenadas;
+
 	
-	
-	
+	public String getHoraCita() {
+		return horaCita;
+	}
+	public void setHoraCita(String horaCita) {
+		this.horaCita = horaCita;
+	}
+	public CitaDTO getCita() {
+		return cita;
+	}
+	public void setCita(CitaDTO cita) {
+		this.cita = cita;
+	}
+	public UsuarioDTO getPaciente() {
+		return paciente;
+	}
+	public void setPaciente(UsuarioDTO paciente) {
+		this.paciente = paciente;
+	}
+	public String getMensaje() {
+		return mensaje;
+	}
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
 	public ArrayList getListahorasxfechaxmedicos() {
 		return listahorasxfechaxmedicos;
 	}
@@ -44,24 +72,13 @@ public class CitaAction extends ActionSupport {
 			List<HashMap<String, Object>> horascitasalmacenadas) {
 		this.horascitasalmacenadas = horascitasalmacenadas;
 	}
-	/*public List<String> getListahorasxfechaxmedicos() {
-		return listahorasxfechaxmedicos;
-	}
-	public void setListahorasxfechaxmedicos(List<String> listahorasxfechaxmedicos) {
-		this.listahorasxfechaxmedicos = listahorasxfechaxmedicos;
-	}*/
+
 	public String getFechaCita() {
 		return fechaCita;
 	}
 	public void setFechaCita(String fechaCita) {
 		this.fechaCita = fechaCita;
 	}
-	/*public List<String> getListafechaxmedicos() {
-		return listafechaxmedicos;
-	}
-	public void setListafechaxmedicos(List<String> listafechaxmedicos) {
-		this.listafechaxmedicos = listafechaxmedicos;
-	}*/
 
 	public String getMedicoCita() {
 		return medicoCita;
@@ -93,6 +110,9 @@ public class CitaAction extends ActionSupport {
 	CitaService_I citaService = 
 			PaqueteBusinessDelegate.getCitaService();
 	
+	UsuarioService_I pacienteService=
+			PaqueteBusinessDelegate.getUsuarioService();
+	
 	public String listarTurnos(){
 		
 		String vista="exito";
@@ -123,11 +143,7 @@ public class CitaAction extends ActionSupport {
 		System.out.println("tamaño listamedicos : " + listamedicos.size());
 		System.out.println("medicoCita: "+medicoCita);
 		System.out.println("fechaCita: "+fechaCita);
-		
-		
-		
-		
-		
+
 		if(medicoCita != null && fechaCita!=null ){
 			System.out.println("cargando horasdisp x fecha x medico");
 			temporal=citaService.cargarHorasDispXFechaXMedico(medicoCita,fechaCita);
@@ -218,7 +234,6 @@ public class CitaAction extends ActionSupport {
 						else{
 							System.out.println("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
 						}
-						
 					}
 					System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
 				}else{
@@ -293,62 +308,16 @@ public class CitaAction extends ActionSupport {
 						// TODO: handle exception
 						System.out.println(""+e.getMessage());
 					}
-					
-					
-				}
-					
+				}	
 			}
-			
 			System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
-			
 			System.out.println("otraaaaaaa :p : "+listahorasxfechaxmedicos.size());
-			/*listafechaxmedicos = new ArrayList<String>();
-			
-			if(medicoCita.equals("1")){
-				
-				listafechaxmedicos.add("Struts 2");
-				listafechaxmedicos.add("Myibatis");
-				listafechaxmedicos.add("JQuery");
-				
-			}else if(medicoCita.equals("2")){
-				
-				listafechaxmedicos.add("Java Server Faces");
-				listafechaxmedicos.add("JPA");
-	
-			}*/
-			//listafechaxmedicos=cargarFechasXMedico(medicoCita);
-			
-			
 		}
 		
 		return Action.SUCCESS;
 	
 	}
 	
-	/*private List<HashMap<String, Object>> cargarFechasXMedico(String medicoCita2) {
-		
-		System.out.println("Dentro del metodo cargarFechasXMedicos");
-
-		
-		List<HashMap<String, Object>> lista1;
-		
-		try {
-			lista1 = citaService.cargarFechasXMedicos(medicoCita2);
-			
-			if( lista1!=null && lista1.size()>0)
-				System.out.println("fechas en listado : " + lista1.size());
-			else
-				System.out.println("Lista de fechas x medico vacia");
-		
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}*
-		List lista11=null;
-		return lista11;
-		
-	}
-	*/
 	private List<UsuarioDTO> cargarMedicos() {
 		
 		System.out.println("Dentro del metodo cargarMedicos");
@@ -373,5 +342,65 @@ public class CitaAction extends ActionSupport {
 		return lista1;
 	
 	}
+	
+	public String registrarCita(){
+		int idnuevacita=-1;
+		int resultupdate=-1;
+		String vista = "exito";
+		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
+		System.out.println("dniBuscado: " +dnibuscado);
+
+		//Invocamos al servicio requerido para registrar cliente
+		try {
+			paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dnibuscado);
+			if(paciente!=null){
+				
+				System.out.println("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+				System.out.println("aaaa "+paciente.getIdPersona());
+				
+				cita=new CitaDTO();
+			/*	
+				cita.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
+				//System.out.println(ficha.getFechaRegistro());
+				ficha.setEstado(1);
+				//System.out.println(ficha.getEstado());
+				if(observaciones!=null)
+					ficha.setObservaciones(observaciones);
+				else
+					ficha.setObservaciones("");
+				//System.out.println(ficha.getObservaciones());
+				ficha.setIdPersona(paciente.getIdPersona());
+				//System.out.println(""+paciente.getDni());
+				
+				System.out.println("actualizando ficha antigua ... ");
+				resultupdate=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
+				System.out.println("registrando ficha ... :"+resultupdate);
+				idnuevacita=fichaService.registrarFicha(cita);
+				
+				
+				if(idnuevacita>0){
+					System.out.println(" idnuevacita: "+idnuevacita+" registrado en la BD");
+					mensaje="La cita del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+idnuevacita+")";
+					vista = "exito";
+				}
+				else{
+					mensaje="No se registró la Ficha";
+					vista = "error";
+				}
+				*/
+			}
+			else{
+				System.out.println("El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !");
+				mensaje="El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !";
+				vista = "error";
+			}
+		} catch (Exception e) {
+			vista = "error";
+			mensaje="Errores al procesar: "+e.getMessage();
+			e.printStackTrace();
+		}
+		return vista;
+	}
+	
 
 }
