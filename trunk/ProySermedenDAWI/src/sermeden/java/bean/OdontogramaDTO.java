@@ -1,7 +1,6 @@
 package sermeden.java.bean;
 
 import java.util.Date;
-import java.util.Hashtable;
 
 public class OdontogramaDTO {
   

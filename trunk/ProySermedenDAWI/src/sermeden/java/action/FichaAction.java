@@ -98,7 +98,7 @@ public class FichaAction extends ActionSupport {
 				
 				System.out.println("actualizando ficha antigua ... ");
 				resultupdate=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
-				System.out.println("registrando ficha ... ");
+				System.out.println("registrando ficha ... :"+resultupdate);
 				idnuevaficha=fichaService.registrarFicha(ficha);
 				
 				

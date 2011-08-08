@@ -3,7 +3,6 @@ package sermeden.java.dao;
 import org.apache.ibatis.session.SqlSession;
 
 import sermeden.java.bean.FichaDTO;
-import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.ibatis.MyIbatisManager;
 
 public class IbatisFichaDAO implements FichaDAO {

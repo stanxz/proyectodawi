@@ -9,7 +9,6 @@ import sermeden.java.service.PaqueteBusinessDelegate;
 
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionSupport;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 public class CitaAction extends ActionSupport {
 

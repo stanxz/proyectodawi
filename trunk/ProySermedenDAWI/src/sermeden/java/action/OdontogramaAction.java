@@ -2,13 +2,6 @@ package sermeden.java.action;
 
 
 import java.util.List;
-import java.util.Properties;
-
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -21,6 +14,10 @@ import sermeden.java.service.UsuarioService_I;
 
 public class OdontogramaAction extends ActionSupport{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8023221043947485107L;
 	private OdontogramaDTO odontograma;
 	private UsuarioDTO usuario;
 	private List<UsuarioDTO> listadoUsuarios;
