@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+    
+    <!-- Console output -->
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p %d{MM-dd HH:mm:ss} %m  (%F:%L) \n"/>
+        </layout>
+    </appender>
+    
+    <appender name="ARCHIVO" class="org.apache.log4j.DailyRollingFileAppender">
+    	<param name="File" value="C:/Publica/DAWI/test.log"/>
+    	<param name="DatePattern" value="'.'yyyyMMdd"/>
+    	
+    	<layout class="org.apache.log4j.PatternLayout">
+    		<param name="ConversionPattern" value="%d{MM-dd HH:mm:ss} %-5p (%C) %m - [linea:%L]%n"/>
+    	</layout>
+
+    </appender>
+
+    <logger name="java.sql">
+        <level value="debug" />
+    </logger>
+
+    <logger name="org.apache.ibatis">
+        <level value="ERROR" />
+    </logger>
+    
+   <logger name="com.opensymphony.xwork2">
+        <level value="ERROR" />
+    </logger>
+    
+    <category name="com.opensymphony.xwork2">
+    	<priority value="ERROR" />
+    	<appender-ref ref="STDOUT"/>
+    	<appender-ref ref="ARCHIVO"/>
+    </category>
+
+    <root>
+        <level value ="DEBUG" />
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="ARCHIVO" />
+    </root>
+    
+</log4j:configuration>
