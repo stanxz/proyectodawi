@@ -3,6 +3,8 @@ package sermeden.java.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import sermeden.java.bean.CitaDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.dao.CitaDAO;
 import sermeden.java.dao.DAOFactory;
@@ -40,6 +42,18 @@ public class CitaService implements CitaService_I {
 		// TODO Auto-generated method stub
 		return objcitaDAO.cargarHorariosCitasHechas(medicoCita,
 				fechaCita);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> cargarSemanaCita(CitaDTO cita) {
+		// TODO Auto-generated method stub
+		return objcitaDAO.cargarSemanaCita(cita);
+	}
+
+	@Override
+	public int registrarNuevaCita(CitaDTO cita) throws Exception {
+		// TODO Auto-generated method stub
+		return objcitaDAO.registrarNuevaCita(cita);
 	}
 	
 }
