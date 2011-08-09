@@ -3,6 +3,9 @@ package sermeden.java.action;
 import java.util.List;
 import java.util.Map;
 
+/*import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;*/
+
 
 
 import sermeden.java.bean.MenuDTO;
@@ -25,6 +28,13 @@ public class LogueoAction extends ActionSupport {
 	private UsuarioDTO elusuario;
 	private List<MenuDTO> listadoMenu;
 	public Map<String, Object> lasession;
+	
+    private static String fileProperties = System.getProperty("user.dir")+"\\log4j.properties";
+  //  PropertyConfigurator.configure(System.getProperty("user.dir")+"\\log4j.properties");
+
+    
+	//private static Logger log = Logger.getLogger(LogueoAction.class);
+	
 	
 	public String getMensaje() {
 		return mensaje;
@@ -64,7 +74,7 @@ public class LogueoAction extends ActionSupport {
 	
 	public String execute(){
 
-
+//log.debug("Holaaaaaaaaaaaaaaaaa");
 		String vista="exito";
 		
 		
