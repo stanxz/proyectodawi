@@ -186,7 +186,7 @@ public class CitaAction extends ActionSupport {
 					System.out.println("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
 					
 					for(int j=0;j<miarreglo.length;j++){
-						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).toString())){
+						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).get("HoraCita").toString())){
 							String cadenita=String.valueOf(miarreglo[j]);
 							
 							if(cadenita.equalsIgnoreCase("8.0")){
@@ -384,7 +384,8 @@ public class CitaAction extends ActionSupport {
 					cita.setFechaCita(sd.parse(fechaCita));
 					cita.setHoraCita(numerHora(horaCita));
 					cita.setIdMedico(Integer.parseInt(medicoCita));
-					cita.setNroConsultorio(Integer.parseInt(temporal.get(0).get("NroConsultorio").toString()));
+					//nulo aca no se por ke
+					//cita.setNroConsultorio(Integer.parseInt(temporal.get(0).get("NroConsultorio").toString()));
 					
 					Calendar mica=Calendar.getInstance();
 					mica.setFirstDayOfWeek(Calendar.MONDAY);
