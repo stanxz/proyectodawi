@@ -523,5 +523,10 @@ public class CitaAction extends ActionSupport {
 		}
 	}
 	
+	public void validate(){
+		if(dnibuscado==null){
+			//addFieldError(fieldName, errorMessage)
+		}
+	}
 
 }

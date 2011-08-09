@@ -22,8 +22,8 @@
 	<s:iterator value="listadoTurnos">
 		<tr>
 			<td align="center"><s:property value="Dia"/> </td>
-			<td align="center"><s:property value="HoraInicio"/> </td>
-			<td align="center"><s:property value="HoraFin"/> </td>
+			<td align="center"><s:property value="HoraInicio"/><s:if test="HoraInicio>11"> a.m.</s:if><s:else> p.m.</s:else></td>
+			<td align="center"><s:property value="HoraFin"/><s:if test="HoraFin>11"> a.m.</s:if><s:else> p.m.</s:else></td>
 			<td align="center"><s:property value="ncompleto"/> </td>
 		</tr>
 	</s:iterator>
