@@ -8,6 +8,7 @@
 		
 		 <action name="a_registrarCita" class="sermeden.java.action.CitaAction" method="listarTurnos">
 			<result name="exito" type="tiles">d_registrarCita</result>
+			<result name="error" type="tiles">d_registrarCita</result>
 		</action>
 		
 		<action name="RegistrarNuevaCitaAction" class="sermeden.java.action.CitaAction" method="registrarCita">
