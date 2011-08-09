@@ -165,7 +165,10 @@ public class CitaAction extends ActionSupport {
 			log.debug("cargando horasdisp x fecha x medico");
 			temporal=citaService.cargarHorasDispXFechaXMedico(medicoCita,fechaCita);
 			log.debug("1 tamañooooooo : "+temporal.size());
-			log.debug("un elemento: "+ temporal .get(0).get("HoraInicio"));
+			if(temporal.size()>0)
+				log.debug("un elemento: "+ temporal .get(0).get("HoraInicio"));
+			else
+				log.debug("No hay ningun elemento en 'temporal'");
 			
 			log.debug("ahora cargaremos las horas de las citas almacenadas para comparar ....");
 			horascitasalmacenadas=citaService.cargarHorariosCitasHechas(medicoCita,fechaCita);
@@ -187,12 +190,14 @@ public class CitaAction extends ActionSupport {
 				
 				log.debug("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
 				if(horascitasalmacenadas.size()>0){
-					log.debug("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
 					
+					String cadenita;
 					for(int j=0;j<miarreglo.length;j++){
-						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).get("HoraCita").toString())){
-							String cadenita=String.valueOf(miarreglo[j]);
-							
+						cadenita=String.valueOf(miarreglo[j]);
+						log.debug("cadenita vale: "+cadenita);
+						log.debug("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(j).toString());
+						if(cadenita.equalsIgnoreCase(horascitasalmacenadas.get(j).get("HoraCita").toString())){
+
 							if(cadenita.equalsIgnoreCase("8.0")){
 								listahorasxfechaxmedicos.add("8:00 am");
 							}else if(cadenita.equalsIgnoreCase("8.5")){
@@ -430,17 +435,20 @@ public class CitaAction extends ActionSupport {
 						}
 						else{
 							mensaje="No se registró la Cita";
+							listadoTurnos = citaService.listadoTurnos();
 							vista = "error";
 						}
 					}else{
 						log.debug("El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !");
 						mensaje="El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !";
+						listadoTurnos = citaService.listadoTurnos();
 						vista = "error";
 					}
 					
 				}else{
 					log.debug("El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !");
 					mensaje="El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !";
+					listadoTurnos = citaService.listadoTurnos();
 					vista = "error";
 				}
 				
@@ -448,11 +456,13 @@ public class CitaAction extends ActionSupport {
 			else{
 				log.debug("El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !");
 				mensaje="El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !";
+				listadoTurnos = citaService.listadoTurnos();
 				vista = "error";
 			}
 		} catch (Exception e) {
 			vista = "error";
 			mensaje="Errores al procesar: "+e.getMessage();
+			listadoTurnos = citaService.listadoTurnos();
 			e.printStackTrace();
 		}
 		return vista;

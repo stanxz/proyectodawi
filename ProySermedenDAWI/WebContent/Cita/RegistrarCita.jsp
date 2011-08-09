@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<h4 align="center">Nueva Cita</h4>
+<h3 align="center" > Nueva Cita</h3>
 
 <form id="formNuevaCita" action="RegistrarNuevaCitaAction">
 	<table align="center">
