@@ -25,4 +25,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="cargarHorasxCitasxFecha" parameterType="hashmap" resultType="hashmap">
 		 SELECT HoraCita FROM cita where idMedico=#{medicoCita} and fechaCita=#{fechaCita};
 	</select>
+	
+	<select id="cargarCitaparaSemana" parameterType="sermeden.java.bean.CitaDTO" resultType="hashmap">
+		select * 
+		from cita 
+		where idFicha=#{idFicha} and fechaCita=#{fechaCita}
+	</select>
+	
+	<insert id="insertCitaNueva" parameterType="sermeden.java.bean.CitaDTO" useGeneratedKeys="true" keyProperty="idCita" flushCache="true">
+		insert into cita(idFicha,fechaCita,HoraCita,NroConsultorio,idMedico) 
+		values (#{idFicha},#{fechaCita},#{HoraCita},#{NroConsultorio},#{idMedico})
+	</insert>
+	
+	
 </mapper>

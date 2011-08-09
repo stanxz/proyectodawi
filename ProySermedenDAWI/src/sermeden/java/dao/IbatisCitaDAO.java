@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
+import sermeden.java.bean.CitaDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.ibatis.MyIbatisManager;
 
@@ -65,6 +66,27 @@ public class IbatisCitaDAO implements CitaDAO {
 		sesion.close();
 		System.out.println("yyy milista:"+milista.size());
 		return milista;
+	}
+
+	@Override
+	public List<HashMap<String, Object>> cargarSemanaCita(CitaDTO cita) {
+		System.out.println("Verificando citas durante semana con MyBatis");
+		SqlSession sesion=MyIbatisManager.getSqlSessionFactory().openSession(true);
+		 List<HashMap<String, Object>>  mishashmaps = sesion.selectList ("cargarCitaparaSemana", cita);
+		System.out.println("en ibatiscitadao>>>lallave: "+mishashmaps.size());
+		sesion.close();
+		return mishashmaps;
+	}
+
+	@Override
+	public int registrarNuevaCita(CitaDTO cita) throws Exception{
+		int resultado =-1;
+		System.out.println("insertamos la cita con el mybatis");
+		SqlSession sesion =MyIbatisManager.getSqlSessionFactory().openSession(true);
+		resultado=sesion.insert("insertCitaNueva", cita);
+		sesion.close();
+		System.out.println("Registro de una cita por mybatis: "+resultado);
+		return resultado;
 	}
 
 }

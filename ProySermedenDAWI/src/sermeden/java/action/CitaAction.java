@@ -1,6 +1,9 @@
 package sermeden.java.action;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -8,6 +11,7 @@ import sermeden.java.bean.CitaDTO;
 import sermeden.java.bean.FichaDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.CitaService_I;
+import sermeden.java.service.FichaService_I;
 import sermeden.java.service.PaqueteBusinessDelegate;
 import sermeden.java.service.UsuarioService_I;
 
@@ -23,6 +27,7 @@ public class CitaAction extends ActionSupport {
 	private ArrayList<HashMap<String, Object>> listadoTurnos;
 	private String dnibuscado;
 	private UsuarioDTO paciente;
+	private FichaDTO ficha;
 	private List<UsuarioDTO> listamedicos;
 	private String medicoCita;
 	private String fechaCita;
@@ -35,6 +40,12 @@ public class CitaAction extends ActionSupport {
 	private List<HashMap<String, Object>> horascitasalmacenadas;
 
 	
+	public FichaDTO getFicha() {
+		return ficha;
+	}
+	public void setFicha(FichaDTO ficha) {
+		this.ficha = ficha;
+	}
 	public String getHoraCita() {
 		return horaCita;
 	}
@@ -112,6 +123,8 @@ public class CitaAction extends ActionSupport {
 	
 	UsuarioService_I pacienteService=
 			PaqueteBusinessDelegate.getUsuarioService();
+	
+	FichaService_I fichaService=PaqueteBusinessDelegate.getFichaService();
 	
 	public String listarTurnos(){
 		
@@ -345,7 +358,7 @@ public class CitaAction extends ActionSupport {
 	
 	public String registrarCita(){
 		int idnuevacita=-1;
-		int resultupdate=-1;
+		int resultinsert=-1;
 		String vista = "exito";
 		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
 		System.out.println("dniBuscado: " +dnibuscado);
@@ -358,36 +371,74 @@ public class CitaAction extends ActionSupport {
 				System.out.println("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
 				System.out.println("aaaa "+paciente.getIdPersona());
 				
-				cita=new CitaDTO();
-			/*	
-				cita.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				//System.out.println(ficha.getFechaRegistro());
-				ficha.setEstado(1);
-				//System.out.println(ficha.getEstado());
-				if(observaciones!=null)
-					ficha.setObservaciones(observaciones);
-				else
-					ficha.setObservaciones("");
-				//System.out.println(ficha.getObservaciones());
-				ficha.setIdPersona(paciente.getIdPersona());
-				//System.out.println(""+paciente.getDni());
+				ficha=fichaService.buscarFichaActualxPersona(dnibuscado);
 				
-				System.out.println("actualizando ficha antigua ... ");
-				resultupdate=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
-				System.out.println("registrando ficha ... :"+resultupdate);
-				idnuevacita=fichaService.registrarFicha(cita);
-				
-				
-				if(idnuevacita>0){
-					System.out.println(" idnuevacita: "+idnuevacita+" registrado en la BD");
-					mensaje="La cita del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+idnuevacita+")";
-					vista = "exito";
-				}
-				else{
-					mensaje="No se registró la Ficha";
+				if(ficha!=null){
+
+					int verificarCita=-1;
+					
+					
+					cita=new CitaDTO();
+					SimpleDateFormat sd=new SimpleDateFormat("yyyy-MM-dd");
+					cita.setIdFicha(ficha.getIdFicha());
+					cita.setFechaCita(sd.parse(fechaCita));
+					cita.setHoraCita(numerHora(horaCita));
+					cita.setIdMedico(Integer.parseInt(medicoCita));
+					cita.setNroConsultorio(Integer.parseInt(temporal.get(0).get("NroConsultorio").toString()));
+					
+					Calendar mica=Calendar.getInstance();
+					mica.setFirstDayOfWeek(Calendar.MONDAY);
+					mica.setTime(cita.getFechaCita());
+					int numerosemanadado=mica.get(Calendar.WEEK_OF_YEAR);
+					System.out.println("week of year mandado: "+numerosemanadado);
+					
+					
+					List<HashMap<String, Object>> hashmapsencontrados=citaService.cargarSemanaCita(cita);
+					
+					if(hashmapsencontrados.size()>0){
+						Date fechaaux=(Date) hashmapsencontrados.get(0).get("fechaCita");
+						mica.setTime(fechaaux);
+						int numerosemanaencontrado=mica.get(Calendar.WEEK_OF_YEAR);
+						System.out.println("week of year encontrado: "+numerosemanaencontrado);
+						
+						if(numerosemanadado!=numerosemanaencontrado){
+							verificarCita=1;
+						}else{
+							verificarCita=-1;
+						}
+						
+					}
+					
+					System.out.println("Verificando si hay citas durante esa semana: "+verificarCita);
+					
+					if(verificarCita<0){
+						System.out.println("registrando nueva cita ... ");
+						resultinsert=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
+						System.out.println("registrando ficha ... :"+resultinsert);
+						idnuevacita=citaService.registrarNuevaCita(cita);
+						
+						
+						if(idnuevacita>0){
+							System.out.println(" idnuevacita: "+idnuevacita+" registrado en la BD");
+							mensaje="La cita del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+idnuevacita+")";
+							vista = "exito";
+						}
+						else{
+							mensaje="No se registró la Cita";
+							vista = "error";
+						}
+					}else{
+						System.out.println("El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !");
+						mensaje="El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !";
+						vista = "error";
+					}
+					
+				}else{
+					System.out.println("El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !");
+					mensaje="El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !";
 					vista = "error";
 				}
-				*/
+				
 			}
 			else{
 				System.out.println("El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !");
@@ -400,6 +451,61 @@ public class CitaAction extends ActionSupport {
 			e.printStackTrace();
 		}
 		return vista;
+	}
+	
+	private double numerHora(String horacia) {
+		// TODO Auto-generated method stub
+		if(horacia.equalsIgnoreCase("8:00 am")){
+			return 8.0;
+		}else if(horacia.equalsIgnoreCase("8:30 am")){
+			return 8.5;
+		}else if(horacia.equalsIgnoreCase("9:00 am")){
+			return 9.0;
+		}else if(horacia.equalsIgnoreCase("9:30 am")){
+			return 9.5;
+		}else if(horacia.equalsIgnoreCase("10:00 am")){
+			return 10.0;
+		}else if(horacia.equalsIgnoreCase("10:30 am")){
+				return 10.5;
+		}else if(horacia.equalsIgnoreCase("11:00 am")){
+				return 11.0;
+		}else if(horacia.equalsIgnoreCase("11:30 am")){
+					return 11.5;
+		}else if(horacia.equalsIgnoreCase("12:00 m")){
+			return 12.0;
+		}else if(horacia.equalsIgnoreCase("12:30 pm")){
+					return 12.5;
+		}else if(horacia.equalsIgnoreCase("1:00 pm")){
+				return 13.0;
+		}else if(horacia.equalsIgnoreCase("1:30 pm")){
+					return 13.5;
+		}else if(horacia.equalsIgnoreCase("2:00 pm")){
+			return 14.0;
+		}else if(horacia.equalsIgnoreCase("2:30 pm")){
+			return 14.5;
+		}else if(horacia.equalsIgnoreCase("3:00 pm")){
+				return 15.0;
+		}else if(horacia.equalsIgnoreCase("3:30 pm")){
+			return 15.5;
+		}else if(horacia.equalsIgnoreCase("4:00 pm")){
+			return 16.0;
+		}else if(horacia.equalsIgnoreCase("4:30 pm")){
+			return 16.5;
+		}else if(horacia.equalsIgnoreCase("5:00 pm")){
+				return 17.0;
+		}else if(horacia.equalsIgnoreCase("5:30 pm")){
+			return 17.5;
+		}else if(horacia.equalsIgnoreCase("6:00 pm")){
+			return 18.0;
+		}else if(horacia.equalsIgnoreCase("6:30 pm")){
+			return 18.5;
+		}else if(horacia.equalsIgnoreCase("7:00 pm")){
+				return 19.0;
+		}else if(horacia.equalsIgnoreCase("7:30 pm")){
+			return 19.5;
+		}else{
+			return 20.0;
+		}
 	}
 	
 

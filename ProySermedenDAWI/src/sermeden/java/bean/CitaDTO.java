@@ -1,5 +1,7 @@
 package sermeden.java.bean;
 
+import java.util.Date;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class CitaDTO extends ActionSupport {
@@ -10,10 +12,19 @@ public class CitaDTO extends ActionSupport {
 	private static final long serialVersionUID = 4371069024427426690L;
 	private int idCita;
 	private int idFicha;
-	private int fechaCita;
-	private int HoraCita;
+	private transient Date fechaCita;
+	private double HoraCita;
 	private int NroConsultorio;
 	private int idMedico;
+	
+	
+	
+	public Date getFechaCita() {
+		return fechaCita;
+	}
+	public void setFechaCita(Date fechaCita) {
+		this.fechaCita = fechaCita;
+	}
 	public int getIdCita() {
 		return idCita;
 	}
@@ -26,16 +37,12 @@ public class CitaDTO extends ActionSupport {
 	public void setIdFicha(int idFicha) {
 		this.idFicha = idFicha;
 	}
-	public int getFechaCita() {
-		return fechaCita;
-	}
-	public void setFechaCita(int fechaCita) {
-		this.fechaCita = fechaCita;
-	}
-	public int getHoraCita() {
+
+	
+	public double getHoraCita() {
 		return HoraCita;
 	}
-	public void setHoraCita(int horaCita) {
+	public void setHoraCita(double horaCita) {
 		HoraCita = horaCita;
 	}
 	public int getNroConsultorio() {
