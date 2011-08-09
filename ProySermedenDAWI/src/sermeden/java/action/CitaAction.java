@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import sermeden.java.bean.CitaDTO;
 import sermeden.java.bean.FichaDTO;
 import sermeden.java.bean.UsuarioDTO;
@@ -34,6 +36,8 @@ public class CitaAction extends ActionSupport {
 	private String horaCita;
 	private CitaDTO cita;
 	private String mensaje;
+	
+	static private Logger log = Logger.getLogger(CitaAction.class);
 	
 	private ArrayList listahorasxfechaxmedicos;
 	private List<HashMap<String, Object>> temporal;
@@ -130,7 +134,7 @@ public class CitaAction extends ActionSupport {
 		
 		String vista="exito";
 		
-		System.out.println("Dentro del metodo listarPacientes - Struts 2");
+		log.debug("Dentro del metodo listarPacientes - Struts 2");
 		
 		//Logica de listado de turnos
 		
@@ -138,9 +142,9 @@ public class CitaAction extends ActionSupport {
 				listadoTurnos = citaService.listadoTurnos();
 			
 			if( listadoTurnos!=null && listadoTurnos.size()>0)
-				System.out.println("turnos en listado : " + listadoTurnos.size());
+				log.debug("turnos en listado : " + listadoTurnos.size());
 			else
-				System.out.println("Lista de turnos vacia");
+				log.debug("Lista de turnos vacia");
 		
 		} catch (Exception e) {
 			
@@ -151,22 +155,22 @@ public class CitaAction extends ActionSupport {
 	}
 
 	public String execute(){
-		System.out.println("entraaaaaaaa .... ");
+		log.debug("entraaaaaaaa .... ");
 		listamedicos = cargarMedicos();
-		System.out.println("tamaño listamedicos : " + listamedicos.size());
-		System.out.println("medicoCita: "+medicoCita);
-		System.out.println("fechaCita: "+fechaCita);
+		log.debug("tamaño listamedicos : " + listamedicos.size());
+		log.debug("medicoCita: "+medicoCita);
+		log.debug("fechaCita: "+fechaCita);
 
 		if(medicoCita != null && fechaCita!=null ){
-			System.out.println("cargando horasdisp x fecha x medico");
+			log.debug("cargando horasdisp x fecha x medico");
 			temporal=citaService.cargarHorasDispXFechaXMedico(medicoCita,fechaCita);
-			System.out.println("1 tamañooooooo : "+temporal.size());
-			System.out.println("un elemento: "+ temporal .get(0).get("HoraInicio"));
+			log.debug("1 tamañooooooo : "+temporal.size());
+			log.debug("un elemento: "+ temporal .get(0).get("HoraInicio"));
 			
-			System.out.println("ahora cargaremos las horas de las citas almacenadas para comparar ....");
+			log.debug("ahora cargaremos las horas de las citas almacenadas para comparar ....");
 			horascitasalmacenadas=citaService.cargarHorariosCitasHechas(medicoCita,fechaCita);
 			
-			System.out.println("(tempo)horascitasalmacenadas.size(): "+horascitasalmacenadas.size());
+			log.debug("(tempo)horascitasalmacenadas.size(): "+horascitasalmacenadas.size());
 			
 			double miarreglo[]=new double[12];
 			
@@ -176,14 +180,14 @@ public class CitaAction extends ActionSupport {
 				//int aux2=Integer.parseInt(temporal.get(0).get("HoraFin").toString());
 				for(int pr=0;pr<miarreglo.length;pr++){
 					miarreglo[pr]=aux ;
-					System.out.println("miarreglo[pr]: "+miarreglo[pr]);
+					log.debug("miarreglo[pr]: "+miarreglo[pr]);
 					aux+=0.5;
 					
 				}
 				
-				System.out.println("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
+				log.debug("%%%%%%% String.valueOf(miarreglo[j]): "+String.valueOf(miarreglo[0]));
 				if(horascitasalmacenadas.size()>0){
-					System.out.println("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
+					log.debug("%%%%%%% horascitasalmacenadas.get(j).toString(): "+horascitasalmacenadas.get(0).toString());
 					
 					for(int j=0;j<miarreglo.length;j++){
 						if(String.valueOf(miarreglo[j]).equalsIgnoreCase(horascitasalmacenadas.get(j).get("HoraCita").toString())){
@@ -242,21 +246,21 @@ public class CitaAction extends ActionSupport {
 							}
 
 							//listahorasxfechaxmedicos.add(String.valueOf(miarreglo[j]));
-							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
+							log.debug("Se agrego el elemento: "+String.valueOf(miarreglo[j]));
 						}
 						else{
-							System.out.println("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
+							log.debug("Ya contiene este elemento: "+String.valueOf(miarreglo[j]));
 						}
 					}
-					System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
+					log.debug("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
 				}else{
-					System.out.println("****** horascitasalmacenadas esta vacia");
-					System.out.println("miarreglo.length: "+miarreglo.length);
+					log.debug("****** horascitasalmacenadas esta vacia");
+					log.debug("miarreglo.length: "+miarreglo.length);
 					try {
 						listahorasxfechaxmedicos=new ArrayList();
 						for(int j=0;j<miarreglo.length;j++){
 							
-							System.out.println("aaaaa");
+							log.debug("aaaaa");
 							//listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
 							String cadenita=String.valueOf(miarreglo[j]);
 							//inicio if
@@ -313,18 +317,18 @@ public class CitaAction extends ActionSupport {
 							}
 							//fin if
 							
-							System.out.println("bbbbb");
+							log.debug("bbbbb");
 							//listahorasxfechaxmedicos.add(""+String.valueOf(miarreglo[j]));
-							System.out.println("Se agrego el elemento: "+String.valueOf(miarreglo[j]));						
+							log.debug("Se agrego el elemento: "+String.valueOf(miarreglo[j]));						
 						}
 					} catch (Exception e) {
 						// TODO: handle exception
-						System.out.println(""+e.getMessage());
+						log.debug(""+e.getMessage());
 					}
 				}	
 			}
-			System.out.println("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
-			System.out.println("otraaaaaaa :p : "+listahorasxfechaxmedicos.size());
+			log.debug("++++++ listahorasxfechaxmedicos.size: "+listahorasxfechaxmedicos .size());
+			log.debug("otraaaaaaa :p : "+listahorasxfechaxmedicos.size());
 		}
 		
 		return Action.SUCCESS;
@@ -333,7 +337,7 @@ public class CitaAction extends ActionSupport {
 	
 	private List<UsuarioDTO> cargarMedicos() {
 		
-		System.out.println("Dentro del metodo cargarMedicos");
+		log.debug("Dentro del metodo cargarMedicos");
 		
 		//Logica de listado de turnos
 		
@@ -343,9 +347,9 @@ public class CitaAction extends ActionSupport {
 			lista1 = citaService.cargarMedicos();
 			
 			if( lista1!=null && lista1.size()>0)
-				System.out.println("medicos en listado : " + lista1.size());
+				log.debug("medicos en listado : " + lista1.size());
 			else
-				System.out.println("Lista de medicos vacia");
+				log.debug("Lista de medicos vacia");
 		
 		} catch (Exception e) {
 			
@@ -360,16 +364,16 @@ public class CitaAction extends ActionSupport {
 		int idnuevacita=-1;
 		int resultinsert=-1;
 		String vista = "exito";
-		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
-		System.out.println("dniBuscado: " +dnibuscado);
+		log.debug("Dentro del metodo registrar Paciente- Struts 2 ");
+		log.debug("dniBuscado: " +dnibuscado);
 
 		//Invocamos al servicio requerido para registrar cliente
 		try {
 			paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dnibuscado);
 			if(paciente!=null){
 				
-				System.out.println("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
-				System.out.println("aaaa "+paciente.getIdPersona());
+				log.debug("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+				log.debug("aaaa "+paciente.getIdPersona());
 				
 				ficha=fichaService.buscarFichaActualxPersona(dnibuscado);
 				
@@ -391,7 +395,7 @@ public class CitaAction extends ActionSupport {
 					mica.setFirstDayOfWeek(Calendar.MONDAY);
 					mica.setTime(cita.getFechaCita());
 					int numerosemanadado=mica.get(Calendar.WEEK_OF_YEAR);
-					System.out.println("week of year mandado: "+numerosemanadado);
+					log.debug("week of year mandado: "+numerosemanadado);
 					
 					
 					List<HashMap<String, Object>> hashmapsencontrados=citaService.cargarSemanaCita(cita);
@@ -400,7 +404,7 @@ public class CitaAction extends ActionSupport {
 						Date fechaaux=(Date) hashmapsencontrados.get(0).get("fechaCita");
 						mica.setTime(fechaaux);
 						int numerosemanaencontrado=mica.get(Calendar.WEEK_OF_YEAR);
-						System.out.println("week of year encontrado: "+numerosemanaencontrado);
+						log.debug("week of year encontrado: "+numerosemanaencontrado);
 						
 						if(numerosemanadado!=numerosemanaencontrado){
 							verificarCita=1;
@@ -410,17 +414,17 @@ public class CitaAction extends ActionSupport {
 						
 					}
 					
-					System.out.println("Verificando si hay citas durante esa semana: "+verificarCita);
+					log.debug("Verificando si hay citas durante esa semana: "+verificarCita);
 					
 					if(verificarCita<0){
-						System.out.println("registrando nueva cita ... ");
+						log.debug("registrando nueva cita ... ");
 						resultinsert=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
-						System.out.println("registrando ficha ... :"+resultinsert);
+						log.debug("registrando ficha ... :"+resultinsert);
 						idnuevacita=citaService.registrarNuevaCita(cita);
 						
 						
 						if(idnuevacita>0){
-							System.out.println(" idnuevacita: "+idnuevacita+" registrado en la BD");
+							log.debug(" idnuevacita: "+idnuevacita+" registrado en la BD");
 							mensaje="La cita del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+idnuevacita+")";
 							vista = "exito";
 						}
@@ -429,20 +433,20 @@ public class CitaAction extends ActionSupport {
 							vista = "error";
 						}
 					}else{
-						System.out.println("El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !");
+						log.debug("El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !");
 						mensaje="El paciente con DNI "+dnibuscado+" ya tiene una cita durante la semana de la fecha elegida !";
 						vista = "error";
 					}
 					
 				}else{
-					System.out.println("El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !");
+					log.debug("El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !");
 					mensaje="El paciente con DNI "+dnibuscado+" no tiene una ficha Activa en el sistema !";
 					vista = "error";
 				}
 				
 			}
 			else{
-				System.out.println("El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !");
+				log.debug("El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !");
 				mensaje="El paciente con DNI "+dnibuscado+" no se encuentra registrado en el Sistema !";
 				vista = "error";
 			}

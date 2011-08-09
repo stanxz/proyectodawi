@@ -9,6 +9,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.Logger;
+
 import sermeden.java.bean.DMPacienteDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.PaqueteBusinessDelegate;
@@ -22,6 +24,7 @@ public class PacienteAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	static private Logger log = Logger.getLogger(PacienteAction.class);
 	private List<UsuarioDTO> listadoPacientes;
 	private UsuarioDTO paciente;
 	private DMPacienteDTO dmpaciente;
@@ -97,16 +100,16 @@ public class PacienteAction extends ActionSupport{
 		int idnuevousuario=-1;
 		int iddmpaciente=-1;
 		String vista = "exito";
-		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
-		System.out.println("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
+		log.debug("Dentro del metodo registrar Paciente- Struts 2 ");
+		log.debug("Nombre del usaurio a registrar Paciente: " + paciente.getNombre() + " " + paciente.getApepat());
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
 		try {
 			if(pacienteService.validarUsuarioRegistrado(paciente)==false){
-				System.out.println("llego hasta aqui");
+				log.debug("llego hasta aqui");
 				idnuevousuario=pacienteService.registrarUsuario(paciente);
-				System.out.println("1 idnuevousuario: "+idnuevousuario+" registrado en la BD");
+				log.debug("1 idnuevousuario: "+idnuevousuario+" registrado en la BD");
 				if(idnuevousuario>0){
 					paciente.setUser(paciente.getDni());
 					paciente.setContrasena(paciente.getDni());
@@ -134,7 +137,7 @@ public class PacienteAction extends ActionSupport{
 					dmpaciente1.setObservaciones("");
 					//logica para insertar los datos medicos iniciales del paciente
 					 iddmpaciente=pacienteService.registrarDMPaciente(dmpaciente1);
-					System.out.println("iddmpaciente: "+iddmpaciente);
+					log.debug("iddmpaciente: "+iddmpaciente);
 					//logica para envio de correos debe ir aqui
 					 // Propiedades de la conexión
 		            Properties props = new Properties();
@@ -164,7 +167,7 @@ public class PacienteAction extends ActionSupport{
 		            Transport t = session.getTransport("smtp");
 		            t.connect("proylp2@gmail.com", "cibertec");
 		            t.sendMessage(message, message.getAllRecipients());
-		            System.out.println("Mensaje Enviado Correctamente");
+		            log.debug("Mensaje Enviado Correctamente");
 
 		         // Cierre.
 		            t.close();
@@ -174,10 +177,10 @@ public class PacienteAction extends ActionSupport{
 					mensaje="Error al registrar al paciente con DNI "+paciente.getDni();
 				}
 					
-				System.out.println("idPersona: "+paciente.getIdPersona());
+				log.debug("idPersona: "+paciente.getIdPersona());
 			}
 			else{
-				System.out.println("El paciente con DNI "+paciente.getDni()+" ya existe en la BD !");
+				log.debug("El paciente con DNI "+paciente.getDni()+" ya existe en la BD !");
 				mensaje="El paciente con DNI "+paciente.getDni()+" ya existe en la BD !";
 			}
 		} catch (Exception e) {
@@ -191,8 +194,8 @@ public class PacienteAction extends ActionSupport{
 	public String buscarPatient(){
 		
 		String vista="exito";
-		System.out.println("Dentro del metodo buscarPaciente - Struts 2");
-		System.out.println("Parametro filtro : " + dniBuscado);
+		log.debug("Dentro del metodo buscarPaciente - Struts 2");
+		log.debug("Parametro filtro : " + dniBuscado);
 		
 		//Logica de listado de clientes
 		
@@ -216,7 +219,7 @@ public class PacienteAction extends ActionSupport{
 		} catch (Exception e) {
 			
 			e.printStackTrace();
-			System.out.println("e: "+e.getMessage());
+			log.debug("e: "+e.getMessage());
 		}
 		
 		return vista;
@@ -290,12 +293,12 @@ public void validate(){
 	public String actualizarPatient(){
 	int resultado=-1;
 	String vista="exito";
-	System.out.println("Dentro del metodo actualizar Usuario - Struts2");
+	log.debug("Dentro del metodo actualizar Usuario - Struts2");
 	try {
 		
-		System.out.println("DNI de Usuario a modificar: " +paciente.getNombre());
-		System.out.println("DNI de Usuario a modificar: " +paciente.getDni());
-		System.out.println("sexo: "+paciente.getSexo());
+		log.debug("DNI de Usuario a modificar: " +paciente.getNombre());
+		log.debug("DNI de Usuario a modificar: " +paciente.getDni());
+		log.debug("sexo: "+paciente.getSexo());
 		//Dependiendo del jsp enviamos el dato correcto a la BD
 		if(paciente.getSexo().equalsIgnoreCase("Masculino")){
 			paciente.setSexo("H");
@@ -303,15 +306,15 @@ public void validate(){
 			paciente.setSexo("M");
 		}
 		resultado= pacienteService.modificarPersona(paciente);
-		System.out.println("1 actualiza: "+resultado);
-		System.out.println("dni: "+paciente.getDni());
-		System.out.println("---------");
+		log.debug("1 actualiza: "+resultado);
+		log.debug("dni: "+paciente.getDni());
+		log.debug("---------");
 		if(resultado>0){
 			
 			resultado=pacienteService.modificarUsuarioxPersona(paciente);
-			System.out.println("2 actualiza: "+resultado);
-			System.out.println("dni: "+paciente.getDni());
-			System.out.println("---------");
+			log.debug("2 actualiza: "+resultado);
+			log.debug("dni: "+paciente.getDni());
+			log.debug("---------");
 			titulo = "Actualización de Usuario";
 			mensaje="El usuario con DNI " + paciente.getDni() + " se actualizó con exito";
 			
@@ -327,9 +330,9 @@ public void validate(){
 		
 		String vista="exito";
 		
-		System.out.println("Dentro del metodo listarPacientes - Struts 2");
-		System.out.println("Parametro filtro : " + filtro);
-		System.out.println("Parametro criterio : " + tipocriterio);
+		log.debug("Dentro del metodo listarPacientes - Struts 2");
+		log.debug("Parametro filtro : " + filtro);
+		log.debug("Parametro criterio : " + tipocriterio);
 		
 		//Logica de listado de clientes
 		
@@ -341,9 +344,9 @@ public void validate(){
 			}
 			
 			if( listadoPacientes!=null && listadoPacientes.size()>0)
-				System.out.println("Numero de usuarios : " + listadoPacientes.size());
+				log.debug("Numero de usuarios : " + listadoPacientes.size());
 			else
-				System.out.println("Lista de usuarios vacia");
+				log.debug("Lista de usuarios vacia");
 		
 		} catch (Exception e) {
 			
@@ -356,38 +359,38 @@ public void validate(){
 	//Carga los datos de pacientes por ID
 	public String cargaDatosPatientxId(){
 		String vista = "exito";
-		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
-		System.out.println("ID de usuario a buscar DM " + idBuscar);
+		log.debug("Ingresando al metodo cargaDatos de Paciente");	
+		log.debug("ID de usuario a buscar DM " + idBuscar);
 		// Invocar a los servicios necesarios	
 		try {
 			paciente = pacienteService.buscarUsuario(idBuscar) ; 
-			System.out.println("DNI usuario a buscar DM " + paciente.getDni());
+			log.debug("DNI usuario a buscar DM " + paciente.getDni());
 			
 			dmpaciente=pacienteService.DMxIdPaciente(idBuscar);
 			if(dmpaciente!=null){
-				System.out.println("dump DMPaciente");
-				System.out.println(""+dmpaciente.getIdPersona());
-				System.out.println(""+dmpaciente.getIdDMPaciente());
+				log.debug("dump DMPaciente");
+				log.debug(""+dmpaciente.getIdPersona());
+				log.debug(""+dmpaciente.getIdDMPaciente());
 				//le asignamos el valor del DNI del paciente al DM buscado
 				dmpaciente.setDni(paciente.getDni());
-				System.out.println(""+dmpaciente.getDni());
-				/*System.out.println(""+dmpaciente.getAlergia());
-				System.out.println(""+dmpaciente.getAsma());
-				System.out.println(""+dmpaciente.getCefalea());
-				System.out.println(""+dmpaciente.getOtros());*/
+				log.debug(""+dmpaciente.getDni());
+				/*log.debug(""+dmpaciente.getAlergia());
+				log.debug(""+dmpaciente.getAsma());
+				log.debug(""+dmpaciente.getCefalea());
+				log.debug(""+dmpaciente.getOtros());*/
 				
-				System.out.println(""+dmpaciente.isAlergia());
-				System.out.println(""+dmpaciente.isAsma());
-				System.out.println(""+dmpaciente.isCefalea());
-				System.out.println(""+dmpaciente.isOtros());
+				log.debug(""+dmpaciente.isAlergia());
+				log.debug(""+dmpaciente.isAsma());
+				log.debug(""+dmpaciente.isCefalea());
+				log.debug(""+dmpaciente.isOtros());
 				
-				System.out.println(""+dmpaciente.getEspecificacion());
-				System.out.println(""+dmpaciente.getGrupoSanguineo());
-				System.out.println(""+dmpaciente.getPeso());
-				System.out.println("fin dump");
+				log.debug(""+dmpaciente.getEspecificacion());
+				log.debug(""+dmpaciente.getGrupoSanguineo());
+				log.debug(""+dmpaciente.getPeso());
+				log.debug("fin dump");
 				
 			}else{
-				System.out.println("dmpaciente es nulo !!!");
+				log.debug("dmpaciente es nulo !!!");
 			}
 			
 			
@@ -402,13 +405,13 @@ public void validate(){
 	//Carga los datos de pacientes por DNI
 	/*public String cargaDatosPatient(){
 		String vista = "exito";
-		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
-		System.out.println("usuario a buscar " + dniBuscado);
+		log.debug("Ingresando al metodo cargaDatos de Paciente");	
+		log.debug("usuario a buscar " + dniBuscado);
 		// Invocar a los servicios necesarios	
 		try {
 			
 			paciente = pacienteService.pacienteXDNI(dniBuscado); 
-			System.out.println("usuario a buscar " + paciente.getDni());
+			log.debug("usuario a buscar " + paciente.getDni());
 			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
 			}else{
@@ -428,13 +431,13 @@ public void validate(){
 	//Carga los datos de usuarios por DNI
 	public String cargaDatosUser(){
 		String vista = "exito";
-		System.out.println("Ingresando al metodo cargaDatos de Paciente");	
-		System.out.println("usuario a buscar " + dniBuscado);
+		log.debug("Ingresando al metodo cargaDatos de Paciente");	
+		log.debug("usuario a buscar " + dniBuscado);
 		// Invocar a los servicios necesarios	
 		try {
 			
 			paciente = pacienteService.usuarioXDNI(dniBuscado); 
-			System.out.println("usuario a buscar " + paciente.getDni());
+			log.debug("usuario a buscar " + paciente.getDni());
 			if(paciente.getSexo().equalsIgnoreCase("H")){
 				paciente.setSexo("Masculino");
 			}else{
@@ -452,45 +455,45 @@ public void validate(){
 	public String actualizarDMPatient(){
 		int resultado=-1;
 		String vista="exito";
-		System.out.println("Dentro del metodo actualizar DM del Paciente - Struts2");
+		log.debug("Dentro del metodo actualizar DM del Paciente - Struts2");
 			try {
 			//DMPacienteDTO temporaldm=new DMPacienteDTO();
 			//temporaldm.setDni(dmpaciente.getDni());
 			
-			System.out.println("DNI de Usuario a modificar su DM : " +dmpaciente.getDni());
+			log.debug("DNI de Usuario a modificar su DM : " +dmpaciente.getDni());
 			paciente = pacienteService.pacienteXDNI(dmpaciente.getDni());
 			
 			//asignamos el idPersona de paciente a dmpaciente
 			dmpaciente.setIdPersona(paciente.getIdPersona());
 			
-			System.out.println("dmpaciente.getIdPersona(): "+dmpaciente.getIdPersona());
-			/*System.out.println("dmpaciente.getCefalea(): "+dmpaciente.getCefalea());
-			System.out.println("dmpaciente.getAsma(): "+dmpaciente.getAsma());
-			System.out.println("dmpaciente.getAlergia(): "+dmpaciente.getAlergia());
-			System.out.println("dmpaciente.getOtros(): "+dmpaciente.getOtros());*/
-			System.out.println("dmpaciente.isCefalea(): "+dmpaciente.isCefalea());
-			System.out.println("dmpaciente.isAsma(): "+dmpaciente.isAsma());
-			System.out.println("dmpaciente.isAlergia(): "+dmpaciente.isAlergia());
-			System.out.println("dmpaciente.isOtros(): "+dmpaciente.isOtros());
+			log.debug("dmpaciente.getIdPersona(): "+dmpaciente.getIdPersona());
+			/*log.debug("dmpaciente.getCefalea(): "+dmpaciente.getCefalea());
+			log.debug("dmpaciente.getAsma(): "+dmpaciente.getAsma());
+			log.debug("dmpaciente.getAlergia(): "+dmpaciente.getAlergia());
+			log.debug("dmpaciente.getOtros(): "+dmpaciente.getOtros());*/
+			log.debug("dmpaciente.isCefalea(): "+dmpaciente.isCefalea());
+			log.debug("dmpaciente.isAsma(): "+dmpaciente.isAsma());
+			log.debug("dmpaciente.isAlergia(): "+dmpaciente.isAlergia());
+			log.debug("dmpaciente.isOtros(): "+dmpaciente.isOtros());
 			
-			System.out.println("dmpaciente.getEspecificacion(): "+dmpaciente.getEspecificacion());
-			System.out.println("dmpaciente.getPeso(): "+dmpaciente.getPeso());
-			System.out.println("dmpaciente.getTalla(): "+dmpaciente.getTalla());
-			System.out.println("dmpaciente.getPresionArterial(): "+dmpaciente.getPresionArterial());
-			System.out.println("dmpaciente.getGrupoSanguineo(): "+dmpaciente.getGrupoSanguineo());
-			System.out.println("dmpaciente.getObservaciones(): "+dmpaciente.getObservaciones());
-			System.out.println("dmpaciente.getIdDMPaciente(): "+dmpaciente.getIdDMPaciente());
+			log.debug("dmpaciente.getEspecificacion(): "+dmpaciente.getEspecificacion());
+			log.debug("dmpaciente.getPeso(): "+dmpaciente.getPeso());
+			log.debug("dmpaciente.getTalla(): "+dmpaciente.getTalla());
+			log.debug("dmpaciente.getPresionArterial(): "+dmpaciente.getPresionArterial());
+			log.debug("dmpaciente.getGrupoSanguineo(): "+dmpaciente.getGrupoSanguineo());
+			log.debug("dmpaciente.getObservaciones(): "+dmpaciente.getObservaciones());
+			log.debug("dmpaciente.getIdDMPaciente(): "+dmpaciente.getIdDMPaciente());
 			
 			resultado= pacienteService.modificarDMPaciente(dmpaciente);
-			System.out.println("1 actualizo??: "+resultado);
-			System.out.println("dni: "+dmpaciente.getDni());
-			System.out.println("---------");
+			log.debug("1 actualizo??: "+resultado);
+			log.debug("dni: "+dmpaciente.getDni());
+			log.debug("---------");
 			if(resultado>0){
 				
 				/*resultado=pacienteService.modificarUsuarioxPersona(paciente);
-				System.out.println("2 actualiza: "+resultado);
-				System.out.println("dni: "+paciente.getDni());
-				System.out.println("---------");
+				log.debug("2 actualiza: "+resultado);
+				log.debug("dni: "+paciente.getDni());
+				log.debug("---------");
 				titulo = "Actualización de Usuario";*/
 				mensaje="Los DM del usuario con DNI " + paciente.getDni() + " se actualizaron con exito: "+resultado;
 				
