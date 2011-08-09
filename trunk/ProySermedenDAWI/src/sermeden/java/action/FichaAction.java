@@ -1,5 +1,7 @@
 package sermeden.java.action;
 
+import org.apache.log4j.Logger;
+
 import sermeden.java.bean.FichaDTO;
 import sermeden.java.bean.UsuarioDTO;
 import sermeden.java.service.FichaService_I;
@@ -14,6 +16,7 @@ public class FichaAction extends ActionSupport {
 	 * 
 	 */ 
 	private static final long serialVersionUID = 1L;
+	static private Logger log = Logger.getLogger(FichaAction.class);
 	private FichaDTO ficha;
 	private UsuarioDTO paciente;
 	private String mensaje;
@@ -69,9 +72,9 @@ public class FichaAction extends ActionSupport {
 		int idnuevaficha=-1;
 		int resultupdate=-1;
 		String vista = "exito";
-		System.out.println("Dentro del metodo registrar Paciente- Struts 2 ");
-		System.out.println("dniBuscado: " +dniBuscado);
-		System.out.println("observaciones: "+observaciones);
+		log.debug("Dentro del metodo registrar Paciente- Struts 2 ");
+		log.debug("dniBuscado: " +dniBuscado);
+		log.debug("observaciones: "+observaciones);
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
@@ -79,31 +82,31 @@ public class FichaAction extends ActionSupport {
 			paciente=(UsuarioDTO) pacienteService.pacienteXDNI(dniBuscado);
 			if(paciente!=null){
 				
-				System.out.println("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
-				System.out.println("aaaa "+paciente.getIdPersona());
+				log.debug("paciente se encuentra en la BD: "+paciente.getNombre()+" "+paciente.getApepat());
+				log.debug("aaaa "+paciente.getIdPersona());
 				
 				ficha=new FichaDTO();
 				
 				ficha.setFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				//System.out.println(ficha.getFechaRegistro());
+				//log.debug(ficha.getFechaRegistro());
 				ficha.setEstado(1);
-				//System.out.println(ficha.getEstado());
+				//log.debug(ficha.getEstado());
 				if(observaciones!=null)
 					ficha.setObservaciones(observaciones);
 				else
 					ficha.setObservaciones("");
-				//System.out.println(ficha.getObservaciones());
+				//log.debug(ficha.getObservaciones());
 				ficha.setIdPersona(paciente.getIdPersona());
-				//System.out.println(""+paciente.getDni());
+				//log.debug(""+paciente.getDni());
 				
-				System.out.println("actualizando ficha antigua ... ");
+				log.debug("actualizando ficha antigua ... ");
 				resultupdate=fichaService.cambiarEstadoFichaActual(paciente.getIdPersona());
-				System.out.println("registrando ficha ... :"+resultupdate);
+				log.debug("registrando ficha ... :"+resultupdate);
 				idnuevaficha=fichaService.registrarFicha(ficha);
 				
 				
 				if(idnuevaficha>0){
-					System.out.println(" idnuevaficha: "+idnuevaficha+" registrado en la BD");
+					log.debug(" idnuevaficha: "+idnuevaficha+" registrado en la BD");
 					mensaje="La ficha del paciente con DNI "+paciente .getDni()+" se registró con exito ! (id Ficha: "+ficha.getIdFicha()+")";
 					vista = "exito";
 				}
@@ -113,7 +116,7 @@ public class FichaAction extends ActionSupport {
 				}
 			}
 			else{
-				System.out.println("El paciente con DNI "+dniBuscado+" no se encuentra registrado en el Sistema !");
+				log.debug("El paciente con DNI "+dniBuscado+" no se encuentra registrado en el Sistema !");
 				mensaje="El paciente con DNI "+dniBuscado+" no se encuentra registrado en el Sistema !";
 				vista = "error";
 			}

@@ -17,12 +17,15 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.log4j.Logger;
+
 public class UsuarioAction extends ActionSupport{
 	
 /**
 	 * 
 	 */
 private static final long serialVersionUID = 1L;
+static private Logger log = Logger.getLogger(UsuarioAction.class);
 private String filtro;
 private String condicion;
 private String idBuscar;
@@ -97,9 +100,9 @@ public void setCondicion(String condicion) {
 		
 		String vista="exito";
 		
-		System.out.println("Dentro del metodo listarUsuario - Struts 2");
-		System.out.println("Parametro filtro : " + filtro);
-		System.out.println("Parametro criterio : " + tipocriterio);
+		log.debug("Dentro del metodo listarUsuario - Struts 2");
+		log.debug("Parametro filtro : " + filtro);
+		log.debug("Parametro criterio : " + tipocriterio);
 		
 		//Logica de listado de clientes
 		
@@ -111,9 +114,9 @@ public void setCondicion(String condicion) {
 			}
 			
 			if( listadoUsuarios!=null && listadoUsuarios.size()>0)
-				System.out.println("Numero de usuarios : " + listadoUsuarios.size());
+				log.debug("Numero de usuarios : " + listadoUsuarios.size());
 			else
-				System.out.println("Lista de usuarios vacia");
+				log.debug("Lista de usuarios vacia");
 		
 		} catch (Exception e) {
 			
@@ -125,14 +128,14 @@ public void setCondicion(String condicion) {
 
 	public String cargaDatosUser(){
 		String vista = "exito";
-		System.out.println("Ingresando al metodo cargaDatos");	
-		System.out.println("usuario a buscar " + idBuscar);
+		log.debug("Ingresando al metodo cargaDatos");	
+		log.debug("usuario a buscar " + idBuscar);
 		
 		// Invocar a los servicios necesarios	
 		try {
 			
 			usuario = usuarioService.buscarUsuario(idBuscar);
-			System.out.println("$$$$$ idPerfil del usuario: "+usuario.getIdPerfil());
+			log.debug("$$$$$ idPerfil del usuario: "+usuario.getIdPerfil());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -146,17 +149,17 @@ public void setCondicion(String condicion) {
 		int idnuevousuario=-1;
 		String vista = "exito";
 		
-		System.out.println("Dentro del metodo registrar - Struts 2 ");
-		System.out.println("Nombre del usaurio a registrar: " + usuario.getNombre() + " " + usuario.getApepat());
-		//System.out.println("Nombre " + usuario.getUsuario());
+		log.debug("Dentro del metodo registrar - Struts 2 ");
+		log.debug("Nombre del usaurio a registrar: " + usuario.getNombre() + " " + usuario.getApepat());
+		//log.debug("Nombre " + usuario.getUsuario());
 		
 		//Invocamos al servicio requerido para registrar cliente
 		
 		try {
 			if(usuarioService.validarUsuarioRegistrado(usuario)==false){
-				System.out.println("llego hasta aqui");
+				log.debug("llego hasta aqui");
 				idnuevousuario=usuarioService.registrarUsuario(usuario);
-				System.out.println("1 idnuevousuario: "+idnuevousuario+" registrado en la BD");
+				log.debug("1 idnuevousuario: "+idnuevousuario+" registrado en la BD");
 				
 				if(idnuevousuario>0){
 					usuario.setUser(usuario.getDni());
@@ -196,7 +199,7 @@ public void setCondicion(String condicion) {
 		            Transport t = session.getTransport("smtp");
 		            t.connect("proylp2@gmail.com", "cibertec");
 		            t.sendMessage(message, message.getAllRecipients());
-		            System.out.println("Mensaje Enviado Correctamente");
+		            log.debug("Mensaje Enviado Correctamente");
 
 		         // Cierre.
 		            t.close();
@@ -206,10 +209,10 @@ public void setCondicion(String condicion) {
 					mensaje="Error al registrar al usuario con DNI "+usuario.getDni();
 				}
 					
-				System.out.println("idPersona: "+usuario.getIdPersona());
+				log.debug("idPersona: "+usuario.getIdPersona());
 			}
 			else{
-				System.out.println("El usuario con DNI "+usuario.getDni()+" ya existe en la BD !");
+				log.debug("El usuario con DNI "+usuario.getDni()+" ya existe en la BD !");
 				mensaje="El usuario con DNI "+usuario.getDni()+" ya existe en la BD !";
 			}
 			
@@ -302,20 +305,20 @@ public void setCondicion(String condicion) {
 	public String actualizarUser(){
 		int resultado=-1;
 		String vista="exito";
-		System.out.println("Dentro del metodo actualizar Usuario - Struts2");
+		log.debug("Dentro del metodo actualizar Usuario - Struts2");
 		try {
 			
-			System.out.println("DNI de Usuario a modificar: " +usuario.getNombre());
-			System.out.println("DNI de Usuario a modificar: " +usuario.getDni());
+			log.debug("DNI de Usuario a modificar: " +usuario.getNombre());
+			log.debug("DNI de Usuario a modificar: " +usuario.getDni());
 			resultado=usuarioService.modificarPersona(usuario);
-			System.out.println("1 actualiza: "+resultado);
-			System.out.println("dni: "+usuario.getDni());
-			System.out.println("---------");
+			log.debug("1 actualiza: "+resultado);
+			log.debug("dni: "+usuario.getDni());
+			log.debug("---------");
 			if(resultado>0){
 				resultado=usuarioService.modificarUsuarioxPersona(usuario);
-				System.out.println("2 actualiza: "+resultado);
-				System.out.println("dni: "+usuario.getDni());
-				System.out.println("---------");
+				log.debug("2 actualiza: "+resultado);
+				log.debug("dni: "+usuario.getDni());
+				log.debug("---------");
 				titulo = "Actualización de Usuario";
 				mensaje="El usuario con DNI " + usuario.getDni() + " se actualizó con exito";
 				
@@ -330,8 +333,8 @@ public void setCondicion(String condicion) {
 	public String cambiarEstadoUser(){
 		int resultado=-1;
 		String vista="exito";
-		System.out.println("Dentro del metodo desactivar - Struts2");
-		System.out.println("Nombre del Usuario a cambiar de Estado: " +usuario.getNombre());
+		log.debug("Dentro del metodo desactivar - Struts2");
+		log.debug("Nombre del Usuario a cambiar de Estado: " +usuario.getNombre());
 		try {
 			UsuarioDTO auxiliar=new UsuarioDTO();
 			auxiliar.setIdPersona(usuario.getIdPersona());
@@ -341,7 +344,7 @@ public void setCondicion(String condicion) {
 				auxiliar.setEstado(0);
 			
 			resultado=usuarioService.cambiarEstadoUsuario(auxiliar);
-			System.out.println("resultado cambiar Estado: "+resultado);
+			log.debug("resultado cambiar Estado: "+resultado);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -352,15 +355,15 @@ public void setCondicion(String condicion) {
 	
 	public String recuperaPassUser(){
 		String vista="exito";
-		System.out.println("Dentro del metodo desactivar - Struts2");
-		System.out.println("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
+		log.debug("Dentro del metodo desactivar - Struts2");
+		log.debug("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
 		try {
 			UsuarioDTO auxiliar=new UsuarioDTO();
 			
 			
 			if(usuarioService.listadoUsuariosXDNI(dniBuscado).size()>0){
 				auxiliar=(UsuarioDTO)usuarioService.listadoUsuariosXDNI(dniBuscado).get(0);
-				System.out.println("email Destino del pass: "+auxiliar.getEmail());
+				log.debug("email Destino del pass: "+auxiliar.getEmail());
 				
 				//logica para envio de correos debe ir aqui
 				 // Propiedades de la conexión
@@ -388,7 +391,7 @@ public void setCondicion(String condicion) {
 	            Transport t = session.getTransport("smtp");
 	            t.connect("proylp2@gmail.com", "cibertec");
 	            t.sendMessage(message, message.getAllRecipients());
-	            System.out.println("Mensaje Enviado Correctamente");
+	            log.debug("Mensaje Enviado Correctamente");
 
 	         // Cierre.
 	            t.close();

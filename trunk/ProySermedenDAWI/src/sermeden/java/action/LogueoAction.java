@@ -3,6 +3,8 @@ package sermeden.java.action;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
 /*import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;*/
 
@@ -23,6 +25,7 @@ public class LogueoAction extends ActionSupport {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	static private Logger log = Logger.getLogger(LogueoAction.class);
 	private String mensaje;
 	private String mensaje2;
 	private UsuarioDTO elusuario;
@@ -78,11 +81,11 @@ public class LogueoAction extends ActionSupport {
 		String vista="exito";
 		
 		
-		System.out.println("Dentro del primer Action "+
+		log.debug("Dentro del primer Action "+
 				"con Struts 2");
 		
-		System.out.println("Usuario :" + elusuario.getUser());
-		System.out.println("Clave : " + elusuario.getContrasena());
+		log.debug("Usuario :" + elusuario.getUser());
+		log.debug("Clave : " + elusuario.getContrasena());
 		
 		UsuarioService_I usuarioService = PaqueteBusinessDelegate.getUsuarioService();
 		
@@ -103,15 +106,15 @@ public class LogueoAction extends ActionSupport {
 			if(clienteAux!=null){
 				listadoMenu = menuService.obtieneMenu(clienteAux);
 				
-				System.out.println("para: "+clienteAux.getNombre()+" "+clienteAux.getApepat());
-				System.out.println(clienteAux.getUser());
-				System.out.println(clienteAux.getContrasena());
-				System.out.println("listadoMenu cantidad de items: "+listadoMenu.size());
+				log.debug("para: "+clienteAux.getNombre()+" "+clienteAux.getApepat());
+				log.debug(clienteAux.getUser());
+				log.debug(clienteAux.getContrasena());
+				log.debug("listadoMenu cantidad de items: "+listadoMenu.size());
 				
 				for (MenuDTO menu : listadoMenu) {
-					System.out.println("menu.getIdFuncionalidad(): "+menu.getIdFuncionalidad());
-					System.out.println("menu.getDescripcion(): "+menu.getDescripcion());
-					System.out.println("menu.getEnlace(): "+menu.getEnlace());
+					log.debug("menu.getIdFuncionalidad(): "+menu.getIdFuncionalidad());
+					log.debug("menu.getDescripcion(): "+menu.getDescripcion());
+					log.debug("menu.getEnlace(): "+menu.getEnlace());
 				}
 				
 				/*if(clienteAux.getContrasena().equals(elusuario.getContrasena())){*/

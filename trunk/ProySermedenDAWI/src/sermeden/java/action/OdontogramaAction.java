@@ -3,6 +3,8 @@ package sermeden.java.action;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import sermeden.java.bean.DMPacienteDTO;
@@ -18,6 +20,7 @@ public class OdontogramaAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 8023221043947485107L;
+	static private Logger log = Logger.getLogger(OdontogramaAction.class);
 	private OdontogramaDTO odontograma;
 	private UsuarioDTO usuario;
 	private List<UsuarioDTO> listadoUsuarios;
@@ -89,7 +92,7 @@ public class OdontogramaAction extends ActionSupport{
 		
 		
 		try {
-			System.out.println("-->" + dmpaciente.getDni());
+			log.debug("-->" + dmpaciente.getDni());
 				
 				odontograma.setDni(dmpaciente.getDni());
 				odontograma.setFechareg(new java.sql.Date(new java.util.Date().getTime()));
@@ -101,7 +104,7 @@ public class OdontogramaAction extends ActionSupport{
 					titulo = "Generar de Odontograma";
 					mensaje = "Se ha generado correctamente el odontograma " +
 					"para el usuario con Dni " + odontograma.getDni();
-					System.out.println("mensaje-->" + mensaje);
+					log.debug("mensaje-->" + mensaje);
 
 				}
 				
@@ -117,8 +120,8 @@ public class OdontogramaAction extends ActionSupport{
 	
 	public String listarOdontograma(){
 		String vista="exito";
-		System.out.println("Dentro del metodo desactivar - Struts2");
-		System.out.println("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
+		log.debug("Dentro del metodo desactivar - Struts2");
+		log.debug("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
 		try {
 			
 			
@@ -130,7 +133,7 @@ public class OdontogramaAction extends ActionSupport{
 			}else{
 				
 				mensajeOdontograma = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
-				System.out.println(mensajeOdontograma);
+				log.debug(mensajeOdontograma);
 				vista="error";
 			}
 			
