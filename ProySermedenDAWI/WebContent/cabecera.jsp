@@ -3,7 +3,7 @@
 <table width="100%;">
     	<tr>
         	<td>
-            <div class="logo">
+            <div id="logo" class="logo">
             	<a href="#"><img src="./images/logo.png" alt="" width="179" height="77" /></a>Sermeden
             </div>
              </td>

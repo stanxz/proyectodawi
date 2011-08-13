@@ -32,18 +32,15 @@
 						button="true"/>
 			</td>
 			</tr>
-			<tr>
-				<td colspan="2">
-					<s:property value="mensajeOdontograma"/>
-				</td>
-			</tr>
 		</table>
 		</div>
 		</td>
 		</tr>
 		</table>
 	</s:form> 
+	<s:if test="$mensaje != null">
 	<sj:div id="resultado">
 	</sj:div>
+	</s:if>
 </body>
 </html>

@@ -26,11 +26,11 @@
             </s:if>
 			 	
 	</tr>
-	
+	<s:if test='#session.b_usuario.idPerfil == 3'>
 	<tr>
 			<td colspan="2"> <s:property value="mensaje"/> </td>
 	</tr>
-		
+	</s:if>	
 		
 		<tr>
 			<td colspan="2">

@@ -11,7 +11,14 @@
 	</tr>
 </table>
  --> 
- 
+ <table>
+  <tr>
+				<td colspan="2">
+					<s:property value="mensajeOdontograma"/>
+				</td>
+  </tr>
+</table>
+
 
 <table class="lista">
 	<tr>
