@@ -26,8 +26,13 @@
 				class="sermeden.java.action.OdontogramaAction" method="generarOdontograma">
 				<result name="exito" type="tiles">d_bienvenida</result>
 		</action>
-		
-		
+
+		<action name="registrarOdontograma" 
+				class="sermeden.java.action.OdontogramaAction" 
+				method="registro">
+   	 	 
+      		<result name="exito" type="tiles">d_odontograma</result>
+       </action>
 
 	</package>
 	

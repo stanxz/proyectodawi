@@ -65,7 +65,7 @@
 		  <TR><td>&nbsp;</td></TR>
           <TR>
 		  	   <TD>
-		  	   <div>
+		  	   <div id="menu" class="menu">
 					<ul id="navlist">
 						<li><A class=SiteLinkBold href="a_principal">Principal</A></li>
 				</ul>
@@ -76,7 +76,7 @@
 		   <s:iterator value="#session.b_menu">
 		   	 <TR> 
 		  	   <TD>
-		  	   <div>
+		  	   <div id="menu" class="menu">
 					<ul id="navlist">
 						<li>
 						<s:if test="idFuncionalidad == 9">
@@ -100,7 +100,7 @@
 		  <TR><td>&nbsp;</td></TR>
 		  <TR>
 			    <TD>
-			    <div>
+			    <div id="menu" class="menu">
 					<ul id="navlist">
 						<li>
 						<A class="SiteLinkBold" HREF="LogueoSistema.jsp">Salir</A>

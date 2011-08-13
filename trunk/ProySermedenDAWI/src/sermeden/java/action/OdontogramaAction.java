@@ -30,6 +30,8 @@ public class OdontogramaAction extends ActionSupport{
 	private String titulo;
 	private String dniBuscado;
 	
+	private String[] jsonData;
+	
 	public OdontogramaDTO getOdontograma() {
 		return odontograma;
 	}
@@ -77,6 +79,14 @@ public class OdontogramaAction extends ActionSupport{
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
+	
+	public String[] getJsonData() {
+		return jsonData;
+	}
+	public void setJsonData(String[] jsonData) {
+		this.jsonData = jsonData;
+	}
+
 
 
 	OdontogramaService_I odontogramaService = 
@@ -85,7 +95,7 @@ public class OdontogramaAction extends ActionSupport{
 	UsuarioService_I usuarioService = 
 		PaqueteBusinessDelegate.getUsuarioService();
 	
-	public String generarOdontograma(){
+	/*public String generarOdontograma(){
 
 		int nuevoOdontograma=-1;
 		String vista = "exito";
@@ -116,9 +126,9 @@ public class OdontogramaAction extends ActionSupport{
 		
 		return vista;
 	
-	}
+	}*/
 	
-	public String listarOdontograma(){
+	/*public String listarOdontograma(){
 		String vista="exito";
 		log.debug("Dentro del metodo desactivar - Struts2");
 		log.debug("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
@@ -136,9 +146,6 @@ public class OdontogramaAction extends ActionSupport{
 				log.debug(mensajeOdontograma);
 				vista="error";
 			}
-			
-			
-			
 			 
 			//
 		} catch (Exception e) {
@@ -148,5 +155,16 @@ public class OdontogramaAction extends ActionSupport{
 		}
 		return vista;
 
+	}*/
+	
+	public String registro(){
+		
+		for(String s : jsonData){
+			System.out.println("jsonData - Opcion Selecionada : " + s);
+		}
+		
+		return SUCCESS;
+		
 	}
+
 }
