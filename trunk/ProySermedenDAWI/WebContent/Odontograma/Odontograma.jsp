@@ -27,7 +27,7 @@
  <script type="text/javascript">
     
  	var cadena = [];
-    
+ 	
             $(function(){
 			
                 var color = 'red';
@@ -83,43 +83,40 @@
                     $(this).remove();
 					}
                 });
-                
-                $('#submit').click(function(){
-                	
+				
+				$("#submit").click(function(){				
+                   	
                 	cadena = [];
-        			
-        			var cont=0;
+                	
+            		
+            		var cont=0;
                   
                    $('div').each(function(){     
-												 
-          
-					if($(this).attr('id') != "radio" &&
-							$(this).attr('id') != "footer" &&
-							$(this).attr('id') != "menu" &&
-							$(this).attr('id') != "logo" &&
-							$(this).attr('id') != "button"){
-					/*alert("Id -->" + $(this).attr('id')+ "\n" +
-						   "Left -->" + $(this).css('left')+ "\n" +
-						   "Top -->" + $(this).css('top')+ "\n" +
-						   "Width -->" + $(this).css('width')+ "\n" +
-						   "Height -->" + $(this).css('height')+ "\n" +
-						   $(this).css('background-color'));*/
-					 /*cadena[cont] = $(this).attr('id')+ "," +
-					          $(this).css('left')+  "," +
-					          $(this).css('top')+ "," +
-					  	      $(this).css('width')+ "," +
-					          $(this).css('height');*/
-					          cadena[cont] = "Hola";
-					 cont++;
-					 alert(cont);
-					  }
+            									 
+
+            		if($(this).attr('id') != "radio" &&
+            				$(this).attr('id') != "footer" &&
+            				$(this).attr('id') != "menu" &&
+            				$(this).attr('id') != "logo" &&
+            				$(this).attr('id') != "button"){
+            		 cadena[cont] = $(this).attr('id')+ "@" +
+            		          $(this).css('left')+  "@" +
+            		          $(this).css('top')+ "@" +
+            		  	      $(this).css('width')+ "@" +
+            		          $(this).css('height')+ "@" +
+            		          $(this).css('background-color');
+            		          alert(cadena[cont]);
+            		          
+            		 cont++;
+            		  }
+            		$.post('registrarOdontograma',{'jsonData': cadena});
                    });
-                   
-                   $.post('registrarOdontograma',{'jsonData':cadena});
-                   
-                });
-             
+                                
             });
+             	               
+            });
+            
+           
         </script>
 
 </head>
@@ -271,8 +268,7 @@
 	<br>
 	<p>
 	<div id="button">
-            <sj:submit id="submit" 
-            		   value="Generar" 
+            <sj:submit id="submit" value="Generar" 
                        onClickTopics="onclick"/>
 	</div>	
     </p>	
