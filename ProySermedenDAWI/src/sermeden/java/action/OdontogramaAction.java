@@ -24,6 +24,7 @@ public class OdontogramaAction extends ActionSupport{
 	private OdontogramaDTO odontograma;
 	private UsuarioDTO usuario;
 	private List<UsuarioDTO> listadoUsuarios;
+	private List<String> listadoPiezas;
 	private DMPacienteDTO dmpaciente;
 	private String mensaje;
 	private String mensajeOdontograma;
@@ -86,8 +87,6 @@ public class OdontogramaAction extends ActionSupport{
 	public void setJsonData(String[] jsonData) {
 		this.jsonData = jsonData;
 	}
-
-
 
 	OdontogramaService_I odontogramaService = 
 	PaqueteBusinessDelegate.getOdontogramaService();
