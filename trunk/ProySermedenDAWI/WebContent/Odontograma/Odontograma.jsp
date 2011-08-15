@@ -109,7 +109,7 @@
             		          
             		 cont++;
             		  }
-            		$.post('registrarOdontograma',{'jsonData': cadena});
+            		$.post('registrarOdontograma',{'jsonData': cadena[0]});
                    });
                                 
             });
