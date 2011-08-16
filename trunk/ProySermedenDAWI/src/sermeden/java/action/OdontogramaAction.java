@@ -19,7 +19,7 @@ public class OdontogramaAction extends ActionSupport{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8023221043947485107L;
+	/*private static final long serialVersionUID = 8023221043947485107L;
 	static private Logger log = Logger.getLogger(OdontogramaAction.class);
 	private OdontogramaDTO odontograma;
 	private UsuarioDTO usuario;
@@ -29,11 +29,11 @@ public class OdontogramaAction extends ActionSupport{
 	private String mensaje;
 	private String mensajeOdontograma;
 	private String titulo;
-	private String dniBuscado;
+	private String dniBuscado;*/
 	
 	private String[] jsonData;
 	
-	public OdontogramaDTO getOdontograma() {
+	/*public OdontogramaDTO getOdontograma() {
 		return odontograma;
 	}
 	public void setOdontograma(OdontogramaDTO odontograma) {
@@ -79,7 +79,7 @@ public class OdontogramaAction extends ActionSupport{
 	}
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
-	}
+	}*/
 	
 	public String[] getJsonData() {
 		return jsonData;

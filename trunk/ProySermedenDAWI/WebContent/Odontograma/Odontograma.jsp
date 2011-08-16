@@ -17,24 +17,22 @@
                 cursor: pointer;
 }
 </style>
-	   <link rel="stylesheet" href="./css/jquery.ui.all.css">
-	   <script type="text/javascript" src="./js/jquery-1.6.2.js"></script>
+       <!-- <script type="text/javascript" src="./js/jquery-1.5.2.js"></script>  -->
        <script type="text/javascript" src="./js/util.js"></script>
+	   <link rel="stylesheet" href="./css/jquery.ui.all.css">
 	   <script type="text/javascript" src="./js/jquery.ui.core.js"></script>
 	   <script type="text/javascript" src="./js/jquery.ui.widget.js"></script>
-	   <script type="text/javascript" src="./js/jquery.ui.button.js"></script>
+	   <script type="text/javascript" src="./js/jquery.ui.button.js"></script> 
+	   
+	  
 	   
  <script type="text/javascript">
     
  	var cadena = [];
  	
-            $(function(){
+            $('document').ready(function(){
 			
                 var color = 'red';
-				
-				$( "#radio" ).buttonset();
-				
-				$( "#button" ).buttonset();
       
 				//Original
                 $('input[name="radios"]').click(function(){
@@ -92,13 +90,13 @@
             		var cont=0;
                   
                    $('div').each(function(){     
-            									 
 
             		if($(this).attr('id') != "radio" &&
             				$(this).attr('id') != "footer" &&
             				$(this).attr('id') != "menu" &&
             				$(this).attr('id') != "logo" &&
             				$(this).attr('id') != "button"){
+            			
             		 cadena[cont] = $(this).attr('id')+ "@" +
             		          $(this).css('left')+  "@" +
             		          $(this).css('top')+ "@" +
@@ -109,10 +107,17 @@
             		          
             		 cont++;
             		  }
-            		$.post('registrarOdontograma',{'jsonData': cadena[0]});
+            		
                    });
+                   
+                   $.post('registrarOdontograma',{'jsonData': cadena});
                                 
-            });
+                });
+                
+                
+				$( "#radio" ).buttonset();
+				
+				$( "#button" ).buttonset();
              	               
             });
             
@@ -268,8 +273,7 @@
 	<br>
 	<p>
 	<div id="button">
-            <sj:submit id="submit" value="Generar" 
-                       onClickTopics="onclick"/>
+            <sj:submit id="submit" value="Generar"/>
 	</div>	
     </p>	
 </body>
