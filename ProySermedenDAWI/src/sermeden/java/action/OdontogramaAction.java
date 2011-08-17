@@ -19,7 +19,7 @@ public class OdontogramaAction extends ActionSupport{
 	/**
 	 * 
 	 */
-	/*private static final long serialVersionUID = 8023221043947485107L;
+	private static final long serialVersionUID = 8023221043947485107L;
 	static private Logger log = Logger.getLogger(OdontogramaAction.class);
 	private OdontogramaDTO odontograma;
 	private UsuarioDTO usuario;
@@ -29,11 +29,11 @@ public class OdontogramaAction extends ActionSupport{
 	private String mensaje;
 	private String mensajeOdontograma;
 	private String titulo;
-	private String dniBuscado;*/
+	private String dniBuscado;
 	
 	private String[] jsonData;
 	
-	/*public OdontogramaDTO getOdontograma() {
+	public OdontogramaDTO getOdontograma() {
 		return odontograma;
 	}
 	public void setOdontograma(OdontogramaDTO odontograma) {
@@ -79,7 +79,7 @@ public class OdontogramaAction extends ActionSupport{
 	}
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
-	}*/
+	}
 	
 	public String[] getJsonData() {
 		return jsonData;
@@ -92,69 +92,7 @@ public class OdontogramaAction extends ActionSupport{
 	PaqueteBusinessDelegate.getOdontogramaService();
 	
 	UsuarioService_I usuarioService = 
-		PaqueteBusinessDelegate.getUsuarioService();
-	
-	/*public String generarOdontograma(){
-
-		int nuevoOdontograma=-1;
-		String vista = "exito";
-		
-		
-		try {
-			log.debug("-->" + dmpaciente.getDni());
-				
-				odontograma.setDni(dmpaciente.getDni());
-				odontograma.setFechareg(new java.sql.Date(new java.util.Date().getTime()));
-			
-			    nuevoOdontograma = odontogramaService.generarOdontograma(odontograma);
-				
-				
-				if(nuevoOdontograma>0){									
-					titulo = "Generar de Odontograma";
-					mensaje = "Se ha generado correctamente el odontograma " +
-					"para el usuario con Dni " + odontograma.getDni();
-					log.debug("mensaje-->" + mensaje);
-
-				}
-				
-		
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		
-		return vista;
-	
-	}*/
-	
-	/*public String listarOdontograma(){
-		String vista="exito";
-		log.debug("Dentro del metodo desactivar - Struts2");
-		log.debug("Nombre del Usuario a cambiar de Estado: " +dniBuscado);
-		try {
-			
-			
-			if(odontogramaService.listadoOdontogramaXDNI(dniBuscado).size()>0){
-				
-				  listadoUsuarios = usuarioService.listadoPacienteXDNI(dniBuscado);
-				
-	            vista="exito";
-			}else{
-				
-				mensajeOdontograma = "Paciente con Dni: " + dniBuscado + "no tiene odontograma";
-				log.debug(mensajeOdontograma);
-				vista="error";
-			}
-			 
-			//
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			vista="error";
-			e.printStackTrace();
-		}
-		return vista;
-
-	}*/
+		PaqueteBusinessDelegate.getUsuarioService();	
 	
 	public String registro(){
 		
