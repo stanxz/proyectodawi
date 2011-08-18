@@ -29,6 +29,7 @@
  <script type="text/javascript">
     
  	var cadena = [];
+ 	var dni="";
  	
             $('document').ready(function(){
 			
@@ -103,14 +104,16 @@
             		  	      $(this).css('width')+ "@" +
             		          $(this).css('height')+ "@" +
             		          $(this).css('background-color');
-            		          alert(cadena[cont]);
+            		          //alert(cadena[cont]);
             		          
             		 cont++;
             		  }
             		
                    });
                    
-                   $.post('registrarOdontograma',{'jsonData': cadena});
+                  dni = $('#dniBuscado').val();
+                   
+                   $.post('registrarOdontograma',{'jsonData': cadena,'dniBuscado':dni});
                                 
                 });
                 
@@ -274,7 +277,8 @@
 	<p>
 	<div id="button">
             <sj:submit id="submit" value="Generar"/>
-	</div>	
-    </p>	
+	</div>
+    </p>
+    <input id="dniBuscado" type="hidden" value="${dmpaciente.dni}"></input>	
 </body>
 </html>
