@@ -11,7 +11,7 @@
 /* place css box model fixes for IE 5* in this conditional comment */
 #sidebar1 { width: 230px; }
 </style>
-<![endif]--><!--[if IE]>
+<![endif]--><!--[if IE]> 
 <style type="text/css"> 
 /* place css fixes for all versions of IE in this conditional comment */
 #sidebar1 { padding-top: 30px; }
