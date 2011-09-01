@@ -7,7 +7,7 @@
 <title>Sermeden</title>
 <link href="css/stylesWeb.css" rel="stylesheet" type="text/css" />
 <!--[if IE 5]>  
-<style type="text/css"> fsfsf
+<style type="text/css">
 /* place css box model fixes for IE 5* in this conditional comment */
 #sidebar1 { width: 230px; }
 </style>
