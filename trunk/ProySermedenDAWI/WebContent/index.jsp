@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Sermeden</title> 
 <link href="css/stylesWeb.css" rel="stylesheet" type="text/css" />
-<!--[if IE 5]>    
+<!--[if IE 5]>     
 <style type="text/css">
 /* place css box model fixes for IE 5* in this conditional comment */
 #sidebar1 { width: 230px; }
