@@ -1,0 +1,302 @@
+create database bd_comisionAdmision;
+use bd_comisionAdmision;
+
+CREATE TABLE CDP (
+	CODCDP VARCHAR(10) NOT NULL,
+	CONCEPTO VARCHAR(200),
+	FECHA DATETIME,
+	TOTAL DOUBLE,
+	ESTADO VARCHAR(20),
+	CODIGV SMALLINT NOT NULL,
+	CODPOSTULANTE SMALLINT NOT NULL,
+	PRIMARY KEY (CODCDP)
+);
+
+CREATE TABLE FACULTAD (
+	CODFACULTAD SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRE VARCHAR(50),
+	PRIMARY KEY (CODFACULTAD)
+);
+
+CREATE TABLE CARNET (
+	CODCARNET SMALLINT NOT NULL AUTO_INCREMENT,
+	ESTADO VARCHAR(20),
+	FECHAEMI DATETIME,
+	CODPOSTULANTE SMALLINT NOT NULL,
+	PRIMARY KEY (CODCARNET)
+);
+
+CREATE TABLE DETALLESOLICITUD (
+	ITEM SMALLINT NOT NULL AUTO_INCREMENT,
+	IMAGEN LONGBLOB,
+	OBSERVACION VARCHAR(200),
+	ESTADO VARCHAR(20),
+	NROSOLICITUD SMALLINT NOT NULL,
+	CODREQUISITO SMALLINT NOT NULL,
+	PRIMARY KEY (ITEM,NROSOLICITUD)
+);
+
+CREATE TABLE AUDITORIA (
+	CODAUDI SMALLINT NOT NULL AUTO_INCREMENT,
+	USU_AUDI VARCHAR(50),
+	FECHA_INI DATETIME,
+	FECHA_FIN DATETIME,
+	TIPO_USU VARCHAR(50),
+	PRIMARY KEY (CODAUDI)
+);
+
+CREATE TABLE CARRERA (
+	CODCARRERA SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRE VARCHAR(50),
+	CODESCUELA SMALLINT NOT NULL,
+	CODFACULTAD SMALLINT NOT NULL,
+	PRIMARY KEY (CODCARRERA,CODESCUELA,CODFACULTAD)
+);
+
+CREATE TABLE SOLICITUD (
+	NROSOLICITUD SMALLINT NOT NULL AUTO_INCREMENT,
+	FECHA DATETIME,
+	ESTADO VARCHAR(20),
+	CODPOSTULANTE SMALLINT NOT NULL,
+	PRIMARY KEY (NROSOLICITUD)
+);
+
+CREATE TABLE REQUISITO (
+	CODREQUISITO SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRE VARCHAR(100),
+	PRIMARY KEY (CODREQUISITO)
+);
+
+CREATE TABLE ESCUELA (
+	CODESCUELA SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRE VARCHAR(50),
+	CODFACULTAD SMALLINT NOT NULL,
+	PRIMARY KEY (CODESCUELA,CODFACULTAD)
+);
+
+CREATE TABLE TIPOMODALIDAD (
+	CODTIPOMODALIDAD SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRE VARCHAR(100),
+	COSTO DOUBLE,
+	PRIMARY KEY (CODTIPOMODALIDAD)
+);
+
+CREATE TABLE USUARIOSISTEMA (
+	CODUSUARIO SMALLINT NOT NULL AUTO_INCREMENT,
+	IDINGRESO VARCHAR(20),
+	PASSWORD VARCHAR(20),
+	TIPOUSUARIO VARCHAR(50),
+	NOMBRES VARCHAR(50),
+	APEPAT VARCHAR(30),
+	APEMAT VARCHAR(30),
+	SEXO VARCHAR(1),
+	PRIMARY KEY (CODUSUARIO)
+);
+
+CREATE TABLE POSTULANTE (
+	CODPOSTULANTE SMALLINT NOT NULL AUTO_INCREMENT,
+	NOMBRES VARCHAR(50),
+	APEPAT VARCHAR(30),
+	APEMAT VARCHAR(30),
+	FECHANAC DATE,
+	DNI VARCHAR(8),
+	EMAIL VARCHAR(30),
+	TELEFONO VARCHAR(9),
+	FOTO LONGBLOB,
+	ESTADO VARCHAR(20),
+	CODTIPOMODALIDAD SMALLINT NOT NULL,
+	CODCARRERA SMALLINT NOT NULL,
+	PRIMARY KEY (CODPOSTULANTE)
+);
+
+CREATE TABLE HISTORIAL_IGV (
+	CODIGV SMALLINT NOT NULL AUTO_INCREMENT,
+	VALOR DOUBLE,
+	FECHA DATE,
+	PRIMARY KEY (CODIGV)
+);
+
+CREATE TABLE REQUISITOXMODALIDAD (
+	CODTIPOMODALIDAD SMALLINT NOT NULL,
+	CODREQUISITO SMALLINT NOT NULL,
+	PRIMARY KEY (CODTIPOMODALIDAD,CODREQUISITO)
+);
+
+
+ALTER TABLE SOLICITUD ADD CONSTRAINT SOLICITUD_POSTULANTE_FK FOREIGN KEY (CODPOSTULANTE)
+	REFERENCES POSTULANTE (CODPOSTULANTE);
+
+ALTER TABLE CARNET ADD CONSTRAINT CARNET_POSTULANTE_FK FOREIGN KEY (CODPOSTULANTE)
+	REFERENCES POSTULANTE (CODPOSTULANTE);
+
+ALTER TABLE ESCUELA ADD CONSTRAINT ESCUELA_FACULTAD_FK FOREIGN KEY (CODFACULTAD)
+	REFERENCES FACULTAD (CODFACULTAD);
+
+ALTER TABLE CARRERA ADD CONSTRAINT CARRERA_ESCUELA_FK FOREIGN KEY (CODFACULTAD, CODESCUELA)
+	REFERENCES ESCUELA (CODFACULTAD, CODESCUELA);
+
+ALTER TABLE REQUISITOXMODALIDAD ADD CONSTRAINT REQUISITOXMODALIDAD_REQUISITO_FK FOREIGN KEY (CODREQUISITO)
+	REFERENCES REQUISITO (CODREQUISITO);
+
+ALTER TABLE REQUISITOXMODALIDAD ADD CONSTRAINT REQUISITOXMODALIDAD_TIPOMODALIDAD_FK FOREIGN KEY (CODTIPOMODALIDAD)
+	REFERENCES TIPOMODALIDAD (CODTIPOMODALIDAD);
+
+ALTER TABLE POSTULANTE ADD CONSTRAINT POSTULANTE_CARRERA_FK FOREIGN KEY (CODCARRERA)
+	REFERENCES CARRERA (CODCARRERA);
+
+ALTER TABLE CDP ADD CONSTRAINT CDP_HISTORIAL_IGV_FK FOREIGN KEY (CODIGV)
+	REFERENCES HISTORIAL_IGV (CODIGV);
+
+ALTER TABLE CDP ADD CONSTRAINT CDP_POSTULANTE_FK FOREIGN KEY (CODPOSTULANTE)
+	REFERENCES POSTULANTE (CODPOSTULANTE);
+
+ALTER TABLE POSTULANTE ADD CONSTRAINT POSTULANTE_TIPOMODALIDAD_FK FOREIGN KEY (CODTIPOMODALIDAD)
+	REFERENCES TIPOMODALIDAD (CODTIPOMODALIDAD);
+
+ALTER TABLE DETALLESOLICITUD ADD CONSTRAINT DETALLESOLICITUD_SOLICITUD_FK FOREIGN KEY (NROSOLICITUD)
+	REFERENCES SOLICITUD (NROSOLICITUD);
+
+ALTER TABLE DETALLESOLICITUD ADD CONSTRAINT DETALLESOLICITUD_REQUISITO_FK FOREIGN KEY (CODREQUISITO)
+	REFERENCES REQUISITO (CODREQUISITO);
+
+
+
+
+
+insert into facultad values(null,'Ingenieria');
+insert into facultad values(null,'Ciencias de la salud');
+insert into facultad values(null,'Ciencias economicas y comerciales');
+
+
+
+
+insert into escuela values(null,'Tecnologia',1);
+insert into escuela values(null,'Medicina humana',2);
+insert into escuela values(null,'Finanzas',3);
+
+
+
+insert into carrera values(null,'Ingenieria informatica',1,1);
+insert into carrera values(null,'Ingenieria de sistemas',1,1);
+insert into carrera values(null,'Electronica',1,1);
+insert into carrera values(null,'Biotecnologia',2,2);
+insert into carrera values(null,'Biologia',2,2);
+insert into carrera values(null,'Odontologia',2,2);
+insert into carrera values(null,'Fonoaudiologia',2,2);
+insert into carrera values(null,'Ingenieria comercial',3,3);
+insert into carrera values(null,'Economia',3,3);
+insert into carrera values(null,'Mercadotecnia',3,3);
+
+
+
+insert into tipomodalidad values(null,'Postulantes ordinarios',100.00);
+insert into tipomodalidad values(null,'Exoneracion - Centro universitario de la UNCP',50.00);
+insert into tipomodalidad values(null,'Exoneracion - Primeros puetos',90.00);
+insert into tipomodalidad values(null,'Exoneracion - Traslado interno',120.00);
+insert into tipomodalidad values(null,'Exoneracion - Traslado externo',120.00);
+
+
+
+insert into requisito values(null,'Dni');
+insert into requisito values(null,'Partida de nacimiento');
+insert into requisito values(null,'Certificado de estudios');
+insert into requisito values(null,'Certificado de estudios universitarios');
+insert into requisito values(null,'Constancia  de disciplina');
+insert into requisito values(null,'Constancia  de matricula');
+insert into requisito values(null,'Plan de estudios');
+insert into requisito values(null,'Expedio crediticio');
+insert into requisito values(null,'Constancia de no haber termiando la carrera');
+insert into requisito values(null,'Declaracion jurada de no haber estudiado en la universidad');
+
+
+
+insert into requisitoxmodalidad values(1,1);
+insert into requisitoxmodalidad values(1,2);
+insert into requisitoxmodalidad values(1,3);
+insert into requisitoxmodalidad values(1,5);
+insert into requisitoxmodalidad values(1,6);
+
+insert into requisitoxmodalidad values(2,1);
+insert into requisitoxmodalidad values(2,2);
+insert into requisitoxmodalidad values(2,3);
+insert into requisitoxmodalidad values(2,5);
+insert into requisitoxmodalidad values(2,6);
+insert into requisitoxmodalidad values(2,8);
+
+insert into requisitoxmodalidad values(3,1);
+insert into requisitoxmodalidad values(3,3);
+insert into requisitoxmodalidad values(3,5);
+insert into requisitoxmodalidad values(3,6);
+insert into requisitoxmodalidad values(3,7);
+insert into requisitoxmodalidad values(3,10);
+
+insert into requisitoxmodalidad values(4,1);
+insert into requisitoxmodalidad values(4,3);
+insert into requisitoxmodalidad values(4,4);
+insert into requisitoxmodalidad values(4,5);
+insert into requisitoxmodalidad values(4,6);
+insert into requisitoxmodalidad values(4,7);
+insert into requisitoxmodalidad values(4,8);
+insert into requisitoxmodalidad values(4,9);
+
+insert into requisitoxmodalidad values(5,1);
+insert into requisitoxmodalidad values(5,3);
+insert into requisitoxmodalidad values(5,4);
+insert into requisitoxmodalidad values(5,5);
+insert into requisitoxmodalidad values(5,6);
+insert into requisitoxmodalidad values(5,7);
+insert into requisitoxmodalidad values(5,8);
+insert into requisitoxmodalidad values(5,9);
+
+
+
+insert into postulante values(null,'Ranphi','Tapia','Velasquez','1991-11-25','12345678','jesus_tapia91@hotmail.com','5433494',load_file('D:/tapia.JPG'),'Activo',1,1);
+insert into postulante values(null,'Andres','Oliart','Mogollon','1990-05-15','15832690','newgeneration_14@hotmail.com','7532598',load_file('D:/oliart.jpg'),'Pendiente',1,4);
+insert into postulante values(null,'Joaquin','Bravo','Berrio','1996-10-17','47526930','pkr.21@hotmail.com','1593523',load_file('D:/bravo.jpg'),'Pendiente',3,3);
+insert into postulante values(null,'Yahir','Rivas','Luna','1991-08-26','89620587','yahir_14_rivas@hotmail.com','7596324',load_file('D:/rivas.jpg'),'Pendiente',4,1);
+insert into postulante values(null,'Carlos','Cardenas','Lopez','1987-06-01','40268039','carlos_5_x@hotmail.com','8426953',load_file('D:/cardenas.jpg'),'Inactivo',1,10);
+
+
+
+
+insert into historial_igv values(null,0.18,'1991-01-01');
+insert into historial_igv values(null,0.19,'2003-08-01');
+
+
+
+insert into cdp values('0123456789','Por la compra del prospecto de Postulantes ordinarios','2011-01-20 12:12:00',119.00,'generado',2,1);
+insert into cdp values('1234567890','Por la compra del prospecto de Postulantes ordinarios','2011-01-25 09:15:30',119.00,'generado',2,2);
+insert into cdp values('2345678901','Por la compra del prospecto de Exoneracion - Primeros puetos','2011-01-03 14:50:30',107.10,'generado',2,3);
+insert into cdp values('3456789012','Por la compra del prospecto de Exoneracion - Traslado interno','2011-01-04 11:11:55',142.80,'generado',2,4);
+insert into cdp values('4567890123','Por la compra del prospecto de Postulantes ordinarios','2011-01-10 16:10:45',119.00,'generado',2,5);
+
+
+
+
+insert into solicitud values(null,'2011-01-30 09:20:50','aprobado',1);
+insert into solicitud values(null,'2011-02-04 16:10:15','aprobado',2);
+insert into solicitud values(null,'2011-02-01 16:12:46','pendiente',4);
+
+
+
+insert into detallesolicitud values(null,load_file('D:/dni.JPG'),'','rechazado',3,1);
+insert into detallesolicitud values(null,load_file('D:/estudio.JPG'),'','rechazado',3,3);
+insert into detallesolicitud values(null,load_file('D:/estudioUniversitario.JPG'),'','pendiente',3,4);
+insert into detallesolicitud values(null,load_file('D:/disciplina.JPG'),'','pendiente',3,5);
+insert into detallesolicitud values(null,load_file('D:/matricula.JPG'),'OK','aprobado',3,6);
+insert into detallesolicitud values(null,load_file('D:/planEstudio.JPG'),'OK','aprobado',3,7);
+insert into detallesolicitud values(null,load_file('D:/expedio.JPG'),'OK','aprobado',3,8);
+insert into detallesolicitud values(null,load_file('D:/constancia_no_carrera.JPG'),'','pendiente',3,9);
+
+
+
+
+insert into carnet values(null,'Generado','2011-01-31 15:20:48 ',1);
+
+
+
+
+insert into usuariosistema values(null,'admin','123','Administrador','Jesus','Tapia','Velasquez','M');
+insert into usuariosistema values(null,'abravo','abravo','Tesorero','Anthony','Bravo','Berrio','M');
+insert into usuariosistema values(null,'yrivas','yrivas','ECA-CARNET','Yahir','Rivas','Luna','M');
+insert into usuariosistema values(null,'coliart','coliart','ECA-INSCRIPCION','Cesar','Oliart','Mogollon','M');
