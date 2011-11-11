@@ -1,4 +1,4 @@
-package entidades;
+package jsf.bean;
 
 import java.util.Date;
 import javax.faces.application.FacesMessage;
