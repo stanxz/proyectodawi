@@ -11,20 +11,19 @@
 </head>
 <body>
 
+	<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
 
-	<h2>Struts2: Componetes struts 2(Jquery)</h2>
-
-	 <sj:tabbedpanel id="localtabs">
+	 <sj:tabbedpanel id="localtabs" >
       			<sj:tab id="tab1" target="tone" label="Inicio"/>
       			<sj:tab id="tab2" target="ttwo" label="Misión"/>
       			<sj:tab id="tab3" target="tthree" label="Visión"/>
       			<sj:tab id="tab4" target="tfour" label="Contáctenos"/>
       			<sj:tab id="tab5" target="tfive" label="Intranet"/>
-     			 	<div id="tone">
+     			 <div id="tone">
      			 	 <s:form>
      				
 					 </s:form>
-     				</div>
+     			</div>
      			 <div id="ttwo">
      			 	<s:form>
      			 		
