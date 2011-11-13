@@ -44,25 +44,27 @@
       			  <div id="tfive">
       			  <br></br><br></br><br></br><br></br><br></br><br></br>
       			  <br></br><br></br><br></br><br></br><br></br><br></br>
-      			
-      			 	<s:form>
-      			 	<div id="login">
-    					<table >
-               			 <tr>
-                   			 <s:textfield label="Usuario"></s:textfield>
-      			    		 <s:textfield label="Contraseña"></s:textfield>
-      					</tr>
-                        </table>
-    		        </div>
-      			 
-      			 	</s:form>
-      			 	
+      			  <br></br><br></br><br></br><br></br><br></br>
+    					   <div id="login" >
+    							<s:form>
+    								<table>
+    								<tr>
+    									<td><s:textfield label="Usuario    " name="" labelSeparator=" "/></td>
+    								</tr>
+    								<tr>
+    									<td><s:textfield label="Contraseña " name="" labelSeparator=" "/></td>
+    								</tr>
+    								<tr>
+    									<td>
+    									<sj:submit value="Ingresar" button="true" />
+    									</td>
+    								</tr>
+    								</table>
+    								
+    							</s:form>
+    						</div>
       			 </div>
-    		</sj:tabbedpanel>
-    		
-     				
-    		
-
+    		</sj:tabbedpanel>	
   </body>
 </html>
 
