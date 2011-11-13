@@ -9,8 +9,8 @@
 <head>
 	<sj:head jqueryui="true" jquerytheme="cupertino"/>
 	
-<link href="../css/misEstilos1.css" type="text/css" rel="stylesheet" />
-<link href="../css/misEstilos2.css" type="text/css" rel="stylesheet" />
+<link href="css/misEstilos1.css" type="text/css" rel="stylesheet" />
+<link href="css/misEstilos2.css" type="text/css" rel="stylesheet" />
 </head>
 <body style="background-color: #A8C2D3;">
 
