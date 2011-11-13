@@ -7,16 +7,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html"
 	  xmlns:f="http://java.sun.com/jsf/core">
-<head>
-	<sj:head jqueryui="true" jquerytheme="cupertino"/>
-	
-<link href="css/misEstilos1.css" type="text/css" rel="stylesheet" />
-<link href="css/misEstilos2.css" type="text/css" rel="stylesheet" />
-</head>
-<body style="background-color: #A8C2D3;">
-
+<h:head>
+	<sj:head jqueryui="true" jquerytheme="cupertino"/>	
+	<link href="css/misEstilos1.css" type="text/css" rel="stylesheet" />
+	<link href="css/misEstilos2.css" type="text/css" rel="stylesheet" />
+</h:head>
+<h:body style="background-color: #A8C2D3;">
 	<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
-
 	 <sj:tabbedpanel id="localtabs" >
       			<sj:tab id="tab1" target="tone" label="Inicio" />
       			<sj:tab id="tab2" target="ttwo" label="Misión"/>
@@ -46,7 +43,7 @@
       			  <br></br><br></br><br></br><br></br><br></br><br></br>
       			  <br></br><br></br><br></br><br></br><br></br>
     					   <div id="login" >
-    							<s:form>
+    							<h:form>
     								<table>
     								<tr>
     									<td><s:textfield label="Usuario    " name="" labelSeparator=" "/></td>
@@ -61,11 +58,12 @@
     								</tr>
     								</table>
     								
-    							</s:form>
+    							</h:form>
     						</div>
       			 </div>
     		</sj:tabbedpanel>	
-  </body>
+
+</h:body>
 </html>
 
 <!-- http://www.java2s.com/Code/JavaScript/Ext-JS/formscancontainTabPanels.htm -->
