@@ -7,21 +7,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html">
 <head>
-	<sj:head jqueryui="true" />
+	<sj:head jqueryui="true" jquerytheme="cupertino"/>
+	
+<link href="../css/misEstilos1.css" type="text/css" rel="stylesheet" />
+<link href="../css/misEstilos2.css" type="text/css" rel="stylesheet" />
 </head>
-<body>
+<body style="background-color: #A8C2D3;">
 
 	<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
 
 	 <sj:tabbedpanel id="localtabs" >
-      			<sj:tab id="tab1" target="tone" label="Inicio"/>
+      			<sj:tab id="tab1" target="tone" label="Inicio" />
       			<sj:tab id="tab2" target="ttwo" label="Misión"/>
       			<sj:tab id="tab3" target="tthree" label="Visión"/>
       			<sj:tab id="tab4" target="tfour" label="Contáctenos"/>
       			<sj:tab id="tab5" target="tfive" label="Intranet"/>
      			 <div id="tone">
      			 	 <s:form>
-     				
 					 </s:form>
      			</div>
      			 <div id="ttwo">
@@ -40,12 +42,26 @@
       			 	</s:form>
       			 </div>
       			  <div id="tfive">
+      			  <br></br><br></br><br></br><br></br><br></br><br></br>
+      			  <br></br><br></br><br></br><br></br><br></br><br></br>
+      			
       			 	<s:form>
-      			 		<s:textfield label="Usuario"></s:textfield>
-      			 		<s:textfield label="Contraseña"></s:textfield>
+      			 	<div id="login">
+    					<table >
+               			 <tr>
+                   			 <s:textfield label="Usuario"></s:textfield>
+      			    		 <s:textfield label="Contraseña"></s:textfield>
+      					</tr>
+                        </table>
+    		        </div>
+      			 
       			 	</s:form>
+      			 	
       			 </div>
     		</sj:tabbedpanel>
+    		
+     				
+    		
 
   </body>
 </html>
