@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="JPA-Web">
+	<persistence-unit name="JPADemo">
+	
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
-		<class>edu.cibertec.daw2.entity.Cargo</class>
+		<class>entidades.Actividad</class>
+		<class>entidades.Alumno</class>
+		<class>entidades.Apoderado</class>
+		<class>entidades.Asignatura</class>
+		<class>entidades.Asistentasocial</class>
+		<class>entidades.Boletapago</class>
+		<class>entidades.Calendarioacademico</class>
+		<class>entidades.Certificadoa</class>
+		<class>entidades.Cita</class>
+		<class>entidades.Detalleasignatura</class>
+		<class>entidades.DetalleasignaturaPK</class>
+		<class>entidades.Detallemotivo</class>
+		<class>entidades.DetallemotivoPK</class>
+		<class>entidades.Detallerestriccion</class>
+		<class>entidades.DetallerestriccionPK</class>
+		<class>entidades.Disponibilidadasistentasocial</class>
+		<class>entidades.Horario</class>
+		<class>entidades.HorarioPK</class>
+		<class>entidades.Motivo</class>
+		<class>entidades.Perfil</class>
+		<class>entidades.Permiso</class>
+		<class>entidades.Persona</class>
+		<class>entidades.Restriccion</class>
+		<class>entidades.Secretaria</class>
+		<class>entidades.Solicitudexoneracion</class>
+		<class>entidades.Solicitudretiro</class>
+		<class>entidades.Tiposervicioa</class>
+		<class>entidades.Usuario</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-		   <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/mysqljpa"/>
+		   <property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/bd_proy_sgae"/>
 		   <property name="eclipselink.jdbc.user" value="root"/>
-		   <property name="eclipselink.jdbc.password" value="mysql"/>
+		   <property name="eclipselink.jdbc.password" value="admin"/>
 		   <property name="eclipselink.logging.level" value="FINE"/> 
-		</properties>	
+		</properties>
+		
 	</persistence-unit>
 </persistence>
