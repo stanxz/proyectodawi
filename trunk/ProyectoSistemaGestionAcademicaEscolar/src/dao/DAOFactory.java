@@ -11,6 +11,8 @@ public abstract class DAOFactory {
     public static final int JPA = 7;
     
     //aca faltan declararse los daos por entidad q se van a usar
+    public abstract AlumnoDAO getAlumnoDAO();
+    
     
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){
