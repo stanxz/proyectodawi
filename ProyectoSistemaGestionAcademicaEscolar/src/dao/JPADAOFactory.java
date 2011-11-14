@@ -10,6 +10,14 @@ public class JPADAOFactory extends DAOFactory {
 	public JPADAOFactory (){
 		emf=Persistence.createEntityManagerFactory("JPA-Web");
 	}
+
+
+	@Override
+	public AlumnoDAO getAlumnoDAO() {
+		AlumnoJPADAO ed =  new AlumnoJPADAO();
+		ed.setEntityManagerFactory(emf);
+		return (AlumnoDAO)ed;
+	}
 	
 	//aca falta las implementaciones de los dao q se va
 	//a usar
