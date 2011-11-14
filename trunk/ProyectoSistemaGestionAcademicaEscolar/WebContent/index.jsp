@@ -14,7 +14,7 @@
 </h:head>
 <h:body style="background-color: #A8C2D3;">
 	<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
-	 <sj:tabbedpanel id="localtabs" >
+	 <sj:tabbedpanel id="localtabs" animate="true" collapsible="true">
       			<sj:tab id="tab1" target="tone" label="Inicio" />
       			<sj:tab id="tab2" target="ttwo" label="Misión"/>
       			<sj:tab id="tab3" target="tthree" label="Visión"/>
@@ -62,6 +62,10 @@
     						</div>
       			 </div>
     		</sj:tabbedpanel>	
+    		
+    		<h:form>
+    		<h:inputText label="Usuario"/>
+    		</h:form>
 
 </h:body>
 </html>
