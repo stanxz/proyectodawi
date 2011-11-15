@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+
+<h:head>
+<title>I.E.P &quot;SAN CARLOS&quot;</title>
+<h:outputStylesheet library="css" name="misEstilosLogin2.css" target="head"/>
+</h:head>
+<h:body>
+<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
+<h:form>  
+   <p:tabView>  
+    <p:tab title="Inicio">  
+        <h:panelGrid columns="2" cellpadding="10">  
+            
+        </h:panelGrid>  
+    </p:tab>  
+  
+    <p:tab title="Visión">  
+        <h:panelGrid columns="2" cellpadding="10">  
+          
+        </h:panelGrid>  
+    </p:tab>  
+  
+    <p:tab title="Misión">  
+        <h:panelGrid columns="2" cellpadding="10">  
+           
+        </h:panelGrid>  
+    </p:tab>  
+    
+    <p:tab title="Contáctenos">  
+        <h:panelGrid columns="2" cellpadding="10">  
+           
+        </h:panelGrid>  
+    </p:tab>  
+    
+    <p:tab title="Intranet">
+     <br></br><br></br><br></br><br></br><br></br><br></br>
+     <br></br><br></br><br></br><br></br><br></br><br></br>
+     <br></br><br></br><br></br><br></br><br></br><br></br>
+     <br></br><br></br><br></br><br></br><br></br><br></br>
+     <br></br><br></br><br></br><br></br><br></br><br></br>
+		<div id="login">
+         <h:panelGrid columns="3">
+							<h:outputLabel value="Usuario"/>
+							<p:inputText id="user" required="true" requiredMessage="Ingrese Usuario">
+							</p:inputText>
+							<p:message for="user"/>
+							<h:outputLabel value="Password"/>
+							<p:password id="password" required="true" requiredMessage="Ingrese Password" >
+							</p:password>
+							<p:message for="password"/>
+						</h:panelGrid>
+						<h:commandButton value="Enviar" action="0"/> 
+      	</div>
+
+    </p:tab>  
+  
+</p:tabView>  
+  
+</h:form> 
+    
+</h:body>
+</html>
