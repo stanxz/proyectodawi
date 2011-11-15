@@ -12,7 +12,7 @@
 <head>
 	<sj:head jqueryui="true" jquerytheme="cupertino"/>	
 	<link href="resources/css/misEstilosLogin1.css" type="text/css" rel="stylesheet" />
-	<link href="resources/css/misEstiloLogin2.css" type="text/css" rel="stylesheet" />
+	<link href="resources/css/misEstilosLogin2.css" type="text/css" rel="stylesheet" />
 </head>
 <body style="background-color: #A8C2D3;">
 	<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
