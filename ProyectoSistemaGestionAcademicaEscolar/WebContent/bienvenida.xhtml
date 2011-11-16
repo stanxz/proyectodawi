@@ -1,0 +1,35 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+	template="/templates/crud-template.xhtml">
+	
+	<!-- 
+	 <ui:define name="scripts">
+   		<h:outputScript library="js" name="jquery-1.7.js" target="head"/>
+     </ui:define>
+     <ui:define name="styles">
+   		<h:outputStylesheet library="css" name="menuEstilos.css" target="head"/>
+     </ui:define>
+    -->
+	<ui:define name="title">
+		I.E.P &quot;SAN CARLOS&quot;
+	</ui:define>
+	
+	<ui:define name="header">
+		<ui:include src="/snippets/header.xhtml" />
+	</ui:define>
+
+	<ui:define name="menu">
+		<ui:include src="/snippets/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="body">
+		<h2>Bienvenido</h2>
+		<p>Bienvenido a la aplicación ejemplo de JSF 2.0 con JPA</p>
+		<p>Para comenzar, elige una de las opciones del menú izquierdo.</p>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/snippets/footer.xhtml" />
+	</ui:define>
+</ui:composition>

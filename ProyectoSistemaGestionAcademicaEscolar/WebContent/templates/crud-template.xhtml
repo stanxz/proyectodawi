@@ -6,29 +6,42 @@
 <h:head>
 	<title>
 		<ui:insert name="title"></ui:insert>
-	</title>
+	</title> 
+	<!--  
+<ui:insert name="script"></ui:insert> 
+<ui:insert name="styles"></ui:insert>  
+--> 
 </h:head>
-<h:body>
-	<div id="container">
-
-		<div id="header">
-			<ui:insert name="header">
-				<ui:insert name="title" ></ui:insert>
-			</ui:insert>
-		</div>
-	
-		<div id="menu">
-			<ui:insert name="menu"></ui:insert>
-		</div>
-	
-		<div id="content">
-			<ui:insert name="body"></ui:insert>
-		</div>
-	
-		<div id="footer">
-			<ui:insert name="footer"></ui:insert>
-		</div>
-
-	</div>
+<h:body style="background-color: #A8C2D3;">
+<div id="container" align="center">
+	<table width="100%">
+		<tr>
+			<td colspan="2" height="100">
+			<div id="header">
+				<ui:insert name="header"></ui:insert>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td height="100%" valign="middle">
+			<div id="menu">
+				<ui:insert name="menu"></ui:insert>
+			</div>
+			</td>
+			<td>
+			<div id="content">
+				<ui:insert name="body"></ui:insert>
+			</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2" height="100">
+				<div id="footer">
+					<ui:insert name="footer"></ui:insert>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
 </h:body>
 </html>
