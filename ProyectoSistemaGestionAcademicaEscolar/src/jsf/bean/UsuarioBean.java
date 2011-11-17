@@ -28,20 +28,15 @@ public class UsuarioBean {
 	
 	public UsuarioBean(){
 		System.out.println("Creado UsuarioBean...");
-		funcionalidad=new Permiso();
+		funcionalidad= new Permiso();
 		usuario1= new Usuario();
 		persona1= new Persona();
 	}
 
 	public String loguearUsuario(){
-		//me falta mas codigo
 		return "bienvenida";
 	}
-	
-	
-	
-	
-	
+
 	//getters y setter
 	
 	public static UsuarioService getUserService() {

@@ -1,8 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.prime.com.tr/ui"
 	template="/templates/crud-template.xhtml">
-	
 	<ui:define name="title">
 		I.E.P &quot;SAN CARLOS&quot;
 	</ui:define>
@@ -19,6 +19,16 @@
 		<h2>Bienvenido</h2>
 		<p>Bienvenido a la aplicación ejemplo de JSF 2.0 con JPA</p>
 		<p>Para comenzar, elige una de las opciones del menú izquierdo.</p>
+		  <h:form>
+		<p:commandButton value="ClickMe"  type="button" onclick="cd.show()" />
+		<p:confirmDialog message="Are you sure about destroying the world?"
+						 header="Initiating destroy process" severity="alert"
+						 widgetVar="cd">
+			<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}"
+							update="messages" oncomplete="confirmation.hide()"/>
+			<p:commandButton value="Not Yet" onclick="cd.hide();" type="button" />
+		</p:confirmDialog>
+	</h:form>   			
 	</ui:define>
 
 	<ui:define name="footer">
