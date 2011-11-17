@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="CODPERFIL")
 	private Perfil perfil;
 
-	//bi-directional many-to-one association to Persona
+	//uni-directional many-to-one association to Persona
     @ManyToOne
 	@JoinColumn(name="CODPERSONA")
 	private Persona persona;

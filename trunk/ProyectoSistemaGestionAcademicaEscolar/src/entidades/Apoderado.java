@@ -14,7 +14,6 @@ public class Apoderado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int codapoderado;
 
 	//bi-directional many-to-one association to Alumno

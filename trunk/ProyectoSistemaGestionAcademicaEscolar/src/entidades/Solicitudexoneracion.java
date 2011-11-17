@@ -14,10 +14,10 @@ public class Solicitudexoneracion implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String codsolicitudexoneracion;
 
-	private Object docsustentatorio;
+    @Lob()
+	private byte[] docsustentatorio;
 
 	private String estado;
 
@@ -47,11 +47,11 @@ public class Solicitudexoneracion implements Serializable {
 		this.codsolicitudexoneracion = codsolicitudexoneracion;
 	}
 
-	public Object getDocsustentatorio() {
+	public byte[] getDocsustentatorio() {
 		return this.docsustentatorio;
 	}
 
-	public void setDocsustentatorio(Object docsustentatorio) {
+	public void setDocsustentatorio(byte[] docsustentatorio) {
 		this.docsustentatorio = docsustentatorio;
 	}
 
