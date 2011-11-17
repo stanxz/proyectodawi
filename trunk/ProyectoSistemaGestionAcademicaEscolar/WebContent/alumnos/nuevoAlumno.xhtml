@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	template="/templates/crud-template.xhtml">
+	
+	<ui:define name="title">
+		I.E.P &quot;SAN CARLOS&quot;
+	</ui:define>
+	
+	<ui:define name="header">
+		<ui:include src="/snippets/header.xhtml" />
+	</ui:define>
+
+	<ui:define name="menu">
+		<ui:include src="/snippets/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="body">
+		<h:form>
+			<p:panel styleClass="session" header="Registrar Alumno" align="center">
+				<h:panelGrid columns="3">
+				<h:outputLabel value="Nombre"/>
+				<p:inputText id="nombre" required="true" requiredMessage="Ingrese Nombre">
+				</p:inputText>
+				<p:message for="nombre"/>
+				<h:outputLabel value="Password"/>
+				<p:password id="password" required="true" requiredMessage="Ingrese Password" >
+				</p:password>
+				<p:message for="password"/>
+				</h:panelGrid>
+				<h:commandButton value="Enviar" action="0"/>
+				</p:panel>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/snippets/footer.xhtml" />
+	</ui:define>
+</ui:composition>
