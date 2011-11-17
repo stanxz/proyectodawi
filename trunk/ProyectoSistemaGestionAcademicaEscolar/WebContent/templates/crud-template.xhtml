@@ -9,7 +9,44 @@ Para lista utilizar
 DataTable - Row Selection 
  -->
  <!-- 
- <div id="container" align="center">
+ <p:layout fullPage="true" >        
+    <p:layoutUnit position="top" height="75" collapsible="true">  
+        <ui:insert name="header"></ui:insert>
+    </p:layoutUnit>  
+      
+    <p:layoutUnit position="left" width="200">  
+    	<br></br><br></br><br></br><br></br>
+        <ui:insert name="menu"></ui:insert>
+    </p:layoutUnit>  
+    
+    <p:layoutUnit position="center">  
+        <ui:insert name="body"></ui:insert>
+    </p:layoutUnit>  
+      
+    <p:layoutUnit position="right" width="200" >  
+    
+    </p:layoutUnit>  
+
+    <p:layoutUnit position="bottom" height="75">  
+       <ui:insert name="footer"></ui:insert>
+    </p:layoutUnit>  
+</p:layout>  	
+ 
+ -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.prime.com.tr/ui">
+<h:head>
+	<title>
+		<ui:insert name="title"></ui:insert>
+	</title> 
+</h:head>
+<h:body style="background-color: #A8C2D3;">
+<div id="container" align="center">
 	<table width="100%">
 		<tr>
 			<td colspan="2" height="100">
@@ -39,43 +76,6 @@ DataTable - Row Selection
 		</tr>
 	</table>
 </div>
- -->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.prime.com.tr/ui">
-<h:head>
-	<title>
-		<ui:insert name="title"></ui:insert>
-	</title> 
-<h:outputStylesheet library="css" name="layout.css" target="head"/>
-</h:head>
-<h:body id="body" class="body">
-<p:layout fullPage="true" >        
-    <p:layoutUnit position="top" height="75">  
-        <ui:insert name="header"></ui:insert>
-    </p:layoutUnit>  
-      
-    <p:layoutUnit position="left" width="200">  
-    	<br></br><br></br><br></br><br></br>
-        <ui:insert name="menu"></ui:insert>
-    </p:layoutUnit>  
-    
-    <p:layoutUnit position="center">  
-        <ui:insert name="body"></ui:insert>
-    </p:layoutUnit>  
-      
-    <p:layoutUnit position="right" width="200" >  
-    
-    </p:layoutUnit>  
-
-    <p:layoutUnit position="bottom" height="75">  
-       <ui:insert name="footer"></ui:insert>
-    </p:layoutUnit>  
-</p:layout>  	
 
 </h:body>
 </html>
