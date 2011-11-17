@@ -18,7 +18,7 @@ public class UsuarioBean {
 	
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
-	@ManagedProperty(value="#{userService}")
+	//@ManagedProperty(value="#{userService}")
 	private static UsuarioService userService = abd.getUsuarioService();
 	
 	private ArrayList<Permiso> funcionalidades;
