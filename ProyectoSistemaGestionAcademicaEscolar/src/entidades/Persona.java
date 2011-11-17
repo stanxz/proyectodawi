@@ -2,7 +2,6 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
 
 
 /**
@@ -44,10 +43,6 @@ public class Persona implements Serializable {
 	//bi-directional one-to-one association to Secretaria
 	@OneToOne(mappedBy="persona")
 	private Secretaria secretaria;
-
-	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="persona")
-	private Set<Usuario> usuarios;
 
     public Persona() {
     }
@@ -146,14 +141,6 @@ public class Persona implements Serializable {
 
 	public void setSecretaria(Secretaria secretaria) {
 		this.secretaria = secretaria;
-	}
-	
-	public Set<Usuario> getUsuarios() {
-		return this.usuarios;
-	}
-
-	public void setUsuarios(Set<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 	
 }
