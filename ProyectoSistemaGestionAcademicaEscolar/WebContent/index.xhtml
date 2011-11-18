@@ -46,7 +46,7 @@
      <br></br><br></br><br></br><br></br><br></br><br></br>
      <br></br><br></br><br></br><br></br><br></br><br></br>
 		<div id="login">
-         <h:panelGrid columns="3">
+         <h:panelGrid id="grid" columns="3">
 							<h:outputLabel value="Usuario"/>
 							<p:inputText id="usuario" value="#{usuarioBean.persona1.codpersona}" required="true" requiredMessage="Ingrese Usuario">
 							</p:inputText>
@@ -56,7 +56,7 @@
 							</p:password>
 							<p:message for="password"/>
 		</h:panelGrid>
-		<p:commandButton value="Enviar" action="#{usuarioBean.loguearUsuario}"/>
+		<p:commandButton value="Enviar" action="#{usuarioBean.loguearUsuario}" update="grid"/>
       	</div>
     </p:tab>  
 </p:tabView>  
