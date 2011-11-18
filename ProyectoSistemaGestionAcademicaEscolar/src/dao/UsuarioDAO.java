@@ -9,6 +9,6 @@ import entidades.Usuario;
 public interface UsuarioDAO {
 	
 	public boolean validarUsuario(Usuario elusuario) throws Exception;
-	public ArrayList<Permiso> listarMenus() throws Exception;
+	public ArrayList<Permiso> listarMenus(Usuario elusuario) throws Exception;
 	
 }

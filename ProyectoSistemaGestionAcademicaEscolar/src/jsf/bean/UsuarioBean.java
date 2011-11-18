@@ -47,7 +47,7 @@ public class UsuarioBean {
 		
 		try {
 			if(userService.validarUsuarioEntrada(usuario1)){
-				userService.listarMenusCorresp();
+				userService.listarMenusCorresp(usuario1);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
