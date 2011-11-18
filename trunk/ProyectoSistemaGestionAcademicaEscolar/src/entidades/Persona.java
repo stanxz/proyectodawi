@@ -12,9 +12,8 @@ import javax.persistence.*;
 public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codpersona;
+	@Id 
+	private String codpersona;
 
 	private String apellidomat;
 
@@ -47,13 +46,16 @@ public class Persona implements Serializable {
     public Persona() {
     }
 
-	public int getCodpersona() {
-		return this.codpersona;
+
+	public String getCodpersona() {
+		return codpersona;
 	}
 
-	public void setCodpersona(int codpersona) {
+
+	public void setCodpersona(String codpersona) {
 		this.codpersona = codpersona;
 	}
+
 
 	public String getApellidomat() {
 		return this.apellidomat;

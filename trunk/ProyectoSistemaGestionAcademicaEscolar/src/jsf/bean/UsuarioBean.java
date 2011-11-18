@@ -1,9 +1,11 @@
 package jsf.bean;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
 import entidades.Persona;
@@ -34,6 +36,23 @@ public class UsuarioBean {
 	}
 
 	public String loguearUsuario(){
+		System.out.println("En el loguear usuario - UsuarioBean");
+		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		String cadenausuario = params.get("usuario");
+		String cadenapassword = params.get("password");
+
+		persona1.setCodpersona(cadenausuario);
+		usuario1.setPersona(persona1);
+		usuario1.setContrasena(cadenapassword);
+		
+		try {
+			if(userService.validarUsuarioEntrada(usuario1)){
+				userService.listarMenusCorresp();
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "bienvenida";
 	}
 
