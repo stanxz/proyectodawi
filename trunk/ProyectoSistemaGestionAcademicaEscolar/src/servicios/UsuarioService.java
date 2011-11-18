@@ -8,6 +8,6 @@ import entidades.Usuario;
 public interface UsuarioService {
 
 	public boolean validarUsuarioEntrada(Usuario elusuario) throws Exception;
-	public ArrayList<Permiso> listarMenusCorresp() throws Exception;
+	public ArrayList<Permiso> listarMenusCorresp(Usuario elusuario) throws Exception;
 	
 }

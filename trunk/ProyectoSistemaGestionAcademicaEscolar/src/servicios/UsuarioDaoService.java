@@ -19,14 +19,13 @@ public class UsuarioDaoService implements UsuarioService {
 
 	@Override
 	public boolean validarUsuarioEntrada(Usuario elusuario) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		return usuariodao.validarUsuario(elusuario);
 	}
 
 	@Override
-	public ArrayList<Permiso> listarMenusCorresp() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Permiso> listarMenusCorresp(Usuario elusuario)
+			throws Exception {
+		return usuariodao.listarMenus(elusuario);
 	}
 
 }

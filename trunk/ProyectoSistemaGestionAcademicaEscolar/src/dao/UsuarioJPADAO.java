@@ -19,7 +19,6 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		this.emf=emf;
 	}
 	
-
 	@Override
 	public boolean validarUsuario(Usuario elusuario) throws Exception {
 		// TODO Auto-generated method stub
@@ -27,7 +26,7 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	}
 
 	@Override
-	public ArrayList<Permiso> listarMenus() throws Exception {
+	public ArrayList<Permiso> listarMenus(Usuario elusuario) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
