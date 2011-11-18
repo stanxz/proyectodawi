@@ -18,7 +18,6 @@
 	</ui:define>
 
 	<ui:define name="body">
-<<<<<<< .mine
 		<h:form id="form">  
   
     <p:growl id="msgs" showDetail="true" />  
@@ -48,11 +47,11 @@
                      <f:setPropertyActionListener value="" target="" />  
                  </p:commandButton>  
                  <p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edit">  
-                     <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />  
-                     <f:setPropertyActionListener value="#{true}" target="#{tableBean.editMode}" />  
+                     <f:setPropertyActionListener value="" target="" />  
+                     <f:setPropertyActionListener value="" target="" />  
                  </p:commandButton>  
                  <p:commandButton update=":form:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Delete">  
-                     <f:setPropertyActionListener value="#{car}" target="#{tableBean.selectedCar}" />  
+                     <f:setPropertyActionListener value="" target="" />  
                  </p:commandButton>  
              </h:panelGrid>  
         </p:column>  
@@ -65,40 +64,40 @@
         <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">  
   
             <f:facet name="header">  
-                <p:graphicImage value="/images/cars/#{tableBean.selectedCar.manufacturer}.jpg"/>  
+                <p:graphicImage value=""/>  
             </f:facet>  
   
             <h:outputText value="Model:" />  
             <h:panelGroup>  
-                <h:outputText value="#{tableBean.selectedCar.model}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>  
-                <p:inputText value="#{tableBean.selectedCar.model}" rendered="#{tableBean.editMode}" required="true" label="Model"/>  
+                <h:outputText value="" style="font-weight:bold" rendered=""/>  
+                <p:inputText value="" rendered="" required="true" label="Model"/>  
             </h:panelGroup>  
   
             <h:outputText value="Year:" />  
             <h:panelGroup>  
-                <h:outputText value="#{tableBean.selectedCar.year}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>  
-                <p:inputText value="#{tableBean.selectedCar.year}" rendered="#{tableBean.editMode}" required="true" label="Year"/>  
+                <h:outputText value="" style="font-weight:bold" rendered=""/>  
+                <p:inputText value="" rendered="" required="true" label="Year"/>  
             </h:panelGroup>  
   
             <h:outputText value="Manufacturer:" />  
             <h:panelGroup>  
-                <h:outputText value="#{tableBean.selectedCar.manufacturer}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>  
-                <h:selectOneMenu value="#{tableBean.selectedCar.manufacturer}" rendered="#{tableBean.editMode}">  
-                    <f:selectItems value="#{tableBean.manufacturers}" var="man" itemLabel="#{man}" itemValue="#{man}" />  
+                <h:outputText value="" style="font-weight:bold" rendered=""/>  
+                <h:selectOneMenu value="" rendered="">  
+                    <f:selectItems value="" var="man" itemLabel="" itemValue="" />  
                 </h:selectOneMenu>  
             </h:panelGroup>  
   
             <h:outputText value="Color:" />  
             <h:panelGroup>  
-                <h:outputText value="#{tableBean.selectedCar.color}" style="font-weight:bold" rendered="#{!tableBean.editMode}"/>  
-                <h:selectOneMenu value="#{tableBean.selectedCar.color}" rendered="#{tableBean.editMode}">  
-                    <f:selectItems value="#{tableBean.colors}" var="color" itemLabel="#{color}" itemValue="#{color}" />  
+                <h:outputText value="" style="font-weight:bold" rendered=""/>  
+                <h:selectOneMenu value="" rendered="">  
+                    <f:selectItems value="" var="color" itemLabel="" itemValue="" />  
                 </h:selectOneMenu>  
             </h:panelGroup>  
   
             <f:facet name="footer">  
-                <p:outputPanel rendered="#{tableBean.editMode}" layout="block" style="text-align:right">  
-                    <p:commandButton value="Save" update="cars msgs" actionListener="#{tableBean.save}"   
+                <p:outputPanel rendered="" layout="block" style="text-align:right">  
+                    <p:commandButton value="Save" update="cars msgs"
                                     oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check"/>  
                     <p:commandButton value="Cancel" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
   
@@ -112,7 +111,7 @@
                     showEffect="explode" hideEffect="explode"  
                     header="Confirm" severity="alert" widgetVar="confirmation">  
   
-        <p:commandButton value="Yes sure" update="cars" actionListener="#{tableBean.delete}" oncomplete="confirmation.hide()"/>  
+        <p:commandButton value="Yes sure" update="cars" oncomplete="confirmation.hide()"/>  
         <p:commandButton value="Not yet" onclick="confirmation.hide()" type="button" />  
   
     </p:confirmDialog>  
@@ -123,8 +122,7 @@
 		<p:confirmDialog message="Are you sure about destroying the world?"
 						 header="Initiating destroy process" severity="alert"
 						 widgetVar="cd">
-			<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}"
-							update="messages" oncomplete="confirmation.hide()"/>
+			<p:commandButton value="Yes Sure" update="messages" oncomplete="confirmation.hide()"/>
 			<p:commandButton value="Not Yet" onclick="cd.hide();" type="button" />
 		</p:confirmDialog>
 	</h:form>   			
