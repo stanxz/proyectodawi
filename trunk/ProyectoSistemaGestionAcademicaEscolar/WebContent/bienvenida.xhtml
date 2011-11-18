@@ -16,18 +16,10 @@
 	</ui:define>
 
 	<ui:define name="body">
-		<h2>Bienvenido</h2>
-		<p>Bienvenido a la aplicación ejemplo de JSF 2.0 con JPA</p>
-		<p>Para comenzar, elige una de las opciones del menú izquierdo.</p>
-		  <h:form>
-		<p:commandButton value="ClickMe"  type="button" onclick="cd.show()" />
-		<p:confirmDialog message="Are you sure about destroying the world?"
-						 header="Initiating destroy process" severity="alert"
-						 widgetVar="cd">
-			<p:commandButton value="Yes Sure" actionListener="#{buttonBean.destroyWorld}"
-							update="messages" oncomplete="confirmation.hide()"/>
-			<p:commandButton value="Not Yet" onclick="cd.hide();" type="button" />
-		</p:confirmDialog>
+	<h:form style="width: 800px; ">
+		<p:panel header="Bienvenido">  
+    		<h:outputText value="xxxxxxxxxxxxxxxx" />  
+        </p:panel>  
 	</h:form>   			
 	</ui:define>
 
