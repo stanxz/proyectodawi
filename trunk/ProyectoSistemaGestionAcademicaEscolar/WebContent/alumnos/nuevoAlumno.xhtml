@@ -19,7 +19,7 @@
 	<ui:define name="body">
 		<h:form style="width: 800px;">
 			<p:panel styleClass="session" header="Registrar Alumno">
-				<h:panelGrid columns="3">
+				<h:panelGrid columns="3" id="grid">
 				<h:outputLabel value="Nombre"/>
 				<p:inputText id="nombre" required="true" requiredMessage="Ingrese Nombre">
 				</p:inputText>
@@ -29,7 +29,7 @@
 				</p:password>
 				<p:message for="password"/>
 				</h:panelGrid>
-				<h:commandButton value="Enviar" action="0"/>
+				<p:commandButton value="Enviar" action="0" update="grid"/>
 				</p:panel>
 		</h:form>
 	</ui:define>
