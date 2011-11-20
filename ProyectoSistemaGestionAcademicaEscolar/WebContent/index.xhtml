@@ -48,11 +48,11 @@
 		<div id="login">
          <h:panelGrid id="grid" columns="3">
 							<h:outputLabel value="Usuario"/>
-							<p:inputText id="usuario" value="#{usuarioBean.persona1.codpersona}" required="true" requiredMessage="Ingrese Usuario">
+							<p:inputText id="usuario" value="#{usuarioBean.cadenausuario}" required="true" requiredMessage="Ingrese Usuario">
 							</p:inputText>
 							<p:message for="usuario"/>
 							<h:outputLabel value="Password"/>
-							<p:password id="password" value="#{usuarioBean.usuario1.contrasena}" required="true" requiredMessage="Ingrese Password" feedback="false">
+							<p:password id="password" value="#{usuarioBean.cadenapassword}" required="true" requiredMessage="Ingrese Password" feedback="false">
 							</p:password>
 							<p:message for="password"/>
 		</h:panelGrid>
