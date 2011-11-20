@@ -15,47 +15,41 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idlogin;
-
-	private String contrasena;
-
-
-	private String codperfil;
-
-	private String codpersona;
-
-	public int getIdlogin() {
-		return idlogin;
+	@Column(name="idlogin")
+	private int intIdLogin;
+	
+	@Column(name="contrasena")
+	private String strContrasena;
+	
+	@Column(name="codperfil")
+	private String strCodigoPerfil;
+	
+	@Column(name="codpersona")
+	private String strCodigoPersona;
+	
+	public String getStrContrasena() {
+		return strContrasena;
 	}
-
-	public void setIdlogin(int idlogin) {
-		this.idlogin = idlogin;
+	public void setStrContrasena(String strContrasena) {
+		this.strContrasena = strContrasena;
 	}
-
-	public String getContrasena() {
-		return contrasena;
+	public String getStrCodigoPerfil() {
+		return strCodigoPerfil;
 	}
-
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public int getIntIdLogin() {
+		return intIdLogin;
 	}
-
-	public String getCodperfil() {
-		return codperfil;
+	public void setIntIdLogin(int intIdLogin) {
+		this.intIdLogin = intIdLogin;
 	}
-
-	public void setCodperfil(String codperfil) {
-		this.codperfil = codperfil;
+	public void setStrCodigoPerfil(String strCodigoPerfil) {
+		this.strCodigoPerfil = strCodigoPerfil;
 	}
-
-	public String getCodpersona() {
-		return codpersona;
+	public String getStrCodigoPersona() {
+		return strCodigoPersona;
 	}
-
-	public void setCodpersona(String codpersona) {
-		this.codpersona = codpersona;
+	public void setStrCodigoPersona(String strCodigoPersona) {
+		this.strCodigoPersona = strCodigoPersona;
 	}
-
-
 	
 }

@@ -38,8 +38,8 @@ public class LogueoBean {
 		
 		usuario =  new Usuario();
 		
-		usuario.setCodpersona(cadenausuario);
-		usuario.setContrasena(cadenapassword);
+		usuario.setStrCodigoPersona(cadenausuario);
+		usuario.setStrContrasena(cadenapassword);
 		
 		
 		Usuario userauxi;
