@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 
 import entidades.Permiso;
+import entidades.Persona;
 //import entidades.Persona;
 import entidades.Usuario;
 
@@ -22,6 +23,7 @@ public class LogueoBean {
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Usuario usuario;
+	private Persona persona;
 	
 	private String cadenausuario,cadenapassword;
 	
@@ -35,6 +37,7 @@ public class LogueoBean {
 
 		System.out.println("el usuario: "+cadenausuario);
 		System.out.println("el pass : "+cadenapassword);
+		
 		
 		usuario =  new Usuario();
 		
