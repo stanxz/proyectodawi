@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
@@ -45,14 +44,22 @@ public class UsuarioBean {
 		usuario1.setPersona(persona1);
 		usuario1.setContrasena(cadenapassword);
 		
+		
+		Usuario userauxi;
 		try {
-			if(userService.validarUsuarioEntrada(usuario1)){
-				userService.listarMenusCorresp(usuario1);
+			userauxi = userService.validarUsuarioEntrada(usuario1);
+			if(userauxi!=null){
+				//userService.listarMenusCorresp(usuario1);
+				System.out.println("usuario OK");
+			}else{
+				System.out.println("usuario nulo");
 			}
-		} catch (Exception e) {
+				
+		} catch (Exception e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
+
 		return "bienvenida";
 	}
 
