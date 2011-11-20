@@ -12,42 +12,40 @@ import servicios.ApplicationBusinessDelegate;
 import servicios.UsuarioService;
 
 @ManagedBean
-public class UsuarioBean {
+public class LogueoBean {
 
 	
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
-	//@ManagedProperty(value="#{userService}")
 	private static UsuarioService userService = abd.getUsuarioService();
 	
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
-	private Usuario usuario1;
-	//private Persona persona1;
+	private Usuario usuario;
 	
 	private String cadenausuario,cadenapassword;
 	
 	
-	public UsuarioBean(){
-		System.out.println("Creando UsuarioBean...");
-		//funcionalidad= new Permiso();
-		usuario1= new Usuario();
-		//persona1= new Persona();
+	public LogueoBean(){
+		System.out.println("Creando LogueoBean...");
 	}
 
 	public String loguearUsuario(){
 		System.out.println("En el loguear usuario - UsuarioBean");
-		
+
 		System.out.println("el usuario: "+cadenausuario);
 		System.out.println("el pass : "+cadenapassword);
 		
-		usuario1.setCodpersona(cadenausuario);
-		usuario1.setContrasena(cadenapassword);
+		usuario =  new Usuario();
+		
+		usuario.setCodpersona(cadenausuario);
+		usuario.setContrasena(cadenapassword);
 		
 		
 		Usuario userauxi;
+		
 		try {
-			userauxi = userService.validarUsuarioEntrada(usuario1);
+			userauxi = userService.validarUsuarioEntrada(usuario);
 			if(userauxi!=null){
 				//userService.listarMenusCorresp(usuario1);
 				System.out.println("usuario OK");
@@ -70,7 +68,7 @@ public class UsuarioBean {
 	}
 
 	public static void setUserService(UsuarioService userService) {
-		UsuarioBean.userService = userService;
+		LogueoBean.userService = userService;
 	}
 
 	public ArrayList<Permiso> getFuncionalidades() {
@@ -89,21 +87,13 @@ public class UsuarioBean {
 		this.funcionalidad = funcionalidad;
 	}
 
-	public Usuario getUsuario1() {
-		return usuario1;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuario1(Usuario usuario1) {
-		this.usuario1 = usuario1;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
-
-	/*public Persona getPersona1() {
-		return persona1;
-	}
-
-	public void setPersona1(Persona persona1) {
-		this.persona1 = persona1;
-	}*/
 
 	public String getCadenausuario() {
 		return cadenausuario;
