@@ -8,7 +8,9 @@ public class JPADAOFactory extends DAOFactory {
 	
 	
 	public JPADAOFactory (){
+		System.out.println("waaaaaaa");
 		emf=Persistence.createEntityManagerFactory("JPADemo");
+		System.out.println("JPADAOFactory - emf en memoria: "+emf.toString());
 	}
 
 
@@ -24,6 +26,7 @@ public class JPADAOFactory extends DAOFactory {
 	public UsuarioDAO getUsuarioDAO() {
 		UsuarioJPADAO ed =  new UsuarioJPADAO();
 		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
 		return (UsuarioDAO)ed;
 	}
 	
