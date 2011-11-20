@@ -27,6 +27,9 @@ public class UsuarioBean {
 	private Usuario usuario1;
 	private Persona persona1;
 	
+	private String cadenausuario,cadenapassword;
+	
+	
 	public UsuarioBean(){
 		System.out.println("Creado UsuarioBean...");
 		funcionalidad= new Permiso();
@@ -36,10 +39,11 @@ public class UsuarioBean {
 
 	public String loguearUsuario(){
 		System.out.println("En el loguear usuario - UsuarioBean");
-		Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
-		String cadenausuario = params.get("usuario");
-		String cadenapassword = params.get("password");
-
+		//Map<String, String> params = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
+		//String cadenausuario = params.get("usuario");
+		//String cadenapassword = params.get("password");
+		System.out.println("el usuario: "+cadenausuario);
+		System.out.println("el pass : "+cadenapassword);
 		persona1.setCodpersona(cadenausuario);
 		usuario1.setPersona(persona1);
 		usuario1.setContrasena(cadenapassword);
@@ -47,13 +51,13 @@ public class UsuarioBean {
 		
 		Usuario userauxi;
 		try {
-			userauxi = userService.validarUsuarioEntrada(usuario1);
-			if(userauxi!=null){
+			//userauxi = userService.validarUsuarioEntrada(usuario1);
+			//if(userauxi!=null){
 				//userService.listarMenusCorresp(usuario1);
-				System.out.println("usuario OK");
-			}else{
-				System.out.println("usuario nulo");
-			}
+			//	System.out.println("usuario OK");
+			//}else{
+			//	System.out.println("usuario nulo");
+			//}
 				
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -104,6 +108,23 @@ public class UsuarioBean {
 	public void setPersona1(Persona persona1) {
 		this.persona1 = persona1;
 	}
+
+	public String getCadenausuario() {
+		return cadenausuario;
+	}
+
+	public void setCadenausuario(String cadenausuario) {
+		this.cadenausuario = cadenausuario;
+	}
+
+	public String getCadenapassword() {
+		return cadenapassword;
+	}
+
+	public void setCadenapassword(String cadenapassword) {
+		this.cadenapassword = cadenapassword;
+	}
+	
 	
 	
 }
