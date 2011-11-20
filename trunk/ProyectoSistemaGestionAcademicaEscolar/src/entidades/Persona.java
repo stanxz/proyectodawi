@@ -41,6 +41,10 @@ public class Persona implements Serializable {
 	
 	@Column(name="sexo")
 	private String strSexo;
+	
+	@OneToOne
+	@JoinColumn(name="codpersona")
+	private Usuario usuario;
 
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
@@ -112,6 +116,14 @@ public class Persona implements Serializable {
 
 	public void setStrSexo(String strSexo) {
 		this.strSexo = strSexo;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
