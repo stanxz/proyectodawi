@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
-import entidades.Persona;
+//import entidades.Persona;
 import entidades.Usuario;
 
 import servicios.ApplicationBusinessDelegate;
@@ -25,16 +25,16 @@ public class UsuarioBean {
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Usuario usuario1;
-	private Persona persona1;
+	//private Persona persona1;
 	
 	private String cadenausuario,cadenapassword;
 	
 	
 	public UsuarioBean(){
-		System.out.println("Creado UsuarioBean...");
-		funcionalidad= new Permiso();
+		System.out.println("Creando UsuarioBean...");
+		//funcionalidad= new Permiso();
 		usuario1= new Usuario();
-		persona1= new Persona();
+		//persona1= new Persona();
 	}
 
 	public String loguearUsuario(){
@@ -44,20 +44,24 @@ public class UsuarioBean {
 		//String cadenapassword = params.get("password");
 		System.out.println("el usuario: "+cadenausuario);
 		System.out.println("el pass : "+cadenapassword);
-		persona1.setCodpersona(cadenausuario);
-		usuario1.setPersona(persona1);
+		
+		usuario1.setCodpersona(cadenausuario);
 		usuario1.setContrasena(cadenapassword);
+		
+		//persona1.setCodpersona(cadenausuario);
+	//	usuario1.setPersona(persona1);
+	//	usuario1.setContrasena(cadenapassword);
 		
 		
 		Usuario userauxi;
 		try {
-			//userauxi = userService.validarUsuarioEntrada(usuario1);
-			//if(userauxi!=null){
+			userauxi = userService.validarUsuarioEntrada(usuario1);
+			if(userauxi!=null){
 				//userService.listarMenusCorresp(usuario1);
-			//	System.out.println("usuario OK");
-			//}else{
-			//	System.out.println("usuario nulo");
-			//}
+				System.out.println("usuario OK");
+			}else{
+				System.out.println("usuario nulo");
+			}
 				
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -101,13 +105,13 @@ public class UsuarioBean {
 		this.usuario1 = usuario1;
 	}
 
-	public Persona getPersona1() {
+	/*public Persona getPersona1() {
 		return persona1;
 	}
 
 	public void setPersona1(Persona persona1) {
 		this.persona1 = persona1;
-	}
+	}*/
 
 	public String getCadenausuario() {
 		return cadenausuario;

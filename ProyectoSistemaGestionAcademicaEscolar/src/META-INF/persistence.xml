@@ -4,33 +4,6 @@
 	
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		
-		<class>entidades.Actividad</class>
-		<class>entidades.Alumno</class>
-		<class>entidades.Apoderado</class>
-		<class>entidades.Asignatura</class>
-		<class>entidades.Asistentasocial</class>
-		<class>entidades.Boletapago</class>
-		<class>entidades.Calendarioacademico</class>
-		<class>entidades.Certificadoa</class>
-		<class>entidades.Cita</class>
-		<class>entidades.Detalleasignatura</class>
-		<class>entidades.DetalleasignaturaPK</class>
-		<class>entidades.Detallemotivo</class>
-		<class>entidades.DetallemotivoPK</class>
-		<class>entidades.Detallerestriccion</class>
-		<class>entidades.DetallerestriccionPK</class>
-		<class>entidades.Disponibilidadasistentasocial</class>
-		<class>entidades.Horario</class>
-		<class>entidades.HorarioPK</class>
-		<class>entidades.Motivo</class>
-		<class>entidades.Perfil</class>
-		<class>entidades.Permiso</class>
-		<class>entidades.Persona</class>
-		<class>entidades.Restriccion</class>
-		<class>entidades.Secretaria</class>
-		<class>entidades.Solicitudexoneracion</class>
-		<class>entidades.Solicitudretiro</class>
-		<class>entidades.Tiposervicioa</class>
 		<class>entidades.Usuario</class>
 		
 		<properties>

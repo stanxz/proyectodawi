@@ -9,6 +9,7 @@ import javax.persistence.*;
  * 
  */
 @Entity
+@Table(name="usuario")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -18,21 +19,13 @@ public class Usuario implements Serializable {
 
 	private String contrasena;
 
-	//bi-directional many-to-one association to Perfil
-    @ManyToOne
-	@JoinColumn(name="CODPERFIL")
-	private Perfil perfil;
 
-	//uni-directional many-to-one association to Persona
-    @ManyToOne
-	@JoinColumn(name="CODPERSONA")
-	private Persona persona;
+	private String codperfil;
 
-    public Usuario() {
-    }
+	private String codpersona;
 
 	public int getIdlogin() {
-		return this.idlogin;
+		return idlogin;
 	}
 
 	public void setIdlogin(int idlogin) {
@@ -40,27 +33,29 @@ public class Usuario implements Serializable {
 	}
 
 	public String getContrasena() {
-		return this.contrasena;
+		return contrasena;
 	}
 
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
 
-	public Perfil getPerfil() {
-		return this.perfil;
+	public String getCodperfil() {
+		return codperfil;
 	}
 
-	public void setPerfil(Perfil perfil) {
-		this.perfil = perfil;
-	}
-	
-	public Persona getPersona() {
-		return this.persona;
+	public void setCodperfil(String codperfil) {
+		this.codperfil = codperfil;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
+	public String getCodpersona() {
+		return codpersona;
 	}
+
+	public void setCodpersona(String codpersona) {
+		this.codpersona = codpersona;
+	}
+
+
 	
 }
