@@ -9,53 +9,111 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@Table(name="usuario")
+@Table(name="persona")
 public class Persona implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idlogin;
+	@Column(name="codpersona")
+	private String strCodigoPersona;
+	
+	@Column(name="nombres")
+	private String strNombre;
+	
+	@Column(name="apellidopat")
+	private String strApellidoPaterno;
+	
+	@Column(name="apellidomat")
+	private String strApellidoMaterno;
+	
+	@Column(name="direccion")
+	private String strDireccion;
+	
+	@Column(name="email")
+	private String strMail;
+	
+	@Column(name="telefono")
+	private String strTelefono;
+	
+	@Column(name="celular")
+	private String strCelular;
+	
+	@Column(name="sexo")
+	private String strSexo;
 
-	private String contrasena;
-
-
-	private String codperfil;
-
-	private String codpersona;
-
-	public int getIdlogin() {
-		return idlogin;
+	public String getStrCodigoPersona() {
+		return strCodigoPersona;
 	}
 
-	public void setIdlogin(int idlogin) {
-		this.idlogin = idlogin;
+	public void setStrCodigoPersona(String strCodigoPersona) {
+		this.strCodigoPersona = strCodigoPersona;
 	}
 
-	public String getContrasena() {
-		return contrasena;
+	public String getStrNombre() {
+		return strNombre;
 	}
 
-	public void setContrasena(String contrasena) {
-		this.contrasena = contrasena;
+	public void setStrNombre(String strNombre) {
+		this.strNombre = strNombre;
 	}
 
-	public String getCodperfil() {
-		return codperfil;
+	public String getStrApellidoPaterno() {
+		return strApellidoPaterno;
 	}
 
-	public void setCodperfil(String codperfil) {
-		this.codperfil = codperfil;
+	public void setStrApellidoPaterno(String strApellidoPaterno) {
+		this.strApellidoPaterno = strApellidoPaterno;
 	}
 
-	public String getCodpersona() {
-		return codpersona;
+	public String getStrApellidoMaterno() {
+		return strApellidoMaterno;
 	}
 
-	public void setCodpersona(String codpersona) {
-		this.codpersona = codpersona;
+	public void setStrApellidoMaterno(String strApellidoMaterno) {
+		this.strApellidoMaterno = strApellidoMaterno;
 	}
 
+	public String getStrDireccion() {
+		return strDireccion;
+	}
 
+	public void setStrDireccion(String strDireccion) {
+		this.strDireccion = strDireccion;
+	}
+
+	public String getStrMail() {
+		return strMail;
+	}
+
+	public void setStrMail(String strMail) {
+		this.strMail = strMail;
+	}
+
+	public String getStrTelefono() {
+		return strTelefono;
+	}
+
+	public void setStrTelefono(String strTelefono) {
+		this.strTelefono = strTelefono;
+	}
+
+	public String getStrCelular() {
+		return strCelular;
+	}
+
+	public void setStrCelular(String strCelular) {
+		this.strCelular = strCelular;
+	}
+
+	public String getStrSexo() {
+		return strSexo;
+	}
+
+	public void setStrSexo(String strSexo) {
+		this.strSexo = strSexo;
+	}
+	
+	
 	
 }
