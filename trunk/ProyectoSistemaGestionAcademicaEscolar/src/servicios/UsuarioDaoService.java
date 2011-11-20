@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dao.DAOFactory;
 import dao.UsuarioDAO;
+
 import entidades.Permiso;
 import entidades.Usuario;
 
@@ -18,7 +19,7 @@ public class UsuarioDaoService implements UsuarioService {
 	}
 
 	@Override
-	public boolean validarUsuarioEntrada(Usuario elusuario) throws Exception {
+	public Usuario validarUsuarioEntrada(Usuario elusuario) throws Exception {
 		return usuariodao.validarUsuario(elusuario);
 	}
 
