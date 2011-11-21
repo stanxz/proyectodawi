@@ -29,4 +29,10 @@ public class UsuarioDaoService implements UsuarioService {
 		return usuariodao.listarMenus(elusuario);
 	}
 
+	@Override
+	public Usuario consultaPass(Usuario elusuario) throws Exception {
+		// TODO Auto-generated method stub
+		return usuariodao.buscaContrasena(elusuario);
+	}
+
 }

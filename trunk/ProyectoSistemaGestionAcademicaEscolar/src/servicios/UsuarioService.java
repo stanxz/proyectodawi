@@ -8,5 +8,5 @@ public interface UsuarioService {
 
 	public Usuario validarUsuarioEntrada(Usuario elusuario) throws Exception;
 	public ArrayList<Permiso> listarMenusCorresp(Usuario elusuario) throws Exception;
-	
+	public Usuario consultaPass(Usuario elusuario) throws Exception;
 }

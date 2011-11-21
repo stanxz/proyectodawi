@@ -64,4 +64,26 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	
 	}
 
+	@Override
+	public Usuario buscaContrasena(Usuario elusuario) throws Exception {
+
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.strCodigoPersona=?1");
+		q.setParameter(1, elusuario.getStrCodigoPersona());
+		
+		try {
+			Usuario entidadUsuario =(Usuario)q.getSingleResult();
+			em.close();
+			if(entidadUsuario!=null)
+				return entidadUsuario;
+			else
+				return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+	
+	}
+
 }

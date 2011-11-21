@@ -6,13 +6,32 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" 
 	xmlns:p="http://primefaces.prime.com.tr/ui">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Insert title here</title>
-</head>
-<body>
+<h:head>
+<title>I.E.P &quot;SAN CARLOS&quot;</title>
+<h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
+</h:head>
 
-	<h1>Recupera passsssss</h1>
+<h:body style="background-color: #A8C2D3;">
 
-</body>
+	<h1 align="center">Recuperar Password</h1>
+	<h:form>
+		<div id="login"> 
+         <h:panelGrid id="grid" columns="3"  >
+							<h:outputLabel value="Ingrese su DNI: "/>
+							<p:inputText id="dniusuario" value="#{logueoBean.dni}" required="true" requiredMessage="Ingrese DNI">
+							</p:inputText>
+							<p:message for="usuario"/>
+							<c:if test='#{logueoBean.mensaje2!=null}'>
+							  	<p:dialog header="Error al ingresar" widgetVar="dlg2" modal="true" height="200" visible="true" position="center" resizable="false" showEffect="bounce" hideEffect="explode">
+							  		  <h:outputLabel value="#{logueoBean.mensaje2}"></h:outputLabel>
+							  	</p:dialog>
+  							</c:if>
+							
+		</h:panelGrid>
+		<h:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid"/>
+		<a href="index.xhtml">Olvidó su contrasena?</a>
+      	</div>
+	</h:form>
+</h:body>
+
 </html>
