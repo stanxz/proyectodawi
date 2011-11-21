@@ -12,4 +12,8 @@ public class ApplicationBusinessDelegate {
 		return new UsuarioDaoService(DAOFactory.JPA);
 	}
 	
+	public PersonaService getPersonaService(){
+		return new PersonaDaoService(DAOFactory.JPA);
+	}
+	
 }

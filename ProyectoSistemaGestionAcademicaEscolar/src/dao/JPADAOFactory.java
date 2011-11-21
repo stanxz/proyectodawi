@@ -29,6 +29,15 @@ public class JPADAOFactory extends DAOFactory {
 		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
 		return (UsuarioDAO)ed;
 	}
+
+
+	@Override
+	public PersonaDAO getPersonaDAO() {
+		PersonaJPADAO ed =  new PersonaJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (PersonaJPADAO)ed;
+	}
 	
 	//aca falta las implementaciones de los dao q se va
 	//a usar

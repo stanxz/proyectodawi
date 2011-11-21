@@ -7,9 +7,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import entidades.Permiso;
+import entidades.Persona;
 import entidades.Usuario;
 import servicios.ApplicationBusinessDelegate;
+import servicios.PersonaService;
 import servicios.UsuarioService;
+import utiles.EnviaMail;
 
 @ManagedBean
 @RequestScoped
@@ -19,10 +22,11 @@ public class LogueoBean {
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
 	private static UsuarioService userService = abd.getUsuarioService();
+	private static PersonaService personaService=abd.getPersonaService();
 	
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
-	private Usuario usuario;
+	private Usuario usuario; 
 	public Map<String, Object> lasession;
 	private String cadenausuario,cadenapassword,mensaje,mensaje2,dni;
 	
@@ -90,10 +94,11 @@ public class LogueoBean {
 				Usuario uauxi=userService.consultaPass(usuario);
 				if(uauxi!=null){
 						System.out.println("Enviando mail al usuario ... ");
+						Persona pauxi=new Persona();
 						mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getStrCodigoPersona();
 						//logica envio de correos
-						
-						
+						EnviaMail enviador=new EnviaMail();
+						//enviador.EnviadorMailContrasena(maildestino, destinatario, uauxi);
 						return "index";
 				}else{
 					System.out.println("Usuario No Registrado !! ");
