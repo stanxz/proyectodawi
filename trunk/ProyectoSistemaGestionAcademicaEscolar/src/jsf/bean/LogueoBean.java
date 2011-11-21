@@ -80,14 +80,6 @@ public class LogueoBean {
 	}
 
 	//getters y setter
-	
-	public static UsuarioService getUserService() {
-		return userService;
-	}
-
-	public static void setUserService(UsuarioService userService) {
-		LogueoBean.userService = userService;
-	}
 
 	public ArrayList<Permiso> getFuncionalidades() {
 		return funcionalidades;

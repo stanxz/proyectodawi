@@ -28,7 +28,7 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		q.setParameter(2, elusuario.getStrContrasena());
 		
 		try {
-			Usuario entidadUsuario=(Usuario)q.getSingleResult();
+			Usuario entidadUsuario =(Usuario)q.getSingleResult();
 			em.close();
 			if(entidadUsuario!=null)
 				return entidadUsuario;
