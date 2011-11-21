@@ -58,9 +58,9 @@
 							<h:outputLabel value="Password"/>
 							<p:password id="password" value="#{logueoBean.cadenapassword}" required="true" requiredMessage="Ingrese Password" feedback="false" >
 							</p:password>
-							<p:message for="password"/>
+							<p:message for="password"/>				
 		</h:panelGrid>
-		<h:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}" update="grid"/>
+		<p:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}" update="grid" ajax="false"/>
 		<a href="seguridad/recuperaContrasena.xhtml">Olvidó su contrasena?</a>
       	</div>
     </p:tab>  
