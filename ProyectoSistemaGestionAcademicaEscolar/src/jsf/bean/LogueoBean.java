@@ -59,19 +59,19 @@ public class LogueoBean {
 				//funcionalidades=userService.listarMenusCorresp(usuario1);
 				//lasession.put("b_menu",funcionalidades);
 
-				System.out.println("usuario OK: "+userauxi.getStrCodigoPersona());
+				System.out.println("Usuario OK: " + userauxi.getStrCodigoPersona());
 				return "bienvenida";
 			}else{
-				System.out.println("usuario nulo");
+				System.out.println("Usuario Nulo");
 				mensaje="Usuario o Password incorrecto !! ";
-				System.out.println(""+mensaje);
+				System.out.println("" + mensaje);
 				return "error";
 			}
 				
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
-			System.out.println(""+e1.getMessage());
+			System.out.println("" + e1.getMessage());
 			return "error";
 		}
 
