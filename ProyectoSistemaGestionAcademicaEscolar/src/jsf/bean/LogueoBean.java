@@ -2,17 +2,19 @@ package jsf.bean;
 
 import java.util.ArrayList;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
-import entidades.Persona;
-//import entidades.Persona;
 import entidades.Usuario;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.UsuarioService;
 
 @ManagedBean
+@RequestScoped
 public class LogueoBean {
 
 	
@@ -23,7 +25,7 @@ public class LogueoBean {
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Usuario usuario;
-	private Persona persona;
+	//private Persona persona;
 	
 	private String cadenausuario,cadenapassword;
 	
@@ -43,25 +45,33 @@ public class LogueoBean {
 		
 		usuario.setStrCodigoPersona(cadenausuario);
 		usuario.setStrContrasena(cadenapassword);
-		
-		
-		Usuario userauxi;
-		
+
 		try {
-			userauxi = userService.validarUsuarioEntrada(usuario);
+			Usuario userauxi = userService.validarUsuarioEntrada(usuario);
 			if(userauxi!=null){
 				//userService.listarMenusCorresp(usuario1);
-				System.out.println("usuario OK");
+				System.out.println("usuario OK: "+userauxi.getStrCodigoPersona());
+				return "bienvenida";
 			}else{
+				//FacesMessage mif=new FacesMessage();
+			//	mif.setDetail("Mal");
+				//FacesContext.getCurrentInstance().addMessage("Invalid login !! ",mif);
 				System.out.println("usuario nulo");
+				return "error";
 			}
 				
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			System.out.println(""+e1.getMessage());
+			//FacesMessage mif=new FacesMessage();
+			//mif.setDetail("Mal");
+			//mif.setSeverity(null);
+			//FacesContext.getCurrentInstance().addMessage("Invalid login !! ",mif);
+			return "error";
 		}
 
-		return "bienvenida";
+		
 	}
 
 	//getters y setter
