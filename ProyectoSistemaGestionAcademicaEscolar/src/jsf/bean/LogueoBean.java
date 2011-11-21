@@ -49,9 +49,14 @@ public class LogueoBean {
 				//ponemos al usuario en sesion
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
+				/*
+				funcionalidades = userService.listarMenusCorresp(usuario);
+				lasession.put("b_menu",funcionalidades);
 				
-				//funcionalidades=userService.listarMenusCorresp(usuario1);
-				//lasession.put("b_menu",funcionalidades);
+				for (Permiso x : funcionalidades) {
+					System.out.println(x.getDescripcion());
+				}
+				;*/
 
 				System.out.println("Usuario OK: " + userauxi.getStrCodigoPersona());
 				return "bienvenida";
