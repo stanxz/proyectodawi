@@ -58,8 +58,7 @@ public class LogueoBean {
 				
 				//funcionalidades=userService.listarMenusCorresp(usuario1);
 				//lasession.put("b_menu",funcionalidades);
-				
-				
+
 				System.out.println("usuario OK: "+userauxi.getStrCodigoPersona());
 				return "bienvenida";
 			}else{
