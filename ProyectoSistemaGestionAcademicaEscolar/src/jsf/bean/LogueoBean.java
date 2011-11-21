@@ -3,17 +3,11 @@ package jsf.bean;
 import java.util.ArrayList;
 import java.util.Map;
 
-//import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-
-import com.opensymphony.xwork2.Action;
-//import javax.faces.context.FacesContext;
-
 import entidades.Permiso;
 import entidades.Usuario;
-
 import servicios.ApplicationBusinessDelegate;
 import servicios.UsuarioService;
 
@@ -30,7 +24,7 @@ public class LogueoBean {
 	private Permiso funcionalidad;
 	private Usuario usuario;
 	public Map<String, Object> lasession;
-	private String cadenausuario,cadenapassword,mensaje;
+	private String cadenausuario,cadenapassword,mensaje,mensaje2,dni;
 	
 	
 	public LogueoBean(){
@@ -69,7 +63,6 @@ public class LogueoBean {
 			}
 				
 		} catch (Exception e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println("" + e1.getMessage());
 			return "error";
@@ -78,6 +71,47 @@ public class LogueoBean {
 		
 	}
 
+	public String recuperarPass(){
+		System.out.println("En el recuperarPass - UsuarioBean");
+
+		System.out.println("el DNI: "+dni);		
+		
+		usuario =  new Usuario();
+		
+		usuario.setStrCodigoPersona(dni);
+
+		if(!dni.isEmpty()){
+			try {
+				Usuario uauxi=userService.consultaPass(usuario);
+				if(uauxi!=null){
+						System.out.println("Enviando mail al usuario ... ");
+						mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getStrCodigoPersona();
+						//logica envio de correos
+						
+						
+						return "index";
+				}else{
+					System.out.println("Usuario No Registrado !! ");
+					mensaje2="Usuario No Registrado";
+					return "error";
+				}
+
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				mensaje2="Usuario No Registrado";
+				e.printStackTrace();
+				return "error";
+			}
+		}else{
+			System.out.println("DNI vacio");
+			mensaje2="Usuario No Registrado";
+			return "error";
+		}
+	}
+	
+	
+	
+	
 	//getters y setter
 
 	public ArrayList<Permiso> getFuncionalidades() {
@@ -134,6 +168,22 @@ public class LogueoBean {
 
 	public void setLasession(Map<String, Object> lasession) {
 		this.lasession = lasession;
+	}
+
+	public String getMensaje2() {
+		return mensaje2;
+	}
+
+	public void setMensaje2(String mensaje2) {
+		this.mensaje2 = mensaje2;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	
 	
