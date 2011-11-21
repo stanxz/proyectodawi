@@ -9,8 +9,9 @@
 <title>Datos Medicos de Paciente</title>
 <sj:head jqueryui="true"/>
 <link href="./css/miEstilo.css" rel="stylesheet" type="text/css" /> 
+<!--
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
 	$("#dmpaciente.Otros").click(function(event){
 		alert("WAAAAA");
 		if ($("#dmpaciente.Otros").attr("checked")){
@@ -19,16 +20,28 @@ $(document).ready(function(){
 			$("#midiv").css("display", "none");
 		}
 	});
-});
+ });
 </script>
+  -->
 
-
+<script>
+ $(document).ready(function(){
+	$("#pruebass").click(function(event){
+		alert("WAAAAA");
+		if ($("#pruebass").attr("checked")){
+			$("#midiv").css("display", "block");
+		}else{
+			$("#midiv").css("display", "none");
+		}
+	});
+ });
+</script>
 
 </head>
 <body >
 <h2>Modificar Datos Medicos de Paciente</h2>
 <form action="ActualizarDMPacienteAction" method="post">
-<table align="center"">
+<table align="center">
   <tr valign="top">
     <td>
 	<div class="ui-tabs ui-widget ui-corner-all"
@@ -85,12 +98,12 @@ $(document).ready(function(){
 			<tr>
 				<td align="left">Otros:</td>
 				<td> 
-					<s:if test="dmpaciente.Otros==1">
-						<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" value="true" >
+					<s:if test="pruebass==1">
+						<s:checkbox id="pruebass" name="pruebass" value="true" >
 						</s:checkbox> 
 					</s:if>
 					<s:else>
-					<s:checkbox id="dmpaciente.Otros" name="dmpaciente.Otros" value="false" >
+					<s:checkbox id="pruebass" name="pruebass" value="false" >
 						</s:checkbox> 
 					</s:else>
 				</td>
@@ -141,7 +154,7 @@ $(document).ready(function(){
 		</tr>
 		</table>
 	</form>
-	<div  id="midiv" style="display: none; ">
+	<div  id="midiv" style="display:none; ">
 			HOLAAAA
 		</div>
 </body>
