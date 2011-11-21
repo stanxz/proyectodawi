@@ -2,10 +2,10 @@ package jsf.bean;
 
 import java.util.ArrayList;
 
-import javax.faces.application.FacesMessage;
+//import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
+//import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
 import entidades.Usuario;
@@ -27,7 +27,7 @@ public class LogueoBean {
 	private Usuario usuario;
 	//private Persona persona;
 	
-	private String cadenausuario,cadenapassword;
+	private String cadenausuario,cadenapassword,mensaje;
 	
 	
 	public LogueoBean(){
@@ -57,6 +57,8 @@ public class LogueoBean {
 			//	mif.setDetail("Mal");
 				//FacesContext.getCurrentInstance().addMessage("Invalid login !! ",mif);
 				System.out.println("usuario nulo");
+				mensaje="Usuario o Password incorrecto !! ";
+				System.out.println(""+mensaje);
 				return "error";
 			}
 				
@@ -122,6 +124,14 @@ public class LogueoBean {
 
 	public void setCadenapassword(String cadenapassword) {
 		this.cadenapassword = cadenapassword;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 	
 	
