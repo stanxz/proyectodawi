@@ -9,7 +9,7 @@ import java.util.Set;
  * The persistent class for the perfil database table.
  * 
  */
-@Entity
+@Entity 
 public class Perfil implements Serializable {
 	private static final long serialVersionUID = 1L;
 
