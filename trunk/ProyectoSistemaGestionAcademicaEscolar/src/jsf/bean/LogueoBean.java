@@ -1,10 +1,14 @@
 package jsf.bean;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 //import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
+
+import com.opensymphony.xwork2.Action;
 //import javax.faces.context.FacesContext;
 
 import entidades.Permiso;
@@ -25,8 +29,7 @@ public class LogueoBean {
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Usuario usuario;
-	//private Persona persona;
-	
+	public Map<String, Object> lasession;
 	private String cadenausuario,cadenapassword,mensaje;
 	
 	
@@ -49,13 +52,17 @@ public class LogueoBean {
 		try {
 			Usuario userauxi = userService.validarUsuarioEntrada(usuario);
 			if(userauxi!=null){
-				//userService.listarMenusCorresp(usuario1);
+				//ponemos al usuario en sesion
+				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+				lasession.put("b_usuario", userauxi);
+				
+				//funcionalidades=userService.listarMenusCorresp(usuario1);
+				//lasession.put("b_menu",funcionalidades);
+				
+				
 				System.out.println("usuario OK: "+userauxi.getStrCodigoPersona());
 				return "bienvenida";
 			}else{
-				//FacesMessage mif=new FacesMessage();
-			//	mif.setDetail("Mal");
-				//FacesContext.getCurrentInstance().addMessage("Invalid login !! ",mif);
 				System.out.println("usuario nulo");
 				mensaje="Usuario o Password incorrecto !! ";
 				System.out.println(""+mensaje);
@@ -66,10 +73,6 @@ public class LogueoBean {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 			System.out.println(""+e1.getMessage());
-			//FacesMessage mif=new FacesMessage();
-			//mif.setDetail("Mal");
-			//mif.setSeverity(null);
-			//FacesContext.getCurrentInstance().addMessage("Invalid login !! ",mif);
 			return "error";
 		}
 
@@ -132,6 +135,14 @@ public class LogueoBean {
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+
+	public Map<String, Object> getLasession() {
+		return lasession;
+	}
+
+	public void setLasession(Map<String, Object> lasession) {
+		this.lasession = lasession;
 	}
 	
 	
