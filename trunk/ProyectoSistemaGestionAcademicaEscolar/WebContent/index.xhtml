@@ -5,6 +5,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core" 
 	xmlns:p="http://primefaces.prime.com.tr/ui">
 
 <h:head>
@@ -13,7 +14,8 @@
 </h:head>
 <h:body style="background-color: #A8C2D3;">
 <h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
-<h:form>  
+<h:form > 
+	 
    <p:tabView >  
     <p:tab title="Inicio">  
         <h:panelGrid columns="2" cellpadding="10">  
@@ -39,6 +41,8 @@
         </h:panelGrid>  
     </p:tab>  
     
+    
+    
     <p:tab title="Intranet">
      <br></br><br></br><br></br><br></br><br></br><br></br>
      <br></br><br></br><br></br><br></br><br></br><br></br>
@@ -56,11 +60,16 @@
 							</p:password>
 							<p:message for="password"/>
 		</h:panelGrid>
-		<h:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}"/>
+		<h:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}" />
+			
       	</div>
     </p:tab>  
-</p:tabView>  
-  
+</p:tabView>
+  <c:if test='#{logueoBean.mensaje!=null}'>
+  	<p:dialog header="Error al ingresar" widgetVar="dlg2" modal="true" height="200" visible="true" position="center">
+  		  <h:outputLabel value="#{logueoBean.mensaje}"></h:outputLabel>
+  	</p:dialog>
+  </c:if>
 </h:form> 
     
 </h:body>

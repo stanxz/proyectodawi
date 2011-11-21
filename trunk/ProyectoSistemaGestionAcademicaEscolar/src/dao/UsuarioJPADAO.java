@@ -23,8 +23,9 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	@Override
 	public Usuario validarUsuario(Usuario elusuario) throws Exception {
 		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.strCodigoPersona=?1");
+		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.strCodigoPersona=?1 and u.strContrasena=?2");
 		q.setParameter(1, elusuario.getStrCodigoPersona());
+		q.setParameter(2, elusuario.getStrContrasena());
 		
 		try {
 			Usuario entidadUsuario=(Usuario)q.getSingleResult();
