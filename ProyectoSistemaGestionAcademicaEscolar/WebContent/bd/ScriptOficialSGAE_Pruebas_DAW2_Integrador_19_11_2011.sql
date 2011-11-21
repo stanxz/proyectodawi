@@ -478,7 +478,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` (`CODPERFIL`, `NOMBRE`, `DESCRIPCION`) VALUES ('pf01','Apoderado','Persona responsable de un determinado alumno de la Instituci髇 Educativa'),('pf02','Asistenta Social','Persona encargada de brindar apoyo  social a los alumnos de la instituci髇'),('pf03','Secretaria','Persona encargada la evaluaci髇 de tramites de la Instituci髇 Educativa'),('pf04','No asignado','No asignado'),('pf05','GerenteGeneral','Persona que visualiza los reportes'),('pf06','Administrador','Persona con privilegios para usar los amntenimientos');
+INSERT INTO `perfil` (`CODPERFIL`, `NOMBRE`, `DESCRIPCION`) VALUES ('pf01','Apoderado','Persona responsable de un determinado alumno de la Instituci贸n Educativa'),('pf02','Asistenta Social','Persona encargada de brindar apoyo  social a los alumnos de la instituci贸n'),('pf03','Secretaria','Persona encargada la evaluaci贸n de tramites de la Instituci贸n Educativa'),('pf04','No asignado','No asignado'),('pf05','GerenteGeneral','Persona que visualiza los reportes'),('pf06','Administrador','Persona con privilegios para usar los amntenimientos');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,6 +493,7 @@ CREATE TABLE `permiso` (
   `CODPERMISO` char(4) NOT NULL,
   `NOMBRE` varchar(80) DEFAULT NULL,
   `DESCRIPCION` varchar(200) DEFAULT NULL,
+  `ENALCE` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`CODPERMISO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -533,7 +534,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` (`CODPERSONA`, `NOMBRES`, `APELLIDOPAT`, `APELLIDOMAT`, `DIRECCION`, `EMAIL`, `TELEFONO`, `CELULAR`, `SEXO`) VALUES (10101010,'Jorge','Rojas','De la Cruz',NULL,NULL,NULL,NULL,NULL),(11111111,'Mois閟','Veliz','Francia',NULL,NULL,NULL,NULL,NULL),(12121212,'Carlos','Alcantara','Barraza',NULL,NULL,NULL,NULL,NULL),(13131313,'Joe','Guere','Sandioma',NULL,NULL,NULL,NULL,NULL),(14141414,'Adolfo','Gutierrez','Toguchi',NULL,NULL,NULL,NULL,NULL),(15151515,'Gianina','Lujan','Zavaleta',NULL,NULL,NULL,NULL,NULL),(16161616,'Catalina','Gomez','Paredes',NULL,NULL,NULL,NULL,NULL),(17171717,'Raul','Fernandez','Ambolaya',NULL,NULL,NULL,NULL,NULL),(18181818,'Juan','Vivanco','Fernandez',NULL,NULL,NULL,NULL,NULL),(19191919,'Juan','Perez','Lopez',NULL,NULL,NULL,NULL,NULL),(22222222,'Carlos','Alcantara','Villavicencio',NULL,NULL,NULL,NULL,NULL),(33333333,'Pedro','Castillo','Ascencios',NULL,NULL,NULL,NULL,NULL),(44444444,'Ariadna','Ramos','De la Cruz',NULL,NULL,NULL,NULL,NULL),(55555555,'Brenda','Rey','Pacherres',NULL,NULL,NULL,NULL,NULL),(66666666,'Marilda','Lumbre','Mayuri',NULL,NULL,NULL,NULL,NULL),(77777777,'Vilma','Cardenas','Narro',NULL,NULL,NULL,NULL,NULL),(88888888,'Edinso','Goicochea','Ascencios',NULL,NULL,NULL,NULL,NULL),(99999999,'Evelyn','Torres','L髉ez',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `persona` (`CODPERSONA`, `NOMBRES`, `APELLIDOPAT`, `APELLIDOMAT`, `DIRECCION`, `EMAIL`, `TELEFONO`, `CELULAR`, `SEXO`) VALUES (10101010,'Jorge','Rojas','De la Cruz',NULL,NULL,NULL,NULL,NULL),(11111111,'Mois茅s','Veliz','Francia',NULL,NULL,NULL,NULL,NULL),(12121212,'Carlos','Alcantara','Barraza',NULL,NULL,NULL,NULL,NULL),(13131313,'Joe','Guere','Sandioma',NULL,NULL,NULL,NULL,NULL),(14141414,'Adolfo','Gutierrez','Toguchi',NULL,NULL,NULL,NULL,NULL),(15151515,'Gianina','Lujan','Zavaleta',NULL,NULL,NULL,NULL,NULL),(16161616,'Catalina','Gomez','Paredes',NULL,NULL,NULL,NULL,NULL),(17171717,'Raul','Fernandez','Ambolaya',NULL,NULL,NULL,NULL,NULL),(18181818,'Juan','Vivanco','Fernandez',NULL,NULL,NULL,NULL,NULL),(19191919,'Juan','Perez','Lopez',NULL,NULL,NULL,NULL,NULL),(22222222,'Carlos','Alcantara','Villavicencio',NULL,NULL,NULL,NULL,NULL),(33333333,'Pedro','Castillo','Ascencios',NULL,NULL,NULL,NULL,NULL),(44444444,'Ariadna','Ramos','De la Cruz',NULL,NULL,NULL,NULL,NULL),(55555555,'Brenda','Rey','Pacherres',NULL,NULL,NULL,NULL,NULL),(66666666,'Marilda','Lumbre','Mayuri',NULL,NULL,NULL,NULL,NULL),(77777777,'Vilma','Cardenas','Narro',NULL,NULL,NULL,NULL,NULL),(88888888,'Edinso','Goicochea','Ascencios',NULL,NULL,NULL,NULL,NULL),(99999999,'Evelyn','Torres','L贸pez',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
