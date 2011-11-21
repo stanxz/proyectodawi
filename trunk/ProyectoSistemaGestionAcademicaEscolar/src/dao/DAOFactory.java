@@ -13,7 +13,7 @@ public abstract class DAOFactory {
     //aca faltan declararse los daos por entidad q se van a usar
     public abstract AlumnoDAO getAlumnoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
-    
+    public abstract PersonaDAO getPersonaDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){
@@ -23,6 +23,5 @@ public abstract class DAOFactory {
         	    return null;
         }
      }
-    
     
 }
