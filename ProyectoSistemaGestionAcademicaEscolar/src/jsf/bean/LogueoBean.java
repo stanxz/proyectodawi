@@ -26,6 +26,7 @@ public class LogueoBean {
 	
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
+	private Persona persona;
 	private Usuario usuario; 
 	public Map<String, Object> lasession;
 	private String cadenausuario,cadenapassword,mensaje,mensaje2,dni;
@@ -41,10 +42,12 @@ public class LogueoBean {
 		System.out.println("el usuario: "+cadenausuario);
 		System.out.println("el pass : "+cadenapassword);
 		
+		persona = new Persona();
+		persona.setStrCodigoPersona(cadenausuario);
 		
 		usuario =  new Usuario();
 		
-		usuario.setStrCodigoPersona(cadenausuario);
+		usuario.setPersonas(persona);
 		usuario.setStrContrasena(cadenapassword);
 
 		try {
@@ -54,7 +57,7 @@ public class LogueoBean {
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
 				/*
-				funcionalidades = userService.listarMenusCorresp(usuario);
+				funcionalidades = userService.listarMenusCorresp(userauxi);
 				lasession.put("b_menu",funcionalidades);
 				
 				for (Permiso x : funcionalidades) {
@@ -62,8 +65,9 @@ public class LogueoBean {
 				}
 				;*/
 
-				System.out.println("Usuario OK: " + userauxi.getStrCodigoPersona());
+				System.out.println("Usuario OK: " + userauxi.getPersonas().getStrCodigoPersona());
 				return "bienvenida";
+				
 			}else{
 				System.out.println("Usuario Nulo");
 				mensaje="Usuario o Password incorrecto !! ";
@@ -85,9 +89,12 @@ public class LogueoBean {
 
 		System.out.println("el DNI: "+dni);		
 		
+		persona = new Persona();
+		persona.setStrCodigoPersona(dni);
+		
 		usuario =  new Usuario();
 		
-		usuario.setStrCodigoPersona(dni);
+		usuario.setPersonas(persona);
 
 		if(!dni.isEmpty()){
 			try {
@@ -98,7 +105,7 @@ public class LogueoBean {
 						
 						if(pauxi!=null){
 							System.out.println("Persona encontrada: "+pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno());
-							mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getStrCodigoPersona();
+							mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getPersonas().getStrCodigoPersona();
 							//logica envio de correos
 							EnviaMail enviador=new EnviaMail();
 							enviador.EnviadorMailContrasena(pauxi.getStrMail(), pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno(), uauxi);
