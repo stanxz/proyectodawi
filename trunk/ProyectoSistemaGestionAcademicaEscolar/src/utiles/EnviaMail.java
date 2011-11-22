@@ -38,7 +38,7 @@ public class EnviaMail {
 		   
 		   message.setSubject("Recuperación de Contraseña");
 		   
-		   message.setText("Estimado "+destinatario+ " su usuario es: " + datosusuario.getPersonas().getStrCodigoPersona() + 
+		   message.setText("Estimado "+destinatario+ " su usuario es: " + datosusuario.getStrCodigoPersona() + 
 				           " y su contraseña es: " + datosusuario.getStrContrasena());
 
 		   // Lo enviamos.

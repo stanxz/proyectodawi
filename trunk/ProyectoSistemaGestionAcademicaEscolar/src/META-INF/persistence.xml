@@ -6,8 +6,6 @@
 		
 		<class>entidades.Usuario</class>
 		<class>entidades.Persona</class>
-		<class>entidades.Perfil</class>
-		<class>entidades.Permiso</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

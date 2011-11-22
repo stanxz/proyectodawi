@@ -2,8 +2,10 @@ package dao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import entidades.Persona;
+import entidades.Usuario;
 
 public class PersonaJPADAO implements PersonaDAO {
 
@@ -15,9 +17,23 @@ public class PersonaJPADAO implements PersonaDAO {
 	}
 	
 	@Override
-	public Persona consultarPersona() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Persona consultarPersona(Usuario u) throws Exception {
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT p FROM Persona p WHERE p.strCodigoPersona=?1");
+		q.setParameter(1, u.getStrCodigoPersona());
+		
+		try {
+			Persona entidadPersona =(Persona)q.getSingleResult();
+			em.close();
+			if(entidadPersona!=null)
+				return entidadPersona;
+			else
+				return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 }
