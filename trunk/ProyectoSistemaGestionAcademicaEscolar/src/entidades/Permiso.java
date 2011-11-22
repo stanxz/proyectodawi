@@ -2,6 +2,7 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
 import java.util.Set;
 
 
@@ -14,13 +15,17 @@ public class Permiso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String codpermiso;
-
-	private String descripcion;
-
-	private String nombre;
-
-	//bi-directional many-to-many association to Perfil
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="codpermisol")
+	private String strCodigoPermiso;
+	
+	@Column(name="descripcion")
+	private String strDescripcion;
+	
+	@Column(name="nombre")
+	private String strNombre;
+	
+	/*
     @ManyToMany
 	@JoinTable(
 		name="detalleperfil"
@@ -31,41 +36,32 @@ public class Permiso implements Serializable {
 			@JoinColumn(name="CODPERFIL")
 			}
 		)
-	private Set<Perfil> perfils;
+	*/
 
-    public Permiso() {
-    }
-
-	public String getCodpermiso() {
-		return this.codpermiso;
+	public String getStrCodigoPermiso() {
+		return strCodigoPermiso;
 	}
 
-	public void setCodpermiso(String codpermiso) {
-		this.codpermiso = codpermiso;
+	public void setStrCodigoPermiso(String strCodigoPermiso) {
+		this.strCodigoPermiso = strCodigoPermiso;
 	}
 
-	public String getDescripcion() {
-		return this.descripcion;
+	public String getStrDescripcion() {
+		return strDescripcion;
 	}
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setStrDescripcion(String strDescripcion) {
+		this.strDescripcion = strDescripcion;
 	}
 
-	public String getNombre() {
-		return this.nombre;
+	public String getStrNombre() {
+		return strNombre;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setStrNombre(String strNombre) {
+		this.strNombre = strNombre;
 	}
 
-	public Set<Perfil> getPerfils() {
-		return this.perfils;
-	}
 
-	public void setPerfils(Set<Perfil> perfils) {
-		this.perfils = perfils;
-	}
 	
 }
