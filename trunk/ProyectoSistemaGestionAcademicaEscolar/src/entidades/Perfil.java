@@ -1,6 +1,8 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 
@@ -23,6 +25,16 @@ public class Perfil implements Serializable {
 	
 	@Column(name="nombre")
 	private String strNombre;
+	
+	@OneToMany(targetEntity=Usuario.class,mappedBy="perfiles")
+	private Collection<Usuario> tbUsuarios;
+	
+	@ManyToMany
+	@JoinTable(name="detalleperfil",
+			joinColumns={@JoinColumn(name="codperfil")},
+			inverseJoinColumns={@JoinColumn(name="codpermiso")}
+	)
+	private Collection<Permiso> tbPermisos;
 
 
     public Perfil() {
@@ -56,6 +68,26 @@ public class Perfil implements Serializable {
 
 	public void setStrNombre(String strNombre) {
 		this.strNombre = strNombre;
+	}
+
+
+	public Collection<Usuario> getTbUsuarios() {
+		return tbUsuarios;
+	}
+
+
+	public void setTbUsuarios(Collection<Usuario> tbUsuarios) {
+		this.tbUsuarios = tbUsuarios;
+	}
+
+
+	public Collection<Permiso> getTbPermisos() {
+		return tbPermisos;
+	}
+
+
+	public void setTbPermisos(Collection<Permiso> tbPermisos) {
+		this.tbPermisos = tbPermisos;
 	}
     
     

@@ -3,7 +3,7 @@ package entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import java.util.Set;
+import java.util.Collection;
 
 
 /**
@@ -16,7 +16,7 @@ public class Permiso implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="codpermisol")
+	@Column(name="codpermiso")
 	private String strCodigoPermiso;
 	
 	@Column(name="descripcion")
@@ -25,18 +25,12 @@ public class Permiso implements Serializable {
 	@Column(name="nombre")
 	private String strNombre;
 	
-	/*
-    @ManyToMany
-	@JoinTable(
-		name="detalleperfil"
-		, joinColumns={
-			@JoinColumn(name="CODPERMISO")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="CODPERFIL")
-			}
-		)
-	*/
+	@ManyToMany
+	@JoinTable(name="detalleperfil",
+			joinColumns={@JoinColumn(name="codpermiso")},
+			inverseJoinColumns={@JoinColumn(name="codperfil")}
+	)
+	private Collection<Perfil> tbPerfiles;
 
 	public String getStrCodigoPermiso() {
 		return strCodigoPermiso;
@@ -62,6 +56,14 @@ public class Permiso implements Serializable {
 		this.strNombre = strNombre;
 	}
 
+	public Collection<Perfil> getTbPerfiles() {
+		return tbPerfiles;
+	}
 
+	public void setTbPerfiles(Collection<Perfil> tbPerfiles) {
+		this.tbPerfiles = tbPerfiles;
+	}
+
+	
 	
 }
