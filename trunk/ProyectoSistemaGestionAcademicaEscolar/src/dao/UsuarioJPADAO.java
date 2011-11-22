@@ -38,7 +38,10 @@ public class UsuarioJPADAO implements UsuarioDAO {
 				return null;
 			}
 				
-		} catch (Exception e) {
+		} catch (NoResultException ne){
+			ne.printStackTrace();
+			return null;
+		}catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -52,12 +55,11 @@ public class UsuarioJPADAO implements UsuarioDAO {
 
 		ArrayList<Permiso> permisosUser = new ArrayList<Permiso>();
 		 
-		Query q =  em.createQuery("SELECT p FROM Permiso p" );
-		//q.setParameter(1, elusuario.getPerfiles().getStrCodigoPerfil());
+		Query q =  em.createQuery("SELECT p FROM Permiso p where p.tbPerfiles.strCodigoPerfil=?1" );
+		q.setParameter(1, elusuario.getPerfiles().getStrCodigoPerfil());
 
 		List l=q.getResultList();
 		
-		// 2. Copiar los datos de cada entidad a 
 		for ( int i=0; i < l.size(); i++ ) {
 			Permiso entidad = (Permiso)l.get(i);
 			System.out.println(l.get(i));
