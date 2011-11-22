@@ -24,13 +24,13 @@ public class Permiso implements Serializable {
 	
 	@Column(name="nombre")
 	private String strNombre;
-	/*
+	
 	@ManyToMany
 	@JoinTable(name="detalleperfil",
 			joinColumns={@JoinColumn(name="codpermiso")},
 			inverseJoinColumns={@JoinColumn(name="codperfil")}
-	)*/
-	//private Collection<Perfil> tbPerfiles;
+	)
+	private Collection<Perfil> tbPerfiles;
 
 	public String getStrCodigoPermiso() {
 		return strCodigoPermiso;
@@ -56,14 +56,13 @@ public class Permiso implements Serializable {
 		this.strNombre = strNombre;
 	}
 
-/*	public Collection<Perfil> getTbPerfiles() {
+	public Collection<Perfil> getTbPerfiles() {
 		return tbPerfiles;
 	}
 
 	public void setTbPerfiles(Collection<Perfil> tbPerfiles) {
 		this.tbPerfiles = tbPerfiles;
 	}
-*/
 	
 	
 }

@@ -20,7 +20,7 @@ public class PersonaJPADAO implements PersonaDAO {
 	public Persona consultarPersona(Usuario u) throws Exception {
 		em=emf.createEntityManager();
 		Query q =  em.createQuery("SELECT p FROM Persona p WHERE p.strCodigoPersona=?1");
-		q.setParameter(1, u.getStrCodigoPersona());
+		q.setParameter(1, u.getPersonas().getStrCodigoPersona());
 		
 		try {
 			Persona entidadPersona =(Persona)q.getSingleResult();

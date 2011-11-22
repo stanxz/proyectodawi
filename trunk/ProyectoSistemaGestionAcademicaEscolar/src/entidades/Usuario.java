@@ -20,20 +20,20 @@ public class Usuario implements Serializable {
 	
 	@Column(name="contrasena")
 	private String strContrasena;
-	
+	/*
 	@Column(name="codperfil")
 	private String strCodigoPerfil;
 
 	@Column(name="codpersona")
 	private String strCodigoPersona;
-	
-	/*@ManyToOne
+	*/
+	@ManyToOne
 	@JoinColumn(name="codpersona")
 	private Persona personas;
 	
 	@ManyToOne
 	@JoinColumn(name="codperfil")
-	private Perfil perfiles;*/
+	private Perfil perfiles;
 	
 	public String getStrContrasena() {
 		return strContrasena;
@@ -45,6 +45,17 @@ public class Usuario implements Serializable {
 	public String getStrCodigoPerfil() {
 		return strCodigoPerfil;
 	}
+	public void setStrCodigoPerfil(String strCodigoPerfil) {
+		this.strCodigoPerfil = strCodigoPerfil;
+	}
+	*/
+	/*
+	public String getStrCodigoPersona() {
+		return strCodigoPersona;
+	}
+	public void setStrCodigoPersona(String strCodigoPersona) {
+		this.strCodigoPersona = strCodigoPersona;
+	}
 	*/
 	public int getIntIdLogin() {
 		return intIdLogin;
@@ -53,22 +64,7 @@ public class Usuario implements Serializable {
 		this.intIdLogin = intIdLogin;
 	}
 	
-	public void setStrCodigoPerfil(String strCodigoPerfil) {
-		this.strCodigoPerfil = strCodigoPerfil;
-	}
-	
-	
-	public String getStrCodigoPersona() {
-		return strCodigoPersona;
-	}
-	public void setStrCodigoPersona(String strCodigoPersona) {
-		this.strCodigoPersona = strCodigoPersona;
-	}
-	public String getStrCodigoPerfil() {
-		return strCodigoPerfil;
-	}
-	
-	/*public Perfil getPerfiles() {
+	public Perfil getPerfiles() {
 		return perfiles;
 	}
 	public void setPerfiles(Perfil perfiles) {
@@ -79,6 +75,6 @@ public class Usuario implements Serializable {
 	}
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
-	}*/
+	}
 	
 }
