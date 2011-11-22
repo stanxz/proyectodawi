@@ -46,7 +46,6 @@ public class LogueoBean {
 		persona.setStrCodigoPersona(cadenausuario);
 		
 		usuario =  new Usuario();
-		
 		usuario.setPersonas(persona);
 		usuario.setStrContrasena(cadenapassword);
 
@@ -77,7 +76,8 @@ public class LogueoBean {
 				
 		} catch (Exception e1) {
 			e1.printStackTrace();
-			System.out.println("" + e1.getMessage());
+			System.out.println("error: " + e1.getMessage());
+			mensaje="Usuario o Password incorrecto !! ";
 			return "error";
 		}
 
