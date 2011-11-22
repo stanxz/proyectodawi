@@ -15,7 +15,6 @@ public class Permiso implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codpermiso")
 	private String strCodigoPermiso;
 	
@@ -24,6 +23,9 @@ public class Permiso implements Serializable {
 	
 	@Column(name="nombre")
 	private String strNombre;
+	
+	@Column(name="enlace")
+	private String strEnlace;
 	
 	@ManyToMany
 	@JoinTable(name="detalleperfil",
@@ -54,6 +56,14 @@ public class Permiso implements Serializable {
 
 	public void setStrNombre(String strNombre) {
 		this.strNombre = strNombre;
+	}
+
+	public String getStrEnlace() {
+		return strEnlace;
+	}
+
+	public void setStrEnlace(String strEnlace) {
+		this.strEnlace = strEnlace;
 	}
 
 	public Collection<Perfil> getTbPerfiles() {

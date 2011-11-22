@@ -55,17 +55,18 @@ public class UsuarioJPADAO implements UsuarioDAO {
 
 		ArrayList<Permiso> permisosUser = new ArrayList<Permiso>();
 		 
-		Query q =  em.createQuery("SELECT p FROM Permiso p where p.tbPerfiles.strCodigoPerfil=?1" );
+		Query q =  em.createQuery("SELECT c1 FROM Permiso c1 INNER JOIN c1.tbPerfiles c2 where c2.strCodigoPerfil=?1" );
 		q.setParameter(1, elusuario.getPerfiles().getStrCodigoPerfil());
 
 		List l=q.getResultList();
-		
-		for ( int i=0; i < l.size(); i++ ) {
-			Permiso entidad = (Permiso)l.get(i);
-			System.out.println(l.get(i));
-			permisosUser.add(entidad);
+		if(l.size()>0){
+			for ( int i=0; i < l.size(); i++ ) {
+				Permiso entidad = (Permiso)l.get(i);
+				System.out.println("permiso: "+l.get(i));
+				permisosUser.add(entidad);
+			}
 		}
-
+		
 		em.close();
 
 		return permisosUser;
