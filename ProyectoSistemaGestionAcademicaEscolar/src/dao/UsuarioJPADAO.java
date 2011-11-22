@@ -23,8 +23,8 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	@Override
 	public Usuario validarUsuario(Usuario elusuario) throws Exception {
 		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.strCodigoPersona=?1 and u.strContrasena=?2");
-		q.setParameter(1, elusuario.getStrCodigoPersona());
+		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1 and u.strContrasena=?2");
+		q.setParameter(1, elusuario.getPersonas().getStrCodigoPersona());
 		q.setParameter(2, elusuario.getStrContrasena());
 		
 		try {
@@ -48,13 +48,15 @@ public class UsuarioJPADAO implements UsuarioDAO {
 
 		ArrayList<Permiso> permisosUser = new ArrayList<Permiso>();
 		 
-		Query q =  em.createQuery("SELECT p FROM Permiso p JOIN p.detalleperfil d where d.codpermiso=p.codpermiso and dp.codperfil=?1" );
-		q.setParameter(1, elusuario.getStrCodigoPerfil());
+		Query q =  em.createQuery("SELECT p FROM Permiso p" );
+		//q.setParameter(1, elusuario.getPerfiles().getStrCodigoPerfil());
 
 		List l=q.getResultList();
+		
 		// 2. Copiar los datos de cada entidad a 
 		for ( int i=0; i < l.size(); i++ ) {
 			Permiso entidad = (Permiso)l.get(i);
+			System.out.println(l.get(i));
 			permisosUser.add(entidad);
 		}
 
@@ -69,7 +71,7 @@ public class UsuarioJPADAO implements UsuarioDAO {
 
 		em=emf.createEntityManager();
 		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.strCodigoPersona=?1");
-		q.setParameter(1, elusuario.getStrCodigoPersona());
+		q.setParameter(1, elusuario.getPersonas().getStrCodigoPersona());
 		
 		try {
 			Usuario entidadUsuario =(Usuario)q.getSingleResult();

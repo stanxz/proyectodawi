@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -20,12 +21,21 @@ public class Usuario implements Serializable {
 	
 	@Column(name="contrasena")
 	private String strContrasena;
-	
+	/*
 	@Column(name="codperfil")
 	private String strCodigoPerfil;
-	
+	*/
+	/*
 	@Column(name="codpersona")
 	private String strCodigoPersona;
+	*/
+	@ManyToOne
+	@JoinColumn(name="codpersona")
+	private Persona personas;
+	
+	@ManyToOne
+	@JoinColumn(name="codperfil")
+	private Perfil perfiles;
 	
 	public String getStrContrasena() {
 		return strContrasena;
@@ -33,23 +43,41 @@ public class Usuario implements Serializable {
 	public void setStrContrasena(String strContrasena) {
 		this.strContrasena = strContrasena;
 	}
+	/*
 	public String getStrCodigoPerfil() {
 		return strCodigoPerfil;
 	}
+	*/
 	public int getIntIdLogin() {
 		return intIdLogin;
 	}
 	public void setIntIdLogin(int intIdLogin) {
 		this.intIdLogin = intIdLogin;
 	}
+	/*
 	public void setStrCodigoPerfil(String strCodigoPerfil) {
 		this.strCodigoPerfil = strCodigoPerfil;
 	}
+	*/
+	/*
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
 	}
 	public void setStrCodigoPersona(String strCodigoPersona) {
 		this.strCodigoPersona = strCodigoPersona;
+	}
+	*/
+	public Perfil getPerfiles() {
+		return perfiles;
+	}
+	public void setPerfiles(Perfil perfiles) {
+		this.perfiles = perfiles;
+	}
+	public Persona getPersonas() {
+		return personas;
+	}
+	public void setPersonas(Persona personas) {
+		this.personas = personas;
 	}
 	
 }

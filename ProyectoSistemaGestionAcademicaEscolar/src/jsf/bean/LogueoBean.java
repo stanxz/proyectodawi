@@ -10,9 +10,7 @@ import entidades.Permiso;
 import entidades.Persona;
 import entidades.Usuario;
 import servicios.ApplicationBusinessDelegate;
-import servicios.PersonaService;
 import servicios.UsuarioService;
-import utiles.EnviaMail;
 
 @ManagedBean
 @RequestScoped
@@ -22,11 +20,11 @@ public class LogueoBean {
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
 	private static UsuarioService userService = abd.getUsuarioService();
-	private static PersonaService personaService=abd.getPersonaService();
 	
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Usuario usuario; 
+	private Persona persona; 
 	public Map<String, Object> lasession;
 	private String cadenausuario,cadenapassword,mensaje,mensaje2,dni;
 	
@@ -42,9 +40,12 @@ public class LogueoBean {
 		System.out.println("el pass : "+cadenapassword);
 		
 		
+		persona =  new Persona();
+		persona.setStrCodigoPersona(cadenausuario);
+		
 		usuario =  new Usuario();
 		
-		usuario.setStrCodigoPersona(cadenausuario);
+		usuario.setPersonas(persona);
 		usuario.setStrContrasena(cadenapassword);
 
 		try {
@@ -53,16 +54,16 @@ public class LogueoBean {
 				//ponemos al usuario en sesion
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
-				/*
-				funcionalidades = userService.listarMenusCorresp(usuario);
+				
+				funcionalidades = userService.listarMenusCorresp(userauxi);
 				lasession.put("b_menu",funcionalidades);
 				
 				for (Permiso x : funcionalidades) {
-					System.out.println(x.getDescripcion());
+					System.out.println(x.getStrDescripcion());
 				}
-				;*/
+				;
 
-				System.out.println("Usuario OK: " + userauxi.getStrCodigoPersona());
+				System.out.println("Usuario OK: " + userauxi.getPersonas().getStrCodigoPersona());
 				return "bienvenida";
 			}else{
 				System.out.println("Usuario Nulo");
@@ -85,19 +86,22 @@ public class LogueoBean {
 
 		System.out.println("el DNI: "+dni);		
 		
+		persona =  new Persona();
+		persona.setStrCodigoPersona(dni);
+		
 		usuario =  new Usuario();
 		
-		usuario.setStrCodigoPersona(dni);
+		usuario.setPersonas(persona);
 
 		if(!dni.isEmpty()){
 			try {
 				Usuario uauxi=userService.consultaPass(usuario);
 				if(uauxi!=null){
 						System.out.println("Enviando mail al usuario ... ");
-						Persona pauxi=new Persona();
-						mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getStrCodigoPersona();
+						//Persona pauxi=new Persona();
+						mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getPersonas().getStrCodigoPersona();
 						//logica envio de correos
-						EnviaMail enviador=new EnviaMail();
+						//EnviaMail enviador=new EnviaMail();
 						//enviador.EnviadorMailContrasena(maildestino, destinatario, uauxi);
 						return "index";
 				}else{
