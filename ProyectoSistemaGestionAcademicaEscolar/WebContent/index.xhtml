@@ -61,13 +61,16 @@
 							<p:message for="password"/>				
 		</h:panelGrid>
 		<p:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}" update="grid" ajax="false"/>
-		<a href="seguridad/recuperaContrasena.xhtml">Olvidó su contrasena?</a>
+		<h:outputLink 
+		 value= "faces/seguridad/recuperaContrasena.xhtml">
+		  <f:verbatim >Olvidó su contrasena?</f:verbatim>
+		</h:outputLink>
       	</div>
     </p:tab>  
 </p:tabView>
   <c:if test='#{logueoBean.mensaje!=null}'>
   	<p:dialog header="Error al Ingresar al Sistema" widgetVar="dlg2" modal="true" height="200" visible="true" position="center" resizable="false" showEffect="bounce" hideEffect="explode">
-  		  <h:outputLabel value="#{logueoBean.mensaje}"></h:outputLabel>
+  		  <h:outputLabel value="#{logueoBean.mensaje2}"></h:outputLabel>
   	</p:dialog>
   </c:if>
 </h:form> 

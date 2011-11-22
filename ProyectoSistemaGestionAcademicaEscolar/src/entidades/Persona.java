@@ -1,8 +1,6 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
-
 import javax.persistence.*;
 
 
@@ -45,12 +43,11 @@ public class Persona implements Serializable {
 	
 	/*@OneToOne
 	@JoinColumn(name="codpersona")
-	private Usuario usuario;
-	*/
+	private Usuario usuario;*/
 	
-	@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
+	/*@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
 	private Collection<Usuario> tbUsuarios;
-	
+	*/
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
 	}
@@ -123,21 +120,21 @@ public class Persona implements Serializable {
 		this.strSexo = strSexo;
 	}
 	/*
-	public Usuario getUsuario() {
+	/*public Usuario getUsuario() {
 		return usuario;
 	}
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-	*/
+	}*/
 
-	public Collection<Usuario> getTbUsuarios() {
+
+	/*public Collection<Usuario> getTbUsuarios() {
 		return tbUsuarios;
 	}
 
 	public void setTbUsuarios(Collection<Usuario> tbUsuarios) {
 		this.tbUsuarios = tbUsuarios;
 	}
-	
+	*/
 }

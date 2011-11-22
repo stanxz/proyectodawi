@@ -15,27 +15,25 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idlogin")
 	private int intIdLogin;
 	
 	@Column(name="contrasena")
 	private String strContrasena;
-	/*
+	
 	@Column(name="codperfil")
 	private String strCodigoPerfil;
-	*/
-	/*
+
 	@Column(name="codpersona")
 	private String strCodigoPersona;
-	*/
-	@ManyToOne
+	
+	/*@ManyToOne
 	@JoinColumn(name="codpersona")
 	private Persona personas;
 	
 	@ManyToOne
 	@JoinColumn(name="codperfil")
-	private Perfil perfiles;
+	private Perfil perfiles;*/
 	
 	public String getStrContrasena() {
 		return strContrasena;
@@ -54,20 +52,23 @@ public class Usuario implements Serializable {
 	public void setIntIdLogin(int intIdLogin) {
 		this.intIdLogin = intIdLogin;
 	}
-	/*
+	
 	public void setStrCodigoPerfil(String strCodigoPerfil) {
 		this.strCodigoPerfil = strCodigoPerfil;
 	}
-	*/
-	/*
+	
+	
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
 	}
 	public void setStrCodigoPersona(String strCodigoPersona) {
 		this.strCodigoPersona = strCodigoPersona;
 	}
-	*/
-	public Perfil getPerfiles() {
+	public String getStrCodigoPerfil() {
+		return strCodigoPerfil;
+	}
+	
+	/*public Perfil getPerfiles() {
 		return perfiles;
 	}
 	public void setPerfiles(Perfil perfiles) {
@@ -78,6 +79,6 @@ public class Usuario implements Serializable {
 	}
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
-	}
+	}*/
 	
 }

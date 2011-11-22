@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -14,22 +14,25 @@
 <h:body style="background-color: #A8C2D3;">
 
 	<h1 align="center">Recuperar Password</h1>
-	<h:form>
-		<div id="login"> 
+	<h:form >
+		<div align="center" id="recoverPass"> 
          <h:panelGrid id="grid" columns="3"  >
 							<h:outputLabel value="Ingrese su DNI: "/>
 							<p:inputText id="dniusuario" value="#{logueoBean.dni}" required="true" requiredMessage="Ingrese DNI">
 							</p:inputText>
-							<p:message for="usuario"/>
+							<p:message for="dniusuario"/>
 							<c:if test='#{logueoBean.mensaje2!=null}'>
-							  	<p:dialog header="Error al ingresar" widgetVar="dlg2" modal="true" height="200" visible="true" position="center" resizable="false" showEffect="bounce" hideEffect="explode">
+							  	<p:dialog header="Error al recuperar contrasena" widgetVar="dlg2" modal="true" height="200" visible="true" position="center" resizable="false" showEffect="bounce" hideEffect="explode">
 							  		  <h:outputLabel value="#{logueoBean.mensaje2}"></h:outputLabel>
 							  	</p:dialog>
   							</c:if>
 							
 		</h:panelGrid>
-		<h:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid"/>
-		<a href="index.xhtml">Olvidó su contrasena?</a>
+		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid" ajax="false"/>
+		<h:outputLink 
+		 value="../index.xhtml">
+		  <f:verbatim>Regresar al Inicio</f:verbatim>
+		</h:outputLink>
       	</div>
 	</h:form>
 </h:body>

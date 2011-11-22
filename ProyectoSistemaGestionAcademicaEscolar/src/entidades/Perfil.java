@@ -26,7 +26,7 @@ public class Perfil implements Serializable {
 	@Column(name="nombre")
 	private String strNombre;
 	
-	@OneToMany(targetEntity=Usuario.class,mappedBy="perfiles")
+/*	@OneToMany(targetEntity=Usuario.class,mappedBy="perfiles")
 	private Collection<Usuario> tbUsuarios;
 	
 	@ManyToMany
@@ -36,7 +36,7 @@ public class Perfil implements Serializable {
 	)
 	private Collection<Permiso> tbPermisos;
 
-
+*/
     public Perfil() {
     }
 
@@ -71,16 +71,16 @@ public class Perfil implements Serializable {
 	}
 
 
-	public Collection<Usuario> getTbUsuarios() {
+	/*public Collection<Usuario> getTbUsuarios() {
 		return tbUsuarios;
 	}
 
 
 	public void setTbUsuarios(Collection<Usuario> tbUsuarios) {
 		this.tbUsuarios = tbUsuarios;
-	}
+	}*/
 
-
+/*
 	public Collection<Permiso> getTbPermisos() {
 		return tbPermisos;
 	}
@@ -89,7 +89,7 @@ public class Perfil implements Serializable {
 	public void setTbPermisos(Collection<Permiso> tbPermisos) {
 		this.tbPermisos = tbPermisos;
 	}
-    
+    */
     
 	
 	
