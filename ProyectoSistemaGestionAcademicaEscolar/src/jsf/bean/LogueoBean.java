@@ -75,10 +75,10 @@ public class LogueoBean {
 				return "error";
 			}
 				
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			System.out.println("error: " + e1.getMessage());
+		} catch (Exception e) {
+			System.out.println("Usuario Nulo");
 			mensaje="Usuario o Password incorrecto !! ";
+			System.out.println("" + mensaje);
 			return "error";
 		}
 
@@ -124,9 +124,7 @@ public class LogueoBean {
 				}
 
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				mensaje2="Usuario No Registrado";
-				e.printStackTrace();
 				return "error";
 			}
 		}else{
