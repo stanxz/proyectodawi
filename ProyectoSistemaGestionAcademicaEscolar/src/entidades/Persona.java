@@ -51,6 +51,10 @@ public class Persona implements Serializable {
 	@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
 	private Collection<Usuario> tbUsuarios;
 	
+	//bi-directional one-to-one association to Apoderado
+	/*@OneToOne(mappedBy="persona")
+	private Apoderado apoderado;*/
+	
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
 	}
@@ -131,12 +135,24 @@ public class Persona implements Serializable {
 		this.usuario = usuario;
 	}
     */
+	
+	
+	
 	public Collection<Usuario> getTbUsuarios() {
 		return tbUsuarios;
 	}
+
+	/*public Apoderado getApoderado() {
+		return apoderado;
+	}
+
+	public void setApoderado(Apoderado apoderado) {
+		this.apoderado = apoderado;
+	}*/
 
 	public void setTbUsuarios(Collection<Usuario> tbUsuarios) {
 		this.tbUsuarios = tbUsuarios;
 	}
 
+	
 }
