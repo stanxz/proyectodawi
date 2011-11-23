@@ -99,7 +99,7 @@ public class LogueoBean {
 
 		if(!dni.isEmpty()){
 			try {
-				Usuario uauxi=userService.consultaPass(usuario);
+				Usuario uauxi = userService.consultaPass(usuario);
 				if(uauxi!=null){
 						System.out.println("Enviando mail al usuario ... ");
 						Persona pauxi=personaService.consultaPersona(uauxi);
@@ -108,7 +108,7 @@ public class LogueoBean {
 							System.out.println("Persona encontrada: "+pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno());
 							mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getPersonas().getStrCodigoPersona();
 							//logica envio de correos
-							EnviaMail enviador=new EnviaMail();
+							EnviaMail enviador = new EnviaMail();
 							enviador.EnviadorMailContrasena(pauxi.getStrMail(), pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno(), uauxi);
 							return "index";
 						}else{
@@ -136,7 +136,7 @@ public class LogueoBean {
 	
 	
 	public String regresar(){
-		System.out.println("por regresar al index");
+		System.out.println("Regresa al index");
 		return "index";
 	}
 	

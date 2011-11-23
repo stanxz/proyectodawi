@@ -26,15 +26,15 @@ jq('a').click(function(e) {
 <div id="menuQuery" class="arrowgreen">
 	
 					<ul id="navlist">
-						<li style="height: 50px; "><a href="#">Home</a></li>
+						<li><a href="#">Home</a></li>
 						<c:forEach items="${logueoBean.funcionalidades}" var="funcionalidad">
-						<li style="height: 50px; ">
+						<li>
 						<a class="SiteLinkBold" id="${funcionalidad.strCodigoPermiso}" href="${funcionalidad.strEnlace}" >
 						<h:outputLabel value="${funcionalidad.strNombre}"></h:outputLabel>
 					    </a>
 						</li>
 						</c:forEach>
-						<li style="height: 50px; "><a href="#">Cerra Sesión</a></li>
+						<li><a href="#">Cerrar Sesión</a></li>
 					</ul>
 </div>
 </ui:composition>

@@ -77,18 +77,13 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1");
 		q.setParameter(1, elusuario.getPersonas().getStrCodigoPersona());
 		
-		try {
 			Usuario entidadUsuario =(Usuario)q.getSingleResult();
 			em.close();
-			if(entidadUsuario!=null)
+			if(entidadUsuario!=null){
 				return entidadUsuario;
-			else
+			}else{
 				return null;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
-		}
-		
+			}
 	
 	}
 
