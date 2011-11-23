@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import entidades.Permiso;
@@ -25,24 +24,22 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	public Usuario validarUsuario(Usuario elusuario) throws Exception{
 		
 		em = emf.createEntityManager();
+		
+		Usuario entidadUsuario = null;
+		
 		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1 and u.strContrasena=?2",Usuario.class);
 		q.setParameter(1, elusuario.getPersonas().getStrCodigoPersona());
 		q.setParameter(2, elusuario.getStrContrasena());
 		
-		try {
-			Usuario entidadUsuario =(Usuario)q.getSingleResult();
-			em.close();
-			if(entidadUsuario!=null){
-				return entidadUsuario;
-			}else{
-				return null;
-			}
-				
-		} catch (NoResultException ne){
-			ne.printStackTrace();
-			return null;
-		}catch (Exception e) {
-			e.printStackTrace();
+		System.out.println(elusuario.getPersonas().getStrCodigoPersona());
+		
+		entidadUsuario =(Usuario)q.getSingleResult();
+
+		em.close();
+		
+		if(entidadUsuario!=null){
+			return entidadUsuario;
+		}else{
 			return null;
 		}
 		
