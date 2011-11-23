@@ -40,13 +40,33 @@ jq('a').click(function(e) {
 });
  </h:outputScript>
 <div id="menuQuery" class="arrowgreen">
-	<ul id="d">
+
+	<c:forEach items="${#session.b_menu}"  >
+		  	   <div id="menu" class="menu">
+					<ul id="navlist">
+						<li>
+						<s:if test="idFuncionalidad == 9">
+						<s:url id="cargarDatos" action="buscarDatosPaciente">
+							<s:param name="dniBuscado">
+						 		<s:property value="#session.b_usuario.dni"/>
+							</s:param>
+						</s:url>
+						<s:a href="%{cargarDatos}" id="current"><s:property value="descripcion"/></s:a>
+						</s:if>
+						<s:else>
+						<A class=SiteLinkBold href="<s:property value="enlace"/>" id="current"><s:property value="descripcion"/></A>
+						</s:else>
+						</li>
+				</ul>
+				</div>
+	</c:forEach>
+	<!-- <ul id="d">
 		<li id="f"><a  id="x" href="#" title="Home" >Home</a></li>
 		<li><a href="#" title="CSS">CSS Library</a></li>
 		<li><a href="#" title="Whois">DD Whois</a></li>
 		<li><a href="#" title="Forums">Forums</a></li>
 		<li><a href="#" title="Tools">Webmaster Tools</a></li>
 		<li><a href="#" title="JavaScript">JavaScript</a></li>
-	</ul>
+	</ul>-->
 </div>
 </ui:composition>
