@@ -2,29 +2,13 @@
     			xmlns:ui="http://java.sun.com/jsf/facelets"
     			xmlns:h="http://java.sun.com/jsf/html"
     			xmlns:c="http://java.sun.com/jsp/jstl/core" >
-<!--  
-<script src="../resources/js/jquery-1.7.js" type="text/javascript"></script>
--->
+
 <h:head>
- <!-- 
-<h:outputScript library="js" name="jquery-1.7.js" target="head"/>
-<-->
+
 <h:outputStylesheet library="css" name="menuEstilos.css" target="head"/>
 
 </h:head>
-<!-- 
-<script type="text/javascript">
-var jq = jQuery.noConflict();
 
-jq(document).ready(function() {
-	jq("a").click(function(e) {
-	      alert("XD");
-	  })  
-	});
-</script>
-alert(jq('a').closest('div').attr("id"));
-
- -->
  <h:outputScript >
 var jq = jQuery.noConflict();
  
@@ -41,32 +25,14 @@ jq('a').click(function(e) {
  </h:outputScript>
 <div id="menuQuery" class="arrowgreen">
 
-	<c:forEach items="${#session.b_menu}"  >
+	<c:forEach items="${logueoBean.funcionalidades}" var="funcionalidad">
 		  	   <div id="menu" class="menu">
 					<ul id="navlist">
 						<li>
-						<s:if test="idFuncionalidad == 9">
-						<s:url id="cargarDatos" action="buscarDatosPaciente">
-							<s:param name="dniBuscado">
-						 		<s:property value="#session.b_usuario.dni"/>
-							</s:param>
-						</s:url>
-						<s:a href="%{cargarDatos}" id="current"><s:property value="descripcion"/></s:a>
-						</s:if>
-						<s:else>
-						<A class=SiteLinkBold href="<s:property value="enlace"/>" id="current"><s:property value="descripcion"/></A>
-						</s:else>
+						<A class="SiteLinkBold" href="${funcionalidad.strEnlace}" id="${funcionalidad.strCodigoPermiso}"><h:outputLabel value="${funcionalidad.strNombre}" ></h:outputLabel> </A>
 						</li>
-				</ul>
+					</ul>
 				</div>
 	</c:forEach>
-	<!-- <ul id="d">
-		<li id="f"><a  id="x" href="#" title="Home" >Home</a></li>
-		<li><a href="#" title="CSS">CSS Library</a></li>
-		<li><a href="#" title="Whois">DD Whois</a></li>
-		<li><a href="#" title="Forums">Forums</a></li>
-		<li><a href="#" title="Tools">Webmaster Tools</a></li>
-		<li><a href="#" title="JavaScript">JavaScript</a></li>
-	</ul>-->
 </div>
 </ui:composition>
