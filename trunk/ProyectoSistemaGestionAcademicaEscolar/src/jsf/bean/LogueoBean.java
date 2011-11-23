@@ -55,7 +55,11 @@ public class LogueoBean {
 				//ponemos al usuario en sesion
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
-
+				Persona pauxi=personaService.consultaPersona(userauxi);
+				System.out.println("nombre: "+pauxi.getStrNombre()+" "+pauxi.getStrApellidoPaterno());
+				System.out.println("sexo: "+pauxi.getStrSexo());
+				lasession.put("b_persona", pauxi);
+				
 				//ponemos el menu en sesion
 				funcionalidades = userService.listarMenusCorresp(userauxi);
 				for (Permiso x : funcionalidades) {
