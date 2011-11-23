@@ -12,10 +12,9 @@
 </h:head>
 
 <h:body style="background-color: #A8C2D3;">
-
-	<h1 align="center">Recuperar Password</h1>
-	<h:form >
-		<div align="center" id="recoverPass"> 
+<div align="center" id="recoverPass"> 
+	<h:form style="width: 550px; ">
+		<p:panel header="Recuperar Password"> 
          <h:panelGrid id="grid" columns="3"  >
 							<h:outputLabel value="Ingrese su DNI: "/>
 							<p:inputText id="dniusuario" value="#{logueoBean.dni}" required="true" requiredMessage="Ingrese DNI">
@@ -25,16 +24,16 @@
 							  	<p:dialog header="Error al recuperar contrasena" widgetVar="dlg2" modal="true" height="200" visible="true" position="center" resizable="false" showEffect="bounce" hideEffect="explode">
 							  		  <h:outputLabel value="#{logueoBean.mensaje2}"></h:outputLabel>
 							  	</p:dialog>
-  							</c:if>
-							
+  							</c:if>					
 		</h:panelGrid>
 		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid" ajax="false"/>
 		<h:outputLink 
 		 value="../index.xhtml">
 		  <f:verbatim>Regresar al Inicio</f:verbatim>
 		</h:outputLink>
-      	</div>
+      	</p:panel>
 	</h:form>
+</div>
 </h:body>
 
 </html>
