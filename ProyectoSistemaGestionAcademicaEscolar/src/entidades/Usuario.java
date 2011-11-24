@@ -21,13 +21,7 @@ public class Usuario implements Serializable {
 	
 	@Column(name="contrasena")
 	private String strContrasena;
-	/*
-	@Column(name="codperfil")
-	private String strCodigoPerfil;
 
-	@Column(name="codpersona")
-	private String strCodigoPersona;
-	*/
 	@ManyToOne
 	@JoinColumn(name="codpersona")
 	private Persona personas;

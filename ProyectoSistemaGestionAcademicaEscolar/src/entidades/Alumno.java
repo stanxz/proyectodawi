@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
 
@@ -14,183 +15,122 @@ public class Alumno implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codalumno;
+	@Column(name="codalumno")
+	private int strCodigoAlumno;
+	
+	@Column(name="anoacademico")
+	private String strAnioAcademico;
 
-	private String anoacademico;
+	@Column(name="apellidomat")
+	private String strApellidoMaterno;
 
-	private String apellidomat;
+	@Column(name="apellidopat")
+	private String strApellidoPaterno;
 
-	private String apellidopat;
+	@Column(name="edad")
+	private int intEdad;
 
-	private int edad;
+	@Column(name="estado")
+	private String strEstado;
 
-	private String estado;
+	@Column(name="grado")
+	private int intGrado;
 
-	private int grado;
+	@Column(name="nombres")
+	private String strNombres;
 
-	private String nombres;
+	@Column(name="seccion")
+	private String strSeccion;
+	
+	@ManyToOne
+	@JoinColumn(name="codapoderado")
+	private Apoderado apoderados;
 
-	private String seccion;
-
-	//bi-directional many-to-one association to Apoderado
-    /*@ManyToOne
-	@JoinColumn(name="CODAPODERADO")
-	private Apoderado apoderado;*/
-
-	//bi-directional many-to-one association to Calendarioacademico
-    /*@ManyToOne
-	@JoinColumn(name="CODCALENDARIO")
-	private Calendarioacademico calendarioacademico;*/
-
-	//bi-directional many-to-one association to Cita
-	/*@OneToMany(mappedBy="alumno")
-	private Set<Cita> citas;*/
-
-	//bi-directional many-to-one association to Detalleasignatura
-	/*@OneToMany(mappedBy="alumno")
-	private Set<Detalleasignatura> detalleasignaturas;*/
-
-	//bi-directional many-to-one association to Detallerestriccion
-	/*@OneToMany(mappedBy="alumno")
-	private Set<Detallerestriccion> detallerestriccions;*/
-
-	//bi-directional many-to-one association to Solicitudexoneracion
-	/*@OneToMany(mappedBy="alumno")
-	private Set<Solicitudexoneracion> solicitudexoneracions;*/
-
-	//bi-directional many-to-one association to Solicitudretiro
-	/*@OneToMany(mappedBy="alumno")
-	private Set<Solicitudretiro> solicitudretiros;*/
 
     public Alumno() {
     }
 
-	public int getCodalumno() {
-		return this.codalumno;
+	public int getStrCodigoAlumno() {
+		return strCodigoAlumno;
 	}
 
-	public void setCodalumno(int codalumno) {
-		this.codalumno = codalumno;
+	public void setStrCodigoAlumno(int strCodigoAlumno) {
+		this.strCodigoAlumno = strCodigoAlumno;
 	}
 
-	public String getAnoacademico() {
-		return this.anoacademico;
+	public String getStrAnioAcademico() {
+		return strAnioAcademico;
 	}
 
-	public void setAnoacademico(String anoacademico) {
-		this.anoacademico = anoacademico;
+	public void setStrAnioAcademico(String strAnioAcademico) {
+		this.strAnioAcademico = strAnioAcademico;
 	}
 
-	public String getApellidomat() {
-		return this.apellidomat;
+	public String getStrApellidoMaterno() {
+		return strApellidoMaterno;
 	}
 
-	public void setApellidomat(String apellidomat) {
-		this.apellidomat = apellidomat;
+	public void setStrApellidoMaterno(String strApellidoMaterno) {
+		this.strApellidoMaterno = strApellidoMaterno;
 	}
 
-	public String getApellidopat() {
-		return this.apellidopat;
+	public String getStrApellidoPaterno() {
+		return strApellidoPaterno;
 	}
 
-	public void setApellidopat(String apellidopat) {
-		this.apellidopat = apellidopat;
+	public void setStrApellidoPaterno(String strApellidoPaterno) {
+		this.strApellidoPaterno = strApellidoPaterno;
 	}
 
-	public int getEdad() {
-		return this.edad;
+	public int getIntEdad() {
+		return intEdad;
 	}
 
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setIntEdad(int intEdad) {
+		this.intEdad = intEdad;
 	}
 
-	public String getEstado() {
-		return this.estado;
+	public String getStrEstado() {
+		return strEstado;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setStrEstado(String strEstado) {
+		this.strEstado = strEstado;
 	}
 
-	public int getGrado() {
-		return this.grado;
+	public int getIntGrado() {
+		return intGrado;
 	}
 
-	public void setGrado(int grado) {
-		this.grado = grado;
+	public void setIntGrado(int intGrado) {
+		this.intGrado = intGrado;
 	}
 
-	public String getNombres() {
-		return this.nombres;
+	public String getStrNombres() {
+		return strNombres;
 	}
 
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
+	public void setStrNombres(String strNombres) {
+		this.strNombres = strNombres;
 	}
 
-	public String getSeccion() {
-		return this.seccion;
+	public String getStrSeccion() {
+		return strSeccion;
 	}
 
-	public void setSeccion(String seccion) {
-		this.seccion = seccion;
-	}
-/*
-	public Apoderado getApoderado() {
-		return this.apoderado;
+	public void setStrSeccion(String strSeccion) {
+		this.strSeccion = strSeccion;
 	}
 
-	public void setApoderado(Apoderado apoderado) {
-		this.apoderado = apoderado;
+	public Apoderado getApoderados() {
+		return apoderados;
 	}
+
+	public void setApoderados(Apoderado apoderados) {
+		this.apoderados = apoderados;
+	}
+
+
+    
 	
-	public Calendarioacademico getCalendarioacademico() {
-		return this.calendarioacademico;
-	}
-
-	public void setCalendarioacademico(Calendarioacademico calendarioacademico) {
-		this.calendarioacademico = calendarioacademico;
-	}
-	
-	public Set<Cita> getCitas() {
-		return this.citas;
-	}
-
-	public void setCitas(Set<Cita> citas) {
-		this.citas = citas;
-	}
-	
-	public Set<Detalleasignatura> getDetalleasignaturas() {
-		return this.detalleasignaturas;
-	}
-
-	public void setDetalleasignaturas(Set<Detalleasignatura> detalleasignaturas) {
-		this.detalleasignaturas = detalleasignaturas;
-	}
-	
-	public Set<Detallerestriccion> getDetallerestriccions() {
-		return this.detallerestriccions;
-	}
-
-	public void setDetallerestriccions(Set<Detallerestriccion> detallerestriccions) {
-		this.detallerestriccions = detallerestriccions;
-	}
-	
-	public Set<Solicitudexoneracion> getSolicitudexoneracions() {
-		return this.solicitudexoneracions;
-	}
-
-	public void setSolicitudexoneracions(Set<Solicitudexoneracion> solicitudexoneracions) {
-		this.solicitudexoneracions = solicitudexoneracions;
-	}
-	
-	public Set<Solicitudretiro> getSolicitudretiros() {
-		return this.solicitudretiros;
-	}
-
-	public void setSolicitudretiros(Set<Solicitudretiro> solicitudretiros) {
-		this.solicitudretiros = solicitudretiros;
-	}
-	*/
 }

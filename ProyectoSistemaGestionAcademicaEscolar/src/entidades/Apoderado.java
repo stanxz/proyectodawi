@@ -2,7 +2,8 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
+
+import java.util.Collection;
 
 
 /**
@@ -15,55 +16,43 @@ public class Apoderado implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codapoderado;
+	@Column(name="codapoderado")
+	private int StrCodigoApoderado;
+	
+	@ManyToOne
+	@JoinColumn(name="codpersona")
+	private Persona personas;
+	
+	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados")
+	private Collection<Alumno> tbAlumnos;
 
-	//bi-directional many-to-one association to Alumno
-	@OneToMany(mappedBy="apoderado")
-	private Set<Alumno> alumnos;
-
-	//bi-directional one-to-one association to Persona
-	/*@OneToOne
-	@JoinColumn(name="CODAPODERADO")
-	private Persona persona;*/
-
-	//bi-directional many-to-one association to Boletapago
-	/*@OneToMany(mappedBy="apoderado")
-	private Set<Boletapago> boletapagos;
-	 */
     public Apoderado() {
     }
 
-	public int getCodapoderado() {
-		return this.codapoderado;
+	public int getStrCodigoApoderado() {
+		return StrCodigoApoderado;
 	}
 
-	public void setCodapoderado(int codapoderado) {
-		this.codapoderado = codapoderado;
+	public void setStrCodigoApoderado(int strCodigoApoderado) {
+		StrCodigoApoderado = strCodigoApoderado;
 	}
 
-	public Set<Alumno> getAlumnos() {
-		return this.alumnos;
+	public Persona getPersonas() {
+		return personas;
 	}
 
-	public void setAlumnos(Set<Alumno> alumnos) {
-		this.alumnos = alumnos;
-	}
-	
-	/*
-	public Persona getPersona() {
-		return this.persona;
+	public void setPersonas(Persona personas) {
+		this.personas = personas;
 	}
 
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}*/
-	/*
-	public Set<Boletapago> getBoletapagos() {
-		return this.boletapagos;
+	public Collection<Alumno> getTbAlumnos() {
+		return tbAlumnos;
 	}
 
-	public void setBoletapagos(Set<Boletapago> boletapagos) {
-		this.boletapagos = boletapagos;
+	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
+		this.tbAlumnos = tbAlumnos;
 	}
-	*/
+
+    
+    
 }
