@@ -18,13 +18,13 @@
 
 	<ui:define name="body">
 	<h:form style="width: 800px; ">
-		<c:if test="${sessionScope.b_persona.strSexo==1}">
-	  		<p:panel header="Bienvenido Sr. ${sessionScope.b_persona.strNombre} ${sessionScope.b_persona.strApellidoPaterno}"  >  
+		<c:if test="${sessionScope.b_usuario.personas.strSexo==1}">
+	  		<p:panel header="Bienvenido Sr. ${sessionScope.b_usuario.personas.strNombre} ${sessionScope.b_usuario.personas.strApellidoPaterno}"  >  
     			<h:outputText value="xxxxxxxxxxxxxxxx" />  
         	</p:panel> 
 	  	</c:if>
-	  	<c:if test="${sessionScope.b_persona.strSexo==0}">
-	  		<p:panel header="Bienvenida Sra.(Srta.) ${sessionScope.b_persona.strNombre} ${sessionScope.b_persona.strApellidoPaterno}"  >  
+	  	<c:if test="${sessionScope.b_usuario.personas.strSexo==0}">
+	  		<p:panel header="Bienvenida Sra.(Srta.) ${sessionScope.b_usuario.personas.strNombre} ${sessionScope.b_usuario.personas.strApellidoPaterno}"  >  
     			<h:outputText value="xxxxxxxxxxxxxxxx" />  
         	</p:panel> 
 	  	</c:if>
