@@ -42,6 +42,9 @@ public class Alumno implements Serializable {
 	@Column(name="seccion")
 	private String strSeccion;
 	
+	@Column(name="sexo")
+	private int intSeccion;
+	
 	@ManyToOne
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados;
@@ -128,6 +131,14 @@ public class Alumno implements Serializable {
 
 	public void setApoderados(Apoderado apoderados) {
 		this.apoderados = apoderados;
+	}
+
+	public int getIntSeccion() {
+		return intSeccion;
+	}
+
+	public void setIntSeccion(int intSeccion) {
+		this.intSeccion = intSeccion;
 	}
 
 
