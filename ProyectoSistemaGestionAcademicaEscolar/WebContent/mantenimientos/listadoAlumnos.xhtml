@@ -18,28 +18,25 @@
 	</ui:define>
 
 	<ui:define name="body">
-	<h:form id="form">  
+	<div align="center">
+	<h:form id="form" style="width: 800px; ">  
   
     <p:growl id="msgs" showDetail="true" />  
   
-    <p:dataTable id="cars" var="car" value="#{tableBean.carsSmall}">  
+    <p:dataTable id="alumno" var="alumno" value="#{alumnoBean.alumnos}">  
   
-        <p:column headerText="Model">  
-            <h:outputText value="#{car.model}" />  
+        <p:column headerText="Nombres">  
+            <h:outputText value="#{alumno.strNombres}" />  
         </p:column>  
   
-        <p:column headerText="Year">  
-            <h:outputText value="#{car.year}" />  
+        <p:column headerText="Apellido Paterno">  
+            <h:outputText value="#{alumno.strApellidoPaterno}" />  
+        </p:column> 
+        
+        <p:column headerText="Apellido Materno">  
+            <h:outputText value="#{alumno.strApellidoMaterno}" />  
         </p:column>  
-  
-        <p:column headerText="Manufacturer">  
-            <h:outputText value="#{car.manufacturer}" />  
-        </p:column>  
-  
-        <p:column headerText="Color">  
-            <h:outputText value="#{car.color}" />  
-        </p:column>  
-  
+
         <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
                  <p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="View">  
@@ -55,7 +52,6 @@
                  </p:commandButton>  
              </h:panelGrid>  
         </p:column>  
-  
     </p:dataTable>  
   
     <p:dialog header="Car Detail" widgetVar="carDialog" resizable="false" id="carDlg"  
@@ -117,6 +113,8 @@
     </p:confirmDialog>  
   
     </h:form>  	
+	
+	</div>
 
 	</ui:define>
 

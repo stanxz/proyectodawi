@@ -45,10 +45,10 @@ public class Persona implements Serializable {
 	
 	@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
 	private Collection<Usuario> tbUsuarios;
-	
+	/*
 	@OneToMany(targetEntity=Apoderado.class,mappedBy="personas")
 	private Collection<Apoderado> tbApoderados;
-	
+	*/
 	
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
@@ -130,7 +130,7 @@ public class Persona implements Serializable {
 	public void setTbUsuarios(Collection<Usuario> tbUsuarios) {
 		this.tbUsuarios = tbUsuarios;
 	}
-
+    /*
 	public Collection<Apoderado> getTbApoderados() {
 		return tbApoderados;
 	}
@@ -138,5 +138,5 @@ public class Persona implements Serializable {
 	public void setTbApoderados(Collection<Apoderado> tbApoderados) {
 		this.tbApoderados = tbApoderados;
 	}
-	
+	*/
 }

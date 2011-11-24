@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,14 +14,19 @@ public class AlumnoJPADAO implements AlumnoDAO {
 	private EntityManager em;
 	
 	public void setEntityManagerFactory(EntityManagerFactory emf) {
-		// TODO Auto-generated method stub
 		this.emf=emf;
 	}
 
 	@Override
 	public List<Alumno> obtenerTodos() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		em = emf.createEntityManager();
+		
+		List<Alumno> alumnos = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		
+		em.close();
+		
+		return alumnos;
 	}
 
 	@Override
