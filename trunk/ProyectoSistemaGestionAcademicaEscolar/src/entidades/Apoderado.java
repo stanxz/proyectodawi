@@ -15,14 +15,13 @@ public class Apoderado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codapoderado")
 	private int StrCodigoApoderado;
-	
+	/*
 	@ManyToOne
 	@JoinColumn(name="codpersona")
 	private Persona personas;
-	
+	*/
 	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados")
 	private Collection<Alumno> tbAlumnos;
 
@@ -36,15 +35,15 @@ public class Apoderado implements Serializable {
 	public void setStrCodigoApoderado(int strCodigoApoderado) {
 		StrCodigoApoderado = strCodigoApoderado;
 	}
-
+    /*
 	public Persona getPersonas() {
 		return personas;
 	}
-
+    
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
-
+*/
 	public Collection<Alumno> getTbAlumnos() {
 		return tbAlumnos;
 	}
