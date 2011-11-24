@@ -1,9 +1,10 @@
 package jsf.bean;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.event.ActionEvent;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
@@ -18,12 +19,36 @@ public class AlumnoBean {
 	
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	
-	private Alumno alumno;
+	private Alumno alumno,selectedAlumno;
 	private Apoderado apoderado; 
-	private List<Alumno> alumnos;
+	private ArrayList<Alumno> alumnos;
+	private boolean editMode;  
 	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
+	}
+
+	public void inhabilitarAlumno(ActionEvent actionEvent) {  
+		System.out.println("dizke deleteando");
+		//alumnos.remove(selectedAlumno);
+		try {
+			alumnoService.inhabilitarAlumno(selectedAlumno);
+			System.out.println("dizke se inhabilito");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    }
+	
+	public void actualizaAlumno(ActionEvent actionEvent){
+		System.out.println("Hola madafaka !!!");
+		try {
+			alumnoService.actualizarAlumno(selectedAlumno);
+			System.out.println("dizke se actualizo");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Alumno getAlumno() {
@@ -42,7 +67,7 @@ public class AlumnoBean {
 		this.apoderado = apoderado;
 	}
 
-	public List<Alumno> getAlumnos() {
+	public ArrayList<Alumno> getAlumnos() {
 		try {
 			alumnos = alumnoService.obtenerTodosAlumnos();
 		} catch (Exception e) {
@@ -51,8 +76,32 @@ public class AlumnoBean {
 		return alumnos;
 	}
 
-	public void setAlumnos(List<Alumno> alumnos) {
+	public void setAlumnos(ArrayList<Alumno> alumnos) {
 		this.alumnos = alumnos;
+	}
+
+
+
+	public Alumno getSelectedAlumno() {
+		return selectedAlumno;
+	}
+
+
+
+	public void setSelectedAlumno(Alumno selectedAlumno) {
+		this.selectedAlumno = selectedAlumno;
+	}
+
+
+
+	public boolean isEditMode() {
+		return editMode;
+	}
+
+
+
+	public void setEditMode(boolean editMode) {
+		this.editMode = editMode;
 	}
 	
 }

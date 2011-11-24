@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import javax.persistence.*;
 
@@ -14,7 +15,6 @@ public class Alumno implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codalumno")
 	private int strCodigoAlumno;
 	
@@ -27,8 +27,8 @@ public class Alumno implements Serializable {
 	@Column(name="apellidopat")
 	private String strApellidoPaterno;
 
-	@Column(name="edad")
-	private int intEdad;
+	@Column(name="fecnac")
+	private Date dtFecNac;
 
 	@Column(name="estado")
 	private String strEstado;
@@ -85,12 +85,13 @@ public class Alumno implements Serializable {
 		this.strApellidoPaterno = strApellidoPaterno;
 	}
 
-	public int getIntEdad() {
-		return intEdad;
+
+	public Date getDtFecNac() {
+		return dtFecNac;
 	}
 
-	public void setIntEdad(int intEdad) {
-		this.intEdad = intEdad;
+	public void setDtFecNac(Date dtFecNac) {
+		this.dtFecNac = dtFecNac;
 	}
 
 	public String getStrEstado() {
