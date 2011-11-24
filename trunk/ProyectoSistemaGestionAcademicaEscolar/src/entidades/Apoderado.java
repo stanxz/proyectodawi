@@ -15,8 +15,8 @@ public class Apoderado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="codapoderado")
-	private int StrCodigoApoderado;
+	@JoinColumn(name="codapoderado")
+	private Persona personas;
 	/*
 	@ManyToOne
 	@JoinColumn(name="codpersona")
@@ -27,7 +27,7 @@ public class Apoderado implements Serializable {
 
     public Apoderado() {
     }
-
+/*
 	public int getStrCodigoApoderado() {
 		return StrCodigoApoderado;
 	}
@@ -35,7 +35,8 @@ public class Apoderado implements Serializable {
 	public void setStrCodigoApoderado(int strCodigoApoderado) {
 		StrCodigoApoderado = strCodigoApoderado;
 	}
-    /*
+*/
+
 	public Persona getPersonas() {
 		return personas;
 	}
@@ -43,7 +44,7 @@ public class Apoderado implements Serializable {
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
-*/
+
 	public Collection<Alumno> getTbAlumnos() {
 		return tbAlumnos;
 	}
@@ -51,7 +52,5 @@ public class Apoderado implements Serializable {
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
 	}
-
-    
     
 }
