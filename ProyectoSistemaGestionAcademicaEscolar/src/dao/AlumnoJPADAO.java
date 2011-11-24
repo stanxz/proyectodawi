@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
 import entidades.Alumno;
 
 public class AlumnoJPADAO implements AlumnoDAO {
@@ -18,39 +17,91 @@ public class AlumnoJPADAO implements AlumnoDAO {
 	}
 
 	@Override
-	public List<Alumno> obtenerTodos() throws Exception {
+	public ArrayList<Alumno> obtenerTodos() throws Exception {
 		
 		em = emf.createEntityManager();
 		
-		List<Alumno> alumnos = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		ArrayList<Alumno> students = new ArrayList<Alumno>();
 		
+		 List l = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		
+		 if(l.size()>0){
+				for ( int i=0; i < l.size(); i++ ) {
+					Alumno entidad = (Alumno)l.get(i);
+					System.out.println("alumno: "+l.get(i));
+					students.add(entidad);
+				}
+		 }
+		 
 		em.close();
 		
-		return alumnos;
+		return students;
 	}
 
 	@Override
 	public void insertar(Alumno alumno) throws Exception {
-		// TODO Auto-generated method stub
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2.ejecuta las operaciones
+		em.persist(alumno);
+		em.flush();
 		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override
 	public void actualizar(Alumno alumno) throws Exception {
-		// TODO Auto-generated method stub
-		
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2. ejecuta las operaciones 
+		//2.1 busca Empleado por llave primaria
+		Alumno entidadAlumno = em.find(Alumno.class, alumno.getStrCodigoAlumno());
+	
+		//2.3 actualiza Empleado
+		em.merge(entidadAlumno);
+		em.flush();
+				
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@Override
 	public Alumno obtenerAlumno(Alumno alumno) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		em=emf.createEntityManager();
+		
+		Alumno entidadCargo=(Alumno)em.find(Alumno.class,alumno.getStrCodigoAlumno());
+		
+		return entidadCargo;
 	}
 
 	@Override
 	public void inhabilitar(Alumno alumno) throws Exception {
 		// TODO Auto-generated method stub
-		
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2. ejecuta las operaciones 
+		//2.1 busca Empleado por llave primaria
+		Alumno entidadAlumno = em.find(Alumno.class, alumno.getStrCodigoAlumno());
+	
+		//2.3 actualiza Empleado
+		em.merge(entidadAlumno);
+		em.flush();
+				
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 

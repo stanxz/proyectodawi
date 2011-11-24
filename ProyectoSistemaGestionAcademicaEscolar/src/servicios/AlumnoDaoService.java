@@ -1,6 +1,6 @@
 package servicios;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import dao.AlumnoDAO;
 import dao.DAOFactory;
@@ -17,7 +17,7 @@ public class AlumnoDaoService implements AlumnoService {
 	}
 
 	@Override
-	public List<Alumno> obtenerTodosAlumnos() throws Exception {
+	public ArrayList<Alumno> obtenerTodosAlumnos() throws Exception {
 		// TODO Auto-generated method stub
 		return alumnodao.obtenerTodos();
 	}
