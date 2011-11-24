@@ -55,10 +55,13 @@ public class LogueoBean {
 				//ponemos al usuario en sesion
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
-				Persona pauxi=personaService.consultaPersona(userauxi);
+				/*Persona pauxi=personaService.consultaPersona(userauxi);
 				System.out.println("nombre: "+pauxi.getStrNombre()+" "+pauxi.getStrApellidoPaterno());
 				System.out.println("sexo: "+pauxi.getStrSexo());
 				lasession.put("b_persona", pauxi);
+				*/
+				System.out.println("Nombre--> " + userauxi.getPersonas().getStrNombre() + " " + userauxi.getPersonas().getStrApellidoPaterno());
+				System.out.println("Sexo  -->"  + userauxi.getPersonas().getStrSexo());
 				
 				//ponemos el menu en sesion
 				funcionalidades = userService.listarMenusCorresp(userauxi);
@@ -66,8 +69,6 @@ public class LogueoBean {
 					System.out.println("funcionalidad: "+x.getStrDescripcion());
 				};
 				lasession.put("b_menu",funcionalidades);
-				
-				
 
 				System.out.println("Usuario OK: " + userauxi.getPersonas().getStrCodigoPersona());
 				return "bienvenida";
