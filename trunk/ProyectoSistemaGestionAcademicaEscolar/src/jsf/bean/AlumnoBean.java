@@ -26,21 +26,28 @@ public class AlumnoBean {
 	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
+		//alumno=new Alumno();
+		//selectedAlumno=new Alumno();
 	}
 
-	public void inhabilitarAlumno(ActionEvent actionEvent) {  
+	public String inhabilitarAlumno() {  
 		System.out.println("dizke deleteando");
+		System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
+		System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
+		System.out.println("Nombre alumno: "+alumno.getStrNombres());
+		System.out.println("Apellidos alumno: "+alumno.getStrApellidoPaterno()+" "+alumno.getStrApellidoMaterno());
 		//alumnos.remove(selectedAlumno);
 		try {
-			alumnoService.inhabilitarAlumno(selectedAlumno);
+			alumnoService.inhabilitarAlumno(alumno);
 			System.out.println("dizke se inhabilito");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return "listadoAlumnos";
     }
 	
-	public void actualizaAlumno(ActionEvent actionEvent){
+	public String actualizaAlumno(){
 		System.out.println("Hola madafaka !!!");
 		try {
 			alumnoService.actualizarAlumno(selectedAlumno);
@@ -49,6 +56,7 @@ public class AlumnoBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return "";
 	}
 
 	public Alumno getAlumno() {

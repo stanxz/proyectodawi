@@ -5,6 +5,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/templates/crud-template.xhtml">
 	
+	 
+	
 	<ui:define name="title">
 		I.E.P &quot;SAN CARLOS&quot;
 	</ui:define>
@@ -21,7 +23,7 @@
 	<div align="center">
 	<h:form id="form" style="width: 1000px; ">  
   
-    <p:growl id="msgs" showDetail="true" />  
+    <!--  <p:growl id="msgs" showDetail="true" />-->  
   
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}">  
   
@@ -64,87 +66,100 @@
   
     <p:dialog header="Detalle Alumno" widgetVar="carDialog" resizable="false" id="carDlg"  
                 showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
-  
         <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">  
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strCodigoAlumno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strCodigoAlumno}" rendered="#{alumnoBean.editMode}" required="true" label="Codigo Alumno"/>  
+                <p:inputText id="codigoAlumno" value="#{alumnoBean.selectedAlumno.strCodigoAlumno}" rendered="#{alumnoBean.editMode}" required="true" label="Codigo Alumno"/>  
             </h:panelGroup>  
   
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.apoderados.personas.strCodigoPersona}" rendered="#{alumnoBean.editMode}" required="true" label="Codigo Apoderado"/>  
+                <p:inputText id="codigoApoderado" value="#{alumnoBean.selectedAlumno.apoderados.personas.strCodigoPersona}" rendered="#{alumnoBean.editMode}" required="true" label="Codigo Apoderado"/>  
             </h:panelGroup>  
   
   			<h:outputText value="Nombres" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strNombres}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre"/>  
+                <p:inputText id="NombresAl" value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Paterno"/>  
+                <p:inputText id="apellidoPaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Paterno"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Materno"/>  
+                <p:inputText id="apellidoMaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Materno"/>  
             </h:panelGroup>  
             
             <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.dtFecNac}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.dtFecNac}" rendered="#{alumnoBean.editMode}" required="true" label="Fecha Nacimiento"/>  
+                <p:inputText id="fecNac" value="#{alumnoBean.selectedAlumno.dtFecNac}" rendered="#{alumnoBean.editMode}" required="true" label="Fecha Nacimiento"/>  
             </h:panelGroup>
             
             <h:outputText value="Grado" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.intGrado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.intGrado}" rendered="#{alumnoBean.editMode}" required="true" label="Grado"/>  
+                <p:inputText id="grado" value="#{alumnoBean.selectedAlumno.intGrado}" rendered="#{alumnoBean.editMode}" required="true" label="Grado"/>  
             </h:panelGroup>
             
             <h:outputText value="Seccion" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strSeccion}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strSeccion}" rendered="#{alumnoBean.editMode}" required="true" label="Seccion"/>  
+                <p:inputText id="seccionAl" value="#{alumnoBean.selectedAlumno.strSeccion}" rendered="#{alumnoBean.editMode}" required="true" label="Seccion"/>  
             </h:panelGroup>
             
             <h:outputText value="Anio Academico" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strAnioAcademico}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strAnioAcademico}" rendered="#{alumnoBean.editMode}" required="true" label="Anio Academico"/>  
+                <p:inputText id="anioAcademicoAl" value="#{alumnoBean.selectedAlumno.strAnioAcademico}" rendered="#{alumnoBean.editMode}" required="true" label="Anio Academico"/>  
             </h:panelGroup>
   
   			<h:outputText value="Estado" />  
-            <h:panelGroup>  
+            <h:panelGroup >  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strEstado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strEstado}" rendered="#{alumnoBean.editMode}" required="true" label="Estado"/>  
+                <p:inputText id="estadoAl" value="#{alumnoBean.selectedAlumno.strEstado}" rendered="#{alumnoBean.editMode}" required="true" label="Estado"/>  
             </h:panelGroup>
   
-            <f:facet name="footer">  
-                <p:outputPanel rendered="#{alumnoBean.editMode}" layout="block" style="text-align:center">  
-                    <p:commandButton value="Grabar" update="listaalumnos" action="#{alumnoBean.actualizaAlumno}"   
-                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check"/>
-                     
-                    <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>  
-  
-                </p:outputPanel>  
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="#{alumnoBean.editMode}" layout="block" style="text-align:center">
+                <h:panelGroup >
+					<p:commandButton value="Grabar" actionListener="#{alumnoBean.actualizaAlumno}"  update=":listaalumnos" 
+                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check" ajax="false">
+                     	
+                     </p:commandButton>
+                                     
+                    <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close">
+                    
+                    </p:commandButton>  
+  				</h:panelGroup>
+              </p:outputPanel>  
             </f:facet>  
         </h:panelGrid>  
-  
     </p:dialog>  
-  
+  	<script type="text/javascript">  
+    function onEditComplete(xhr, status, args) {
+    	alert("entro aki ... ");
+        if(args.validationFailed) {
+			$(PrimeFaces.escapeClientId('form:carDlg')).parent().effect("shake", { times:5 }, 100);
+		} else {
+			carDialog.hide();
+		}
+    } 
+	</script>
     <p:confirmDialog message="Estas seguro?" width="350" height="200" 
                     showEffect="explode" hideEffect="explode"  
                     header="Confirm" severity="alert" widgetVar="confirmation" position="center">  
   
-        <p:commandButton value="Si, asi es" update="listaalumnos" actionListener="#{alumnoBean.inhabilitarAlumno}" oncomplete="confirmation.hide()" ajax="false"/>  
+        <p:commandButton value="Si, asi es"  action="#{alumnoBean.inhabilitarAlumno}"  update=":listaalumnos" oncomplete="confirmation.hide()">
+        </p:commandButton>  
         <p:commandButton value="No aun" onclick="confirmation.hide()" type="button" />  
   
     </p:confirmDialog>  
