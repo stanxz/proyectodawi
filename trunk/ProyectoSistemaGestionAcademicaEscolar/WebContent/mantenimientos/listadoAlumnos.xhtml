@@ -131,8 +131,8 @@
           <f:facet name="footer"> 
                 <p:outputPanel rendered="#{alumnoBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
-					<p:commandButton value="Grabar" action="${alumnoBean.actualizaAlumno}"  update=":listaalumnos" 
-                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check">
+					<p:commandButton type="submit" value="Grabar" action="#{alumnoBean.actualizaAlumno}"  update="listaalumnos" 
+                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check" >
                      	
                      </p:commandButton>
                                      
@@ -159,7 +159,7 @@
                     showEffect="explode" hideEffect="explode"  
                     header="Confirm" severity="alert" widgetVar="confirmation" position="center">  
   
-        <p:commandButton value="Si, asi es"  action="#{alumnoBean.inhabilitarAlumno}"  update=":listaalumnos" oncomplete="confirmation.hide()">
+        <p:commandButton  type="submit" value="Si, asi es"  action="#{alumnoBean.inhabilitarAlumno}"  update="listaalumnos" oncomplete="confirmation.hide()">
         </p:commandButton>  
         <p:commandButton value="No aun" onclick="confirmation.hide()" type="button" />  
   
