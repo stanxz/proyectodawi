@@ -1,6 +1,8 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
     			xmlns:ui="http://java.sun.com/jsf/facelets"
     			xmlns:h="http://java.sun.com/jsf/html"
+    			xmlns:f="http://java.sun.com/jsf/core"
+    			xmlns:p="http://primefaces.prime.com.tr/ui"
     			xmlns:c="http://java.sun.com/jsp/jstl/core" >
     			
 <h:head>
@@ -33,7 +35,12 @@ jq('a').click(function(e) {
 						    </a>
 							</li>
 						</c:forEach>
-						<li ><a href="index.xhtml">Cerrar Sesion</a></li>
+						<li><h:outputLink 
+						 value= "../faces/index.xhtml" type="button">
+						  <f:verbatim >Cerrar sesion</f:verbatim>
+						</h:outputLink>
+						</li>
+						<!--  <li ><a href="../index.xhtml" >Cerrar Sesion</a></li>-->
 					</ul>
 </div>
 </ui:composition>

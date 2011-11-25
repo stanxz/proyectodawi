@@ -31,7 +31,7 @@ public class AlumnoBean {
 		//selectedAlumno=new Alumno();
 	}
 
-	public String inhabilitarAlumno() {  
+	public void inhabilitarAlumno() {  
 		System.out.println("dizke deleteando");
 		System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
 		System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
@@ -45,7 +45,6 @@ public class AlumnoBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "listadoAlumnos";
     }
 	
 	public void actualizaAlumno(){
