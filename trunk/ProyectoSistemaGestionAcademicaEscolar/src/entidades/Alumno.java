@@ -18,7 +18,7 @@ public class Alumno implements Serializable {
 	@Column(name="codalumno")
 	private int strCodigoAlumno;
 	
-	@Column(name="anoacademico")
+	@Column(name="anoacademico") 
 	private String strAnioAcademico;
 
 	@Column(name="apellidomat")
@@ -133,7 +133,7 @@ public class Alumno implements Serializable {
 	public void setApoderados(Apoderado apoderados) {
 		this.apoderados = apoderados;
 	}
-
+ 
 	public int getIntSeccion() {
 		return intSeccion;
 	}

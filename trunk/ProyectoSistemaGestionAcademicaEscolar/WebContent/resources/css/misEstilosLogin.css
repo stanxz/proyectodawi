@@ -27,15 +27,15 @@ margin:-178px 0 0 -270px;
 padding:250px 0 0 20px;
 }
 
-.actions td {
-    border: 0px none !important;
-    padding: 2px !important;
-}
-
-
 a {
 font-weight:700;
 text-decoration:none;
+}
+
+
+.actions td {
+    border: 0px none;
+    padding: 2px;
 }
 
 
