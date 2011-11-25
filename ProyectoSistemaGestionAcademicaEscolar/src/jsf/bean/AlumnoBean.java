@@ -3,6 +3,7 @@ package jsf.bean;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
 
@@ -47,7 +48,7 @@ public class AlumnoBean {
 		return "listadoAlumnos";
     }
 	
-	public String actualizaAlumno(){
+	public void actualizaAlumno(){
 		System.out.println("Hola madafaka !!!");
 		try {
 			alumnoService.actualizarAlumno(selectedAlumno);
@@ -56,7 +57,6 @@ public class AlumnoBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "";
 	}
 
 	public Alumno getAlumno() {

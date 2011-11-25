@@ -66,7 +66,7 @@
   
     <p:dialog header="Detalle Alumno" widgetVar="carDialog" resizable="false" id="carDlg"  
                 showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
-        <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">  
+        <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>  
@@ -130,9 +130,9 @@
   
           <f:facet name="footer"> 
                 <p:outputPanel rendered="#{alumnoBean.editMode}" layout="block" style="text-align:center">
-                <h:panelGroup >
-					<p:commandButton value="Grabar" actionListener="#{alumnoBean.actualizaAlumno}"  update=":listaalumnos" 
-                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check" ajax="false">
+                <h:panelGroup>
+					<p:commandButton value="Grabar" action="${alumnoBean.actualizaAlumno}"  update=":listaalumnos" 
+                                    oncomplete="onEditComplete(xhr,status,args)" image="ui-icon ui-icon-check">
                      	
                      </p:commandButton>
                                      
@@ -141,7 +141,7 @@
                     </p:commandButton>  
   				</h:panelGroup>
               </p:outputPanel>  
-            </f:facet>  
+          </f:facet>  
         </h:panelGrid>  
     </p:dialog>  
   	<script type="text/javascript">  
@@ -152,6 +152,7 @@
 		} else {
 			carDialog.hide();
 		}
+		alert(" aki tambien ... ");
     } 
 	</script>
     <p:confirmDialog message="Estas seguro?" width="350" height="200" 
