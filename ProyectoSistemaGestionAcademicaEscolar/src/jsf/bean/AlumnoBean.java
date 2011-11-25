@@ -3,7 +3,6 @@ package jsf.bean;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
 
@@ -24,15 +23,28 @@ public class AlumnoBean {
 	private Apoderado apoderado; 
 	private ArrayList<Alumno> alumnos;
 	private boolean editMode;  
+	//private String codigoAlumno;
 	
+	
+	/*public String getCodigoAlumno() {
+		return codigoAlumno;
+	}
+
+	public void setCodigoAlumno(String codigoAlumno) {
+		this.codigoAlumno = codigoAlumno;
+	}*/
+
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
 		//alumno=new Alumno();
 		//selectedAlumno=new Alumno();
 	}
 
-	public void inhabilitarAlumno() {  
+	public void inhabilitarAlumno(ActionEvent ae) {  
 		System.out.println("dizke deleteando");
+		//System.out.println("codigoAlumno: "+codigoAlumno);
+		
+		
 		System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
 		System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
 		System.out.println("Nombre alumno: "+alumno.getStrNombres());
@@ -47,7 +59,7 @@ public class AlumnoBean {
 		}
     }
 	
-	public void actualizaAlumno(){
+	public void actualizaAlumno(ActionEvent ae){
 		System.out.println("Hola madafaka !!!");
 		try {
 			alumnoService.actualizarAlumno(selectedAlumno);
@@ -56,6 +68,7 @@ public class AlumnoBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//return "listadoAlumnos.xhtml";
 	}
 
 	public Alumno getAlumno() {
@@ -76,6 +89,7 @@ public class AlumnoBean {
 
 	public ArrayList<Alumno> getAlumnos() {
 		try {
+			System.out.println("entro a listar todos ....");
 			alumnos = alumnoService.obtenerTodosAlumnos();
 		} catch (Exception e) {
 			e.printStackTrace();
