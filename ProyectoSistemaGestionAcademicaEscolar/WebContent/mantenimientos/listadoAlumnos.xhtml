@@ -45,7 +45,7 @@
             <h:outputText value="#{alumno.intGrado}" />  
         </p:column>  
 
-        <p:column style="width:200px">  
+        <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
                  <p:commandButton update=":form:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Detalle">  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
