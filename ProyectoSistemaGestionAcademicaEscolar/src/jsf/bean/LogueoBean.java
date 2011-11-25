@@ -140,9 +140,8 @@ public class LogueoBean {
 	}
 	
 	
-	public String regresar(){
+	public void regresar(){
 		System.out.println("Regresa al index");
-		return "index";
 	}
 	
 	//getters y setter
