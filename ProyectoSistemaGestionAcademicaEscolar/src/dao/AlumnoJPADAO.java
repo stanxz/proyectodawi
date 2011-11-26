@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Calendarioacademico;
 import entidades.Persona;
 
 public class AlumnoJPADAO implements AlumnoDAO {
@@ -125,6 +126,27 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		//3.ejecuta commit a la transacción
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public ArrayList<Calendarioacademico> listarAniosAcademicos() throws Exception {
+		em = emf.createEntityManager();
+		
+		ArrayList<Calendarioacademico> anios = new ArrayList<Calendarioacademico>();
+		
+		 List l = em.createQuery("SELECT c FROM Calendarioacademico c").getResultList();
+		
+		 if(l.size()>0){
+				for ( int i=0; i < l.size(); i++ ) {
+					Calendarioacademico entidad = (Calendarioacademico)l.get(i);
+					System.out.println("anio: "+l.get(i));
+					anios.add(entidad);
+				}
+		 }
+		 
+		em.close();
+		
+		return anios;
 	}
 	
 
