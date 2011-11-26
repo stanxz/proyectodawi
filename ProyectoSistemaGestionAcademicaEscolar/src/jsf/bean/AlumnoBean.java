@@ -14,8 +14,8 @@ import entidades.Alumno;
 import entidades.Apoderado;
 
 @SuppressWarnings("serial")
-@ManagedBean(name="alumnoBean")
 @SessionScoped
+@ManagedBean
 public class AlumnoBean implements Serializable{
 	
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
@@ -52,6 +52,7 @@ public class AlumnoBean implements Serializable{
 	
 	public void actualizaAlumno(ActionEvent ae){
 		System.out.println("Hola madafaka !!!");
+		System.out.println(selectedAlumno.getStrNombres());
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);

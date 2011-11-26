@@ -5,10 +5,6 @@ import java.util.Date;
 import javax.persistence.*;
 
 
-/**
- * The persistent class for the alumno database table.
- * 
- */
 @Entity
 public class Alumno implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -25,9 +21,6 @@ public class Alumno implements Serializable {
 
 	@Column(name="apellidopat")
 	private String strApellidoPaterno;
-
-	@Transient
-	private Date fecha;
 	
 	@Column(name="fecnac")
 	private java.sql.Date dtFecNac;
@@ -45,11 +38,17 @@ public class Alumno implements Serializable {
 	private String strSeccion;
 	
 	@Column(name="sexo")
-	private int intSeccion;
+	private int intSexo;
 	
 	@ManyToOne
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados;
+	
+	@Transient
+	private Date fecha;
+	
+	@Transient
+	private Persona personas;
 
 
     public Alumno() {
@@ -87,8 +86,6 @@ public class Alumno implements Serializable {
 		this.strApellidoPaterno = strApellidoPaterno;
 	}
 
-
-
 	/*public void setDtFecNac(java.util.Date dtFecNac) {
 		System.out.println("fecha q llega: "+dtFecNac.toString());
 		System.out.println(" a long: "+dtFecNac.getTime());
@@ -97,7 +94,6 @@ public class Alumno implements Serializable {
 		System.out.println("objFecha: "+objfecha.toString());
 		this.dtFecNac = objfecha;
 	}*/
-
 
 	public Date getFecha() {
 		return new Date(this.dtFecNac.getTime());
@@ -150,20 +146,25 @@ public class Alumno implements Serializable {
 	public Apoderado getApoderados() {
 		return apoderados;
 	}
+	
+	public Persona getPersonas() {
+		return personas;
+	}
+
+	public void setPersonas(Persona personas) {
+		this.personas = personas;
+	}
 
 	public void setApoderados(Apoderado apoderados) {
 		this.apoderados = apoderados;
 	}
- 
-	public int getIntSeccion() {
-		return intSeccion;
+
+	public int getIntSexo() {
+		return intSexo;
 	}
 
-	public void setIntSeccion(int intSeccion) {
-		this.intSeccion = intSeccion;
+	public void setIntSexo(int intSexo) {
+		this.intSexo = intSexo;
 	}
 
-
-    
-	
 }
