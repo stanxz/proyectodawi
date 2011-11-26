@@ -11,12 +11,13 @@
 <h:head>
 <title>I.E.P &quot;SAN CARLOS&quot;</title>
 <h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
+<script src="http://maps.google.com/maps/api/js?sensor=true"  type="text/javascript"/>
 </h:head>
 <h:body style="background-color: #A8C2D3;">
 <h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
 <h:form > 
 	 
-   <p:tabView >  
+   <p:tabView onTabShow="mymap.checkResize()">  
     <p:tab title="Inicio">  
         <h:panelGrid columns="2" cellpadding="10">  
             
@@ -36,13 +37,18 @@
     </p:tab>  
     
     <p:tab title="Contáctenos">  
-        <h:panelGrid columns="2" cellpadding="10">  
-           
-        </h:panelGrid>  
+   		<div align="center">
+	 		<f:view contentType="text/html">
+       			<p:gmap 
+       			widgetVar="mymap"
+       			center="-12.051276302138568,-77.05594340515137" zoom="15" type="ROADMAP"   
+       			style="width:600px;height:400px"  
+       		 	model="#{mapBean.simpleModel}" /> 
+    		</f:view> 
+
+		</div>  
     </p:tab>  
-    
-    
-    
+
     <p:tab title="Intranet">
      <br></br><br></br><br></br><br></br><br></br><br></br>
      <br></br><br></br><br></br><br></br><br></br><br></br>
@@ -73,7 +79,6 @@
   		  <h:outputLabel value="#{logueoBean.mensaje}"></h:outputLabel>
   	</p:dialog>
   </c:if>
-</h:form> 
-    
+</h:form>         
 </h:body>
 </html>
