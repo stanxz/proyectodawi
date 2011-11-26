@@ -1,9 +1,10 @@
 package jsf.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.event.ActionEvent;
 
 import servicios.AlumnoService;
@@ -11,9 +12,10 @@ import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
 import entidades.Apoderado;
 
-@ManagedBean
-@RequestScoped
-public class AlumnoBean {
+@SuppressWarnings("serial")
+@ManagedBean(name="alumnoBean")
+@SessionScoped
+public class AlumnoBean implements Serializable{
 	
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
@@ -23,33 +25,21 @@ public class AlumnoBean {
 	private Apoderado apoderado; 
 	private ArrayList<Alumno> alumnos;
 	private boolean editMode;  
-	//private String codigoAlumno;
-	
-	
-	/*public String getCodigoAlumno() {
-		return codigoAlumno;
-	}
 
-	public void setCodigoAlumno(String codigoAlumno) {
-		this.codigoAlumno = codigoAlumno;
-	}*/
 
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
-		//alumno=new Alumno();
-		//selectedAlumno=new Alumno();
 	}
 
 	public void inhabilitarAlumno(ActionEvent ae) {  
 		System.out.println("dizke deleteando");
-		//System.out.println("codigoAlumno: "+codigoAlumno);
 		
 		
 		System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
 		System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
 		System.out.println("Nombre alumno: "+alumno.getStrNombres());
 		System.out.println("Apellidos alumno: "+alumno.getStrApellidoPaterno()+" "+alumno.getStrApellidoMaterno());
-		//alumnos.remove(selectedAlumno);
+		
 		try {
 			alumnoService.inhabilitarAlumno(alumno);
 			System.out.println("dizke se inhabilito");
