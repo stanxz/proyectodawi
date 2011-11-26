@@ -103,8 +103,7 @@
             <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.dtFecNac}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" >
-                </p:calendar>  
+                <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" rendered="#{alumnoBean.editMode}"/>
             </h:panelGroup>
             
             <h:outputText value="Grado" />  
