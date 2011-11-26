@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.AlumnoDAO;
 import dao.DAOFactory;
 import entidades.Alumno;
+import entidades.Calendarioacademico;
 
 public class AlumnoDaoService implements AlumnoService {
 	private DAOFactory fabrica = null;
@@ -44,6 +45,12 @@ public class AlumnoDaoService implements AlumnoService {
 	public Alumno obtenerAlumno(Alumno alumno) throws Exception {
 		// TODO Auto-generated method stub
 		return alumnodao.obtenerAlumno(alumno);
+	}
+
+	@Override
+	public ArrayList<Calendarioacademico> getListaAniosAcademicos() throws Exception {
+		// TODO Auto-generated method stub
+		return alumnodao.listarAniosAcademicos();
 	}
 
 }
