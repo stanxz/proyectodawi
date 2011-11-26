@@ -1,8 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.sql.Date;
-
+import java.util.Date;
 import javax.persistence.*;
 
 
@@ -27,8 +26,11 @@ public class Alumno implements Serializable {
 	@Column(name="apellidopat")
 	private String strApellidoPaterno;
 
+	@Transient
+	private Date fecha;
+	
 	@Column(name="fecnac")
-	private Date dtFecNac;
+	private java.sql.Date dtFecNac;
 
 	@Column(name="estado")
 	private String strEstado;
@@ -86,11 +88,30 @@ public class Alumno implements Serializable {
 	}
 
 
-	public Date getDtFecNac() {
+
+	/*public void setDtFecNac(java.util.Date dtFecNac) {
+		System.out.println("fecha q llega: "+dtFecNac.toString());
+		System.out.println(" a long: "+dtFecNac.getTime());
+		//SimpleDateFormat miformateador=new SimpleDateFormat();
+		Date objfecha= new Date(dtFecNac.getTime());
+		System.out.println("objFecha: "+objfecha.toString());
+		this.dtFecNac = objfecha;
+	}*/
+
+
+	public Date getFecha() {
+		return new Date(this.dtFecNac.getTime());
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+	public java.sql.Date getDtFecNac() {
 		return dtFecNac;
 	}
 
-	public void setDtFecNac(Date dtFecNac) {
+	public void setDtFecNac(java.sql.Date dtFecNac) {
 		this.dtFecNac = dtFecNac;
 	}
 

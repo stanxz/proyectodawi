@@ -1,6 +1,7 @@
 package jsf.bean;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -52,6 +53,8 @@ public class AlumnoBean implements Serializable{
 	public void actualizaAlumno(ActionEvent ae){
 		System.out.println("Hola madafaka !!!");
 		try {
+			Date auxi=new Date(selectedAlumno.getFecha().getTime());
+			selectedAlumno.setDtFecNac(auxi);
 			alumnoService.actualizarAlumno(selectedAlumno);
 			System.out.println("dizke se actualizo");
 		} catch (Exception e) {
