@@ -10,15 +10,6 @@
 <h:head>
 <title>I.E.P &quot;SAN CARLOS&quot;</title>
 <h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
-<script type="text/javascript">  
-    function onEditComplete(xhr, status, args) {
-        if(args.validationFailed) {
-			$(PrimeFaces.escapeClientId('form:carDlg')).parent().effect("shake", { times:5 }, 100);
-		} else {
-			carDialog.hide();
-		}
-    } 
-</script>
 </h:head>
 <h:body style="background-color: #A8C2D3;">
 <h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
@@ -112,7 +103,6 @@
             <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.dtFecNac}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <!--  <p:inputText id="fecNacAl" value="#{alumnoBean.selectedAlumno.dtFecNac}" rendered="#{alumnoBean.editMode}" required="true" label="Fecha Nacimiento"/>-->
                 <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" >
                 </p:calendar>  
             </h:panelGroup>
@@ -147,7 +137,8 @@
 					  <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoBean.actualizaAlumno}"  
 					  update="form:listaalumnos msgs" 
-                      image="ui-icon ui-icon-check"/>
+                      image="ui-icon ui-icon-check"
+                      oncomplete="carDialog.hide()"/>
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
               </p:outputPanel>  

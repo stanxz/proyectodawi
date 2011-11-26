@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import entidades.Alumno;
+import entidades.Apoderado;
+import entidades.Persona;
 
 public class AlumnoJPADAO implements AlumnoDAO {
 
@@ -56,14 +58,35 @@ public class AlumnoJPADAO implements AlumnoDAO {
 
 	@Override
 	public void actualizar(Alumno alumno) throws Exception {
-		em=emf.createEntityManager();
+		
+		System.out.println(alumno.getStrCodigoAlumno());
+		System.out.println(alumno.getStrNombres());
+		
+		em = emf.createEntityManager();
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
+		
+		Persona entidadPersona = new Persona();
+		entidadPersona.setStrCodigoPersona(alumno.getApoderados().getPersonas().getStrCodigoPersona());
+		
+		Apoderado entidadApoderado = new Apoderado();
+		entidadApoderado.setPersonas(entidadPersona);
 
 		//2. ejecuta las operaciones 
 		//2.1 busca Empleado por llave primaria
 		Alumno entidadAlumno = em.find(Alumno.class, alumno.getStrCodigoAlumno());
+		
+		entidadAlumno.setApoderados(entidadApoderado);
+		entidadAlumno.setStrNombres(alumno.getStrNombres());
+		entidadAlumno.setStrApellidoPaterno(alumno.getStrApellidoPaterno());
+		entidadAlumno.setStrApellidoMaterno(alumno.getStrApellidoMaterno());
+		entidadAlumno.setDtFecNac(alumno.getDtFecNac());
+		entidadAlumno.setIntGrado(alumno.getIntGrado());
+		entidadAlumno.setStrSeccion(alumno.getStrSeccion());
+		entidadAlumno.setStrAnioAcademico(alumno.getStrAnioAcademico());
+		entidadAlumno.setStrEstado(alumno.getStrEstado());
+		entidadAlumno.setIntSexo(alumno.getIntGrado());
 	
 		//2.3 actualiza Empleado
 		em.merge(entidadAlumno);

@@ -17,6 +17,7 @@ public class Apoderado implements Serializable {
 	@Id
 	@JoinColumn(name="codapoderado")
 	private Persona personas;
+	
 	/*
 	@ManyToOne
 	@JoinColumn(name="codpersona")
@@ -28,26 +29,30 @@ public class Apoderado implements Serializable {
     public Apoderado() {
     }
 /*
-	public int getStrCodigoApoderado() {
-		return StrCodigoApoderado;
+	public String getStrCodigoApoderado() {
+		return strCodigoApoderado;
 	}
 
-	public void setStrCodigoApoderado(int strCodigoApoderado) {
-		StrCodigoApoderado = strCodigoApoderado;
+	public void setStrCodigoApoderado(String strCodigoApoderado) {
+		this.strCodigoApoderado = strCodigoApoderado;
 	}
 */
+    
+	public Collection<Alumno> getTbAlumnos() {
+		return tbAlumnos;
+	}
 
 	public Persona getPersonas() {
 		return personas;
 	}
-    
+
+
+
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}
 
-	public Collection<Alumno> getTbAlumnos() {
-		return tbAlumnos;
-	}
+
 
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
