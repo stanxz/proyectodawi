@@ -1,6 +1,7 @@
 package jsf.bean;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -12,6 +13,7 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Calendarioacademico;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -25,11 +27,19 @@ public class AlumnoBean implements Serializable{
 	private Alumno alumno,selectedAlumno;
 	private Apoderado apoderado; 
 	private ArrayList<Alumno> alumnos;
+	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;  
 
 
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
+		try {
+			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
+			System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void inhabilitarAlumno(ActionEvent ae) {  
@@ -56,6 +66,13 @@ public class AlumnoBean implements Serializable{
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
+			
+			for (Method m : selectedAlumno.getClass().getMethods()){
+				if(m.getName().startsWith("get"))
+				System.out.println("xD: "+m.getName() + " : " +  m.invoke(selectedAlumno));
+			}
+			
+			
 			alumnoService.actualizarAlumno(selectedAlumno);
 			System.out.println("dizke se actualizo");
 		} catch (Exception e) {
@@ -118,5 +135,15 @@ public class AlumnoBean implements Serializable{
 	public void setEditMode(boolean editMode) {
 		this.editMode = editMode;
 	}
+
+	public ArrayList<Calendarioacademico> getAnosAcademicos() {
+		return anosAcademicos;
+	}
+
+	public void setAnosAcademicos(ArrayList<Calendarioacademico> anosAcademicos) {
+		this.anosAcademicos = anosAcademicos;
+	}
+
+
 	
 }
