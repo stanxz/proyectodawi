@@ -11,7 +11,7 @@
 
 </h:head>
 
- <h:outputScript >
+<h:outputScript >
 var jq = jQuery.noConflict();
  
 jq(document).ready(function() {
@@ -24,6 +24,14 @@ jq('a').click(function(e) {
 	}
   });
 });
+
+function onEditComplete(args) {
+	if(args.validationFailed) {
+        	
+	} else {
+			carDialog.hide();
+	}
+} 
  </h:outputScript>
 <div id="menuQuery" class="arrowgreen">
 					<ul>
