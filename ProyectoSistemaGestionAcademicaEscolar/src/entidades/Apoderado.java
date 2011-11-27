@@ -15,6 +15,7 @@ public class Apoderado implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@OneToOne
 	@JoinColumn(name="codapoderado")
 	private Persona personas;
 	
