@@ -37,4 +37,9 @@ border: 0px none !important;
 padding: 2px !important;
 }
 
+.ui-datatable .ui-datatable-header {
+text-align:right;
+}
+
+
 
