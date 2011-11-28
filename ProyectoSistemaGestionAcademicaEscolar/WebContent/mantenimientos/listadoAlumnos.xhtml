@@ -20,7 +20,7 @@
 	<ui:define name="body">
 	<div align="center">
 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
-<p:growl id="msgs2" showDetail="true" sticky="false" life="10000"/>
+<p:growl id="msgs2" showDetail="true" sticky="false" life="10000" />
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable">  
   		<f:facet name="header">  
@@ -189,7 +189,7 @@
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>  
-                <p:inputText value="#{cadenaCodigoAlumno}" style="font-weight:bold" required="true" requiredMessage="Codigo de Alumno vacio o incorrecto"/>  
+                <p:inputText value="#{cadenaCodigoAlumno}" style="font-weight:bold" required="true" maxlength="11"  requiredMessage="Codigo de Alumno vacio o incorrecto"/>  
             </h:panelGroup>  
   
             <h:outputText value="Codigo Apoderado" />  
@@ -214,7 +214,7 @@
             
             <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
-                <p:calendar value="#{cadenafecha}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Fecha de Nacimiento vacia o incorrecta">
+                <p:calendar value="#{cadenafecha}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Fecha de Nacimiento vacia o incorrecta" >
                 </p:calendar>  
             </h:panelGroup>
             
