@@ -42,18 +42,18 @@ public class AlumnoBean implements Serializable{
 		}
 	}
 
-	public void inhabilitarAlumno(ActionEvent ae) {  
-		System.out.println("dizke deleteando");
+	public void registraAlumno(ActionEvent ae) {  
+		System.out.println("dizke insertando");
 		
 		
-		System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
-		System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
-		System.out.println("Nombre alumno: "+alumno.getStrNombres());
-		System.out.println("Apellidos alumno: "+alumno.getStrApellidoPaterno()+" "+alumno.getStrApellidoMaterno());
+		//System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
+		//System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
+		System.out.println("Nombre alumno nuevo: "+nuevoAlumno.getStrNombres());
+		System.out.println("Apellidos alumno nuevo: "+nuevoAlumno.getStrApellidoPaterno()+" "+nuevoAlumno.getStrApellidoMaterno());
 		
 		try {
-			alumnoService.inhabilitarAlumno(alumno);
-			System.out.println("dizke se inhabilito");
+			//alumnoService.inhabilitarAlumno(alumno);
+			System.out.println("dizke se registro");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
