@@ -20,7 +20,6 @@
 	<ui:define name="body">
 	<div align="center">
 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
-<p:growl id="msgs2" showDetail="true" sticky="false" life="10000" />
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable">  
   		<f:facet name="header">  
@@ -67,7 +66,9 @@
         
          <f:facet name="footer">  
          <div align="left">
-             <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Nuevo Alumno" />
+         <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Nuevo Alumno">  
+				<f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
+ 		 </p:commandButton>
          </div>
         </f:facet> 
         
@@ -83,7 +84,7 @@
     </p:confirmDialog>
   
 </h:form> 
-                
+              
 <p:dialog header="Detalle Alumno" widgetVar="carDialog" resizable="false" id="carDlg"  
                 showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
 <h:form id="dlgForm">  
@@ -104,7 +105,7 @@
   			<h:outputText value="Nombres" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strNombres}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText id="NombresAl" value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre"/>  
+                <p:inputText value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
@@ -189,78 +190,18 @@
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>  
-                <p:inputText value="#{cadenaCodigoAlumno}" style="font-weight:bold" required="true" maxlength="11"  requiredMessage="Codigo de Alumno vacio o incorrecto"/>  
+                <p:inputText value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true"/>  
             </h:panelGroup>  
-  
-            <h:outputText value="Codigo Apoderado" />  
-            <h:panelGroup>  
-                <p:inputText value="#{cadenaCodigoPersona}" style="font-weight:bold" required="true" requiredMessage="Codigo de Apoderado vacio o incorrecto"/>  
-            </h:panelGroup>  
-  
-  			<h:outputText value="Nombres" />  
-            <h:panelGroup>  
-                <p:inputText value="#{cadenaNombres}" required="true" label="Nombre" requiredMessage="Nombre vacio o incorrecto"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Apellido Paterno" />  
-            <h:panelGroup>   
-                <p:inputText value="#{cadenaApellidoPaterno}" required="true" label="Apellido Paterno" requiredMessage="Apellido Paterno vacio o incorrecto"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Apellido Materno" />  
-            <h:panelGroup>  
-                <p:inputText value="#{cadenaApellidoMaterno}" required="true" label="Apellido Materno" requiredMessage="Apellido Materno vacio o incorrecto"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Fecha Nacimiento" />  
-            <h:panelGroup>  
-                <p:calendar value="#{cadenafecha}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Fecha de Nacimiento vacia o incorrecta" >
-                </p:calendar>  
-            </h:panelGroup>
-            
-            <h:outputText value="Grado" />  
-            <h:panelGroup>    
-		        <h:selectOneMenu value="#{cadenaGrado}" required="true" requiredMessage="Grado vacio o incorrecto" >  
-		            <f:selectItem itemLabel="1º" itemValue="1" />  
-		            <f:selectItem itemLabel="2º" itemValue="2" />  
-		            <f:selectItem itemLabel="3º" itemValue="3" /> 
-		            <f:selectItem itemLabel="4º" itemValue="4" /> 
-		            <f:selectItem itemLabel="5º" itemValue="5" /> 
-		            <f:selectItem itemLabel="6º" itemValue="6" />		        
-		        </h:selectOneMenu>
-            </h:panelGroup>
-            
-            <h:outputText value="Seccion" />  
-            <h:panelGroup>  
-                <h:selectOneMenu value="#{cadenaSeccion}" required="true"  requiredMessage="Seccion vacia o incorrecta">  
-		            <f:selectItem itemLabel="A" itemValue="A" />  
-		            <f:selectItem itemLabel="B" itemValue="B" />
-		            <f:selectItem itemLabel="C" itemValue="C" />  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-            
-            <h:outputText value="Anio Academico" />  
-            <h:panelGroup>   
-                <h:selectOneMenu value="#{cadenaAnioAcademico}"  required="true" requiredMessage="Anio academico vacio o incorrecto" >  
-		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-  
-  			<h:outputText value="Estado" />  
-            <h:panelGroup >   
-                <h:selectOneMenu value="#{cadenaEstado}" required="true" requiredMessage="Estado vacio o incorrecto" >  
-		            <f:selectItem itemLabel="MATRICULADO" itemValue="MATRICULADO" />  
-		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
+ 
   
           <f:facet name="footer"> 
-                <p:outputPanel layout="block" style="text-align:center">
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
 					  <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoBean.registraAlumno}"  
-					  update="form:listaalumnos msgs2" 
-                      image="ui-icon ui-icon-check"/>
+					  update="form:listaalumnos msgs" 
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditCompleteRegistrar(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
               </p:outputPanel>  
@@ -269,7 +210,6 @@
         </h:panelGrid> 
        </h:form>
     </p:dialog>
-    
 	</div>
 	</ui:define>
 
