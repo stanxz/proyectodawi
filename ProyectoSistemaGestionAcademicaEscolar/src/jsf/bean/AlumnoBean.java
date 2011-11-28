@@ -48,8 +48,8 @@ public class AlumnoBean implements Serializable{
 		
 		//System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
 		//System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
-		System.out.println("Nombre alumno nuevo: "+nuevoAlumno.getStrNombres());
-		System.out.println("Apellidos alumno nuevo: "+nuevoAlumno.getStrApellidoPaterno()+" "+nuevoAlumno.getStrApellidoMaterno());
+		System.out.println("Nombre alumno nuevo: " + nuevoAlumno.getStrNombres());
+		System.out.println("Apellidos alumno nuevo: " + nuevoAlumno.getStrApellidoPaterno()+" "+nuevoAlumno.getStrApellidoMaterno());
 		
 		try {
 			//alumnoService.inhabilitarAlumno(alumno);

@@ -8,9 +8,9 @@ public class JPADAOFactory extends DAOFactory {
 	
 	
 	public JPADAOFactory (){
-		System.out.println("waaaaaaa");
+		System.out.println("Cargando JPADAOFactory");
 		emf=Persistence.createEntityManagerFactory("JPADemo");
-		System.out.println("JPADAOFactory - emf en memoria: "+emf.toString());
+		System.out.println("JPADAOFactory - emf en memoria: " + emf.toString());
 	}
 
 
@@ -36,9 +36,16 @@ public class JPADAOFactory extends DAOFactory {
 		PersonaJPADAO ed =  new PersonaJPADAO();
 		ed.setEntityManagerFactory(emf);
 		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
-		return (PersonaJPADAO)ed;
+		return (PersonaDAO)ed;
 	}
 	
+	public AsignaturaDAO getAsignaturaDAO() {
+		AsignaturaJPADAO ed =  new AsignaturaJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (AsignaturaDAO)ed;
+	}
+
 	//aca falta las implementaciones de los dao q se va
 	//a usar
 	

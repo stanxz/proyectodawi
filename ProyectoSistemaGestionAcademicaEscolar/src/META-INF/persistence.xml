@@ -11,6 +11,7 @@
 		<class>entidades.Apoderado</class>
 		<class>entidades.Alumno</class>
 		<class>entidades.Calendarioacademico</class>
+		<class>entidades.Asignatura</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

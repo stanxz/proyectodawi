@@ -21,55 +21,31 @@
 	<div align="center">
 		 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;"> 
-    <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable">  
-  		<f:facet name="header">  
-  		<div align="center">
-            <p:outputPanel>  
-                <h:outputText value="Busqueda general:" />
-                <p:inputText id="globalFilter" onkeyup="alumnosTable.filter()" style="width:150px" />  
-            </p:outputPanel>  
-        </div>
-        </f:facet>
-  		
+    <p:dataTable id="listaAsignaturas" var="asignatura" value="#{asignaturaBean.asignaturas}">  
+  
   		<p:column headerText="Codigo">  
-            <h:outputText value="#{alumno.strCodigoAlumno}" />  
+            <h:outputText value="#{asignatura.strCodigoAsignatura}" />  
         </p:column>
         
-        <p:column headerText="Nombres">  
-            <h:outputText value="#{alumno.strNombres}" />  
-        </p:column>  
-  
-        <p:column headerText="Apellido Paterno">  
-            <h:outputText value="#{alumno.strApellidoPaterno}" />  
-        </p:column> 
-        
-        <p:column headerText="Apellido Materno">  
-            <h:outputText value="#{alumno.strApellidoMaterno}" />  
+        <p:column headerText="Descripcion">  
+            <h:outputText value="#{asignatura.strNombreAsignatura}" />  
         </p:column>  
         
-        <p:column headerText="Grado">  
-            <h:outputText value="#{alumno.intGrado}" />  
-        </p:column>  
-
         <p:column style="width:100px">  
-             <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
+             <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Detalle">  
-                     <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
-                     <f:setPropertyActionListener value="#{false}" target="#{alumnoBean.editMode}" />  
+                     <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
+                     <f:setPropertyActionListener value="#{false}" target="#{asignaturaBean.editMode}" />  
                  </p:commandButton>  
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar">  
-                     <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
-                     <f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
+                     <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
+                     <f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
+                 </p:commandButton>  
+                 <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Inhabilitar">  
+                     <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                  </p:commandButton>  
              </h:panelGrid>  
         </p:column>
-        
-         <f:facet name="footer">  
-         <div align="left">
-             <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Nuevo Alumno" />
-         </div>
-        </f:facet> 
-        
     </p:dataTable>  
         <p:confirmDialog message="Estas seguro?" width="350" height="200" 
                     showEffect="explode" hideEffect="explode"  
@@ -83,18 +59,18 @@
   
 </h:form> 
                 
-<p:dialog header="Detalle Alumno" widgetVar="carDialog" resizable="false" id="carDlg"  
+<p:dialog header="Detalle Asignatura" widgetVar="carDialog" resizable="false" id="carDlg"  
                 showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
 <h:form id="dlgForm">  
           <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
-            <h:outputText value="Codigo Alumno" />  
+            <h:outputText value="Codigo Asignatura" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strCodigoAlumno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strCodigoAlumno}" style="font-weight:bold" rendered="#{alumnoBean.editMode}" />  
             </h:panelGroup>  
   
-            <h:outputText value="Codigo Apoderado" />  
+            <h:outputText value="Nombre Asignatura" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{alumnoBean.editMode}" />  
@@ -148,7 +124,7 @@
 		        </h:selectOneMenu>  
             </h:panelGroup>
             
-            <h:outputText value="Año Academico" />  
+            <h:outputText value="Anio Academico" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strAnioAcademico}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
                 <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strAnioAcademico}" rendered="#{alumnoBean.editMode}"  required="true"  >  
@@ -180,96 +156,6 @@
         </h:panelGrid> 
        </h:form>
     </p:dialog>  
-    
-    <p:dialog header="Nuevo Alumno" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
-	   <h:form id="dlgForm2">  
-          <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
-  
-            <h:outputText value="Codigo Alumno" />  
-            <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true"/>  
-            </h:panelGroup>  
-  
-            <h:outputText value="Codigo Apoderado" />  
-            <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" />  
-            </h:panelGroup>  
-  
-  			<h:outputText value="Nombres" />  
-            <h:panelGroup>  
-                <p:inputText id="NombresAl" value="#{alumnoBean.nuevoAlumno.strNombres}" required="true" label="Nombre"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Apellido Paterno" />  
-            <h:panelGroup>   
-                <p:inputText id="apellidoPaternoAl" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" required="true" label="Apellido Paterno"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Apellido Materno" />  
-            <h:panelGroup>  
-                <p:inputText id="apellidoMaternoAl" value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" required="true" label="Apellido Materno"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Fecha Nacimiento" />  
-            <h:panelGroup>  
-                <p:calendar value="#{alumnoBean.nuevoAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button">
-                </p:calendar>  
-            </h:panelGroup>
-            
-            <h:outputText value="Grado" />  
-            <h:panelGroup>    
-		        <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.intGrado}" required="true"  >  
-		            <f:selectItem itemLabel="1º" itemValue="1" />  
-		            <f:selectItem itemLabel="2º" itemValue="2" />  
-		            <f:selectItem itemLabel="3º" itemValue="3" /> 
-		            <f:selectItem itemLabel="4º" itemValue="4" /> 
-		            <f:selectItem itemLabel="5º" itemValue="5" /> 
-		            <f:selectItem itemLabel="6º" itemValue="6" />		        
-		        </h:selectOneMenu>
-            </h:panelGroup>
-            
-            <h:outputText value="Seccion" />  
-            <h:panelGroup>  
-                <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strSeccion}" required="true"  >  
-		            <f:selectItem itemLabel="A" itemValue="A" />  
-		            <f:selectItem itemLabel="B" itemValue="B" />
-		            <f:selectItem itemLabel="C" itemValue="C" />  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-            
-            <h:outputText value="Anio Academico" />  
-            <h:panelGroup>   
-                <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strAnioAcademico}"  required="true"  >  
-		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-  
-  			<h:outputText value="Estado" />  
-            <h:panelGroup >   
-                <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strEstado}" required="true"  >  
-		            <f:selectItem itemLabel="MATRICULADO" itemValue="MATRICULADO" />  
-		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-  
-          <f:facet name="footer"> 
-                <p:outputPanel layout="block" style="text-align:center">
-                <h:panelGroup>
-					  <p:commandButton value="Grabar" 
-					  actionListener="#{alumnoBean.registraAlumno}"  
-					  update="carDialog2" 
-                      image="ui-icon ui-icon-check"
-                      oncomplete="onEditComplete(args)"/>
-                    <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
-  				</h:panelGroup>
-              </p:outputPanel>  
-          </f:facet>  
-          
-        </h:panelGrid> 
-       </h:form>
-    </p:dialog>
-    
 	</div>
 	</ui:define>
 
