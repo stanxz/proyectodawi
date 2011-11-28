@@ -44,11 +44,8 @@ public class AlumnoBean implements Serializable{
 
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando");
-		
-		
-		//System.out.println("Nombre selected: "+selectedAlumno.getStrNombres());
-		//System.out.println("Apellidos selected: "+selectedAlumno.getStrApellidoPaterno()+" "+selectedAlumno.getStrApellidoMaterno());
-		System.out.println("Nombre alumno nuevo: " + nuevoAlumno.getStrNombres());
+
+		System.out.println("Nombre alumno nuevo: " +    nuevoAlumno.getStrNombres());
 		System.out.println("Apellidos alumno nuevo: " + nuevoAlumno.getStrApellidoPaterno()+" "+nuevoAlumno.getStrApellidoMaterno());
 		
 		try {
