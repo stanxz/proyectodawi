@@ -24,7 +24,7 @@ public class AlumnoBean implements Serializable{
 	
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	
-	private Alumno alumno,selectedAlumno;
+	private Alumno alumno,selectedAlumno,nuevoAlumno;
 	private Apoderado apoderado; 
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
@@ -142,6 +142,14 @@ public class AlumnoBean implements Serializable{
 
 	public void setAnosAcademicos(ArrayList<Calendarioacademico> anosAcademicos) {
 		this.anosAcademicos = anosAcademicos;
+	}
+
+	public Alumno getNuevoAlumno() {
+		return nuevoAlumno;
+	}
+
+	public void setNuevoAlumno(Alumno nuevoAlumno) {
+		this.nuevoAlumno = nuevoAlumno;
 	}
 
 
