@@ -22,7 +22,10 @@
 		 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaAsignaturas" var="asignatura" value="#{asignaturaBean.asignaturas}" 
-    widgetVar="asignaturasTable" emptyMessage="No hay asignaturas a listar" >  
+    widgetVar="asignaturasTable" emptyMessage="No hay asignaturas a listar" 
+    paginator="true" rows="5"  
+    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+    rowsPerPageTemplate="5,10,15">  
   		<f:facet name="header">  
   		<div align="right">
             <p:outputPanel>  
