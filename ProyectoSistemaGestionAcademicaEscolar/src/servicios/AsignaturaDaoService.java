@@ -18,4 +18,12 @@ public class AsignaturaDaoService implements AsignaturaService{
 	public ArrayList<Asignatura> obtenerTodosAsignaturas() throws Exception {
 		return asignaturadao.obtenerTodos();
 	}
+	
+	public void actualizarAsignatura(Asignatura asignatura) throws Exception {
+		asignaturadao.actualizar(asignatura);
+	}
+	
+	public void insertarAsignatura(Asignatura asignatura) throws Exception {
+		asignaturadao.insertar(asignatura);
+	}
 }
