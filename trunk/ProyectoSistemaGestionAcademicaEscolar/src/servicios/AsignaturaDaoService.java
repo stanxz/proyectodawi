@@ -26,4 +26,8 @@ public class AsignaturaDaoService implements AsignaturaService{
 	public void insertarAsignatura(Asignatura asignatura) throws Exception {
 		asignaturadao.insertar(asignatura);
 	}
+	
+	public void inhabilitarAsignatura(Asignatura asignatura) throws Exception {
+		asignaturadao.inhabilitar(asignatura);
+	}
 }

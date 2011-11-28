@@ -28,6 +28,9 @@ public class Asignatura implements Serializable{
 	@Column(name="nombre")
 	private String strNombreAsignatura;
 	
+	@Column(name="estado")
+	private String strEstado;
+	
 	@ManyToMany
 	@JoinTable(name="detalleasignatura",
 			joinColumns={@JoinColumn(name="codasignatura")},
@@ -59,5 +62,15 @@ public class Asignatura implements Serializable{
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
 	}
+
+	public String getStrEstado() {
+		return strEstado;
+	}
+
+	public void setStrEstado(String strEstado) {
+		this.strEstado = strEstado;
+	}
+	
+	
 	
 }

@@ -67,9 +67,9 @@
                     showEffect="explode" hideEffect="explode"  
                     header="Confirm" severity="alert" widgetVar="confirmation" position="center">  
   
-        <p:commandButton  type="submit" value="Si, asi es"  action="#{alumnoBean.inhabilitarAlumno}"  update=":form:listaalumnos" oncomplete="confirmation.hide()" ajax="false">
+        <p:commandButton  type="submit" value="Si"  action="#{asignaturaBean.inhabilitaAsignatura}"  update=":form:listaalumnos" oncomplete="confirmation.hide()" ajax="false">
         </p:commandButton>  
-        <p:commandButton value="No aun" onclick="confirmation.hide()" type="button" />  
+        <p:commandButton value="No" onclick="confirmation.hide()" type="button" />  
   
     </p:confirmDialog>
   
