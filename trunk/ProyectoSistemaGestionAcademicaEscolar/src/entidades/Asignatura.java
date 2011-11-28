@@ -23,7 +23,7 @@ public class Asignatura implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="codasignatura")
-	private String strCodigoAsignatura;
+	private int intCodigoAsignatura;
 	
 	@Column(name="nombre")
 	private String strNombreAsignatura;
@@ -35,12 +35,13 @@ public class Asignatura implements Serializable{
 	)
 	private Collection<Alumno> tbAlumnos;
 
-	public String getStrCodigoAsignatura() {
-		return strCodigoAsignatura;
+	
+	public int getIntCodigoAsignatura() {
+		return intCodigoAsignatura;
 	}
 
-	public void setStrCodigoAsignatura(String strCodigoAsignatura) {
-		this.strCodigoAsignatura = strCodigoAsignatura;
+	public void setIntCodigoAsignatura(int intCodigoAsignatura) {
+		this.intCodigoAsignatura = intCodigoAsignatura;
 	}
 
 	public String getStrNombreAsignatura() {

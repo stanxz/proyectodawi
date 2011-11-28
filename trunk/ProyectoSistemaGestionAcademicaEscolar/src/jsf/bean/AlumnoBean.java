@@ -60,22 +60,19 @@ public class AlumnoBean implements Serializable{
     }
 	
 	public void actualizaAlumno(ActionEvent ae){
-		System.out.println("Hola madafaka !!!");
 		System.out.println(selectedAlumno.getStrNombres());
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
 			
-			for (Method m : selectedAlumno.getClass().getMethods()){
+			/*for (Method m : selectedAlumno.getClass().getMethods()){
 				if(m.getName().startsWith("get"))
 				System.out.println("xD: "+m.getName() + " : " +  m.invoke(selectedAlumno));
-			}
-			
+			}*/
 			
 			alumnoService.actualizarAlumno(selectedAlumno);
-			System.out.println("dizke se actualizo");
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

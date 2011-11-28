@@ -24,8 +24,27 @@ public class AsignaturaBean implements Serializable{
 	private ArrayList<Asignatura> asignaturas;
 	private boolean editMode;
 	
+	private Asignatura nuevaAsignatura = new Asignatura();
+	
 	public AsignaturaBean(){
 		System.out.println("Creando AsignaturaBean...");
+	}
+	
+	public void actualizaAsignatura(){
+		
+		try {
+			asignaturaService.actualizarAsignatura(selectedAsignatura);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void registraAsignatura(){
+		try {
+			asignaturaService.insertarAsignatura(nuevaAsignatura);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Asignatura getAsignatura() {
@@ -64,5 +83,15 @@ public class AsignaturaBean implements Serializable{
 	public void setEditMode(boolean editMode) {
 		this.editMode = editMode;
 	}
+
+	public Asignatura getNuevaAsignatura() {
+		return nuevaAsignatura;
+	}
+
+	public void setNuevaAsignatura(Asignatura nuevaAsignatura) {
+		this.nuevaAsignatura = nuevaAsignatura;
+	}
+	
+	
 
 }

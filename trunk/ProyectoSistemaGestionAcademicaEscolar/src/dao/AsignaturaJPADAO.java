@@ -36,5 +36,48 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		
 	}
 	
+	
+	public void actualizar(Asignatura asignatura) throws Exception{
+		
+		System.out.println(asignatura.getIntCodigoAsignatura());
+		System.out.println(asignatura.getStrNombreAsignatura());
+		
+		em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		
+		Asignatura entidadAsignatura = em.find(Asignatura.class, asignatura.getIntCodigoAsignatura());
+		
+		entidadAsignatura.setStrNombreAsignatura(asignatura.getStrNombreAsignatura());
+		
+		em.merge(entidadAsignatura);
+		em.flush();
+		
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public Asignatura obtenerAsignatura(Asignatura asignatura) throws Exception {
+		
+		em = emf.createEntityManager();
+		
+		Asignatura entidadAsignatura = (Asignatura)em.find(Asignatura.class,asignatura.getIntCodigoAsignatura());
+	
+		return entidadAsignatura;
+	}
+	
+	public void insertar(Asignatura asignatura) throws Exception {
+		
+		em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		
+		em.persist(asignatura);
+		em.flush();
+		
+		em.getTransaction().commit();
+		em.close();
+		
+	}
 
 }
