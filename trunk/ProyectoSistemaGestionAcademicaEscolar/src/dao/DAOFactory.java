@@ -14,6 +14,7 @@ public abstract class DAOFactory {
     public abstract AlumnoDAO getAlumnoDAO();
     public abstract UsuarioDAO getUsuarioDAO();
     public abstract PersonaDAO getPersonaDAO();
+    public abstract AsignaturaDAO getAsignaturaDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){

@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -49,6 +50,13 @@ public class Alumno implements Serializable {
 	
 	@Transient
 	private Persona personas;
+	
+	@ManyToMany
+	@JoinTable(name="detalleasignatura",
+			joinColumns={@JoinColumn(name="codalumno")},
+			inverseJoinColumns={@JoinColumn(name="codasignatura")}
+	)
+	private Collection<Alumno> tbAsignaturas;
 
 
     public Alumno() {
@@ -167,4 +175,13 @@ public class Alumno implements Serializable {
 		this.intSexo = intSexo;
 	}
 
+	public Collection<Alumno> getTbAsignaturas() {
+		return tbAsignaturas;
+	}
+
+	public void setTbAsignaturas(Collection<Alumno> tbAsignaturas) {
+		this.tbAsignaturas = tbAsignaturas;
+	}
+
+	
 }

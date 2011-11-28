@@ -24,21 +24,21 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		em = emf.createEntityManager();
 		
-		ArrayList<Alumno> students = new ArrayList<Alumno>();
+		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
-		 List l = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		 List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
 		
-		 if(l.size()>0){
-				for ( int i=0; i < l.size(); i++ ) {
-					Alumno entidad = (Alumno)l.get(i);
-					System.out.println("alumno: "+l.get(i));
-					students.add(entidad);
+		 if(lista.size()>0){
+				for ( int i=0; i < lista.size(); i++ ) {
+					Alumno entidad = (Alumno)lista.get(i);
+					System.out.println("alumno: " + lista.get(i));
+					alumnos.add(entidad);
 				}
 		 }
 		 
 		em.close();
 		
-		return students;
+		return alumnos;
 	}
 
 	@Override

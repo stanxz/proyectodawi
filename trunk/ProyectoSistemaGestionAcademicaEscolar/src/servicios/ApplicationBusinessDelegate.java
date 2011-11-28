@@ -16,4 +16,8 @@ public class ApplicationBusinessDelegate {
 		return new PersonaDaoService(DAOFactory.JPA);
 	}
 	
+	public AsignaturaService getAsignaturaService(){
+		return new AsignaturaDaoService(DAOFactory.JPA);
+	}
+	
 }
