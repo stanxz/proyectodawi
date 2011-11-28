@@ -24,7 +24,7 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		
 		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
 		
-		List lista = em.createQuery("SELECT a FROM Asignatura a").getResultList();
+		List lista = em.createQuery("SELECT a FROM Asignatura a where a.strEstado = 'Habilitado'").getResultList();
 		
 		if (lista.size()>0) {
 			for (int i = 0; i < lista.size(); i++) {
@@ -72,12 +72,32 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		
 		em.getTransaction().begin();
 		
+		asignatura.setStrEstado("Habilitado");
+		
 		em.persist(asignatura);
 		em.flush();
 		
 		em.getTransaction().commit();
 		em.close();
 		
+	}
+	
+	public void inhabilitar(Asignatura asignatura) throws Exception {
+		
+		em = emf.createEntityManager();
+		
+		em.getTransaction().begin();
+		
+		Asignatura entidadAsignatura = em.find(Asignatura.class, asignatura.getIntCodigoAsignatura());
+		
+		entidadAsignatura.setStrNombreAsignatura(asignatura.getStrNombreAsignatura());
+		entidadAsignatura.setStrEstado("Deshabilitado");
+		
+		em.merge(entidadAsignatura);
+		em.flush();
+		
+		em.getTransaction().commit();
+		em.close();
 	}
 
 }

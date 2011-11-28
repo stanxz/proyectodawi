@@ -46,6 +46,14 @@ public class AsignaturaBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	public void inhabilitaAsignatura(){
+		try {
+			asignaturaService.inhabilitarAsignatura(selectedAsignatura);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public Asignatura getAsignatura() {
 		return asignatura;
