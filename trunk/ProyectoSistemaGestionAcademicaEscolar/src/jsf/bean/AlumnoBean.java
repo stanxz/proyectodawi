@@ -29,7 +29,7 @@ public class AlumnoBean implements Serializable{
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;  
-
+    private String cadenaCodigoAlumno,cadenaCodigoPersona,cadenaNombres,cadenaApellidoPaterno,cadenaApellidoMaterno,cadenafecha,cadenaGrado,cadenaSeccion,cadenaAnioAcademico,cadenaEstado;
 
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
@@ -42,11 +42,11 @@ public class AlumnoBean implements Serializable{
 		}
 	}
 
+	
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando");
-
-		System.out.println("Nombre alumno nuevo: " +    nuevoAlumno.getStrNombres());
-		System.out.println("Apellidos alumno nuevo: " + nuevoAlumno.getStrApellidoPaterno()+" "+nuevoAlumno.getStrApellidoMaterno());
+		System.out.println("Nombre alumno nuevo: " + cadenaNombres);
+		System.out.println("Apellidos alumno nuevo: " + cadenaApellidoPaterno+" "+cadenaApellidoMaterno);
 		
 		try {
 			//alumnoService.inhabilitarAlumno(alumno);
@@ -149,6 +149,108 @@ public class AlumnoBean implements Serializable{
 		this.nuevoAlumno = nuevoAlumno;
 	}
 
+
+	public String getCadenaCodigoAlumno() {
+		return cadenaCodigoAlumno;
+	}
+
+
+	public void setCadenaCodigoAlumno(String cadenaCodigoAlumno) {
+		this.cadenaCodigoAlumno = cadenaCodigoAlumno;
+	}
+
+
+	public String getCadenaCodigoPersona() {
+		return cadenaCodigoPersona;
+	}
+
+
+	public void setCadenaCodigoPersona(String cadenaCodigoPersona) {
+		this.cadenaCodigoPersona = cadenaCodigoPersona;
+	}
+
+
+	public String getCadenaNombres() {
+		return cadenaNombres;
+	}
+
+
+	public void setCadenaNombres(String cadenaNombres) {
+		this.cadenaNombres = cadenaNombres;
+	}
+
+
+	public String getCadenaApellidoPaterno() {
+		return cadenaApellidoPaterno;
+	}
+
+
+	public void setCadenaApellidoPaterno(String cadenaApellidoPaterno) {
+		this.cadenaApellidoPaterno = cadenaApellidoPaterno;
+	}
+
+
+	public String getCadenaApellidoMaterno() {
+		return cadenaApellidoMaterno;
+	}
+
+
+	public void setCadenaApellidoMaterno(String cadenaApellidoMaterno) {
+		this.cadenaApellidoMaterno = cadenaApellidoMaterno;
+	}
+
+
+	public String getCadenafecha() {
+		return cadenafecha;
+	}
+
+
+	public void setCadenafecha(String cadenafecha) {
+		this.cadenafecha = cadenafecha;
+	}
+
+
+	public String getCadenaGrado() {
+		return cadenaGrado;
+	}
+
+
+	public void setCadenaGrado(String cadenaGrado) {
+		this.cadenaGrado = cadenaGrado;
+	}
+
+
+	public String getCadenaSeccion() {
+		return cadenaSeccion;
+	}
+
+
+	public void setCadenaSeccion(String cadenaSeccion) {
+		this.cadenaSeccion = cadenaSeccion;
+	}
+
+
+	public String getCadenaAnioAcademico() {
+		return cadenaAnioAcademico;
+	}
+
+
+	public void setCadenaAnioAcademico(String cadenaAnioAcademico) {
+		this.cadenaAnioAcademico = cadenaAnioAcademico;
+	}
+
+
+	public String getCadenaEstado() {
+		return cadenaEstado;
+	}
+
+
+	public void setCadenaEstado(String cadenaEstado) {
+		this.cadenaEstado = cadenaEstado;
+	}
+
+	
+	
 
 	
 }
