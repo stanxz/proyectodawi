@@ -23,9 +23,9 @@
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable">  
   		<f:facet name="header">  
-  		<div align="center">
+  		<div align="right">
             <p:outputPanel>  
-                <h:outputText value="Busqueda general:" />
+                <h:outputText value="Busqueda:" />
                 <p:inputText id="globalFilter" onkeyup="alumnosTable.filter()" style="width:150px" />  
             </p:outputPanel>  
         </div>
