@@ -14,6 +14,7 @@ import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
+import entidades.Persona;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -26,9 +27,11 @@ public class AlumnoBean implements Serializable{
 	
 	private Alumno alumno,selectedAlumno;
 	private Apoderado apoderado; 
+	private Persona persona;
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode; 
+	private String strCodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
 	
@@ -39,7 +42,20 @@ public class AlumnoBean implements Serializable{
 
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando: Por fin");
-		System.out.println(nuevoAlumno.getStrCodigoAlumno());
+		
+		persona = new Persona();
+		persona.setStrCodigoPersona(getStrCodigoApoderado());
+		
+		apoderado = new Apoderado();
+		apoderado.setPersonas(persona);
+		
+		nuevoAlumno.setApoderados(apoderado);
+		
+		
+		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
+		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
+		
+		
 		try {
 			
 			//Es para settear el bean
@@ -87,14 +103,6 @@ public class AlumnoBean implements Serializable{
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
-	}
-
-	public Apoderado getApoderado() {
-		return apoderado;
-	}
-
-	public void setApoderado(Apoderado apoderado) {
-		this.apoderado = apoderado;
 	}
 
 	public ArrayList<Alumno> getAlumnos() {
@@ -148,8 +156,15 @@ public class AlumnoBean implements Serializable{
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
 	}
-	
-	
 
+	public String getStrCodigoApoderado() {
+		return strCodigoApoderado;
+	}
+
+	public void setStrCodigoApoderado(String strCodigoApoderado) {
+		this.strCodigoApoderado = strCodigoApoderado;
+	}	
+
+	
 
 }
