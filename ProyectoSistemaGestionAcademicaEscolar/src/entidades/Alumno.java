@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 
 @Entity
 public class Alumno implements Serializable {
@@ -43,11 +45,22 @@ public class Alumno implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="codapoderado")
-	private Apoderado apoderados;
+	private Apoderado apoderados = new Apoderado();
 	
 	@Transient
 	private Date fecha;
 	
+	@Transient
+	private Date fechaNacimiento;
+	
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+
 	@Transient
 	private Persona personas;
 	
