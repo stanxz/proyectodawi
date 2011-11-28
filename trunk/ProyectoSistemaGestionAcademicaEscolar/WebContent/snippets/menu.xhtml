@@ -27,9 +27,18 @@ jq('a').click(function(e) {
 
 function onEditComplete(args) {
 	if(args.validationFailed) {
-        	
+	
 	} else {
-			carDialog.hide();
+		carDialog.hide();
+	}
+} 
+
+function onEditCompleteRegistrar(args) {
+	if(args.validationFailed) {
+        alert("ERROR");
+	} else {
+	    alert("XD")
+		carDialog2.hide();
 	}
 } 
  </h:outputScript>
