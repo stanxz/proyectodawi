@@ -12,7 +12,7 @@ public class Alumno implements Serializable {
 
 	@Id
 	@Column(name="codalumno")
-	private int strCodigoAlumno;
+	private String strCodigoAlumno;
 	
 	@Column(name="anoacademico") 
 	private String strAnioAcademico;
@@ -62,11 +62,11 @@ public class Alumno implements Serializable {
     public Alumno() {
     }
 
-	public int getStrCodigoAlumno() {
+	public String getStrCodigoAlumno() {
 		return strCodigoAlumno;
 	}
 
-	public void setStrCodigoAlumno(int strCodigoAlumno) {
+	public void setStrCodigoAlumno(String strCodigoAlumno) {
 		this.strCodigoAlumno = strCodigoAlumno;
 	}
 

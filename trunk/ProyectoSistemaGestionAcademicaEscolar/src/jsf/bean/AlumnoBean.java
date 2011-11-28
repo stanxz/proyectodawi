@@ -24,33 +24,26 @@ public class AlumnoBean implements Serializable{
 	
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	
-	private Alumno alumno,selectedAlumno,nuevoAlumno;
+	private Alumno alumno,selectedAlumno;
 	private Apoderado apoderado; 
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
-	private boolean editMode;  
-    private String cadenaCodigoAlumno,cadenaCodigoPersona,cadenaNombres,cadenaApellidoPaterno,cadenaApellidoMaterno,cadenafecha,cadenaGrado,cadenaSeccion,cadenaAnioAcademico,cadenaEstado;
-
+	private boolean editMode; 
+	
+	private Alumno nuevoAlumno =  new Alumno();
+	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
-		try {
-			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
-			System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		CargarAniosAcademicos();
 	}
 
-	
 	public void registraAlumno(ActionEvent ae) {  
-		System.out.println("dizke insertando");
-		System.out.println("Nombre alumno nuevo: " + cadenaNombres);
-		System.out.println("Apellidos alumno nuevo: " + cadenaApellidoPaterno+" "+cadenaApellidoMaterno);
-		
+		System.out.println("dizke insertando: Por fin");
+		System.out.println(nuevoAlumno.getStrCodigoAlumno());
 		try {
-			//alumnoService.inhabilitarAlumno(alumno);
-			System.out.println("dizke se registro");
+			
+			//Es para settear el bean
+			nuevoAlumno =  new Alumno();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +69,16 @@ public class AlumnoBean implements Serializable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//return "listadoAlumnos.xhtml";
+		
+	}
+	
+	public void CargarAniosAcademicos(){
+		try {
+			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
+			System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public Alumno getAlumno() {
@@ -108,8 +110,6 @@ public class AlumnoBean implements Serializable{
 	public void setAlumnos(ArrayList<Alumno> alumnos) {
 		this.alumnos = alumnos;
 	}
-
-
 
 	public Alumno getSelectedAlumno() {
 		return selectedAlumno;
@@ -148,109 +148,8 @@ public class AlumnoBean implements Serializable{
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
 	}
-
-
-	public String getCadenaCodigoAlumno() {
-		return cadenaCodigoAlumno;
-	}
-
-
-	public void setCadenaCodigoAlumno(String cadenaCodigoAlumno) {
-		this.cadenaCodigoAlumno = cadenaCodigoAlumno;
-	}
-
-
-	public String getCadenaCodigoPersona() {
-		return cadenaCodigoPersona;
-	}
-
-
-	public void setCadenaCodigoPersona(String cadenaCodigoPersona) {
-		this.cadenaCodigoPersona = cadenaCodigoPersona;
-	}
-
-
-	public String getCadenaNombres() {
-		return cadenaNombres;
-	}
-
-
-	public void setCadenaNombres(String cadenaNombres) {
-		this.cadenaNombres = cadenaNombres;
-	}
-
-
-	public String getCadenaApellidoPaterno() {
-		return cadenaApellidoPaterno;
-	}
-
-
-	public void setCadenaApellidoPaterno(String cadenaApellidoPaterno) {
-		this.cadenaApellidoPaterno = cadenaApellidoPaterno;
-	}
-
-
-	public String getCadenaApellidoMaterno() {
-		return cadenaApellidoMaterno;
-	}
-
-
-	public void setCadenaApellidoMaterno(String cadenaApellidoMaterno) {
-		this.cadenaApellidoMaterno = cadenaApellidoMaterno;
-	}
-
-
-	public String getCadenafecha() {
-		return cadenafecha;
-	}
-
-
-	public void setCadenafecha(String cadenafecha) {
-		this.cadenafecha = cadenafecha;
-	}
-
-
-	public String getCadenaGrado() {
-		return cadenaGrado;
-	}
-
-
-	public void setCadenaGrado(String cadenaGrado) {
-		this.cadenaGrado = cadenaGrado;
-	}
-
-
-	public String getCadenaSeccion() {
-		return cadenaSeccion;
-	}
-
-
-	public void setCadenaSeccion(String cadenaSeccion) {
-		this.cadenaSeccion = cadenaSeccion;
-	}
-
-
-	public String getCadenaAnioAcademico() {
-		return cadenaAnioAcademico;
-	}
-
-
-	public void setCadenaAnioAcademico(String cadenaAnioAcademico) {
-		this.cadenaAnioAcademico = cadenaAnioAcademico;
-	}
-
-
-	public String getCadenaEstado() {
-		return cadenaEstado;
-	}
-
-
-	public void setCadenaEstado(String cadenaEstado) {
-		this.cadenaEstado = cadenaEstado;
-	}
-
 	
 	
 
-	
+
 }
