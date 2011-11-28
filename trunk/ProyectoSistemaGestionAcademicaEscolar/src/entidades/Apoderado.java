@@ -17,7 +17,7 @@ public class Apoderado implements Serializable {
 	@Id
 	@OneToOne
 	@JoinColumn(name="codapoderado")
-	private Persona personas;
+	private Persona personas = new Persona();
 	
 	/*
 	@ManyToOne

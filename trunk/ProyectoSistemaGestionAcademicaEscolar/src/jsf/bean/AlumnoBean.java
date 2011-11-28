@@ -12,9 +12,7 @@ import javax.faces.event.ActionEvent;
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
-import entidades.Apoderado;
 import entidades.Calendarioacademico;
-import entidades.Persona;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -26,14 +24,12 @@ public class AlumnoBean implements Serializable{
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	
 	private Alumno alumno,selectedAlumno;
-	private Apoderado apoderado; 
-	private Persona persona;
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode; 
-	private String strCodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
+	
 	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
@@ -43,25 +39,22 @@ public class AlumnoBean implements Serializable{
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando: Por fin");
 		
-		persona = new Persona();
-		persona.setStrCodigoPersona(getStrCodigoApoderado());
-		
-		apoderado = new Apoderado();
-		apoderado.setPersonas(persona);
-		
-		nuevoAlumno.setApoderados(apoderado);
-		
+		Date auxi = new Date(nuevoAlumno.getFechaNacimiento().getTime());
+		nuevoAlumno.setDtFecNac(auxi);
 		
 		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
 		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
-		
+		System.out.println(nuevoAlumno.getStrNombres());
+		System.out.println(nuevoAlumno.getStrApellidoPaterno());
+		System.out.println(nuevoAlumno.getStrApellidoMaterno());
+		System.out.println(nuevoAlumno.getDtFecNac());
 		
 		try {
 			
 			//Es para settear el bean
 			nuevoAlumno =  new Alumno();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			nuevoAlumno =  new Alumno();
 			e.printStackTrace();
 		}
     }
@@ -130,11 +123,9 @@ public class AlumnoBean implements Serializable{
 	}
 
 
-
 	public boolean isEditMode() {
 		return editMode;
 	}
-
 
 
 	public void setEditMode(boolean editMode) {
@@ -155,16 +146,6 @@ public class AlumnoBean implements Serializable{
 
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
-	}
-
-	public String getStrCodigoApoderado() {
-		return strCodigoApoderado;
-	}
-
-	public void setStrCodigoApoderado(String strCodigoApoderado) {
-		this.strCodigoApoderado = strCodigoApoderado;
 	}	
-
 	
-
 }
