@@ -51,10 +51,10 @@
         </p:column>  
 
         <p:column style="width:100px">  
-             <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
-             	 <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-person" title="Apoderado">  
+             <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
+             	 <!--  <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-person" title="Apoderado">  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
-                 </p:commandButton>
+                 </p:commandButton>-->
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Detalle">  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
                      <f:setPropertyActionListener value="#{false}" target="#{alumnoBean.editMode}" />  
@@ -259,7 +259,7 @@
                 <h:panelGroup>
 					  <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoBean.registraAlumno}"  
-					  update="form:listaalumnos msgs" 
+					  update="carDialog2" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
