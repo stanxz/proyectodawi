@@ -21,7 +21,11 @@
 	<div align="center">
 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;"> 
-    <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable">  
+    <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" 
+    emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable"
+    paginator="true" rows="5"  
+    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+    rowsPerPageTemplate="5,10,15">  
   		<f:facet name="header">  
   		<div align="right">
             <p:outputPanel>  
@@ -39,8 +43,8 @@
             <h:outputText value="#{alumno.strNombres}" />  
         </p:column>  
   
-        <p:column headerText="Apellido Paterno">  
-            <h:outputText value="#{alumno.strApellidoPaterno}" />  
+        <p:column headerText="Apellido Paterno" filterBy="#{alumno.strApellidoPaterno}" filterStyle="display:none">   
+            <h:outputText value="#{alumno.strApellidoPaterno}"/>  
         </p:column> 
         
         <p:column headerText="Apellido Materno">  
