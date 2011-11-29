@@ -50,7 +50,7 @@ public class AlumnoBean implements Serializable{
 		System.out.println(nuevoAlumno.getDtFecNac());
 		
 		try {
-			
+			alumnoService.registrarAlumno(nuevoAlumno);
 			//Es para settear el bean
 			nuevoAlumno =  new Alumno();
 		} catch (Exception e) {
