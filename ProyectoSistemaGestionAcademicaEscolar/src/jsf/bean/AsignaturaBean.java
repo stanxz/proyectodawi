@@ -42,6 +42,7 @@ public class AsignaturaBean implements Serializable{
 	public void registraAsignatura(){
 		try {
 			asignaturaService.insertarAsignatura(nuevaAsignatura);
+			nuevaAsignatura = new Asignatura();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
