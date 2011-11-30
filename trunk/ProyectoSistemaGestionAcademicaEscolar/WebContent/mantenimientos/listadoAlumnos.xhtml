@@ -57,11 +57,11 @@
 
         <p:column style="width:100px">  
              <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Detalle">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Vea el Detalle de los datos del alumno">  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
                      <f:setPropertyActionListener value="#{false}" target="#{alumnoBean.editMode}" />  
                  </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar los datos del alumno">  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
                  </p:commandButton>  
@@ -70,7 +70,7 @@
         
          <f:facet name="footer">  
          <div align="left">
-         <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Nuevo Alumno">  
+         <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Registre un nuevo alumno en el sistema">  
 				<f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
  		 </p:commandButton>
          </div>

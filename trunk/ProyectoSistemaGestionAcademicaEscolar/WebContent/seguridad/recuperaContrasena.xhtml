@@ -31,7 +31,7 @@
 		<p:panel header="Recuperar Password"> 
          <h:panelGrid id="grid" columns="3"  >
 							<h:outputLabel value="Ingrese su DNI: "/>
-							<p:inputText id="dniusuario" value="#{logueoBean.dni}" required="true" requiredMessage="Ingrese DNI">
+							<p:inputText id="dniusuario" value="#{logueoBean.dni}" required="true" requiredMessage="Ingrese DNI" maxlength="8">
 							</p:inputText>
 							<p:message for="dniusuario"/>
 							<c:if test='#{logueoBean.mensaje2!=null}'>
