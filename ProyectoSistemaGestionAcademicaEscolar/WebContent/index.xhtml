@@ -66,9 +66,9 @@
 							</p:password>
 							<p:message for="password"/>				
 		</h:panelGrid>
-		<p:commandButton value="Enviar" action="#{logueoBean.loguearUsuario}" update="grid" ajax="false"/>
+		<p:commandButton value="Ingresar" action="#{logueoBean.loguearUsuario}" update="grid" ajax="false" title="Ingresar al sistema"/>
 		<h:outputLink 
-		 value= "faces/seguridad/recuperaContrasena.xhtml">
+		 value= "faces/seguridad/recuperaContrasena.xhtml" title="Recupere su contraseña aquí">
 		  <f:verbatim >Olvidó su contrasena?</f:verbatim>
 		</h:outputLink>
       	</div>

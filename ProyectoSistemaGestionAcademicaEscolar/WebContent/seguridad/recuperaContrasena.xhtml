@@ -40,10 +40,10 @@
 							  	</p:dialog>
   							</c:if>					
 		</h:panelGrid>
-		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid" ajax="false"/>
+		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid" ajax="false" title="Recibirá su contraseña via correo al mail registrado en el sistema"/>
 		&nbsp;&nbsp;
 		<h:outputLink 
-		 value="../index.xhtml">
+		 value="../index.xhtml" title="Vuelve al inicio">
 		  <f:verbatim>Regresar al Inicio</f:verbatim>
 		</h:outputLink>
       	</p:panel>
