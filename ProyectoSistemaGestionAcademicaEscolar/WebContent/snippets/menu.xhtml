@@ -43,15 +43,15 @@ function onEditCompleteRegistrar(args) {
 <div id="menuQuery" class="arrowgreen">
 					<ul>
 						<li>
-						<a href="../faces/bienvenida.xhtml">Home</a>
+						<a href="../faces/bienvenida.xhtml" title="Regresar al Home de este usuario">Home</a>
 						</li>
 						<c:forEach items="${sessionScope.b_menu}" var="funcionalidad">
 							<li>
-							<a href="../faces/${funcionalidad.strEnlace}">${funcionalidad.strNombre}</a>
+							<a href="../faces/${funcionalidad.strEnlace}" title="${funcionalidad.strDescripcion}">${funcionalidad.strNombre}</a>
 							</li>
 						</c:forEach>
 						<li>
-						<a href="../faces/index.xhtml">Cerrar sesion</a>
+						<a href="../faces/index.xhtml" title="Cierre sesión para ingresar nuevamente">Cerrar sesion</a>
 						</li>
 					</ul>
 </div>

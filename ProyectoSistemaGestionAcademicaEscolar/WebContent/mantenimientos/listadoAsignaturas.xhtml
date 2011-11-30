@@ -45,15 +45,15 @@
         
         <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Detalle">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Vea el Detalle de la Asignatura">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                      <f:setPropertyActionListener value="#{false}" target="#{asignaturaBean.editMode}" />  
                  </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edite los Datos de la Asignatura">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
                  </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Eliminar">  
+                 <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Deshabilite la Asignatura">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                  </p:commandButton>  
              </h:panelGrid>  
