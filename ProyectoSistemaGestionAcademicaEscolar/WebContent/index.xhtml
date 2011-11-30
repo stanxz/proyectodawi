@@ -58,11 +58,11 @@
 		<div id="login"> 
          <h:panelGrid id="grid" columns="3"  >
 							<h:outputLabel value="Usuario"/>
-							<p:inputText id="usuario" value="#{logueoBean.cadenausuario}" required="true" requiredMessage="Ingrese Usuario">
+							<p:inputText id="usuario" value="#{logueoBean.cadenausuario}" required="true" requiredMessage="Ingrese Usuario" maxlength="8">
 							</p:inputText>
 							<p:message for="usuario"/>
 							<h:outputLabel value="Password"/>
-							<p:password id="password" value="#{logueoBean.cadenapassword}" required="true" requiredMessage="Ingrese Password" feedback="false" >
+							<p:password id="password" value="#{logueoBean.cadenapassword}" required="true" requiredMessage="Ingrese Password" feedback="false">
 							</p:password>
 							<p:message for="password"/>				
 		</h:panelGrid>
