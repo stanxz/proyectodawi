@@ -24,7 +24,7 @@ public class AsignaturaBean implements Serializable{
 	private ArrayList<Asignatura> asignaturas;
 	private boolean editMode;
 	
-	private Asignatura nuevaAsignatura = new Asignatura();
+	private Asignatura nuevaAsignatura=new Asignatura();
 	
 	public AsignaturaBean(){
 		System.out.println("Creando AsignaturaBean...");
