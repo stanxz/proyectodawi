@@ -194,32 +194,36 @@
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" />  
+                <p:inputText id="txtCodigoAlumno" value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" maxlength="8">
+                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
+                </p:inputText>  
             </h:panelGroup>  
             
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" />  
+                <p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
+                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
+                </p:inputText>  
             </h:panelGroup> 
             
             <h:outputText value="Nombres" />  
             <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtNombres" value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true"/>
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApePat" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
-                <p:inputText value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApemat"  value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true"/>  
             </h:panelGroup>  
             
              <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
-                <p:calendar value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Ingrese un Fecha">
+                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" converterMessage="El patrón de fecha es yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
                 </p:calendar>  
             </h:panelGroup>
             
