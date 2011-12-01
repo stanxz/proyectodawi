@@ -295,9 +295,9 @@
                 </p:inputText>
                 <p:commandButton 
 					  actionListener="#{apoderadoBean.buscaApoderado}"  
-					  update="msgs" 
-                      image="ui-icon ui-icon-search"
-                      oncomplete="carDialog3.hide()" title="Busque un apoderado segun el codigo"/>  
+					  update="dlgForm3:display4 msgs" 
+                      image="ui-icon ui-icon-search" title="Busque un apoderado segun el codigo"/> 
+                <h:outputText value="#{apoderadoBean.mensaje}" id="display4" />   
             </h:panelGroup>
  
           <f:facet name="footer"> 
