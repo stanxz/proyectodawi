@@ -188,7 +188,7 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Alumno" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
+                showEffect="fade" hideEffect="explode" modal="true" width="600" position="center">  
 	   <h:form id="dlgForm2">  
           <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
@@ -203,7 +203,10 @@
             <h:panelGroup>  
                 <p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
-                </p:inputText>  
+                </p:inputText>
+                <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Registre un nuevo alumno en el sistema">  
+				<f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
+ 		 </p:commandButton>  
             </h:panelGroup> 
             
             <h:outputText value="Nombres" />  
@@ -223,7 +226,7 @@
             
              <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
-                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" converterMessage="El patrón de fecha es yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
+                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
                 </p:calendar>  
             </h:panelGroup>
             
