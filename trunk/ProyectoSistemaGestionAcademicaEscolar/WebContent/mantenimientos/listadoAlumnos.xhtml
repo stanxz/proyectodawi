@@ -188,7 +188,7 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Alumno" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="600" position="center">  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
 	   <h:form id="dlgForm2">  
           <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
@@ -204,9 +204,8 @@
                 <p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
                 </p:inputText>
-                <p:commandButton value="Nuevo Alumno" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Registre un nuevo alumno en el sistema">  
-				<f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
- 		 </p:commandButton>  
+                <p:commandButton image="ui-icon ui-icon-person" title="Busque o registre un apoderado para este alumno" onclick="carDialog3.show()">  
+ 		 		</p:commandButton>  
             </h:panelGroup> 
             
             <h:outputText value="Nombres" />  
@@ -283,6 +282,41 @@
         </h:panelGrid> 
        </h:form>
     </p:dialog>
+    
+    <p:dialog header="Apoderado" widgetVar="carDialog3" resizable="false" id="carDlg3"  
+                showEffect="fade" hideEffect="explode" modal="false" width="500" position="center">  
+	   <h:form id="dlgForm3">  
+          <h:panelGrid id="display3" columns="2" cellpadding="2" style="margin:0 auto;" >  
+  
+            <h:outputText value="Codigo Apoderado" />  
+            <h:panelGroup>  
+                <p:inputText id="txtCodigoApoderado2" value="#{elcodigoApoderado}" style="font-weight:bold" required="true" maxlength="8">
+                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
+                </p:inputText>
+                <p:commandButton 
+					  actionListener="#{apoderadoBean.buscaApoderado}"  
+					  update="msgs" 
+                      image="ui-icon ui-icon-search"
+                      oncomplete="carDialog3.hide()" title="Busque un apoderado segun el codigo"/>  
+            </h:panelGroup>
+ 
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Seleccionar" 
+					  actionListener="#{alumnoBean.registraAlumno}"  
+					  update="form:listaalumnos msgs" 
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditCompleteRegistrar(args)"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog3.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+          
+        </h:panelGrid> 
+       </h:form>
+    </p:dialog>
+    
 	</div>
 	</ui:define>
 
