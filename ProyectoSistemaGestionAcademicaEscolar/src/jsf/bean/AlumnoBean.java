@@ -1,7 +1,6 @@
 package jsf.bean;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -26,7 +25,8 @@ public class AlumnoBean implements Serializable{
 	private Alumno alumno,selectedAlumno;
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
-	private boolean editMode; 
+	private boolean editMode;
+	private String elcodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
 	
@@ -64,12 +64,7 @@ public class AlumnoBean implements Serializable{
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
-			
-			/*for (Method m : selectedAlumno.getClass().getMethods()){
-				if(m.getName().startsWith("get"))
-				System.out.println("xD: "+m.getName() + " : " +  m.invoke(selectedAlumno));
-			}*/
-			
+
 			alumnoService.actualizarAlumno(selectedAlumno);
 			
 		} catch (Exception e) {
@@ -143,6 +138,14 @@ public class AlumnoBean implements Serializable{
 
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
+	}
+
+	public String getElcodigoApoderado() {
+		return elcodigoApoderado;
+	}
+
+	public void setElcodigoApoderado(String elcodigoApoderado) {
+		this.elcodigoApoderado = elcodigoApoderado;
 	}	
 	
 }
