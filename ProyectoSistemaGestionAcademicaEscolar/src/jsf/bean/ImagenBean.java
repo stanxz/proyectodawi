@@ -2,8 +2,10 @@ package jsf.bean;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 
 import org.primefaces.event.FileUploadEvent;
@@ -30,6 +32,9 @@ public class ImagenBean implements Serializable{
     	
     	try {
     	    image = new DefaultStreamedContent(event.getFile().getInputstream());
+    	    System.out.println("XD2 " + event.getFile().getFileName());
+    	    FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+    	    FacesContext.getCurrentInstance().addMessage(null, msg);
     	  } catch (Exception ex) {
     	 } 
     }

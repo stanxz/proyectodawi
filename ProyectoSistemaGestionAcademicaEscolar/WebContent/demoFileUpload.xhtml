@@ -17,7 +17,8 @@
 204800 :  200kb 
 1048576: 1024kb
 -->
-<h:form enctype="multipart/form-data" prependId="false">
+<h:form id="frm" enctype="multipart/form-data" prependId="false">
+<p:growl id="message" showDetail="true"/>
 <table border="0">
   <tr>
      <td>
@@ -25,7 +26,7 @@
            auto="true" widgetVar="uploader" label="Cargar"  
            fileUploadListener="#{imagenBean.cargarImagen}"
            allowTypes="*.jpg;*.png;*.gif;" description="Images" 
-           update="imgFoto" multiple="false" customUI="true"/>
+           update="frm:imgFoto,message" multiple="false" customUI="true"/>
      </td>
      <td>
              <p:graphicImage id="imgFoto"  value="#{imagenBean.image}" cache="false"
