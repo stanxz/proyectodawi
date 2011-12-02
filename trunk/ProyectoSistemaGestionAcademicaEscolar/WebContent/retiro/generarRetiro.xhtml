@@ -26,6 +26,8 @@
 <h:outputText value="Alumno" style="font-weight:bold"/>
 <h:selectOneMenu >
 	<f:selectItem itemLabel="Seleccione Alumno"></f:selectItem>
+	<f:selectItems value="#{alumnoBean.alumnos}" var="alumno"
+	               itemLabel="#{alumno.strNombres}" itemValue="#{alumno.strCodigoAlumno}"/>
 </h:selectOneMenu>
 
 <h:outputText value="Codigo Alumno" style="font-weight:bold"/>
