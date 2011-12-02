@@ -50,6 +50,12 @@ public class AlumnoBean implements Serializable{
 		Date auxi = new Date(nuevoAlumno.getFechaNacimiento().getTime());
 		nuevoAlumno.setDtFecNac(auxi);
 		
+		Calendarioacademico entidadCalendario = new Calendarioacademico();
+		entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
+		
+		nuevoAlumno.setCalendarioacademico(entidadCalendario);
+
+
 		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
 		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
 		System.out.println(nuevoAlumno.getStrNombres());
@@ -72,6 +78,11 @@ public class AlumnoBean implements Serializable{
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
+			
+			Calendarioacademico entidadCalendario = new Calendarioacademico();
+			entidadCalendario.setStrCodcalendario(selectedAlumno.getStrAnioAcademico());
+			
+			nuevoAlumno.setCalendarioacademico(entidadCalendario);
 
 			alumnoService.actualizarAlumno(selectedAlumno);
 			

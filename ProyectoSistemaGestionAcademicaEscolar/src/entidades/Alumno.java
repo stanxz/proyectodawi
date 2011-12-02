@@ -47,6 +47,10 @@ public class Alumno implements Serializable {
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados = new Apoderado();
 	
+	@ManyToOne
+	@JoinColumn(name="codcalendario")
+	private Calendarioacademico calendarioacademico = new Calendarioacademico();
+	
 	@Transient
 	private Date fecha;
 	
@@ -196,5 +200,12 @@ public class Alumno implements Serializable {
 		this.tbAsignaturas = tbAsignaturas;
 	}
 
-	
+	public Calendarioacademico getCalendarioacademico() {
+		return calendarioacademico;
+	}
+
+	public void setCalendarioacademico(Calendarioacademico calendarioacademico) {
+		this.calendarioacademico = calendarioacademico;
+	}
+
 }
