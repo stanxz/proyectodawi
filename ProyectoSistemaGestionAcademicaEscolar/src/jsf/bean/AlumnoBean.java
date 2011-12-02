@@ -146,6 +146,6 @@ public class AlumnoBean implements Serializable{
 
 	public void setElcodigoApoderado(String elcodigoApoderado) {
 		this.elcodigoApoderado = elcodigoApoderado;
-	}	
+	}
 	
 }

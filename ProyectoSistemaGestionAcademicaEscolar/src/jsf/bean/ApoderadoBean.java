@@ -18,6 +18,7 @@ public class ApoderadoBean implements Serializable{
 	 private static PersonaService apoderadoService=abd.getPersonaService();
 	 
 	 private Persona apoderado;
+	 private String mensaje;
 	 
 	 
 	public ApoderadoBean() {
@@ -40,6 +41,14 @@ public class ApoderadoBean implements Serializable{
 
 	public void setApoderado(Persona apoderado) {
 		this.apoderado = apoderado;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 	
 	

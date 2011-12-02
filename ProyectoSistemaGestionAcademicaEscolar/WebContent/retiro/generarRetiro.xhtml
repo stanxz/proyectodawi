@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/crud-template.xhtml">
+
+	<ui:define name="title">
+		I.E.P &quot;SAN CARLOS&quot;
+	</ui:define>
+	
+	<ui:define name="header">
+		<ui:include src="/snippets/header.xhtml" />
+	</ui:define>
+
+	<ui:define name="menu">
+		<ui:include src="/snippets/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="body">
+<div align="left">
+<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+<h:form id="form" style="width: 800px;"> 
+<p:panel header="Solicitud Retiro Alumno">
+<h:panelGrid columns="2">
+<h:outputText value="Alumno" style="font-weight:bold"/>
+<h:selectOneMenu >
+	<f:selectItem itemLabel="Seleccione Alumno"></f:selectItem>
+</h:selectOneMenu>
+
+<h:outputText value="Codigo Alumno" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+<h:outputText value="Nombres" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+<h:outputText value="Apellido Paterno" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+<h:outputText value="Apellido Materno" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+<h:outputText value="Grado" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+<h:outputText value="Sección" style="font-weight:bold"/>
+<h:outputText value=""/>
+
+
+</h:panelGrid>
+</p:panel>
+</h:form>        
+</div>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/snippets/footer.xhtml" />
+	</ui:define>
+</ui:composition>
