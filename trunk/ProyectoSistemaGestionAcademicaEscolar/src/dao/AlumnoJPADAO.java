@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
@@ -28,6 +30,30 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		 List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
 		
+		 if(lista.size()>0){
+				for ( int i=0; i < lista.size(); i++ ) {
+					Alumno entidad = (Alumno)lista.get(i);
+					System.out.println("alumno: " + lista.get(i));
+					alumnos.add(entidad);
+				}
+		 }
+		 
+		em.close();
+		
+		return alumnos;
+	}
+	
+	public ArrayList<Alumno> obtenerTodosAlumnoXApoderado(Apoderado apoderado) throws Exception {
+		
+		em = emf.createEntityManager();
+		
+		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+		
+		Query q = em.createQuery("SELECT a FROM Alumno a where a.apoderados.personas.strCodigoPersona=?1");
+		q.setParameter(1, apoderado.getPersonas().getStrCodigoPersona());
+		
+		 List lista = q.getResultList();
+		 
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
 					Alumno entidad = (Alumno)lista.get(i);

@@ -3,11 +3,13 @@ package dao;
 import java.util.ArrayList;
 
 import entidades.Alumno;
+import entidades.Apoderado;
 import entidades.Calendarioacademico;
 
 public interface AlumnoDAO {
 
 	public ArrayList<Alumno> obtenerTodos() throws Exception;
+	public ArrayList<Alumno> obtenerTodosAlumnoXApoderado(Apoderado apoderado) throws Exception;
 	public void insertar(Alumno alumno) throws Exception;
 	public void actualizar(Alumno alumno) throws Exception;
 	public void inhabilitar(Alumno alumno) throws Exception;
