@@ -6,12 +6,17 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
+import entidades.Apoderado;
 import entidades.Calendarioacademico;
+import entidades.Persona;
+import entidades.Usuario;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -23,10 +28,13 @@ public class AlumnoBean implements Serializable{
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	
 	private Alumno alumno,selectedAlumno;
+	private Persona persona;
+	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
+	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;
-	private String elcodigoApoderado;
+	private String strCodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
 	
@@ -81,6 +89,7 @@ public class AlumnoBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
 
 	public Alumno getAlumno() {
 		return alumno;
@@ -140,12 +149,59 @@ public class AlumnoBean implements Serializable{
 		this.nuevoAlumno = nuevoAlumno;
 	}
 
-	public String getElcodigoApoderado() {
-		return elcodigoApoderado;
+	public String getStrCodigoApoderado() {
+		return strCodigoApoderado;
 	}
 
-	public void setElcodigoApoderado(String elcodigoApoderado) {
-		this.elcodigoApoderado = elcodigoApoderado;
+	public void setStrCodigoApoderado(String strCodigoApoderado) {
+		this.strCodigoApoderado = strCodigoApoderado;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public Apoderado getApoderado() {
+		return apoderado;
+	}
+
+	public void setApoderado(Apoderado apoderado) {
+		this.apoderado = apoderado;
+	}
+
+	public ArrayList<Alumno> getAlumnosXapoderado() {
+		try {
+			
+			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			
+			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+			
+			
+			System.out.println(usuario.getPersonas().getStrCodigoPersona());
+			
+			persona = new Persona();
+			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+			
+			apoderado = new Apoderado();
+			apoderado.setPersonas(persona);
+			
+			
+			alumnosXapoderado = alumnoService.obtenerTodosAlumnosXApoderado(apoderado);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return alumnosXapoderado;
+	}
+
+	public void setAlumnosXapoderado(ArrayList<Alumno> alumnosXapoderado) {
+		this.alumnosXapoderado = alumnosXapoderado;
 	}
 	
+	
+
 }

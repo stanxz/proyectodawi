@@ -254,7 +254,8 @@
             <h:outputText value="Año Academico" />  
             <h:panelGroup>  
                 <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strAnioAcademico}" style="font-weight:bold" required="true"  >  
-		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
+		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" 
+		            itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
 		        </h:selectOneMenu>  
             </h:panelGroup>
             
