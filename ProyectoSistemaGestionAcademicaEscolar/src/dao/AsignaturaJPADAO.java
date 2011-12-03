@@ -18,6 +18,7 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public ArrayList<Asignatura> obtenerTodos() throws Exception{
 		
 		em = emf.createEntityManager();

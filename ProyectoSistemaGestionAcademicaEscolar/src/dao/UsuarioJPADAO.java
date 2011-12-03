@@ -45,6 +45,7 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<Permiso> listarMenus(Usuario elusuario) throws Exception {
 

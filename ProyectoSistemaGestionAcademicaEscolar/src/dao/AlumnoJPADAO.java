@@ -21,6 +21,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		this.emf=emf;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<Alumno> obtenerTodos() throws Exception {
 		
@@ -43,6 +44,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		return alumnos;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public ArrayList<Alumno> obtenerTodosAlumnoXApoderado(Apoderado apoderado) throws Exception {
 		
 		em = emf.createEntityManager();
@@ -154,6 +156,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		em.close();
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<Calendarioacademico> listarAniosAcademicos() throws Exception {
 		em = emf.createEntityManager();
