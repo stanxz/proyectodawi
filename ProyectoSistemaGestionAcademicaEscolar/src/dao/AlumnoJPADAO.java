@@ -29,7 +29,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
-		 List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		 List lista = em.createQuery("SELECT a FROM Alumno a order by a.strApellidoPaterno").getResultList();
 		
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
