@@ -106,6 +106,7 @@ public class AlumnoRetiroBean implements Serializable{
 	public ArrayList<Alumno> getAlumnosXapoderado() {
 		try {
 			
+			//NO BORRAR 
 			//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			
 			//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
