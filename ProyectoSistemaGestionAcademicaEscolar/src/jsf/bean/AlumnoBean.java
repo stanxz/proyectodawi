@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
@@ -37,12 +38,24 @@ public class AlumnoBean implements Serializable{
 	private String strCodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
+	private Alumno retiroAlumno = new Alumno();
 	
 	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
 		CargarAniosAcademicos();
 	}
+	
+	 public void CargaRetiroAlumno() {  
+		 System.out.println(retiroAlumno.getStrCodigoAlumno());
+	        try {
+				alumno = alumnoService.obtenerAlumno(retiroAlumno);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}  
+	
 
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando: Por fin");
@@ -159,6 +172,14 @@ public class AlumnoBean implements Serializable{
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
 	}
+	
+	public Alumno getRetiroAlumno() {
+		return retiroAlumno;
+	}
+
+	public void setRetiroAlumno(Alumno retiroAlumno) {
+		this.retiroAlumno = retiroAlumno;
+	}
 
 	public String getStrCodigoApoderado() {
 		return strCodigoApoderado;
@@ -187,15 +208,16 @@ public class AlumnoBean implements Serializable{
 	public ArrayList<Alumno> getAlumnosXapoderado() {
 		try {
 			
-			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			
-			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+			//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
 			
 			
-			System.out.println(usuario.getPersonas().getStrCodigoPersona());
+			//System.out.println(usuario.getPersonas().getStrCodigoPersona());
 			
 			persona = new Persona();
-			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+			//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+			persona.setStrCodigoPersona("18181818");
 			
 			apoderado = new Apoderado();
 			apoderado.setPersonas(persona);
@@ -212,7 +234,5 @@ public class AlumnoBean implements Serializable{
 	public void setAlumnosXapoderado(ArrayList<Alumno> alumnosXapoderado) {
 		this.alumnosXapoderado = alumnosXapoderado;
 	}
-	
-	
 
 }
