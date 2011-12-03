@@ -12,6 +12,7 @@
 		<class>entidades.Alumno</class>
 		<class>entidades.Calendarioacademico</class>
 		<class>entidades.Asignatura</class>
+		<class>entidades.Motivo</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

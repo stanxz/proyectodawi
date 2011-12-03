@@ -25,13 +25,13 @@
 <p:panel header="Solicitud Retiro Alumno">
 <h:panelGrid columns="3">
 <h:outputText value="Alumno" style="font-weight:bold"/>
-<h:selectOneMenu value="#{alumnoBean.retiroAlumno.strCodigoAlumno}" required="true" 
+<h:selectOneMenu value="#{alumnoRetiroBean.retiroAlumno.strCodigoAlumno}" required="true" 
                  requiredMessage="Seleccione un Alumno">
 	<f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
-	<f:selectItems value="#{alumnoBean.alumnosXapoderado}" var="alumno"
+	<f:selectItems value="#{alumnoRetiroBean.alumnosXapoderado}" var="alumno"
 	               itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>            
 </h:selectOneMenu>
-<p:commandButton value="Cargar" actionListener="#{alumnoBean.CargaRetiroAlumno}"  
+<p:commandButton value="Cargar" actionListener="#{alumnoRetiroBean.CargaRetiroAlumno}"  
                  update="msgs dlgForm:display" oncomplete="cargaDatosRetiro(args)"/>
 </h:panelGrid>
 </p:panel>
@@ -43,20 +43,20 @@
           <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
            
           <h:outputText value="Codigo Alumno" style="font-weight:bold"/>
-		  <p:inputText  value="#{alumnoBean.alumno.strCodigoAlumno}" style="font-weight:bold" readonly="true"/>
+		  <p:inputText  value="#{alumnoRetiroBean.alumno.strCodigoAlumno}" style="font-weight:bold" readonly="true"/>
 
 		  <h:outputText value="Nombres y Apellidos" style="font-weight:bold"/>
-          <p:inputText value="#{alumnoBean.alumno.strNombres} #{alumnoBean.alumno.strApellidoPaterno} #{alumnoBean.alumno.strApellidoMaterno}" style="font-weight:bold" readonly="true"/>
+          <p:inputText value="#{alumnoRetiroBean.alumno.strNombres} #{alumnoRetiroBean.alumno.strApellidoPaterno} #{alumnoRetiroBean.alumno.strApellidoMaterno}" style="font-weight:bold" readonly="true"/>
 
           <h:outputText value="Grado y Sección" style="font-weight:bold"/>
-          <p:inputText value="#{alumnoBean.alumno.intGrado} º #{alumnoBean.alumno.strSeccion}" style="font-weight:bold" readonly="true"/>
+          <p:inputText value="#{alumnoRetiroBean.alumno.intGrado} º #{alumnoRetiroBean.alumno.strSeccion}" style="font-weight:bold" readonly="true"/>
 		
 		  <h:outputText value="Motivo" style="font-weight:bold"/>
-		  <h:selectOneMenu value="#{alumnoBean.retiroAlumno.strCodigoAlumno}" required="true" 
-                 requiredMessage="Seleccione un Alumno">
-			<f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
-			<f:selectItems value="#{alumnoBean.alumnosXapoderado}" var="alumno"
-	               itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>            
+		  <h:selectOneMenu value="" required="true" 
+                 requiredMessage="Seleccione un Motivo">
+			<f:selectItem itemLabel="Seleccione Motivo" itemValue="#{null}"/>
+			<f:selectItems value="#{alumnoRetiroBean.motivos}" var="motivo"
+	               itemLabel="#{motivo.strDescripcion}" itemValue="#{motivo.strDescripcion}"/>            
 		 </h:selectOneMenu>	
 			
           <f:facet name="footer"> 

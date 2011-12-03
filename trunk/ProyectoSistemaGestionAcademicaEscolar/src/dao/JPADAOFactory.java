@@ -45,6 +45,14 @@ public class JPADAOFactory extends DAOFactory {
 		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
 		return (AsignaturaDAO)ed;
 	}
+	
+	public MotivoDAO getMotivoDAO() {
+		MotivoJPADAO ed =  new MotivoJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (MotivoDAO)ed;
+	}
+
 
 	//aca falta las implementaciones de los dao q se va
 	//a usar

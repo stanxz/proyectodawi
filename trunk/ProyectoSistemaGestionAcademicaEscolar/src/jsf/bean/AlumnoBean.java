@@ -6,10 +6,7 @@ import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
@@ -17,7 +14,6 @@ import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
 import entidades.Persona;
-import entidades.Usuario;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -32,13 +28,11 @@ public class AlumnoBean implements Serializable{
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
-	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;
 	private String strCodigoApoderado;
 	
 	private Alumno nuevoAlumno =  new Alumno();
-	private Alumno retiroAlumno = new Alumno();
 	
 	
 	public AlumnoBean() {
@@ -46,17 +40,6 @@ public class AlumnoBean implements Serializable{
 		CargarAniosAcademicos();
 	}
 	
-	 public void CargaRetiroAlumno() {  
-		 System.out.println(retiroAlumno.getStrCodigoAlumno());
-	        try {
-				alumno = alumnoService.obtenerAlumno(retiroAlumno);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	}  
-	
-
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("dizke insertando: Por fin");
 		
@@ -108,7 +91,7 @@ public class AlumnoBean implements Serializable{
 	public void CargarAniosAcademicos(){
 		try {
 			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
-			System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
+			System.out.println("Cantidad Años cargados: " + anosAcademicos.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -141,8 +124,6 @@ public class AlumnoBean implements Serializable{
 		return selectedAlumno;
 	}
 
-
-
 	public void setSelectedAlumno(Alumno selectedAlumno) {
 		this.selectedAlumno = selectedAlumno;
 	}
@@ -172,14 +153,6 @@ public class AlumnoBean implements Serializable{
 	public void setNuevoAlumno(Alumno nuevoAlumno) {
 		this.nuevoAlumno = nuevoAlumno;
 	}
-	
-	public Alumno getRetiroAlumno() {
-		return retiroAlumno;
-	}
-
-	public void setRetiroAlumno(Alumno retiroAlumno) {
-		this.retiroAlumno = retiroAlumno;
-	}
 
 	public String getStrCodigoApoderado() {
 		return strCodigoApoderado;
@@ -203,36 +176,6 @@ public class AlumnoBean implements Serializable{
 
 	public void setApoderado(Apoderado apoderado) {
 		this.apoderado = apoderado;
-	}
-
-	public ArrayList<Alumno> getAlumnosXapoderado() {
-		try {
-			
-			//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-			
-			//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
-			
-			
-			//System.out.println(usuario.getPersonas().getStrCodigoPersona());
-			
-			persona = new Persona();
-			//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-			persona.setStrCodigoPersona("18181818");
-			
-			apoderado = new Apoderado();
-			apoderado.setPersonas(persona);
-			
-			
-			alumnosXapoderado = alumnoService.obtenerTodosAlumnosXApoderado(apoderado);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return alumnosXapoderado;
-	}
-
-	public void setAlumnosXapoderado(ArrayList<Alumno> alumnosXapoderado) {
-		this.alumnosXapoderado = alumnosXapoderado;
 	}
 
 }

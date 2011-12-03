@@ -20,4 +20,8 @@ public class ApplicationBusinessDelegate {
 		return new AsignaturaDaoService(DAOFactory.JPA);
 	}
 	
+	public MotivoService getMotivoService(){
+		return new MotivoDaoService(DAOFactory.JPA);
+	}
+	
 }
