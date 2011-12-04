@@ -61,7 +61,7 @@
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
                      <f:setPropertyActionListener value="#{false}" target="#{alumnoBean.editMode}" />  
                  </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar los datos del alumno">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar los datos del alumno" >  
                      <f:setPropertyActionListener value="#{alumno}" target="#{alumnoBean.selectedAlumno}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{alumnoBean.editMode}" />  
                  </p:commandButton>  
@@ -285,30 +285,42 @@
     </p:dialog>
     
     <p:dialog header="Apoderado" widgetVar="carDialog3" resizable="false" id="carDlg3"  
-                showEffect="fade" hideEffect="explode" modal="false" width="500" position="center">  
+                showEffect="fade" hideEffect="explode" modal="true" height="450" width="500" position="center">  
 	   <h:form id="dlgForm3">  
           <h:panelGrid id="display3" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>  
-                <p:inputText id="txtCodigoApoderado2" value="#{elcodigoApoderado}" style="font-weight:bold" required="true" maxlength="8">
-                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
+                <p:inputText id="txtCodigoApoderado2" value="#{apoderadoBean.elcodigoApoderado}" style="font-weight:bold" required="true" maxlength="8">
+                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true">
+                	</f:convertNumber>
                 </p:inputText>
                 <p:commandButton 
 					  actionListener="#{apoderadoBean.buscaApoderado}"  
-					  update="dlgForm3:display4 msgs" 
-                      image="ui-icon ui-icon-search" title="Busque un apoderado segun el codigo"/> 
-                <h:outputText value="#{apoderadoBean.mensaje}" id="display4" />   
+					  update="dlgForm3 msgs" 
+                      image="ui-icon ui-icon-search" title="Busque un apoderado segun el codigo"/>
+                     
+                  
             </h:panelGroup>
- 
+            <h:panelGroup>
+            	<h:outputText value="#{apoderadoBean.mensaje}" id="display4" /> 
+            </h:panelGroup>
+            <h:panelGroup>
+       		 	<h:selectOneRadio value="#{apoderadoBean.apoderado.strCodigoPersona}" style="font-weight:bold" required="true">  
+                    <f:selectItems value="#{apoderadoBean.apoderados}" var="apode" itemLabel="#{apode.strNombre} #{apode.strApellidoPaterno}" itemValue="#{apode.strCodigoPersona}"/>  
+                </h:selectOneRadio> 
+            </h:panelGroup>
+            
+ 			
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
-					  <p:commandButton value="Seleccionar" 
-					  actionListener="#{alumnoBean.registraAlumno}"  
-					  update="form:listaalumnos msgs" 
+					  <p:commandButton value="Seleccionar" actionListener="#{apoderadoBean.seteaApoderado}" 
+					  update="dlgForm2:txtCodigoApoderado msgs" 
                       image="ui-icon ui-icon-check"
-                      oncomplete="onEditCompleteRegistrar(args)"/>
+                      onclick="carDialog3.hide()">
+                      	<f:setPropertyActionListener value="#{apoderadoBean.apoderado.strCodigoPersona}" target="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" />
+                      </p:commandButton>
                     <p:commandButton value="Cancelar" onclick="carDialog3.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
               </p:outputPanel>  
