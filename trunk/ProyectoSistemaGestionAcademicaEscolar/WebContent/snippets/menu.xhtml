@@ -51,6 +51,16 @@ function ocultarBoton1(args){
 	var elemento=document.getElementById('dlgForm3:btnSeleccionaApoderado');
 	elemento.style.display = 'none';
 }
+function limpiacajas(args){
+	var elemento2=document.getElementById('dlgForm2:txtCodigoApoderado');
+	elemento2.value = '';
+	var elemento=document.getElementById('dlgForm3:txtCodigoApoderado2');
+	elemento.value = '';
+	var elemento3=document.getElementById('dlgForm3:btnSeleccionaApoderado');
+	elemento3.style.display='none';
+	var elemento4=document.getElementById('dlgForm3:msgMensajes');
+	elemento4.style.display='none';
+}
 
  </h:outputScript>
 <div id="menuQuery" class="arrowgreen">

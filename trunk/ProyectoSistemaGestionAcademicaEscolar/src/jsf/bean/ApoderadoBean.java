@@ -3,8 +3,11 @@ package jsf.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import entidades.Persona;
 import entidades.Usuario;
@@ -28,7 +31,7 @@ public class ApoderadoBean implements Serializable{
 		this.mensaje="";
 	}
 	 
-	public void buscaApoderado(){
+	public void buscaApoderado(ActionEvent evento){
 		try {
 			System.out.println("Buscando apoderado ... ");
 			Persona personatempo = new Persona();
@@ -43,11 +46,13 @@ public class ApoderadoBean implements Serializable{
 			System.out.println("consulta hecha ...");
 			if(apoderado!=null){
 				System.out.println("Apoderado encontrado: "+apoderado.getStrNombre()+" "+apoderado.getStrApellidoPaterno());
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Encontrado: " + apoderado.getStrNombre() + " " + apoderado.getStrApellidoPaterno()));
 				apoderados=new ArrayList<Persona>();
 				apoderados.add(apoderado);
 				this.mensaje="";
 			}else{
 				System.out.println("No se encontro el apoderado");
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se encontró el apoderado","No se encontró el apoderado"));
 				apoderados=new ArrayList<Persona>();
 				apoderado=new Persona();
 				this.mensaje="No se encuentra el apoderado";
