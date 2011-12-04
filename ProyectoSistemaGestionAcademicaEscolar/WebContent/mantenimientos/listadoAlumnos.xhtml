@@ -189,7 +189,7 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Alumno" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" onShow="limpiacajas()">  
 	   <h:form id="dlgForm2">  
           <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
@@ -288,22 +288,21 @@
     <p:dialog header="Apoderado" widgetVar="carDialog3" resizable="false" id="carDlg3"  
                 showEffect="fade" hideEffect="explode" modal="true" height="450" width="500" position="center">  
 	   <h:form id="dlgForm3">  
+	   	  <p:messages id="msgMensajes" />
           <h:panelGrid id="display3" columns="2" cellpadding="2" style="margin:0 auto;" >  
-  
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>  
                 <p:inputText id="txtCodigoApoderado2" value="#{apoderadoBean.elcodigoApoderado}" style="font-weight:bold" required="true" maxlength="8" onkeyup="ocultarBoton1()" >
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true">
                 	</f:convertNumber>
                 </p:inputText>
-                
-                <p:commandButton
+                <p:commandButton id="btnBuscadorApoderado"
 					  actionListener="#{apoderadoBean.buscaApoderado}"  
-					  update="dlgForm3 msgs" 
+					  update="dlgForm3" 
                       image="ui-icon ui-icon-search" title="Busque un apoderado segun el codigo"/>          
             </h:panelGroup>
             <h:panelGroup>
-            	<h:outputText value="#{apoderadoBean.mensaje}" id="display4" /> 
+            	<!--  <h:outputText value="#{apoderadoBean.mensaje}" id="display4" />--> 
             </h:panelGroup>
 
           <f:facet name="footer"> 
@@ -311,7 +310,7 @@
                 <h:panelGroup>
                 	<c:if test='#{apoderadoBean.apoderado.strCodigoPersona!=null}'>
                 		<p:commandButton value="Seleccionar" actionListener="#{apoderadoBean.seteaApoderado}" id="btnSeleccionaApoderado"
-						  update="dlgForm2:txtCodigoApoderado msgs" 
+						  update="dlgForm3 dlgForm2:txtCodigoApoderado msgs" 
 	                      image="ui-icon ui-icon-check"
 	                      oncomplete="carDialog3.hide()" >
 	                      	<f:setPropertyActionListener value="#{apoderadoBean.apoderado.strCodigoPersona}" target="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" />
