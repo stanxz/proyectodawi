@@ -57,9 +57,15 @@ function limpiacajas(args){
 	var elemento=document.getElementById('dlgForm3:txtCodigoApoderado2');
 	elemento.value = '';
 	var elemento3=document.getElementById('dlgForm3:btnSeleccionaApoderado');
-	elemento3.style.display='none';
+	if(elemento3!=null){
+		elemento3.style.display='none';
+	}
+	
 	var elemento4=document.getElementById('dlgForm3:msgMensajes');
-	elemento4.style.display='none';
+	if(elemento4!=null){
+		elemento4.style.display='none';
+	}
+	
 }
 /*function validacampo(args){
 	var elemento=document.getElementById('dlgForm3:txtCodigoApoderado2');
