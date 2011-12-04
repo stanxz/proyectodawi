@@ -30,7 +30,7 @@ public class PersonaJPADAO implements PersonaDAO {
 			else
 				return null;
 		} catch (Exception e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 			return null;
 		}
 		
