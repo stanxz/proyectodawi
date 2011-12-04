@@ -38,6 +38,7 @@ public class ApoderadoBean implements Serializable{
 			usuariotempo.setPersonas(personatempo);
 			System.out.println("consultando");
 			System.out.println("codigo:"+usuariotempo.getPersonas().getStrCodigoPersona());
+			apoderado=new Persona();
 			apoderado=apoderadoService.consultaPersona(usuariotempo);
 			System.out.println("consulta hecha ...");
 			if(apoderado!=null){
@@ -48,11 +49,14 @@ public class ApoderadoBean implements Serializable{
 			}else{
 				System.out.println("No se encontro el apoderado");
 				apoderados=new ArrayList<Persona>();
+				apoderado=new Persona();
 				this.mensaje="No se encuentra el apoderado";
 			}		
 			//this.apoderado=apoderadoService.getListaAniosAcademicos();
 			//System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
 		} catch (Exception e) {
+			apoderados=new ArrayList<Persona>();
+			apoderado=new Persona();
 			e.printStackTrace();
 		}
 	}
