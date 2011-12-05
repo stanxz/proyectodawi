@@ -317,7 +317,89 @@
 	                    </p:commandButton>
                 	</c:if>
 					<p:commandButton value="Nuevo Apoderado" onclick="carDialog4.show()" type="button" image="ui-icon ui-icon-person"/>
-                    <p:commandButton value="Cancelar" onclick="carDialog3.hide()" type="button" image="ui-icon ui-icon-close"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog4.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+          
+        </h:panelGrid> 
+       </h:form>
+    </p:dialog>
+    
+    <p:dialog header="Nuevo Apoderado" widgetVar="carDialog4" resizable="false" id="carDlg4"  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
+	   <h:form id="dlgForm4">  
+          <h:panelGrid id="display4" columns="2" cellpadding="2" style="margin:0 auto;" >  
+  
+            <h:outputText value="Codigo Apoderado" />  
+            <h:panelGroup>  
+                <p:inputText id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
+                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
+                </p:inputText>  
+            </h:panelGroup>  
+
+            <h:outputText value="Nombres" />  
+            <h:panelGroup>  
+                <p:inputText id="txtNombresApo" value="#{apoderadoBean.nuevoApoderado.strNombre}" style="font-weight:bold" required="true"/>
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Paterno" />  
+            <h:panelGroup>  
+                <p:inputText id="txtApepatApo" value="#{apoderadoBean.nuevoApoderado.strApellidoPaterno}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Materno" />  
+            <h:panelGroup>  
+                <p:inputText id="txtApematApo"  value="#{apoderadoBean.nuevoApoderado.strApellidoMaterno}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup>  
+            
+			<h:outputText value="Direccion" />  
+            <h:panelGroup>  
+                <p:inputText id="txtDireccionApo"  value="#{apoderadoBean.nuevoApoderado.strDireccion}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Email" />  
+            <h:panelGroup>  
+                <p:inputText id="txtMailApo"  value="#{apoderadoBean.nuevoApoderado.strMail}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Telefono" />  
+            <h:panelGroup>  
+                <p:inputText id="txtTelfApo"  value="#{apoderadoBean.nuevoApoderado.strTelefono}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Celular" />  
+            <h:panelGroup>  
+                <p:inputText id="txtCelApo"  value="#{apoderadoBean.nuevoApoderado.strCelular}" style="font-weight:bold" required="true"/>  
+            </h:panelGroup>
+
+            
+            <h:outputText value="Sexo" />  
+            <h:panelGroup>  
+                <h:selectOneMenu value="#{apoderadoBean.nuevoApoderado.strSexo}" style="font-weight:bold" required="true"  >  
+		            <f:selectItem itemLabel="MASCULINO" itemValue="1" />  
+		            <f:selectItem itemLabel="FEMENINO" itemValue="0" />        
+		        </h:selectOneMenu>  
+            </h:panelGroup>
+            
+            <h:outputText value="Usuario" />  
+            <h:panelGroup>  
+                <p:inputText id="txtUserApo" value="#{apoderadoBean.usuarioapoderado}" style="font-weight:bold" required="true"/>
+            </h:panelGroup>
+            
+            <h:outputText value="Password" />  
+            <h:panelGroup>  
+                <p:inputText id="txtPassApo" value="#{apoderadoBean.passapoderado}" style="font-weight:bold" required="true"/>
+            </h:panelGroup>
+ 
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar" 
+					  actionListener="#{apoderadoBean.registraApoderado}"  
+					  update="dlgForm4 msgs" 
+                      image="ui-icon ui-icon-check"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog4.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
               </p:outputPanel>  
           </f:facet>  

@@ -41,7 +41,7 @@ public class AlumnoBean implements Serializable{
 	}
 	
 	public void registraAlumno(ActionEvent ae) {  
-		System.out.println("dizke insertando: Por fin");
+		System.out.println("insertando alumno");
 		
 		Date auxi = new Date(nuevoAlumno.getFechaNacimiento().getTime());
 		nuevoAlumno.setDtFecNac(auxi);
@@ -50,8 +50,7 @@ public class AlumnoBean implements Serializable{
 		entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
 		
 		nuevoAlumno.setCalendarioacademico(entidadCalendario);
-
-
+		
 		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
 		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
 		System.out.println(nuevoAlumno.getStrNombres());

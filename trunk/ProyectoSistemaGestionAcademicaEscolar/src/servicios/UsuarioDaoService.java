@@ -35,4 +35,10 @@ public class UsuarioDaoService implements UsuarioService {
 		return usuariodao.buscaContrasena(elusuario);
 	}
 
+	@Override
+	public void registrarUsuario(Usuario nuevo) throws Exception {
+		// TODO Auto-generated method stub
+		usuariodao.registrarUsuario(nuevo);
+	}
+
 }

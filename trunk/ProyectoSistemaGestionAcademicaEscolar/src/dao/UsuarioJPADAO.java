@@ -88,4 +88,20 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	
 	}
 
+	@Override
+	public void registrarUsuario(Usuario nuevo) throws Exception {
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2.ejecuta las operaciones
+		em.persist(nuevo);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	}
+
 }
