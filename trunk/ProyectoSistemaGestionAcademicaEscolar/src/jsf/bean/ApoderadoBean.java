@@ -106,8 +106,7 @@ public class ApoderadoBean implements Serializable{
 		} catch (Exception e) {
 			System.out.println("error: "+e.getMessage());
 		}
-		
-		
+
 		if(auxitemporal!=null){
 			System.out.println("Apoderado "+auxitemporal.getStrCodigoPersona()+"("+auxitemporal.getStrNombre()+" "+auxitemporal.getStrApellidoPaterno()+") ya existe !!");
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado ya se encuentra registrado: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
@@ -121,10 +120,9 @@ public class ApoderadoBean implements Serializable{
 				Apoderado apotempo=new Apoderado();
 				apotempo.setPersonas(nuevoApoderado);
 				apoderadoService.guardaApoderado(apotempo);
-				
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Insertado correctamente: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
 				nuevousuario =  new Usuario();
 				nuevoApoderado=new Persona();
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Insertado correctamente: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
 				System.out.println("insertados correctamente ... ");
 			} catch (Exception e) {
 				System.out.println("Hubo un error insertando ...");
