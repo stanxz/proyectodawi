@@ -69,10 +69,28 @@ function limpiacajas(args){
 }
 
 function limpiacajas2(args){
-	var elemento2=document.getElementById('dlgForm4:txtPassApo');
+	var elemento=document.getElementById('dlgForm4:txtCodigoApo');
+	elemento.value = '';
+	var elemento2=document.getElementById('dlgForm4:txtNombresApo');
 	elemento2.value = '';
-	var elemento=document.getElementById('dlgForm4:txtUserApo');
-	elemento.value = '';	
+	var elemento3=document.getElementById('dlgForm4:txtApepatApo');
+	elemento3.value = '';
+	var elemento4=document.getElementById('dlgForm4:txtApematApo');
+	elemento4.value = '';
+	var elemento5=document.getElementById('dlgForm4:txtDireccionApo');
+	elemento5.value = '';
+	var elemento6=document.getElementById('dlgForm4:txtMailApo');
+	elemento6.value = '';
+	var elemento7=document.getElementById('dlgForm4:txtTelfApo');
+	elemento7.value = '';
+	var elemento8=document.getElementById('dlgForm4:txtCelApo');
+	elemento8.value = '';
+	var elemento9=document.getElementById('dlgForm4:txtPassApo');
+	elemento9.value = '';
+	var elemento0=document.getElementById('dlgForm4:msgMensajes2');
+	if(elemento0!=null){
+		elemento0.style.display='none';
+	}
 }
 
 /*function validacampo(args){
