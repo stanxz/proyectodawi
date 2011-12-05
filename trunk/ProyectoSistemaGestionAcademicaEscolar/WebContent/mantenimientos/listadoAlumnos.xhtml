@@ -327,13 +327,15 @@
     </p:dialog>
     
     <p:dialog header="Nuevo Apoderado" widgetVar="carDialog4" resizable="false" id="carDlg4"  
-                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" onShow="limpiacajas2()">  
 	   <h:form id="dlgForm4">  
+	   <p:messages id="msgMensajes2" />
+	   
           <h:panelGrid id="display4" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>  
-                <p:inputText id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
+                <p:inputText id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8"  >
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
                 </p:inputText>  
             </h:panelGroup>  
@@ -363,30 +365,28 @@
                 <p:inputText id="txtMailApo"  value="#{apoderadoBean.nuevoApoderado.strMail}" style="font-weight:bold" required="true"/>  
             </h:panelGroup> 
             
-            <h:outputText value="Telefono" />  
+            <h:outputText value="Telefono (7 digitos)" />  
             <h:panelGroup>  
-                <p:inputText id="txtTelfApo"  value="#{apoderadoBean.nuevoApoderado.strTelefono}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtTelfApo"  value="#{apoderadoBean.nuevoApoderado.strTelefono}" style="font-weight:bold" required="true" maxlength="7">
+                	<f:convertNumber minIntegerDigits="7" maxIntegerDigits="7" integerOnly="true"></f:convertNumber>
+                </p:inputText>  
             </h:panelGroup> 
             
-            <h:outputText value="Celular" />  
+            <h:outputText value="Celular (9 digitos)" />  
             <h:panelGroup>  
-                <p:inputText id="txtCelApo"  value="#{apoderadoBean.nuevoApoderado.strCelular}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtCelApo"  value="#{apoderadoBean.nuevoApoderado.strCelular}" style="font-weight:bold" required="true" maxlength="9">
+                	<f:convertNumber minIntegerDigits="9" maxIntegerDigits="9" integerOnly="true"></f:convertNumber>
+                </p:inputText>  
             </h:panelGroup>
 
-            
             <h:outputText value="Sexo" />  
             <h:panelGroup>  
                 <h:selectOneMenu value="#{apoderadoBean.nuevoApoderado.strSexo}" style="font-weight:bold" required="true"  >  
 		            <f:selectItem itemLabel="MASCULINO" itemValue="1" />  
 		            <f:selectItem itemLabel="FEMENINO" itemValue="0" />        
 		        </h:selectOneMenu>  
-            </h:panelGroup>
-            
-            <h:outputText value="Usuario" />  
-            <h:panelGroup>  
-                <p:inputText id="txtUserApo" value="#{apoderadoBean.usuarioapoderado}" style="font-weight:bold" required="true"/>
-            </h:panelGroup>
-            
+            </h:panelGroup>     
+           
             <h:outputText value="Password" />  
             <h:panelGroup>  
                 <p:inputText id="txtPassApo" value="#{apoderadoBean.passapoderado}" style="font-weight:bold" required="true"/>
@@ -395,7 +395,7 @@
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
-					  <p:commandButton value="Grabar" 
+					  <p:commandButton value="Guardar" 
 					  actionListener="#{apoderadoBean.registraApoderado}"  
 					  update="dlgForm4 msgs" 
                       image="ui-icon ui-icon-check"/>
