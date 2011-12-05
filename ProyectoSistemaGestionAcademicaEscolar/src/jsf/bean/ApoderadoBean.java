@@ -1,6 +1,7 @@
 package jsf.bean;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import javax.faces.application.FacesMessage;
@@ -9,10 +10,12 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import entidades.Perfil;
 import entidades.Persona;
 import entidades.Usuario;
 import servicios.ApplicationBusinessDelegate;
 import servicios.PersonaService;
+import servicios.UsuarioService;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -21,14 +24,16 @@ public class ApoderadoBean implements Serializable{
 
 	 private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	 private static PersonaService apoderadoService=abd.getPersonaService();
+	 private static UsuarioService userapoderadoService=abd.getUsuarioService();
 	 private ArrayList<Persona> apoderados;
-	 private Persona apoderado,apoderadoSelected;
-	 private String mensaje,elcodigoApoderado;
-	 
+	 private Persona apoderado,apoderadoSelected,nuevoApoderado;
+	 private String mensaje,elcodigoApoderado,usuarioapoderado,passapoderado;
+	 private Usuario nuevousuario;
 	 
 	public ApoderadoBean() {
 		System.out.println("Creado ApoderadoBean...");
 		this.mensaje="";
+		nuevoApoderado=new Persona();
 	}
 	 
 	public void buscaApoderado(ActionEvent evento){
@@ -71,6 +76,57 @@ public class ApoderadoBean implements Serializable{
 		System.out.println("apoderado mandado: "+apoderado.getStrNombre()+" "+apoderado.getStrApellidoPaterno());
 	}
 
+	
+	public void registraApoderado() {  
+		System.out.println("en el registraApoderado");
+		Persona auxitemporal=null;
+		//esta parte del codigo esta fea pero estamos con el tiempo justo
+		Perfil p=new Perfil();
+		p.setStrCodigoPerfil("pf01");
+		nuevousuario=new Usuario();
+		nuevousuario.setPersonas(nuevoApoderado);
+		nuevousuario.setStrContrasena(passapoderado);
+		nuevousuario.setPerfiles(p);
+		
+		try {
+			//reflex. se invocando los emtodos 
+			for (Method m : nuevoApoderado.getClass().getMethods()){
+				if(m.getName().startsWith("get"))
+				System.out.println("nuevo Apoderado - "+m.getName() + " : " +  m.invoke(nuevoApoderado));
+			}
+			
+			for (Method m : nuevousuario.getClass().getMethods()){
+				if(m.getName().startsWith("get"))
+				System.out.println("nuevo Usuario - "+m.getName() + " : " +  m.invoke(nuevousuario));
+			}
+			
+			System.out.println("consultando apoderado ... ");
+			 auxitemporal=apoderadoService.consultaPersona(nuevousuario);
+		} catch (Exception e) {
+			System.out.println("error: "+e.getMessage());
+		}
+		
+		
+		if(auxitemporal!=null){
+			System.out.println("Apoderado "+auxitemporal.getStrCodigoPersona()+"("+auxitemporal.getStrNombre()+" "+auxitemporal.getStrApellidoPaterno()+") ya existe !!");
+		}else{
+			System.out.println("se va a insertar el apoderado y su usuario");
+			try {
+				System.out.println("insertando apoderado y su usuario ... ");
+				apoderadoService.registrarPersona(nuevoApoderado);
+				userapoderadoService.registrarUsuario(nuevousuario);
+				nuevousuario =  new Usuario();
+				nuevoApoderado=new Persona();
+				System.out.println("insertados correctamente ... ");
+			} catch (Exception e) {
+				System.out.println("Hubo un error insertando ...");
+				nuevousuario =  new Usuario();
+				nuevoApoderado=new Persona();
+				e.printStackTrace();
+			}
+		}
+    }
+	
 	public Persona getApoderado() {
 		return apoderado;
 	}
@@ -109,6 +165,38 @@ public class ApoderadoBean implements Serializable{
 
 	public void setApoderadoSelected(Persona apoderadoSelected) {
 		this.apoderadoSelected = apoderadoSelected;
+	}
+
+	public Persona getNuevoApoderado() {
+		return nuevoApoderado;
+	}
+
+	public void setNuevoApoderado(Persona nuevoApoderado) {
+		this.nuevoApoderado = nuevoApoderado;
+	}
+
+	public Usuario getNuevousuario() {
+		return nuevousuario;
+	}
+
+	public void setNuevousuario(Usuario nuevousuario) {
+		this.nuevousuario = nuevousuario;
+	}
+
+	public String getUsuarioapoderado() {
+		return usuarioapoderado;
+	}
+
+	public void setUsuarioapoderado(String usuarioapoderado) {
+		this.usuarioapoderado = usuarioapoderado;
+	}
+
+	public String getPassapoderado() {
+		return passapoderado;
+	}
+
+	public void setPassapoderado(String passapoderado) {
+		this.passapoderado = passapoderado;
 	}
 	
 	

@@ -36,4 +36,20 @@ public class PersonaJPADAO implements PersonaDAO {
 		
 	}
 
+	@Override
+	public void registrarPersona(Persona nueva) throws Exception {
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2.ejecuta las operaciones
+		em.persist(nueva);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	}
+
 }

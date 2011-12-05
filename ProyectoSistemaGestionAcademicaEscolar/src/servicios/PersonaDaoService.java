@@ -21,4 +21,10 @@ public class PersonaDaoService implements PersonaService {
 		return personadao.consultarPersona(u);
 	}
 
+	@Override
+	public void registrarPersona(Persona nueva) throws Exception {
+		// TODO Auto-generated method stub
+		personadao.registrarPersona(nueva);
+	}
+
 }
