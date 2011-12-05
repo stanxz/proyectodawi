@@ -10,6 +10,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import entidades.Apoderado;
 import entidades.Perfil;
 import entidades.Persona;
 import entidades.Usuario;
@@ -109,17 +110,25 @@ public class ApoderadoBean implements Serializable{
 		
 		if(auxitemporal!=null){
 			System.out.println("Apoderado "+auxitemporal.getStrCodigoPersona()+"("+auxitemporal.getStrNombre()+" "+auxitemporal.getStrApellidoPaterno()+") ya existe !!");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado ya se encuentra registrado: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
 		}else{
 			System.out.println("se va a insertar el apoderado y su usuario");
 			try {
 				System.out.println("insertando apoderado y su usuario ... ");
 				apoderadoService.registrarPersona(nuevoApoderado);
 				userapoderadoService.registrarUsuario(nuevousuario);
+				
+				Apoderado apotempo=new Apoderado();
+				apotempo.setPersonas(nuevoApoderado);
+				apoderadoService.guardaApoderado(apotempo);
+				
 				nuevousuario =  new Usuario();
 				nuevoApoderado=new Persona();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Insertado correctamente: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
 				System.out.println("insertados correctamente ... ");
 			} catch (Exception e) {
 				System.out.println("Hubo un error insertando ...");
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al apoderado","No se insertó el apoderado"));
 				nuevousuario =  new Usuario();
 				nuevoApoderado=new Persona();
 				e.printStackTrace();

@@ -2,6 +2,7 @@ package servicios;
 
 import dao.DAOFactory;
 import dao.PersonaDAO;
+import entidades.Apoderado;
 import entidades.Persona;
 import entidades.Usuario;
 
@@ -25,6 +26,12 @@ public class PersonaDaoService implements PersonaService {
 	public void registrarPersona(Persona nueva) throws Exception {
 		// TODO Auto-generated method stub
 		personadao.registrarPersona(nueva);
+	}
+
+	@Override
+	public void guardaApoderado(Apoderado apo) throws Exception {
+		// TODO Auto-generated method stub
+		personadao.guardaApoderado(apo);
 	}
 
 }
