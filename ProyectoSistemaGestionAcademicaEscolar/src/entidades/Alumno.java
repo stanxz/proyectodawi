@@ -5,9 +5,6 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.*;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
-
 @Entity
 public class Alumno implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -43,7 +40,7 @@ public class Alumno implements Serializable {
 	@Column(name="sexo")
 	private int intSexo;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.PERSIST)
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados = new Apoderado();
 	
@@ -65,8 +62,8 @@ public class Alumno implements Serializable {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	@Transient
-	private Persona personas;
+	//@Transient
+	//private Persona personas;
 	
 	@ManyToMany
 	@JoinTable(name="detalleasignatura",
@@ -172,13 +169,13 @@ public class Alumno implements Serializable {
 		return apoderados;
 	}
 	
-	public Persona getPersonas() {
+	/*public Persona getPersonas() {
 		return personas;
 	}
 
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
-	}
+	}*/
 
 	public void setApoderados(Apoderado apoderados) {
 		this.apoderados = apoderados;

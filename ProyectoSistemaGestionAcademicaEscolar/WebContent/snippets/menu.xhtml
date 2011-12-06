@@ -53,6 +53,7 @@ function ocultarBoton1(args){
 }
 function limpiacajas(args){
 	var elemento2=document.getElementById('dlgForm2:txtCodigoApoderado');
+	//elemento2.innerHTML = '';
 	elemento2.value = '';
 	var elemento=document.getElementById('dlgForm3:txtCodigoApoderado2');
 	elemento.value = '';
@@ -93,13 +94,18 @@ function limpiacajas2(args){
 	}
 }
 
-/*function validacampo(args){
-	var elemento=document.getElementById('dlgForm3:txtCodigoApoderado2');
-	if(elemento.value=''){
-		var elementoX=document.getElementById('dlgForm3:btnSeleccionaApoderado');
-		elementoX.style.display='none';
-	}
-}*/
+function falseador(args){
+	var elemento9=document.getElementById('dlgForm2:txtCodigoApoderado');
+	elemento9.value = '';
+}
+
+function validar(e) { // 1
+    tecla = (document.all) ? e.keyCode : e.which; // 2
+    if (tecla==8) return true; // 3
+    patron =/[A-Za-z\s]/; // 4
+    te = String.fromCharCode(tecla); // 5
+    return patron.test(te); // 6
+} 
  </h:outputScript>
 <div id="menuQuery" class="arrowgreen">
 					<ul>
