@@ -40,7 +40,8 @@ public class Alumno implements Serializable {
 	@Column(name="sexo")
 	private int intSexo;
 	
-	@ManyToOne(cascade=CascadeType.PERSIST)
+	//@ManyToOne(cascade=CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados = new Apoderado();
 	
