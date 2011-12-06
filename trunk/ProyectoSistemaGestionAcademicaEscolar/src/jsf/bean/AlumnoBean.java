@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import servicios.AlumnoService;
@@ -30,7 +32,7 @@ public class AlumnoBean implements Serializable{
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;
-	private String strCodigoApoderado;
+	private String strCodigoApoderado,mensaje;
 	
 	private Alumno nuevoAlumno =  new Alumno();
 	
@@ -58,17 +60,23 @@ public class AlumnoBean implements Serializable{
 		System.out.println(nuevoAlumno.getStrApellidoMaterno());
 		System.out.println(nuevoAlumno.getDtFecNac());
 		
+		//nuevoAlumno.set
+		
 		try {
 			alumnoService.registrarAlumno(nuevoAlumno);
-			//Es para settear el bean
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
+			System.out.println("Se registro el Alumno con exito");
 			nuevoAlumno =  new Alumno();
 		} catch (Exception e) {
+			System.out.println("Error registrando el alumno: "+e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al alumno","No se insertó el apoderado: "+e.getMessage()));
 			nuevoAlumno =  new Alumno();
 			e.printStackTrace();
 		}
     }
 	
 	public void actualizaAlumno(ActionEvent ae){
+		System.out.println("Actualizando alumno ... ");
 		System.out.println(selectedAlumno.getStrNombres());
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
@@ -80,7 +88,7 @@ public class AlumnoBean implements Serializable{
 			nuevoAlumno.setCalendarioacademico(entidadCalendario);
 
 			alumnoService.actualizarAlumno(selectedAlumno);
-			
+			System.out.println("alumno actualizado con exito ...");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -175,6 +183,14 @@ public class AlumnoBean implements Serializable{
 
 	public void setApoderado(Apoderado apoderado) {
 		this.apoderado = apoderado;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
 	}
 
 }

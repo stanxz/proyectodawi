@@ -3,6 +3,7 @@ package entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -24,9 +25,18 @@ public class Apoderado implements Serializable {
 	@JoinColumn(name="codpersona")
 	private Persona personas;
 	*/
-	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados")
+	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados",cascade = CascadeType.PERSIST)
 	private Collection<Alumno> tbAlumnos;
 
+	/*public void addAlumno(Alumno alumno) {
+	    if (tbAlumnos == null) {
+	    	tbAlumnos = new ArrayList<Alumno>();
+	    }
+	    alumno.setApoderados(apoderados);
+	    tbAlumnos.add(alumno);
+	}*/
+	
+	
     public Apoderado() {
     }
 /*

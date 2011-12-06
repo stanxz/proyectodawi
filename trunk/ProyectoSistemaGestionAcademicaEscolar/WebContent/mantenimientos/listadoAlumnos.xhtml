@@ -20,7 +20,7 @@
 
 	<ui:define name="body">
 	<div align="center">
-<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+<p:growl id="msgs" showDetail="true" sticky="false" life="8000"/>
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" 
     emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable"
@@ -110,19 +110,19 @@
   			<h:outputText value="Nombres" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strNombres}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre"/>  
+                <p:inputText value="#{alumnoBean.selectedAlumno.strNombres}" rendered="#{alumnoBean.editMode}" required="true" label="Nombre" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText id="apellidoPaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Paterno"/>  
+                <p:inputText id="apellidoPaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoPaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Paterno" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:inputText id="apellidoMaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Materno"/>  
+                <p:inputText id="apellidoMaternoAl" value="#{alumnoBean.selectedAlumno.strApellidoMaterno}" rendered="#{alumnoBean.editMode}" required="true" label="Apellido Materno" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
             <h:outputText value="Fecha Nacimiento" />  
@@ -195,39 +195,41 @@
   
             <h:outputText value="Codigo Alumno" />  
             <h:panelGroup>
-            	<p:inputMask  id="txtCodigoAlumno" value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" mask="9999999"/>  
+            	<p:inputMask  id="txtCodigoAlumno" value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" mask="99999999"/>  
                 <!--   <p:inputText id="txtCodigoAlumno" value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" maxlength="8">
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
                 </p:inputText> -->  
             </h:panelGroup>  
             
             <h:outputText value="Codigo Apoderado" />  
-            <h:panelGroup>  
-                <p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8" readonly="true">
+            <h:panelGroup>
+            	<!--<h:outputText id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold"  />  -->
+            	  <p:inputMask  id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" mask="99999999" onkeyup="falseador()" />
+                <!--<p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
-                </p:inputText>
+                </p:inputText>  -->
                 <p:commandButton image="ui-icon ui-icon-person" title="Busque o registre un apoderado para este alumno" onclick="carDialog3.show()" type="button">  
  		 		</p:commandButton>  
             </h:panelGroup> 
             
             <h:outputText value="Nombres" />  
-            <h:panelGroup>  
-                <p:inputText id="txtNombres" value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true"/>
+            <h:panelGroup>
+                <p:inputText id="txtNombres" value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true" onkeypress="return validar(event)" />
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApePat" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApePat" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApemat"  value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApemat"  value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
              <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
-                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
+                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2007-01-01" readOnlyInputText="true">
                 </p:calendar>  
             </h:panelGroup>
             
@@ -342,17 +344,17 @@
 
             <h:outputText value="Nombres" />  
             <h:panelGroup>  
-                <p:inputText id="txtNombresApo" value="#{apoderadoBean.nuevoApoderado.strNombre}" style="font-weight:bold" required="true"/>
+                <p:inputText id="txtNombresApo" value="#{apoderadoBean.nuevoApoderado.strNombre}" style="font-weight:bold" required="true" onkeypress="return validar(event)"/>
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApepatApo" value="#{apoderadoBean.nuevoApoderado.strApellidoPaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApepatApo" value="#{apoderadoBean.nuevoApoderado.strApellidoPaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApematApo"  value="#{apoderadoBean.nuevoApoderado.strApellidoMaterno}" style="font-weight:bold" required="true"/>  
+                <p:inputText id="txtApematApo"  value="#{apoderadoBean.nuevoApoderado.strApellidoMaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)"/>  
             </h:panelGroup>  
             
 			<h:outputText value="Direccion" />  
