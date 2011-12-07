@@ -1,5 +1,7 @@
 package servicios;
 
+import java.util.ArrayList;
+
 import dao.DAOFactory;
 import dao.PersonaDAO;
 import entidades.Apoderado;
@@ -32,6 +34,12 @@ public class PersonaDaoService implements PersonaService {
 	public void guardaApoderado(Apoderado apo) throws Exception {
 		// TODO Auto-generated method stub
 		personadao.guardaApoderado(apo);
+	}
+
+	@Override
+	public ArrayList<Persona> obtenerTodosEmpleados() throws Exception {
+		// TODO Auto-generated method stub
+		return personadao.obtenerTodosEmpleados();
 	}
 
 }

@@ -3,7 +3,6 @@ package entidades;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 
@@ -12,6 +11,7 @@ import java.util.Collection;
  * 
  */
 @Entity
+@Table(name="apoderado")
 public class Apoderado implements Serializable {
 	private static final long serialVersionUID = 1L;
 

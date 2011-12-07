@@ -1,0 +1,279 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/templates/crud-template.xhtml">
+
+	<ui:define name="title">
+		I.E.P &quot;SAN CARLOS&quot;
+	</ui:define>
+	
+	<ui:define name="header">
+		<ui:include src="/snippets/header.xhtml" />
+	</ui:define>
+
+	<ui:define name="menu">
+		<ui:include src="/snippets/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="body">
+	<div align="center">
+<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+<h:form id="form" style="width: 800px;"> 
+    <p:dataTable id="listaEmpleados" var="empleado" value="#{empleadoBean.empleados}" 
+    emptyMessage="No hay empleados a listar" widgetVar="empleadosTable"
+    paginator="true" rows="5"  
+    paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+    rowsPerPageTemplate="5,10,15">  
+  		<f:facet name="header">  
+  		<div align="right">
+            <p:outputPanel>  
+                <h:outputText value="Busqueda:" />
+                <p:inputText id="globalFilter" onkeyup="empleadosTable.filter()" style="width:150px" />  
+            </p:outputPanel>  
+        </div>
+        </f:facet>
+  		
+  		<p:column headerText="Codigo">  
+            <h:outputText value="#{empleado.strCodigoPersona}" />  
+        </p:column>
+        
+        <p:column headerText="Nombres">  
+            <h:outputText value="#{empleado.strNombre}" />  
+        </p:column>  
+  
+        <p:column headerText="Apellido Paterno" filterBy="#{empleado.strApellidoPaterno}" filterStyle="display:none">   
+            <h:outputText value="#{empleado.strApellidoPaterno}"/>  
+        </p:column> 
+        
+        <p:column headerText="Apellido Materno">  
+            <h:outputText value="#{empleado.strApellidoMaterno}" />  
+        </p:column>  
+        
+        <p:column headerText="Perfil">  
+            <h:outputText value="#{empleado.perfil.strNombre}" />  
+        </p:column> 
+
+        <p:column style="width:100px">  
+             <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Vea el Detalle de los datos del empleado">  
+                     <f:setPropertyActionListener value="#{empleado}" target="#{empleadoBean.selectedEmpleado}" />  
+                     <f:setPropertyActionListener value="#{false}" target="#{empleadoBean.editMode}" />  
+                 </p:commandButton>  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Editar los datos del empleado" >  
+                     <f:setPropertyActionListener value="#{empleado}" target="#{empleadoBean.selectedEmpleado}" />  
+                     <f:setPropertyActionListener value="#{true}" target="#{empleadoBean.editMode}" />  
+                 </p:commandButton>  
+             </h:panelGrid>  
+        </p:column>
+        
+         <f:facet name="footer">  
+         <div align="left">
+         <p:commandButton value="Nuevo Empleado" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Registre un nuevo empleado en el sistema">  
+				<f:setPropertyActionListener value="#{true}" target="#{empleadoBean.editMode}" />  
+ 		 </p:commandButton>
+         </div>
+        </f:facet> 
+        
+    </p:dataTable>  
+  
+</h:form> 
+              
+<p:dialog header="Detalle Empleado" widgetVar="carDialog" resizable="false" id="carDlg"  
+                showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
+<h:form id="dlgForm">  
+          <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
+  
+            <h:outputText value="Codigo Empleado" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strCodigoPersona}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strCodigoPersona}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" />  
+            </h:panelGroup>   
+  
+  			<h:outputText value="Nombres" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strNombre}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strNombre}" rendered="#{empleadoBean.editMode}" required="true" label="Nombre"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Paterno" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strApellidoPaterno}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoPaterno}" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Paterno"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Materno" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strApellidoMaterno}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoMaterno}" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Materno"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Dirección" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strDireccion}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strDireccion}" rendered="#{empleadoBean.editMode}" required="true" label="Dirección"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Email" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strMail}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strMail}" rendered="#{empleadoBean.editMode}" required="true" label="Email"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Teléfono" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strTelefono}" rendered="#{empleadoBean.editMode}" required="true" label="Telefono"/>  
+            </h:panelGroup> 
+            
+            
+            <h:outputText value="Celular" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strCelular}" rendered="#{empleadoBean.editMode}" required="true" label="Celular"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Sexo" />  
+            <h:panelGroup> 
+            <c:if test="#{empleadoBean.selectedEmpleado.strSexo==1}">
+	  		  <h:outputText value="Masculino" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+	  	    </c:if> 
+	  	    <c:if test="#{empleadoBean.selectedEmpleado.strSexo==0}">
+	  		  <h:outputText value="Femenino" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+	  	    </c:if> 
+	  	     <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.strSexo}" rendered="#{empleadoBean.editMode}"  required="true"  label="Sexo">  
+		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
+		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
+		     </h:selectOneMenu>  
+            </h:panelGroup> 
+            
+              <!-- 
+            <h:outputText value="Fecha Nacimiento" />  
+            <h:panelGroup>  
+                <h:outputText value="#{alumnoBean.selectedAlumno.dtFecNac}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
+                <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" rendered="#{alumnoBean.editMode}" >
+                </p:calendar>  
+            </h:panelGroup>
+             -->
+            <!-- 
+  
+  			<h:outputText value="Estado" />  
+            <h:panelGroup >  
+                <h:outputText value="#{alumnoBean.selectedAlumno.strEstado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
+                <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strEstado}" rendered="#{alumnoBean.editMode}"  required="true"  >  
+		            <f:selectItem itemLabel="MATRICULADO" itemValue="MATRICULADO" />  
+		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
+		        </h:selectOneMenu>  
+            </h:panelGroup>
+  			 -->
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="#{empleadoBean.editMode}" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar" 
+					  actionListener="#{empleadoBean.actualizaEmpleado}"  
+					  update="form:listaEmpleados msgs" 
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditComplete(args)"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+        </h:panelGrid> 
+       </h:form>
+    </p:dialog>  
+
+    <p:dialog header="Nuevo Empleado" widgetVar="carDialog2" resizable="false" id="carDlg2"  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
+	   <h:form id="dlgForm2">  
+          <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
+ 
+            <h:outputText value="Codigo Empleado" />  
+            <h:panelGroup>
+            	<p:inputMask value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true" mask="9999999" label="Codigo"/>   
+            </h:panelGroup>  
+
+            <h:outputText value="Nombres" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strNombre}" style="font-weight:bold" required="true" label="Nombres"/>
+            </h:panelGroup>  
+      
+            <h:outputText value="Apellido Paterno" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoPaterno}" style="font-weight:bold" required="true" label="Apellido Paterno"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Materno" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoMaterno}" style="font-weight:bold" required="true" label="Apellido Materno"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Dirección" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strDireccion}" style="font-weight:bold" required="true" label="Dirección"/>  
+            </h:panelGroup>  
+           
+            <h:outputText value="EMail" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strMail}" style="font-weight:bold" required="true" label="Email"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Telefono" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strTelefono}" style="font-weight:bold" required="true" label="Teléfono"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Celular" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strCelular}" style="font-weight:bold" required="true" label="Celular"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Sexo" />  
+             <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.strSexo}" style="font-weight:bold" required="true"  label="Sexo">  
+		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
+		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
+		     </h:selectOneMenu>  
+		    
+		    <h:outputText value="Password" />  
+            <h:panelGroup>  
+                <p:password value="#{empleadoBean.nuevoUsuario.strContrasena}" style="font-weight:bold" required="true" feedback="false"  label="Celular"/>  
+            </h:panelGroup> 
+             <!--  
+		     <h:outputText value="Perfil" />  
+             <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.perfil}" style="font-weight:bold" required="true"  label="Perfil" requiredMessage="Seleccione un Perfil">  
+		            <f:selectItem itemLabel="Seleccione Perfil" itemValue="#{null}"/>
+	<f:selectItems value="#{empleadoBean.perfiles}" var="perfil"
+	               itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}"/>         
+		     </h:selectOneMenu>
+		     -->  
+           <!-- 
+             <h:outputText value="Fecha Nacimiento" />  
+            <h:panelGroup>  
+                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
+                </p:calendar>  
+            </h:panelGroup>
+ -->
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar" 
+					  actionListener="#{empleadoBean.registraEmpleado}"
+					  update="form:listaEmpleados msgs"
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditCompleteRegistrar(args)"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+          
+        </h:panelGrid> 
+       </h:form>
+    </p:dialog>
+	</div>
+	</ui:define>
+
+	<ui:define name="footer">
+		<ui:include src="/snippets/footer.xhtml" />
+	</ui:define>
+</ui:composition>

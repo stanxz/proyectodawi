@@ -84,7 +84,7 @@ public class ApoderadoBean implements Serializable{
 		//esta parte del codigo esta fea pero estamos con el tiempo justo
 		Perfil p=new Perfil();
 		p.setStrCodigoPerfil("pf01");
-		nuevousuario=new Usuario();
+		nuevousuario = new Usuario();
 		nuevousuario.setPersonas(nuevoApoderado);
 		nuevousuario.setStrContrasena(passapoderado);
 		nuevousuario.setPerfiles(p);
@@ -93,7 +93,7 @@ public class ApoderadoBean implements Serializable{
 			//reflex. se invocando los emtodos 
 			for (Method m : nuevoApoderado.getClass().getMethods()){
 				if(m.getName().startsWith("get"))
-				System.out.println("nuevo Apoderado - "+m.getName() + " : " +  m.invoke(nuevoApoderado));
+				System.out.println("nuevo Apoderado - " + m.getName() + " : " +  m.invoke(nuevoApoderado));
 			}
 			
 			for (Method m : nuevousuario.getClass().getMethods()){
@@ -102,7 +102,9 @@ public class ApoderadoBean implements Serializable{
 			}
 			
 			System.out.println("consultando apoderado ... ");
-			 auxitemporal=apoderadoService.consultaPersona(nuevousuario);
+			
+			auxitemporal = apoderadoService.consultaPersona(nuevousuario);
+			
 		} catch (Exception e) {
 			System.out.println("error: "+e.getMessage());
 		}
@@ -117,18 +119,18 @@ public class ApoderadoBean implements Serializable{
 				apoderadoService.registrarPersona(nuevoApoderado);
 				userapoderadoService.registrarUsuario(nuevousuario);
 				
-				Apoderado apotempo=new Apoderado();
+				Apoderado apotempo = new Apoderado();
 				apotempo.setPersonas(nuevoApoderado);
 				apoderadoService.guardaApoderado(apotempo);
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Insertado correctamente: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
 				nuevousuario =  new Usuario();
-				nuevoApoderado=new Persona();
+				nuevoApoderado = new Persona();
 				System.out.println("insertados correctamente ... ");
 			} catch (Exception e) {
 				System.out.println("Hubo un error insertando ...");
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al apoderado","No se insertó el apoderado"));
 				nuevousuario =  new Usuario();
-				nuevoApoderado=new Persona();
+				nuevoApoderado = new Persona();
 				e.printStackTrace();
 			}
 		}
