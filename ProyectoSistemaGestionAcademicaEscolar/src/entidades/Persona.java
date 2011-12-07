@@ -43,6 +43,9 @@ public class Persona implements Serializable {
 	@Column(name="sexo")
 	private String strSexo;
 	
+	@Transient
+	private Perfil perfil = new Perfil();
+	
 	@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
 	private Collection<Usuario> tbUsuarios;
 	
@@ -138,5 +141,15 @@ public class Persona implements Serializable {
 	public void setTbApoderados(Collection<Apoderado> tbApoderados) {
 		this.tbApoderados = tbApoderados;
 	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+	
 	
 }

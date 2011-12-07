@@ -24,4 +24,8 @@ public class ApplicationBusinessDelegate {
 		return new MotivoDaoService(DAOFactory.JPA);
 	}
 	
+	public PerfilService getPerfilService(){
+		return new PerfilDaoService(DAOFactory.JPA);
+	}
+	
 }

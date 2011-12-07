@@ -54,6 +54,15 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
+	@Override
+	public PerfilDAO getPerfilDAO() {
+		PerfilJPADAO ed =  new PerfilJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (PerfilDAO)ed;
+	}
+
+
 	//aca falta las implementaciones de los dao q se va
 	//a usar
 	
