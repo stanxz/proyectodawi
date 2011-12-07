@@ -38,14 +38,15 @@ public class PersonaJPADAO implements PersonaDAO {
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
 					Persona entidad = (Persona)lista.get(i);
-					System.out.println("Empleado: " + lista.get(i));
 					empleados.add(entidad);
 				}
 		 }
 		 
+		 
 		 for (Persona x : empleados) {	 
 			x.setPerfil(obtienePerfilPersona(x.getStrCodigoPersona()));
 		 }
+		
 
 		em.close();
 		

@@ -60,7 +60,6 @@ public class AlumnoBean implements Serializable{
 		System.out.println(nuevoAlumno.getStrApellidoMaterno());
 		System.out.println(nuevoAlumno.getDtFecNac());
 		
-		//nuevoAlumno.set
 		
 		try {
 			alumnoService.registrarAlumno(nuevoAlumno);
