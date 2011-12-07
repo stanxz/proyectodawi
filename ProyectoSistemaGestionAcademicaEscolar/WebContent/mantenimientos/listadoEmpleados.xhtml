@@ -71,7 +71,7 @@
         
          <f:facet name="footer">  
          <div align="left">
-         <p:commandButton value="Nuevo Empleado" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Registre un nuevo empleado en el sistema">  
+         <p:commandButton value="Nuevo Empleado" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Agregue un empleado al sistema">  
 				<f:setPropertyActionListener value="#{true}" target="#{empleadoBean.editMode}" />  
  		 </p:commandButton>
          </div>
@@ -128,7 +128,6 @@
                 <p:inputText value="#{empleadoBean.selectedEmpleado.strTelefono}" rendered="#{empleadoBean.editMode}" required="true" label="Telefono"/>  
             </h:panelGroup> 
             
-            
             <h:outputText value="Celular" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
@@ -148,26 +147,7 @@
 		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
 		     </h:selectOneMenu>  
             </h:panelGroup> 
-            
-              <!-- 
-            <h:outputText value="Fecha Nacimiento" />  
-            <h:panelGroup>  
-                <h:outputText value="#{alumnoBean.selectedAlumno.dtFecNac}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" rendered="#{alumnoBean.editMode}" >
-                </p:calendar>  
-            </h:panelGroup>
-             -->
-            <!-- 
-  
-  			<h:outputText value="Estado" />  
-            <h:panelGroup >  
-                <h:outputText value="#{alumnoBean.selectedAlumno.strEstado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strEstado}" rendered="#{alumnoBean.editMode}"  required="true"  >  
-		            <f:selectItem itemLabel="MATRICULADO" itemValue="MATRICULADO" />  
-		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-  			 -->
+
           <f:facet name="footer"> 
                 <p:outputPanel rendered="#{empleadoBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
@@ -182,94 +162,32 @@
           </f:facet>  
         </h:panelGrid> 
        </h:form>
+       
     </p:dialog>  
-
-    <p:dialog header="Nuevo Empleado" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center">  
-	   <h:form id="dlgForm2">  
-          <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
- 
-            <h:outputText value="Codigo Empleado" />  
-            <h:panelGroup>
-            	<p:inputMask value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true" mask="9999999" label="Codigo"/>   
-            </h:panelGroup>  
-
-            <h:outputText value="Nombres" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strNombre}" style="font-weight:bold" required="true" label="Nombres"/>
-            </h:panelGroup>  
-      
-            <h:outputText value="Apellido Paterno" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoPaterno}" style="font-weight:bold" required="true" label="Apellido Paterno"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Apellido Materno" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoMaterno}" style="font-weight:bold" required="true" label="Apellido Materno"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Dirección" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strDireccion}" style="font-weight:bold" required="true" label="Dirección"/>  
-            </h:panelGroup>  
-           
-            <h:outputText value="EMail" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strMail}" style="font-weight:bold" required="true" label="Email"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Telefono" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strTelefono}" style="font-weight:bold" required="true" label="Teléfono"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Celular" />  
-            <h:panelGroup>  
-                <p:inputText value="#{empleadoBean.nuevoEmpleado.strCelular}" style="font-weight:bold" required="true" label="Celular"/>  
-            </h:panelGroup>  
-            
-            <h:outputText value="Sexo" />  
-             <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.strSexo}" style="font-weight:bold" required="true"  label="Sexo">  
-		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
-		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
-		     </h:selectOneMenu>  
-		    
-		    <h:outputText value="Password" />  
-            <h:panelGroup>  
-                <p:password value="#{empleadoBean.nuevoUsuario.strContrasena}" style="font-weight:bold" required="true" feedback="false"  label="Celular"/>  
-            </h:panelGroup> 
-             <!--  
-		     <h:outputText value="Perfil" />  
-             <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.perfil}" style="font-weight:bold" required="true"  label="Perfil" requiredMessage="Seleccione un Perfil">  
-		            <f:selectItem itemLabel="Seleccione Perfil" itemValue="#{null}"/>
-	<f:selectItems value="#{empleadoBean.perfiles}" var="perfil"
-	               itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}"/>         
-		     </h:selectOneMenu>
-		     -->  
-           <!-- 
-             <h:outputText value="Fecha Nacimiento" />  
-            <h:panelGroup>  
-                <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2012-01-01" readOnlyInputText="true">
-                </p:calendar>  
-            </h:panelGroup>
- -->
-          <f:facet name="footer"> 
-                <p:outputPanel rendered="true" layout="block" style="text-align:center">
-                <h:panelGroup>
-					  <p:commandButton value="Grabar" 
-					  actionListener="#{empleadoBean.registraEmpleado}"
-					  update="form:listaEmpleados msgs"
-                      image="ui-icon ui-icon-check"
-                      oncomplete="onEditCompleteRegistrar(args)"/>
-                    <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
-  				</h:panelGroup>
-              </p:outputPanel>  
-          </f:facet>  
-          
-        </h:panelGrid> 
-       </h:form>
+    
+    <p:dialog header="Nuevo Empleado" widgetVar="carDialog2" resizable="false" id="carDlg2"
+    		showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">
+    <h:form id="dlgForm2">
+    	<h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;">
+    		<h:outputText value="Codigo Empleado"/>
+    		<h:panelGroup>
+    			<p:inputText value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true" label="Nombre Asignatura"/>
+    		</h:panelGroup>
+    		
+    		 <f:facet name="footer"> 
+    		<h:panelGroup>
+    			<p:commandButton value="Grabar"
+    			                 actionListener="#{empleadoBean.registraEmpleado}"
+    			                 update="form:listaEmpleados msgs"
+    			                 image="ui-icon ui-icon-check"
+    			                 oncomplete="onEditCompleteRegistrar(args)"/>
+    			<p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
+    		</h:panelGroup>
+    		</f:facet>
+    	</h:panelGrid>
+    </h:form>
     </p:dialog>
+
 	</div>
 	</ui:define>
 

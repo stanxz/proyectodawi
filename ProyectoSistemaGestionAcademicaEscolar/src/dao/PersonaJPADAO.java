@@ -34,8 +34,6 @@ public class PersonaJPADAO implements PersonaDAO {
 		 List lista = em.createQuery("SELECT p FROM Persona p " +
 				                     "inner join p.tbUsuarios u " +
 				                     "where u.perfiles.strCodigoPerfil <> 'pf01'").getResultList();
-		
-		 System.out.println("-->1");
 		 
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
@@ -45,15 +43,10 @@ public class PersonaJPADAO implements PersonaDAO {
 				}
 		 }
 		 
-		 System.out.println("--->2");
-		 
 		 for (Persona x : empleados) {	 
 			x.setPerfil(obtienePerfilPersona(x.getStrCodigoPersona()));
-			System.out.println("perfil --> " + obtienePerfilPersona(x.getStrCodigoPersona()).getStrNombre());
 		 }
-		 
-		 System.out.println("----->3");
-		 
+
 		em.close();
 		
 		return empleados;
