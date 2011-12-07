@@ -42,7 +42,7 @@ public class EmpleadoBean implements Serializable{
 
 	public EmpleadoBean(){
 		System.out.println("Creando EmpleadoBean...");
-		CargarPerfiles();
+		//CargarPerfiles();
 	}
 	
 	public void CargarPerfiles(){
