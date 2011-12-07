@@ -123,8 +123,8 @@ public class ApoderadoBean implements Serializable{
 				apotempo.setPersonas(nuevoApoderado);
 				apoderadoService.guardaApoderado(apotempo);
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado Insertado correctamente: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
-				nuevousuario =  new Usuario();
-				nuevoApoderado = new Persona();
+				//nuevousuario =  new Usuario();
+				//nuevoApoderado = new Persona();
 				System.out.println("insertados correctamente ... ");
 			} catch (Exception e) {
 				System.out.println("Hubo un error insertando ...");
