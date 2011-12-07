@@ -176,9 +176,10 @@
     		
     		<h:outputText value="Perfiles" />  
             <h:panelGroup>
-                <h:selectOneMenu value="#{empleado.nuevoEmpleado.perfil}" required="true" requiredMessage="Seleccione un Perfil" >
+                <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.perfil.strCodigoPerfil}" required="true" requiredMessage="Seleccione un Perfil" >
                     <f:selectItem itemLabel="Seleccione Perfil" itemValue="#{null}"/>  
-		            <f:selectItems value="#{empleadoBean.perfiles}" var="perfil" itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}" ></f:selectItems>  	        
+		            <f:selectItems value="#{empleadoBean.perfiles}" var="perfil" 
+		                          itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}" ></f:selectItems>  	        
 		        </h:selectOneMenu>  
             </h:panelGroup>
     		

@@ -56,14 +56,6 @@ public class Alumno implements Serializable {
 	@Transient
 	private Date fechaNacimiento;
 	
-	public Date getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(Date fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
 	//@Transient
 	//private Persona personas;
 	
@@ -73,9 +65,17 @@ public class Alumno implements Serializable {
 			inverseJoinColumns={@JoinColumn(name="codasignatura")}
 	)
 	private Collection<Alumno> tbAsignaturas;
+	
+	public Date getFechaNacimiento() {
+		return fechaNacimiento;
+	}
 
+	public void setFechaNacimiento(Date fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
 
     public Alumno() {
+    	
     }
 
 	public String getStrCodigoAlumno() {

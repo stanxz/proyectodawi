@@ -52,6 +52,10 @@ public class Persona implements Serializable {
 	@OneToOne(targetEntity=Apoderado.class,mappedBy="personas")
 	private Collection<Apoderado> tbApoderados;
 	
+	public Persona(){
+		
+	}
+	
 	
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
@@ -149,7 +153,7 @@ public class Persona implements Serializable {
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-
+	
 	
 	
 }

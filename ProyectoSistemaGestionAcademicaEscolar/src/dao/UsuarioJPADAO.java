@@ -104,22 +104,5 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		em.close();
 	}
 	
-	@Override
-	public Usuario buscaUsuario(Usuario elusuario) throws Exception {
-
-		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1");
-		q.setParameter(1, elusuario.getPersonas().getStrCodigoPersona());
-		
-			Usuario entidadUsuario =(Usuario)q.getSingleResult();
-			em.close();
-			if(entidadUsuario!=null){
-				return entidadUsuario;
-			}else{
-				return null;
-			}
-	
-	}
-	
 
 }

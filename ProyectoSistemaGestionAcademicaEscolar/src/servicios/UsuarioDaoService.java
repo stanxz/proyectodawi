@@ -41,10 +41,4 @@ public class UsuarioDaoService implements UsuarioService {
 		usuariodao.registrarUsuario(nuevo);
 	}
 
-	@Override
-	public Usuario buscaUsuario(Usuario elusuario) throws Exception {
-		// TODO Auto-generated method stub
-		return usuariodao.buscaUsuario(elusuario);
-	}
-
 }
