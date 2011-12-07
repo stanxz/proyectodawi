@@ -166,13 +166,20 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Empleado" widgetVar="carDialog2" resizable="false" id="carDlg2"
-    		showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">
+    		showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" onShow="limpiarTextBox('#dlgForm2')">
     <h:form id="dlgForm2">
     	<h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;">
     		<h:outputText value="Codigo Empleado"/>
     		<h:panelGroup>
-    			<p:inputText value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true" label="Codigo Empleado"/>
+    			<p:inputMask value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true"  mask="99999999" label="Codigo Empleado"/>
     		</h:panelGroup>
+    		
+    		<h:outputText value="Nombres"/>
+    		<h:panelGroup>
+    			<p:inputText value="#{empleadoBean.nuevoEmpleado.strNombre}" style="font-weight:bold" required="true" label="Nombres" onkeypress="return validar(event)"/>
+    		</h:panelGroup>
+    		
+    		
     		
     		<h:outputText value="Perfiles" />  
             <h:panelGroup>

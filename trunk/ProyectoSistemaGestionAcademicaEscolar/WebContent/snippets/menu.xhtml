@@ -25,6 +25,23 @@ jq('a').click(function(e) {
   });
 });
 
+function limpiarTextBox(miForm){
+jq(':input', miForm).each(function() {
+   var type = this.type;
+   var tag  = this.tagName.toLowerCase();
+
+  if (type == 'text' || type == 'password' || tag == 'textarea'){
+  	jq(this).val('');
+  }else if(type == 'checkbox' || type == 'radio'){
+  	jq(this).checked = false;
+  }else if (tag == 'select'){
+  	jq(this).selectedIndex = -1;
+  	jq(this).val(jq('option:first', jq(this)).val() );
+  }	
+});
+
+}
+
 function onEditComplete(args) {
 	if(args.validationFailed) {
 	
@@ -47,6 +64,7 @@ function cargaDatosRetiro(args) {
 		datosDialog.show();
 	}
 }
+
 function ocultarBoton1(args){
 	var elemento=document.getElementById('dlgForm3:btnSeleccionaApoderado');
 	elemento.style.display = 'none';
