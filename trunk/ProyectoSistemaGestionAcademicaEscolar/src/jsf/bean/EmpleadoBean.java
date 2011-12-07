@@ -1,38 +1,32 @@
 package jsf.bean;
 
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-
-
-import entidades.Perfil;
-import entidades.Persona;
-import entidades.Usuario;
-
 import servicios.ApplicationBusinessDelegate;
 import servicios.PerfilService;
 import servicios.PersonaService;
-
+import entidades.Perfil;
+import entidades.Persona;
+import entidades.Usuario;
 
 @SuppressWarnings("serial")
 @SessionScoped
 @ManagedBean
 public class EmpleadoBean implements Serializable{
 	
-	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
+    private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
 	public static PerfilService perfilService = abd.getPerfilService();
 	public static PersonaService personaService = abd.getPersonaService();
 	
 	private Persona empleado,selectedEmpleado;
 	private Perfil perfil;
-	private ArrayList<Perfil> perfiles;
 	private ArrayList<Persona> empleados;
+	private ArrayList<Perfil> perfiles;
 	
 	private boolean editMode;
 	
@@ -42,7 +36,13 @@ public class EmpleadoBean implements Serializable{
 
 	public EmpleadoBean(){
 		System.out.println("Creando EmpleadoBean...");
-		//CargarPerfiles();
+		CargarPerfiles();
+	}
+	
+	public void registraEmpleado(){
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("--------------------------Registro Empleado---------------------");
+		System.out.println("---------------------------------------------------------------");
 	}
 	
 	public void CargarPerfiles(){
@@ -51,31 +51,6 @@ public class EmpleadoBean implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void registraEmpleado(){
-		System.out.println("Registro Empleado");
-	}
-
-	public ArrayList<Perfil> getPerfiles() {
-		return perfiles;
-	}
-
-	public void setPerfiles(ArrayList<Perfil> perfiles) {
-		this.perfiles = perfiles;
-	}
-
-	public ArrayList<Persona> getEmpleados() {
-		try {
-			empleados = personaService.obtenerTodosEmpleados();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return empleados;
-	}
-
-	public void setEmpleados(ArrayList<Persona> empleados) {
-		this.empleados = empleados;
 	}
 
 	public Persona getEmpleado() {
@@ -102,6 +77,27 @@ public class EmpleadoBean implements Serializable{
 		this.perfil = perfil;
 	}
 
+	public ArrayList<Persona> getEmpleados() {
+		try {
+			empleados = personaService.obtenerTodosEmpleados();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return empleados;
+	}
+
+	public void setEmpleados(ArrayList<Persona> empleados) {
+		this.empleados = empleados;
+	}
+
+	public ArrayList<Perfil> getPerfiles() {
+		return perfiles;
+	}
+
+	public void setPerfiles(ArrayList<Perfil> perfiles) {
+		this.perfiles = perfiles;
+	}
+
 	public boolean isEditMode() {
 		return editMode;
 	}
@@ -126,4 +122,6 @@ public class EmpleadoBean implements Serializable{
 		this.nuevoUsuario = nuevoUsuario;
 	}
 
+	
+	
 }
