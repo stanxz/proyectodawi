@@ -43,6 +43,13 @@ public class Persona implements Serializable {
 	@Column(name="sexo")
 	private String strSexo;
 	
+	@Column(name="dni")
+	private int intDNI;
+	
+	@ManyToOne
+	@Column(name="iddistrito")
+	private int intIdDistrito;
+	
 	@Transient
 	private Perfil perfil = new Perfil();
 	
@@ -56,7 +63,23 @@ public class Persona implements Serializable {
 		
 	}
 	
-	
+	public int getIntDNI() {
+		return intDNI;
+	}
+
+	public void setIntDNI(int intDNI) {
+		this.intDNI = intDNI;
+	}
+
+	public int getIntIdDistrito() {
+		return intIdDistrito;
+	}
+
+	public void setIntIdDistrito(int intIdDistrito) {
+		this.intIdDistrito = intIdDistrito;
+	}
+
+
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
 	}

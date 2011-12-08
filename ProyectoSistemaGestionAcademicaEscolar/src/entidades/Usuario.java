@@ -36,22 +36,7 @@ public class Usuario implements Serializable {
 	public void setStrContrasena(String strContrasena) {
 		this.strContrasena = strContrasena;
 	}
-	/*
-	public String getStrCodigoPerfil() {
-		return strCodigoPerfil;
-	}
-	public void setStrCodigoPerfil(String strCodigoPerfil) {
-		this.strCodigoPerfil = strCodigoPerfil;
-	}
-	*/
-	/*
-	public String getStrCodigoPersona() {
-		return strCodigoPersona;
-	}
-	public void setStrCodigoPersona(String strCodigoPersona) {
-		this.strCodigoPersona = strCodigoPersona;
-	}
-	*/
+
 	public int getIntIdLogin() {
 		return intIdLogin;
 	}
