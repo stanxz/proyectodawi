@@ -42,11 +42,11 @@ public class Distrito {
 		this.strNombreDistrito = strNombreDistrito;
 	}
 
-	public Collection<Usuario> getTbPersonas() {
+	public Collection<Persona> getTbPersonas() {
 		return tbPersonas;
 	}
 
-	public void setTbPersonas(Collection<Usuario> tbPersonas) {
+	public void setTbPersonas(Collection<Persona> tbPersonas) {
 		this.tbPersonas = tbPersonas;
 	}
 	
