@@ -10,10 +10,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.eclipse.persistence.exceptions.DatabaseException;
-
-import com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException;
-
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
@@ -70,21 +66,12 @@ public class AlumnoBean implements Serializable{
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
 			System.out.println("Se registro el Alumno con exito");
 			nuevoAlumno =  new Alumno();
-		}catch(DatabaseException dbe){
-			System.out.println("Error registrando el alumno: "+dbe.getMessage());
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: Ese codigo de alumno ya se encuentra registrado","No se insertó el alumno: "+dbe.getMessage()));
-			nuevoAlumno =  new Alumno();
-		}
-		catch(MySQLIntegrityConstraintViolationException micve){
-			System.out.println("Error registrando el alumno: "+micve.getMessage());
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: Ese codigo de alumno ya se encuentra registrado","No se insertó el alumno: "+micve.getMessage()));
-			nuevoAlumno =  new Alumno();
-		} 
-		catch (Exception e) {
+			
+		} catch (Exception e) {
 			System.out.println("Error registrando el alumno: "+e.getMessage());
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al alumno","No se insertó el alumno: "+e.getMessage()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al alumno","No se insertó el apoderado: "+e.getMessage()));
 			nuevoAlumno =  new Alumno();
-			//e.printStackTrace();
+			e.printStackTrace();
 		}
     }
 	
