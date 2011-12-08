@@ -42,7 +42,9 @@ DataTable - Row Selection
 	xmlns:p="http://primefaces.prime.com.tr/ui">    
 <h:head>
 	<title>
-		<ui:insert name="title"></ui:insert>
+		<ui:insert name="title">
+			I.E.P &quot;SAN CARLOS&quot;
+		</ui:insert>
 	</title> 
 <h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
 </h:head>
@@ -52,14 +54,18 @@ DataTable - Row Selection
 		<tr>
 			<td colspan="2" height="100">
 			<div id="header">
-				<ui:insert name="header"></ui:insert>
+				<ui:insert name="header">
+					<ui:include src="/snippets/header.xhtml" />
+				</ui:insert>
 			</div>
 			</td>
 		</tr>
 		<tr>
 			<td height="100%" valign="middle">
 			<div id="menu">
-				<ui:insert name="menu"></ui:insert>
+				<ui:insert name="menu" >
+					<ui:include src="/snippets/menu.xhtml"></ui:include>
+				</ui:insert>
 			</div>
 			</td>
 			<td>
@@ -71,7 +77,9 @@ DataTable - Row Selection
 		<tr>
 			<td colspan="2" height="100">
 				<div id="footer">
-					<ui:insert name="footer"></ui:insert>
+					<ui:insert name="footer">
+						<ui:include src="/snippets/footer.xhtml" />
+					</ui:insert>
 				</div>
 			</td>
 		</tr>

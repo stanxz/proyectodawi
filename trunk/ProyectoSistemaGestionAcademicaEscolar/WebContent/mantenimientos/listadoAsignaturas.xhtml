@@ -5,20 +5,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	template="/templates/crud-template.xhtml">
 
-	<ui:define name="title">
-		I.E.P &quot;SAN CARLOS&quot;
-	</ui:define>
-	
-	<ui:define name="header">
-		<ui:include src="/snippets/header.xhtml" />
-	</ui:define>
-
-	<ui:define name="menu">
-		<ui:include src="/snippets/menu.xhtml" />
-	</ui:define>
-
-	<ui:define name="body">
-	<div align="center">
+<ui:define name="body">
+   <div align="center">
 		 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaAsignaturas" var="asignatura" value="#{asignaturaBean.asignaturas}" 
@@ -139,9 +127,6 @@
        </h:form>
     </p:dialog>
 	</div>
-	</ui:define>
+</ui:define>
 
-	<ui:define name="footer">
-		<ui:include src="/snippets/footer.xhtml" />
-	</ui:define>
 </ui:composition>
