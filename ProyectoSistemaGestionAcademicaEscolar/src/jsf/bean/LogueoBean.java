@@ -115,7 +115,7 @@ public class LogueoBean {
 						
 						if(tmpUsuario != null){
 							System.out.println("Persona encontrada: " + tmpPersona.getStrNombre()+ " " + tmpPersona.getStrApellidoPaterno()+ " " + tmpPersona.getStrApellidoMaterno());
-							mensaje2="Enviando mensaje al usuario con DNI: " + tmpPersona.getStrCodigoPersona();
+							mensaje2="Enviando mensaje al usuario con DNI: " + tmpPersona.getIntDNI();
 							//logica envio de correos
 							EnviaMail enviador = new EnviaMail();
 							enviador.EnviadorMailContrasena(tmpPersona.getStrMail(), tmpPersona.getStrNombre()+ " "+tmpPersona.getStrApellidoPaterno()+ " "+tmpPersona.getStrApellidoMaterno(), tmpUsuario);
