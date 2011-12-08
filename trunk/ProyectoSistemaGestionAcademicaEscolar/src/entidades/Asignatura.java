@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -30,6 +31,12 @@ public class Asignatura implements Serializable{
 	
 	@Column(name="estado")
 	private String strEstado;
+	
+	@Column(name="grado")
+	private int intGrado;
+	
+	@Transient
+	private String strNivel;
 	
 	@ManyToMany
 	@JoinTable(name="detalleasignatura",
@@ -70,7 +77,20 @@ public class Asignatura implements Serializable{
 	public void setStrEstado(String strEstado) {
 		this.strEstado = strEstado;
 	}
-	
-	
-	
+
+	public int getIntGrado() {
+		return intGrado;
+	}
+
+	public void setIntGrado(int intGrado) {
+		this.intGrado = intGrado;
+	}
+
+	public String getStrNivel() {
+		return strNivel;
+	}
+
+	public void setStrNivel(String strNivel) {
+		this.strNivel = strNivel;
+	}
 }

@@ -3,6 +3,7 @@
     xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.prime.com.tr/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/templates/crud-template.xhtml">
 
 <ui:define name="body">
@@ -30,6 +31,10 @@
         <p:column headerText="Descripcion" filterBy="#{asignatura.strNombreAsignatura}" filterStyle="display:none">  
             <h:outputText value="#{asignatura.strNombreAsignatura}" />  
         </p:column>  
+        
+        <p:column headerText="Grado">  
+            <h:outputText value="#{asignatura.intGrado} º" />  
+        </p:column>
         
         <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
@@ -81,6 +86,27 @@
             <h:panelGroup>  
                 <h:outputText value="#{asignaturaBean.selectedAsignatura.strNombreAsignatura}" style="font-weight:bold" rendered="#{!asignaturaBean.editMode}"/>  
                 <p:inputText value="#{asignaturaBean.selectedAsignatura.strNombreAsignatura}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" label="Nombre Asignatura"/>  
+            </h:panelGroup>
+            
+            <h:outputText value="Nivel" />  
+            <h:panelGroup>  
+            <h:outputText value="#{asignaturaBean.selectedAsignatura.strNivel}" style="font-weight:bold" rendered="#{!asignaturaBean.editMode}"/>  
+            <h:selectOneMenu id="nivel" value="#{asignaturaBean.selectedAsignatura.strNivel}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" label="Nivel Asignatura">  
+                <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{null}" />  
+                <f:selectItem itemLabel="Primario" itemValue="Primario" /> 
+                <f:selectItem itemLabel="Secundario" itemValue="Secundario" /> 
+                <p:ajax update="grado"  
+                        listener="#{asignaturaBean.handleCityChange}" />      
+            </h:selectOneMenu> 
+            </h:panelGroup>    
+           
+            <h:outputText value="Grado Asignatura" />  
+            <h:panelGroup>  
+            <h:outputText value="#{asignaturaBean.selectedAsignatura.intGrado} º" style="font-weight:bold" rendered="#{!asignaturaBean.editMode}"/> 
+            <h:selectOneMenu id="grado" value="#{asignaturaBean.selectedAsignatura.intGrado}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" label="Nivel Grado">  
+            	<f:selectItem itemLabel="Seleccione Grado" itemValue="#{null}" />  
+            	<f:selectItems value="#{asignaturaBean.gradosListados}"/>  
+             </h:selectOneMenu>   
             </h:panelGroup>  
   
           <f:facet name="footer"> 
