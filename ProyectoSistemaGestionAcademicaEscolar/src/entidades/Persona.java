@@ -47,8 +47,8 @@ public class Persona implements Serializable {
 	private int intDNI;
 	
 	@ManyToOne
-	@Column(name="iddistrito")
-	private int intIdDistrito;
+	@JoinColumn(name="iddistrito")
+	private Distrito distritos;
 	
 	@Transient
 	private Perfil perfil = new Perfil();
@@ -71,14 +71,13 @@ public class Persona implements Serializable {
 		this.intDNI = intDNI;
 	}
 
-	public int getIntIdDistrito() {
-		return intIdDistrito;
+	public Distrito getDistritos() {
+		return distritos;
 	}
 
-	public void setIntIdDistrito(int intIdDistrito) {
-		this.intIdDistrito = intIdDistrito;
+	public void setDistritos(Distrito distritos) {
+		this.distritos = distritos;
 	}
-
 
 	public String getStrCodigoPersona() {
 		return strCodigoPersona;
