@@ -12,7 +12,6 @@ import entidades.AsistentaSocial;
 import entidades.Perfil;
 import entidades.Persona;
 import entidades.SecretariaAcademica;
-import entidades.Usuario;
 
 public class PersonaJPADAO implements PersonaDAO {
 
@@ -72,10 +71,10 @@ public class PersonaJPADAO implements PersonaDAO {
 	}
 	
 	@Override
-	public Persona consultarPersona(Usuario u) throws Exception {
+	public Persona consultarPersona(Persona p) throws Exception {
 		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT p FROM Persona p WHERE p.strCodigoPersona=?1");
-		q.setParameter(1, u.getPersonas().getStrCodigoPersona());
+		Query q =  em.createQuery("SELECT p FROM Persona p WHERE p.intDNI=?1");
+		q.setParameter(1, p.getIntDNI());
 		
 		try {
 			Persona entidadPersona =(Persona)q.getSingleResult();

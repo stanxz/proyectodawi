@@ -6,7 +6,6 @@ import dao.DAOFactory;
 import dao.PersonaDAO;
 import entidades.Apoderado;
 import entidades.Persona;
-import entidades.Usuario;
 
 public class PersonaDaoService implements PersonaService {
 
@@ -19,9 +18,9 @@ public class PersonaDaoService implements PersonaService {
 	}
 
 	@Override
-	public Persona consultaPersona(Usuario u) throws Exception {
+	public Persona consultaPersona(Persona p) throws Exception {
 		// TODO Auto-generated method stub
-		return personadao.consultarPersona(u);
+		return personadao.consultarPersona(p);
 	}
 
 	@Override

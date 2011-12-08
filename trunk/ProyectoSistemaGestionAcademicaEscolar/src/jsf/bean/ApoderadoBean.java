@@ -43,12 +43,8 @@ public class ApoderadoBean implements Serializable{
 			Persona personatempo = new Persona();
 			System.out.println("buscado: "+elcodigoApoderado);
 			personatempo.setStrCodigoPersona(elcodigoApoderado);
-			Usuario usuariotempo =  new Usuario();
-			usuariotempo.setPersonas(personatempo);
-			System.out.println("consultando");
-			System.out.println("codigo:"+usuariotempo.getPersonas().getStrCodigoPersona());
 			apoderado=new Persona();
-			apoderado=apoderadoService.consultaPersona(usuariotempo);
+			apoderado=apoderadoService.consultaPersona(personatempo);
 			System.out.println("consulta hecha ...");
 			if(apoderado!=null){
 				System.out.println("Apoderado encontrado: "+apoderado.getStrNombre()+" "+apoderado.getStrApellidoPaterno());
@@ -103,7 +99,7 @@ public class ApoderadoBean implements Serializable{
 			
 			System.out.println("consultando apoderado ... ");
 			
-			auxitemporal = apoderadoService.consultaPersona(nuevousuario);
+			//auxitemporal = apoderadoService.consultaPersona(nuevousuario);
 			
 		} catch (Exception e) {
 			System.out.println("error: "+e.getMessage());

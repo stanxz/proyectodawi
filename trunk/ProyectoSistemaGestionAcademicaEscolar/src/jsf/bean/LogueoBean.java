@@ -96,25 +96,29 @@ public class LogueoBean {
 		System.out.println("el DNI: "+dni);		
 		
 		persona = new Persona();
-		persona.setStrCodigoPersona(dni);
+		persona.setIntDNI(Integer.parseInt(dni));
 		
-		usuario =  new Usuario();
+		//usuario =  new Usuario();
 		
-		usuario.setPersonas(persona);
+		//.setPersonas(persona);
 
-		if(!dni.isEmpty()){
+		if(dni != null){
 			try {
-				Usuario uauxi = userService.consultaPass(usuario);
-				if(uauxi!=null){
+				Persona tmpPersona = personaService.consultaPersona(persona);
+
+				//Usuario uauxi = userService.consultaPass(usuario);
+				if(tmpPersona != null){
 						System.out.println("Enviando mail al usuario ... ");
-						Persona pauxi=personaService.consultaPersona(uauxi);
+						//Persona pauxi=personaService.consultaPersona(uauxi);
 						
-						if(pauxi!=null){
-							System.out.println("Persona encontrada: "+pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno());
-							mensaje2="Enviando mensaje al usuario con DNI: "+uauxi.getPersonas().getStrCodigoPersona();
+						Usuario tmpUsuario = userService.consultaPass(tmpPersona);
+						
+						if(tmpUsuario != null){
+							System.out.println("Persona encontrada: " + tmpPersona.getStrNombre()+ " " + tmpPersona.getStrApellidoPaterno()+ " " + tmpPersona.getStrApellidoMaterno());
+							mensaje2="Enviando mensaje al usuario con DNI: " + tmpPersona.getStrCodigoPersona();
 							//logica envio de correos
 							EnviaMail enviador = new EnviaMail();
-							enviador.EnviadorMailContrasena(pauxi.getStrMail(), pauxi.getStrNombre()+ " "+pauxi.getStrApellidoPaterno()+ " "+pauxi.getStrApellidoMaterno(), uauxi);
+							enviador.EnviadorMailContrasena(tmpPersona.getStrMail(), tmpPersona.getStrNombre()+ " "+tmpPersona.getStrApellidoPaterno()+ " "+tmpPersona.getStrApellidoMaterno(), tmpUsuario);
 							return "index";
 						}else{
 							System.out.println("Persona no encontrada en la BD con ese dni !");

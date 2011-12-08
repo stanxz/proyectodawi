@@ -6,13 +6,12 @@ import entidades.Apoderado;
 import entidades.AsistentaSocial;
 import entidades.Persona;
 import entidades.SecretariaAcademica;
-import entidades.Usuario;
 
 public interface PersonaDAO {
 	
 	public ArrayList<Persona> obtenerTodosEmpleados()throws Exception;
 
-	public Persona consultarPersona(Usuario u) throws Exception;
+	public Persona consultarPersona(Persona p) throws Exception;
 
 	public void registrarPersona(Persona nueva) throws Exception;
 

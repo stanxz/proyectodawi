@@ -6,6 +6,7 @@ import dao.DAOFactory;
 import dao.UsuarioDAO;
 
 import entidades.Permiso;
+import entidades.Persona;
 import entidades.Usuario;
 
 public class UsuarioDaoService implements UsuarioService {
@@ -30,9 +31,9 @@ public class UsuarioDaoService implements UsuarioService {
 	}
 
 	@Override
-	public Usuario consultaPass(Usuario elusuario) throws Exception {
+	public Usuario consultaPass(Persona persona) throws Exception {
 		// TODO Auto-generated method stub
-		return usuariodao.buscaContrasena(elusuario);
+		return usuariodao.buscaContrasena(persona);
 	}
 
 	@Override
