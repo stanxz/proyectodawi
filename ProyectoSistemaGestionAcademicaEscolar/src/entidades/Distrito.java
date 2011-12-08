@@ -24,7 +24,7 @@ public class Distrito {
 	private String strNombreDistrito;
 		
 	@OneToMany(targetEntity=Persona.class,mappedBy="distritos")
-	private Collection<Usuario> tbPersonas;
+	private Collection<Persona> tbPersonas;
 
 	public int getIntIdDistrito() {
 		return intIdDistrito;
