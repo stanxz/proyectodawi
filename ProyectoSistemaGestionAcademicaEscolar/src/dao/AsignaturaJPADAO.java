@@ -33,6 +33,14 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 			}
 		}
 		
+		for (Asignatura x : asignaturas) {
+			if(x.getIntGrado() > 0 && x.getIntGrado() <=6){
+				x.setStrNivel("Primario");
+			}else{
+				x.setStrNivel("Secundario");
+			}
+		}
+		
 		return asignaturas;
 		
 	}
