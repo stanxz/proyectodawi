@@ -76,10 +76,12 @@ public class ApoderadoBean implements Serializable{
 	
 	public void registraApoderado() {  
 		System.out.println("en el registraApoderado");
-		Persona auxitemporal=null;
-		//esta parte del codigo esta fea pero estamos con el tiempo justo
-		Perfil p=new Perfil();
+		Persona auxitemporal = null;
+		
+		//Llena datos que iran a la tabla usuario
+		Perfil p = new Perfil();
 		p.setStrCodigoPerfil("pf01");
+
 		nuevousuario = new Usuario();
 		nuevousuario.setPersonas(nuevoApoderado);
 		nuevousuario.setStrContrasena(passapoderado);
@@ -99,7 +101,7 @@ public class ApoderadoBean implements Serializable{
 			
 			System.out.println("consultando apoderado ... ");
 			
-			//auxitemporal = apoderadoService.consultaPersona(nuevousuario);
+			auxitemporal = apoderadoService.consultaPersona(nuevoApoderado);
 			
 		} catch (Exception e) {
 			System.out.println("error: "+e.getMessage());
