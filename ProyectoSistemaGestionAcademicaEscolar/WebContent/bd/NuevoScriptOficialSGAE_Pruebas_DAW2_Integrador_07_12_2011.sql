@@ -325,33 +325,6 @@ LOCK TABLES `cita` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `detalleasignatura`
---
-
-DROP TABLE IF EXISTS `detalleasignatura`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `detalleasignatura` (
-  `ESTADO` varchar(15) DEFAULT NULL,
-  `CODASIGNATURA` int(11) NOT NULL,
-  `CODALUMNO` varchar(11) NOT NULL,
-  PRIMARY KEY (`CODASIGNATURA`,`CODALUMNO`),
-  KEY `DETALLEASIGNATURA_ALUMNO_FK` (`CODALUMNO`),
-  CONSTRAINT `DETALLEASIGNATURA_ALUMNO_FK` FOREIGN KEY (`CODALUMNO`) REFERENCES `alumno` (`CODALUMNO`),
-  CONSTRAINT `DETALLEASIGNATURA_ASIGNATURA_FK` FOREIGN KEY (`CODASIGNATURA`) REFERENCES `asignatura` (`CODASIGNATURA`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `detalleasignatura`
---
-
-LOCK TABLES `detalleasignatura` WRITE;
-/*!40000 ALTER TABLE `detalleasignatura` DISABLE KEYS */;
-/*!40000 ALTER TABLE `detalleasignatura` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `detallemotivo`
 --
 
