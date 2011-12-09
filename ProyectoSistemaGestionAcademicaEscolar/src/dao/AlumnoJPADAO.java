@@ -50,6 +50,8 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		em = emf.createEntityManager();
 		
+		System.out.println(apoderado.getPersonas().getStrCodigoPersona());
+		
 		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
 		Query q = em.createQuery("SELECT a FROM Alumno a where a.apoderados.personas.strCodigoPersona=?1");
