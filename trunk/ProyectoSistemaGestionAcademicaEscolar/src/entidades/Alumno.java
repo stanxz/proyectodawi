@@ -1,8 +1,9 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,8 +15,8 @@ public class Alumno implements Serializable {
 	@Column(name="codalumno")
 	private String strCodigoAlumno;
 	
-	@Column(name="anoacademico") 
-	private String strAnioAcademico;
+	@Column(name="dni") 
+	private int intDni;
 
 	@Column(name="apellidomat")
 	private String strApellidoMaterno;
@@ -29,15 +30,9 @@ public class Alumno implements Serializable {
 	@Column(name="estado")
 	private String strEstado;
 
-	@Column(name="grado")
-	private int intGrado;
-
 	@Column(name="nombres")
 	private String strNombres;
 
-	@Column(name="seccion")
-	private String strSeccion;
-	
 	@Column(name="sexo")
 	private int intSexo;
 	
@@ -46,30 +41,32 @@ public class Alumno implements Serializable {
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados = new Apoderado();
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name="codcalendario")
-	private Calendarioacademico calendarioacademico = new Calendarioacademico();
+	private Calendarioacademico calendarioacademico = new Calendarioacademico();*/
 	
 	@Transient
 	private Date fecha;
 	
 	@Transient
 	private Date fechaNacimiento;
-	
-	//@Transient
-	//private Persona personas;
-	
-	@ManyToMany
+
+	/*@ManyToMany
 	@JoinTable(name="detalleasignatura",
 			joinColumns={@JoinColumn(name="codalumno")},
 			inverseJoinColumns={@JoinColumn(name="codasignatura")}
 	)
-	private Collection<Alumno> tbAsignaturas;
+	private Collection<Alumno> tbAsignaturas;*/
 	
+	//bi-directional many-to-one association to Distrito
+    @ManyToOne
+	@JoinColumn(name="IDDISTRITO")
+	private Distrito distritos;
+	 
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
-
+		
 	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
@@ -84,14 +81,6 @@ public class Alumno implements Serializable {
 
 	public void setStrCodigoAlumno(String strCodigoAlumno) {
 		this.strCodigoAlumno = strCodigoAlumno;
-	}
-
-	public String getStrAnioAcademico() {
-		return strAnioAcademico;
-	}
-
-	public void setStrAnioAcademico(String strAnioAcademico) {
-		this.strAnioAcademico = strAnioAcademico;
 	}
 
 	public String getStrApellidoMaterno() {
@@ -109,15 +98,6 @@ public class Alumno implements Serializable {
 	public void setStrApellidoPaterno(String strApellidoPaterno) {
 		this.strApellidoPaterno = strApellidoPaterno;
 	}
-
-	/*public void setDtFecNac(java.util.Date dtFecNac) {
-		System.out.println("fecha q llega: "+dtFecNac.toString());
-		System.out.println(" a long: "+dtFecNac.getTime());
-		//SimpleDateFormat miformateador=new SimpleDateFormat();
-		Date objfecha= new Date(dtFecNac.getTime());
-		System.out.println("objFecha: "+objfecha.toString());
-		this.dtFecNac = objfecha;
-	}*/
 
 	public Date getFecha() {
 		return new Date(this.dtFecNac.getTime());
@@ -143,14 +123,6 @@ public class Alumno implements Serializable {
 		this.strEstado = strEstado;
 	}
 
-	public int getIntGrado() {
-		return intGrado;
-	}
-
-	public void setIntGrado(int intGrado) {
-		this.intGrado = intGrado;
-	}
-
 	public String getStrNombres() {
 		return strNombres;
 	}
@@ -159,25 +131,9 @@ public class Alumno implements Serializable {
 		this.strNombres = strNombres;
 	}
 
-	public String getStrSeccion() {
-		return strSeccion;
-	}
-
-	public void setStrSeccion(String strSeccion) {
-		this.strSeccion = strSeccion;
-	}
-
 	public Apoderado getApoderados() {
 		return apoderados;
 	}
-	
-	/*public Persona getPersonas() {
-		return personas;
-	}
-
-	public void setPersonas(Persona personas) {
-		this.personas = personas;
-	}*/
 
 	public void setApoderados(Apoderado apoderados) {
 		this.apoderados = apoderados;
@@ -191,20 +147,30 @@ public class Alumno implements Serializable {
 		this.intSexo = intSexo;
 	}
 
-	public Collection<Alumno> getTbAsignaturas() {
-		return tbAsignaturas;
-	}
-
-	public void setTbAsignaturas(Collection<Alumno> tbAsignaturas) {
-		this.tbAsignaturas = tbAsignaturas;
-	}
-
-	public Calendarioacademico getCalendarioacademico() {
+	/*public Calendarioacademico getCalendarioacademico() {
 		return calendarioacademico;
 	}
 
 	public void setCalendarioacademico(Calendarioacademico calendarioacademico) {
 		this.calendarioacademico = calendarioacademico;
+	}*/
+
+	public int getIntDni() {
+		return intDni;
 	}
 
+	public void setIntDni(int intDni) {
+		this.intDni = intDni;
+	}
+
+	public Distrito getDistritos() {
+		return distritos;
+	}
+
+	public void setDistritos(Distrito distritos) {
+		this.distritos = distritos;
+	}
+
+
+	
 }

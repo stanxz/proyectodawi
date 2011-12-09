@@ -29,7 +29,8 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
-		 List lista = em.createQuery("SELECT a FROM Alumno a order by a.strApellidoPaterno").getResultList();
+		 //List lista = em.createQuery("SELECT a FROM Alumno a order by a.strApellidoPaterno").getResultList();
+		List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
 		
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
@@ -111,11 +112,11 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		entidadAlumno.setStrApellidoPaterno(alumno.getStrApellidoPaterno());
 		entidadAlumno.setStrApellidoMaterno(alumno.getStrApellidoMaterno());
 		entidadAlumno.setDtFecNac(alumno.getDtFecNac());
-		entidadAlumno.setIntGrado(alumno.getIntGrado());
-		entidadAlumno.setStrSeccion(alumno.getStrSeccion());
-		entidadAlumno.setStrAnioAcademico(alumno.getStrAnioAcademico());
+		//entidadAlumno.setIntGrado(alumno.getIntGrado());
+		//entidadAlumno.setStrSeccion(alumno.getStrSeccion());
+		//entidadAlumno.setStrAnioAcademico(alumno.getStrAnioAcademico());
 		entidadAlumno.setStrEstado(alumno.getStrEstado());
-		entidadAlumno.setIntSexo(alumno.getIntGrado());
+		//entidadAlumno.setIntSexo(alumno.getIntGrado());
 	
 		//2.3 actualiza Empleado
 		em.merge(entidadAlumno);

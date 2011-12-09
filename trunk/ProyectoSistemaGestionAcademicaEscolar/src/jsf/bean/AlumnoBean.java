@@ -30,7 +30,7 @@ public class AlumnoBean implements Serializable{
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
-	private ArrayList<Calendarioacademico> anosAcademicos;
+	//private ArrayList<Calendarioacademico> anosAcademicos;
 	private boolean editMode;
 	private String strCodigoApoderado,mensaje;
 	
@@ -39,7 +39,7 @@ public class AlumnoBean implements Serializable{
 	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
-		CargarAniosAcademicos();
+		//CargarAniosAcademicos();
 	}
 	
 	public void registraAlumno(ActionEvent ae) {  
@@ -48,10 +48,10 @@ public class AlumnoBean implements Serializable{
 		Date auxi = new Date(nuevoAlumno.getFechaNacimiento().getTime());
 		nuevoAlumno.setDtFecNac(auxi);
 		
-		Calendarioacademico entidadCalendario = new Calendarioacademico();
-		entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
+		//Calendarioacademico entidadCalendario = new Calendarioacademico();
+		//entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
 		
-		nuevoAlumno.setCalendarioacademico(entidadCalendario);
+		//nuevoAlumno.setCalendarioacademico(entidadCalendario);
 		
 		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
 		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
@@ -82,10 +82,10 @@ public class AlumnoBean implements Serializable{
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
 			
-			Calendarioacademico entidadCalendario = new Calendarioacademico();
-			entidadCalendario.setStrCodcalendario(selectedAlumno.getStrAnioAcademico());
+			//Calendarioacademico entidadCalendario = new Calendarioacademico();
+			//entidadCalendario.setStrCodcalendario(selectedAlumno.getStrAnioAcademico());
 			
-			nuevoAlumno.setCalendarioacademico(entidadCalendario);
+			//nuevoAlumno.setCalendarioacademico(entidadCalendario);
 
 			alumnoService.actualizarAlumno(selectedAlumno);
 			System.out.println("alumno actualizado con exito ...");
@@ -95,14 +95,14 @@ public class AlumnoBean implements Serializable{
 		
 	}
 	
-	public void CargarAniosAcademicos(){
+	/*public void CargarAniosAcademicos(){
 		try {
 			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
 			System.out.println("Cantidad Años cargados: " + anosAcademicos.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 
 	public Alumno getAlumno() {
@@ -145,13 +145,13 @@ public class AlumnoBean implements Serializable{
 		this.editMode = editMode;
 	}
 
-	public ArrayList<Calendarioacademico> getAnosAcademicos() {
+	/*public ArrayList<Calendarioacademico> getAnosAcademicos() {
 		return anosAcademicos;
 	}
 
 	public void setAnosAcademicos(ArrayList<Calendarioacademico> anosAcademicos) {
 		this.anosAcademicos = anosAcademicos;
-	}
+	}*/
 
 	public Alumno getNuevoAlumno() {
 		return nuevoAlumno;
