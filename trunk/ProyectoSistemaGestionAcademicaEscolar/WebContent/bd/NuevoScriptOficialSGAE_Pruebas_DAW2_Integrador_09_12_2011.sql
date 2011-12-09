@@ -491,11 +491,12 @@ DROP TABLE IF EXISTS `matricula`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `matricula` (
+  `idmatricula` int(11) NOT NULL,
   `CODALUMNO` varchar(11) NOT NULL,
   `idseccionprogramada` int(11) NOT NULL,
   `CODCALENDARIO` char(4) NOT NULL,
   `fechamat` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`CODALUMNO`,`idseccionprogramada`,`CODCALENDARIO`),
+  PRIMARY KEY (`idmatricula`),
   KEY `fk_alumno_has_seccionprogramada_seccionprogramada1` (`idseccionprogramada`),
   KEY `fk_alumno_has_seccionprogramada_alumno1` (`CODALUMNO`),
   KEY `fk_matricula_calendarioacademico1` (`CODCALENDARIO`),
