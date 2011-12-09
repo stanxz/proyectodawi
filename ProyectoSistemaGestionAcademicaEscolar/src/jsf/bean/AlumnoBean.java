@@ -14,7 +14,6 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import entidades.Alumno;
 import entidades.Apoderado;
-import entidades.Calendarioacademico;
 import entidades.Persona;
 
 @SuppressWarnings("serial")
@@ -47,7 +46,9 @@ public class AlumnoBean implements Serializable{
 		
 		Date auxi = new Date(nuevoAlumno.getFechaNacimiento().getTime());
 		nuevoAlumno.setDtFecNac(auxi);
-		
+		String dniingresado=""+nuevoAlumno.getIntDni();
+		System.out.println("dni del alumno: "+dniingresado);
+		nuevoAlumno.setStrCodigoAlumno("AL-"+dniingresado);
 		//Calendarioacademico entidadCalendario = new Calendarioacademico();
 		//entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
 		
