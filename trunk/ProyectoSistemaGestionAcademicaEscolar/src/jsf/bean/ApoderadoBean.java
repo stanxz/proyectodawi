@@ -28,8 +28,9 @@ public class ApoderadoBean implements Serializable{
 	 private static UsuarioService userapoderadoService=abd.getUsuarioService();
 	 private ArrayList<Persona> apoderados;
 	 private Persona apoderado,apoderadoSelected,nuevoApoderado;
-	 private String mensaje,elcodigoApoderado,usuarioapoderado,passapoderado;
+	 private String mensaje,usuarioapoderado,passapoderado;
 	 private Usuario nuevousuario;
+	 private int eldniApoderado;
 	 
 	public ApoderadoBean() {
 		System.out.println("Creado ApoderadoBean...");
@@ -41,8 +42,8 @@ public class ApoderadoBean implements Serializable{
 		try {
 			System.out.println("Buscando apoderado ... ");
 			Persona personatempo = new Persona();
-			System.out.println("buscado: "+elcodigoApoderado);
-			personatempo.setStrCodigoPersona(elcodigoApoderado);
+			System.out.println("buscado: "+eldniApoderado);
+			personatempo.setIntDNI(eldniApoderado);
 			apoderado=new Persona();
 			apoderado=apoderadoService.consultaPersona(personatempo);
 			System.out.println("consulta hecha ...");
@@ -150,13 +151,13 @@ public class ApoderadoBean implements Serializable{
 		this.mensaje = mensaje;
 	}
 
-	public String getElcodigoApoderado() {
+	/*public String getElcodigoApoderado() {
 		return elcodigoApoderado;
 	}
 
 	public void setElcodigoApoderado(String elcodigoApoderado) {
 		this.elcodigoApoderado = elcodigoApoderado;
-	}
+	}*/
 
 	public ArrayList<Persona> getApoderados() {
 		return apoderados;
@@ -204,6 +205,14 @@ public class ApoderadoBean implements Serializable{
 
 	public void setPassapoderado(String passapoderado) {
 		this.passapoderado = passapoderado;
+	}
+
+	public int getEldniApoderado() {
+		return eldniApoderado;
+	}
+
+	public void setEldniApoderado(int eldniApoderado) {
+		this.eldniApoderado = eldniApoderado;
 	}
 	
 	
