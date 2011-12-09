@@ -59,8 +59,9 @@ public class Alumno implements Serializable {
 	private Collection<Alumno> tbAsignaturas;*/
 	
 	//bi-directional many-to-one association to Distrito
+	
     @ManyToOne
-	@JoinColumn(name="IDDISTRITO")
+	@JoinColumn(name="iddistrito")
 	private Distrito distritos;
 	 
 	public Date getFechaNacimiento() {

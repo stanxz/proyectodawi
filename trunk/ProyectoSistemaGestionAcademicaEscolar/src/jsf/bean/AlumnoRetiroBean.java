@@ -116,7 +116,7 @@ public class AlumnoRetiroBean implements Serializable{
 			
 			persona = new Persona();
 			//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-			persona.setStrCodigoPersona("18181818");
+			persona.setStrCodigoPersona("PE-18181818");
 			
 			apoderado = new Apoderado();
 			apoderado.setPersonas(persona);
