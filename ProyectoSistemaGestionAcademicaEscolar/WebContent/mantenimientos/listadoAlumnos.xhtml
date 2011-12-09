@@ -39,10 +39,6 @@
         <p:column headerText="Apellido Materno">  
             <h:outputText value="#{alumno.strApellidoMaterno}" />  
         </p:column>  
-        
-        <p:column headerText="Grado">  
-            <h:outputText value="#{alumno.intGrado}" />  
-        </p:column>  
 
         <p:column style="width:100px">  
              <h:panelGrid columns="2" styleClass="actions" cellpadding="2">  
@@ -119,31 +115,8 @@
                 <p:calendar value="#{alumnoBean.selectedAlumno.fecha}" pattern="yyyy-MM-dd" showOn="button" rendered="#{alumnoBean.editMode}" >
                 </p:calendar>  
             </h:panelGroup>
-            
-            <h:outputText value="Grado" />  
-            <h:panelGroup>  
-                <h:outputText value="#{alumnoBean.selectedAlumno.intGrado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>   
-		        <h:selectOneMenu value="#{alumnoBean.selectedAlumno.intGrado}" rendered="#{alumnoBean.editMode}"  required="true"  >  
-		            <f:selectItem itemLabel="1º" itemValue="1" />  
-		            <f:selectItem itemLabel="2º" itemValue="2" />  
-		            <f:selectItem itemLabel="3º" itemValue="3" /> 
-		            <f:selectItem itemLabel="4º" itemValue="4" /> 
-		            <f:selectItem itemLabel="5º" itemValue="5" /> 
-		            <f:selectItem itemLabel="6º" itemValue="6" />		        
-		        </h:selectOneMenu>
-            </h:panelGroup>
-            
-            <h:outputText value="Seccion" />  
-            <h:panelGroup>  
-                <h:outputText value="#{alumnoBean.selectedAlumno.strSeccion}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strSeccion}" rendered="#{alumnoBean.editMode}"  required="true"  >  
-		            <f:selectItem itemLabel="A" itemValue="A" />  
-		            <f:selectItem itemLabel="B" itemValue="B" />
-		            <f:selectItem itemLabel="C" itemValue="C" />  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-            
-            <h:outputText value="Año Academico" />  
+
+            <h:outputText value="Anho Academico" />  
             <h:panelGroup>  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strAnioAcademico}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
                 <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strAnioAcademico}" rendered="#{alumnoBean.editMode}"  required="true"  >  
@@ -219,36 +192,6 @@
             <h:panelGroup>  
                 <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2007-01-01" readOnlyInputText="true">
                 </p:calendar>  
-            </h:panelGroup>
-            
-            
-             <h:outputText value="Grado" />  
-            <h:panelGroup>  
-		        <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.intGrado}" style="font-weight:bold" required="true"  >  
-		            <f:selectItem itemLabel="1º" itemValue="1" />  
-		            <f:selectItem itemLabel="2º" itemValue="2" />  
-		            <f:selectItem itemLabel="3º" itemValue="3" /> 
-		            <f:selectItem itemLabel="4º" itemValue="4" /> 
-		            <f:selectItem itemLabel="5º" itemValue="5" /> 
-		            <f:selectItem itemLabel="6º" itemValue="6" />		        
-		        </h:selectOneMenu>
-            </h:panelGroup>
-            
-            <h:outputText value="Seccion" />  
-            <h:panelGroup>  
-                <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strSeccion}" style="font-weight:bold" required="true"  >  
-		            <f:selectItem itemLabel="A" itemValue="A" />  
-		            <f:selectItem itemLabel="B" itemValue="B" />
-		            <f:selectItem itemLabel="C" itemValue="C" />  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-            
-            <h:outputText value="Año Academico" />  
-            <h:panelGroup>  
-                <h:selectOneMenu value="#{alumnoBean.nuevoAlumno.strAnioAcademico}" style="font-weight:bold" required="true"  >  
-		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" 
-		            itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
-		        </h:selectOneMenu>  
             </h:panelGroup>
             
   			<h:outputText value="Estado" />  

@@ -19,8 +19,8 @@ public class Calendarioacademico implements Serializable {
 	@Column(name="codcalendario")
 	private String strCodcalendario;
 	
-	@OneToMany(targetEntity=Alumno.class,mappedBy="calendarioacademico")
-	private Collection<Alumno> tbAlumnos;
+	/*@OneToMany(targetEntity=Alumno.class,mappedBy="calendarioacademico")
+	private Collection<Alumno> tbAlumnos;*/
 	
 
 	public String getStrCodcalendario() {
@@ -31,13 +31,13 @@ public class Calendarioacademico implements Serializable {
 		this.strCodcalendario = strCodcalendario;
 	}
 
-	public Collection<Alumno> getTbAlumnos() {
+	/*public Collection<Alumno> getTbAlumnos() {
 		return tbAlumnos;
 	}
 
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
-	}
+	}*/
 
 	//bi-directional many-to-one association to Actividad
 	/*@OneToMany(mappedBy="calendarioacademico")

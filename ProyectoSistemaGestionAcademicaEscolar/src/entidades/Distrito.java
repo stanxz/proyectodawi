@@ -25,6 +25,9 @@ public class Distrito {
 		
 	@OneToMany(targetEntity=Persona.class,mappedBy="distritos")
 	private Collection<Persona> tbPersonas;
+	
+	@OneToMany(targetEntity=Alumno.class,mappedBy="distritos")
+	private Collection<Alumno> tbAlumnos;
 
 	public int getIntIdDistrito() {
 		return intIdDistrito;
@@ -48,6 +51,14 @@ public class Distrito {
 
 	public void setTbPersonas(Collection<Persona> tbPersonas) {
 		this.tbPersonas = tbPersonas;
+	}
+
+	public Collection<Alumno> getTbAlumnos() {
+		return tbAlumnos;
+	}
+
+	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
+		this.tbAlumnos = tbAlumnos;
 	}
 	
 }
