@@ -40,9 +40,9 @@
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Vea el Detalle de la Asignatura">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
-                     <f:setPropertyActionListener value="#{false}" target="#{asignaturaBean.editMode}" />  
+                     <f:setPropertyActionListener value="#{false}" target="#{asignaturaBean.editMode}" /> 
                  </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edite los Datos de la Asignatura">  
+                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edite los Datos de la Asignatura" action="#{asignaturaBean.preCargaCombo}">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
                  </p:commandButton>  
@@ -91,21 +91,25 @@
             <h:outputText value="Nivel" />  
             <h:panelGroup>  
             <h:outputText value="#{asignaturaBean.selectedAsignatura.strNivel}" style="font-weight:bold" rendered="#{!asignaturaBean.editMode}"/>  
-            <h:selectOneMenu id="nivel" value="#{asignaturaBean.selectedAsignatura.strNivel}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" label="Nivel Asignatura">  
-                <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{null}" />  
+            <h:selectOneMenu id="nivel" value="#{asignaturaBean.selectedAsignatura.strNivel}" 
+            				 style="font-weight:bold" rendered="#{asignaturaBean.editMode}" 
+            				 required="true" label="Nivel Asignatura">  
+                <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{0}"/>  
                 <f:selectItem itemLabel="Primario" itemValue="Primario" /> 
                 <f:selectItem itemLabel="Secundario" itemValue="Secundario" /> 
-                <p:ajax update="grado"  
-                        listener="#{asignaturaBean.handleCityChange}" />      
+                <p:ajax update="grado"
+                        listener="#{asignaturaBean.obtieneGrados}" />      
             </h:selectOneMenu> 
             </h:panelGroup>    
            
             <h:outputText value="Grado Asignatura" />  
             <h:panelGroup>  
             <h:outputText value="#{asignaturaBean.selectedAsignatura.intGrado} º" style="font-weight:bold" rendered="#{!asignaturaBean.editMode}"/> 
-            <h:selectOneMenu id="grado" value="#{asignaturaBean.selectedAsignatura.intGrado}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" label="Nivel Grado">  
+            <h:selectOneMenu id="grado" value="#{asignaturaBean.selectedAsignatura.intGrado}" style="font-weight:bold" rendered="#{asignaturaBean.editMode}" required="true" 
+            				label="Grado">  
             	<f:selectItem itemLabel="Seleccione Grado" itemValue="#{null}" />  
-            	<f:selectItems value="#{asignaturaBean.gradosListados}"/>  
+            	<f:selectItems  value="#{asignaturaBean.grados}" var="grado"
+            	                itemLabel="#{grado.valor}" itemValue="#{grado.id}"/>  
              </h:selectOneMenu>   
             </h:panelGroup>  
   

@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import entidades.Asignatura;
+import entidades.Grados;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.AsignaturaService;
@@ -24,34 +25,20 @@ public class AsignaturaBean implements Serializable{
 	private ArrayList<Asignatura> asignaturas;
 	private boolean editMode;
 	
+	private String nivel = null;
 	
-	//Para niveles y grados
-	
-	private String nivel;
-	
-	private ArrayList<String> gradosPrimario = new ArrayList<String>();
-	private ArrayList<String> gradosSecundario = new ArrayList<String>();
-	private ArrayList<String> gradosListados = new ArrayList<String>();
-	
-	/*
-	private String grado;
-	
-	private Map<String, String> niveles =  new HashMap<String, String>();
-	
-	private Map<String,Map<String,String>> nivelesData = new HashMap<String, Map<String,String>>();  
-	
-	private Map<String,String> grados = new HashMap<String, String>();  
-	*/
+	private ArrayList<Grados> grados = new ArrayList<Grados>();
 	
 	
-	private Asignatura nuevaAsignatura=new Asignatura();
+	private Asignatura nuevaAsignatura = new Asignatura();
 	
 	public AsignaturaBean(){
 		System.out.println("Creando AsignaturaBean...");
-		CargaCombos();
 	}
 	
 	public void actualizaAsignatura(){
+		System.out.println("actualiza Nombre" + selectedAsignatura.getStrNombreAsignatura());
+		System.out.println("actualiza Grado" + selectedAsignatura.getIntGrado());
 		
 		try {
 			asignaturaService.actualizarAsignatura(selectedAsignatura);
@@ -130,89 +117,64 @@ public class AsignaturaBean implements Serializable{
 		this.nivel = nivel;
 	}
 	
-	public ArrayList<String> getGradosPrimario() {
-		return gradosPrimario;
+	public ArrayList<Grados> getGrados() {
+		return grados;
 	}
 
-	public void setGradosPrimario(ArrayList<String> gradosPrimario) {
-		this.gradosPrimario = gradosPrimario;
-	}
-
-	public ArrayList<String> getGradosSecundario() {
-		return gradosSecundario;
-	}
-
-	public void setGradosSecundario(ArrayList<String> gradosSecundario) {
-		this.gradosSecundario = gradosSecundario;
+	public void setGrados(ArrayList<Grados> grados) {
+		this.grados = grados;
 	}
 	
-	public ArrayList<String> getGradosListados() {
-		return gradosListados;
-	}
-
-	public void setGradosListados(ArrayList<String> gradosListados) {
-		this.gradosListados = gradosListados;
-	}
-
-	public void CargaCombos(){
-		//niveles.put("Primario", "Primario");
-		//niveles.put("Secundario", "Secundario");
+	public void preCargaCombo(){
+		nivel = "";
 		
-		gradosPrimario = new ArrayList<String>();
-		gradosPrimario.add("1");
-		gradosPrimario.add("2");
-		gradosPrimario.add("3");
-		gradosPrimario.add("4");
-		gradosPrimario.add("5");
-		gradosPrimario.add("6");
-		
-		gradosSecundario = new ArrayList<String>();
-		gradosSecundario.add("7");
-		gradosSecundario.add("8");
-		gradosSecundario.add("9");
-		gradosSecundario.add("10");
-		gradosSecundario.add("11");
-	
-		
-		/* Map<String,String> gradosPrimario = new HashMap<String, String>();  
-		 gradosPrimario.put("1", "1º");  
-		 gradosPrimario.put("2", "2º");  
-		 gradosPrimario.put("3", "3º");  
-		 gradosPrimario.put("4", "4º");  
-		 gradosPrimario.put("5", "5º");  
-		 gradosPrimario.put("6", "6º");
-	          
-	     Map<String,String> gradosSecudario = new HashMap<String, String>();  
-	     gradosSecudario.put("7", "7º");  
-	     gradosSecudario.put("8", "9º");  
-	     gradosSecudario.put("9", "9º"); 
-	     gradosSecudario.put("10", "10º");  
-	     gradosSecudario.put("11", "11º");
-	     
-	     nivelesData.put("Primario", gradosPrimario);
-	     nivelesData.put("Secundario", gradosSecudario);
-	     */
-	}
-	
-	public void handleCityChange() {
 		nivel = selectedAsignatura.getStrNivel();
 		
-		if(nivel !=null && !nivel.equals("")){
 			if(nivel.equals("Primario")){
-				gradosListados = gradosPrimario;
-			}else{
-				gradosListados = gradosSecundario;
+				try {
+					grados =  new ArrayList<Grados>();
+					grados = asignaturaService.gradosPrimaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (nivel.equals("Secundario")) {
+				try {
+					grados =  new ArrayList<Grados>();
+					grados = asignaturaService.gradosSecundaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
-		}
+	}
+	
+	public void obtieneGrados(){
 		
-		/*
-        if(nivel !=null && !nivel.equals("")){
-        	grados = nivelesData.get(nivel);  
-        } else {
-        	System.out.println("---------------------------------->");
-        	grados = new HashMap<String, String>();  
-        }
-        */	
-    }
+		nivel = "";
+		
+		nivel = selectedAsignatura.getStrNivel();
+
+		
+			if(nivel.equals("Primario")){
+				try {
+					grados =  new ArrayList<Grados>();
+					selectedAsignatura.setIntGrado(0);
+					grados = asignaturaService.gradosPrimaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (nivel.equals("Secundario")) {
+				try {
+					grados =  new ArrayList<Grados>();
+					selectedAsignatura.setIntGrado(0);
+					grados = asignaturaService.gradosSecundaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (nivel.equals("0")){
+				grados =  new ArrayList<Grados>();
+			}
+		
+	}
+
 
 }

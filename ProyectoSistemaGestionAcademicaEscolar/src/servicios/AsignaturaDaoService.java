@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.AsignaturaDAO;
 import dao.DAOFactory;
 import entidades.Asignatura;
+import entidades.Grados;
 
 public class AsignaturaDaoService implements AsignaturaService{
 	private DAOFactory fabrica = null;
@@ -29,5 +30,13 @@ public class AsignaturaDaoService implements AsignaturaService{
 	
 	public void inhabilitarAsignatura(Asignatura asignatura) throws Exception {
 		asignaturadao.inhabilitar(asignatura);
+	}
+	
+	public ArrayList<Grados> gradosPrimaria() throws Exception {
+		return asignaturadao.obtenerGradoPrimaria();
+	}
+	
+	public ArrayList<Grados> gradosSecundaria() throws Exception {
+		return asignaturadao.obtenerGradoSecundaria();
 	}
 }
