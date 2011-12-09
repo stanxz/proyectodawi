@@ -53,7 +53,8 @@
         </p:column>
         <f:facet name="footer">  
          <div align="left">
-         <p:commandButton value="Nueva Asignatura" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" title="Agregue una Asignatura adicional">  
+         <p:commandButton value="Nueva Asignatura" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" 
+                          title="Agregue una Asignatura adicional">  
 				<f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
  		 </p:commandButton>
          </div>
@@ -98,7 +99,7 @@
                 <f:selectItem itemLabel="Primario" itemValue="Primario" /> 
                 <f:selectItem itemLabel="Secundario" itemValue="Secundario" /> 
                 <p:ajax update="grado"
-                        listener="#{asignaturaBean.obtieneGrados}" />      
+                        listener="#{asignaturaBean.obtieneGradosA}" />      
             </h:selectOneMenu> 
             </h:panelGroup>    
            
@@ -139,6 +140,28 @@
             <h:panelGroup>  
                 <p:inputText value="#{asignaturaBean.nuevaAsignatura.strNombreAsignatura}" style="font-weight:bold" required="true" label="Nombre Asignatura"/>  
             </h:panelGroup> 
+            
+            <h:outputText value="Nivel" />  
+            <h:panelGroup>  
+            <h:selectOneMenu id="nivel" value="#{asignaturaBean.strNivel}" 
+            				 style="font-weight:bold" required="true" label="Nivel Asignatura">  
+                <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{0}"/>  
+                <f:selectItem itemLabel="Primario" itemValue="Primario" /> 
+                <f:selectItem itemLabel="Secundario" itemValue="Secundario" /> 
+                <p:ajax update="grado"
+                        listener="#{asignaturaBean.obtieneGradosN}" />      
+            </h:selectOneMenu> 
+            </h:panelGroup>    
+           
+            <h:outputText value="Grado Asignatura" />  
+            <h:panelGroup>  
+            <h:selectOneMenu id="grado" value="#{asignaturaBean.nuevaAsignatura.intGrado}" style="font-weight:bold" required="true" 
+            				label="Grado Asignatura">  
+            	<f:selectItem itemLabel="Seleccione Grado" itemValue="#{null}" />  
+            	<f:selectItems  value="#{asignaturaBean.grados}" var="grado"
+            	                itemLabel="#{grado.valor}" itemValue="#{grado.id}"/>  
+             </h:selectOneMenu>   
+            </h:panelGroup>  
             
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
