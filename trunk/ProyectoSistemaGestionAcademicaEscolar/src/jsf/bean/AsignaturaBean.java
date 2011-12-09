@@ -25,7 +25,9 @@ public class AsignaturaBean implements Serializable{
 	private ArrayList<Asignatura> asignaturas;
 	private boolean editMode;
 	
-	private String nivel = null;
+	private String nivel;
+	
+	private String strNivel;
 	
 	private ArrayList<Grados> grados = new ArrayList<Grados>();
 	
@@ -49,6 +51,8 @@ public class AsignaturaBean implements Serializable{
 	
 	public void registraAsignatura(){
 		try {
+			nuevaAsignatura.setStrNivel(strNivel);
+			
 			asignaturaService.insertarAsignatura(nuevaAsignatura);
 			nuevaAsignatura = new Asignatura();
 		} catch (Exception e) {
@@ -125,6 +129,14 @@ public class AsignaturaBean implements Serializable{
 		this.grados = grados;
 	}
 	
+	public String getStrNivel() {
+		return strNivel;
+	}
+
+	public void setStrNivel(String strNivel) {
+		this.strNivel = strNivel;
+	}
+
 	public void preCargaCombo(){
 		nivel = "";
 		
@@ -147,14 +159,15 @@ public class AsignaturaBean implements Serializable{
 			}
 	}
 	
-	public void obtieneGrados(){
+
+	public void obtieneGradosA(){
 		
-		nivel = "";
+		strNivel = "";
 		
-		nivel = selectedAsignatura.getStrNivel();
+		strNivel = selectedAsignatura.getStrNivel();
 
 		
-			if(nivel.equals("Primario")){
+			if(strNivel.equals("Primario")){
 				try {
 					grados =  new ArrayList<Grados>();
 					selectedAsignatura.setIntGrado(0);
@@ -162,7 +175,7 @@ public class AsignaturaBean implements Serializable{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if (nivel.equals("Secundario")) {
+			}else if (strNivel.equals("Secundario")) {
 				try {
 					grados =  new ArrayList<Grados>();
 					selectedAsignatura.setIntGrado(0);
@@ -170,7 +183,31 @@ public class AsignaturaBean implements Serializable{
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-			}else if (nivel.equals("0")){
+			}else if (strNivel.equals("0")){
+				grados =  new ArrayList<Grados>();
+			}
+		
+	}
+	
+    public void obtieneGradosN(){
+
+		System.out.println("-->" + strNivel);
+
+			if(strNivel.equals("Primario")){
+				try {
+					grados =  new ArrayList<Grados>();
+					grados = asignaturaService.gradosPrimaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (strNivel.equals("Secundario")) {
+				try {
+					grados =  new ArrayList<Grados>();
+					grados = asignaturaService.gradosSecundaria();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}else if (strNivel.equals("0")){
 				grados =  new ArrayList<Grados>();
 			}
 		
