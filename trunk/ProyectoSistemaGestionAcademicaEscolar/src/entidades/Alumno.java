@@ -44,6 +44,7 @@ public class Alumno implements Serializable {
 	@JoinColumn(name="codcalendario")
 	private Calendarioacademico calendarioacademico = new Calendarioacademico();*/
 	
+	@SuppressWarnings("unused")
 	@Transient
 	private Date fecha;
 	
