@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -35,14 +36,9 @@ public class Alumno implements Serializable {
 	@Column(name="sexo")
 	private int intSexo;
 	
-	//@ManyToOne(cascade=CascadeType.PERSIST)
 	@ManyToOne
 	@JoinColumn(name="codapoderado")
 	private Apoderado apoderados = new Apoderado();
-	
-	/*@ManyToOne
-	@JoinColumn(name="codcalendario")
-	private Calendarioacademico calendarioacademico = new Calendarioacademico();*/
 	
 	@SuppressWarnings("unused")
 	@Transient
@@ -50,17 +46,13 @@ public class Alumno implements Serializable {
 	
 	@Transient
 	private Date fechaNacimiento;
-
-	/*@ManyToMany
-	@JoinTable(name="detalleasignatura",
-			joinColumns={@JoinColumn(name="codalumno")},
-			inverseJoinColumns={@JoinColumn(name="codasignatura")}
-	)
-	private Collection<Alumno> tbAsignaturas;*/
 	
     @ManyToOne
 	@JoinColumn(name="iddistrito")
 	private Distrito distritos;
+    
+    @OneToMany(targetEntity=Matricula.class,mappedBy="alumno")
+	private Collection<Matricula> tbMatriculas;
 	 
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
@@ -170,6 +162,12 @@ public class Alumno implements Serializable {
 		this.distritos = distritos;
 	}
 
+	public Collection<Matricula> getTbMatriculas() {
+		return tbMatriculas;
+	}
 
-	
+	public void setTbMatriculas(Collection<Matricula> tbMatriculas) {
+		this.tbMatriculas = tbMatriculas;
+	}
+
 }

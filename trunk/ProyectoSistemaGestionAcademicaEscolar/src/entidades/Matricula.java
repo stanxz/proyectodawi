@@ -1,6 +1,8 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Date;
+
 import javax.persistence.*;
 
 
@@ -12,67 +14,78 @@ import javax.persistence.*;
 public class Matricula implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	//@EmbeddedId
-	//private MatriculaPK id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="idmatricula")
+	private int intIdMatricula;
 
-	private String fechamat;
-
-	//bi-directional many-to-one association to Alumno
     @ManyToOne
 	@JoinColumn(name="CODALUMNO")
-	private Alumno alumno;
+	private Alumno alumno = new Alumno();
 
-	//bi-directional many-to-one association to Seccionprogramada
     @ManyToOne
 	@JoinColumn(name="idseccionprogramada")
-	private Seccionprogramada seccionprogramada;
+	private Seccionprogramada seccionprogramada = new Seccionprogramada();
 
-	//bi-directional many-to-one association to Calendarioacademico
     @ManyToOne
 	@JoinColumn(name="CODCALENDARIO")
-	private Calendarioacademico calendarioacademico;
+	private Calendarioacademico calendarioacademico = new Calendarioacademico();
+    
+    @Column(name="fechamat")
+    private java.sql.Date dtFecMat;
+    
+    @Transient
+    private Date fechaMatricula;
 
     public Matricula() {
     }
 
-	/*public MatriculaPK getId() {
-		return this.id;
+	public int getIntIdMatricula() {
+		return intIdMatricula;
 	}
 
-	public void setId(MatriculaPK id) {
-		this.id = id;
-	}*/
-	
-	public String getFechamat() {
-		return this.fechamat;
-	}
-
-	public void setFechamat(String fechamat) {
-		this.fechamat = fechamat;
+	public void setIntIdMatricula(int intIdMatricula) {
+		this.intIdMatricula = intIdMatricula;
 	}
 
 	public Alumno getAlumno() {
-		return this.alumno;
+		return alumno;
 	}
 
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-	
+
 	public Seccionprogramada getSeccionprogramada() {
-		return this.seccionprogramada;
+		return seccionprogramada;
 	}
 
 	public void setSeccionprogramada(Seccionprogramada seccionprogramada) {
 		this.seccionprogramada = seccionprogramada;
 	}
-	
+
 	public Calendarioacademico getCalendarioacademico() {
-		return this.calendarioacademico;
+		return calendarioacademico;
 	}
 
 	public void setCalendarioacademico(Calendarioacademico calendarioacademico) {
 		this.calendarioacademico = calendarioacademico;
 	}
-	
+
+	public java.sql.Date getDtFecMat() {
+		return dtFecMat;
+	}
+
+	public void setDtFecMat(java.sql.Date dtFecMat) {
+		this.dtFecMat = dtFecMat;
+	}
+
+	public Date getFechaMatricula() {
+		return fechaMatricula;
+	}
+
+	public void setFechaMatricula(Date fechaMatricula) {
+		this.fechaMatricula = fechaMatricula;
+	}
+    
 }

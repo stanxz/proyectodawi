@@ -1,6 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -18,8 +19,8 @@ public class Calendarioacademico implements Serializable {
 	@Column(name="codcalendario")
 	private String strCodcalendario;
 	
-	/*@OneToMany(targetEntity=Alumno.class,mappedBy="calendarioacademico")
-	private Collection<Alumno> tbAlumnos;*/
+	@OneToMany(targetEntity=Matricula.class,mappedBy="calendarioacademico")
+	private Collection<Matricula> tbMatriculas;
 	
 
 	public String getStrCodcalendario() {
@@ -30,29 +31,12 @@ public class Calendarioacademico implements Serializable {
 		this.strCodcalendario = strCodcalendario;
 	}
 
-	/*public Collection<Alumno> getTbAlumnos() {
-		return tbAlumnos;
+	public Collection<Matricula> getTbMatriculas() {
+		return tbMatriculas;
 	}
 
-	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
-		this.tbAlumnos = tbAlumnos;
-	}*/
-
-	//bi-directional many-to-one association to Actividad
-	/*@OneToMany(mappedBy="calendarioacademico")
-	private Set<Actividad> actividads;*/
-
-	
-	
-
-
-	/*public Set<Actividad> getActividads() {
-		return this.actividads;
+	public void setTbMatriculas(Collection<Matricula> tbMatriculas) {
+		this.tbMatriculas = tbMatriculas;
 	}
 
-	public void setActividads(Set<Actividad> actividads) {
-		this.actividads = actividads;
-	}*/
-	
-	
 }
