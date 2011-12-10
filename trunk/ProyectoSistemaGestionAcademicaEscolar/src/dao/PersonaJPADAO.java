@@ -32,7 +32,8 @@ public class PersonaJPADAO implements PersonaDAO {
 			
 		 List lista = em.createQuery("SELECT p FROM Persona p " +
 				                     "inner join p.tbUsuarios u " +
-				                     "where u.perfiles.strCodigoPerfil <> 'pf01'").getResultList();
+				                     "where u.perfiles.strCodigoPerfil <> 'pf01' " +
+				                     "order by p.strApellidoPaterno").getResultList();
 		 
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
