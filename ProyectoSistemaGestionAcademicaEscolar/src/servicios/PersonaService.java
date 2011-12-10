@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import entidades.Apoderado;
 import entidades.Persona;
-import entidades.Usuario;
 
 public interface PersonaService {
 
