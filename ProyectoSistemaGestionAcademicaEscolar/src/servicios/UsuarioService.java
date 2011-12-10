@@ -11,5 +11,6 @@ public interface UsuarioService {
 	public ArrayList<Permiso> listarMenusCorresp(Usuario elusuario) throws Exception;
 	public Usuario consultaPass(Persona persona) throws Exception;
 	public void registrarUsuario(Usuario nuevo) throws Exception;
+	public void actualizarPerfil(Usuario usuario) throws Exception;
 	
 }

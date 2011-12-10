@@ -8,7 +8,7 @@
 
 	<ui:define name="body">
 	<div align="center">
-		<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+		<p:growl id="msgs" showDetail="true" sticky="false" life="1000"/>
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaEmpleados" var="empleado" value="#{empleadoBean.empleados}" 
     emptyMessage="No hay empleados a listar" widgetVar="empleadosTable"
@@ -128,13 +128,13 @@
             <h:outputText value="Teléfono" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Telefono"/>  
+                <p:inputMask value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" mask="999-9999" required="true" label="Telefono"/>  
             </h:panelGroup> 
             
             <h:outputText value="Celular" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Celular"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" mask="999999999" required="true" label="Celular"/>  
             </h:panelGroup> 
             
             <h:outputText value="Sexo" />  
@@ -151,6 +151,15 @@
 		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
 		     </h:selectOneMenu>  
             </h:panelGroup> 
+            <h:outputText value="Perfiles" />  
+            <h:panelGroup>
+                <h:outputText value="#{empleadoBean.selectedEmpleado.perfil.strNombre}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.perfil.strCodigoPerfil}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" requiredMessage="Seleccione un Perfil" >
+                    <f:selectItem itemLabel="Seleccione Perfil" itemValue="#{null}"/>  
+		            <f:selectItems value="#{empleadoBean.perfiles}" var="perfil" 
+		                          itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}" ></f:selectItems>  	        
+		        </h:selectOneMenu>  
+            </h:panelGroup>
 
           <f:facet name="footer"> 
                 <p:outputPanel rendered="#{empleadoBean.editMode}" layout="block" style="text-align:center">

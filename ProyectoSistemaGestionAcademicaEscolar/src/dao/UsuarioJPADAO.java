@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import entidades.Perfil;
 import entidades.Permiso;
 import entidades.Persona;
 import entidades.Usuario;
@@ -44,6 +45,30 @@ public class UsuarioJPADAO implements UsuarioDAO {
 			return null;
 		}
 		
+	}
+	
+	public void actualizarPerfil(Usuario usuario) throws Exception{
+		em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		
+		Usuario entidadUsuario = null;
+		
+		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1",Usuario.class);
+		q.setParameter(1, usuario.getPersonas().getStrCodigoPersona());
+		
+		entidadUsuario = (Usuario)q.getSingleResult();
+		
+		Perfil entidadPerfil = new Perfil();
+		entidadPerfil.setStrCodigoPerfil(usuario.getPerfiles().getStrCodigoPerfil());
+		
+		entidadUsuario.setPerfiles(entidadPerfil);
+		
+		em.merge(entidadUsuario);
+		em.flush();
+				
+		em.getTransaction().commit();
+		em.close();
 	}
 
 	@SuppressWarnings("rawtypes")

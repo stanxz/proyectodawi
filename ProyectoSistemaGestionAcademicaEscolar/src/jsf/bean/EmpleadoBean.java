@@ -104,6 +104,35 @@ public class EmpleadoBean implements Serializable{
 		}
 	}
 	
+	public void actualizaEmpleado(){
+		System.out.println("---------------------------------------------------------------");
+		System.out.println("--------------------------Actualiza Empleado---------------------");
+		System.out.println("---------------------------------------------------------------");
+		
+		System.out.println(selectedEmpleado.getStrCodigoPersona());
+		
+		try {
+			personaService.actulizarPersona(selectedEmpleado);
+			
+			Persona tmpPersona = new Persona();
+			tmpPersona.setStrCodigoPersona(selectedEmpleado.getStrCodigoPersona());
+			
+			Perfil tmpPerfil = new Perfil();
+			tmpPerfil.setStrCodigoPerfil(selectedEmpleado.getPerfil().getStrCodigoPerfil());
+			
+			Usuario tmpUsuario = new Usuario();
+			tmpUsuario.setPersonas(tmpPersona);
+			tmpUsuario.setPerfiles(tmpPerfil);
+			
+			usuarioService.actualizarPerfil(tmpUsuario);
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Actulización de Empleado","Se actualizaron los datos del empleado"));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void CargarPerfiles(){
 		try {
 			perfiles = perfilService.listarPerfiles();
