@@ -31,6 +31,7 @@ public class ScheduleController {
     
     private String theme;
 
+	@SuppressWarnings("serial")
 	public ScheduleController() {  
     	System.out.println("ENTRA AQUI");
     	
