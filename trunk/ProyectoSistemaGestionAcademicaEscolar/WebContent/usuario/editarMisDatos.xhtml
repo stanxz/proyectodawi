@@ -11,82 +11,140 @@
 
 <ui:define name="body">
 <div align="center" style="width: 800px;">
-<p:growl id="msgs" showDetail="true" sticky="false" life="8000"/>
-<h:form id="form" style="width: 400px;">
-<p:panel header="Mis Datos">
-<h:outputText value="Marque esta opción para editar sus datos" style="font-weight:bold;color:#026890;"/>
-		 <h:selectBooleanCheckbox value="#{editarDatosUsuarioBean.value}" >  
-         <p:ajax update="msgs panelDatos form" 
-                 listener="#{editarDatosUsuarioBean.addMessage}"/> 
-                 
-</h:selectBooleanCheckbox> 
-<br></br>
-<br></br>  
-	<h:panelGrid id="panelDatos" columns="2">
-		<h:outputText value="Nombre:" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="${sessionScope.b_usuario.personas.strNombre}" style="font-weight:bold" required="true" label="Nombre"/>
-	    </p:inplace>
-	    <h:outputText value="Apellido Paterno:" style="font-weight:bold;"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="${sessionScope.b_usuario.personas.strApellidoPaterno}" style="font-weight:bold" required="true" label="Apellido Paterno"/>
-	    </p:inplace>
-	    <h:outputText value="Apellido Materno" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="${sessionScope.b_usuario.personas.strApellidoMaterno}" style="font-weight:bold" required="true" label="Apellido Materno"/>
-	    </p:inplace>
-	    <h:outputText value="Dni" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
-	        <p:inputMask value="${sessionScope.b_usuario.personas.intDNI}"  style="font-weight:bold" required="true" label="Dni" mask="99999999"/>
-	    </p:inplace>
-	    <h:outputText value="Distrito" style="font-weight:bold"/>
-	    <p:inplace label="${sessionScope.b_usuario.personas.distritos.strNombreDistrito}" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <h:selectOneMenu value="${sessionScope.b_usuario.personas.distritos.intIdDistrito}" style="font-weight:bold" required="true"  requiredMessage="Seleccione Distrito">  
+<p:growl id="msgs" showDetail="true" sticky="false" life="1000"/>
+<h:form id="form" style="width: 250px;">
+<p:panel header="Mi Información Personal">
+<h:panelGrid columns="2">
+	<h:outputLabel value="Información Personal" style="font-weight:bold;color:#026890;"/>
+	<h:panelGroup>
+		<p:commandButton update="dlgForm:display"
+						 image="ui-icon ui-icon-search"
+                         title="Ver Detalle Información"
+                         oncomplete="carDialog.show()"
+                         actionListener="#{editarDatosUsuarioBean.cargaDatos}"> 
+                 <f:setPropertyActionListener value="#{false}" target="#{editarDatosUsuarioBean.editMode}" /> 
+        </p:commandButton>
+  	 </h:panelGroup>
+  	   <h:outputLabel value="Actulizar Mis Datos" style="font-weight:bold;color:#026890;"/>
+  	 <h:panelGroup>
+			<p:commandButton  update="dlgForm:display"
+			                  image="ui-icon ui-icon-search"
+                      		  title="Actualizar Información"
+                              oncomplete="carDialog.show()"
+                              actionListener="#{editarDatosUsuarioBean.cargaDatos}">
+                 <f:setPropertyActionListener value="#{true}" target="#{editarDatosUsuarioBean.editMode}" />     
+            </p:commandButton>
+           
+  	 </h:panelGroup> 
+  	 <h:outputLabel value="Cambiar Contraseña" style="font-weight:bold;color:#026890;"/>
+  	  <h:panelGroup>
+			<p:commandButton image="ui-icon ui-icon-search"
+                             title="Actualizar Contraseña"/>
+           
+  	 </h:panelGroup> 
+
+</h:panelGrid>
+</p:panel>
+</h:form>
+<p:dialog header="Información Personal" widgetVar="carDialog" resizable="false" id="carDlg"  
+                showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">  
+<h:form id="dlgForm">  
+          <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
+  
+            <h:outputText value="Codigo Empleado"/>  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}"/>    
+            </h:panelGroup>   
+  
+  			<h:outputText value="Nombres" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strNombre}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strNombre}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Nombre" onkeypress="return validar(event)"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Paterno" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strApellidoPaterno}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strApellidoPaterno}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Apellido Paterno" onkeypress="return validar(event)"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Materno" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strApellidoMaterno}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strApellidoMaterno}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Apellido Materno" onkeypress="return validar(event)"/>  
+            </h:panelGroup>
+            
+            <h:outputText value="DNI" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.intDNI}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputMask value="#{editarDatosUsuarioBean.usuario.personas.intDNI}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" mask="99999999" label="DNI"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Distrito" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.distritos.strNombreDistrito}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <h:selectOneMenu value="#{editarDatosUsuarioBean.usuario.personas.distritos.intIdDistrito}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}"  required="true"  >  
 		            <f:selectItems itemLabel="Seleccione Distrito" itemValue="#{null}"/>
 		            <f:selectItems value="#{empleadoBean.distritos}" var="distrito" 
 		                          itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" />  	        
-		    </h:selectOneMenu>
-	    </p:inplace>
-	    <h:outputText value="Dirección" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="${sessionScope.b_usuario.personas.strDireccion}" style="font-weight:bold" required="true" label="Dirección"/>
-	    </p:inplace>
-	    <h:outputText value="EMail" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="${sessionScope.b_usuario.personas.strMail}" style="font-weight:bold" required="true" label="EMail" validator="#{validadorBean.validateEmail}"/>
-	    </p:inplace>
-	    <h:outputText value="Teléfono" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
-	        <p:inputMask value="${sessionScope.b_usuario.personas.strTelefono}"  style="font-weight:bold" required="true" label="Teléfono" mask="999-9999"/>
-	    </p:inplace>
-	    <h:outputText value="Celular" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
-	        <p:inputMask value="${sessionScope.b_usuario.personas.strCelular}"  style="font-weight:bold" required="true" label="Celular" mask="999999999"/>
-	    </p:inplace>
-	    <h:outputText value="Sexo" style="font-weight:bold"/>
-	    <c:if test="${sessionScope.b_usuario.personas.strSexo == 1}">
-	     <c:set var="x" value="Masculino"/>
-	    </c:if>
-	    <c:if test="${sessionScope.b_usuario.personas.strSexo == 0}">
-	     <c:set var="x" value="Femenino"/>
-	    </c:if>
-	    <p:inplace label="${x}" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <h:selectOneMenu value="${sessionScope.b_usuario.personas.strSexo}" style="font-weight:bold"  required="true"  label="Sexo">  
+		        </h:selectOneMenu>   
+            </h:panelGroup>  
+            
+            <h:outputText value="Dirección" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strDireccion}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strDireccion}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Dirección"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Email" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strMail}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strMail}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Email" validator="#{validadorBean.validateEmail}"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Teléfono" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strTelefono}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputMask value="#{editarDatosUsuarioBean.usuario.personas.strTelefono}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" mask="999-9999" required="true" label="Telefono"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Celular" />  
+            <h:panelGroup>  
+                <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strCelular}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strCelular}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" mask="999999999" required="true" label="Celular"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Sexo" />  
+            <h:panelGroup> 
+            <c:if test="#{editarDatosUsuarioBean.usuario.personas.strSexo==1}">
+	  		  <h:outputText value="Masculino" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+	  	    </c:if> 
+	  	    <c:if test="#{editarDatosUsuarioBean.usuario.personas.strSexo==0}">
+	  		  <h:outputText value="Femenino" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
+	  	    </c:if> 
+	  	     <h:selectOneMenu value="#{editarDatosUsuarioBean.usuario.personas.strSexo}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}"  required="true"  label="Sexo">  
 		            <f:selectItem itemLabel="Seleccione Sexo" itemValue="#{null}"/>
 		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
 		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
 		     </h:selectOneMenu>  
-	    </p:inplace>
+            </h:panelGroup> 
 
-	</h:panelGrid>
-	<p:outputPanel id="panelBoton" layout="block" rendered="#{!editarDatosUsuarioBean.deshabilitar}">
-        <h:panelGroup >
-                   <p:commandButton value="Actualizar"/>
-  	    </h:panelGroup> 
-  	</p:outputPanel>
-	
-</p:panel>
-</h:form>
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="#{editarDatosUsuarioBean.editMode}" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar" 
+					  actionListener="#{editarDatosUsuarioBean.actualizaDatos}"  
+					  update="msgs" 
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditComplete(args)"/>
+                    <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+        </h:panelGrid> 
+       </h:form>
+  </p:dialog>  
 </div>
 </ui:define>
 </ui:composition>

@@ -48,4 +48,10 @@ public class UsuarioDaoService implements UsuarioService {
 		usuariodao.actualizarPerfil(usuario);
 	}
 
+	@Override
+	public Usuario obtieneUsuario(Usuario elusuario) throws Exception {
+		// TODO Auto-generated method stub
+		return usuariodao.obtieneUsuario(elusuario);
+	}
+
 }
