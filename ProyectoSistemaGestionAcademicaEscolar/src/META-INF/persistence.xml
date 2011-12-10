@@ -16,6 +16,7 @@
 		<class>entidades.Distrito</class>
 		<class>entidades.Seccionprogramada</class>
 		<class>entidades.Matricula</class>
+		<class>entidades.Actividad</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

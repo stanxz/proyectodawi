@@ -27,8 +27,6 @@ public class SecretariaAcademica implements Serializable {
 		return personas;
 	}
 
-
-
 	public void setPersonas(Persona personas) {
 		this.personas = personas;
 	}

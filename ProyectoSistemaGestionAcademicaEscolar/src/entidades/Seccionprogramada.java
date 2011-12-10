@@ -11,6 +11,7 @@ import java.util.Collection;
  * 
  */
 @Entity
+@Table(name="seccionprogramada")
 public class Seccionprogramada implements Serializable {
 	private static final long serialVersionUID = 1L;
 
