@@ -2,7 +2,6 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.*;
 
@@ -57,8 +56,6 @@ public class Alumno implements Serializable {
 			inverseJoinColumns={@JoinColumn(name="codasignatura")}
 	)
 	private Collection<Alumno> tbAsignaturas;*/
-	
-	//bi-directional many-to-one association to Distrito
 	
     @ManyToOne
 	@JoinColumn(name="iddistrito")

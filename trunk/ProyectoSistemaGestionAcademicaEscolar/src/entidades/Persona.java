@@ -5,7 +5,6 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-
 /**
  * The persistent class for the usuario database table.
  * 
@@ -48,7 +47,7 @@ public class Persona implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="iddistrito")
-	private Distrito distritos;
+	private Distrito distritos = new Distrito();
 	
 	@Transient
 	private Perfil perfil = new Perfil();

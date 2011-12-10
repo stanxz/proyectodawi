@@ -150,7 +150,8 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Alumno" widgetVar="carDialog2" resizable="false" id="carDlg2"  
-                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" onShow="limpiacajas()">  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" 
+                onShow="limpiarTextBox('#dlgForm2')">  
 	   <h:form id="dlgForm2">  
           <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
@@ -255,7 +256,8 @@
     </p:dialog>
     
     <p:dialog header="Nuevo Apoderado" widgetVar="carDialog4" resizable="false" id="carDlg4"  
-                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" onShow="limpiarTextBox('dlgForm4')">  
+                showEffect="fade" hideEffect="explode" modal="true" width="500" position="center" 
+                onShow="limpiarTextBox('dlgForm4')">  
 	   <h:form id="dlgForm4">
           <h:panelGrid id="display4" columns="2" cellpadding="2" style="margin:0 auto;" >  
   

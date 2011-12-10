@@ -28,7 +28,7 @@ public class PerfilJPADAO implements PerfilDAO {
 
 		ArrayList<Perfil> perfiles = new ArrayList<Perfil>();
 		 
-		Query q =  em.createQuery("SELECT p FROM Perfil p where p.strCodigoPerfil <> 'pf01'" );
+		Query q =  em.createQuery("SELECT p FROM Perfil p where p.strCodigoPerfil <> 'pf01' and p.strCodigoPerfil <> 'pf04'" );
 
 		List l=q.getResultList();
 		if(l.size()>0){

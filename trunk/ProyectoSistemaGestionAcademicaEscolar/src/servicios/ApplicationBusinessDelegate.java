@@ -28,4 +28,8 @@ public class ApplicationBusinessDelegate {
 		return new PerfilDaoService(DAOFactory.JPA);
 	}
 	
+	public DistritoService getDistritoService(){
+		return new DistritoDaoService(DAOFactory.JPA);
+	}
+	
 }

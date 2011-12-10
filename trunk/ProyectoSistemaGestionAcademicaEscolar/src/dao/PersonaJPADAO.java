@@ -93,6 +93,8 @@ public class PersonaJPADAO implements PersonaDAO {
 	@Override
 	public void registrarPersona(Persona nueva) throws Exception {
 		em=emf.createEntityManager();
+		
+		nueva.setStrCodigoPersona("PE-" + nueva.getIntDNI());
 
 		//1.inicia la transacción
 		em.getTransaction().begin();

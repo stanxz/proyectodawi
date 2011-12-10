@@ -83,43 +83,59 @@
   			<h:outputText value="Nombres" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strNombre}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strNombre}" rendered="#{empleadoBean.editMode}" required="true" label="Nombre"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strNombre}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Nombre"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strApellidoPaterno}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoPaterno}" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Paterno"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoPaterno}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Paterno"/>  
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strApellidoMaterno}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoMaterno}" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Materno"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strApellidoMaterno}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Apellido Materno"/>  
+            </h:panelGroup>
+            
+            <h:outputText value="DNI" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.intDNI}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <p:inputMask value="#{empleadoBean.selectedEmpleado.intDNI}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" mask="99999999" label="DNI"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Distrito" />  
+            <h:panelGroup>  
+                <h:outputText value="#{empleadoBean.selectedEmpleado.distritos.strNombreDistrito}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
+                <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.distritos.intIdDistrito}" style="font-weight:bold" rendered="#{empleadoBean.editMode}"  required="true"  >  
+		            <f:selectItems itemLabel="Seleccione Distrito" itemValue="#{null}"/>
+		            <f:selectItems value="#{empleadoBean.distritos}" var="distrito" 
+		                          itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" />  	        
+		        </h:selectOneMenu>   
             </h:panelGroup>  
             
             <h:outputText value="Dirección" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strDireccion}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strDireccion}" rendered="#{empleadoBean.editMode}" required="true" label="Dirección"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strDireccion}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Dirección"/>  
             </h:panelGroup> 
             
             <h:outputText value="Email" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strMail}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strMail}" rendered="#{empleadoBean.editMode}" required="true" label="Email"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strMail}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Email"/>  
             </h:panelGroup> 
             
             <h:outputText value="Teléfono" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strTelefono}" rendered="#{empleadoBean.editMode}" required="true" label="Telefono"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strTelefono}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Telefono"/>  
             </h:panelGroup> 
             
             <h:outputText value="Celular" />  
             <h:panelGroup>  
                 <h:outputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
-                <p:inputText value="#{empleadoBean.selectedEmpleado.strCelular}" rendered="#{empleadoBean.editMode}" required="true" label="Celular"/>  
+                <p:inputText value="#{empleadoBean.selectedEmpleado.strCelular}" style="font-weight:bold" rendered="#{empleadoBean.editMode}" required="true" label="Celular"/>  
             </h:panelGroup> 
             
             <h:outputText value="Sexo" />  
@@ -130,7 +146,8 @@
 	  	    <c:if test="#{empleadoBean.selectedEmpleado.strSexo==0}">
 	  		  <h:outputText value="Femenino" style="font-weight:bold" rendered="#{!empleadoBean.editMode}"/>  
 	  	    </c:if> 
-	  	     <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.strSexo}" rendered="#{empleadoBean.editMode}"  required="true"  label="Sexo">  
+	  	     <h:selectOneMenu value="#{empleadoBean.selectedEmpleado.strSexo}" style="font-weight:bold" rendered="#{empleadoBean.editMode}"  required="true"  label="Sexo">  
+		            <f:selectItem itemLabel="Seleccione Sexo" itemValue="#{null}"/>
 		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
 		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
 		     </h:selectOneMenu>  
@@ -154,24 +171,71 @@
     </p:dialog>  
     
     <p:dialog header="Nuevo Empleado" widgetVar="carDialog2" resizable="false" id="carDlg2"
-    		showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" onShow="limpiarTextBox('#dlgForm2')">
+    		showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" 
+    		onShow="limpiarTextBox('#dlgForm2')">
     <h:form id="dlgForm2">
-    	<h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;">
-    		<h:outputText value="Codigo Empleado"/>
-    		<h:panelGroup>
-    			<p:inputMask value="#{empleadoBean.nuevoEmpleado.strCodigoPersona}" style="font-weight:bold" required="true"  mask="99999999" label="Codigo Empleado"/>
-    		</h:panelGroup>
-    		
+    	<h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;">    		
     		<h:outputText value="Nombres"/>
     		<h:panelGroup>
     			<p:inputText value="#{empleadoBean.nuevoEmpleado.strNombre}" style="font-weight:bold" required="true" label="Nombres" onkeypress="return validar(event)"/>
     		</h:panelGroup>
     		
+    		<h:outputText value="Apellido Paterno" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoPaterno}" style="font-weight:bold" required="true" label="Apellido Paterno" onkeypress="return validar(event)"/>  
+            </h:panelGroup>  
+            
+            <h:outputText value="Apellido Materno" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strApellidoMaterno}" style="font-weight:bold" required="true" label="Apellido Materno" onkeypress="return validar(event)"/>  
+            </h:panelGroup>
     		
+    		<h:outputText value="DNI" />  
+            <h:panelGroup>  
+                <p:inputMask value="#{empleadoBean.nuevoEmpleado.intDNI}"  style="font-weight:bold" required="true" mask="99999999" label="DNI"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Distrito" />  
+            <h:panelGroup>  
+                <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.distritos.intIdDistrito}" style="font-weight:bold" required="true" requiredMessage="Seleccion un Distrito" >  
+		            <f:selectItem itemLabel="Seleccione Distrito" itemValue="#{null}"/>
+		            <f:selectItems value="#{empleadoBean.distritos}" var="distrito" 
+		                          itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" />  	        
+		        </h:selectOneMenu>   
+            </h:panelGroup>
+            
+            <h:outputText value="Dirección" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strDireccion}" style="font-weight:bold" required="true" label="Dirección"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Email" />  
+            <h:panelGroup>  
+                <p:inputText value="#{empleadoBean.nuevoEmpleado.strMail}" style="font-weight:bold" required="true" validator="#{validadorBean.validateEmail}" label="Email" />  
+            </h:panelGroup> 
+            
+            <h:outputText value="Teléfono" />  
+            <h:panelGroup>  
+                <p:inputMask value="#{empleadoBean.nuevoEmpleado.strTelefono}" style="font-weight:bold" required="true" mask="999-9999" label="Telefono"/>  
+            </h:panelGroup> 
+            
+            <h:outputText value="Celular" />  
+            <h:panelGroup>  
+                <p:inputMask value="#{empleadoBean.nuevoEmpleado.strCelular}" style="font-weight:bold" required="true" mask="999999999" label="Celular" />  
+            </h:panelGroup> 
+            
+            <h:outputText value="Sexo" />  
+            <h:panelGroup> 
+	  	     <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.strSexo}" style="font-weight:bold"  required="true"  label="Sexo">  
+		            <f:selectItem itemLabel="Seleccione Sexo" itemValue="#{null}"/>
+		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
+		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
+		     </h:selectOneMenu>  
+            </h:panelGroup> 
     		
     		<h:outputText value="Perfiles" />  
             <h:panelGroup>
-                <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.perfil.strCodigoPerfil}" required="true" requiredMessage="Seleccione un Perfil" >
+                <h:selectOneMenu value="#{empleadoBean.nuevoEmpleado.perfil.strCodigoPerfil}" style="font-weight:bold" required="true" requiredMessage="Seleccione un Perfil" >
                     <f:selectItem itemLabel="Seleccione Perfil" itemValue="#{null}"/>  
 		            <f:selectItems value="#{empleadoBean.perfiles}" var="perfil" 
 		                          itemLabel="#{perfil.strNombre}" itemValue="#{perfil.strCodigoPerfil}" ></f:selectItems>  	        
@@ -179,6 +243,7 @@
             </h:panelGroup>
     		
     		 <f:facet name="footer"> 
+    		 <p:outputPanel layout="block" style="text-align:center">
     		<h:panelGroup>
     			<p:commandButton value="Grabar"
     			                 actionListener="#{empleadoBean.registraEmpleado}"
@@ -187,6 +252,7 @@
     			                 oncomplete="onEditCompleteRegistrar(args)"/>
     			<p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
     		</h:panelGroup>
+    		</p:outputPanel>
     		</f:facet>
     	</h:panelGrid>
     </h:form>

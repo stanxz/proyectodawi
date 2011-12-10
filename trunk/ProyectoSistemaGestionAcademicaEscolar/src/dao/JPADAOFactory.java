@@ -61,6 +61,14 @@ public class JPADAOFactory extends DAOFactory {
 		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
 		return (PerfilDAO)ed;
 	}
+	
+	@Override
+	public DistritoDAO getDistritoDAO() {
+		DistritoJPADAO ed =  new DistritoJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (DistritoDAO)ed;
+	}
 
 
 	//aca falta las implementaciones de los dao q se va
