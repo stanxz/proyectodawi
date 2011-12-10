@@ -6,11 +6,8 @@ import java.util.Date;
 import javax.persistence.*;
 
 
-/**
- * The persistent class for the matricula database table.
- * 
- */
 @Entity
+@Table(name="matricula")
 public class Matricula implements Serializable {
 	private static final long serialVersionUID = 1L;
 

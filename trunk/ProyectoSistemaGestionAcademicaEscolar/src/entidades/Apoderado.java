@@ -20,34 +20,12 @@ public class Apoderado implements Serializable {
 	@JoinColumn(name="codapoderado")
 	private Persona personas = new Persona();
 	
-	/*
-	@ManyToOne
-	@JoinColumn(name="codpersona")
-	private Persona personas;
-	*/
 	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados",cascade = CascadeType.PERSIST)
 	private Collection<Alumno> tbAlumnos;
 
-	/*public void addAlumno(Alumno alumno) {
-	    if (tbAlumnos == null) {
-	    	tbAlumnos = new ArrayList<Alumno>();
-	    }
-	    alumno.setApoderados(apoderados);
-	    tbAlumnos.add(alumno);
-	}*/
-	
 	
     public Apoderado() {
     }
-/*
-	public String getStrCodigoApoderado() {
-		return strCodigoApoderado;
-	}
-
-	public void setStrCodigoApoderado(String strCodigoApoderado) {
-		this.strCodigoApoderado = strCodigoApoderado;
-	}
-*/
     
 	public Collection<Alumno> getTbAlumnos() {
 		return tbAlumnos;
