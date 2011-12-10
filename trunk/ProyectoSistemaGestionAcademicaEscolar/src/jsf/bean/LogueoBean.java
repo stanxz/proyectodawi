@@ -97,19 +97,14 @@ public class LogueoBean {
 		
 		persona = new Persona();
 		persona.setIntDNI(Integer.parseInt(dni));
-		
-		//usuario =  new Usuario();
-		
-		//.setPersonas(persona);
 
 		if(dni != null){
 			try {
 				Persona tmpPersona = personaService.consultaPersona(persona);
 
-				//Usuario uauxi = userService.consultaPass(usuario);
+			
 				if(tmpPersona != null){
 						System.out.println("Enviando mail al usuario ... ");
-						//Persona pauxi=personaService.consultaPersona(uauxi);
 						
 						Usuario tmpUsuario = userService.consultaPass(tmpPersona);
 						
@@ -118,7 +113,7 @@ public class LogueoBean {
 							mensaje2="Enviando mensaje al usuario con DNI: " + tmpPersona.getIntDNI();
 							//logica envio de correos
 							EnviaMail enviador = new EnviaMail();
-							enviador.EnviadorMailContrasena(tmpPersona.getStrMail(), tmpPersona.getStrNombre()+ " "+tmpPersona.getStrApellidoPaterno()+ " "+tmpPersona.getStrApellidoMaterno(), tmpUsuario);
+							enviador.EnviadorMailContrasena("recuperacion",tmpPersona.getStrMail(), tmpPersona.getStrNombre()+ " "+tmpPersona.getStrApellidoPaterno()+ " "+tmpPersona.getStrApellidoMaterno(), tmpUsuario);
 							return "index";
 						}else{
 							System.out.println("Persona no encontrada en la BD con ese dni !");

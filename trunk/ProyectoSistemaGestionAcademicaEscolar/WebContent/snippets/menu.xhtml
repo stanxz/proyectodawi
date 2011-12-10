@@ -84,6 +84,14 @@ function validar(e) { // 1
     te = String.fromCharCode(tecla); // 5
     return patron.test(te); // 6
 } 
+
+function validarNumero(e) { //
+	tecla = (document.all) ? e.keyCode : e.which; //
+	if ((tecla==8) || (tecla==0)) return true; //
+	patron =/\d/ //
+	te = String.fromCharCode(tecla); //
+	return patron.test(te); //
+} 
 </h:outputScript>
 <div id="menuQuery" class="arrowgreen">
 					<ul>

@@ -84,7 +84,6 @@ public class PersonaJPADAO implements PersonaDAO {
 			else
 				return null;
 		} catch (Exception e) {
-			//e.printStackTrace();
 			return null;
 		}
 		
@@ -93,6 +92,8 @@ public class PersonaJPADAO implements PersonaDAO {
 	@Override
 	public void registrarPersona(Persona nueva) throws Exception {
 		em=emf.createEntityManager();
+		
+		System.out.println("xxxxxx" + nueva.getIntDNI());
 		
 		nueva.setStrCodigoPersona("PE-" + nueva.getIntDNI());
 
