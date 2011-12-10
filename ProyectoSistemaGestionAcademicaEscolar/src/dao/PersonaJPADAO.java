@@ -167,6 +167,8 @@ public class PersonaJPADAO implements PersonaDAO {
 
 	@Override
 	public void actulizarPersona(Persona persona) throws Exception {
+		System.out.println(persona.getStrCodigoPersona());
+		
 		em = emf.createEntityManager();
 
 		em.getTransaction().begin();

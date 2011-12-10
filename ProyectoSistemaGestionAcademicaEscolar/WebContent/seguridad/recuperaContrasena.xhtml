@@ -11,23 +11,15 @@
 		I.E.P &quot;SAN CARLOS&quot;
 	</ui:define>
 	
-	<ui:define name="header">
-		<ui:include src="/snippets/header.xhtml" />
+	<ui:define name="menu" >
+	<div style="width: 250px; ">
+	
+	</div>
 	</ui:define>
 	
-	<ui:define name="menu">
-		<div>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</div>
-	</ui:define>
-	
-	<ui:define name="body" align="center">
-	<h:form style="width: 450px; ">
+	<ui:define name="body">
+	<div style="width: 450px; ">
+	<h:form>
 		<p:panel header="Recuperar Password"> 
          <h:panelGrid id="grid" columns="3"  >
 							<h:outputLabel value="Ingrese su DNI: "/>
@@ -47,10 +39,8 @@
 		  <f:verbatim>Regresar al Inicio</f:verbatim>
 		</h:outputLink>
       	</p:panel>
-	</h:form>  			
+	</h:form> 
+	</div> 			
 	</ui:define>
 
-	<ui:define name="footer">
-		<ui:include src="/snippets/footer.xhtml" />
-	</ui:define>
 </ui:composition>
