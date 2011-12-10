@@ -14,7 +14,7 @@ import entidades.Usuario;
 public class EnviaMail {
 
 	
-	public void EnviadorMailContrasena(String maildestino, String destinatario, Usuario datosusuario){
+	public void EnviadorMailContrasena(String tipo,String maildestino, String destinatario, Usuario datosusuario){
 		//logica para envio de correos debe ir aqui
 		 // Propiedades de la conexión
 	   Properties props = new Properties();
@@ -36,10 +36,16 @@ public class EnviaMail {
 		       Message.RecipientType.TO,
 		       new InternetAddress(maildestino));
 		   
-		   message.setSubject("Recuperación de Contraseña");
+		   if(tipo.equals("registro")){
+			   message.setSubject("Registro Exitoso");
+			   
+		   }else if (tipo.equals("recuperacion")) {
+			   message.setSubject("Recuperación de Contraseña");
+		   }
+		   
 		   
 		   message.setText("Estimado "+destinatario+ " su usuario es: " + datosusuario.getPersonas().getStrCodigoPersona() + 
-				           " y su contraseña es: " + datosusuario.getStrContrasena());
+		           " y su contraseña es: " + datosusuario.getStrContrasena());
 
 		   // Lo enviamos.
 		   Transport t = session.getTransport("smtp");

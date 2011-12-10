@@ -92,6 +92,11 @@ public class UsuarioJPADAO implements UsuarioDAO {
 	@Override
 	public void registrarUsuario(Usuario nuevo) throws Exception {
 		em=emf.createEntityManager();
+		
+		Persona persona = new Persona();
+		persona.setStrCodigoPersona("PE-" + nuevo.getPersonas().getStrCodigoPersona());
+		
+		nuevo.setPersonas(persona);
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
