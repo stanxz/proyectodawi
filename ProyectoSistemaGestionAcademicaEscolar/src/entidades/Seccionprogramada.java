@@ -2,7 +2,8 @@ package entidades;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.Set;
+
+import java.util.Collection;
 
 
 /**
@@ -15,59 +16,62 @@ public class Seccionprogramada implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idseccionprogramada;
+	@Column(name="idseccionprogramada")
+	private int intIdSeccionProgramada;
 
-	private int grado;
+	@Column(name="grado")
+	private int intGrado;
 
-	private String nivel;
+	@Column(name="nivel")
+	private String strNivel;
 
-	private String seccion;
+	@Column(name="seccion")
+	private String strSeccion;
 
-	//bi-directional many-to-one association to Matricula
-	@OneToMany(mappedBy="seccionprogramada")
-	private Set<Matricula> matriculas;
+	@OneToMany(targetEntity=Matricula.class,mappedBy="seccionprogramada")
+	private Collection<Matricula> tbMatriculas;
 
     public Seccionprogramada() {
     }
 
-	public int getIdseccionprogramada() {
-		return this.idseccionprogramada;
+	public int getIntIdSeccionProgramada() {
+		return intIdSeccionProgramada;
 	}
 
-	public void setIdseccionprogramada(int idseccionprogramada) {
-		this.idseccionprogramada = idseccionprogramada;
+	public void setIntIdSeccionProgramada(int intIdSeccionProgramada) {
+		this.intIdSeccionProgramada = intIdSeccionProgramada;
 	}
 
-	public int getGrado() {
-		return this.grado;
+	public int getIntGrado() {
+		return intGrado;
 	}
 
-	public void setGrado(int grado) {
-		this.grado = grado;
+	public void setIntGrado(int intGrado) {
+		this.intGrado = intGrado;
 	}
 
-	public String getNivel() {
-		return this.nivel;
+	public String getStrNivel() {
+		return strNivel;
 	}
 
-	public void setNivel(String nivel) {
-		this.nivel = nivel;
+	public void setStrNivel(String strNivel) {
+		this.strNivel = strNivel;
 	}
 
-	public String getSeccion() {
-		return this.seccion;
+	public String getStrSeccion() {
+		return strSeccion;
 	}
 
-	public void setSeccion(String seccion) {
-		this.seccion = seccion;
+	public void setStrSeccion(String strSeccion) {
+		this.strSeccion = strSeccion;
 	}
 
-	public Set<Matricula> getMatriculas() {
-		return this.matriculas;
+	public Collection<Matricula> getTbMatriculas() {
+		return tbMatriculas;
 	}
 
-	public void setMatriculas(Set<Matricula> matriculas) {
-		this.matriculas = matriculas;
+	public void setTbMatriculas(Collection<Matricula> tbMatriculas) {
+		this.tbMatriculas = tbMatriculas;
 	}
-	
+
 }
