@@ -41,4 +41,10 @@ public class PersonaDaoService implements PersonaService {
 		return personadao.obtenerTodosEmpleados();
 	}
 
+	@Override
+	public void actulizarPersona(Persona persona) throws Exception {
+		// TODO Auto-generated method stub
+		personadao.actulizarPersona(persona);
+	}
+
 }

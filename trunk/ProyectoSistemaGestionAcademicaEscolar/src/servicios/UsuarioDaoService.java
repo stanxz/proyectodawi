@@ -42,4 +42,10 @@ public class UsuarioDaoService implements UsuarioService {
 		usuariodao.registrarUsuario(nuevo);
 	}
 
+	@Override
+	public void actualizarPerfil(Usuario usuario) throws Exception {
+		// TODO Auto-generated method stub
+		usuariodao.actualizarPerfil(usuario);
+	}
+
 }

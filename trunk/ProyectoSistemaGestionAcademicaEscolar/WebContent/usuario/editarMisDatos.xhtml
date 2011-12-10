@@ -64,7 +64,13 @@
 	        <p:inputMask value="${sessionScope.b_usuario.personas.strCelular}"  style="font-weight:bold" required="true" label="Celular" mask="999999999"/>
 	    </p:inplace>
 	    <h:outputText value="Sexo" style="font-weight:bold"/>
-	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	    <c:if test="${sessionScope.b_usuario.personas.strSexo == 1}">
+	     <c:set var="x" value="Masculino"/>
+	    </c:if>
+	    <c:if test="${sessionScope.b_usuario.personas.strSexo == 0}">
+	     <c:set var="x" value="Femenino"/>
+	    </c:if>
+	    <p:inplace label="${x}" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
 	        <h:selectOneMenu value="${sessionScope.b_usuario.personas.strSexo}" style="font-weight:bold"  required="true"  label="Sexo">  
 		            <f:selectItem itemLabel="Seleccione Sexo" itemValue="#{null}"/>
 		            <f:selectItem itemLabel="Femenino" itemValue="0" />  

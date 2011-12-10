@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import entidades.Apoderado;
 import entidades.AsistentaSocial;
+import entidades.Distrito;
 import entidades.Perfil;
 import entidades.Persona;
 import entidades.SecretariaAcademica;
@@ -162,6 +163,39 @@ public class PersonaJPADAO implements PersonaDAO {
 		//3.ejecuta commit a la transacción
 		em.getTransaction().commit();
 		em.close();
+	}
+
+	@Override
+	public void actulizarPersona(Persona persona) throws Exception {
+		em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		
+		System.out.println("1");
+		Persona entidadPersona = em.find(Persona.class, persona.getStrCodigoPersona());
+		System.out.println("2");
+		
+		entidadPersona.setStrNombre(persona.getStrNombre());
+		entidadPersona.setStrApellidoPaterno(persona.getStrApellidoPaterno());
+		entidadPersona.setStrApellidoMaterno(persona.getStrApellidoMaterno());
+		entidadPersona.setIntDNI(persona.getIntDNI());
+		
+		Distrito entidadDistrito = new Distrito();
+		entidadDistrito.setIntIdDistrito(persona.getDistritos().getIntIdDistrito());
+		entidadPersona.setDistritos(entidadDistrito);
+		
+		entidadPersona.setStrDireccion(persona.getStrDireccion());
+		entidadPersona.setStrMail(persona.getStrMail());
+		entidadPersona.setStrTelefono(persona.getStrTelefono());
+		entidadPersona.setStrCelular(persona.getStrCelular());
+		entidadPersona.setStrSexo(persona.getStrSexo());
+		
+		em.merge(entidadPersona);
+		em.flush();
+				
+		em.getTransaction().commit();
+		em.close();
+		
 	}
 
 
