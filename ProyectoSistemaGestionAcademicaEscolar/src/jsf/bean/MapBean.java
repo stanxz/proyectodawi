@@ -9,6 +9,7 @@ import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;  
 import org.primefaces.model.map.Marker;  
   
+@SuppressWarnings("serial")
 @ManagedBean
 public class MapBean implements Serializable {  
   
