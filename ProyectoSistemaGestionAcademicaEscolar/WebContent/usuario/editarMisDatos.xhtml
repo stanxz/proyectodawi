@@ -24,21 +24,54 @@
 <br></br>  
 	<h:panelGrid id="panelDatos" columns="2">
 		<h:outputText value="Nombre:" style="font-weight:bold"/>
-	    <p:inplace label="Click Me" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="XL" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <p:inputText value="${sessionScope.b_usuario.personas.strNombre}" style="font-weight:bold" required="true" label="Nombre"/>
 	    </p:inplace>
 	    <h:outputText value="Apellido Paterno:" style="font-weight:bold;"/>
-	    <p:inplace label="Click Me" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="Click Me" style="font-weight:bold" />
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <p:inputText value="${sessionScope.b_usuario.personas.strApellidoPaterno}" style="font-weight:bold" required="true" label="Apellido Paterno"/>
 	    </p:inplace>
 	    <h:outputText value="Apellido Materno" style="font-weight:bold"/>
-	    <p:inplace label="Click Me" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="Click Me" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <p:inputText value="${sessionScope.b_usuario.personas.strApellidoMaterno}" style="font-weight:bold" required="true" label="Apellido Materno"/>
 	    </p:inplace>
 	    <h:outputText value="Dni" style="font-weight:bold"/>
-	    <p:inplace label="Click Me" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
-	        <p:inputText value="Click Me" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
+	        <p:inputMask value="${sessionScope.b_usuario.personas.intDNI}"  style="font-weight:bold" required="true" label="Dni" mask="99999999"/>
 	    </p:inplace>
+	    <h:outputText value="Distrito" style="font-weight:bold"/>
+	    <p:inplace label="${sessionScope.b_usuario.personas.distritos.strNombreDistrito}" style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <h:selectOneMenu value="${sessionScope.b_usuario.personas.distritos.intIdDistrito}" style="font-weight:bold" required="true"  requiredMessage="Seleccione Distrito">  
+		            <f:selectItems itemLabel="Seleccione Distrito" itemValue="#{null}"/>
+		            <f:selectItems value="#{empleadoBean.distritos}" var="distrito" 
+		                          itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" />  	        
+		    </h:selectOneMenu>
+	    </p:inplace>
+	    <h:outputText value="Dirección" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <p:inputText value="${sessionScope.b_usuario.personas.strDireccion}" style="font-weight:bold" required="true" label="Dirección"/>
+	    </p:inplace>
+	    <h:outputText value="EMail" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <p:inputText value="${sessionScope.b_usuario.personas.strMail}" style="font-weight:bold" required="true" label="EMail" validator="#{validadorBean.validateEmail}"/>
+	    </p:inplace>
+	    <h:outputText value="Teléfono" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
+	        <p:inputMask value="${sessionScope.b_usuario.personas.strTelefono}"  style="font-weight:bold" required="true" label="Teléfono" mask="999-9999"/>
+	    </p:inplace>
+	    <h:outputText value="Celular" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}" >
+	        <p:inputMask value="${sessionScope.b_usuario.personas.strCelular}"  style="font-weight:bold" required="true" label="Celular" mask="999999999"/>
+	    </p:inplace>
+	    <h:outputText value="Sexo" style="font-weight:bold"/>
+	    <p:inplace style="font-weight:bold" disabled="#{editarDatosUsuarioBean.deshabilitar}">
+	        <h:selectOneMenu value="${sessionScope.b_usuario.personas.strSexo}" style="font-weight:bold"  required="true"  label="Sexo">  
+		            <f:selectItem itemLabel="Seleccione Sexo" itemValue="#{null}"/>
+		            <f:selectItem itemLabel="Femenino" itemValue="0" />  
+		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
+		     </h:selectOneMenu>  
+	    </p:inplace>
+
 	</h:panelGrid>
 	<p:outputPanel id="panelBoton" layout="block" rendered="#{!editarDatosUsuarioBean.deshabilitar}">
         <h:panelGroup >
