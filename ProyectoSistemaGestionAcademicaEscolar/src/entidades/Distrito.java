@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -11,9 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name="distrito")
-public class Distrito {
+public class Distrito implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
