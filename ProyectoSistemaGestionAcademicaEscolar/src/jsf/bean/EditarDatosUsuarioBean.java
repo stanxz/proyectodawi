@@ -109,8 +109,27 @@ public class EditarDatosUsuarioBean implements Serializable{
 	}
 	
 	public void cambiaContrasena(){
-	
-	
+		
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		
+		Usuario sessionUsuario = (Usuario)session.getAttribute("b_usuario");
+		
+		System.out.println(password);
+		
+		Persona tmpPersona = new Persona();
+		tmpPersona.setStrCodigoPersona(sessionUsuario.getPersonas().getStrCodigoPersona());
+		
+		Usuario tmpUsuario = new Usuario();
+		tmpUsuario.setPersonas(tmpPersona);
+		tmpUsuario.setStrContrasena(password);
+		
+		try {
+			usuarioService.cambiaContrasena(tmpUsuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Actulización de Contraseña","Actualización de contraseña correcta"));
 
 	}
 	
