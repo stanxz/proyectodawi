@@ -8,9 +8,20 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
+
+import servicios.ApplicationBusinessDelegate;
+import servicios.UsuarioService;
+
+import entidades.Persona;
+import entidades.Usuario;
 
 @ManagedBean
-public class ValidadorBean {
+public class ValidadorBean{
+	
+	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
+	
+	private static UsuarioService usuarioService = abd.getUsuarioService();
 
 	public void validateEmail(FacesContext context, UIComponent validate, Object value){
         String email = (String)value;
@@ -25,4 +36,31 @@ public class ValidadorBean {
         }
     
 	}
+	
+	public void validaContrasenaAntigua(FacesContext context, UIComponent validate, Object value){
+		 String contrasena = (String)value;
+		 
+		 HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			
+		 Usuario sessionUsuario = (Usuario)session.getAttribute("b_usuario");
+		 
+		 Persona tmpPersona = new Persona();
+		 tmpPersona.setStrCodigoPersona(sessionUsuario.getPersonas().getStrCodigoPersona());
+		 
+		 try {
+			Usuario tmpUsuario = usuarioService.consultaPass(tmpPersona);
+			
+			if(!contrasena.equals(tmpUsuario.getStrContrasena())){
+				((UIInput)validate).setValid(false);
+	            FacesMessage msg = new FacesMessage("Debe ingresar su contraseña anterior");
+	            context.addMessage(validate.getClientId(context), msg);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		 
+	}
+	
+
 }

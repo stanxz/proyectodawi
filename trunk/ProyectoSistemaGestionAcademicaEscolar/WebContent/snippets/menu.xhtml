@@ -72,6 +72,13 @@ function cargaDatosRetiro(args) {
 	}
 }
 
+function onEditCompleteActualizarContrasena(args) {
+	if(args.validationFailed) {
+	} else {
+		carDialog2.hide();
+	}
+}
+
 function ocultarBoton1(args){
 	var elemento=document.getElementById('dlgForm3:btnSeleccionaApoderado');
 	elemento.style.display = 'none';
