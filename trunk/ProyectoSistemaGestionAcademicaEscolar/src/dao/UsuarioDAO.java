@@ -13,5 +13,6 @@ public interface UsuarioDAO {
 	public Usuario buscaContrasena(Persona persona) throws Exception;
 	public void registrarUsuario(Usuario nuevo) throws Exception;
 	public Usuario obtieneUsuario(Usuario elusuario) throws Exception;
+	public void cambiaContrasena(Usuario usuario) throws Exception;
 	
 }

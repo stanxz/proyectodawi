@@ -54,4 +54,10 @@ public class UsuarioDaoService implements UsuarioService {
 		return usuariodao.obtieneUsuario(elusuario);
 	}
 
+	@Override
+	public void cambiaContrasena(Usuario usuario) throws Exception {
+		// TODO Auto-generated method stub
+		usuariodao.cambiaContrasena(usuario);
+	}
+
 }

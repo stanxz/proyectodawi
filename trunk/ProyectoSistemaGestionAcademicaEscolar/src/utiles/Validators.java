@@ -17,7 +17,7 @@ import entidades.Persona;
 import entidades.Usuario;
 
 @ManagedBean
-public class ValidadorBean{
+public class Validators{
 	
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	

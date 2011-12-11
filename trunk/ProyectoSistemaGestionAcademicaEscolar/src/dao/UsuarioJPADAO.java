@@ -159,5 +159,26 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		em.close();
 	}
 	
+	public void cambiaContrasena(Usuario usuario) throws Exception {
+		em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		
+		Usuario entidadUsuario = null;
+		
+		Query q =  em.createQuery("SELECT u FROM Usuario u WHERE u.personas.strCodigoPersona=?1",Usuario.class);
+		q.setParameter(1, usuario.getPersonas().getStrCodigoPersona());
+		
+		entidadUsuario = (Usuario)q.getSingleResult();
+		
+		entidadUsuario.setStrContrasena(usuario.getStrContrasena());
+		
+		em.merge(entidadUsuario);
+		em.flush();
+				
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 
 }

@@ -13,5 +13,6 @@ public interface UsuarioService {
 	public void registrarUsuario(Usuario nuevo) throws Exception;
 	public void actualizarPerfil(Usuario usuario) throws Exception;
 	public Usuario obtieneUsuario(Usuario elusuario) throws Exception;
+	public void cambiaContrasena(Usuario usuario) throws Exception;
 	
 }

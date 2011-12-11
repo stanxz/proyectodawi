@@ -102,7 +102,7 @@
             <h:outputText value="Email" />  
             <h:panelGroup>  
                 <h:outputText value="#{editarDatosUsuarioBean.usuario.personas.strMail}" style="font-weight:bold" rendered="#{!editarDatosUsuarioBean.editMode}"/>  
-                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strMail}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Email" validator="#{validadorBean.validateEmail}"/>  
+                <p:inputText value="#{editarDatosUsuarioBean.usuario.personas.strMail}" style="font-weight:bold" rendered="#{editarDatosUsuarioBean.editMode}" required="true" label="Email" validator="#{validators.validateEmail}"/>  
             </h:panelGroup> 
             
             <h:outputText value="Teléfono" />  
@@ -155,14 +155,14 @@
           <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" > 
            
             <h:outputLabel value="Contraseña Anterior:" />  
-            <p:password value="pwd" feedback="false" label="Contraseña Anterior" required="true" validator="#{validadorBean.validaContrasenaAntigua}"/> 
+            <p:password value="pwd" feedback="false" label="Contraseña Anterior" required="true" validator="#{validators.validaContrasenaAntigua}"/> 
             
   			 <h:outputLabel  value="Nueva Contraseña:" />
-        	 <p:password id="password" binding="#{password}" value="#{editarDatosUsuarioBean.password}" required="true" />
+        	 <p:password id="password" binding="#{password}" feedback="false" value="#{editarDatosUsuarioBean.password}" required="true" label="Nueva Contraseña"/>
  
 
         	<h:outputLabel value="Confirmacion" />
-        		<p:password id="confirm" required="true">
+        		<p:password id="confirm" required="true" feedback="false" label="Confirmación Contraseña">
             		<f:validator validatorId="passwordValidator" />
            		 	<f:attribute name="password" value="#{password.value}" />
         	</p:password>
