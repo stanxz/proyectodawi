@@ -12,5 +12,5 @@ public interface PersonaService {
 	public void registrarPersona(Persona nueva) throws Exception;
 	public void actulizarPersona(Persona persona) throws Exception;
 	public void guardaApoderado(Apoderado apotempo) throws Exception;
-	
+	public Persona consultaApoderado(Persona p) throws Exception;
 }

@@ -12,8 +12,10 @@ import javax.faces.event.ActionEvent;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
+import servicios.DistritoService;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Distrito;
 import entidades.Persona;
 
 @SuppressWarnings("serial")
@@ -24,21 +26,22 @@ public class AlumnoBean implements Serializable{
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
 	private static AlumnoService alumnoService=abd.getAlumnoService();
+	private static DistritoService distritoService=abd.getDistritoService();
 	
 	private Alumno alumno,selectedAlumno;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
-	//private ArrayList<Calendarioacademico> anosAcademicos;
+	private ArrayList<Distrito> listadistritos;
 	private boolean editMode;
 	private String strCodigoApoderado,mensaje;
+	private int codigoDistrito;
 	
 	private Alumno nuevoAlumno =  new Alumno();
-	
-	
+
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
-		//CargarAniosAcademicos();
+		CargarDistritos();
 	}
 	
 	public void registraAlumno(ActionEvent ae) {  
@@ -49,24 +52,31 @@ public class AlumnoBean implements Serializable{
 		String dniingresado=""+nuevoAlumno.getIntDni();
 		System.out.println("dni del alumno: "+dniingresado);
 		nuevoAlumno.setStrCodigoAlumno("AL-"+dniingresado);
-		//Calendarioacademico entidadCalendario = new Calendarioacademico();
-		//entidadCalendario.setStrCodcalendario(nuevoAlumno.getStrAnioAcademico());
-		
-		//nuevoAlumno.setCalendarioacademico(entidadCalendario);
-		
+		Distrito tempodis=new Distrito();
+		tempodis.setIntIdDistrito(codigoDistrito);
+		nuevoAlumno.setDistritos(tempodis);
+
 		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
 		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
 		System.out.println(nuevoAlumno.getStrNombres());
 		System.out.println(nuevoAlumno.getStrApellidoPaterno());
 		System.out.println(nuevoAlumno.getStrApellidoMaterno());
 		System.out.println(nuevoAlumno.getDtFecNac());
-		
+		System.out.println(nuevoAlumno.getDistritos().getIntIdDistrito());
 		
 		try {
-			alumnoService.registrarAlumno(nuevoAlumno);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
-			System.out.println("Se registro el Alumno con exito");
-			nuevoAlumno =  new Alumno();
+			Alumno tempoalumno=new Alumno();
+			tempoalumno=alumnoService.obtenerAlumno(nuevoAlumno);
+			if(tempoalumno!=null){
+				System.out.println("Alumno "+tempoalumno.getStrCodigoAlumno()+"("+tempoalumno.getStrNombres()+" "+tempoalumno.getStrApellidoPaterno()+") ya existe !!");
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno ya se encuentra registrado: " + tempoalumno.getStrNombres() + " " + tempoalumno.getStrApellidoPaterno()));
+			}else{
+				alumnoService.registrarAlumno(nuevoAlumno);
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
+				System.out.println("Se registro el Alumno con exito");
+				nuevoAlumno =  new Alumno();
+			}
+			
 			
 		} catch (Exception e) {
 			System.out.println("Error registrando el alumno: "+e.getMessage());
@@ -82,11 +92,6 @@ public class AlumnoBean implements Serializable{
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
-			
-			//Calendarioacademico entidadCalendario = new Calendarioacademico();
-			//entidadCalendario.setStrCodcalendario(selectedAlumno.getStrAnioAcademico());
-			
-			//nuevoAlumno.setCalendarioacademico(entidadCalendario);
 
 			alumnoService.actualizarAlumno(selectedAlumno);
 			System.out.println("alumno actualizado con exito ...");
@@ -96,16 +101,15 @@ public class AlumnoBean implements Serializable{
 		
 	}
 	
-	/*public void CargarAniosAcademicos(){
+	public void CargarDistritos(){
 		try {
-			this.anosAcademicos=alumnoService.getListaAniosAcademicos();
-			System.out.println("Cantidad Años cargados: " + anosAcademicos.size());
+			this.listadistritos=distritoService.obtenerTodosDistritos();
+			System.out.println("Cantidad distritos cargados: " + listadistritos.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
 	
-
 	public Alumno getAlumno() {
 		return alumno;
 	}
@@ -146,14 +150,6 @@ public class AlumnoBean implements Serializable{
 		this.editMode = editMode;
 	}
 
-	/*public ArrayList<Calendarioacademico> getAnosAcademicos() {
-		return anosAcademicos;
-	}
-
-	public void setAnosAcademicos(ArrayList<Calendarioacademico> anosAcademicos) {
-		this.anosAcademicos = anosAcademicos;
-	}*/
-
 	public Alumno getNuevoAlumno() {
 		return nuevoAlumno;
 	}
@@ -192,6 +188,22 @@ public class AlumnoBean implements Serializable{
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+
+	public ArrayList<Distrito> getListadistritos() {
+		return listadistritos;
+	}
+
+	public void setListadistritos(ArrayList<Distrito> listadistritos) {
+		this.listadistritos = listadistritos;
+	}
+
+	public int getCodigoDistrito() {
+		return codigoDistrito;
+	}
+
+	public void setCodigoDistrito(int codigoDistrito) {
+		this.codigoDistrito = codigoDistrito;
 	}
 
 }

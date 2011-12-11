@@ -132,7 +132,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 	@Override
 	public Alumno obtenerAlumno(Alumno alumno) throws Exception {
 		em=emf.createEntityManager();
-		
+		System.out.println("codigo del temporal: "+alumno.getStrCodigoAlumno());
 		Alumno entidadCargo=(Alumno)em.find(Alumno.class,alumno.getStrCodigoAlumno());
 		
 		return entidadCargo;

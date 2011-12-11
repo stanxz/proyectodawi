@@ -84,6 +84,11 @@ function ocultarBoton1(args){
 	elemento.style.display = 'none';
 }
 
+function falseador(args){ 
+//No lo borres porke sino van a salir errores 
+var elemento9=document.getElementById('dlgForm2:txtCodigoApoderado'); elemento9.value = ''; 
+}
+
 function validar(e) { // 1
     tecla = (document.all) ? e.keyCode : e.which; // 2
     if (tecla==8 || tecla==0) return true; // 3
