@@ -13,6 +13,8 @@ public interface PersonaDAO {
 
 	public Persona consultarPersona(Persona p) throws Exception;
 
+	public Persona consultaApoderado(Persona p) throws Exception;
+	
 	public void registrarPersona(Persona nueva) throws Exception;
 	
 	public void actulizarPersona(Persona persona) throws Exception;

@@ -202,7 +202,15 @@
 		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
 		        </h:selectOneMenu>  
             </h:panelGroup>
- 
+ 			
+ 			<h:outputText value="Distrito" />  
+            <h:panelGroup>  
+                <h:selectOneMenu value="#{alumnoBean.codigoDistrito}" style="font-weight:bold" required="true"  >  
+		            <f:selectItems value="#{alumnoBean.listadistritos}" var="distrito" 
+		            itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" ></f:selectItems>  	        
+		        </h:selectOneMenu>  
+            </h:panelGroup>
+            
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>

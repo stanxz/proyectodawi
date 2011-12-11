@@ -45,7 +45,7 @@ public class ApoderadoBean implements Serializable{
 			System.out.println("buscado: "+eldniApoderado);
 			personatempo.setIntDNI(eldniApoderado);
 			apoderado=new Persona();
-			apoderado=apoderadoService.consultaPersona(personatempo);
+			apoderado=apoderadoService.consultaApoderado(personatempo);
 			System.out.println("consulta hecha ...");
 			if(apoderado!=null){
 				System.out.println("Apoderado encontrado: "+apoderado.getStrNombre()+" "+apoderado.getStrApellidoPaterno());
@@ -60,8 +60,6 @@ public class ApoderadoBean implements Serializable{
 				apoderado=new Persona();
 				this.mensaje="No se encuentra el apoderado";
 			}		
-			//this.apoderado=apoderadoService.getListaAniosAcademicos();
-			//System.out.println("Cantidad Anios cargados: "+anosAcademicos.size());
 		} catch (Exception e) {
 			apoderados=new ArrayList<Persona>();
 			apoderado=new Persona();
@@ -110,7 +108,7 @@ public class ApoderadoBean implements Serializable{
 
 		if(auxitemporal!=null){
 			System.out.println("Apoderado "+auxitemporal.getStrCodigoPersona()+"("+auxitemporal.getStrNombre()+" "+auxitemporal.getStrApellidoPaterno()+") ya existe !!");
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado ya se encuentra registrado: " + nuevoApoderado.getStrNombre() + " " + nuevoApoderado.getStrApellidoPaterno()));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Apoderado ya se encuentra registrado: " + auxitemporal.getStrNombre() + " " + auxitemporal.getStrApellidoPaterno()));
 		}else{
 			System.out.println("se va a insertar el apoderado y su usuario");
 			try {
@@ -150,14 +148,6 @@ public class ApoderadoBean implements Serializable{
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
-
-	/*public String getElcodigoApoderado() {
-		return elcodigoApoderado;
-	}
-
-	public void setElcodigoApoderado(String elcodigoApoderado) {
-		this.elcodigoApoderado = elcodigoApoderado;
-	}*/
 
 	public ArrayList<Persona> getApoderados() {
 		return apoderados;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
+import entidades.Distrito;
 
 public interface AlumnoService {
 
@@ -14,6 +15,7 @@ public interface AlumnoService {
 	  public void actualizarAlumno(Alumno alumno) throws Exception;
 	  public void inhabilitarAlumno(Alumno alumno) throws Exception;
 	  public Alumno obtenerAlumno(Alumno alumno) throws Exception;
+	  
 	  public ArrayList<Calendarioacademico> getListaAniosAcademicos() throws Exception;
 	
 }

@@ -47,4 +47,10 @@ public class PersonaDaoService implements PersonaService {
 		personadao.actulizarPersona(persona);
 	}
 
+	@Override
+	public Persona consultaApoderado(Persona p) throws Exception {
+		// TODO Auto-generated method stub
+		return personadao.consultaApoderado(p);
+	}
+
 }
