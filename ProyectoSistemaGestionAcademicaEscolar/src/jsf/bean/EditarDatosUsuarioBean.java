@@ -31,8 +31,18 @@ public class EditarDatosUsuarioBean implements Serializable{
 	
 	private boolean editMode;
 	
+	private String password;
+	
 	public EditarDatosUsuarioBean(){
 		System.out.println("Creando EditarDatosUsuario...");
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public boolean isEditMode() {
@@ -96,6 +106,12 @@ public class EditarDatosUsuarioBean implements Serializable{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void cambiaContrasena(){
+	
+	
+
 	}
 	
 
