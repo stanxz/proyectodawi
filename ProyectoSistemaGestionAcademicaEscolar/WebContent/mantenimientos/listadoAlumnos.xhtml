@@ -334,7 +334,7 @@
 					  update="dlgForm4:display4 dlgForm3:txtCodigoApoderado2 msgs" 
 					  oncomplete="onEditCompleteRegistrarApoderado(args)"
                       image="ui-icon ui-icon-check">
-                      	<f:setPropertyActionListener value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" target="#{apoderadoBean.eldniApoderado}" />
+                      	<f:setPropertyActionListener value="#{apoderadoBean.nuevoApoderado.intDNI}" target="#{apoderadoBean.eldniApoderado}" />
                       </p:commandButton>
                     <p:commandButton value="Cancelar" onclick="carDialog4.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
