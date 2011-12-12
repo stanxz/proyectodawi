@@ -114,6 +114,7 @@ public class ApoderadoBean implements Serializable{
 			try {
 				System.out.println("insertando apoderado y su usuario ... ");
 				apoderadoService.registrarPersona(nuevoApoderado);
+				nuevousuario.setStrContrasena(""+nuevoApoderado.getIntDNI());
 				userapoderadoService.registrarUsuario(nuevousuario);
 				
 				Apoderado apotempo = new Apoderado();
