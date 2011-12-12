@@ -11,12 +11,15 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import entidades.Apoderado;
+import entidades.Distrito;
 import entidades.Perfil;
 import entidades.Persona;
 import entidades.Usuario;
 import servicios.ApplicationBusinessDelegate;
+import servicios.DistritoService;
 import servicios.PersonaService;
 import servicios.UsuarioService;
+import utiles.EnviaMail;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -26,16 +29,19 @@ public class ApoderadoBean implements Serializable{
 	 private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	 private static PersonaService apoderadoService=abd.getPersonaService();
 	 private static UsuarioService userapoderadoService=abd.getUsuarioService();
+	 private static DistritoService distritoService=abd.getDistritoService();
 	 private ArrayList<Persona> apoderados;
 	 private Persona apoderado,apoderadoSelected,nuevoApoderado;
 	 private String mensaje,usuarioapoderado,passapoderado;
 	 private Usuario nuevousuario;
-	 private int eldniApoderado;
+	 private ArrayList<Distrito> listadistritos2;
+	 private int eldniApoderado, codigoDistrito2;
 	 
 	public ApoderadoBean() {
 		System.out.println("Creado ApoderadoBean...");
 		this.mensaje="";
 		nuevoApoderado=new Persona();
+		CargarDistritos();
 	}
 	 
 	public void buscaApoderado(ActionEvent evento){
@@ -83,11 +89,11 @@ public class ApoderadoBean implements Serializable{
 
 		nuevousuario = new Usuario();
 		nuevousuario.setPersonas(nuevoApoderado);
-		nuevousuario.setStrContrasena(passapoderado);
+		nuevousuario.setStrContrasena(""+nuevoApoderado.getIntDNI());
 		nuevousuario.setPerfiles(p);
 		
 		try {
-			//reflex. se invocando los emtodos 
+			//reflexion: se invocan los emtodos 
 			for (Method m : nuevoApoderado.getClass().getMethods()){
 				if(m.getName().startsWith("get"))
 				System.out.println("nuevo Apoderado - " + m.getName() + " : " +  m.invoke(nuevoApoderado));
@@ -112,11 +118,16 @@ public class ApoderadoBean implements Serializable{
 		}else{
 			System.out.println("se va a insertar el apoderado y su usuario");
 			try {
+				Distrito tempodis=new Distrito();
+				tempodis.setIntIdDistrito(codigoDistrito2);
+				nuevoApoderado.setDistritos(tempodis);
 				System.out.println("insertando apoderado y su usuario ... ");
 				apoderadoService.registrarPersona(nuevoApoderado);
 				nuevousuario.setStrContrasena(""+nuevoApoderado.getIntDNI());
 				userapoderadoService.registrarUsuario(nuevousuario);
-				
+				System.out.println("enviando correo ... ");
+				EnviaMail enviador=new EnviaMail();
+				enviador.enviarCorreoRegisroApo(nuevoApoderado);
 				Apoderado apotempo = new Apoderado();
 				apotempo.setPersonas(nuevoApoderado);
 				apoderadoService.guardaApoderado(apotempo);
@@ -133,6 +144,15 @@ public class ApoderadoBean implements Serializable{
 			}
 		}
     }
+	
+	public void CargarDistritos(){
+		try {
+			this.listadistritos2=distritoService.obtenerTodosDistritos();
+			System.out.println("Cantidad distritos cargados: " + listadistritos2.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public Persona getApoderado() {
 		return apoderado;
@@ -204,6 +224,22 @@ public class ApoderadoBean implements Serializable{
 
 	public void setEldniApoderado(int eldniApoderado) {
 		this.eldniApoderado = eldniApoderado;
+	}
+
+	public int getCodigoDistrito2() {
+		return codigoDistrito2;
+	}
+
+	public void setCodigoDistrito2(int codigoDistrito2) {
+		this.codigoDistrito2 = codigoDistrito2;
+	}
+
+	public ArrayList<Distrito> getListadistritos2() {
+		return listadistritos2;
+	}
+
+	public void setListadistritos2(ArrayList<Distrito> listadistritos2) {
+		this.listadistritos2 = listadistritos2;
 	}
 	
 	

@@ -261,9 +261,9 @@
 	   <h:form id="dlgForm4">
           <h:panelGrid id="display4" columns="2" cellpadding="2" style="margin:0 auto;" >  
   
-            <h:outputText value="Codigo Apoderado (DNI)" />  
+            <h:outputText value="Nro. Documento de Identidad" />  
             <h:panelGroup>
-            	<p:inputMask id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" style="font-weight:bold" required="true" mask="99999999"/>
+            	<p:inputMask id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.intDNI}" style="font-weight:bold" required="true" mask="99999999"/>
                 <!--  <p:inputText id="txtCodigoApo" value="#{apoderadoBean.nuevoApoderado.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8"  >
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
                 </p:inputText>  -->
@@ -318,10 +318,13 @@
 		        </h:selectOneMenu>  
             </h:panelGroup>     
            
-           <!-- <h:outputText value="Password" />  
+           <h:outputText value="Distrito" />  
             <h:panelGroup>  
-                <p:inputText id="txtPassApo" value="#{apoderadoBean.passapoderado}" style="font-weight:bold" required="true"/>
-            </h:panelGroup>  -->
+                <h:selectOneMenu value="#{apoderadoBean.codigoDistrito2}" style="font-weight:bold" required="true"  >  
+		            <f:selectItems value="#{apoderadoBean.listadistritos2}" var="distrito2" 
+		            itemLabel="#{distrito2.strNombreDistrito}" itemValue="#{distrito2.intIdDistrito}" ></f:selectItems>  	        
+		        </h:selectOneMenu>  
+            </h:panelGroup>
  
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">

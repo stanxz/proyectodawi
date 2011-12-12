@@ -13,6 +13,8 @@ import javax.faces.event.ActionEvent;
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.DistritoService;
+import servicios.PersonaService;
+import utiles.EnviaMail;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Distrito;
@@ -24,7 +26,7 @@ import entidades.Persona;
 public class AlumnoBean implements Serializable{
 	
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
-	
+    private static PersonaService apoderadoService=abd.getPersonaService();
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	private static DistritoService distritoService=abd.getDistritoService();
 	
@@ -72,6 +74,16 @@ public class AlumnoBean implements Serializable{
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno ya se encuentra registrado: " + tempoalumno.getStrNombres() + " " + tempoalumno.getStrApellidoPaterno()));
 			}else{
 				alumnoService.registrarAlumno(nuevoAlumno);
+				System.out.println("Se registro al alumno .... cargando apoderado ... ");
+				String cadena= nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3);
+				System.out.println("cadena: "+cadena);
+				Persona temporal=new Persona();
+				Persona apoderadobuscado=new Persona();
+				temporal.setIntDNI(Integer.parseInt(cadena));
+				apoderadobuscado=apoderadoService.consultaApoderado(apoderadobuscado);
+				System.out.println("enviando correo al apoderado ... ");
+				EnviaMail enviador=new EnviaMail();				
+				enviador.enviarCorreoRegisroAl(nuevoAlumno,apoderadobuscado);
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
 				System.out.println("Se registro el Alumno con exito");
 				nuevoAlumno =  new Alumno();
