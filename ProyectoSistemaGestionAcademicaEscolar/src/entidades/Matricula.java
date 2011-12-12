@@ -17,7 +17,7 @@ public class Matricula implements Serializable {
 	private int intIdMatricula;
 
     @ManyToOne
-	@JoinColumn(name="CODALUMNO")
+	@JoinColumn(name="codalumno")
 	private Alumno alumno = new Alumno();
 
     @ManyToOne
