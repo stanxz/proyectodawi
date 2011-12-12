@@ -116,14 +116,6 @@
                 </p:calendar>  
             </h:panelGroup>
 
-            <h:outputText value="Anho Academico" />  
-            <h:panelGroup>  
-                <h:outputText value="#{alumnoBean.selectedAlumno.strAnioAcademico}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
-                <h:selectOneMenu value="#{alumnoBean.selectedAlumno.strAnioAcademico}" rendered="#{alumnoBean.editMode}"  required="true"  >  
-		            <f:selectItems value="#{alumnoBean.anosAcademicos}" var="anio" itemLabel="#{anio.strCodcalendario}" itemValue="#{anio.strCodcalendario}" ></f:selectItems>  	        
-		        </h:selectOneMenu>  
-            </h:panelGroup>
-  
   			<h:outputText value="Estado" />  
             <h:panelGroup >  
                 <h:outputText value="#{alumnoBean.selectedAlumno.strEstado}" style="font-weight:bold" rendered="#{!alumnoBean.editMode}"/>  
@@ -326,10 +318,10 @@
 		        </h:selectOneMenu>  
             </h:panelGroup>     
            
-            <h:outputText value="Password" />  
+           <!-- <h:outputText value="Password" />  
             <h:panelGroup>  
                 <p:inputText id="txtPassApo" value="#{apoderadoBean.passapoderado}" style="font-weight:bold" required="true"/>
-            </h:panelGroup>
+            </h:panelGroup>  -->
  
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">

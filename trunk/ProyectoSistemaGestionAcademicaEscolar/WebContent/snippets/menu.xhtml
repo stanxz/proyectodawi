@@ -85,8 +85,11 @@ function ocultarBoton1(args){
 }
 
 function falseador(args){ 
-//No lo borres porke sino van a salir errores 
-var elemento9=document.getElementById('dlgForm2:txtCodigoApoderado'); elemento9.value = ''; 
+	//No lo borres porke sino van a salir errores 
+	var elemento9=document.getElementById('dlgForm2:txtCodigoApoderado'); 
+	if(elemento9!=null){
+		elemento9.value = ''; 
+	}
 }
 
 function validar(e) { // 1
