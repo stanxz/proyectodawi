@@ -6,7 +6,7 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	template="/templates/crud-template.xhtml">
 	
-<ui:define name="body">
+<ui:define name="content">
 <div align="center">
 <p:growl id="msgs" showDetail="true" sticky="false" life="8000"/>
 <h:form id="form" style="width: 800px;"> 
@@ -166,7 +166,7 @@
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>
             	<!--<h:outputText id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold"  />  -->
-            	  <p:inputText  id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" onkeyup="falseador()"/>
+            	  <p:inputText  id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" readonly="true" onkeyup="falseador()"/>
                 <!--<p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
                 	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
                 </p:inputText>  -->
