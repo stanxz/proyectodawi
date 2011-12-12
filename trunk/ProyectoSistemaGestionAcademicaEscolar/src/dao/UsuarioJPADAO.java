@@ -143,8 +143,12 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		em=emf.createEntityManager();
 		
 		Persona persona = new Persona();
-		persona.setStrCodigoPersona("PE-" + nuevo.getPersonas().getStrCodigoPersona());
-		
+		/*if(persona.getStrCodigoPersona().startsWith("PE-")){
+			System.out.println("tudo bem");
+		}else{*/
+			persona.setStrCodigoPersona("PE-" + nuevo.getStrContrasena());
+		/*}*/
+
 		nuevo.setPersonas(persona);
 
 		//1.inicia la transacción

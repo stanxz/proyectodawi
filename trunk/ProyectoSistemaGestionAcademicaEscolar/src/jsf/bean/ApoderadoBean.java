@@ -87,10 +87,8 @@ public class ApoderadoBean implements Serializable{
 		Perfil p = new Perfil();
 		p.setStrCodigoPerfil("pf01");
 
-		nuevousuario = new Usuario();
-		nuevousuario.setPersonas(nuevoApoderado);
-		nuevousuario.setStrContrasena(""+nuevoApoderado.getIntDNI());
-		nuevousuario.setPerfiles(p);
+		
+		
 		
 		try {
 			//reflexion: se invocan los emtodos 
@@ -99,14 +97,20 @@ public class ApoderadoBean implements Serializable{
 				System.out.println("nuevo Apoderado - " + m.getName() + " : " +  m.invoke(nuevoApoderado));
 			}
 			
-			for (Method m : nuevousuario.getClass().getMethods()){
+			/*for (Method m : nuevousuario.getClass().getMethods()){
 				if(m.getName().startsWith("get"))
 				System.out.println("nuevo Usuario - "+m.getName() + " : " +  m.invoke(nuevousuario));
-			}
+			}*/
 			
-			System.out.println("consultando apoderado ... ");
+			
+			
+			System.out.println("consultando apoderado con dni: "+nuevoApoderado.getIntDNI());
 			
 			auxitemporal = apoderadoService.consultaPersona(nuevoApoderado);
+			if (auxitemporal!=null){
+				System.out.println("despues de consultar apoderado - auxitemporal: "+auxitemporal.getStrCodigoPersona());
+			}else
+				System.out.println("Auxitemporal es nulo !!!");
 			
 		} catch (Exception e) {
 			System.out.println("error: "+e.getMessage());
@@ -120,10 +124,22 @@ public class ApoderadoBean implements Serializable{
 			try {
 				Distrito tempodis=new Distrito();
 				tempodis.setIntIdDistrito(codigoDistrito2);
+				System.out.println("1111");
 				nuevoApoderado.setDistritos(tempodis);
 				System.out.println("insertando apoderado y su usuario ... ");
 				apoderadoService.registrarPersona(nuevoApoderado);
+				
+				nuevousuario = new Usuario();
+				//nuevousuario.setPersonas(nuevoApoderado);
 				nuevousuario.setStrContrasena(""+nuevoApoderado.getIntDNI());
+				nuevousuario.setPerfiles(p);
+				
+				System.out.println("idlogin de usuario: "+nuevousuario.getIntIdLogin());
+				//System.out.println("codpersona de usuario: "+nuevousuario.getPersonas().getStrCodigoPersona());
+				System.out.println("contrasena de usuario: "+nuevousuario.getStrContrasena());
+				System.out.println("perfil de usuario: "+nuevousuario.getPerfiles().getStrCodigoPerfil());
+				
+				System.out.println("registro a la persona .... ahora registrara el usuario ");//+nuevousuario.getPersonas().getStrCodigoPersona()+" ...");
 				userapoderadoService.registrarUsuario(nuevousuario);
 				System.out.println("enviando correo ... ");
 				EnviaMail enviador=new EnviaMail();
