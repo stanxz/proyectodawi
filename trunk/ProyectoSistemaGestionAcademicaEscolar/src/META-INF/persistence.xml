@@ -10,12 +10,12 @@
 		<class>entidades.Permiso</class>
 		<class>entidades.Apoderado</class>
 		<class>entidades.Alumno</class>
+		<class>entidades.Seccionprogramada</class>
+		<class>entidades.Matricula</class>
 		<class>entidades.Calendarioacademico</class>
 		<class>entidades.Asignatura</class>
 		<class>entidades.Motivo</class>
 		<class>entidades.Distrito</class>
-		<class>entidades.Seccionprogramada</class>
-		<class>entidades.Matricula</class>
 		<class>entidades.Actividad</class>
 		
 		<properties>

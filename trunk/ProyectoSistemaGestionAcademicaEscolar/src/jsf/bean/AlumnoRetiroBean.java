@@ -11,11 +11,14 @@ import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
+import servicios.MatriculaService;
 import servicios.MotivoService;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Matricula;
 import entidades.Motivo;
 import entidades.Persona;
+import entidades.Seccionprogramada;
 import entidades.Usuario;
 
 @SuppressWarnings("serial")
@@ -27,8 +30,10 @@ public class AlumnoRetiroBean implements Serializable{
 	
 	private static AlumnoService alumnoService = abd.getAlumnoService();
 	private static MotivoService motivoService = abd.getMotivoService();
+	private static MatriculaService matriculaoService = abd.getMatriculaService();
 	
 	private Alumno alumno;
+	private Seccionprogramada seccionProgramada;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnosXapoderado;
@@ -46,6 +51,11 @@ public class AlumnoRetiroBean implements Serializable{
 		 System.out.println(retiroAlumno.getStrCodigoAlumno());
 	        try {
 				alumno = alumnoService.obtenerAlumno(retiroAlumno);
+				
+				Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
+				
+				seccionProgramada = matriculaoService.obtenerSecProAlumno(matricula);
+				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -101,6 +111,15 @@ public class AlumnoRetiroBean implements Serializable{
 
 	public void setMotivos(ArrayList<Motivo> motivos) {
 		this.motivos = motivos;
+	}
+	
+
+	public Seccionprogramada getSeccionProgramada() {
+		return seccionProgramada;
+	}
+
+	public void setSeccionProgramada(Seccionprogramada seccionProgramada) {
+		this.seccionProgramada = seccionProgramada;
 	}
 
 	public ArrayList<Alumno> getAlumnosXapoderado() {

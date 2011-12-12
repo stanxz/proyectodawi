@@ -71,6 +71,15 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
+	@Override
+	public MatriculaDAO getMatriculaDAO() {
+		MatriculaJPADAO ed =  new MatriculaJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (MatriculaDAO)ed;
+	}
+
+
 	//aca falta las implementaciones de los dao q se va
 	//a usar
 	

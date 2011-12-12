@@ -32,4 +32,8 @@ public class ApplicationBusinessDelegate {
 		return new DistritoDaoService(DAOFactory.JPA);
 	}
 	
+	public MatriculaService getMatriculaService(){
+		return new MatriculaDaoService(DAOFactory.JPA);
+	}
+	
 }
