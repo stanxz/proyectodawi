@@ -25,6 +25,11 @@
 		   <property name="eclipselink.jdbc.password" value="admin"/>
 		   <property name="eclipselink.logging.level" value="FINE"/> 
 		</properties>
+
+		
+		<!-- Pool de Conexiones 
+		CONEXIONES ACTIVAS,LIBRE,TIEMPO MAXIMO DE ESPERA
+		-->
 		
 	</persistence-unit>
 </persistence>

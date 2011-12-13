@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
@@ -38,6 +39,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Motivo> motivos;
+	private String prueba;
 
 	private Alumno retiroAlumno = new Alumno();
 	
@@ -70,6 +72,10 @@ public class AlumnoRetiroBean implements Serializable{
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	 }
+	 
+	 public void motivoChange(){
+		 System.out.println("Llego Aqui");
 	 }
 	
 
@@ -152,5 +158,15 @@ public class AlumnoRetiroBean implements Serializable{
 	public void setAlumnosXapoderado(ArrayList<Alumno> alumnosXapoderado) {
 		this.alumnosXapoderado = alumnosXapoderado;
 	}
+
+	public String getPrueba() {
+		return prueba;
+	}
+
+	public void setPrueba(String prueba) {
+		this.prueba = prueba;
+	}
+	
+	
 
 }
