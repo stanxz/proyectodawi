@@ -7,7 +7,6 @@ import dao.DAOFactory;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
-import entidades.Distrito;
 
 public class AlumnoDaoService implements AlumnoService {
 	private DAOFactory fabrica = null;

@@ -14,6 +14,7 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.DistritoService;
 import servicios.PersonaService;
+import servicios.SeccionprogramadaService;
 import utiles.EnviaMail;
 import entidades.Alumno;
 import entidades.Apoderado;
@@ -29,14 +30,17 @@ public class AlumnoBean implements Serializable{
     private static PersonaService apoderadoService=abd.getPersonaService();
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	private static DistritoService distritoService=abd.getDistritoService();
+	private static SeccionprogramadaService seccionprogService=abd.getSeccionprogramadaService();
 	
 	private Alumno alumno,selectedAlumno;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Distrito> listadistritos;
+	//private ArrayList<Seccionprogramada> listaGrados;
+	public ArrayList<String> listaSecundaria, listaPrimaria,listaGrados;
 	private boolean editMode;
-	private String strCodigoApoderado,mensaje;
+	private String strCodigoApoderado,mensaje,seccionAlumno,gradoAlumno,nivelAlumno;
 	private int codigoDistrito;
 	
 	private Alumno nuevoAlumno =  new Alumno();
@@ -44,6 +48,7 @@ public class AlumnoBean implements Serializable{
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
 		CargarDistritos();
+		cargarListasGrados();
 	}
 	
 	public void registraAlumno(ActionEvent ae) {  
@@ -121,6 +126,46 @@ public class AlumnoBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
+	
+	public void cargarListasGrados(){
+		try {
+			this.listaPrimaria.add("1º");
+			this.listaPrimaria.add("2º");
+			this.listaPrimaria.add("3º");
+			this.listaPrimaria.add("4º");
+			this.listaPrimaria.add("5º");
+			this.listaPrimaria.add("6º");
+			
+			this.listaSecundaria.add("1º");
+			this.listaSecundaria.add("2º");
+			this.listaSecundaria.add("3º");
+			this.listaSecundaria.add("4º");
+			this.listaSecundaria.add("5º");
+
+			//this.listaSecundaria=seccionprogService.obtenerListaGrados("SECUNDARIA");
+			System.out.println("Cantidad secciones de primaria cargadas: " + listaPrimaria.size());
+			System.out.println("Cantidad secciones de secundaria cargadas: " + listaSecundaria.size());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void cargaComboListadoGrado(ActionEvent event){
+		try {
+			 String valorCombo = (String) event.getComponent().getAttributes().get(
+		                "value");
+			 if(valorCombo.equalsIgnoreCase("PRIMARIA")){
+				 System.out.println("cargando lista primaria .... ");
+				 this.listaGrados=listaPrimaria;
+			 }else if(valorCombo.equalsIgnoreCase("SECUNDARIA")){
+				 System.out.println("cargando lista secundaria");
+				 this.listaGrados=listaSecundaria;
+			 }
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public Alumno getAlumno() {
 		return alumno;
@@ -216,6 +261,54 @@ public class AlumnoBean implements Serializable{
 
 	public void setCodigoDistrito(int codigoDistrito) {
 		this.codigoDistrito = codigoDistrito;
+	}
+
+	public void setListaSecundaria(ArrayList<String> listaSecundaria) {
+		this.listaSecundaria = listaSecundaria;
+	}
+
+	public void setListaPrimaria(ArrayList<String> listaPrimaria) {
+		this.listaPrimaria = listaPrimaria;
+	}
+
+	public ArrayList<String> getListaGrados() {
+		return listaGrados;
+	}
+
+	public void setListaGrados(ArrayList<String> listaGrados) {
+		this.listaGrados = listaGrados;
+	}
+
+	public ArrayList<String> getListaSecundaria() {
+		return listaSecundaria;
+	}
+
+	public ArrayList<String> getListaPrimaria() {
+		return listaPrimaria;
+	}
+
+	public String getSeccionAlumno() {
+		return seccionAlumno;
+	}
+
+	public void setSeccionAlumno(String seccionAlumno) {
+		this.seccionAlumno = seccionAlumno;
+	}
+
+	public String getGradoAlumno() {
+		return gradoAlumno;
+	}
+
+	public void setGradoAlumno(String gradoAlumno) {
+		this.gradoAlumno = gradoAlumno;
+	}
+
+	public String getNivelAlumno() {
+		return nivelAlumno;
+	}
+
+	public void setNivelAlumno(String nivelAlumno) {
+		this.nivelAlumno = nivelAlumno;
 	}
 
 }

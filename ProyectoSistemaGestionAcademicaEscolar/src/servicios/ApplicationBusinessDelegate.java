@@ -36,4 +36,8 @@ public class ApplicationBusinessDelegate {
 		return new MatriculaDaoService(DAOFactory.JPA);
 	}
 	
+	public SeccionprogramadaService getSeccionprogramadaService(){
+		return new SeccionprogramadaDaoService(DAOFactory.JPA);
+	}
+	
 }

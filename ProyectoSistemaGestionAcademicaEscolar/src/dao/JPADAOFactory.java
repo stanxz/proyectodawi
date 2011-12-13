@@ -80,8 +80,13 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
-	//aca falta las implementaciones de los dao q se va
-	//a usar
-	
-	
+	@Override
+	public SeccionProgramadaDAO getSeccionProgramadaDAO() {
+		// TODO Auto-generated method stub
+		SeccionProgramadaJPADAO ed =  new SeccionProgramadaJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (SeccionProgramadaDAO)ed;
+	}
+
 }
