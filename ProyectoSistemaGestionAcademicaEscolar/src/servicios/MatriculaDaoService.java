@@ -29,6 +29,12 @@ public class MatriculaDaoService implements MatriculaService{
 		// TODO Auto-generated method stub
 		return matriculadao.obtenerSecProAlumno(matricula);
 	}
-	
+
+	@Override
+	public void registrarMatricula(Matricula matricula) throws Exception {
+		// TODO Auto-generated method stub
+		 matriculadao.registrarMatricula(matricula);
+	}
+
 	
 }
