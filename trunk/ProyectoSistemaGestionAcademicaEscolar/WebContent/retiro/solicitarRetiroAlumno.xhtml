@@ -58,8 +58,10 @@
 					  actionListener="#{alumnoBean.actualizaAlumno}"  
 					  update="msgs" 
                       image="ui-icon ui-icon-check"
+                      disabled="#{!alumnoRetiroBean.btnAdjuntar}"
                       oncomplete=""/>
-                    <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+                    <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close" 
+                    disabled="#{!alumnoRetiroBean.btnAdjuntar}"/>
   				</h:panelGroup>
               </p:outputPanel>  
           </f:facet>  
