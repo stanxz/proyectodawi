@@ -44,11 +44,15 @@ public class AlumnoBean implements Serializable{
 	private int codigoDistrito;
 	
 	private Alumno nuevoAlumno =  new Alumno();
-
+	
 	public AlumnoBean() {
 		System.out.println("Creado AlumnoBean...");
+		listaGrados=new ArrayList<String>();
+		listaPrimaria=new ArrayList<String>();
+		listaSecundaria=new ArrayList<String>();
 		CargarDistritos();
 		cargarListasGrados();
+		
 	}
 	
 	public void registraAlumno(ActionEvent ae) {  
@@ -135,25 +139,29 @@ public class AlumnoBean implements Serializable{
 			this.listaPrimaria.add("4º");
 			this.listaPrimaria.add("5º");
 			this.listaPrimaria.add("6º");
-			
+			System.out.println("tamaño de listaPrimaria: "+listaPrimaria.size());
 			this.listaSecundaria.add("1º");
 			this.listaSecundaria.add("2º");
 			this.listaSecundaria.add("3º");
 			this.listaSecundaria.add("4º");
 			this.listaSecundaria.add("5º");
-
+			System.out.println("tamaño de listaSecundaria: "+listaSecundaria.size());
+			
 			//this.listaSecundaria=seccionprogService.obtenerListaGrados("SECUNDARIA");
-			System.out.println("Cantidad secciones de primaria cargadas: " + listaPrimaria.size());
-			System.out.println("Cantidad secciones de secundaria cargadas: " + listaSecundaria.size());
+			//System.out.println("Cantidad secciones de primaria cargadas: " + listaPrimaria.size());
+			//System.out.println("Cantidad secciones de secundaria cargadas: " + listaSecundaria.size());
 		} catch (Exception e) {
+			System.out.println("errorazoooo ");
 			e.printStackTrace();
 		}
 	}
-	
-	public void cargaComboListadoGrado(ActionEvent event){
+
+	public void cargaComboListadoGrado(){
+		System.out.println("en el metodo cargaComboListadoGrado ... - "+nivelAlumno);
 		try {
-			 String valorCombo = (String) event.getComponent().getAttributes().get(
-		                "value");
+			// String valorCombo = (String) event.getComponent().getAttributes().get(
+		   //            "value");
+			String valorCombo=nivelAlumno;
 			 if(valorCombo.equalsIgnoreCase("PRIMARIA")){
 				 System.out.println("cargando lista primaria .... ");
 				 this.listaGrados=listaPrimaria;
@@ -165,7 +173,6 @@ public class AlumnoBean implements Serializable{
 			e.printStackTrace();
 		}
 	}
-	
 	
 	public Alumno getAlumno() {
 		return alumno;
