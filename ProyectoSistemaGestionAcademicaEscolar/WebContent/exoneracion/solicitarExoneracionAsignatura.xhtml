@@ -1,0 +1,59 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="/templates/crud-template.xhtml">
+	
+<ui:define name="content">
+<div align="left">
+<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+<h:form id="form" style="width: 800px;">
+<p:panel header="Solicitud de Exoneración de Asignatura">
+<h:panelGrid columns="3">
+<h:outputText value="Alumno" style="font-weight:bold;"/>
+<h:selectOneMenu value="#{alumnoExoneracionBean.exoneracionAlumno.strCodigoAlumno}" required="true"
+                 requiredMessage="Seleccione Alumno">
+                 <f:selectItem itemLabel="Seleccione Alumno" itemValue="{null}"/>
+                 <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
+                                itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
+
+</h:selectOneMenu>
+<p:commandButton value="Cargar" actionListener="#{alumnoExoneracionBean.CargaExoneracionAlumno}"
+				 update="msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)"/>
+</h:panelGrid>
+</p:panel>
+</h:form>
+<p:dialog header="Formato Solicitud de Exoneración de Asignatura" widgetVar="datosDialog" resizable="false" id="datosDlg"
+          showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">
+<h:form id="dlgForm">
+	<h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">
+	
+		<h:outputText value="Codigo Alumno" style="font-weight:bold"/>
+		  <p:inputText  value="#{alumnoExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
+
+		  <h:outputText value="Nombres y Apellidos" style="font-weight:bold"/>
+          <p:inputText value="#{alumnoExoneracionBean.alumno.strNombres} #{alumnoExoneracionBean.alumno.strApellidoPaterno} #{alumnoExoneracionBean.alumno.strApellidoMaterno}" style="font-weight:bold" disabled="true"/>
+
+          <h:outputText value="Grado y Sección" style="font-weight:bold"/>
+          <p:inputText value="#{alumnoExoneracionBean.seccionProgramada.intGrado} º #{alumnoExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
+          
+          <f:facet name="footer"> 
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar" 
+					  actionListener="#{alumnoExoneracionBean.registraSolicitud}"  
+					  update="msgs" 
+                      image="ui-icon ui-icon-check" oncomplete="datosDialog.hide()"/>
+                    <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet>  
+	</h:panelGrid>
+</h:form>
+</p:dialog>
+</div>  
+</ui:define>
+
+</ui:composition>
