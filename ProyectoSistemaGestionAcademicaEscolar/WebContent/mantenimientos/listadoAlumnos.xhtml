@@ -192,15 +192,14 @@
                 <h:selectOneMenu id="cboNivel"  value="#{alumnoBean.nivelAlumno}" style="font-weight:bold" required="true">  
 		            <f:selectItem itemLabel="PRIMARIA" itemValue="PRIMARIA"/>
 		            <f:selectItem itemLabel="SECUNDARIA" itemValue="SECUNDARIA" />
-		            <p:ajax listener="#{alumnoBean.cargaComboListadoGrado}" update="cboGrado" /> 	        
+		            <p:ajax update="cboGrado" listener="#{alumnoBean.cargaComboListadoGrado}" /> 	        
 		        </h:selectOneMenu>  
             </h:panelGroup>
             
             <h:outputText value="Grado" />  
             <h:panelGroup >  
                 <h:selectOneMenu id="cboGrado" value="#{alumnoBean.gradoAlumno}" style="font-weight:bold" required="true"  >  
-		             <f:selectItems value="#{alumnoBean.listaGrados}" var="grado"
-                                itemLabel="#{grado}" itemValue="#{gradoa}" /> 	        
+		             <f:selectItems value="#{alumnoBean.listaGrados}" /> 	        
 		        </h:selectOneMenu>  
             </h:panelGroup>
             
