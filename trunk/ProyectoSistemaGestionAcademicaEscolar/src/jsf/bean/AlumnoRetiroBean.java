@@ -40,6 +40,10 @@ public class AlumnoRetiroBean implements Serializable{
 	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Motivo> motivos;
 	private String prueba;
+	private Motivo motivo = new Motivo();
+	
+	private Boolean btnAdjuntar;
+	private Boolean btnCita;
 
 	private Alumno retiroAlumno = new Alumno();
 	
@@ -76,8 +80,24 @@ public class AlumnoRetiroBean implements Serializable{
 	 
 	 public void motivoChange(){
 		 System.out.println("Llego Aqui");
+		 System.out.println(motivo.getIntCodigoMotivo());
+		 
+		 if (motivo.getIntCodigoMotivo() == 1) {
+			btnAdjuntar = true;
+			btnCita = false;
+		}else if(motivo.getIntCodigoMotivo() == 2 || motivo.getIntCodigoMotivo() == 3){
+			btnAdjuntar = false;
+			btnCita = true;
+		}
 	 }
-	
+	 
+	public Motivo getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(Motivo motivo) {
+		this.motivo = motivo;
+	}
 
 	public Alumno getAlumno() {
 		return alumno;
@@ -109,6 +129,23 @@ public class AlumnoRetiroBean implements Serializable{
 
 	public void setRetiroAlumno(Alumno retiroAlumno) {
 		this.retiroAlumno = retiroAlumno;
+	}
+
+	
+	public Boolean getBtnAdjuntar() {
+		return btnAdjuntar;
+	}
+
+	public void setBtnAdjuntar(Boolean btnAdjuntar) {
+		this.btnAdjuntar = btnAdjuntar;
+	}
+
+	public Boolean getBtnCita() {
+		return btnCita;
+	}
+
+	public void setBtnCita(Boolean btnCita) {
+		this.btnCita = btnCita;
 	}
 
 	public ArrayList<Motivo> getMotivos() {

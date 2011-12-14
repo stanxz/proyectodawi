@@ -40,14 +40,16 @@
           <p:inputText value="#{alumnoRetiroBean.seccionProgramada.intGrado} º #{alumnoRetiroBean.seccionProgramada.strSeccion}" style="font-weight:bold" readonly="true"/>
 		
 		  <h:outputText value="Motivo" style="font-weight:bold"/>
-		  <h:selectOneMenu value="#{alumnoRetiroBean.prueba}" required="true" 
+		  <h:selectOneMenu value="#{alumnoRetiroBean.motivo.intCodigoMotivo}" required="true" 
                  requiredMessage="Seleccione un Motivo" >
 			<f:selectItem itemLabel="Seleccione Motivo" itemValue="#{null}"/>
 			<f:selectItems value="#{alumnoRetiroBean.motivos}" var="motivo"
-	               itemLabel="#{motivo.strDescripcion}" itemValue="#{motivo.intIdMotivo}"/>     
-	               <p:ajax event="change" listener="#{alumnoRetiroBean.motivoChange}" />
+	               itemLabel="#{motivo.strDescripcion}" itemValue="#{motivo.intCodigoMotivo}"/>     
+	               <p:ajax update="dlgForm" event="change" listener="#{alumnoRetiroBean.motivoChange}" />
 		 </h:selectOneMenu>	
-
+		 
+		 <p:commandButton rendered="#{alumnoRetiroBean.btnAdjuntar}" value="Adjuntar"/>
+		 <p:commandButton rendered="#{alumnoRetiroBean.btnCita}" value="Generar Cita"/>
 				
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
