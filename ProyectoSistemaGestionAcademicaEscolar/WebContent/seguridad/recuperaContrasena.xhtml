@@ -19,6 +19,11 @@
 	
 	<ui:define name="content">
 	<div style="width: 450px; ">
+	<p:ajaxStatus onstart="statusDialog2.show();" onsuccess="statusDialog2.hide();"/>  
+    <p:dialog modal="true" widgetVar="statusDialog2" header="Status"   
+        draggable="false" closable="false">  
+    	<p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
+    </p:dialog>               
 	<h:form>
 		<p:panel header="Recuperar Password"> 
          <h:panelGrid id="grid" columns="3"  >
@@ -32,7 +37,10 @@
 							  	</p:dialog>
   							</c:if>					
 		</h:panelGrid>
-		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" update="grid" ajax="false" title="Recibirá su contraseña via correo al mail registrado en el sistema"/>
+		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" 
+						 update="grid" 
+		                 ajax="true" 
+		                 title="Recibirá su contraseña via correo al mail registrado en el sistema"/>
 		&nbsp;&nbsp;
 		<h:outputLink 
 		 value="../index.xhtml" title="Vuelve al inicio">
