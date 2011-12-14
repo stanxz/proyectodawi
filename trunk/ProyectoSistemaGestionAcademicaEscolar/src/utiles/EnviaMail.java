@@ -28,9 +28,13 @@ public class EnviaMail {
 
 	   // Preparamos la sesion
 	   Session session = Session.getDefaultInstance(props);
+	   
+	   System.out.println("Cargando Session");
 
 	   // Construimos el mensaje
 	   MimeMessage message = new MimeMessage(session);
+	   
+	   System.out.println("Construyendo el Mensaje");
 
 	   try {
 		   message.setFrom(new InternetAddress("proylp2@gmail.com"));
@@ -45,7 +49,6 @@ public class EnviaMail {
 			   message.setSubject("SGAE - Recuperación de Contraseña");
 		   }
 		   
-		   
 		   message.setText("Estimado "+destinatario+ " su usuario es: " + datosusuario.getPersonas().getStrCodigoPersona() + 
 		           " y su contraseña es: " + datosusuario.getStrContrasena());
 
@@ -53,6 +56,7 @@ public class EnviaMail {
 		   Transport t = session.getTransport("smtp");
 		   t.connect("proylp2@gmail.com", "cibertec");
 		   t.sendMessage(message, message.getAllRecipients());
+		   System.out.println("Mensaje Enviado");
 		   // Cierre.
            t.close();
 	   } catch (MessagingException e) {
