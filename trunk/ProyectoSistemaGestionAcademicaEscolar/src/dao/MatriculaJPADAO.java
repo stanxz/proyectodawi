@@ -62,6 +62,26 @@ public class MatriculaJPADAO implements MatriculaDAO{
 			return null;
 		}
 	}
+
+
+	@Override
+	public void registrarMatricula(Matricula matricula) throws Exception {
+		// TODO Auto-generated method stub
+
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2.ejecuta las operaciones
+		em.persist(matricula);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	
+	}
 	
 	
 

@@ -166,7 +166,6 @@ public class AsignaturaBean implements Serializable{
 		
 		strNivel = selectedAsignatura.getStrNivel();
 
-		
 			if(strNivel.equals("Primario")){
 				try {
 					grados =  new ArrayList<Grados>();

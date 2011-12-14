@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import entidades.Persona;
 import entidades.Seccionprogramada;
 
 public class SeccionProgramadaJPADAO implements SeccionProgramadaDAO{
@@ -45,6 +47,28 @@ public class SeccionProgramadaJPADAO implements SeccionProgramadaDAO{
 	public void setEntityManagerFactory(EntityManagerFactory emf) {
 		// TODO Auto-generated method stub
 		this.emf=emf;
+	}
+
+	@Override
+	public Seccionprogramada obtenerSP(Seccionprogramada temporal)
+			throws Exception {
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT p FROM Seccionprogramada p WHERE p.strNivel=?1 AND p.intGrado=?2 AND p.strSeccion=?3");
+		q.setParameter(1, temporal.getStrNivel());
+		q.setParameter(2, temporal.getIntGrado());
+		q.setParameter(3, temporal.getStrSeccion());
+		
+		try {
+			Seccionprogramada entidadsp =(Seccionprogramada)q.getSingleResult();
+			em.close();
+			if(entidadsp!=null)
+				return entidadsp;
+			else
+				return null;
+		} catch (Exception e) {
+			return null;
+		}
+	
 	}
 
 }

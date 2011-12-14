@@ -1,8 +1,11 @@
 package jsf.bean;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -13,13 +16,17 @@ import javax.faces.event.ActionEvent;
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.DistritoService;
+import servicios.MatriculaService;
 import servicios.PersonaService;
 import servicios.SeccionprogramadaService;
 import utiles.EnviaMail;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Calendarioacademico;
 import entidades.Distrito;
+import entidades.Matricula;
 import entidades.Persona;
+import entidades.Seccionprogramada;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -31,13 +38,13 @@ public class AlumnoBean implements Serializable{
 	private static AlumnoService alumnoService=abd.getAlumnoService();
 	private static DistritoService distritoService=abd.getDistritoService();
 	private static SeccionprogramadaService seccionprogService=abd.getSeccionprogramadaService();
+	private static MatriculaService matriculaService=abd.getMatriculaService();
 	
 	private Alumno alumno,selectedAlumno;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
 	private ArrayList<Distrito> listadistritos;
-	//private ArrayList<Seccionprogramada> listaGrados;
 	public ArrayList<String> listaSecundaria, listaPrimaria,listaGrados;
 	private boolean editMode;
 	private String strCodigoApoderado,mensaje,seccionAlumno,gradoAlumno,nivelAlumno;
@@ -66,15 +73,44 @@ public class AlumnoBean implements Serializable{
 		Distrito tempodis=new Distrito();
 		tempodis.setIntIdDistrito(codigoDistrito);
 		nuevoAlumno.setDistritos(tempodis);
-
-		System.out.println(nuevoAlumno.getStrCodigoAlumno() );
-		System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
-		System.out.println(nuevoAlumno.getStrNombres());
-		System.out.println(nuevoAlumno.getStrApellidoPaterno());
-		System.out.println(nuevoAlumno.getStrApellidoMaterno());
-		System.out.println(nuevoAlumno.getDtFecNac());
-		System.out.println(nuevoAlumno.getDistritos().getIntIdDistrito());
 		
+		Seccionprogramada sptempo=new Seccionprogramada();
+		sptempo.setIntGrado(Integer.parseInt(gradoAlumno.substring(0, 1)));
+		sptempo.setStrNivel(nivelAlumno);
+		sptempo.setStrSeccion(seccionAlumno);
+		
+		Seccionprogramada sbuscada =new Seccionprogramada();
+		try {
+			sbuscada = seccionprogService.obtenerSP(sptempo);
+			System.out.println("id seccion programada encontrada: "+sbuscada.getIntIdSeccionProgramada());
+		} catch (Exception e1) {
+			System.out.println("Error al buscar seccion programada ... ");
+			e1.printStackTrace();
+		}
+		
+		Matricula mattempo=new Matricula();
+		Calendar c2 = new GregorianCalendar();
+		mattempo.setAlumno(nuevoAlumno);
+		mattempo.setDtFecMat(new Date(c2.getTimeInMillis()));
+		mattempo.setSeccionprogramada(sbuscada);
+		
+		Calendarioacademico calendatempo=new Calendarioacademico();
+		calendatempo.setStrCodcalendario("2011");
+		mattempo.setCalendarioacademico(calendatempo);
+		//sptempo.setTbMatriculas();
+		
+		try {
+			for (Method m : nuevoAlumno.getClass().getMethods()){
+				if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))){
+					System.out.println("Alumno - "+m.getName().substring(6).toUpperCase() + " : " +  m.invoke(nuevoAlumno));
+				}	
+			}
+			System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
+			System.out.println(nuevoAlumno.getDistritos().getIntIdDistrito());
+		} catch (Exception e) {
+			System.out.println("Error al pintar atributos del nuevoAlumno");
+		}
+
 		try {
 			Alumno tempoalumno=new Alumno();
 			tempoalumno=alumnoService.obtenerAlumno(nuevoAlumno);
@@ -83,6 +119,7 @@ public class AlumnoBean implements Serializable{
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno ya se encuentra registrado: " + tempoalumno.getStrNombres() + " " + tempoalumno.getStrApellidoPaterno()));
 			}else{
 				alumnoService.registrarAlumno(nuevoAlumno);
+				matriculaService.registrarMatricula(mattempo);
 				System.out.println("Se registro al alumno .... cargando apoderado ... ");
 				String cadena= nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3);
 				System.out.println("cadena: "+cadena);

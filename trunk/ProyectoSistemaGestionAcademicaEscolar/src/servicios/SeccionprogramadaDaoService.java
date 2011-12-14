@@ -24,4 +24,11 @@ public class SeccionprogramadaDaoService implements SeccionprogramadaService {
 		return spdao.obtenerListaGrados(nivelelegidocombo);
 	}
 
+	@Override
+	public Seccionprogramada obtenerSP(Seccionprogramada temporal)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return spdao.obtenerSP(temporal);
+	}
+
 }
