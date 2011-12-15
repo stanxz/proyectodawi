@@ -33,6 +33,12 @@ public class Matricula implements Serializable {
     
     @Transient
     private Date fechaMatricula;
+    
+    @Column(name="noReligion")
+    private int intEstadoReligion;
+    
+    @Column(name="noEF")
+    private int intEstadoEF;
 
     public Matricula() {
     }
@@ -84,5 +90,21 @@ public class Matricula implements Serializable {
 	public void setFechaMatricula(Date fechaMatricula) {
 		this.fechaMatricula = fechaMatricula;
 	}
-    
+
+	public int getIntEstadoReligion() {
+		return intEstadoReligion;
+	}
+
+	public void setIntEstadoReligion(int intEstadoReligion) {
+		this.intEstadoReligion = intEstadoReligion;
+	}
+
+	public int getIntEstadoEF() {
+		return intEstadoEF;
+	}
+
+	public void setIntEstadoEF(int intEstadoEF) {
+		this.intEstadoEF = intEstadoEF;
+	}
+	
 }
