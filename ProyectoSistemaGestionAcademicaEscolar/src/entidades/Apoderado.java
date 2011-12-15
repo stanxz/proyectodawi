@@ -22,6 +22,9 @@ public class Apoderado implements Serializable {
 	
 	@OneToMany(targetEntity=Alumno.class,mappedBy="apoderados",cascade = CascadeType.PERSIST)
 	private Collection<Alumno> tbAlumnos;
+	
+	@OneToMany(targetEntity=Boleta.class,mappedBy="apoderados",cascade = CascadeType.PERSIST)
+	private Collection<Alumno> tbBoletas;
 
 	
     public Apoderado() {
@@ -46,5 +49,15 @@ public class Apoderado implements Serializable {
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
 	}
+
+	public Collection<Alumno> getTbBoletas() {
+		return tbBoletas;
+	}
+
+	public void setTbBoletas(Collection<Alumno> tbBoletas) {
+		this.tbBoletas = tbBoletas;
+	}
+	
+	
     
 }

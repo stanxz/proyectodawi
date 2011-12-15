@@ -42,6 +42,30 @@ public class ExoneracionDAOJPA implements ExoneracionDAO{
 		return resultado;
 	}
 	
+	public boolean NoExisteDeudas(int codigoApoderado){
+		
+		em = emf.createEntityManager();
+		
+		Actividad actividad = null;
+		
+		boolean resultado = false;
+		
+		Query q = em.createQuery("");
+		q.setParameter(1, codigoApoderado);
+		
+		actividad = (Actividad) q.getSingleResult();
+		
+		em.close();
+		
+		if(actividad!=null){
+			resultado = true;
+		}else{
+			resultado = false;
+		}
+		
+		return resultado;
+	}
+	
 	
 
 }

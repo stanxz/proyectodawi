@@ -17,6 +17,7 @@
 		<class>entidades.Motivo</class>
 		<class>entidades.Distrito</class>
 		<class>entidades.Actividad</class>
+		<class>entidades.Boleta</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
