@@ -15,7 +15,7 @@
 <h:outputText value="Alumno" style="font-weight:bold;"/>
 <h:selectOneMenu value="#{alumnoExoneracionBean.exoneracionAlumno.strCodigoAlumno}" required="true"
                  requiredMessage="Seleccione Alumno">
-                 <f:selectItem itemLabel="Seleccione Alumno" itemValue="{null}"/>
+                 <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
                  <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
 
@@ -38,6 +38,15 @@
 
           <h:outputText value="Grado y Sección" style="font-weight:bold"/>
           <p:inputText value="#{alumnoExoneracionBean.seccionProgramada.intGrado} º #{alumnoExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
+          
+          <h:outputText value="Asignatura" style="font-weight:bold"/>
+		  <h:selectOneMenu value="" required="true" 
+                 requiredMessage="Seleccione un Motivo" >
+			<f:selectItem itemLabel="Seleccione Asignatura" itemValue="#{null}"/>
+			<f:selectItem itemLabel="Religión" itemValue="Religion"/>
+			<f:selectItem itemLabel="Educación Física" itemValue="EducacionFisica"/>   
+		 </h:selectOneMenu>	
+          
           
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
