@@ -14,6 +14,7 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.MatriculaService;
 import servicios.MotivoService;
+import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Matricula;
@@ -32,6 +33,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	private static AlumnoService alumnoService = abd.getAlumnoService();
 	private static MotivoService motivoService = abd.getMotivoService();
 	private static MatriculaService matriculaoService = abd.getMatriculaService();
+	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
@@ -57,11 +59,18 @@ public class AlumnoExoneracionBean implements Serializable{
 		 System.out.println(exoneracionAlumno.getStrCodigoAlumno());
 	        try {
 	        	
-				alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
+	        	if(exoneracionService.CumpleCalendarioExoneracion(2011)){
+	        		
+	        		System.out.println("Cumple");
+	        	}else{
+	        		System.out.println("No Cumple");
+	        	}
+	        	
+				//alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
 				
-				Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
+				//Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
 				
-				seccionProgramada = matriculaoService.obtenerSecProAlumno(matricula);
+				//seccionProgramada = matriculaoService.obtenerSecProAlumno(matricula);
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

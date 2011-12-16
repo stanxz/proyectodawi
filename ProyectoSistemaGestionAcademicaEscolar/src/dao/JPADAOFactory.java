@@ -3,6 +3,7 @@ package dao;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+
 public class JPADAOFactory extends DAOFactory {
 	private EntityManagerFactory emf;
 	
@@ -88,5 +89,16 @@ public class JPADAOFactory extends DAOFactory {
 		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
 		return (SeccionProgramadaDAO)ed;
 	}
+
+
+	@Override
+	public SolicitudExoneracionDAO getSolicitudExoneracionDAO() {
+		// TODO Auto-generated method stub
+		SolicitudExoneracionJPADAO ed = new SolicitudExoneracionJPADAO();
+		ed.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - ed en memoria: "+ed.toString());
+		return (SolicitudExoneracionDAO)ed;
+	}
+
 
 }

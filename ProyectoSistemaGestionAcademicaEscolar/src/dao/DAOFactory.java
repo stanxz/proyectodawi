@@ -1,6 +1,5 @@
 package dao;
 
-import entidades.SolicitudRetiro;
 
 public abstract class DAOFactory {
 
@@ -22,6 +21,7 @@ public abstract class DAOFactory {
     public abstract DistritoDAO getDistritoDAO();
     public abstract MatriculaDAO getMatriculaDAO();
     public abstract SeccionProgramadaDAO getSeccionProgramadaDAO();
+    public abstract SolicitudExoneracionDAO getSolicitudExoneracionDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){

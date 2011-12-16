@@ -6,7 +6,7 @@ import javax.persistence.Query;
 
 import entidades.Actividad;
 
-public class ExoneracionDAOJPA implements ExoneracionDAO{
+public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 	
 	private EntityManagerFactory emf;
 	private EntityManager em;
@@ -23,23 +23,31 @@ public class ExoneracionDAOJPA implements ExoneracionDAO{
 		
 		boolean resultado = false;
 		
-		Query q = em.createQuery("SELECT a FROM Actividad a WHERE a.calendarioacademico.strCodcalendario=?1 " +
-				                 "and a.intCodigoActividad=?2 and (now() between a.fechaini and a.fechafin)");
-		q.setParameter(1, codigoCalendario);
-		q.setParameter(2, 1);
+		Query q = em.createQuery("SELECT a FROM Actividad a WHERE a.calendarioacademico.strCodcalendario='2011' " +
+				                 "and a.intCodigoActividad=1 and (CURRENT_DATE between a.dtFecIni and a.dtFecFin)");
+		//q.setParameter(1, codigoCalendario);
+		//q.setParameter(2, 1);
 		
-		actividad = (Actividad) q.getSingleResult();
-		
-		em.close();
-		
-		if(actividad!=null){
-			resultado = true;
-		}else{
+		try {
+			actividad = (Actividad) q.getSingleResult();
+			
+			em.close();
+			
+			if(actividad!=null){
+				resultado = true;
+				return resultado;
+			}else{
+				resultado = false;
+				return resultado;
+			}
+		} catch (Exception e) {
 			resultado = false;
+			return resultado;
 		}
 		
 		
-		return resultado;
+		
+		
 	}
 	
 	public boolean NoExisteDeudas(int codigoApoderado){

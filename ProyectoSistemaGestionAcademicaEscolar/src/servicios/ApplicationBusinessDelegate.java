@@ -40,4 +40,8 @@ public class ApplicationBusinessDelegate {
 		return new SeccionprogramadaDaoService(DAOFactory.JPA);
 	}
 	
+	public SolicitudExoneracionService getExoneracionService(){
+		return new SolicitudExoneracionDaoService(DAOFactory.JPA);
+	}
+	
 }
