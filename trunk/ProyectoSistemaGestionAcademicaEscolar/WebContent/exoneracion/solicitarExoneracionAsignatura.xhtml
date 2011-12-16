@@ -18,10 +18,14 @@
                  <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
                  <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
-
+				<f:validator validatorId="exoneracionValidator"/>
+	            <f:attribute name="codigo" value="#{codigo.value}" />
+				 
 </h:selectOneMenu>
+ 
 <p:commandButton value="Cargar" actionListener="#{alumnoExoneracionBean.CargaExoneracionAlumno}"
-				 update="msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)"/>
+				 update="msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)" />
+			
 </h:panelGrid>
 </p:panel>
 </h:form>
@@ -51,8 +55,9 @@
                 <h:panelGroup>
 					 <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoExoneracionBean.registraSolicitud}"  
-					  update="msgs" 
-                      image="ui-icon ui-icon-check" oncomplete="datosDialog.hide()"/>
+					  update="dlgForm:display msgs" 
+                      image="ui-icon ui-icon-check" oncomplete="datosDialog.hide()">
+                      </p:commandButton>
                     <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>
               </p:outputPanel>  

@@ -10,5 +10,10 @@
         <validator-id>passwordValidator</validator-id>
         <validator-class>utiles.PasswordValidator</validator-class>
     </validator>
+    
+    <validator>
+        <validator-id>exoneracionValidator</validator-id>
+        <validator-class>utiles.ExoneracionValidator</validator-class>
+    </validator>
 
 </faces-config>
