@@ -1,6 +1,6 @@
 package dao;
 
-public interface ExoneracionDAO {
+public interface SolicitudExoneracionDAO {
 	
 	
 	public boolean CumpleCalendarioExoneracion(int codigoCalendario) throws Exception;
