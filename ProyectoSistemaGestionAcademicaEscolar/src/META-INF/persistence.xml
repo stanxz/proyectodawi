@@ -18,6 +18,9 @@
 		<class>entidades.Distrito</class>
 		<class>entidades.Actividad</class>
 		<class>entidades.Boleta</class>
+		<class>entidades.AsistenteCoordinacionAcademica</class>
+		<class>entidades.AsistenteDireccionAcademica</class>
+		<class>entidades.SolicitudExoneracion</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>

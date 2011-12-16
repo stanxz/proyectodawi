@@ -5,10 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
-/**
- * The persistent class for the usuario database table.
- * 
- */
+
 @Entity
 @Table(name="persona")
 public class Persona implements Serializable {
@@ -57,6 +54,12 @@ public class Persona implements Serializable {
 	
 	@OneToOne(targetEntity=Apoderado.class,mappedBy="personas")
 	private Collection<Apoderado> tbApoderados;
+
+	@OneToOne(targetEntity=AsistenteCoordinacionAcademica.class,mappedBy="personas")
+	private Collection<AsistenteCoordinacionAcademica> tbAsistenteCoordinacionAcademica;
+	
+	@OneToOne(targetEntity=AsistenteDireccionAcademica.class,mappedBy="personas")
+	private Collection<AsistenteDireccionAcademica> tbAsistenteDireccionAcademica;
 	
 	public Persona(){
 		
@@ -174,7 +177,23 @@ public class Persona implements Serializable {
 	public void setPerfil(Perfil perfil) {
 		this.perfil = perfil;
 	}
-	
-	
+
+	public Collection<AsistenteCoordinacionAcademica> getTbAsistenteCoordinacionAcademica() {
+		return tbAsistenteCoordinacionAcademica;
+	}
+
+	public void setTbAsistenteCoordinacionAcademica(
+			Collection<AsistenteCoordinacionAcademica> tbAsistenteCoordinacionAcademica) {
+		this.tbAsistenteCoordinacionAcademica = tbAsistenteCoordinacionAcademica;
+	}
+
+	public Collection<AsistenteDireccionAcademica> getTbAsistenteDireccionAcademica() {
+		return tbAsistenteDireccionAcademica;
+	}
+
+	public void setTbAsistenteDireccionAcademica(
+			Collection<AsistenteDireccionAcademica> tbAsistenteDireccionAcademica) {
+		this.tbAsistenteDireccionAcademica = tbAsistenteDireccionAcademica;
+	}
 	
 }

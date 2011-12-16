@@ -1,5 +1,7 @@
 package dao;
 
+import entidades.SolicitudRetiro;
+
 public abstract class DAOFactory {
 
 	public static final int MYSQL = 1;

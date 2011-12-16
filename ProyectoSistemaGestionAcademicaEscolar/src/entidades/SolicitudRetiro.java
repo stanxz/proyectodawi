@@ -47,10 +47,14 @@ public class SolicitudRetiro implements Serializable{
 	private String strEstado;
 	
 	@Transient
-	private Date fechaNacimiento;
+	private Date fechaRegistro;
 	
 	@Column(name="fecharegistro")
 	private java.sql.Date dtFecNac;
+	
+
+	
+	
 
 	
 	
