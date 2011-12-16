@@ -6,10 +6,6 @@ import javax.persistence.*;
 import java.util.Collection;
 
 
-/**
- * The persistent class for the apoderado database table.
- * 
- */
 @Entity
 @Table(name="apoderado")
 public class Apoderado implements Serializable {

@@ -56,6 +56,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	 public void CargaExoneracionAlumno() {  
 		 System.out.println(exoneracionAlumno.getStrCodigoAlumno());
 	        try {
+	        	
 				alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
 				
 				Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
