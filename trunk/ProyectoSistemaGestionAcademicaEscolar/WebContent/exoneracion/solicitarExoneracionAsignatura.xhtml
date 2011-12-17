@@ -18,9 +18,8 @@
                  <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
                  <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
-				<f:validator validatorId="exoneracionValidator"/>
-	            <f:attribute name="codigo" value="#{codigo.value}" />
-				 
+	<f:validator validatorId="exoneracionValidator"/>
+	<f:attribute name="codigo" value="#{codigo.value}" />
 </h:selectOneMenu>
  
 <p:commandButton value="Cargar" actionListener="#{alumnoExoneracionBean.CargaExoneracionAlumno}"
