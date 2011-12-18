@@ -22,16 +22,22 @@ public class ExoneracionValidator implements Validator {
         
         System.out.println("--->" + valor);
 
-        boolean condicion = false;
+        boolean condicionExoneracion = false;
 		try {
-			condicion = exoneracionService.CumpleCalendarioExoneracion(2011);
+			condicionExoneracion = exoneracionService.CumpleCalendarioExoneracion(2011);
+			
+			if (!condicionExoneracion) {
+			    throw new ValidatorException(new FacesMessage("Ud. está fuera del perido de exoneración"));
+			    
+			    
+			}
+			
+			
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
         	
-				if (!condicion) {
-				    throw new ValidatorException(new FacesMessage("Contraseñas no son iguales"));
-				}
+				
 
 			
 
