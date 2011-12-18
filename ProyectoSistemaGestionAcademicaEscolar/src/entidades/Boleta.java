@@ -31,6 +31,7 @@ public class Boleta implements Serializable{
 	@Transient
 	private Date fechaRegistro;
 	
+	@Column(name="")
 	private String strEstado;
 
 	public String getStrCodigoBoleta() {

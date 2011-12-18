@@ -11,19 +11,20 @@
 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;">
 <p:panel header="Solicitud de Exoneración de Asignatura">
-<h:panelGrid columns="3">
+<h:panelGrid columns="2">
+<h:panelGroup id="panelGroup">
 <h:outputText value="Alumno" style="font-weight:bold;"/>
 <h:selectOneMenu value="#{alumnoExoneracionBean.exoneracionAlumno.strCodigoAlumno}" required="true"
                  requiredMessage="Seleccione Alumno">
                  <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
                  <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
-	<f:validator validatorId="exoneracionValidator"/>
-	<f:attribute name="codigo" value="#{codigo.value}" />
+	      <f:validator validatorId="exoneracionValidator"/>
+	      <f:attribute name="codigo" value="#{codigo.value}" />
 </h:selectOneMenu>
- 
+</h:panelGroup>
 <p:commandButton value="Cargar" actionListener="#{alumnoExoneracionBean.CargaExoneracionAlumno}"
-				 update="msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)" />
+				 update="panelGroup msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)" />
 			
 </h:panelGrid>
 </p:panel>
