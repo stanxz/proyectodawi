@@ -58,7 +58,7 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		
 		boolean resultado = false;
 		
-		Query q = em.createQuery("select b from Boleta b where ");
+		Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1");
 		q.setParameter(1, codigoApoderado);
 		
 		actividad = (Actividad) q.getSingleResult();
