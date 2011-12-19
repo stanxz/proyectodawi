@@ -61,7 +61,7 @@ public class AlumnoExoneracionBean implements Serializable{
 		 System.out.println(exoneracionAlumno.getStrCodigoAlumno());
 	        try {
 	        	
-	        	/*exoneracionService.CumpleCalendarioExoneracion(2011);
+	        	//exoneracionService.CumpleCalendarioExoneracion(2011);
 	        		
 	        	System.out.println("Cumple");
 	        	alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
@@ -69,7 +69,7 @@ public class AlumnoExoneracionBean implements Serializable{
 				Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
 					
 				seccionProgramada = matriculaoService.obtenerSecProAlumno(matricula);
-				*/
+				
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block

@@ -7,6 +7,7 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import entidades.Apoderado;
+import entidades.Boleta;
 import entidades.Persona;
 
 import servicios.ApplicationBusinessDelegate;
@@ -24,38 +25,40 @@ public class ExoneracionValidator implements Validator {
         String valor = (String) value;
         
         System.out.println("--->" + valor);
-
+        
+        
         boolean condicionExoneracion = false;
 		try {
 			condicionExoneracion = exoneracionService.CumpleCalendarioExoneracion(2011);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		if (!condicionExoneracion) {
+		    throw new ValidatorException(new FacesMessage("Ud. está fuera del perido de exoneración"));    
+		}else {
+			boolean condicionBoleta = false;
 			
-			if (!condicionExoneracion) {
-			    throw new ValidatorException(new FacesMessage("Ud. está fuera del perido de exoneración"));
-			    
-			    //boolean condicionBoleta = false;
-			    
-			  //NO BORRAR 
-				//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			try {
+				Persona persona = new Persona();
+				persona.setStrCodigoPersona("PE-18181818");
 				
-				//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+				Apoderado apoderado = new Apoderado();
+				apoderado.setPersonas(persona);
 				
+				Boleta boleta = new Boleta();
+				boleta.setApoderados(apoderado);
 				
-				//System.out.println(usuario.getPersonas().getStrCodigoPersona());
+				condicionBoleta = exoneracionService.NoExisteDeudas(boleta);
 				
-				//persona = new Persona();
-				//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-				//persona.setStrCodigoPersona("PE-18181818");
-				
-				//apoderado = new Apoderado();
-				//apoderado.setPersonas(persona);
-			    
-			    //condicionBoleta = exoneracionService.NoExisteDeudas(boleta);
-			    
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 			
-			
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			if(!condicionBoleta){
+				throw new ValidatorException(new FacesMessage("Ud. tiene una deuda con la institución"));    
+			}
 		}
         	
 				
