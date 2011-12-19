@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entidades.Asignatura;
 import entidades.Grados;
+import entidades.Seccionprogramada;
 
 public interface AsignaturaDAO {
 	
@@ -13,4 +14,5 @@ public interface AsignaturaDAO {
 	public void inhabilitar(Asignatura asignatura) throws Exception;
 	public ArrayList<Grados> obtenerGradoPrimaria() throws Exception;
 	public ArrayList<Grados> obtenerGradoSecundaria() throws Exception;
+	public ArrayList<Asignatura> obtenerAsignaturasXGrado(Seccionprogramada seccion) throws Exception;
 }

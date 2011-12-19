@@ -46,8 +46,8 @@
           <h:outputText value="Asignatura" style="font-weight:bold"/>
 		  <h:selectOneMenu value="" required="true" style="font-weight:bold">
 			<f:selectItem itemLabel="Seleccione Asignatura" itemValue="#{null}"/>
-			<f:selectItem itemLabel="Religión" itemValue="Religion"/>
-			<f:selectItem itemLabel="Educación Física" itemValue="EducacionFisica"/>   
+            <f:selectItems value="#{alumnoExoneracionBean.asignaturasXgrado}" var="asignatura"
+                          itemLabel="#{asignatura.strNombreAsignatura}" itemValue="#{asignatura.intCodigoAsignatura}"/>
 		 </h:selectOneMenu>	
           
           <f:facet name="footer"> 
