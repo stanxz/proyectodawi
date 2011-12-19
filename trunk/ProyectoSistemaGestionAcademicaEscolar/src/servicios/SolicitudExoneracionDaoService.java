@@ -3,6 +3,7 @@ package servicios;
 
 import dao.DAOFactory;
 import dao.SolicitudExoneracionDAO;
+import entidades.Boleta;
 
 public class SolicitudExoneracionDaoService implements SolicitudExoneracionService {
 	private DAOFactory fabrica = null;
@@ -20,6 +21,12 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 			throws Exception {
 		// TODO Auto-generated method stub
 		return exoneraciondao.CumpleCalendarioExoneracion(codigoCalendario);
+	}
+
+	@Override
+	public boolean NoExisteDeudas(Boleta boleta) throws Exception {
+		// TODO Auto-generated method stub
+		return exoneraciondao.NoExisteDeudas(boleta);
 	}
 
 
