@@ -5,6 +5,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import entidades.Actividad;
+import entidades.Boleta;
+import entidades.Persona;
 
 public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 	
@@ -50,22 +52,23 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		
 	}
 	
-	public boolean NoExisteDeudas(int codigoApoderado){
+	public boolean NoExisteDeudas(Boleta boleta) throws Exception{
 		
 		em = emf.createEntityManager();
 		
-		Actividad actividad = null;
+		Boleta objBoleta = null;
 		
 		boolean resultado = false;
 		
-		Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1");
-		q.setParameter(1, codigoApoderado);
+		Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1 and " +
+				                 "b.strEstado='Cancelado'");
+		q.setParameter(1, boleta.getApoderados().getPersonas().getStrCodigoPersona());
 		
-		actividad = (Actividad) q.getSingleResult();
+		objBoleta = (Boleta) q.getSingleResult();
 		
 		em.close();
 		
-		if(actividad!=null){
+		if(objBoleta!=null){
 			resultado = true;
 		}else{
 			resultado = false;
