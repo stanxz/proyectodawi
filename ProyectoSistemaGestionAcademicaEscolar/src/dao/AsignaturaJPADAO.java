@@ -5,9 +5,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 import entidades.Asignatura;
 import entidades.Grados;
+import entidades.Seccionprogramada;
 
 public class AsignaturaJPADAO implements AsignaturaDAO{
 	
@@ -144,5 +146,28 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		em.getTransaction().commit();
 		em.close();
 	}
-
+	
+	
+	@SuppressWarnings("rawtypes")
+	public ArrayList<Asignatura> obtenerAsignaturasXGrado(Seccionprogramada seccion) throws Exception{
+		
+		em = emf.createEntityManager();
+		
+		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
+		
+		Query q = em.createQuery("SELECT a FROM Asignatura a " +
+				                    "WHERE a.intGrado=?1 " +
+				                    "AND a.strEstado = 'Habilitado'");
+		q.setParameter(1, seccion.getIntGrado());
+		List lista = q.getResultList();
+		
+		if (lista.size()>0) {
+			for (int i = 0; i < lista.size(); i++) {
+				asignaturas.add((Asignatura)lista.get(i));
+			}
+		}
+		
+		return asignaturas;
+		
+	}
 }

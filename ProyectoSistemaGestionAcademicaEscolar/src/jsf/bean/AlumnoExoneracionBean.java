@@ -3,27 +3,22 @@ package jsf.bean;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.faces.validator.ValidatorException;
-import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
+import servicios.AsignaturaService;
 import servicios.MatriculaService;
 import servicios.MotivoService;
-import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Asignatura;
 import entidades.Matricula;
 import entidades.Motivo;
 import entidades.Persona;
 import entidades.Seccionprogramada;
-import entidades.Usuario;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -34,14 +29,16 @@ public class AlumnoExoneracionBean implements Serializable{
 	
 	private static AlumnoService alumnoService = abd.getAlumnoService();
 	private static MotivoService motivoService = abd.getMotivoService();
-	private static MatriculaService matriculaoService = abd.getMatriculaService();
-	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
+	private static MatriculaService matriculaService = abd.getMatriculaService();
+	private static AsignaturaService asignaturaService = abd.getAsignaturaService();
+	//private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnosXapoderado;
+	private ArrayList<Asignatura> asignaturasXgrado;
 	private ArrayList<Motivo> motivos;
 	private String prueba;
 	private Motivo motivo = new Motivo();
@@ -66,9 +63,11 @@ public class AlumnoExoneracionBean implements Serializable{
 	        	System.out.println("Cumple");
 	        	alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
 					
-				Matricula matricula =  matriculaoService.obtenerMatriculaAlumno(alumno);
+				Matricula matricula =  matriculaService.obtenerMatriculaAlumno(alumno);
 					
-				seccionProgramada = matriculaoService.obtenerSecProAlumno(matricula);
+				seccionProgramada = matriculaService.obtenerSecProAlumno(matricula);
+				
+				asignaturasXgrado = asignaturaService.obtenerAsignaturasXGrado(seccionProgramada);
 				
 				
 			} catch (Exception e) {
@@ -222,7 +221,13 @@ public class AlumnoExoneracionBean implements Serializable{
 	public void setPrueba(String prueba) {
 		this.prueba = prueba;
 	}
-	
-	
+
+	public ArrayList<Asignatura> getAsignaturasXgrado() {
+		return asignaturasXgrado;
+	}
+
+	public void setAsignaturasXgrado(ArrayList<Asignatura> asignaturasXgrado) {
+		this.asignaturasXgrado = asignaturasXgrado;
+	}
 
 }

@@ -6,6 +6,7 @@ import dao.AsignaturaDAO;
 import dao.DAOFactory;
 import entidades.Asignatura;
 import entidades.Grados;
+import entidades.Seccionprogramada;
 
 public class AsignaturaDaoService implements AsignaturaService{
 	private DAOFactory fabrica = null;
@@ -38,5 +39,11 @@ public class AsignaturaDaoService implements AsignaturaService{
 	
 	public ArrayList<Grados> gradosSecundaria() throws Exception {
 		return asignaturadao.obtenerGradoSecundaria();
+	}
+
+	@Override
+	public ArrayList<Asignatura> obtenerAsignaturasXGrado(
+			Seccionprogramada seccion) throws Exception {
+		return asignaturadao.obtenerAsignaturasXGrado(seccion);
 	}
 }
