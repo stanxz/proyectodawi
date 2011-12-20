@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import entidades.Asignatura;
 import entidades.Grados;
+import entidades.Persona;
 import entidades.Seccionprogramada;
 
 public class AsignaturaJPADAO implements AsignaturaDAO{
@@ -111,6 +112,24 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		Asignatura entidadAsignatura = (Asignatura)em.find(Asignatura.class,asignatura.getIntCodigoAsignatura());
 	
 		return entidadAsignatura;
+	}
+	
+	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception {
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.strNombreAsignatura=?1");
+		q.setParameter(1, asignatura.getStrNombreAsignatura());
+		
+		try {
+			Asignatura entidadAsignatura =(Asignatura)q.getSingleResult();
+			em.close();
+			if(entidadAsignatura!=null)
+				return entidadAsignatura;
+			else
+				return null;
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 	
 	public void insertar(Asignatura asignatura) throws Exception {
