@@ -15,4 +15,5 @@ public interface AsignaturaService {
 	public ArrayList<Grados> gradosPrimaria() throws Exception;
 	public ArrayList<Grados> gradosSecundaria() throws Exception;
 	public ArrayList<Asignatura> obtenerAsignaturasXGrado(Seccionprogramada seccion) throws Exception;
+	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception ;
 }

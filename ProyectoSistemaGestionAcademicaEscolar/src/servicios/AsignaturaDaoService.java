@@ -46,4 +46,11 @@ public class AsignaturaDaoService implements AsignaturaService{
 			Seccionprogramada seccion) throws Exception {
 		return asignaturadao.obtenerAsignaturasXGrado(seccion);
 	}
+
+	@Override
+	public Asignatura consultarAsignatura(Asignatura asignatura)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return asignaturadao.consultarAsignatura(asignatura);
+	}
 }
