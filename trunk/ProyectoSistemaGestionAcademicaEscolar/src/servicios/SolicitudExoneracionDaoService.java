@@ -4,6 +4,7 @@ package servicios;
 import dao.DAOFactory;
 import dao.SolicitudExoneracionDAO;
 import entidades.Boleta;
+import entidades.SolicitudExoneracion;
 
 public class SolicitudExoneracionDaoService implements SolicitudExoneracionService {
 	private DAOFactory fabrica = null;
@@ -27,6 +28,13 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 	public boolean NoExisteDeudas(Boleta boleta) throws Exception {
 		// TODO Auto-generated method stub
 		return exoneraciondao.NoExisteDeudas(boleta);
+	}
+
+	@Override
+	public SolicitudExoneracion buscarSolicitudXAsignatura(
+			SolicitudExoneracion exoneracion) throws Exception {
+		// TODO Auto-generated method stub
+		return exoneraciondao.buscarSolicitudXAsignatura(exoneracion);
 	}
 
 

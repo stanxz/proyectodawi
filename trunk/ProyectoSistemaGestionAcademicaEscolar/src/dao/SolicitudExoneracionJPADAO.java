@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import entidades.Actividad;
 import entidades.Boleta;
-import entidades.Persona;
 import entidades.SolicitudExoneracion;
 
 public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
@@ -84,42 +83,35 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 	
 	}
 	
-	/*
-	public SolicitudExoneracion buscarSolicitudXAlumno(Boleta boleta) throws Exception{
-		
-		boolean resultado = false;
-		
-		
+	public SolicitudExoneracion buscarSolicitudXAsignatura(SolicitudExoneracion exoneracion) throws Exception{
+			
 		try {
 			
 			em = emf.createEntityManager();
 			
-			Boleta objBoleta = null;
+			SolicitudExoneracion objExoneracion = null;
 			
-			Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1 and " +
-					                 "b.strEstado='Cancelado'");
-			q.setParameter(1, boleta.getApoderados().getPersonas().getStrCodigoPersona());
+			Query q = em.createQuery("select se from SolicitudExoneracion se " +
+					                 "where se.asignaturas.intCodigoAsignatura=?1 and " +
+					                 "(se.strEstado='Pendiente' or se.strEstado='Aprobado')");
+			q.setParameter(1, exoneracion.getAsignaturas().getIntCodigoAsignatura());
 			
-			objBoleta = (Boleta) q.getSingleResult();
+			objExoneracion = (SolicitudExoneracion) q.getSingleResult();
 			
 			em.close();
 			
-			if(objBoleta!=null){
-				resultado = true;
-				return resultado;
+			if(objExoneracion!=null){
+				return objExoneracion;
 			}else{
-				resultado = false;
-				return resultado;
+				return null;
 			}
 
 		} catch (Exception e) {
-			resultado = false;
-			return resultado;
+			return null;
 		}
 
 	
 	}
-	*/
 	
 
 }

@@ -41,7 +41,7 @@ public class SolicitudExoneracion implements Serializable {
 	@Transient
 	private InputStream isFot;
 	
-	@Column(name="docsustentario",columnDefinition="LONGBLOB")
+	@Column(name="DOCSUSTENTATORIO",columnDefinition="MEDIUMBLOB")
 	private byte[] fotobin;
 	
 	@Column(name="estado")
@@ -61,7 +61,7 @@ public class SolicitudExoneracion implements Serializable {
 	private int intFlagProcesado;
 	
 	@ManyToOne
-	@JoinColumn(name="codpersona")
+	@JoinColumn(name="codaca")
 	private AsistenteCoordinacionAcademica asistenteCoordinacion = new AsistenteCoordinacionAcademica();
 
 	public int getIntIdCodigoSolicitudExoneracion() {

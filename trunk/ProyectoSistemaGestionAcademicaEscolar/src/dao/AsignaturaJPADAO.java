@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import entidades.Asignatura;
 import entidades.Grados;
-import entidades.Persona;
 import entidades.Seccionprogramada;
 
 public class AsignaturaJPADAO implements AsignaturaDAO{
