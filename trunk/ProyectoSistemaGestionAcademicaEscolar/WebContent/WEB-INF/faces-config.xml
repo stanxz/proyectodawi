@@ -20,5 +20,10 @@
         <validator-id>exoneracionValidatorParte2</validator-id>
         <validator-class>utiles.ExoneracionValidatorParte2</validator-class>
     </validator>
+    
+    <validator>
+        <validator-id>asignaturaValidator</validator-id>
+        <validator-class>utiles.AsignaturaValidator</validator-class>
+    </validator>
 
 </faces-config>

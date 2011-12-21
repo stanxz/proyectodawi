@@ -114,22 +114,50 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 	}
 	
 	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception {
+		
 		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.strNombreAsignatura=?1 and a.intGrado=?2");
+		/*Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.strNombreAsignatura=?1 and a.intGrado=?2");
 		q.setParameter(1, asignatura.getStrNombreAsignatura());
 		q.setParameter(2, asignatura.getIntGrado());
+		*/
 		
-		try {
-			Asignatura entidadAsignatura =(Asignatura)q.getSingleResult();
-			em.close();
-			if(entidadAsignatura!=null)
-				return entidadAsignatura;
-			else
-				return null;
-		} catch (Exception e) {
-			return null;
+		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
+		
+		Asignatura entidadAsignatura = new Asignatura();
+		
+		Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.intGrado=?1");
+		q.setParameter(1, asignatura.getIntGrado());
+		
+		List lista = q.getResultList();
+		
+		if (lista.size()>0) {
+			for (int i = 0; i < lista.size(); i++) {
+				asignaturas.add((Asignatura)lista.get(i));
+			}
 		}
 		
+	    if (asignaturas.size()>0) {
+	    	
+	    	String nombreAsignaturaNuevo = "";
+			nombreAsignaturaNuevo = (((((((asignatura.getStrNombreAsignatura().replace("á", "a")).replace("é", "e")).replace("í", "i")).replace("ó", "o")).replace("ú", "u")).replace("ñ", "n")).replace(" ", "")).toLowerCase();
+			
+			for (Asignatura x : asignaturas) {
+				String nombreAsignaturaActual = "";
+				
+				nombreAsignaturaActual =  (((((((x.getStrNombreAsignatura().replace("á", "a")).replace("é", "e")).replace("í", "i")).replace("ó", "o")).replace("ú", "u")).replace("ñ", "n")).replace(" ", "")).toLowerCase();
+				
+				if(nombreAsignaturaNuevo.equalsIgnoreCase(nombreAsignaturaActual)){
+					entidadAsignatura.setIntCodigoAsignatura(x.getIntCodigoAsignatura());
+					entidadAsignatura.setStrNombreAsignatura(x.getStrNombreAsignatura());
+					entidadAsignatura.setStrEstado(x.getStrEstado());
+					entidadAsignatura.setIntGrado(x.getIntGrado());
+				}else{
+					entidadAsignatura = null;
+				}
+			}
+		}
+		return entidadAsignatura;
+
 	}
 	
 	public void insertar(Asignatura asignatura) throws Exception {
