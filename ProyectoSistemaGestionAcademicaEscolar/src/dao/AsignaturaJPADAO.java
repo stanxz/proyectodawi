@@ -115,8 +115,9 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 	
 	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception {
 		em=emf.createEntityManager();
-		Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.strNombreAsignatura=?1");
+		Query q =  em.createQuery("SELECT a FROM Asignatura a WHERE a.strNombreAsignatura=?1 and a.intGrado=?2");
 		q.setParameter(1, asignatura.getStrNombreAsignatura());
+		q.setParameter(2, asignatura.getIntGrado());
 		
 		try {
 			Asignatura entidadAsignatura =(Asignatura)q.getSingleResult();
