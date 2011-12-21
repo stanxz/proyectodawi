@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import entidades.Asignatura;
 import entidades.Grados;
@@ -55,14 +56,9 @@ public class AsignaturaBean implements Serializable{
 		try {
 			System.out.println("Registrando asignatura ... ");
 			nuevaAsignatura.setStrNivel(strNivel);
-			Asignatura temporal=asignaturaService.consultarAsignatura(nuevaAsignatura);
-			if(temporal!=null){
-				System.out.println("Asignatura ya fue registrada !");
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: ","Asignatura ya fue registrada !"));
-			}else{
-				asignaturaService.insertarAsignatura(nuevaAsignatura);
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Asignatura Registrada con exito: " + nuevaAsignatura.getStrNombreAsignatura()));				
-			}
+			
+			asignaturaService.insertarAsignatura(nuevaAsignatura);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Asignatura Registrada con exito: " + nuevaAsignatura.getStrNombreAsignatura()));				
 			
 			nuevaAsignatura = new Asignatura();
 		} catch (Exception e) {
