@@ -47,6 +47,9 @@ public class SolicitudExoneracion implements Serializable {
 	@Column(name="estado")
 	private String strEstado;
 	
+	@Column(name="fecharegistro")
+	private java.sql.Date dtFecReg;
+	
 	@Transient
 	private Date fechaRegistro;
 	
@@ -169,6 +172,13 @@ public class SolicitudExoneracion implements Serializable {
 			AsistenteCoordinacionAcademica asistenteCoordinacion) {
 		this.asistenteCoordinacion = asistenteCoordinacion;
 	}
-	
-	
+
+	public java.sql.Date getDtFecReg() {
+		return dtFecReg;
+	}
+
+	public void setDtFecReg(java.sql.Date dtFecReg) {
+		this.dtFecReg = dtFecReg;
+	}
+
 }
