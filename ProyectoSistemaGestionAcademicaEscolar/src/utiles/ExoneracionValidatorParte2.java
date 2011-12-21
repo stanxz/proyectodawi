@@ -7,13 +7,15 @@ import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
 import entidades.Apoderado;
+import entidades.Asignatura;
 import entidades.Boleta;
 import entidades.Persona;
+import entidades.SolicitudExoneracion;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudExoneracionService;
 
-public class ExoneracionValidator implements Validator {
+public class ExoneracionValidatorParte2 implements Validator {
 
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
@@ -22,21 +24,33 @@ public class ExoneracionValidator implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value)
     throws ValidatorException
     {
-        String valor = (String) value;
+        Integer valor = (Integer) value;
         
         System.out.println("--->" + valor);
         
+        Asignatura tmpAsignatura = new Asignatura();
+        tmpAsignatura.setIntCodigoAsignatura(valor);
         
-        boolean condicionExoneracion = false;
+        
+        SolicitudExoneracion tmpExoneracion = new SolicitudExoneracion();
+        tmpExoneracion.setAsignaturas(tmpAsignatura);
+        
+        SolicitudExoneracion condicion = null;
 		try {
-			condicionExoneracion = exoneracionService.CumpleCalendarioExoneracion(2011);
+			condicion = exoneracionService.buscarSolicitudXAsignatura(tmpExoneracion);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		if (!condicionExoneracion) {
-		    throw new ValidatorException(new FacesMessage("Ud. está fuera del perido de exoneración"));    
+		if (condicion != null) {
+			if(condicion.getStrEstado().equalsIgnoreCase("Pendiente")){
+				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO,"Solicitud PENDIENTE","Existe una solicitud PENDIENTE para este curso."));
+			}else if (condicion.getStrEstado().equalsIgnoreCase("Aprobada")) {
+				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO,"Solicitud APROBADA","Su solicitud para este curso " +
+                "ya fue APROBADA. No puede generar otra solicitud para este curso"));
+			}
+     
 		}else {
 			boolean condicionBoleta = false;
 			
@@ -60,11 +74,6 @@ public class ExoneracionValidator implements Validator {
 				throw new ValidatorException(new FacesMessage("Ud. tiene una deuda con la institución"));    
 			}
 		}
-        	
-				
-
-			
-
     }
 
 }

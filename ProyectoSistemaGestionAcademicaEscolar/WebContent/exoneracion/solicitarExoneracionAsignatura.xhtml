@@ -19,7 +19,7 @@
                  <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
                  <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
-	      <f:validator validatorId="exoneracionValidator"/>
+	      <f:validator validatorId="exoneracionValidatorParte1"/>
 	      <f:attribute name="codigo" value="#{codigo.value}" />
 </h:selectOneMenu>
 </h:panelGroup>
@@ -44,10 +44,14 @@
           <p:inputText value="#{alumnoExoneracionBean.seccionProgramada.intGrado} º #{alumnoExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
           
           <h:outputText value="Asignatura" style="font-weight:bold"/>
-		  <h:selectOneMenu value="" required="true" style="font-weight:bold">
+		  <h:selectOneMenu value="#{alumnoExoneracionBean.exoneracion.asignaturas.intCodigoAsignatura}" 
+		                   required="true" requiredMessage="Seleccione Asignatura"
+		                   style="font-weight:bold">
 			<f:selectItem itemLabel="Seleccione Asignatura" itemValue="#{null}"/>
             <f:selectItems value="#{alumnoExoneracionBean.asignaturasXgrado}" var="asignatura"
                           itemLabel="#{asignatura.strNombreAsignatura}" itemValue="#{asignatura.intCodigoAsignatura}"/>
+            <f:validator validatorId="exoneracionValidatorParte2"/>
+	        <f:attribute name="codigo" value="#{codigo.value}" />
 		 </h:selectOneMenu>	
           
           <f:facet name="footer"> 
@@ -56,7 +60,7 @@
 					 <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoExoneracionBean.registraSolicitud}"  
 					  update="dlgForm:display msgs" 
-                      image="ui-icon ui-icon-check" oncomplete="datosDialog.hide()">
+                      image="ui-icon ui-icon-check" oncomplete="generarSolicitudExoneracion(args)">
                       </p:commandButton>
                     <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
   				</h:panelGroup>

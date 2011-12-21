@@ -12,8 +12,13 @@
     </validator>
     
     <validator>
-        <validator-id>exoneracionValidator</validator-id>
-        <validator-class>utiles.ExoneracionValidator</validator-class>
+        <validator-id>exoneracionValidatorParte1</validator-id>
+        <validator-class>utiles.ExoneracionValidatorParte1</validator-class>
+    </validator>
+    
+    <validator>
+        <validator-id>exoneracionValidatorParte2</validator-id>
+        <validator-class>utiles.ExoneracionValidatorParte2</validator-class>
     </validator>
 
 </faces-config>

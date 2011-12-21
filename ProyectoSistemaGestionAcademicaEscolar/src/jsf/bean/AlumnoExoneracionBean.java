@@ -19,6 +19,7 @@ import entidades.Matricula;
 import entidades.Motivo;
 import entidades.Persona;
 import entidades.Seccionprogramada;
+import entidades.SolicitudExoneracion;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -42,6 +43,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	private ArrayList<Motivo> motivos;
 	private String prueba;
 	private Motivo motivo = new Motivo();
+	private SolicitudExoneracion exoneracion = new SolicitudExoneracion();
 	
 	private Boolean btnAdjuntar;
 	private Boolean btnCita;
@@ -181,6 +183,14 @@ public class AlumnoExoneracionBean implements Serializable{
 
 	public void setSeccionProgramada(Seccionprogramada seccionProgramada) {
 		this.seccionProgramada = seccionProgramada;
+	}
+
+	public SolicitudExoneracion getExoneracion() {
+		return exoneracion;
+	}
+
+	public void setExoneracion(SolicitudExoneracion exoneracion) {
+		this.exoneracion = exoneracion;
 	}
 
 	public ArrayList<Alumno> getAlumnosXapoderado() {
