@@ -75,7 +75,11 @@ public class AlumnoBean implements Serializable{
 		nuevoAlumno.setDistritos(tempodis);
 		
 		Seccionprogramada sptempo=new Seccionprogramada();
-		sptempo.setIntGrado(Integer.parseInt(gradoAlumno.substring(0, 1)));
+		if(gradoAlumno.length()==3)
+			sptempo.setIntGrado(Integer.parseInt(gradoAlumno.substring(0, 2)));
+		else if(gradoAlumno.length()==2)
+			sptempo.setIntGrado(Integer.parseInt(gradoAlumno.substring(0, 1)));
+		
 		sptempo.setStrNivel(nivelAlumno);
 		sptempo.setStrSeccion(seccionAlumno);
 		
@@ -177,11 +181,11 @@ public class AlumnoBean implements Serializable{
 			this.listaPrimaria.add("5º");
 			this.listaPrimaria.add("6º");
 			System.out.println("tamaño de listaPrimaria: "+listaPrimaria.size());
-			this.listaSecundaria.add("1º");
-			this.listaSecundaria.add("2º");
-			this.listaSecundaria.add("3º");
-			this.listaSecundaria.add("4º");
-			this.listaSecundaria.add("5º");
+			this.listaSecundaria.add("7º");
+			this.listaSecundaria.add("8º");
+			this.listaSecundaria.add("9º");
+			this.listaSecundaria.add("10º");
+			this.listaSecundaria.add("11º");
 			System.out.println("tamaño de listaSecundaria: "+listaSecundaria.size());
 			
 			//this.listaSecundaria=seccionprogService.obtenerListaGrados("SECUNDARIA");
@@ -196,8 +200,6 @@ public class AlumnoBean implements Serializable{
 	public void cargaComboListadoGrado(){
 		System.out.println("en el metodo cargaComboListadoGrado ... - "+nivelAlumno);
 		try {
-			// String valorCombo = (String) event.getComponent().getAttributes().get(
-		   //            "value");
 			String valorCombo=nivelAlumno;
 			 if(valorCombo.equalsIgnoreCase("PRIMARIA")){
 				 System.out.println("cargando lista primaria .... ");
