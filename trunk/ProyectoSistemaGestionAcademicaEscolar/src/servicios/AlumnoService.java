@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
-import entidades.Distrito;
 
 public interface AlumnoService {
 
