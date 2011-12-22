@@ -18,6 +18,7 @@ import servicios.ApplicationBusinessDelegate;
 import servicios.AsignaturaService;
 import servicios.MatriculaService;
 import servicios.MotivoService;
+import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Asignatura;
@@ -38,7 +39,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	private static MotivoService motivoService = abd.getMotivoService();
 	private static MatriculaService matriculaService = abd.getMatriculaService();
 	private static AsignaturaService asignaturaService = abd.getAsignaturaService();
-	//private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
+	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
@@ -93,11 +94,28 @@ public class AlumnoExoneracionBean implements Serializable{
 	 
 	 public void registraSolicitud(){
 		 System.out.println("--------------------------------------");
-		 System.out.println("------Registra Solictud---------------");
+		 System.out.println("------Registra Solicitud---------------");
 		 System.out.println("--------------------------------------");
 		 
 		 
 		 System.out.println(alumno.getStrCodigoAlumno());
+		 System.out.println(exoneracion.getAsignaturas().getIntCodigoAsignatura());
+		 
+		 Alumno entidadAlumno = new Alumno();
+		 entidadAlumno.setStrCodigoAlumno(alumno.getStrCodigoAlumno());
+		 
+		 Asignatura entidadAsignatura = new Asignatura();
+		 entidadAsignatura.setIntCodigoAsignatura(exoneracion.getAsignaturas().getIntCodigoAsignatura());
+		 
+		 exoneracion.setAlumno(entidadAlumno);
+		 
+		 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro Solicitud de Exoneracion","Solicitud registrada correctamente"));
+		 
+		 try {
+			exoneracionService.registrarSolictud(exoneracion);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	 }
 	 
 	 
@@ -130,6 +148,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	    	
 	    	try {
 	    	    image = new DefaultStreamedContent(event.getFile().getInputstream());
+	    	    
 	    	    System.out.println("XD2 " + event.getFile().getFileName());
 	    	    
 	    	    byte[] foto = event.getFile().getContents();
