@@ -1,16 +1,12 @@
 package entidades;
 
 import java.io.Serializable;
-import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -38,13 +34,14 @@ public class Asignatura implements Serializable{
 	@Transient
 	private String strNivel;
 	
+	/*
 	@ManyToMany
 	@JoinTable(name="detalleasignatura",
 			joinColumns={@JoinColumn(name="codasignatura")},
 			inverseJoinColumns={@JoinColumn(name="codalumno")}
 	)
 	private Collection<Alumno> tbAlumnos;
-
+    */
 	
 	public int getIntCodigoAsignatura() {
 		return intCodigoAsignatura;
@@ -61,7 +58,7 @@ public class Asignatura implements Serializable{
 	public void setStrNombreAsignatura(String strNombreAsignatura) {
 		this.strNombreAsignatura = strNombreAsignatura;
 	}
-
+	/*
 	public Collection<Alumno> getTbAlumnos() {
 		return tbAlumnos;
 	}
@@ -69,11 +66,11 @@ public class Asignatura implements Serializable{
 	public void setTbAlumnos(Collection<Alumno> tbAlumnos) {
 		this.tbAlumnos = tbAlumnos;
 	}
-
+	*/
 	public String getStrEstado() {
 		return strEstado;
 	}
-
+	
 	public void setStrEstado(String strEstado) {
 		this.strEstado = strEstado;
 	}

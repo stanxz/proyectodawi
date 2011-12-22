@@ -26,6 +26,10 @@ public class AsignaturaValidator implements Validator {
         
         String nombreAsignatura = (String) component.getAttributes().get("valor");
         
+        System.out.println(grado);
+        
+        System.out.println(nombreAsignatura);
+        
         Asignatura tmpAsignatura = new Asignatura();
         tmpAsignatura.setIntGrado(grado);
         tmpAsignatura.setStrNombreAsignatura(nombreAsignatura);
@@ -42,14 +46,6 @@ public class AsignaturaValidator implements Validator {
 			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO,"ERROR:Registro Asignatura ","Ya existe asignatura"));
 		}
         
-        System.out.println(grado);
-        
-        System.out.println(nombreAsignatura);
-
-        if (!grado.equals(nombreAsignatura)) {
-            
-        }
-
     }
 
 }

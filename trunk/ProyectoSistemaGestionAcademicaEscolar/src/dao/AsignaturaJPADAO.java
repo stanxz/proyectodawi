@@ -134,6 +134,8 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 			for (int i = 0; i < lista.size(); i++) {
 				asignaturas.add((Asignatura)lista.get(i));
 			}
+		}else{
+			entidadAsignatura = null;
 		}
 		
 	    if (asignaturas.size()>0) {
@@ -151,10 +153,12 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 					entidadAsignatura.setStrNombreAsignatura(x.getStrNombreAsignatura());
 					entidadAsignatura.setStrEstado(x.getStrEstado());
 					entidadAsignatura.setIntGrado(x.getIntGrado());
-				}else{
-					entidadAsignatura = null;
+					
+					return entidadAsignatura;
 				}
 			}
+			
+			entidadAsignatura = null;
 		}
 		return entidadAsignatura;
 
