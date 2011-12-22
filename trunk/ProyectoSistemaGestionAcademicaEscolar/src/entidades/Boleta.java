@@ -28,6 +28,9 @@ public class Boleta implements Serializable{
 	@Column(name="fecharegistro")
 	private java.sql.Date dtFechaRegistro;
 	
+	@Column(name="monto")
+	private Double monto;
+	
 	@Transient
 	private Date fechaRegistro;
 	
@@ -72,6 +75,14 @@ public class Boleta implements Serializable{
 
 	public void setStrEstado(String strEstado) {
 		this.strEstado = strEstado;
+	}
+
+	public Double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(Double monto) {
+		this.monto = monto;
 	}
 	
 }

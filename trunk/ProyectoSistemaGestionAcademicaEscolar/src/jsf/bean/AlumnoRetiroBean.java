@@ -14,10 +14,12 @@ import servicios.MatriculaService;
 import servicios.MotivoService;
 import entidades.Alumno;
 import entidades.Apoderado;
+import entidades.Boleta;
 import entidades.Matricula;
 import entidades.Motivo;
 import entidades.Persona;
 import entidades.Seccionprogramada;
+import entidades.SolicitudRetiro;
 import entidades.Usuario;
 
 @SuppressWarnings("serial")
@@ -39,16 +41,22 @@ public class AlumnoRetiroBean implements Serializable{
 	private ArrayList<Motivo> motivos;
 	private String prueba;
 	private Motivo motivo = new Motivo();
-	
+	private Boleta boleta;
 	private Boolean btnAdjuntar;
 	private Boolean btnCita;
+	private String observacion;
 
 	private Alumno retiroAlumno = new Alumno();
-	
-	
+		
 	public AlumnoRetiroBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
 		CargaMotivos();
+	}
+	
+	public String generaSolicitud(){
+		SolicitudRetiro sr=new SolicitudRetiro();
+		
+		return "";		
 	}
 	
 	 public void CargaRetiroAlumno() {  
@@ -201,6 +209,23 @@ public class AlumnoRetiroBean implements Serializable{
 	public void setPrueba(String prueba) {
 		this.prueba = prueba;
 	}
+
+	public Boleta getBoleta() {
+		return boleta;
+	}
+
+	public void setBoleta(Boleta boleta) {
+		this.boleta = boleta;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+	
 	
 	
 
