@@ -28,9 +28,16 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
 	<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
     <param-value>server</param-value>
   </context-param>
+  
   <filter>
     <filter-name>PrimeFaces FileUpload Filter</filter-name>
     <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+     <!--   
+    <init-param>
+      <param-name>uploadDirectory</param-name>
+      <param-value>/Users/primefaces/temp</param-value>
+    </init-param>
+     -->
    </filter>
    <filter-mapping>
      <filter-name>PrimeFaces FileUpload Filter</filter-name>
