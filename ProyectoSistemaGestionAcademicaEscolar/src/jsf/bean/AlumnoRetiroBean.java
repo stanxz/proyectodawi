@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import javax.faces.event.AjaxBehaviorEvent;
 import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
@@ -169,16 +167,16 @@ public class AlumnoRetiroBean implements Serializable{
 		try {
 			
 			//NO BORRAR 
-			//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			
-			//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
 			
 			
-			//System.out.println(usuario.getPersonas().getStrCodigoPersona());
+			System.out.println("codigo Persona: "+usuario.getPersonas().getStrCodigoPersona());
 			
 			persona = new Persona();
-			//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-			persona.setStrCodigoPersona("PE-18181818");
+			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+			//persona.setStrCodigoPersona("PE-18181818");
 			
 			apoderado = new Apoderado();
 			apoderado.setPersonas(persona);
