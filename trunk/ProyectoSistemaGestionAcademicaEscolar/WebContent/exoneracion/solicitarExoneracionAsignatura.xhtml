@@ -58,7 +58,7 @@
            auto="true" widgetVar="uploader" label="Cargar Solicitud"  
            fileUploadListener="#{alumnoExoneracionBean.cargarImagen}"
            allowTypes="*.jpg;*.png;*.gif;" description="Images" 
-           update="msgs,dlgForm:imgFoto,dlgForm:par" multiple="false" customUI="true" required="true"/>
+           update="msgs,dlgForm:imgFoto,dlgForm:par,dlgForm:url" multiple="false" customUI="true" required="true"/>
            <p:graphicImage id="imgFoto"  value="#{alumnoExoneracionBean.image}" cache="false"
              style="height:50%;width:50%"/>
           <h:inputHidden id="par" value="#{alumnoExoneracionBean.valor}" required="true" requiredMessage="Ingrese Solicitud"/>
@@ -68,6 +68,7 @@
 					 <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoExoneracionBean.registraSolicitud}"  
 					  update="msgs" 
+					  oncomplete="generarSolicitudExoneracion(args)"
                       image="ui-icon ui-icon-check">
                       </p:commandButton>
                     <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close"/>

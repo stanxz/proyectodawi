@@ -114,5 +114,26 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 	
 	}
 	
+	@Override
+	public void registrarSolictud(SolicitudExoneracion exoneracion) throws Exception {
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+		
+		
+		exoneracion.setStrEstado("Pendiente");
+		exoneracion.setDtFecReg(new java.sql.Date(new java.util.Date().getTime()));
+		exoneracion.setAsistenteCoordinacion(null);	
+
+		//2.ejecuta las operaciones
+		em.persist(exoneracion);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 
 }

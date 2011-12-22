@@ -37,6 +37,13 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 		return exoneraciondao.buscarSolicitudXAsignatura(exoneracion);
 	}
 
+	@Override
+	public void registrarSolictud(SolicitudExoneracion exoneracion)
+			throws Exception {
+		// TODO Auto-generated method stub
+		exoneraciondao.registrarSolictud(exoneracion);
+	}
+
 
 
 }
