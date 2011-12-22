@@ -58,6 +58,8 @@ public class AlumnoExoneracionBean implements Serializable{
 	
 	private StreamedContent image; 
 	
+	private String valor;
+	
 	
 	public AlumnoExoneracionBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
@@ -71,6 +73,9 @@ public class AlumnoExoneracionBean implements Serializable{
 	        	//exoneracionService.CumpleCalendarioExoneracion(2011);
 	        		
 	        	System.out.println("Cumple");
+	        	
+	        	valor = "";
+	        	
 	        	alumno = alumnoService.obtenerAlumno(exoneracionAlumno);
 					
 				Matricula matricula =  matriculaService.obtenerMatriculaAlumno(alumno);
@@ -129,6 +134,8 @@ public class AlumnoExoneracionBean implements Serializable{
 	    	    
 	    	    byte[] foto = event.getFile().getContents();
 	    	    exoneracion.setFotobin(foto);
+	    	    
+	    	    valor = "OK";
 	    	    
 	    	    FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -271,5 +278,14 @@ public class AlumnoExoneracionBean implements Serializable{
 	public void setImage(StreamedContent image) {
 		this.image = image;
 	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
+	}
+	
 	
 }
