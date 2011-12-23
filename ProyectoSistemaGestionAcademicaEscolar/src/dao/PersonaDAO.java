@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
+import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.AsistentaSocial;
 import entidades.AsistenteCoordinacionAcademica;
@@ -26,8 +27,13 @@ public interface PersonaDAO {
 	public void guardaAsistentaSocial(AsistentaSocial asistenta) throws Exception;
 	
 	public void guardaSecretaria(SecretariaAcademica secretaria) throws Exception;
+
+
+	public Persona consultaApoderadoxAlumno(Alumno a) throws Exception;
+
 	
 	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception;
 	
 	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception;
+
 }

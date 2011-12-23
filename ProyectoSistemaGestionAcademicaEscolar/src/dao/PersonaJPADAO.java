@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.AsistentaSocial;
 import entidades.AsistenteCoordinacionAcademica;
@@ -272,6 +273,31 @@ public class PersonaJPADAO implements PersonaDAO {
 				                     "where u.perfiles.strCodigoPerfil='pf01' and p.intDNI=?1 " +
 				                     "order by p.strApellidoPaterno");
 		q.setParameter(1, p.getIntDNI());
+		
+		try {
+			Persona entidadPersona =(Persona)q.getSingleResult();
+			em.close();
+			if(entidadPersona!=null){
+				System.out.println("la bd devolvio una persona: "+entidadPersona.getStrCodigoPersona());
+				return entidadPersona;
+			}
+			else{
+				System.out.println("la bd devolvio nulo");
+				return null;
+			}
+		} catch (Exception e) {
+			return null;
+		}
+	}
+
+	@Override
+	public Persona consultaApoderadoxAlumno(Alumno a) throws Exception {
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT p FROM Persona p " +
+				                     "inner join p.tbUsuarios u " +
+				                     "where u.perfiles.strCodigoPerfil='pf01' and p.strCodigoPersona=?1 " +
+				                     "order by p.strApellidoPaterno");
+		q.setParameter(1, a.getApoderados().getPersonas().getStrCodigoPersona());
 		
 		try {
 			Persona entidadPersona =(Persona)q.getSingleResult();
