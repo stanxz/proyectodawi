@@ -20,7 +20,7 @@ public class Apoderado implements Serializable {
 	private Collection<Alumno> tbAlumnos;
 	
 	@OneToMany(targetEntity=Boleta.class,mappedBy="apoderados",cascade = CascadeType.PERSIST)
-	private Collection<Alumno> tbBoletas;
+	private Collection<Boleta> tbBoletas;
 
 	
     public Apoderado() {
@@ -46,13 +46,15 @@ public class Apoderado implements Serializable {
 		this.tbAlumnos = tbAlumnos;
 	}
 
-	public Collection<Alumno> getTbBoletas() {
+	public Collection<Boleta> getTbBoletas() {
 		return tbBoletas;
 	}
 
-	public void setTbBoletas(Collection<Alumno> tbBoletas) {
+	public void setTbBoletas(Collection<Boleta> tbBoletas) {
 		this.tbBoletas = tbBoletas;
 	}
+
+
 	
 	
     
