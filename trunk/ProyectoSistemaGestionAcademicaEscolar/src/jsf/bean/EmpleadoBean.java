@@ -14,9 +14,13 @@ import servicios.PerfilService;
 import servicios.PersonaService;
 import servicios.UsuarioService;
 import utiles.EnviaMail;
+import entidades.AsistentaSocial;
+import entidades.AsistenteCoordinacionAcademica;
+import entidades.AsistenteDireccionAcademica;
 import entidades.Distrito;
 import entidades.Perfil;
 import entidades.Persona;
+import entidades.SecretariaAcademica;
 import entidades.Usuario;
 
 @SuppressWarnings("serial")
@@ -92,6 +96,33 @@ public class EmpleadoBean implements Serializable{
 					tmpUsuario.setStrContrasena(String.valueOf(nuevoEmpleado.getIntDNI()));
 					
 					usuarioService.registrarUsuario(tmpUsuario);
+					
+					if(nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf03")){
+						/*Persona tmpNuevaPersona = new Persona();
+						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
+						
+						SecretariaAcademica nuevaSecreteria = new SecretariaAcademica();
+						nuevaSecreteria.setPersonas(tmpNuevaPersona);
+						
+						personaService.guardaSecretaria(nuevaSecreteria);*/
+						
+					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf02")) {
+						/*AsistentaSocial nuevaAsistentaSocial = new AsistentaSocial();
+						nuevaAsistentaSocial.setPersonas(nuevoEmpleado);
+						
+						personaService.guardaAsistentaSocial(nuevaAsistentaSocial);*/
+					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf07")) {
+						/*AsistenteCoordinacionAcademica nuevaACA = new AsistenteCoordinacionAcademica();
+						nuevaACA.setPersonas(nuevoEmpleado);
+						
+						personaService.guardaACA(nuevaACA);*/
+					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf08")) {
+						/*AsistenteDireccionAcademica nuevaADA = new AsistenteDireccionAcademica();
+						nuevaADA.setPersonas(nuevoEmpleado);
+						
+						personaService.guardaADA(nuevaADA);*/
+						
+					}
 					
 					EnviaMail enviaEMail = new EnviaMail();
 					enviaEMail.EnviadorMailContrasena("registro",nuevoEmpleado.getStrMail(), nuevoEmpleado.getStrNombre()+ " "+nuevoEmpleado.getStrApellidoPaterno()+ " "+nuevoEmpleado.getStrApellidoMaterno(), tmpUsuario);

@@ -20,6 +20,8 @@
 		<class>entidades.Boleta</class>
 		<class>entidades.AsistenteCoordinacionAcademica</class>
 		<class>entidades.AsistenteDireccionAcademica</class>
+		<class>entidades.AsistenteSocial</class>
+		<class>entidades.SecretariaAcademica</class>
 		<class>entidades.SolicitudExoneracion</class>
 		
 		<properties>

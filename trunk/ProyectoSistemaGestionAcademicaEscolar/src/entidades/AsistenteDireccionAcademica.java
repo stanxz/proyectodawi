@@ -16,7 +16,7 @@ public class AsistenteDireccionAcademica implements Serializable{
 	
 	@Id
 	@OneToOne
-	@JoinColumn(name="codpersona")
+	@JoinColumn(name="codada")
 	private Persona personas = new Persona();
 
 	public Persona getPersonas() {

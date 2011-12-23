@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import dao.DAOFactory;
 import dao.PersonaDAO;
 import entidades.Apoderado;
+import entidades.AsistentaSocial;
+import entidades.AsistenteCoordinacionAcademica;
+import entidades.AsistenteDireccionAcademica;
 import entidades.Persona;
+import entidades.SecretariaAcademica;
 
 public class PersonaDaoService implements PersonaService {
 
@@ -51,6 +55,32 @@ public class PersonaDaoService implements PersonaService {
 	public Persona consultaApoderado(Persona p) throws Exception {
 		// TODO Auto-generated method stub
 		return personadao.consultaApoderado(p);
+	}
+
+	@Override
+	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception {
+		// TODO Auto-generated method stub
+		personadao.guardaADA(ada);
+	}
+
+	@Override
+	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception {
+		// TODO Auto-generated method stub
+		personadao.guardaACA(aca);
+	}
+
+	@Override
+	public void guardaSecretaria(SecretariaAcademica secretaria)
+			throws Exception {
+		// TODO Auto-generated method stub
+		personadao.guardaSecretaria(secretaria);
+	}
+
+	@Override
+	public void guardaAsistentaSocial(AsistentaSocial asistenta)
+			throws Exception {
+		// TODO Auto-generated method stub
+		personadao.guardaAsistentaSocial(asistenta);
 	}
 
 }
