@@ -107,18 +107,27 @@ public class EmpleadoBean implements Serializable{
 						personaService.guardaSecretaria(nuevaSecreteria);
 						
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf02")) {
+						Persona tmpNuevaPersona = new Persona();
+						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
+						
 						AsistentaSocial nuevaAsistentaSocial = new AsistentaSocial();
-						nuevaAsistentaSocial.setPersonas(nuevoEmpleado);
+						nuevaAsistentaSocial.setPersonas(tmpNuevaPersona);
 						
 						personaService.guardaAsistentaSocial(nuevaAsistentaSocial);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf07")) {
+						Persona tmpNuevaPersona = new Persona();
+						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
+						
 						AsistenteCoordinacionAcademica nuevaACA = new AsistenteCoordinacionAcademica();
-						nuevaACA.setPersonas(nuevoEmpleado);
+						nuevaACA.setPersonas(tmpNuevaPersona);
 						
 						personaService.guardaACA(nuevaACA);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf08")) {
+						Persona tmpNuevaPersona = new Persona();
+						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
+						
 						AsistenteDireccionAcademica nuevaADA = new AsistenteDireccionAcademica();
-						nuevaADA.setPersonas(nuevoEmpleado);
+						nuevaADA.setPersonas(tmpNuevaPersona);
 						
 						personaService.guardaADA(nuevaADA);
 						
