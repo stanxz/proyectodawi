@@ -19,7 +19,7 @@ public class AsistentaSocial implements Serializable {
 	@JoinColumn(name="codasistentasocial")
 	private Persona personas = new Persona();
 	
-	@Column(name="consultorio")
+	@Column(name="CONSULTORIO")
 	private String strConsultorio;
 	
     public AsistentaSocial() {

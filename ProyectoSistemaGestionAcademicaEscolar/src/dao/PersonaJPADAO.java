@@ -136,15 +136,17 @@ public class PersonaJPADAO implements PersonaDAO {
 	public void guardaAsistentaSocial(AsistentaSocial asistenta) throws Exception {
 		// TODO Auto-generated method stub
 		em=emf.createEntityManager();
-
-		//1.inicia la transacción
-		em.getTransaction().begin();
 		
 		Persona tmpPersona = new Persona();
 		tmpPersona.setStrCodigoPersona("PE-" + asistenta.getPersonas().getStrCodigoPersona());
 		
 		AsistentaSocial tmpAsistentaSocial = new AsistentaSocial();
 		tmpAsistentaSocial.setPersonas(tmpPersona);
+		tmpAsistentaSocial.setStrConsultorio("A-101");
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+	
 
 		//2.ejecuta las operaciones
 		em.persist(tmpAsistentaSocial);
