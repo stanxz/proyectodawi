@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import entidades.Actividad;
 import entidades.Boleta;
-import entidades.Persona;
 import entidades.SolicitudExoneracion;
 
 public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
@@ -156,6 +155,8 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 						solicitudesExoneracion.add(entidad);
 					}
 			 }
+			 
+			 
 
 			em.close();
 			

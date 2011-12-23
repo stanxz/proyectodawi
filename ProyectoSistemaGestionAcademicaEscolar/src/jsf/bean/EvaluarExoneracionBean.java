@@ -12,20 +12,22 @@ import servicios.SolicitudExoneracionService;
 import entidades.SolicitudExoneracion;
 
 
+@SuppressWarnings("serial")
 @SessionScoped
 @ManagedBean 
 public class EvaluarExoneracionBean implements Serializable{
 	
-	 private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
+	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
 	
+    private SolicitudExoneracion solicitud,selectedSolicitud;
 	private ArrayList<SolicitudExoneracion> solicitudes;
+	
+	private boolean editMode;
 	
 	
 	public EvaluarExoneracionBean(){
 		System.out.println("Creando EvaluarExoneracionBean ...");
-		
-	
 	}
 
 
@@ -43,6 +45,36 @@ public class EvaluarExoneracionBean implements Serializable{
 
 	public void setSolicitudes(ArrayList<SolicitudExoneracion> solicitudes) {
 		this.solicitudes = solicitudes;
+	}
+
+
+	public SolicitudExoneracion getSolicitud() {
+		return solicitud;
+	}
+
+
+	public void setSolicitud(SolicitudExoneracion solicitud) {
+		this.solicitud = solicitud;
+	}
+
+
+	public SolicitudExoneracion getSelectedSolicitud() {
+		return selectedSolicitud;
+	}
+
+
+	public void setSelectedSolicitud(SolicitudExoneracion selectedSolicitud) {
+		this.selectedSolicitud = selectedSolicitud;
+	}
+
+
+	public boolean isEditMode() {
+		return editMode;
+	}
+
+
+	public void setEditMode(boolean editMode) {
+		this.editMode = editMode;
 	}
 	
 	
