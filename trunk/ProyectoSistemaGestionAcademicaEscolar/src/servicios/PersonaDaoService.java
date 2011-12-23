@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import dao.DAOFactory;
 import dao.PersonaDAO;
+import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.AsistentaSocial;
 import entidades.AsistenteCoordinacionAcademica;
@@ -81,6 +82,12 @@ public class PersonaDaoService implements PersonaService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		personadao.guardaAsistentaSocial(asistenta);
+	}
+
+	@Override
+	public Persona consultaApoderadoxAlumno(Alumno a) throws Exception {
+		// TODO Auto-generated method stub
+		return personadao.consultaApoderadoxAlumno(a);
 	}
 
 }
