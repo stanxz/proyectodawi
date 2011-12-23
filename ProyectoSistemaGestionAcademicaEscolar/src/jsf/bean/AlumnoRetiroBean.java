@@ -2,6 +2,7 @@ package jsf.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,6 +13,7 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.MatriculaService;
 import servicios.MotivoService;
+import servicios.PersonaService;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Boleta;
@@ -32,6 +34,8 @@ public class AlumnoRetiroBean implements Serializable{
 	private static AlumnoService alumnoService = abd.getAlumnoService();
 	private static MotivoService motivoService = abd.getMotivoService();
 	private static MatriculaService matriculaoService = abd.getMatriculaService();
+	private static PersonaService personaService = abd.getPersonaService();
+	
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
@@ -50,13 +54,47 @@ public class AlumnoRetiroBean implements Serializable{
 		
 	public AlumnoRetiroBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
+		boleta=new Boleta();
 		CargaMotivos();
 	}
 	
-	public String generaSolicitud(){
+	public void generaSolicitud(){
 		SolicitudRetiro sr=new SolicitudRetiro();
+		sr.setAlumno(alumno);
+		sr.setIntFlagprocesado(0);
+		sr.setDtFecNac(new java.sql.Date(new java.util.Date().getTime()));
+		sr.setStrEstado("PENDIENTE");
+		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
+		sr.setStrObservacion(observacion);
 		
-		return "";		
+		Apoderado tempoapo=new Apoderado();
+		Persona tempopersona=new Persona();
+		try {
+			System.out.println("consultando apoderado del alumno ... ");
+			tempopersona=personaService.consultaApoderadoxAlumno(alumno);
+			if(tempopersona!=null){
+				System.out.println("Apoderado encontrado: "+tempopersona.getStrCodigoPersona());
+				tempoapo.setPersonas(tempopersona);
+				
+				System.out.println("Ahora se registrara la boleta: "+boleta.getStrCodigoBoleta());
+				Boleta miboleta=new Boleta();
+				miboleta.setStrCodigoBoleta(boleta.getStrCodigoBoleta());
+				miboleta.setStrEstado("CANCELADO");
+				miboleta.setApoderados(tempoapo);
+				miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
+				miboleta.setMonto(new Double(0.0));
+				
+			}else{
+				System.out.println("No existe apoderado para el alumno: "+alumno.getIntDni());
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		//return "hola";		
 	}
 	
 	 public void CargaRetiroAlumno() {  
