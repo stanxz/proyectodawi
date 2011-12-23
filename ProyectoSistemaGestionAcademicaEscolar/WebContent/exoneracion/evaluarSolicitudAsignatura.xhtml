@@ -9,8 +9,8 @@
 	<ui:define name="content">
 	<div align="left">
 		<h:form id="form" style="width: 800px;">
-			 <p:dataTable id="listaSE" var="solicitudes" value="#{}" 
-    widgetVar="asignaturasTable" emptyMessage="No hay asignaturas a listar" 
+			 <p:dataTable id="listaSE" var="solicitud" value="#{evaluarExoneracionBean.solicitudes}" 
+    widgetVar="solicitudesTable" emptyMessage="No hay asignaturas a listar" 
     paginator="true" rows="5"  
     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
     rowsPerPageTemplate="5,10,15">  
@@ -18,21 +18,17 @@
   		<div align="right">
             <p:outputPanel>  
                 <h:outputText value="Busqueda:" />
-                <p:inputText id="globalFilter" onkeyup="asignaturasTable.filter()" style="width:150px" />  
+                <p:inputText id="globalFilter" onkeyup="solicitudesTable.filter()" style="width:150px" />  
             </p:outputPanel>  
         </div>
         </f:facet>
         
   		<p:column headerText="Codigo">  
-            <h:outputText value="#{asignatura.intCodigoAsignatura}"/>  
+            <h:outputText value="#{solicitud.intIdCodigoSolicitudExoneracion}"/>  
         </p:column>
         
-        <p:column headerText="Descripcion" filterBy="#{asignatura.strNombreAsignatura}" filterStyle="display:none">  
-            <h:outputText value="#{asignatura.strNombreAsignatura}" />  
-        </p:column>  
-        
-        <p:column headerText="Grado">  
-            <h:outputText value="#{asignatura.intGrado} º" />  
+        <p:column headerText="Alumno">  
+            <h:outputText value="#{solicitud.alumno.strNombres} #{solicitud.alumno.strApellidoPaterno} #{solicitud.alumno.strApellidoMaterno}"/>  
         </p:column>
         
         <p:column style="width:100px">  
@@ -40,24 +36,9 @@
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Vea el Detalle de la Asignatura">  
                      <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
                      <f:setPropertyActionListener value="#{false}" target="#{asignaturaBean.editMode}" /> 
-                 </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-pencil" title="Edite los Datos de la Asignatura" action="#{asignaturaBean.preCargaCombo}">  
-                     <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
-                     <f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
-                 </p:commandButton>  
-                 <p:commandButton update="dlgForm:display" oncomplete="confirmation.show()" image="ui-icon ui-icon-close" title="Deshabilite la Asignatura">  
-                     <f:setPropertyActionListener value="#{asignatura}" target="#{asignaturaBean.selectedAsignatura}" />  
-                 </p:commandButton>  
+                 </p:commandButton>   
              </h:panelGrid>  
         </p:column>
-        <f:facet name="footer">  
-         <div align="left">
-         <p:commandButton value="Nueva Asignatura" update="dlgForm2:display2" oncomplete="carDialog2.show()"  image="ui-icon ui-icon-person" 
-                          title="Agregue una Asignatura adicional">  
-				<f:setPropertyActionListener value="#{true}" target="#{asignaturaBean.editMode}" />  
- 		 </p:commandButton>
-         </div>
-        </f:facet> 
     </p:dataTable>
 		</h:form>
 	</div>

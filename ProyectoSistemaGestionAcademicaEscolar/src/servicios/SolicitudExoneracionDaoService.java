@@ -1,6 +1,8 @@
 package servicios;
 
 
+import java.util.ArrayList;
+
 import dao.DAOFactory;
 import dao.SolicitudExoneracionDAO;
 import entidades.Boleta;
@@ -42,6 +44,13 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 			throws Exception {
 		// TODO Auto-generated method stub
 		exoneraciondao.registrarSolictud(exoneracion);
+	}
+
+	@Override
+	public ArrayList<SolicitudExoneracion> obtenerSolicitudes()
+			throws Exception {
+		// TODO Auto-generated method stub
+		return exoneraciondao.obtenerSolicitudes();
 	}
 
 
