@@ -76,14 +76,9 @@ public class AlumnoJPADAO implements AlumnoDAO {
 	public void insertar(Alumno alumno) throws Exception {
 		em=emf.createEntityManager();
 
-		//1.inicia la transacción
 		em.getTransaction().begin();
-
-		//2.ejecuta las operaciones
 		em.persist(alumno);
 		em.flush();
-		
-		//3.ejecuta commit a la transacción
 		em.getTransaction().commit();
 		em.close();
 	}

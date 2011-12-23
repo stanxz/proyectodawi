@@ -2,7 +2,6 @@ package jsf.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -11,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
+import servicios.BoletaService;
 import servicios.MatriculaService;
 import servicios.MotivoService;
 import servicios.PersonaService;
@@ -35,7 +35,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private static MotivoService motivoService = abd.getMotivoService();
 	private static MatriculaService matriculaoService = abd.getMatriculaService();
 	private static PersonaService personaService = abd.getPersonaService();
-	
+	private static BoletaService boletaService = abd.getBoletaService();
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
@@ -54,7 +54,7 @@ public class AlumnoRetiroBean implements Serializable{
 		
 	public AlumnoRetiroBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
-		boleta=new Boleta();
+		//sboleta=new Boleta();
 		CargaMotivos();
 	}
 	
@@ -82,8 +82,8 @@ public class AlumnoRetiroBean implements Serializable{
 				miboleta.setStrEstado("CANCELADO");
 				miboleta.setApoderados(tempoapo);
 				miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				miboleta.setMonto(new Double(0.0));
-				
+				miboleta.setMonto(new Double(150.0));
+				boletaService.registrarBoleta(miboleta);
 			}else{
 				System.out.println("No existe apoderado para el alumno: "+alumno.getIntDni());
 			}

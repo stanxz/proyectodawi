@@ -101,4 +101,22 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
+	@Override
+	public BoletaDAO getBoletaDAO() {
+		BoletaJPADAO bd=new BoletaJPADAO();
+		bd.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - bod en memoria: "+bd.toString());
+		return (BoletaJPADAO)bd;
+	}
+
+
+	@Override
+	public SolicitudRetiroDAO getSolicitudRetiroDAO() {
+		SolicitudRetiroJPADAO srd=new SolicitudRetiroJPADAO();
+		srd.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - bod en memoria: "+srd.toString());
+		return (SolicitudRetiroJPADAO)srd;
+	}
+
+
 }

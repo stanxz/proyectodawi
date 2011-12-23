@@ -55,7 +55,6 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		
 		boolean resultado = false;
 		
-		
 		try {
 			
 			em = emf.createEntityManager();
@@ -83,7 +82,6 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			return resultado;
 		}
 
-	
 	}
 	
 	public SolicitudExoneracion buscarSolicitudXAsignatura(SolicitudExoneracion exoneracion) throws Exception{
