@@ -691,7 +691,7 @@ DROP TABLE IF EXISTS `solicitudexoneracion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `solicitudexoneracion` (
-  `CODSOLICITUDEXONERACION` char(4) NOT NULL,
+  `CODSOLICITUDEXONERACION` int(11) NOT NULL auto_increment,
   `CODALUMNO` varchar(11) NOT NULL,
   `DOCSUSTENTATORIO` mediumblob,
   `ESTADO` varchar(15) default NULL,
@@ -727,7 +727,7 @@ DROP TABLE IF EXISTS `solicitudretiro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `solicitudretiro` (
-  `CODSOLICITUDRETIRO` char(4) NOT NULL,
+  `CODSOLICITUDRETIRO` int(11) NOT NULL auto_increment,
   `CODALUMNO` varchar(11) NOT NULL,
   `DOCSUSTENTATORIO` mediumblob,
   `MOTIVO` varchar(25) default NULL,

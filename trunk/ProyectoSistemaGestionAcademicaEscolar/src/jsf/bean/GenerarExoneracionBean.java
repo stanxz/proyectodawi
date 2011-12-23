@@ -31,7 +31,7 @@ import entidades.SolicitudExoneracion;
 @SuppressWarnings("serial")
 @SessionScoped
 @ManagedBean
-public class AlumnoExoneracionBean implements Serializable{
+public class GenerarExoneracionBean implements Serializable{
 	
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
@@ -62,7 +62,7 @@ public class AlumnoExoneracionBean implements Serializable{
 	private String valor;
 	
 	
-	public AlumnoExoneracionBean() {
+	public GenerarExoneracionBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
 		CargaMotivos();
 	}

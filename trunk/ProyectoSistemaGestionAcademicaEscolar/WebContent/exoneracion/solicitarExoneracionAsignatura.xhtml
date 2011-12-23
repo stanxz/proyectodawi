@@ -14,16 +14,16 @@
 <h:panelGrid columns="2">
 <h:panelGroup id="panelGroup">
 <h:outputText value="Alumno" style="font-weight:bold;"/>
-<h:selectOneMenu value="#{alumnoExoneracionBean.exoneracionAlumno.strCodigoAlumno}" required="true"
+<h:selectOneMenu value="#{generarExoneracionBean.exoneracionAlumno.strCodigoAlumno}" required="true"
                  requiredMessage="Seleccione Alumno">
                  <f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
-                 <f:selectItems value="#{alumnoExoneracionBean.alumnosXapoderado}" var="alumno"
+                 <f:selectItems value="#{generarExoneracionBean.alumnosXapoderado}" var="alumno"
                                 itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
 	      <f:validator validatorId="exoneracionValidatorParte1"/>
 	      <f:attribute name="codigo" value="#{codigo.value}" />
 </h:selectOneMenu>
 </h:panelGroup>
-<p:commandButton value="Cargar" actionListener="#{alumnoExoneracionBean.CargaExoneracionAlumno}"
+<p:commandButton value="Cargar" actionListener="#{generarExoneracionBean.CargaExoneracionAlumno}"
 				 update="panelGroup msgs dlgForm:display" oncomplete="cargaDatosExoneracion(args)" />
 			
 </h:panelGrid>
@@ -35,20 +35,20 @@
 	<h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">
 	
 		<h:outputText value="Codigo Alumno" style="font-weight:bold"/>
-		  <p:inputText  value="#{alumnoExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
+		  <p:inputText  value="#{generarExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
 
 		  <h:outputText value="Nombres y Apellidos" style="font-weight:bold"/>
-          <p:inputText value="#{alumnoExoneracionBean.alumno.strNombres} #{alumnoExoneracionBean.alumno.strApellidoPaterno} #{alumnoExoneracionBean.alumno.strApellidoMaterno}" style="font-weight:bold" disabled="true"/>
+          <p:inputText value="#{generarExoneracionBean.alumno.strNombres} #{generarExoneracionBean.alumno.strApellidoPaterno} #{generarExoneracionBean.alumno.strApellidoMaterno}" style="font-weight:bold" disabled="true"/>
 
           <h:outputText value="Grado y Sección" style="font-weight:bold"/>
-          <p:inputText value="#{alumnoExoneracionBean.seccionProgramada.intGrado} º #{alumnoExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
+          <p:inputText value="#{generarExoneracionBean.seccionProgramada.intGrado} º #{generarExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
           
           <h:outputText value="Asignatura" style="font-weight:bold"/>
-		  <h:selectOneMenu value="#{alumnoExoneracionBean.exoneracion.asignaturas.intCodigoAsignatura}" 
+		  <h:selectOneMenu value="#{generarExoneracionBean.exoneracion.asignaturas.intCodigoAsignatura}" 
 		                   required="true" requiredMessage="Seleccione Asignatura"
 		                   style="font-weight:bold">
 			<f:selectItem itemLabel="Seleccione Asignatura" itemValue="#{null}"/>
-            <f:selectItems value="#{alumnoExoneracionBean.asignaturasXgrado}" var="asignatura"
+            <f:selectItems value="#{generarExoneracionBean.asignaturasXgrado}" var="asignatura"
                           itemLabel="#{asignatura.strNombreAsignatura}" itemValue="#{asignatura.intCodigoAsignatura}"/>
             <f:validator validatorId="exoneracionValidatorParte2"/>
 	        <f:attribute name="codigo" value="#{codigo.value}" />
@@ -56,17 +56,17 @@
 		 
          <p:fileUpload sizeLimit="1048576" 
            auto="true" widgetVar="uploader" label="Cargar Solicitud"  
-           fileUploadListener="#{alumnoExoneracionBean.cargarImagen}"
+           fileUploadListener="#{generarExoneracionBean.cargarImagen}"
            allowTypes="*.jpg;*.png;*.gif;" description="Images" 
            update="msgs,dlgForm:imgFoto,dlgForm:par,dlgForm:url" multiple="false" customUI="true" required="true"/>
-           <p:graphicImage id="imgFoto"  value="#{alumnoExoneracionBean.image}" cache="false"
+           <p:graphicImage id="imgFoto"  value="#{generarExoneracionBean.image}" cache="false"
              style="height:50%;width:50%"/>
-          <h:inputHidden id="par" value="#{alumnoExoneracionBean.valor}" required="true" requiredMessage="Ingrese Solicitud"/>
+          <h:inputHidden id="par" value="#{generarExoneracionBean.valor}" required="true" requiredMessage="Ingrese Solicitud"/>
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
 					 <p:commandButton value="Grabar" 
-					  actionListener="#{alumnoExoneracionBean.registraSolicitud}"  
+					  actionListener="#{generarExoneracionBean.registraSolicitud}"  
 					  update="msgs" 
 					  oncomplete="generarSolicitudExoneracion(args)"
                       image="ui-icon ui-icon-check">
