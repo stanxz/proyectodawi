@@ -43,5 +43,10 @@ public class ApplicationBusinessDelegate {
 	public SolicitudExoneracionService getExoneracionService(){
 		return new SolicitudExoneracionDaoService(DAOFactory.JPA);
 	}
+
+	public BoletaService getBoletaService() {
+		// TODO Auto-generated method stub
+		return new BoletaDaoService(DAOFactory.JPA);
+	}
 	
 }
