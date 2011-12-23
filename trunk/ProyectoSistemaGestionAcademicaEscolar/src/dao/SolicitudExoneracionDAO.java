@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.ArrayList;
+
 import entidades.Boleta;
 import entidades.SolicitudExoneracion;
 
@@ -10,4 +12,6 @@ public interface SolicitudExoneracionDAO {
 	public boolean NoExisteDeudas(Boleta boleta) throws Exception;
 	public SolicitudExoneracion buscarSolicitudXAsignatura(SolicitudExoneracion exoneracion) throws Exception;
 	public void registrarSolictud(SolicitudExoneracion exoneracion) throws Exception;
+	
+	public ArrayList<SolicitudExoneracion> obtenerSolicitudes() throws Exception;
 }

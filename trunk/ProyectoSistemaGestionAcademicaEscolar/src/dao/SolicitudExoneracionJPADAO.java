@@ -1,11 +1,15 @@
 package dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import entidades.Actividad;
 import entidades.Boleta;
+import entidades.Persona;
 import entidades.SolicitudExoneracion;
 
 public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
@@ -135,5 +139,27 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		em.close();
 	}
 	
+	
+	@SuppressWarnings("rawtypes")
+	public ArrayList<SolicitudExoneracion> obtenerSolicitudes() throws Exception {
+		
+		     em = emf.createEntityManager();
+			
+			ArrayList<SolicitudExoneracion> solicitudesExoneracion = new ArrayList<SolicitudExoneracion>();
+			  
+			List lista = em.createQuery("SELECT se FROM SolicitudExoneracion se " +
+                						"WHERE se.strEstado = 'Pendiente'").getResultList();
+			 
+			 if(lista.size()>0){
+					for ( int i=0; i < lista.size(); i++ ) {
+						SolicitudExoneracion entidad = (SolicitudExoneracion)lista.get(i);
+						solicitudesExoneracion.add(entidad);
+					}
+			 }
+
+			em.close();
+			
+			return solicitudesExoneracion;
+	}
 
 }
