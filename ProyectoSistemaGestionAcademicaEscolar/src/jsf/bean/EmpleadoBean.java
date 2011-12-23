@@ -45,12 +45,21 @@ public class EmpleadoBean implements Serializable{
 	
 	private Persona nuevoEmpleado =  new Persona();
 	private Usuario nuevoUsuario =  new Usuario();
+	private AsistentaSocial nuevoAsistentaSocial;
+	private SecretariaAcademica nuevoSecretariaAcademica;
+	private AsistenteCoordinacionAcademica nuevoACA;
+	private AsistenteDireccionAcademica nuevoADA;
+	
 	
 	private String mensaje;
 	
 
 	public EmpleadoBean(){
 		System.out.println("Creando EmpleadoBean...");
+		nuevoAsistentaSocial = new AsistentaSocial();
+		nuevoSecretariaAcademica = new SecretariaAcademica();
+		nuevoACA = new AsistenteCoordinacionAcademica();
+		nuevoADA = new AsistenteDireccionAcademica();
 		CargarPerfiles();
 	}
 	
@@ -98,39 +107,18 @@ public class EmpleadoBean implements Serializable{
 					usuarioService.registrarUsuario(tmpUsuario);
 					
 					if(nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf03")){
-						Persona tmpNuevaPersona = new Persona();
-						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
-						
-						SecretariaAcademica nuevaSecreteria = new SecretariaAcademica();
-						nuevaSecreteria.setPersonas(tmpNuevaPersona);
-						
-						personaService.guardaSecretaria(nuevaSecreteria);
+						nuevoSecretariaAcademica.setPersonas(nuevoEmpleado);
+						personaService.guardaSecretaria(nuevoSecretariaAcademica);
 						
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf02")) {
-						Persona tmpNuevaPersona = new Persona();
-						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
-						
-						AsistentaSocial nuevaAsistentaSocial = new AsistentaSocial();
-						nuevaAsistentaSocial.setPersonas(tmpNuevaPersona);
-						
-						personaService.guardaAsistentaSocial(nuevaAsistentaSocial);
+						nuevoAsistentaSocial.setPersonas(nuevoEmpleado);
+						personaService.guardaAsistentaSocial(nuevoAsistentaSocial);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf07")) {
-						Persona tmpNuevaPersona = new Persona();
-						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
-						
-						AsistenteCoordinacionAcademica nuevaACA = new AsistenteCoordinacionAcademica();
-						nuevaACA.setPersonas(tmpNuevaPersona);
-						
-						personaService.guardaACA(nuevaACA);
+						nuevoACA.setPersonas(nuevoEmpleado);
+						personaService.guardaACA(nuevoACA);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf08")) {
-						Persona tmpNuevaPersona = new Persona();
-						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
-						
-						AsistenteDireccionAcademica nuevaADA = new AsistenteDireccionAcademica();
-						nuevaADA.setPersonas(tmpNuevaPersona);
-						
-						personaService.guardaADA(nuevaADA);
-						
+						nuevoADA.setPersonas(nuevoEmpleado);
+						personaService.guardaADA(nuevoADA);		
 					}
 					
 					EnviaMail enviaEMail = new EnviaMail();
@@ -270,6 +258,39 @@ public class EmpleadoBean implements Serializable{
 
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
+	}
+
+	public AsistentaSocial getNuevoAsistentaSocial() {
+		return nuevoAsistentaSocial;
+	}
+
+	public void setNuevoAsistentaSocial(AsistentaSocial nuevoAsistentaSocial) {
+		this.nuevoAsistentaSocial = nuevoAsistentaSocial;
+	}
+
+	public SecretariaAcademica getNuevoSecretariaAcademica() {
+		return nuevoSecretariaAcademica;
+	}
+
+	public void setNuevoSecretariaAcademica(
+			SecretariaAcademica nuevoSecretariaAcademica) {
+		this.nuevoSecretariaAcademica = nuevoSecretariaAcademica;
+	}
+
+	public AsistenteCoordinacionAcademica getNuevoACA() {
+		return nuevoACA;
+	}
+
+	public void setNuevoACA(AsistenteCoordinacionAcademica nuevoACA) {
+		this.nuevoACA = nuevoACA;
+	}
+
+	public AsistenteDireccionAcademica getNuevoADA() {
+		return nuevoADA;
+	}
+
+	public void setNuevoADA(AsistenteDireccionAcademica nuevoADA) {
+		this.nuevoADA = nuevoADA;
 	}
 	
 	

@@ -138,19 +138,16 @@ public class PersonaJPADAO implements PersonaDAO {
 		// TODO Auto-generated method stub
 		em=emf.createEntityManager();
 		
-		Persona tmpPersona = new Persona();
-		tmpPersona.setStrCodigoPersona("PE-" + asistenta.getPersonas().getStrCodigoPersona());
+		System.out.println("Codigo Asistenta Social " + asistenta.getPersonas().getStrCodigoPersona());
 		
-		AsistentaSocial tmpAsistentaSocial = new AsistentaSocial();
-		tmpAsistentaSocial.setPersonas(tmpPersona);
-		tmpAsistentaSocial.setStrConsultorio("A-101");
+		asistenta.setStrConsultorio("A-101");
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
 	
 
 		//2.ejecuta las operaciones
-		em.persist(tmpAsistentaSocial);
+		em.persist(asistenta);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción
@@ -163,18 +160,14 @@ public class PersonaJPADAO implements PersonaDAO {
 	public void guardaSecretaria(SecretariaAcademica secretaria) throws Exception {
 		// TODO Auto-generated method stub
 		em=emf.createEntityManager();
+		
+		System.out.println("Codigo Secretaria " + secretaria.getPersonas().getStrCodigoPersona());
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
-		
-		Persona tmpPersona = new Persona();
-		tmpPersona.setStrCodigoPersona("PE-" + secretaria.getPersonas().getStrCodigoPersona());
-		
-		SecretariaAcademica tmpSecretariaAcademica = new SecretariaAcademica();
-		tmpSecretariaAcademica.setPersonas(tmpPersona);
 
 		//2.ejecuta las operaciones
-		em.persist(tmpSecretariaAcademica);
+		em.persist(secretaria);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción
@@ -187,18 +180,14 @@ public class PersonaJPADAO implements PersonaDAO {
 	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception {
 		// TODO Auto-generated method stub
 		em=emf.createEntityManager();
+		
+		System.out.println("Codigo ACA " + aca.getPersonas().getStrCodigoPersona());
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
-		
-		Persona tmpPersona = new Persona();
-		tmpPersona.setStrCodigoPersona("PE-" + aca.getPersonas().getStrCodigoPersona());
-		
-		AsistenteCoordinacionAcademica tmpACA = new AsistenteCoordinacionAcademica();
-		tmpACA.setPersonas(tmpPersona);
 
 		//2.ejecuta las operaciones
-		em.persist(tmpACA);
+		em.persist(aca);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción
@@ -211,18 +200,14 @@ public class PersonaJPADAO implements PersonaDAO {
 	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception {
 		// TODO Auto-generated method stub
 		em=emf.createEntityManager();
+		
+		System.out.println("Codigo ADA " + ada.getPersonas().getStrCodigoPersona());
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
-		
-		Persona tmpPersona = new Persona();
-		tmpPersona.setStrCodigoPersona("PE-" + ada.getPersonas().getStrCodigoPersona());
-		
-		AsistenteDireccionAcademica tmpADA = new AsistenteDireccionAcademica();
-		tmpADA.setPersonas(tmpPersona);
 
 		//2.ejecuta las operaciones
-		em.persist(tmpADA);
+		em.persist(ada);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción
