@@ -9,6 +9,8 @@ import javax.persistence.Query;
 
 import entidades.Apoderado;
 import entidades.AsistentaSocial;
+import entidades.AsistenteCoordinacionAcademica;
+import entidades.AsistenteDireccionAcademica;
 import entidades.Distrito;
 import entidades.Perfil;
 import entidades.Persona;
@@ -95,7 +97,7 @@ public class PersonaJPADAO implements PersonaDAO {
 	public void registrarPersona(Persona nueva) throws Exception {
 		em=emf.createEntityManager();
 		
-		System.out.println("xxxxxx" + nueva.getIntDNI());
+		System.out.println("xxxxxx  " + nueva.getIntDNI());
 		
 		nueva.setStrCodigoPersona("PE-" + nueva.getIntDNI());
 
@@ -137,9 +139,15 @@ public class PersonaJPADAO implements PersonaDAO {
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
+		
+		Persona tmpPersona = new Persona();
+		tmpPersona.setStrCodigoPersona("PE-" + asistenta.getPersonas().getStrCodigoPersona());
+		
+		AsistentaSocial tmpAsistentaSocial = new AsistentaSocial();
+		tmpAsistentaSocial.setPersonas(tmpPersona);
 
 		//2.ejecuta las operaciones
-		em.persist(asistenta);
+		em.persist(tmpAsistentaSocial);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción
@@ -155,9 +163,63 @@ public class PersonaJPADAO implements PersonaDAO {
 
 		//1.inicia la transacción
 		em.getTransaction().begin();
+		
+		Persona tmpPersona = new Persona();
+		tmpPersona.setStrCodigoPersona("PE-" + secretaria.getPersonas().getStrCodigoPersona());
+		
+		SecretariaAcademica tmpSecretariaAcademica = new SecretariaAcademica();
+		tmpSecretariaAcademica.setPersonas(tmpPersona);
 
 		//2.ejecuta las operaciones
-		em.persist(secretaria);
+		em.persist(tmpSecretariaAcademica);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	//Este metodo guarda a la Asitente de Coordinacion Academica en su tabla 
+	@Override
+	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception {
+		// TODO Auto-generated method stub
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+		
+		Persona tmpPersona = new Persona();
+		tmpPersona.setStrCodigoPersona("PE-" + aca.getPersonas().getStrCodigoPersona());
+		
+		AsistenteCoordinacionAcademica tmpACA = new AsistenteCoordinacionAcademica();
+		tmpACA.setPersonas(tmpPersona);
+
+		//2.ejecuta las operaciones
+		em.persist(tmpACA);
+		em.flush();
+		
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	//Este metodo guarda a la Asitente de Direccion Academica en su tabla 
+	@Override
+	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception {
+		// TODO Auto-generated method stub
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+		
+		Persona tmpPersona = new Persona();
+		tmpPersona.setStrCodigoPersona("PE-" + ada.getPersonas().getStrCodigoPersona());
+		
+		AsistenteDireccionAcademica tmpADA = new AsistenteDireccionAcademica();
+		tmpADA.setPersonas(tmpPersona);
+
+		//2.ejecuta las operaciones
+		em.persist(tmpADA);
 		em.flush();
 		
 		//3.ejecuta commit a la transacción

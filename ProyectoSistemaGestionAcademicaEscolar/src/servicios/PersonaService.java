@@ -3,7 +3,11 @@ package servicios;
 import java.util.ArrayList;
 
 import entidades.Apoderado;
+import entidades.AsistentaSocial;
+import entidades.AsistenteCoordinacionAcademica;
+import entidades.AsistenteDireccionAcademica;
 import entidades.Persona;
+import entidades.SecretariaAcademica;
 
 public interface PersonaService {
 
@@ -13,4 +17,8 @@ public interface PersonaService {
 	public void actulizarPersona(Persona persona) throws Exception;
 	public void guardaApoderado(Apoderado apotempo) throws Exception;
 	public Persona consultaApoderado(Persona p) throws Exception;
+	public void guardaSecretaria(SecretariaAcademica secretaria) throws Exception;
+	public void guardaAsistentaSocial(AsistentaSocial asistenta) throws Exception;
+	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception;
+	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception;
 }

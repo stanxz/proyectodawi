@@ -19,7 +19,7 @@ public class AsistenteCoordinacionAcademica implements Serializable{
 	
 	@Id
 	@OneToOne
-	@JoinColumn(name="codpersona")
+	@JoinColumn(name="codaca")
 	private Persona personas = new Persona();
 	
 	@OneToMany(targetEntity=SolicitudExoneracion.class,mappedBy="asistenteCoordinacion",cascade = CascadeType.PERSIST)
