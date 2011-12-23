@@ -98,29 +98,29 @@ public class EmpleadoBean implements Serializable{
 					usuarioService.registrarUsuario(tmpUsuario);
 					
 					if(nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf03")){
-						/*Persona tmpNuevaPersona = new Persona();
+						Persona tmpNuevaPersona = new Persona();
 						tmpNuevaPersona.setStrCodigoPersona(nuevoEmpleado.getStrCodigoPersona());
 						
 						SecretariaAcademica nuevaSecreteria = new SecretariaAcademica();
 						nuevaSecreteria.setPersonas(tmpNuevaPersona);
 						
-						personaService.guardaSecretaria(nuevaSecreteria);*/
+						personaService.guardaSecretaria(nuevaSecreteria);
 						
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf02")) {
-						/*AsistentaSocial nuevaAsistentaSocial = new AsistentaSocial();
+						AsistentaSocial nuevaAsistentaSocial = new AsistentaSocial();
 						nuevaAsistentaSocial.setPersonas(nuevoEmpleado);
 						
-						personaService.guardaAsistentaSocial(nuevaAsistentaSocial);*/
+						personaService.guardaAsistentaSocial(nuevaAsistentaSocial);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf07")) {
-						/*AsistenteCoordinacionAcademica nuevaACA = new AsistenteCoordinacionAcademica();
+						AsistenteCoordinacionAcademica nuevaACA = new AsistenteCoordinacionAcademica();
 						nuevaACA.setPersonas(nuevoEmpleado);
 						
-						personaService.guardaACA(nuevaACA);*/
+						personaService.guardaACA(nuevaACA);
 					}else if (nuevoEmpleado.getPerfil().getStrCodigoPerfil().equalsIgnoreCase("pf08")) {
-						/*AsistenteDireccionAcademica nuevaADA = new AsistenteDireccionAcademica();
+						AsistenteDireccionAcademica nuevaADA = new AsistenteDireccionAcademica();
 						nuevaADA.setPersonas(nuevoEmpleado);
 						
-						personaService.guardaADA(nuevaADA);*/
+						personaService.guardaADA(nuevaADA);
 						
 					}
 					
