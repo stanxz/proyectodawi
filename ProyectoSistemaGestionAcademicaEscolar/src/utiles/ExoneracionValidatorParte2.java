@@ -26,7 +26,10 @@ public class ExoneracionValidatorParte2 implements Validator {
     {
         Integer valor = (Integer) value;
         
+        String blCondicion = (String) component.getAttributes().get("codigo");
+        
         System.out.println("--->" + valor);
+        System.out.println("--->" + blCondicion);
         
         Asignatura tmpAsignatura = new Asignatura();
         tmpAsignatura.setIntCodigoAsignatura(valor);
@@ -43,7 +46,7 @@ public class ExoneracionValidatorParte2 implements Validator {
 			e.printStackTrace();
 		}
 		
-		if (condicion != null) {
+		if (condicion != null && !blCondicion.equalsIgnoreCase("")) {
 			if(condicion.getStrEstado().equalsIgnoreCase("Pendiente")){
 				throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO,"Solicitud PENDIENTE","Existe una solicitud PENDIENTE para este curso."));
 			}else if (condicion.getStrEstado().equalsIgnoreCase("Aprobada")) {

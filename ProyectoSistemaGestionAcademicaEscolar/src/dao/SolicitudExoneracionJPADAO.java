@@ -1,11 +1,15 @@
 package dao;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import entidades.Actividad;
 import entidades.Boleta;
@@ -93,11 +97,10 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			SolicitudExoneracion objExoneracion = null;
 			
 			Query q = em.createQuery("select se from SolicitudExoneracion se " +
-					                 "where se.asignaturas.intCodigoAsignatura=?1 and " +
-					                 "(se.strEstado='Pendiente' or se.strEstado='Aprobado') and " +
-					                 "year(se.dtFecReg)=year(CURRENT_DATE)");
+					                 "where se.asignaturas.intCodigoAsignatura=?1 " +
+					                 "and substring(se.dtFecReg,1,4)=substring(CURRENT_DATE,1,4) " +
+					                 "and (se.strEstado='Pendiente' or se.strEstado='Aprobado')");
 			q.setParameter(1, exoneracion.getAsignaturas().getIntCodigoAsignatura());
-			
 			objExoneracion = (SolicitudExoneracion) q.getSingleResult();
 			
 			em.close();
@@ -109,6 +112,7 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 
@@ -153,6 +157,14 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 						solicitudesExoneracion.add(entidad);
 					}
 			 }
+			 
+			 for (SolicitudExoneracion x : solicitudesExoneracion) {
+				 StreamedContent image;
+				 
+				 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getFotobin()));
+				 
+				 x.setScImagen(image);
+			}
 			 
 			 
 

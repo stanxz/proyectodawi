@@ -58,10 +58,10 @@
            auto="true" widgetVar="uploader" label="Cargar Solicitud"  
            fileUploadListener="#{generarExoneracionBean.cargarImagen}"
            allowTypes="*.jpg;*.png;*.gif;" description="Images" 
-           update="msgs,dlgForm:imgFoto,dlgForm:par,dlgForm:url" multiple="false" customUI="true" required="true"/>
+           update="msgs,dlgForm:imgFoto,dlgForm:codigo,dlgForm:url" multiple="false" customUI="true" required="true"/>
            <p:graphicImage id="imgFoto"  value="#{generarExoneracionBean.image}" cache="false"
              style="height:50%;width:50%"/>
-          <h:inputHidden id="par" value="#{generarExoneracionBean.valor}" required="true" requiredMessage="Ingrese Solicitud"/>
+          <h:inputHidden id="codigo" binding="#{codigo}" value="#{generarExoneracionBean.valor}" required="true" requiredMessage="Ingrese Solicitud"/>
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
