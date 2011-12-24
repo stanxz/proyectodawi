@@ -26,7 +26,7 @@ public class ExoneracionValidatorParte2 implements Validator {
     {
         Integer valor = (Integer) value;
         
-        String blCondicion = (String) component.getAttributes().get("codigo");
+        String blCondicion = (String) component.getAttributes().get("par");
         
         System.out.println("--->" + valor);
         System.out.println("--->" + blCondicion);
