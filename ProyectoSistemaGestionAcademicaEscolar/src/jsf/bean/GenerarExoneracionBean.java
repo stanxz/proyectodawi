@@ -7,7 +7,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.validator.ValidatorException;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
@@ -66,7 +65,7 @@ public class GenerarExoneracionBean implements Serializable{
 		CargaMotivos();
 	}
 	
-	 public void CargaExoneracionAlumno() throws ValidatorException{  
+	 public void CargaExoneracionAlumno(){  
 		 System.out.println(exoneracionAlumno.getStrCodigoAlumno());
 	        try {
 	        	

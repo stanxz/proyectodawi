@@ -14,4 +14,6 @@ public interface SolicitudExoneracionDAO {
 	public void registrarSolictud(SolicitudExoneracion exoneracion) throws Exception;
 	
 	public ArrayList<SolicitudExoneracion> obtenerSolicitudes() throws Exception;
+	public void apruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception;
+	public void desapruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception;
 }

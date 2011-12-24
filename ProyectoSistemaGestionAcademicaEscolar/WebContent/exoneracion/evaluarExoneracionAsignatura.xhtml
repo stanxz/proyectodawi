@@ -8,6 +8,7 @@
 
 	<ui:define name="content">
 	<div align="left">
+	<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 		<h:form id="form" style="width: 800px;">
 			 <p:dataTable id="listaSE" var="solicitud" value="#{evaluarExoneracionBean.solicitudes}" 
     widgetVar="solicitudesTable" emptyMessage="No hay asignaturas a listar" 
@@ -27,7 +28,7 @@
             <h:outputText value="#{solicitud.intIdCodigoSolicitudExoneracion}"/>  
         </p:column>
         
-        <p:column headerText="Alumno">  
+        <p:column headerText="Alumno" filterBy="#{solicitud.alumno.strApellidoPaterno}" filterStyle="display:none">  
             <h:outputText value="#{solicitud.alumno.strNombres} #{solicitud.alumno.strApellidoPaterno} #{solicitud.alumno.strApellidoMaterno}"/>  
         </p:column>
         
@@ -61,9 +62,14 @@
             </h:panelGroup> 
             
              <h:outputText value="Asignatura" style="font-weight:bold"/>  
-            <h:panelGroup>    
-                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
+            <h:panelGroup>  
+                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30" />  
             </h:panelGroup>   
+            
+            <h:outputText value="Observaciones" style="font-weight:bold"/>  
+            <h:panelGroup>  
+                <p:inputTextarea value="#{evaluarExoneracionBean.selectedSolicitud.strObservacion}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{!evaluarExoneracionBean.editMode}" size="30" rows="10" cols="30" required="true" label="Observaciones"/>  
+            </h:panelGroup> 
             
               
             <f:facet name="footer"> 
@@ -74,12 +80,12 @@
                 <p:outputPanel rendered="#{evaluarExoneracionBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
 					  <p:commandButton value="Aprobar" 
-					  actionListener="#{asignaturaBean.actualizaAsignatura}"  
-					  update="form:form:listaSE msgs" 
+					  actionListener="#{evaluarExoneracionBean.apruebaSolicitud}"  
+					  update="form:listaSE msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                      <p:commandButton value="Desaprobar" 
-					  actionListener="#{asignaturaBean.actualizaAsignatura}"  
+					  actionListener="#{evaluarExoneracionBean.desapruebaSolicitud}"  
 					  update="form:listaSE msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
@@ -90,9 +96,6 @@
       </h:panelGrid>
 	</h:form>
 	</p:dialog>
-		
-		
-		
 	</div>
 	</ui:define>
 	
