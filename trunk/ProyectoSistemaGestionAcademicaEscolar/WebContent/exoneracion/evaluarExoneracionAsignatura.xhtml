@@ -31,6 +31,10 @@
             <h:outputText value="#{solicitud.alumno.strNombres} #{solicitud.alumno.strApellidoPaterno} #{solicitud.alumno.strApellidoMaterno}"/>  
         </p:column>
         
+         <p:column headerText="Asignatura">  
+            <h:outputText value="#{solicitud.asignaturas.strNombreAsignatura}"/>  
+        </p:column>
+        
         <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
                  <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Solicitud">  
@@ -43,30 +47,40 @@
 		</h:form>
 		
 	<p:dialog header="Solicitud de Exoneracion" widgetVar="carDialog" resizable="false" id="carDlg"
-			  showEffect="fade" hideEffect="explode" modal="true" width="600" position="center">
+			  showEffect="fade" hideEffect="explode" modal="true" width="800" position="top" >
 	<h:form id="dlgForm">
 	  <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
-		    <h:outputText value="Codigo Asignatura" />  
+		    <h:outputText value="Codigo Asignatura" style="font-weight:bold"/>  
             <h:panelGroup>    
                 <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.intIdCodigoSolicitudExoneracion}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
             </h:panelGroup>
             
-            <h:outputText value="Alumno" />  
+            <h:outputText value="Alumno" style="font-weight:bold"/>  
             <h:panelGroup>    
                 <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.alumno.strNombres} #{evaluarExoneracionBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarExoneracionBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
-            </h:panelGroup>
+            </h:panelGroup> 
             
+             <h:outputText value="Asignatura" style="font-weight:bold"/>  
+            <h:panelGroup>    
+                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
+            </h:panelGroup>   
             
-            <h:panelGroup>
-            	<p:graphicImage value="#{evaluarExoneracionBean.selectedSolicitud.fotobin}" rendered="#{evaluarExoneracionBean.editMode}"  cache="false"/>
-            </h:panelGroup>
-            
+              
             <f:facet name="footer"> 
+            <div align="left">
+            	<p:graphicImage value="#{evaluarExoneracionBean.selectedSolicitud.scImagen}" rendered="#{evaluarExoneracionBean.editMode}"  cache="false"
+            	                width="100%" height="100%"/>
+            </div>
                 <p:outputPanel rendered="#{evaluarExoneracionBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
-					  <p:commandButton value="Grabar" 
+					  <p:commandButton value="Aprobar" 
 					  actionListener="#{asignaturaBean.actualizaAsignatura}"  
-					  update="form:listaAsignaturas msgs" 
+					  update="form:form:listaSE msgs" 
+                      image="ui-icon ui-icon-check"
+                      oncomplete="onEditComplete(args)"/>
+                     <p:commandButton value="Desaprobar" 
+					  actionListener="#{asignaturaBean.actualizaAsignatura}"  
+					  update="form:listaSE msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>

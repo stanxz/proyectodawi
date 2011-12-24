@@ -48,7 +48,6 @@ public class GenerarExoneracionBean implements Serializable{
 	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Asignatura> asignaturasXgrado;
 	private ArrayList<Motivo> motivos;
-	private String prueba;
 	private Motivo motivo = new Motivo();
 	private SolicitudExoneracion exoneracion = new SolicitudExoneracion();
 	
@@ -274,13 +273,6 @@ public class GenerarExoneracionBean implements Serializable{
 		this.alumnosXapoderado = alumnosXapoderado;
 	}
 
-	public String getPrueba() {
-		return prueba;
-	}
-
-	public void setPrueba(String prueba) {
-		this.prueba = prueba;
-	}
 
 	public ArrayList<Asignatura> getAsignaturasXgrado() {
 		return asignaturasXgrado;

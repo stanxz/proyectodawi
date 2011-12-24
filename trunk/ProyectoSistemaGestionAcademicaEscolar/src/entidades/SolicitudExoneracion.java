@@ -16,6 +16,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.primefaces.model.StreamedContent;
+
 
 @Entity
 @Table(name="solicitudexoneracion")
@@ -40,6 +42,8 @@ public class SolicitudExoneracion implements Serializable {
 	private String fotoFileName;
 	@Transient
 	private InputStream isFot;
+	@Transient
+	private StreamedContent scImagen;
 	
 	@Column(name="DOCSUSTENTATORIO",columnDefinition="MEDIUMBLOB")
 	private byte[] fotobin;
@@ -180,5 +184,15 @@ public class SolicitudExoneracion implements Serializable {
 	public void setDtFecReg(java.sql.Date dtFecReg) {
 		this.dtFecReg = dtFecReg;
 	}
+
+	public StreamedContent getScImagen() {
+		return scImagen;
+	}
+
+	public void setScImagen(StreamedContent scImagen) {
+		this.scImagen = scImagen;
+	}
+	
+	
 
 }
