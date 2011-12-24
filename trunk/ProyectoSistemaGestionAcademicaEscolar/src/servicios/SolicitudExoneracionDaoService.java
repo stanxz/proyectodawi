@@ -53,6 +53,20 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 		return exoneraciondao.obtenerSolicitudes();
 	}
 
+	@Override
+	public void apruebaSolicitudExoneracion(SolicitudExoneracion exoneracion)
+			throws Exception {
+		exoneraciondao.apruebaSolicitudExoneracion(exoneracion);
+		
+	}
+
+	@Override
+	public void desapruebaSolicitudExoneracion(SolicitudExoneracion exoneracion)
+			throws Exception {
+		// TODO Auto-generated method stub
+		exoneraciondao.desapruebaSolicitudExoneracion(exoneracion);
+	}
+
 
 
 }

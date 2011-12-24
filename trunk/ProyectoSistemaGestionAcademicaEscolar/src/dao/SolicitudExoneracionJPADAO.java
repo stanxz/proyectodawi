@@ -172,5 +172,48 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			
 			return solicitudesExoneracion;
 	}
+	
+	public void apruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception {
+		
+		System.out.println("Codigo Solictud ---> " + exoneracion.getIntIdCodigoSolicitudExoneracion());
+		System.out.println("Codigo ACA ---> " + exoneracion.getAsistenteCoordinacion().getPersonas().getStrCodigoPersona());
+
+		em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		
+		SolicitudExoneracion entidadExoneracion = em.find(SolicitudExoneracion.class, exoneracion.getIntIdCodigoSolicitudExoneracion());
+		
+		entidadExoneracion.setStrEstado("Aprobado");
+		entidadExoneracion.setAsistenteCoordinacion(exoneracion.getAsistenteCoordinacion());
+
+		em.merge(entidadExoneracion);
+		em.flush();
+				
+		em.getTransaction().commit();
+		em.close();
+		
+	}
+	
+	public void desapruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception {
+		System.out.println("Codigo Solictud ---> " + exoneracion.getIntIdCodigoSolicitudExoneracion());
+		System.out.println("Codigo ACA ---> " + exoneracion.getAsistenteCoordinacion().getPersonas().getStrCodigoPersona());
+
+		em = emf.createEntityManager();
+
+		em.getTransaction().begin();
+		
+		SolicitudExoneracion entidadExoneracion = em.find(SolicitudExoneracion.class, exoneracion.getIntIdCodigoSolicitudExoneracion());
+		
+		entidadExoneracion.setStrEstado("Desaprobado");
+		entidadExoneracion.setAsistenteCoordinacion(exoneracion.getAsistenteCoordinacion());
+
+		em.merge(entidadExoneracion);
+		em.flush();
+				
+		em.getTransaction().commit();
+		em.close();
+		
+	}
 
 }
