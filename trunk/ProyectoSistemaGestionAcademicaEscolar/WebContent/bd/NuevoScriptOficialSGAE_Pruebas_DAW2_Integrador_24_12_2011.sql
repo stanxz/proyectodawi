@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: bd_proy_sgae
 -- ------------------------------------------------------
--- Server version	5.0.84-community-nt
+-- Server version	5.5.11
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -14,10 +14,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Not dumping tablespaces as no INFORMATION_SCHEMA.FILES table on this server
---
 
 --
 -- Current Database: `bd_proy_sgae`
@@ -36,7 +32,7 @@ DROP TABLE IF EXISTS `aca`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `aca` (
   `CODACA` varchar(11) NOT NULL,
-  PRIMARY KEY  (`CODACA`),
+  PRIMARY KEY (`CODACA`),
   CONSTRAINT `fk_ACA_persona1` FOREIGN KEY (`CODACA`) REFERENCES `persona` (`CODPERSONA`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -58,12 +54,12 @@ DROP TABLE IF EXISTS `actividad`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `actividad` (
-  `CODACTIVIDAD` int(11) NOT NULL auto_increment,
-  `CODCALENDARIO` char(4) default NULL,
-  `NOMBREACTIVIDAD` varchar(30) default NULL,
-  `FECHAINI` date default NULL,
-  `FECHAFIN` date default NULL,
-  PRIMARY KEY  (`CODACTIVIDAD`),
+  `CODACTIVIDAD` int(11) NOT NULL AUTO_INCREMENT,
+  `CODCALENDARIO` char(4) DEFAULT NULL,
+  `NOMBREACTIVIDAD` varchar(30) DEFAULT NULL,
+  `FECHAINI` date DEFAULT NULL,
+  `FECHAFIN` date DEFAULT NULL,
+  PRIMARY KEY (`CODACTIVIDAD`),
   KEY `FK_actividad_calendario` (`CODCALENDARIO`),
   CONSTRAINT `FK_actividad_calendario` FOREIGN KEY (`CODCALENDARIO`) REFERENCES `calendarioacademico` (`CODCALENDARIO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -87,7 +83,7 @@ DROP TABLE IF EXISTS `ada`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ada` (
   `CODADA` varchar(11) NOT NULL,
-  PRIMARY KEY  (`CODADA`),
+  PRIMARY KEY (`CODADA`),
   CONSTRAINT `fk_evaluador_persona1` FOREIGN KEY (`CODADA`) REFERENCES `persona` (`CODPERSONA`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -111,15 +107,15 @@ DROP TABLE IF EXISTS `alumno`;
 CREATE TABLE `alumno` (
   `CODALUMNO` varchar(11) NOT NULL,
   `CODAPODERADO` varchar(11) NOT NULL,
-  `NOMBRES` varchar(40) default NULL,
-  `APELLIDOPAT` varchar(20) default NULL,
-  `APELLIDOMAT` varchar(20) default NULL,
-  `FECNAC` datetime default NULL,
-  `ESTADO` varchar(15) default NULL,
-  `SEXO` int(11) default NULL,
-  `DNI` int(8) default NULL,
+  `NOMBRES` varchar(40) DEFAULT NULL,
+  `APELLIDOPAT` varchar(20) DEFAULT NULL,
+  `APELLIDOMAT` varchar(20) DEFAULT NULL,
+  `FECNAC` datetime DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
+  `SEXO` int(11) DEFAULT NULL,
+  `DNI` int(8) DEFAULT NULL,
   `IDDISTRITO` int(11) NOT NULL,
-  PRIMARY KEY  (`CODALUMNO`),
+  PRIMARY KEY (`CODALUMNO`),
   KEY `ALUMNO_APODERADO_FK` (`CODAPODERADO`),
   KEY `fk_alumno_distrito1` (`IDDISTRITO`),
   CONSTRAINT `ALUMNO_APODERADO_FK` FOREIGN KEY (`CODAPODERADO`) REFERENCES `apoderado` (`CODAPODERADO`),
@@ -146,7 +142,7 @@ DROP TABLE IF EXISTS `apoderado`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `apoderado` (
   `CODAPODERADO` varchar(11) NOT NULL,
-  PRIMARY KEY  (`CODAPODERADO`),
+  PRIMARY KEY (`CODAPODERADO`),
   CONSTRAINT `APODERADO_PERSONA_FK` FOREIGN KEY (`CODAPODERADO`) REFERENCES `persona` (`CODPERSONA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -169,11 +165,11 @@ DROP TABLE IF EXISTS `asignatura`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `asignatura` (
-  `CODASIGNATURA` int(11) NOT NULL auto_increment,
-  `NOMBRE` varchar(30) default NULL,
-  `ESTADO` varchar(45) default NULL,
-  `GRADO` int(11) default NULL,
-  PRIMARY KEY  (`CODASIGNATURA`)
+  `CODASIGNATURA` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(30) DEFAULT NULL,
+  `ESTADO` varchar(45) DEFAULT NULL,
+  `GRADO` int(11) DEFAULT NULL,
+  PRIMARY KEY (`CODASIGNATURA`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -196,8 +192,8 @@ DROP TABLE IF EXISTS `asistentasocial`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `asistentasocial` (
   `CODASISTENTASOCIAL` varchar(11) NOT NULL,
-  `CONSULTORIO` char(3) default NULL,
-  PRIMARY KEY  (`CODASISTENTASOCIAL`),
+  `CONSULTORIO` char(3) DEFAULT NULL,
+  PRIMARY KEY (`CODASISTENTASOCIAL`),
   CONSTRAINT `ASISTENTASOCIAL_PERSONA_FK` FOREIGN KEY (`CODASISTENTASOCIAL`) REFERENCES `persona` (`CODPERSONA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -219,12 +215,13 @@ DROP TABLE IF EXISTS `boletapago`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `boletapago` (
-  `CODBOLETA` char(8) NOT NULL default '',
+  `CODBOLETA` char(8) NOT NULL DEFAULT '',
   `CODAPODERADO` varchar(11) NOT NULL,
-  `FECHAREGISTRO` date default NULL,
-  `MONTO` double default NULL,
-  `ESTADO` varchar(15) default NULL,
-  PRIMARY KEY  (`CODBOLETA`),
+  `FECHAREGISTRO` date DEFAULT NULL,
+  `MONTO` double DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
+  `TIPOSOLICITUD` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`CODBOLETA`),
   KEY `FK_boletapago_apoderado` (`CODAPODERADO`),
   CONSTRAINT `FK_boletapago_apoderado` FOREIGN KEY (`CODAPODERADO`) REFERENCES `apoderado` (`CODAPODERADO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -236,6 +233,7 @@ CREATE TABLE `boletapago` (
 
 LOCK TABLES `boletapago` WRITE;
 /*!40000 ALTER TABLE `boletapago` DISABLE KEYS */;
+INSERT INTO `boletapago` (`CODBOLETA`, `CODAPODERADO`, `FECHAREGISTRO`, `MONTO`, `ESTADO`, `TIPOSOLICITUD`) VALUES ('123456','PE-18181818','2011-12-24',150,'CANCELADO','RETIRO');
 /*!40000 ALTER TABLE `boletapago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -247,8 +245,8 @@ DROP TABLE IF EXISTS `calendarioacademico`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `calendarioacademico` (
-  `CODCALENDARIO` char(4) NOT NULL default '',
-  PRIMARY KEY  (`CODCALENDARIO`)
+  `CODCALENDARIO` char(4) NOT NULL DEFAULT '',
+  PRIMARY KEY (`CODCALENDARIO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -270,14 +268,14 @@ DROP TABLE IF EXISTS `certificadoas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `certificadoas` (
-  `CODCERTIFICADO` int(11) NOT NULL auto_increment,
+  `CODCERTIFICADO` int(11) NOT NULL AUTO_INCREMENT,
   `CODCITA` int(11) NOT NULL,
-  `OBSERVACION` varchar(200) default NULL,
-  `ESTADO` varchar(15) default NULL,
+  `OBSERVACION` varchar(200) DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
   `CONTENIDODOCCERT` blob,
-  `DOCENVIADO` int(11) default NULL,
+  `DOCENVIADO` int(11) DEFAULT NULL,
   `motivo_CODMOTIVO` int(11) NOT NULL,
-  PRIMARY KEY  (`CODCERTIFICADO`),
+  PRIMARY KEY (`CODCERTIFICADO`),
   KEY `CERTIFICADOAS_CITA_FK` (`CODCITA`),
   KEY `fk_certificadoas_motivo1` (`motivo_CODMOTIVO`),
   CONSTRAINT `CERTIFICADOAS_CITA_FK` FOREIGN KEY (`CODCITA`) REFERENCES `cita` (`CODCITA`),
@@ -306,13 +304,13 @@ CREATE TABLE `cita` (
   `CODALUMNO` varchar(11) NOT NULL,
   `CODTIPOSERVICIO` int(11) NOT NULL,
   `CODASISTENTASOCIAL` varchar(11) NOT NULL,
-  `CORREOPERSONAL` varchar(60) default NULL,
-  `TLFFIJO` char(8) default NULL,
-  `TLFCELULAR` char(9) default NULL,
-  `FECHAREGISTRO` date default NULL,
-  `ESTADO` varchar(15) default NULL,
+  `CORREOPERSONAL` varchar(60) DEFAULT NULL,
+  `TLFFIJO` char(8) DEFAULT NULL,
+  `TLFCELULAR` char(9) DEFAULT NULL,
+  `FECHAREGISTRO` date DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
   `CODDISPONIBILIDADAS` char(4) NOT NULL,
-  PRIMARY KEY  (`CODCITA`),
+  PRIMARY KEY (`CODCITA`),
   KEY `CITA_TIPOSERVICIOAS_FK` (`CODTIPOSERVICIO`),
   KEY `CITA_ALUMNO_FK` (`CODALUMNO`),
   KEY `CITA_ASISTENTASOCIAL_FK` (`CODASISTENTASOCIAL`),
@@ -343,7 +341,7 @@ DROP TABLE IF EXISTS `detalleperfil`;
 CREATE TABLE `detalleperfil` (
   `CODPERMISO` char(4) NOT NULL,
   `CODPERFIL` char(4) NOT NULL,
-  PRIMARY KEY  (`CODPERMISO`,`CODPERFIL`),
+  PRIMARY KEY (`CODPERMISO`,`CODPERFIL`),
   KEY `DETALLEPERFIL_PERFIL_FK` (`CODPERFIL`),
   CONSTRAINT `DETALLEPERFIL_PERFIL_FK` FOREIGN KEY (`CODPERFIL`) REFERENCES `perfil` (`CODPERFIL`),
   CONSTRAINT `DETALLEPERFIL_PERMISO_FK` FOREIGN KEY (`CODPERMISO`) REFERENCES `permiso` (`CODPERMISO`)
@@ -368,12 +366,12 @@ DROP TABLE IF EXISTS `detallerestriccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `detallerestriccion` (
-  `CODALUMNO` varchar(11) NOT NULL default '0',
-  `CODRESTRICION` int(11) NOT NULL default '0',
-  `FECHAINI` date default NULL,
-  `FECHAFIN` date default NULL,
-  `ESTADO` varchar(15) default NULL,
-  PRIMARY KEY  (`CODALUMNO`,`CODRESTRICION`),
+  `CODALUMNO` varchar(11) NOT NULL DEFAULT '0',
+  `CODRESTRICION` int(11) NOT NULL DEFAULT '0',
+  `FECHAINI` date DEFAULT NULL,
+  `FECHAFIN` date DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`CODALUMNO`,`CODRESTRICION`),
   KEY `FK_detallerestriccion_restriccion` (`CODRESTRICION`),
   CONSTRAINT `FK_detallerestriccion_alumno` FOREIGN KEY (`CODALUMNO`) REFERENCES `alumno` (`CODALUMNO`),
   CONSTRAINT `FK_detallerestriccion_restriccion` FOREIGN KEY (`CODRESTRICION`) REFERENCES `restriccion` (`CODRESTRICCION`)
@@ -397,11 +395,11 @@ DROP TABLE IF EXISTS `disponibilidadasistentasocial`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `disponibilidadasistentasocial` (
-  `FECHAREGISTRO` date default NULL,
-  `HORAINICIO` varchar(8) NOT NULL default '',
-  `HORAFIN` varchar(8) NOT NULL default '',
-  `CODDISPONIBILIDADAS` char(4) NOT NULL default '',
-  PRIMARY KEY  (`CODDISPONIBILIDADAS`)
+  `FECHAREGISTRO` date DEFAULT NULL,
+  `HORAINICIO` varchar(8) NOT NULL DEFAULT '',
+  `HORAFIN` varchar(8) NOT NULL DEFAULT '',
+  `CODDISPONIBILIDADAS` char(4) NOT NULL DEFAULT '',
+  PRIMARY KEY (`CODDISPONIBILIDADAS`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -423,8 +421,8 @@ DROP TABLE IF EXISTS `distrito`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `distrito` (
   `iddistrito` int(11) NOT NULL,
-  `nombreDis` varchar(80) default NULL,
-  PRIMARY KEY  (`iddistrito`)
+  `nombreDis` varchar(80) DEFAULT NULL,
+  PRIMARY KEY (`iddistrito`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -448,8 +446,8 @@ DROP TABLE IF EXISTS `horario`;
 CREATE TABLE `horario` (
   `CODASISTENTASOCIAL` varchar(11) NOT NULL,
   `CODDISPONIBILIDADAS` char(4) NOT NULL,
-  `ESTADO` varchar(15) NOT NULL default '',
-  PRIMARY KEY  (`CODASISTENTASOCIAL`,`CODDISPONIBILIDADAS`),
+  `ESTADO` varchar(15) NOT NULL DEFAULT '',
+  PRIMARY KEY (`CODASISTENTASOCIAL`,`CODDISPONIBILIDADAS`),
   KEY `HORARIO_DISPONIBILIDAD` (`CODDISPONIBILIDADAS`),
   CONSTRAINT `HORARIO_ASISTENTA` FOREIGN KEY (`CODASISTENTASOCIAL`) REFERENCES `asistentasocial` (`CODASISTENTASOCIAL`),
   CONSTRAINT `HORARIO_DISPONIBILIDAD` FOREIGN KEY (`CODDISPONIBILIDADAS`) REFERENCES `disponibilidadasistentasocial` (`CODDISPONIBILIDADAS`)
@@ -473,14 +471,14 @@ DROP TABLE IF EXISTS `matricula`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `matricula` (
-  `idmatricula` int(11) NOT NULL auto_increment,
+  `idmatricula` int(11) NOT NULL AUTO_INCREMENT,
   `CODALUMNO` varchar(11) NOT NULL,
   `idseccionprogramada` int(11) NOT NULL,
   `CODCALENDARIO` char(4) NOT NULL,
-  `fechamat` varchar(45) default NULL,
-  `noReligion` int(11) default NULL,
-  `noEF` int(11) default NULL,
-  PRIMARY KEY  (`idmatricula`),
+  `fechamat` varchar(45) DEFAULT NULL,
+  `noReligion` int(11) DEFAULT NULL,
+  `noEF` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idmatricula`),
   KEY `fk_alumno_has_seccionprogramada_seccionprogramada1` (`idseccionprogramada`),
   KEY `fk_alumno_has_seccionprogramada_alumno1` (`CODALUMNO`),
   KEY `fk_matricula_calendarioacademico1` (`CODCALENDARIO`),
@@ -508,9 +506,9 @@ DROP TABLE IF EXISTS `motivo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `motivo` (
-  `CODMOTIVO` int(11) NOT NULL auto_increment,
-  `NOMBRE` varchar(60) default NULL,
-  PRIMARY KEY  (`CODMOTIVO`)
+  `CODMOTIVO` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`CODMOTIVO`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -533,9 +531,9 @@ DROP TABLE IF EXISTS `perfil`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `perfil` (
   `CODPERFIL` char(4) NOT NULL,
-  `NOMBRE` varchar(30) default NULL,
-  `DESCRIPCION` varchar(100) default NULL,
-  PRIMARY KEY  (`CODPERFIL`)
+  `NOMBRE` varchar(30) DEFAULT NULL,
+  `DESCRIPCION` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`CODPERFIL`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -558,10 +556,10 @@ DROP TABLE IF EXISTS `permiso`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `permiso` (
   `CODPERMISO` char(4) NOT NULL,
-  `NOMBRE` varchar(80) default NULL,
-  `DESCRIPCION` varchar(200) default NULL,
-  `ENLACE` varchar(200) default NULL,
-  PRIMARY KEY  (`CODPERMISO`)
+  `NOMBRE` varchar(80) DEFAULT NULL,
+  `DESCRIPCION` varchar(200) DEFAULT NULL,
+  `ENLACE` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`CODPERMISO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -584,17 +582,17 @@ DROP TABLE IF EXISTS `persona`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `persona` (
   `CODPERSONA` varchar(11) NOT NULL,
-  `NOMBRES` varchar(80) default NULL,
-  `APELLIDOPAT` varchar(80) default NULL,
-  `APELLIDOMAT` varchar(80) default NULL,
-  `DIRECCION` varchar(60) default NULL,
-  `EMAIL` varchar(80) default NULL,
-  `TELEFONO` varchar(10) default NULL,
-  `CELULAR` varchar(15) default NULL,
-  `SEXO` int(11) default NULL,
-  `DNI` int(8) default NULL,
+  `NOMBRES` varchar(80) DEFAULT NULL,
+  `APELLIDOPAT` varchar(80) DEFAULT NULL,
+  `APELLIDOMAT` varchar(80) DEFAULT NULL,
+  `DIRECCION` varchar(60) DEFAULT NULL,
+  `EMAIL` varchar(80) DEFAULT NULL,
+  `TELEFONO` varchar(10) DEFAULT NULL,
+  `CELULAR` varchar(15) DEFAULT NULL,
+  `SEXO` int(11) DEFAULT NULL,
+  `DNI` int(8) DEFAULT NULL,
   `IDDISTRITO` int(11) NOT NULL,
-  PRIMARY KEY  (`CODPERSONA`),
+  PRIMARY KEY (`CODPERSONA`),
   KEY `fk_persona_distrito1` (`IDDISTRITO`),
   CONSTRAINT `fk_persona_distrito1` FOREIGN KEY (`IDDISTRITO`) REFERENCES `distrito` (`iddistrito`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -618,10 +616,10 @@ DROP TABLE IF EXISTS `restriccion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `restriccion` (
-  `CODRESTRICCION` int(11) NOT NULL default '0',
-  `NOMBRE` varchar(45) default NULL,
-  `DESCRIPCION` varchar(100) default NULL,
-  PRIMARY KEY  (`CODRESTRICCION`)
+  `CODRESTRICCION` int(11) NOT NULL DEFAULT '0',
+  `NOMBRE` varchar(45) DEFAULT NULL,
+  `DESCRIPCION` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`CODRESTRICCION`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -642,11 +640,11 @@ DROP TABLE IF EXISTS `seccionprogramada`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seccionprogramada` (
-  `idseccionprogramada` int(11) NOT NULL auto_increment,
-  `grado` int(11) default NULL,
-  `seccion` varchar(2) default NULL,
-  `nivel` varchar(45) default NULL,
-  PRIMARY KEY  (`idseccionprogramada`)
+  `idseccionprogramada` int(11) NOT NULL AUTO_INCREMENT,
+  `grado` int(11) DEFAULT NULL,
+  `seccion` varchar(2) DEFAULT NULL,
+  `nivel` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idseccionprogramada`)
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -669,7 +667,7 @@ DROP TABLE IF EXISTS `secretaria`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `secretaria` (
   `CODSECRETARIA` varchar(11) NOT NULL,
-  PRIMARY KEY  (`CODSECRETARIA`),
+  PRIMARY KEY (`CODSECRETARIA`),
   CONSTRAINT `SECRETARIA_PERSONA_FK` FOREIGN KEY (`CODSECRETARIA`) REFERENCES `persona` (`CODPERSONA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -691,16 +689,16 @@ DROP TABLE IF EXISTS `solicitudexoneracion`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `solicitudexoneracion` (
-  `CODSOLICITUDEXONERACION` int(11) NOT NULL auto_increment,
+  `CODSOLICITUDEXONERACION` int(11) NOT NULL AUTO_INCREMENT,
   `CODALUMNO` varchar(11) NOT NULL,
   `DOCSUSTENTATORIO` mediumblob,
-  `ESTADO` varchar(15) default NULL,
-  `FECHAREGISTRO` date default NULL,
-  `CODASIGNATURA` int(11) default NULL,
-  `OBSERVACION` varchar(255) default NULL,
-  `FLAGPROCESADO` int(11) default NULL,
-  `CODACA` varchar(11) default NULL,
-  PRIMARY KEY  (`CODSOLICITUDEXONERACION`),
+  `ESTADO` varchar(15) DEFAULT NULL,
+  `FECHAREGISTRO` date DEFAULT NULL,
+  `CODASIGNATURA` int(11) DEFAULT NULL,
+  `OBSERVACION` varchar(255) DEFAULT NULL,
+  `FLAGPROCESADO` int(11) DEFAULT NULL,
+  `CODACA` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`CODSOLICITUDEXONERACION`),
   KEY `SOLICITUDEXONERACION_ALUMNO_FK` (`CODALUMNO`),
   KEY `SOLICITUDEXONERACION_ASIGNATURA_FK` (`CODASIGNATURA`),
   KEY `fk_solicitudexoneracion_ACA1` (`CODACA`),
@@ -727,17 +725,17 @@ DROP TABLE IF EXISTS `solicitudretiro`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `solicitudretiro` (
-  `CODSOLICITUDRETIRO` int(11) NOT NULL auto_increment,
+  `CODSOLICITUDRETIRO` int(11) NOT NULL AUTO_INCREMENT,
   `CODALUMNO` varchar(11) NOT NULL,
   `DOCSUSTENTATORIO` mediumblob,
-  `MOTIVO` varchar(25) default NULL,
-  `ESTADO` varchar(15) default NULL,
-  `FECHAREGISTRO` date default NULL,
-  `CODCERTIFICADO` int(11) default NULL,
-  `OBSERVACION` varchar(255) default NULL,
-  `FLAGPROCESADO` int(11) default NULL,
-  `CODADA` varchar(11) default NULL,
-  PRIMARY KEY  (`CODSOLICITUDRETIRO`),
+  `MOTIVO` varchar(25) DEFAULT NULL,
+  `ESTADO` varchar(15) DEFAULT NULL,
+  `FECHAREGISTRO` date DEFAULT NULL,
+  `CODCERTIFICADO` int(11) DEFAULT NULL,
+  `OBSERVACION` varchar(255) DEFAULT NULL,
+  `FLAGPROCESADO` int(11) DEFAULT NULL,
+  `CODADA` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`CODSOLICITUDRETIRO`),
   KEY `SOLICITUDRETIRO_ALUMNO_FK` (`CODALUMNO`),
   KEY `SOLICITUDRETIRO_CERTIFICADOAS_FK` (`CODCERTIFICADO`),
   KEY `fk_solicitudretiro_ADA1` (`CODADA`),
@@ -765,9 +763,9 @@ DROP TABLE IF EXISTS `tiposervicioas`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tiposervicioas` (
   `CODTIPOSERVICIO` int(11) NOT NULL,
-  `NOMBRE` varchar(25) default NULL,
-  `DESCRIPCION` varchar(150) default NULL,
-  PRIMARY KEY  (`CODTIPOSERVICIO`)
+  `NOMBRE` varchar(25) DEFAULT NULL,
+  `DESCRIPCION` varchar(150) DEFAULT NULL,
+  PRIMARY KEY (`CODTIPOSERVICIO`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -788,11 +786,11 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuario` (
-  `IDLOGIN` int(11) NOT NULL auto_increment,
+  `IDLOGIN` int(11) NOT NULL AUTO_INCREMENT,
   `CODPERSONA` varchar(11) NOT NULL,
   `CODPERFIL` char(4) NOT NULL,
-  `CONTRASENA` varchar(12) character set latin1 collate latin1_bin default NULL,
-  PRIMARY KEY  (`IDLOGIN`),
+  `CONTRASENA` varchar(12) CHARACTER SET latin1 COLLATE latin1_bin DEFAULT NULL,
+  PRIMARY KEY (`IDLOGIN`),
   KEY `USUARIO_PERFIL_FK` (`CODPERFIL`),
   KEY `USUARIO_PERSONA_FK` (`CODPERSONA`),
   CONSTRAINT `USUARIO_PERFIL_FK` FOREIGN KEY (`CODPERFIL`) REFERENCES `perfil` (`CODPERFIL`),
@@ -819,4 +817,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-12-22 13:15:45
+-- Dump completed on 2011-12-24 20:36:32
