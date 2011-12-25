@@ -30,7 +30,7 @@
 </p:panel>
 </h:form>
 <p:dialog header="Formato Solicitud de Exoneración de Asignatura" widgetVar="datosDialog" resizable="false" id="datosDlg"
-          showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" onHide="limpiarTextBox('dlgForm')">
+          showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" onShow="limpiarFE()">
 <h:form id="dlgForm" enctype="multipart/form-data">
 	<h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">
 	
