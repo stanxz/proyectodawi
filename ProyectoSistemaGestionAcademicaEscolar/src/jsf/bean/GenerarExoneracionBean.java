@@ -106,12 +106,12 @@ public class GenerarExoneracionBean implements Serializable{
 		 
 		 exoneracion.setAlumno(entidadAlumno);
 		 
-		 FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro Solicitud de Exoneracion","Solicitud registrada correctamente"));
-		 
 		 try {
 			exoneracionService.registrarSolictud(exoneracion);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro Solicitud de Exoneracion","Solicitud registrada correctamente"));
 		} catch (Exception e) {
 			e.printStackTrace();
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro Solicitud de Exoneracion","ERROR: Registro Cancelado"));
 		}
 	 }
 
