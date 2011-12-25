@@ -5,14 +5,12 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
-import javax.servlet.http.HttpSession;
 
 import entidades.Apoderado;
 import entidades.Asignatura;
 import entidades.Boleta;
 import entidades.Persona;
 import entidades.SolicitudExoneracion;
-import entidades.Usuario;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.AsignaturaService;
