@@ -17,4 +17,5 @@ public interface AsignaturaService {
 	public ArrayList<Asignatura> obtenerAsignaturasXGrado(Seccionprogramada seccion) throws Exception;
 	public ArrayList<Asignatura> obtenerAsignaturasXGradoRetiro(Seccionprogramada seccion) throws Exception;
 	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception ;
+	public Asignatura obtenerAsignatura(Asignatura asignatura) throws Exception;
 }

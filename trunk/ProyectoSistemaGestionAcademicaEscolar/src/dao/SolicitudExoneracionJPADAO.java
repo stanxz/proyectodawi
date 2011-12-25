@@ -59,15 +59,23 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		
 		boolean resultado = false;
 		
+		System.out.println("NUMERO BOLETA    --->" + boleta.getStrCodigoBoleta());
+		System.out.println("CODIGO APODERADO --->" + boleta.getApoderados().getPersonas().getStrCodigoPersona());
+		System.out.println("TIPO SOLICITUD   --->" + boleta.getStrTipo());
+		
 		try {
 			
 			em = emf.createEntityManager();
 			
 			Boleta objBoleta = null;
 			
-			Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1 and " +
-					                 "b.strEstado='Cancelado'");
+			Query q = em.createQuery("select b from Boleta b where b.apoderados.personas.strCodigoPersona=?1 " +
+					                 "and b.strTipo=?2 " +
+					                 "and b.strCodigoBoleta=?3 " +
+					                 "and b.strEstado='CANCELADO'");
 			q.setParameter(1, boleta.getApoderados().getPersonas().getStrCodigoPersona());
+			q.setParameter(2, boleta.getStrTipo());
+			q.setParameter(3, boleta.getStrCodigoBoleta());
 			
 			objBoleta = (Boleta) q.getSingleResult();
 			
@@ -112,7 +120,6 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
 			return null;
 		}
 
