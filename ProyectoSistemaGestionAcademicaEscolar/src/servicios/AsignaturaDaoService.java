@@ -53,4 +53,11 @@ public class AsignaturaDaoService implements AsignaturaService{
 		// TODO Auto-generated method stub
 		return asignaturadao.consultarAsignatura(asignatura);
 	}
+ 
+	@Override
+	public ArrayList<Asignatura> obtenerAsignaturasXGradoRetiro(
+			Seccionprogramada seccion) throws Exception {
+		// TODO Auto-generated method stub
+		return asignaturadao.obtenerAsignaturasXGradoRetiro(seccion);
+	}
 }
