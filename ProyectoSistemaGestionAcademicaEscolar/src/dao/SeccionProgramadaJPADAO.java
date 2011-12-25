@@ -12,6 +12,7 @@ public class SeccionProgramadaJPADAO implements SeccionProgramadaDAO{
 	private EntityManagerFactory emf;
 	private EntityManager em;
 	
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<Seccionprogramada> obtenerListaGrados(
 			String nivelelegidocombo) throws Exception {
