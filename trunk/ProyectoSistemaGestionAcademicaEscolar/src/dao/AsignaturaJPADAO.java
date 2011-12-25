@@ -113,6 +113,7 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		return entidadAsignatura;
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception {
 		
 		em=emf.createEntityManager();
@@ -209,6 +210,30 @@ public class AsignaturaJPADAO implements AsignaturaDAO{
 		Query q = em.createQuery("SELECT a FROM Asignatura a " +
 				                    "WHERE a.intGrado=?1 " +
 				                    "AND a.strEstado = 'Habilitado'");
+		q.setParameter(1, seccion.getIntGrado());
+		List lista = q.getResultList();
+		
+		if (lista.size()>0) {
+			for (int i = 0; i < lista.size(); i++) {
+				asignaturas.add((Asignatura)lista.get(i));
+			}
+		}
+		
+		return asignaturas;
+		
+	}
+	
+@SuppressWarnings("rawtypes")
+public ArrayList<Asignatura> obtenerAsignaturasXGradoRetiro(Seccionprogramada seccion) throws Exception{
+		
+		em = emf.createEntityManager();
+		
+		ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura>();
+		
+		Query q = em.createQuery("SELECT a FROM Asignatura a " +
+				                    "WHERE a.intGrado=?1 " +
+				                    "AND a.strEstado = 'Habilitado' " +
+				                    "AND (a.strNombreAsignatura = 'Educación Física' OR a.strNombreAsignatura = 'Religión')");
 		q.setParameter(1, seccion.getIntGrado());
 		List lista = q.getResultList();
 		
