@@ -21,6 +21,7 @@ import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Asignatura;
+import entidades.Boleta;
 import entidades.Matricula;
 import entidades.Motivo;
 import entidades.Persona;
@@ -44,6 +45,7 @@ public class GenerarExoneracionBean implements Serializable{
 	private Seccionprogramada seccionProgramada;
 	private Persona persona;
 	private Apoderado apoderado;
+	private Boleta boleta;
 	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Asignatura> asignaturasXgrado;
 	private ArrayList<Motivo> motivos;
@@ -81,7 +83,7 @@ public class GenerarExoneracionBean implements Serializable{
 					
 				seccionProgramada = matriculaService.obtenerSecProAlumno(matricula);
 				
-				asignaturasXgrado = asignaturaService.obtenerAsignaturasXGrado(seccionProgramada);
+				asignaturasXgrado = asignaturaService.obtenerAsignaturasXGradoRetiro(seccionProgramada);
 				
 				
 			} catch (Exception e) {
@@ -295,6 +297,14 @@ public class GenerarExoneracionBean implements Serializable{
 
 	public void setValor(String valor) {
 		this.valor = valor;
+	}
+
+	public Boleta getBoleta() {
+		return boleta;
+	}
+
+	public void setBoleta(Boleta boleta) {
+		this.boleta = boleta;
 	}
 	
 	
