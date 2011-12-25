@@ -14,6 +14,7 @@ public interface AsignaturaDAO {
 	public void inhabilitar(Asignatura asignatura) throws Exception;
 	public ArrayList<Grados> obtenerGradoPrimaria() throws Exception;
 	public ArrayList<Grados> obtenerGradoSecundaria() throws Exception;
+	public Asignatura obtenerAsignatura(Asignatura asignatura) throws Exception;
 	public ArrayList<Asignatura> obtenerAsignaturasXGrado(Seccionprogramada seccion) throws Exception;
 	public ArrayList<Asignatura> obtenerAsignaturasXGradoRetiro(Seccionprogramada seccion) throws Exception;
 	public Asignatura consultarAsignatura(Asignatura asignatura) throws Exception ;

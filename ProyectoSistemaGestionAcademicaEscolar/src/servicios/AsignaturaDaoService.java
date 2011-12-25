@@ -60,4 +60,10 @@ public class AsignaturaDaoService implements AsignaturaService{
 		// TODO Auto-generated method stub
 		return asignaturadao.obtenerAsignaturasXGradoRetiro(seccion);
 	}
+
+	@Override
+	public Asignatura obtenerAsignatura(Asignatura asignatura) throws Exception {
+		// TODO Auto-generated method stub
+		return asignaturadao.obtenerAsignatura(asignatura);
+	}
 }

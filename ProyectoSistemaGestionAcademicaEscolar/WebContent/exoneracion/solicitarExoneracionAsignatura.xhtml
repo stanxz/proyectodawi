@@ -30,11 +30,11 @@
 </p:panel>
 </h:form>
 <p:dialog header="Formato Solicitud de Exoneración de Asignatura" widgetVar="datosDialog" resizable="false" id="datosDlg"
-          showEffect="fade" hideEffect="explode" modal="true" width="400" position="center">
+          showEffect="fade" hideEffect="explode" modal="true" width="400" position="center" onHide="limpiarTextBox('dlgForm')">
 <h:form id="dlgForm" enctype="multipart/form-data">
 	<h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">
 	
-		<h:outputText value="Codigo Alumno" style="font-weight:bold"/>
+		  <h:outputText value="Codigo Alumno" style="font-weight:bold"/>
 		  <p:inputText  value="#{generarExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
 
 		  <h:outputText value="Nombres y Apellidos" style="font-weight:bold"/>
@@ -43,6 +43,9 @@
           <h:outputText value="Grado y Sección" style="font-weight:bold"/>
           <p:inputText value="#{generarExoneracionBean.seccionProgramada.intGrado} º #{generarExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
           
+          <h:outputText value="Nro Boleta Pago" style="font-weight:bold"/>
+		  <p:inputText id="bol" binding="#{bol}" value="#{generarExoneracionBean.boleta.strTipo}" style="font-weight:bold" required="true" requiredMessage="Ingrese Nro Boleta" maxlength="6"/>
+	
           <h:outputText value="Asignatura" style="font-weight:bold"/>
 		  <h:selectOneMenu value="#{generarExoneracionBean.exoneracion.asignaturas.intCodigoAsignatura}" 
 		                   required="true" requiredMessage="Seleccione Asignatura"
@@ -52,6 +55,7 @@
                           itemLabel="#{asignatura.strNombreAsignatura}" itemValue="#{asignatura.intCodigoAsignatura}"/>
             <f:validator validatorId="exoneracionValidatorParte2"/>
 	        <f:attribute name="par" value="#{par.value}" />
+	        <f:attribute name="bol" value="#{bol.value}" />
 		 </h:selectOneMenu>	
 		 
          <p:fileUpload sizeLimit="1048576" 

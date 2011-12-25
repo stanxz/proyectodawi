@@ -45,12 +45,12 @@ public class GenerarExoneracionBean implements Serializable{
 	private Seccionprogramada seccionProgramada;
 	private Persona persona;
 	private Apoderado apoderado;
-	private Boleta boleta;
 	private ArrayList<Alumno> alumnosXapoderado;
 	private ArrayList<Asignatura> asignaturasXgrado;
 	private ArrayList<Motivo> motivos;
 	private Motivo motivo = new Motivo();
 	private SolicitudExoneracion exoneracion = new SolicitudExoneracion();
+	private Boleta boleta = new Boleta();
 	
 	private Boolean btnAdjuntar;
 	private Boolean btnCita;
@@ -306,6 +306,8 @@ public class GenerarExoneracionBean implements Serializable{
 	public void setBoleta(Boleta boleta) {
 		this.boleta = boleta;
 	}
+
+	
 	
 	
 }
