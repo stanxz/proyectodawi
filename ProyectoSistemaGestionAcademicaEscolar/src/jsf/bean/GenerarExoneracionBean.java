@@ -16,7 +16,6 @@ import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.AsignaturaService;
 import servicios.MatriculaService;
-import servicios.MotivoService;
 import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
 import entidades.Apoderado;
@@ -36,7 +35,6 @@ public class GenerarExoneracionBean implements Serializable{
     private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
 	private static AlumnoService alumnoService = abd.getAlumnoService();
-	private static MotivoService motivoService = abd.getMotivoService();
 	private static MatriculaService matriculaService = abd.getMatriculaService();
 	private static AsignaturaService asignaturaService = abd.getAsignaturaService();
 	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
@@ -64,7 +62,6 @@ public class GenerarExoneracionBean implements Serializable{
 	
 	public GenerarExoneracionBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
-		CargaMotivos();
 	}
 	
 	 public void CargaExoneracionAlumno(){  
@@ -117,31 +114,7 @@ public class GenerarExoneracionBean implements Serializable{
 			e.printStackTrace();
 		}
 	 }
-	 
-	 
-	 
-	 public void CargaMotivos(){
-		 System.out.println("Cargando Motivos ...");
-		 try {
-			motivos = motivoService.obtenerTodosMotivos();
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-	 }
-	 
-	 public void motivoChange(){
-		 System.out.println("Llego Aqui");
-		 System.out.println(motivo.getIntCodigoMotivo());
-		 
-		 if (motivo.getIntCodigoMotivo() == 1) {
-			btnAdjuntar = true;
-			btnCita = false;
-		}else if(motivo.getIntCodigoMotivo() == 2 || motivo.getIntCodigoMotivo() == 3){
-			btnAdjuntar = false;
-			btnCita = true;
-		}
-	 }
+
 	 
 	 public void cargarImagen(FileUploadEvent event) {  
 	    	System.out.println("XD " + event.getFile().getFileName());
@@ -156,7 +129,7 @@ public class GenerarExoneracionBean implements Serializable{
 	    	    
 	    	    valor = "OK";
 	    	    
-	    	    FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
+	    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
 	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
 	    	  } catch (Exception ex) {
 	    	 } 
