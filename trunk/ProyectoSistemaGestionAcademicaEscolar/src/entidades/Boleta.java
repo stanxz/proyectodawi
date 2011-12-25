@@ -36,6 +36,9 @@ public class Boleta implements Serializable{
 	
 	@Column(name="estado")
 	private String strEstado;
+	
+	@Column(name="tiposolicitud")
+	private String strTipo;
 
 	public String getStrCodigoBoleta() {
 		return strCodigoBoleta;
@@ -84,5 +87,13 @@ public class Boleta implements Serializable{
 	public void setMonto(Double monto) {
 		this.monto = monto;
 	}
-	
+
+	public String getStrTipo() {
+		return strTipo;
+	}
+
+	public void setStrTipo(String strTipo) {
+		this.strTipo = strTipo;
+	}
+		
 }
