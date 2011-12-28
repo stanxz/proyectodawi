@@ -133,7 +133,7 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		//1.inicia la transacción
 		em.getTransaction().begin();
 		
-		
+		exoneracion.setIntFlagProcesado(0);
 		exoneracion.setStrEstado("Pendiente");
 		exoneracion.setDtFecReg(new java.sql.Date(new java.util.Date().getTime()));
 		exoneracion.setAsistenteCoordinacion(null);	
