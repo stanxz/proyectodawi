@@ -37,6 +37,7 @@
 							  	</p:dialog>
   							</c:if>					
 		</h:panelGrid>
+		<f:facet name="footer">
 		<p:commandButton value="Enviar" action="#{logueoBean.recuperarPass}" 
 						 update="grid" 
 		                 ajax="true" 
@@ -46,6 +47,7 @@
 		 value="../index.xhtml" title="Vuelve al inicio">
 		  <f:verbatim>Regresar al Inicio</f:verbatim>
 		</h:outputLink>
+		</f:facet>
       	</p:panel>
 	</h:form> 
 	</div> 			

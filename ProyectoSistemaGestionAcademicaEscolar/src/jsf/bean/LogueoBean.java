@@ -139,8 +139,9 @@ public class LogueoBean {
 	}
 	
 	
-	public void regresar(){
+	public String regresar(){
 		System.out.println("Regresa al index");
+		return "/faces/index";
 	}
 	
 	//getters y setter
