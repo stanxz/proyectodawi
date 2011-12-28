@@ -7,7 +7,13 @@
 	template="/templates/crud-template.xhtml">
 	
 	<ui:define name="content">
-	    
+	    <h:form>
+	    <h:outputText value="#{citaBean.intCodigoAlumno}"/>
+	    <p:commandButton action="#{citaBean.redericcionaCita}" value="Prueba"
+	                     ajax="false">
+	          <f:param value="#{citaBean.intCodigoAlumno}" />
+	    </p:commandButton>	
+	    </h:form>
 	</ui:define>
 
 </ui:composition>
