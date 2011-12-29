@@ -39,9 +39,6 @@
           <h:outputText value="Grado y Sección" style="font-weight:bold"/>
           <p:inputText value="#{alumnoRetiroBean.seccionProgramada.intGrado} º #{alumnoRetiroBean.seccionProgramada.strSeccion}" style="font-weight:bold" readonly="true"/>
 		
-		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold"/>
-		  <p:inputText  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="true"/>
-		  
 		  <h:outputText value="Motivo" style="font-weight:bold"/>
 		  <h:selectOneMenu value="#{alumnoRetiroBean.motivo.intCodigoMotivo}" required="true" 
                  requiredMessage="Seleccione un Motivo" >
@@ -51,8 +48,11 @@
 	               <p:ajax update="dlgForm" event="change" listener="#{alumnoRetiroBean.motivoChange}" />
 		 </h:selectOneMenu>	
 		 
-		 <h:outputText value="Observacion" style="font-weight:bold"/>
-		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" />
+		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
+		  <p:inputText  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Nº Boleta"/>
+		 
+		 <h:outputText value="Observacion" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
+		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" rendered="#{alumnoRetiroBean.btnAdjuntar}" required="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Observaciones"/>
 		 
 		 <p:commandButton  rendered="#{alumnoRetiroBean.btnAdjuntar}" value="Adjuntar"/>
 		 <p:commandButton  rendered="#{alumnoRetiroBean.btnCita}" value="Generar Cita"/>
