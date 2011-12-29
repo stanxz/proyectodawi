@@ -45,9 +45,11 @@ public class AlumnoRetiroBean implements Serializable{
 	private ArrayList<Motivo> motivos;
 	private String prueba;
 	private Motivo motivo = new Motivo();
-	private Boleta boleta;
+	private Boleta boleta = new Boleta();
 	private Boolean btnAdjuntar;
 	private Boolean btnCita;
+	private Boolean txtBoleta;
+	private Boolean txtObservacion;
 	private String observacion;
 
 	private Alumno retiroAlumno = new Alumno();
@@ -263,8 +265,22 @@ public class AlumnoRetiroBean implements Serializable{
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
-	
-	
+
+	public Boolean getTxtBoleta() {
+		return txtBoleta;
+	}
+
+	public void setTxtBoleta(Boolean txtBoleta) {
+		this.txtBoleta = txtBoleta;
+	}
+
+	public Boolean getTxtObservacion() {
+		return txtObservacion;
+	}
+
+	public void setTxtObservacion(Boolean txtObservacion) {
+		this.txtObservacion = txtObservacion;
+	}
 	
 
 }
