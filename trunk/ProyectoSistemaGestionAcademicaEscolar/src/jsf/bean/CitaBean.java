@@ -11,7 +11,7 @@ import javax.faces.bean.SessionScoped;
 public class CitaBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+	private String includedPage;
 	private int intCodigoAlumno;
 
 	public CitaBean(){
@@ -22,9 +22,14 @@ public class CitaBean implements Serializable {
 	public String redericcionaCita(){
 		
 		System.out.println("---------------Redireccionando------------------------");
-		System.out.println(intCodigoAlumno);
+		//System.out.println(intCodigoAlumno);
 		
-		return "/faces/mantenimientos/listadoAsignaturas";
+		/*HttpServletRequest request =
+				(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
+				String source = request.getParameter("source");
+				System.out.println("Valor de source: "+source);
+				 includedPage= (source);*/
+		return "/citas/listadoCitas.xhtml";
 	}
 
 	public int getIntCodigoAlumno() {
@@ -34,6 +39,13 @@ public class CitaBean implements Serializable {
 	public void setIntCodigoAlumno(int intCodigoAlumno) {
 		this.intCodigoAlumno = intCodigoAlumno;
 	}
-	
+
+	public String getIncludedPage() {
+		return includedPage;
+	}
+
+	public void setIncludedPage(String includedPage) {
+		this.includedPage = includedPage;
+	}
 	
 }

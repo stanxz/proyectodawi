@@ -48,14 +48,18 @@
 	               <p:ajax update="dlgForm" event="change" listener="#{alumnoRetiroBean.motivoChange}" />
 		 </h:selectOneMenu>	
 		 
-		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
-		  <p:inputText  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Nº Boleta"/>
+		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="true"/>
+		  <p:inputText  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="true" requiredMessage="Ingrese Nº Boleta"/>
 		 
 		 <h:outputText value="Observacion" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" rendered="#{alumnoRetiroBean.btnAdjuntar}" required="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Observaciones"/>
-		 
+
 		 <p:commandButton  rendered="#{alumnoRetiroBean.btnAdjuntar}" value="Adjuntar"/>
-		 <p:commandButton  rendered="#{alumnoRetiroBean.btnCita}" value="Generar Cita"/>
+		 
+		 <p:commandButton value="Generar Cita" 
+		 				rendered="#{!alumnoRetiroBean.btnAdjuntar}" 
+						action="#{citaBean.redericcionaCita}" 
+						title="Genera Nueva Cita" oncomplete="datosDialog.hide()" ajax="false" />
 				
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
