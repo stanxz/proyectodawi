@@ -20,21 +20,74 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 <h:form > 
 <p:tooltip global="true"/>
    <p:tabView onTabShow="mymap.checkResize()">  
-    <p:tab title="Inicio">  
-        <h:panelGrid columns="2" cellpadding="10">  
-            
+    <p:tab title="Inicio">
+
+ 	<p:galleria effect="slide" effectSpeed="1000" >
+ 	<p:graphicImage value="/images/ima3.jpg" title="ima1" alt="ima3 desc"/>
+	 <p:graphicImage value="/images/ima1.jpg" title="ima1" alt="ima1 desc"/>
+	 <p:graphicImage value="/images/ima2.jpg" title="ima1" alt="ima2 desc"/>
+	 <p:graphicImage value="/images/ima4.jpg" title="ima1" alt="ima4 desc"/> 
+ 	</p:galleria>
+ 
+ 
+        <h:panelGrid columns="2" cellpadding="10">        
+        <f:view contentType="text/html">
+        <td align="justify">
+        San Carlos, nuestra intstitución educativa, tiene el compromiso profesional y social de formar permanentemente
+        a nuestros educandos en el rconocimiento de ellos, como centro del proceso educativo, de cambio y desarrollo de
+        nuestro país. Por ello, ofrecemos una calidad educativa en todos los niveles, para contribuir al reconocimiento
+        y valoración de lo socio emocional, el sentido crítico, la identidad, la ciudadanía y la conciencia democrática
+        a través del hecho educativo, donde buscamos el desarrollo integral del educando, el despliegue de sus potencialidades
+        y el desarrollo de capacidades, conocimientos, actitudes y valores esenciales para actuar adecuada y eficazmente
+        en los diversos ámbitos de la sociedad. <br />
+         <br></br>
+        Además, brindamos una educación bilingue(castellano - inglés), como desarrollamos sus habilidades en el campo de 
+        la informática, imprescindibles en este siglo XXI como instrumentos indispensables para no estar ajenos a la 
+        globalización y comunicación audiovisual, interactiva y virtual.
+        </td>
+        </f:view> 
         </h:panelGrid>  
     </p:tab>  
   
-    <p:tab title="Visión">  
-        <h:panelGrid columns="2" cellpadding="10">  
-          
-        </h:panelGrid>  
-    </p:tab>  
-  
-    <p:tab title="Misión">  
-        <h:panelGrid columns="2" cellpadding="10">  
-           
+    <p:tab title="Visión"> 
+		<h:panelGrid columns="2" cellpadding="10">
+		<table>
+		<tr>
+		<td align="justify">
+        Lograr una formacion integral de calidad sustentada en la práctica de valores y virtudes.
+        Alcanzar una educación con libertad que propicie la convivencia reflexiva y crítica respecto
+        a su entorno natural y social.<br />
+         <br></br>
+        Ser reconocidos en la comunidad como líderes e innovadores en la formación integral  
+        de niños y  adolescentes, basada en una  educación humanista, científica e innovadora,
+        que responda eficiente y eficazmente  a las exigencias de un mundo  globalizado y  
+        desafíos de nuestra sociedad.
+        </td>
+        <td>
+        	<p:graphicImage value="/images/cole1.jpg" height="200" width="300"/>
+        </td>
+        </tr>
+        </table>
+        </h:panelGrid> 
+    </p:tab>
+    
+    <p:tab title="Misión">
+        <h:panelGrid columns="2" cellpadding="10">
+        <table>
+        <tr>
+        <td align="justify">
+        Nuestra misión es ofrecer una educación de calidad através de una enseñanza transversal y significativa
+        en todos los niveles buscando el aprendizaje integral del alumno dentro del campo de la enseñanza escolar.<br />
+        <br></br>
+        Formar intelectual y moralmente, al niño y al joven, con sólidos valores, así como con sentido
+        de responsabilidad social.Afianzar la formación integral con sólidos valores cristianos preparándolos para la vida en 
+        respuesta a las exigencias y requerimientos del siglo XXI.
+        </td>
+        <td>
+        	<p:graphicImage value="/images/cole4.jpg" height="300" width="200"/>
+        </td>
+        </tr>
+        </table>
         </h:panelGrid>  
     </p:tab>  
     
