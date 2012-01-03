@@ -49,4 +49,8 @@ public class ApplicationBusinessDelegate {
 		return new BoletaDaoService(DAOFactory.JPA);
 	}
 	
+	public SolicitudRetiroService getRetiroService(){
+		return new SolicitudRetiroDAOService(DAOFactory.JPA);
+	}
+	
 }

@@ -14,6 +14,7 @@ import servicios.BoletaService;
 import servicios.MatriculaService;
 import servicios.MotivoService;
 import servicios.PersonaService;
+import servicios.SolicitudRetiroService;
 import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Boleta;
@@ -36,6 +37,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private static MatriculaService matriculaoService = abd.getMatriculaService();
 	private static PersonaService personaService = abd.getPersonaService();
 	private static BoletaService boletaService = abd.getBoletaService();
+	private static SolicitudRetiroService retiroService = abd.getRetiroService();
 	
 	private Alumno alumno;
 	private Seccionprogramada seccionProgramada;
@@ -84,8 +86,9 @@ public class AlumnoRetiroBean implements Serializable{
 				miboleta.setStrEstado("CANCELADO");
 				miboleta.setApoderados(tempoapo);
 				miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				miboleta.setMonto(new Double(150.0));
+				miboleta.setMonto(new Double(25.0));
 				boletaService.registrarBoleta(miboleta);
+				retiroService.registrarSolictud(sr);
 			}else{
 				System.out.println("No existe apoderado para el alumno: "+alumno.getIntDni());
 			}
