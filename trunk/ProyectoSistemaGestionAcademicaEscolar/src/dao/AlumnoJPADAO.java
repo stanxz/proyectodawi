@@ -111,6 +111,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		System.out.println(alumno.getStrCodigoAlumno());
 		System.out.println(alumno.getStrNombres());
+		System.out.println(alumno.getFotobin());
 		
 		em = emf.createEntityManager();
 
@@ -133,6 +134,7 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		entidadAlumno.setStrApellidoMaterno(alumno.getStrApellidoMaterno());
 		entidadAlumno.setDtFecNac(alumno.getDtFecNac());
 		entidadAlumno.setStrEstado(alumno.getStrEstado());
+		entidadAlumno.setFotobin(alumno.getFotobin());
 
 		//2.3 actualiza Empleado
 		em.merge(entidadAlumno);

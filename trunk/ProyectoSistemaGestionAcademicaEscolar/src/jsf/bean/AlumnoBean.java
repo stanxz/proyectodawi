@@ -223,6 +223,7 @@ public class AlumnoBean implements Serializable{
 			selectedAlumno.setDtFecNac(auxi);
 
 			alumnoService.actualizarAlumno(selectedAlumno);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Actualizado correctamente: " + selectedAlumno.getStrNombres() + " " + selectedAlumno.getStrApellidoPaterno()));
 			System.out.println("alumno actualizado con exito ...");
 		} catch (Exception e) {
 			e.printStackTrace();
