@@ -159,70 +159,63 @@
   
             <h:outputText value="Documento Identidad" />  
             <h:panelGroup>
-            	<p:inputMask  id="txtDNIAlumno" value="#{alumnoBean.nuevoAlumno.intDni}" style="font-weight:bold" required="true" mask="99999999" label="DNI" />  
-                <!--   <p:inputText id="txtCodigoAlumno" value="#{alumnoBean.nuevoAlumno.strCodigoAlumno}" style="font-weight:bold" required="true" maxlength="8">
-                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
-                </p:inputText> -->  
+            	<p:inputMask  id="txtDNIAlumno" value="#{alumnoBean.nuevoAlumno.intDni}" style="font-weight:bold" required="true" mask="99999999" label="DNI" />*  
             </h:panelGroup>  
             
             <h:outputText value="Codigo Apoderado" />  
             <h:panelGroup>
-            	<!--<h:outputText id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold"  />  -->
-            	  <p:inputText  id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" readonly="true" onkeyup="falseador()" label="Código Apoderado"/>
-                <!--<p:inputText id="txtCodigoApoderado"  value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" maxlength="8">
-                	<f:convertNumber minIntegerDigits="8" maxIntegerDigits="8" integerOnly="true"></f:convertNumber>
-                </p:inputText>  -->
+            	<p:inputText  id="txtCodigoApoderado" value="#{alumnoBean.nuevoAlumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" required="true" readonly="true" onkeyup="falseador()" label="Código Apoderado"/>
                 <p:commandButton image="ui-icon ui-icon-person" title="Busque o registre un apoderado para este alumno" onclick="carDialog3.show()" type="button">  
  		 		</p:commandButton>  
             </h:panelGroup> 
             
             <h:outputText value="Nombres" />  
             <h:panelGroup>
-                <p:inputText id="txtNombres" value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Nombre"/>
+                <p:inputText id="txtNombres" value="#{alumnoBean.nuevoAlumno.strNombres}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Nombre"/>*
             </h:panelGroup>  
             
             <h:outputText value="Apellido Paterno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApePat" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Apellido Paterno"/>  
+                <p:inputText id="txtApePat" value="#{alumnoBean.nuevoAlumno.strApellidoPaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Apellido Paterno"/>*
             </h:panelGroup>  
             
             <h:outputText value="Apellido Materno" />  
             <h:panelGroup>  
-                <p:inputText id="txtApemat"  value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Apellido Materno"/>  
+                <p:inputText id="txtApemat"  value="#{alumnoBean.nuevoAlumno.strApellidoMaterno}" style="font-weight:bold" required="true" onkeypress="return validar(event)" label="Apellido Materno"/>*  
             </h:panelGroup>  
             
              <h:outputText value="Fecha Nacimiento" />  
             <h:panelGroup>  
                 <p:calendar id="dtFecNac" value="#{alumnoBean.nuevoAlumno.fechaNacimiento}" pattern="yyyy-MM-dd" showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="1989-01-01" maxdate="2007-01-01" readOnlyInputText="true" label="Fecha de Nacimiento">
-                </p:calendar>  
+                </p:calendar>*  
             </h:panelGroup>
             
            <h:outputText value="Nivel" />  
             <h:panelGroup >  
-                <h:selectOneMenu id="cboNivel"  value="#{alumnoBean.nivelAlumno}" style="font-weight:bold" required="true" label="Nivel" requiredMessage="Seleccione Nivel">  
+                <h:selectOneMenu id="cboNivel"  value="#{alumnoBean.nivelAlumno}" style="font-weight:bold" required="true" label="Nivel" requiredMessage="Seleccione Nivel"> 
 		            <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{0}"/>
 		            <f:selectItem itemLabel="PRIMARIA" itemValue="PRIMARIA"/>
 		            <f:selectItem itemLabel="SECUNDARIA" itemValue="SECUNDARIA" />
-		            <p:ajax update="cboGrado" listener="#{alumnoBean.cargaComboListadoGrado}" /> 	        
-		        </h:selectOneMenu>  
+		            <p:ajax update="cboGrado" listener="#{alumnoBean.cargaComboListadoGrado}" />    
+		        </h:selectOneMenu> *  
             </h:panelGroup>
             
             <h:outputText value="Grado" />  
             <h:panelGroup >  
-                <h:selectOneMenu id="cboGrado" value="#{alumnoBean.gradoAlumno}" style="font-weight:bold" required="true"  label="Grado" requiredMessage="Seleccione Grado">  
+                <h:selectOneMenu id="cboGrado" value="#{alumnoBean.gradoAlumno}" style="font-weight:bold" required="true"  label="Grado" requiredMessage="Seleccione Grado"> 
 		             <f:selectItem itemLabel="Seleccione Grado" itemValue="#{null}" />
 		             <f:selectItems value="#{alumnoBean.listaGrados}" /> 	        
-		        </h:selectOneMenu>  
+		        </h:selectOneMenu>*  
             </h:panelGroup>
             
             <h:outputText value="Seccion" />  
             <h:panelGroup >  
-                <h:selectOneMenu id="cboSeccion" value="#{alumnoBean.seccionAlumno}" style="font-weight:bold" required="true"  label="Sección" requiredMessage="Seleccione Sección">  
+                <h:selectOneMenu id="cboSeccion" value="#{alumnoBean.seccionAlumno}" style="font-weight:bold" required="true"  label="Sección" requiredMessage="Seleccione Sección"> 
 		            <f:selectItem itemLabel="Seleccione Sección" itemValue="#{null}" />
 		            <f:selectItem itemLabel="A" itemValue="A" />  
 		            <f:selectItem itemLabel="B" itemValue="B" />
 		            <f:selectItem itemLabel="C" itemValue="C" /> 	        
-		        </h:selectOneMenu>  
+		        </h:selectOneMenu>*  
             </h:panelGroup>  
             
   			<h:outputText value="Estado" />  
@@ -231,16 +224,16 @@
 		             <f:selectItem itemLabel="Seleccione Estado" itemValue="#{null}" />
 		            <f:selectItem itemLabel="MATRICULADO" itemValue="MATRICULADO" />  
 		            <f:selectItem itemLabel="INACTIVO" itemValue="INACTIVO" /> 	        
-		        </h:selectOneMenu>  
+		        </h:selectOneMenu>*  
             </h:panelGroup>
  			
  			<h:outputText value="Distrito" />  
             <h:panelGroup>  
-                <h:selectOneMenu value="#{alumnoBean.codigoDistrito}" style="font-weight:bold" required="true"  label="Distrito" requiredMessage="Seleccione un Distrito">  
+                <h:selectOneMenu value="#{alumnoBean.codigoDistrito}" style="font-weight:bold" required="true"  label="Distrito" requiredMessage="Seleccione un Distrito"> 
                     <f:selectItem itemLabel="Seleccione Distrito" itemValue="#{null}" />
 		            <f:selectItems value="#{alumnoBean.listadistritos}" var="distrito" 
 		            itemLabel="#{distrito.strNombreDistrito}" itemValue="#{distrito.intIdDistrito}" />  	        
-		        </h:selectOneMenu>  
+		        </h:selectOneMenu>*  
             </h:panelGroup>
             
            <p:fileUpload sizeLimit="1048576" 
@@ -255,7 +248,7 @@
                 <h:panelGroup>
 					  <p:commandButton value="Grabar" 
 					  actionListener="#{alumnoBean.registraAlumno}"  
-					  update="form:listaalumnos msgs" 
+					  update="dlgForm2,form:listaalumnos msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditCompleteRegistrar(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>

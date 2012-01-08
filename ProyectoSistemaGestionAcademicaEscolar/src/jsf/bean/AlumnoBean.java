@@ -32,7 +32,6 @@ import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
 import entidades.Distrito;
-import entidades.Grados;
 import entidades.Matricula;
 import entidades.Persona;
 import entidades.Seccionprogramada;
@@ -50,7 +49,7 @@ public class AlumnoBean implements Serializable{
 	private static MatriculaService matriculaService=abd.getMatriculaService();
 	
 	private Alumno alumno;
-	private Alumno selectedAlumno;
+	private Alumno selectedAlumno = new Alumno();
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
@@ -260,7 +259,7 @@ public class AlumnoBean implements Serializable{
 			//System.out.println("Cantidad secciones de primaria cargadas: " + listaPrimaria.size());
 			//System.out.println("Cantidad secciones de secundaria cargadas: " + listaSecundaria.size());
 		} catch (Exception e) {
-			System.out.println("errorazoooo ");
+			System.out.println("Error");
 			e.printStackTrace();
 		}
 	}
@@ -305,6 +304,7 @@ public class AlumnoBean implements Serializable{
 		this.alumnos = alumnos;
 	}
 
+	
 	public Alumno getSelectedAlumno() {
 		return selectedAlumno;
 	}
@@ -312,7 +312,6 @@ public class AlumnoBean implements Serializable{
 	public void setSelectedAlumno(Alumno selectedAlumno) {
 		this.selectedAlumno = selectedAlumno;
 	}
-
 
 	public boolean isEditMode() {
 		return editMode;
