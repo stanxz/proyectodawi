@@ -1,7 +1,5 @@
 package entidades;
 
-import java.io.File;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -34,6 +32,7 @@ public class SolicitudExoneracion implements Serializable {
 	@JoinColumn(name="codalumno")
 	private Alumno alumno = new Alumno();
 	
+	/*
 	@Transient
 	private File foto;
 	@Transient
@@ -42,6 +41,8 @@ public class SolicitudExoneracion implements Serializable {
 	private String fotoFileName;
 	@Transient
 	private InputStream isFot;
+	*/
+	
 	@Transient
 	private StreamedContent scImagen;
 	
@@ -87,7 +88,7 @@ public class SolicitudExoneracion implements Serializable {
 	public void setAlumno(Alumno alumno) {
 		this.alumno = alumno;
 	}
-
+/*
 	public File getFoto() {
 		return foto;
 	}
@@ -119,7 +120,7 @@ public class SolicitudExoneracion implements Serializable {
 	public void setIsFot(InputStream isFot) {
 		this.isFot = isFot;
 	}
-
+*/
 	public byte[] getFotobin() {
 		return fotobin;
 	}
