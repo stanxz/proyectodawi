@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.persistence.*;
 
+import org.primefaces.model.StreamedContent;
+
 @Entity
 @Table(name="alumno")
 public class Alumno implements Serializable {
@@ -46,6 +48,12 @@ public class Alumno implements Serializable {
 	
 	@Transient
 	private Date fechaNacimiento;
+	
+	@Transient
+	private StreamedContent scImagen;
+	
+	@Column(name="foto",columnDefinition="MEDIUMBLOB")
+	private byte[] fotobin;
 	
     @ManyToOne
 	@JoinColumn(name="iddistrito")
@@ -170,4 +178,20 @@ public class Alumno implements Serializable {
 		this.tbMatriculas = tbMatriculas;
 	}
 
+	public StreamedContent getScImagen() {
+		return scImagen;
+	}
+
+	public void setScImagen(StreamedContent scImagen) {
+		this.scImagen = scImagen;
+	}
+
+	public byte[] getFotobin() {
+		return fotobin;
+	}
+
+	public void setFotobin(byte[] fotobin) {
+		this.fotobin = fotobin;
+	}
+	
 }

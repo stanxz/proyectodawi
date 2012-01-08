@@ -1,5 +1,7 @@
 package jsf.bean;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.sql.Date;
@@ -12,6 +14,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.ServletContext;
+
+import org.apache.commons.io.IOUtils;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
@@ -24,6 +32,7 @@ import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Calendarioacademico;
 import entidades.Distrito;
+import entidades.Grados;
 import entidades.Matricula;
 import entidades.Persona;
 import entidades.Seccionprogramada;
@@ -40,7 +49,8 @@ public class AlumnoBean implements Serializable{
 	private static SeccionprogramadaService seccionprogService=abd.getSeccionprogramadaService();
 	private static MatriculaService matriculaService=abd.getMatriculaService();
 	
-	private Alumno alumno,selectedAlumno;
+	private Alumno alumno;
+	private Alumno selectedAlumno;
 	private Persona persona;
 	private Apoderado apoderado;
 	private ArrayList<Alumno> alumnos;
@@ -49,6 +59,8 @@ public class AlumnoBean implements Serializable{
 	private boolean editMode;
 	private String strCodigoApoderado,mensaje,seccionAlumno,gradoAlumno,nivelAlumno;
 	private int codigoDistrito;
+	private StreamedContent image; 
+	private String valor;
 	
 	private Alumno nuevoAlumno =  new Alumno();
 	
@@ -62,6 +74,48 @@ public class AlumnoBean implements Serializable{
 		
 	}
 	
+	public void cargarImagenActualiza(FileUploadEvent event) {  
+    	System.out.println("XD " + event.getFile().getFileName());
+    	System.out.println("XD1 " + selectedAlumno.getFotobin());
+    	System.out.println("XD2 " + event.getFile().getContents());
+    	
+    	try {
+    		
+    		selectedAlumno.setScImagen(new DefaultStreamedContent(event.getFile().getInputstream()));
+    	    
+    	    System.out.println("XD" + event.getFile().getFileName());
+    	    
+    	    byte[] foto = event.getFile().getContents();
+    	    selectedAlumno.setFotobin(foto);
+    	    
+    	    System.out.println("XD2 " + selectedAlumno.getFotobin());
+    	    
+    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
+    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+    	  } catch (Exception ex) {
+    	 } 
+	}
+	
+	 public void cargarImagenInsertar(FileUploadEvent event) {  
+		    System.out.println("cargarImagenInsertar");
+	    	System.out.println("XD " + event.getFile().getFileName());
+	    	
+	    	try {
+	    	    image = new DefaultStreamedContent(event.getFile().getInputstream());
+	    	    
+	    	    System.out.println("XD" + event.getFile().getFileName());
+	    	    
+	    	    byte[] foto = event.getFile().getContents();
+	    	    nuevoAlumno.setFotobin(foto);
+	    	    
+	    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
+	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+	    	  } catch (Exception ex) {
+	    		  ex.printStackTrace();
+	    	 } 
+	}
+	 
+	
 	public void registraAlumno(ActionEvent ae) {  
 		System.out.println("insertando alumno");
 		
@@ -73,6 +127,18 @@ public class AlumnoBean implements Serializable{
 		Distrito tempodis=new Distrito();
 		tempodis.setIntIdDistrito(codigoDistrito);
 		nuevoAlumno.setDistritos(tempodis);
+		
+		if(nuevoAlumno.getFotobin()==null){
+			InputStream stream = 
+				((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/noDisponible.jpg");
+		byte[] foto;
+			try {
+				foto = IOUtils.toByteArray(stream);
+				nuevoAlumno.setFotobin(foto);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}  		
+		}
 		
 		Seccionprogramada sptempo=new Seccionprogramada();
 		if(gradoAlumno.length()==3)
@@ -151,6 +217,8 @@ public class AlumnoBean implements Serializable{
 	public void actualizaAlumno(ActionEvent ae){
 		System.out.println("Actualizando alumno ... ");
 		System.out.println(selectedAlumno.getStrNombres());
+		System.out.println("XD2 " + selectedAlumno.getFotobin());
+		
 		try {
 			Date auxi=new Date(selectedAlumno.getFecha().getTime());
 			selectedAlumno.setDtFecNac(auxi);
@@ -207,7 +275,9 @@ public class AlumnoBean implements Serializable{
 			 }else if(valorCombo.equalsIgnoreCase("SECUNDARIA")){
 				 System.out.println("cargando lista secundaria");
 				 this.listaGrados=listaSecundaria;
-			 }
+			 }else if (valorCombo.equalsIgnoreCase("0")){
+				 this.listaGrados =  new ArrayList<String>();
+				}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -355,6 +425,22 @@ public class AlumnoBean implements Serializable{
 
 	public void setNivelAlumno(String nivelAlumno) {
 		this.nivelAlumno = nivelAlumno;
+	}
+
+	public StreamedContent getImage() {
+		return image;
+	}
+
+	public void setImage(StreamedContent image) {
+		this.image = image;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 }

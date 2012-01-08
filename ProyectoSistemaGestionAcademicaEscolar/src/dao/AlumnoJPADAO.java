@@ -1,11 +1,15 @@
 package dao;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import entidades.Alumno;
 import entidades.Apoderado;
@@ -29,8 +33,8 @@ public class AlumnoJPADAO implements AlumnoDAO {
 		
 		ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
 		
-		 //List lista = em.createQuery("SELECT a FROM Alumno a order by a.strApellidoPaterno").getResultList();
-		List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
+		List lista = em.createQuery("SELECT a FROM Alumno a order by a.strApellidoPaterno").getResultList();
+		//List lista = em.createQuery("SELECT a FROM Alumno a").getResultList();
 		
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {
@@ -39,6 +43,25 @@ public class AlumnoJPADAO implements AlumnoDAO {
 					alumnos.add(entidad);
 				}
 		 }
+		 
+		 for (Alumno x : alumnos) {
+			 StreamedContent image;
+			 
+			 if(x.getFotobin()!=null){
+				 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getFotobin()));
+				 
+				 x.setScImagen(image);
+			 }/*else{
+				 InputStream stream = 
+					 
+					 ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/noDisponible.jpg");
+				 
+				 image = new DefaultStreamedContent(stream);
+				 
+				 x.setScImagen(image);
+			 }*/
+			 
+		}
 		 
 		em.close();
 		

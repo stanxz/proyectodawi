@@ -32,7 +32,10 @@ public class ImagenBean implements Serializable{
     	
     	try {
     	    image = new DefaultStreamedContent(event.getFile().getInputstream());
+    	    
     	    System.out.println("XD2 " + event.getFile().getFileName());
+    	    System.out.println("XD2 " + event.getFile().getContents());
+    	    
     	    FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
     	    FacesContext.getCurrentInstance().addMessage(null, msg);
     	  } catch (Exception ex) {
