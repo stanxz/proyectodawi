@@ -53,8 +53,12 @@
 		 
 		 <h:outputText value="Observacion" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" rendered="#{alumnoRetiroBean.btnAdjuntar}" required="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Observaciones"/>
-
-		 <p:commandButton  rendered="#{alumnoRetiroBean.btnAdjuntar}" value="Adjuntar"/>
+			
+		 <p:fileUpload sizeLimit="1048576" 
+           auto="true" widgetVar="uploader" label="Cargar Certi"
+           fileUploadListener="#{alumnoRetiroBean.cargarDocumentoInsertar}"
+           allowTypes="*.doc;" description="Certificados" 
+           update="msgs,dlgForm2:thumbDocInserta,dlgForm2:par,dlgForm2:url" multiple="false" customUI="true" required="true" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 
 		 <p:commandButton value="Generar Cita" 
 		 				rendered="#{!alumnoRetiroBean.btnAdjuntar}" 

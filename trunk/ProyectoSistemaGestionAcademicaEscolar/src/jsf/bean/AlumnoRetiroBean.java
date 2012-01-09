@@ -2,11 +2,17 @@ package jsf.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
@@ -53,7 +59,10 @@ public class AlumnoRetiroBean implements Serializable{
 	private Boolean txtBoleta;
 	private Boolean txtObservacion;
 	private String observacion;
-
+	private StreamedContent documento;
+	private SolicitudRetiro misolicitud;
+	private Map<String, Object> misesion;
+	
 	private Alumno retiroAlumno = new Alumno();
 		
 	public AlumnoRetiroBean() {
@@ -70,6 +79,7 @@ public class AlumnoRetiroBean implements Serializable{
 		sr.setStrEstado("PENDIENTE");
 		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
 		sr.setStrObservacion(observacion);
+		sr.setCertificadobin(misolicitud.getCertificadobin());
 		
 		Apoderado tempoapo=new Apoderado();
 		Persona tempopersona=new Persona();
@@ -80,15 +90,31 @@ public class AlumnoRetiroBean implements Serializable{
 				System.out.println("Apoderado encontrado: "+tempopersona.getStrCodigoPersona());
 				tempoapo.setPersonas(tempopersona);
 				
-				System.out.println("Ahora se registrara la boleta: "+boleta.getStrCodigoBoleta());
+				System.out.println("Ahora se consultara la boleta: "+boleta.getStrCodigoBoleta());
+				Boleta boletempo=new Boleta();
 				Boleta miboleta=new Boleta();
-				miboleta.setStrCodigoBoleta(boleta.getStrCodigoBoleta());
-				miboleta.setStrEstado("CANCELADO");
-				miboleta.setApoderados(tempoapo);
-				miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				miboleta.setMonto(new Double(25.0));
-				boletaService.registrarBoleta(miboleta);
-				retiroService.registrarSolictud(sr);
+				boletempo.setStrCodigoBoleta(boleta.getStrCodigoBoleta());
+				Apoderado apotempo=new Apoderado();
+				Persona persotempo=new Persona();
+				misesion=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+				int numero=((Usuario)misesion.get("b_usuario")).getPersonas().getIntDNI();
+				System.out.println("numerooooo de DNI del apoderado: "+numero);
+				persotempo.setIntDNI(numero);
+				apotempo.setPersonas(persotempo);
+				boletempo.setApoderados(apotempo);
+				//miboleta.setStrEstado("CANCELADO");
+				//miboleta.setApoderados(tempoapo);
+				//miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
+				//miboleta.setMonto(new Double(25.0));
+				//boletaService.registrarBoleta(miboleta);
+				miboleta=boletaService.obtenerBoleta(boletempo);
+				if(miboleta!=null){
+					System.out.println("Boleta encontrada, se va a registrar la solicitud ... ");
+					retiroService.registrarSolictud(sr);
+				}else{
+					System.out.println("No se encontro la boleta ... ");
+				}
+				
 			}else{
 				System.out.println("No existe apoderado para el alumno: "+alumno.getIntDni());
 			}
@@ -126,6 +152,25 @@ public class AlumnoRetiroBean implements Serializable{
 			e.printStackTrace();
 		}
 	 }
+	 
+	 public void cargarDocumentoInsertar(FileUploadEvent event) {  
+		    System.out.println("en cargarDocumentoInsertar ... ");
+	    	System.out.println("Nombre archivo: " + event.getFile().getFileName());
+	    	
+	    	try {
+	    	    documento = new DefaultStreamedContent(event.getFile().getInputstream());
+	    	    
+	    	    System.out.println("otra vez el nombre: " + event.getFile().getFileName());
+	    	    misolicitud=new SolicitudRetiro();
+	    	    byte[] foto = event.getFile().getContents();
+	    	    misolicitud.setCertificadobin(foto);
+	    	    
+	    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
+	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+	    	  } catch (Exception ex) {
+	    		  ex.printStackTrace();
+	    	 } 
+	}
 	 
 	 public void motivoChange(){
 		 System.out.println("Llego Aqui");
@@ -284,6 +329,22 @@ public class AlumnoRetiroBean implements Serializable{
 	public void setTxtObservacion(Boolean txtObservacion) {
 		this.txtObservacion = txtObservacion;
 	}
-	
 
+	public StreamedContent getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(StreamedContent documento) {
+		this.documento = documento;
+	}
+
+	public SolicitudRetiro getMisolicitud() {
+		return misolicitud;
+	}
+
+	public void setMisolicitud(SolicitudRetiro misolicitud) {
+		this.misolicitud = misolicitud;
+	}
+	
+	
 }

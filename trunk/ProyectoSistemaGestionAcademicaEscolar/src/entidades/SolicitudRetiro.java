@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -25,8 +27,8 @@ public class SolicitudRetiro implements Serializable{
 	@Column(name="codsolicitudretiro")
 	private int intIdCodigoSolicitudRetiro;
 	
-	@Column(name="codalumno")
-	private Alumno alumno = new Alumno();
+	//@Column(name="codalumno")
+	//private Alumno alumno = new Alumno();
 	
 	@Transient
 	private File certificado;
@@ -37,7 +39,7 @@ public class SolicitudRetiro implements Serializable{
 	@Transient
 	private InputStream isCertificado;
 	
-	@Column(name="docsustentario",columnDefinition="LONGBLOB")
+	@Column(name="docsustentatorio",columnDefinition="MEDIUMBLOB")
 	private byte[] certificadobin;
 	
 	@Column(name="motivo")
@@ -58,6 +60,10 @@ public class SolicitudRetiro implements Serializable{
 	@Column(name="flagprocesado")
 	private int intFlagprocesado;
 
+	@ManyToOne
+	@JoinColumn(name="codalumno")
+	private Alumno alumno;
+	
 	public int getIntIdCodigoSolicitudRetiro() {
 		return intIdCodigoSolicitudRetiro;
 	}
