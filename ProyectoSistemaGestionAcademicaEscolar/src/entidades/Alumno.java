@@ -62,6 +62,9 @@ public class Alumno implements Serializable {
     @OneToMany(targetEntity=Matricula.class,mappedBy="alumno")
 	private Collection<Matricula> tbMatriculas;
 	 
+    @OneToMany(targetEntity=SolicitudRetiro.class,mappedBy="alumno")
+   	private Collection<SolicitudRetiro> tbSolicitudRetiro;
+    
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -192,6 +195,14 @@ public class Alumno implements Serializable {
 
 	public void setFotobin(byte[] fotobin) {
 		this.fotobin = fotobin;
+	}
+
+	public Collection<SolicitudRetiro> getTbSolicitudRetiro() {
+		return tbSolicitudRetiro;
+	}
+
+	public void setTbSolicitudRetiro(Collection<SolicitudRetiro> tbSolicitudRetiro) {
+		this.tbSolicitudRetiro = tbSolicitudRetiro;
 	}
 	
 }
