@@ -102,25 +102,35 @@ public class AlumnoRetiroBean implements Serializable{
 				persotempo.setIntDNI(numero);
 				apotempo.setPersonas(persotempo);
 				boletempo.setApoderados(apotempo);
-				//miboleta.setStrEstado("CANCELADO");
-				//miboleta.setApoderados(tempoapo);
-				//miboleta.setDtFechaRegistro(new java.sql.Date(new java.util.Date().getTime()));
-				//miboleta.setMonto(new Double(25.0));
-				//boletaService.registrarBoleta(miboleta);
+
 				miboleta=boletaService.obtenerBoleta(boletempo);
 				if(miboleta!=null){
-					System.out.println("Boleta encontrada, se va a registrar la solicitud ... ");
-					retiroService.registrarSolictud(sr);
+					System.out.println("Boleta encontrada, se va a consultar si existe alguna solicitud pendiente ... ");
+					SolicitudRetiro temposr=retiroService.buscarSolicitudXAlumnoXAño(sr);
+					if(temposr!=null){
+						System.out.println("Ya existe una solicitud de retiro pendiente");
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","El Alumno "+ sr.getAlumno().getStrCodigoAlumno()+" ya tiene una solicitud de retiro registrada !" ));
+					}else{
+						System.out.println("registrando Solicitud de Retiro ... ");
+						retiroService.registrarSolictud(sr);
+						FacesMessage msg = new FacesMessage("Solicitud de Retiro Registrada","Se guardó Solicitud de Retiro del Alumno "+sr.getAlumno().getStrCodigoAlumno());
+			    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+					}
+					
 				}else{
 					System.out.println("No se encontro la boleta ... ");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","Boleta de Pago No Encontrada" ));
 				}
 				
 			}else{
 				System.out.println("No existe apoderado para el alumno: "+alumno.getIntDni());
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","No existe apoderado para el alumno "+sr.getAlumno().getStrCodigoAlumno() ));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","Error General: "+e.getMessage()));
 			e.printStackTrace();
+			
 		}
 		
 		
