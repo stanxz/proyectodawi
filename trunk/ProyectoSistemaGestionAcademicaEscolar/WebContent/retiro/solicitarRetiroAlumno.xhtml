@@ -49,13 +49,13 @@
 		 </h:selectOneMenu>	
 		 
 		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="true"/>
-		  <p:inputText  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="true" requiredMessage="Ingrese Nº Boleta"/>
+		  <p:inputMask  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="true" requiredMessage="Ingrese Nro Boleta" mask="aa999999"/>
 		 
 		 <h:outputText value="Observacion" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" rendered="#{alumnoRetiroBean.btnAdjuntar}" required="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Observaciones"/>
 			
 		 <p:fileUpload sizeLimit="1048576" 
-           auto="true" widgetVar="uploader" label="Cargar Certi"
+           auto="true" widgetVar="uploader" label="Cargar Certificado"
            fileUploadListener="#{alumnoRetiroBean.cargarDocumentoInsertar}"
            allowTypes="*.doc;" description="Certificados" 
            update="msgs,dlgForm2:thumbDocInserta,dlgForm2:par,dlgForm2:url" multiple="false" customUI="true" required="true" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
@@ -73,7 +73,7 @@
 					  update="msgs" 
                       image="ui-icon ui-icon-check"
                       disabled="#{!alumnoRetiroBean.btnAdjuntar}"
-                      oncomplete=""/>
+                      oncomplete="datosDialog.hide()"/>
                     <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close" 
                     disabled="#{!alumnoRetiroBean.btnAdjuntar}"/>
   				</h:panelGroup>

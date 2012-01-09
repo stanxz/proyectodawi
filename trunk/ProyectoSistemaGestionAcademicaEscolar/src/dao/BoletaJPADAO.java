@@ -24,20 +24,21 @@ public class BoletaJPADAO implements BoletaDAO {
 		//Boleta entidadBoleta=(Boleta)em.find(Boleta.class,temporal.getStrCodigoBoleta());
 		//return entidadBoleta;
 		Query q =  em.createQuery("SELECT b FROM Boleta b " +
-                "WHERE b.apoderados.personas.intDNI=?1 and b.strEstado='CANCELADO' and b.strTipo='RETIRO' " +
+                "WHERE b.apoderados.personas.intDNI=?1 AND b.strEstado='CANCELADO' AND b.strTipo='RETIRO' AND b.strCodigoBoleta=?2" +
                 "ORDER BY b.strCodigoBoleta");
 		q.setParameter(1,temporal.getApoderados().getPersonas().getIntDNI());
+		q.setParameter(2,temporal.getStrCodigoBoleta());
 		try {
 			System.out.println("+++++++");
 			Boleta entidadBoleta =(Boleta) q.getResultList().get(0);
 			System.out.println("-------");
 			em.close();
 			if(entidadBoleta!=null){
-				//System.out.println("aaaaaaaa");
+				System.out.println("aaaaaaaa: "+entidadBoleta.getStrCodigoBoleta());
 				return entidadBoleta;
 			}
 			else{
-				//System.out.println("bbbbbbbb");
+				System.out.println("bbbbbbbb");
 				return null;
 			}
 				

@@ -1,6 +1,8 @@
 package dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -48,8 +50,37 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 	@Override
 	public SolicitudRetiro buscarSolicitudXAlumnoXAño(SolicitudRetiro sr)
 			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("Codigo de alumno q llega: "+sr.getAlumno().getStrCodigoAlumno());
+		SolicitudRetiro entidadSR=new SolicitudRetiro();
+		em = emf.createEntityManager();
+		//Date fechahoy=new java.sql.Date(new java.util.Date().getTime());
+		/*Calendar ahoraCal = Calendar.getInstance();
+		//System.out.println("*** getclass: "+ahoraCal.getClass());
+		System.out.println("1*** gettime: "+ahoraCal.getTime());
+		int año=ahoraCal.get(Calendar.YEAR);
+		System.out.println("el anioooo: "+año);
+		ahoraCal.set(año, 3, 1);
+		System.out.println("2*** gettime: "+ahoraCal.getTime());
+		Date fechamenor=new java.sql.Date(ahoraCal.getTimeInMillis());
+		ahoraCal.set(año, 11, 1);
+		System.out.println("3*** gettime: "+ahoraCal.getTime());
+		Date fechamayor=new java.sql.Date(ahoraCal.getTimeInMillis());*/
+		
+		Query q=em.createQuery("SELECT sr FROM SolicitudRetiro sr " +
+				"WHERE sr.strEstado='PENDIENTE' AND sr.alumno.strCodigoAlumno=?1");
+		q.setParameter(1, sr.getAlumno().getStrCodigoAlumno());
+		//q.setParameter(2, fechamayor);
+		//q.setParameter(3,fechamenor);
+		List lista=q.getResultList();
+		 if(lista.size()>0){
+			 System.out.println("id sr: "+lista.get(lista.size()-1));
+			 entidadSR= (SolicitudRetiro)lista.get(lista.size()-1);
+		 }else
+			 entidadSR=null;
+
+		em.close();
+		return entidadSR;
+	
 	}
 
 	@Override
@@ -58,9 +89,6 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
-		//sr.setStrEstado("Pendiente");
-		//sr.setDtFecReg(new java.sql.Date(new java.util.Date().getTime()));
-		//sr.setAsistenteCoordinacion(null);
 		em.persist(sr);
 		em.flush();
 
