@@ -31,6 +31,17 @@
 		   <property name="eclipselink.jdbc.user" value="root"/>
 		   <property name="eclipselink.jdbc.password" value="admin"/>
 		   <property name="eclipselink.logging.level" value="FINE"/> 
+		   
+		   <!-- Pool de Conexiones -->
+		   <property name="eclipselink.jdbc.connections.initial" value="5" />
+		   <property name="eclipselink.jdbc.connections.min" value="5" />
+           <property name="eclipselink.jdbc.connections.max" value="15" />
+
+		   <property name="eclipselink.jdbc.read-connections.min" value="5"/>
+		   <property name="eclipselink.jdbc.read-connections.max" value="15"/>
+		   <property name="eclipselink.jdbc.read-connections.shared" value="true"/>
+		   <property name="eclipselink.jdbc.write-connections.min" value="5"/>
+		   <property name="eclipselink.jdbc.write-connections.max" value="15"/>
 		</properties>
 
 		
