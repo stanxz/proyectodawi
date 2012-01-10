@@ -25,6 +25,8 @@ public abstract class DAOFactory {
     public abstract SolicitudRetiroDAO getSolicitudRetiroDAO();
     public abstract BoletaDAO getBoletaDAO();
     
+    public abstract CitaDAO getCitaDAO();
+    
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){
        	case JPA:

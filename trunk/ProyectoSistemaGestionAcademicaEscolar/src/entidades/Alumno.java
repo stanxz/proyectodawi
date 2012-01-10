@@ -65,6 +65,18 @@ public class Alumno implements Serializable {
     @OneToMany(targetEntity=SolicitudRetiro.class,mappedBy="alumno")
    	private Collection<SolicitudRetiro> tbSolicitudRetiro;
     
+    @OneToMany(targetEntity=Cita.class,mappedBy="alumno")
+	private Collection<Cita> tbCitas;
+
+    
+	public Collection<Cita> getTbCitas() {
+		return tbCitas;
+	}
+
+	public void setTbCitas(Collection<Cita> tbCitas) {
+		this.tbCitas = tbCitas;
+	}
+
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}

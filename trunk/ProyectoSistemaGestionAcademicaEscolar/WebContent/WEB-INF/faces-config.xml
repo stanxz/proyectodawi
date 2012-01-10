@@ -25,5 +25,14 @@
         <validator-id>asignaturaValidator</validator-id>
         <validator-class>utiles.AsignaturaValidator</validator-class>
     </validator>
+    
+    <managed-bean>
+		<description>scheduleController</description>
+		<managed-bean-name>scheduleController</managed-bean-name>
+		<managed-bean-class>org.primefaces.event.ScheduleController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+	</managed-bean>
+    
+  
 
 </faces-config>

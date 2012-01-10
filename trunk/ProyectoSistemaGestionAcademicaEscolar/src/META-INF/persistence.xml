@@ -23,7 +23,11 @@
 		<class>entidades.AsistentaSocial</class>
 		<class>entidades.SecretariaAcademica</class>
 		<class>entidades.SolicitudExoneracion</class>
+
+		<class>entidades.Cita</class>
+
 		<class>entidades.SolicitudRetiro</class>
+
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
