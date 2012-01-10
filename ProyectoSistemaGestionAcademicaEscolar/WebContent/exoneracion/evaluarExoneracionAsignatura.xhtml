@@ -38,7 +38,7 @@
         
         <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
-                 <p:commandButton update="dlgForm:display" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Solicitud">  
+                 <p:commandButton update="dlgForm:display,dlgForm:image" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Solicitud">  
                      <f:setPropertyActionListener value="#{solicitud}" target="#{evaluarExoneracionBean.selectedSolicitud}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{evaluarExoneracionBean.editMode}" /> 
                  </p:commandButton>   
@@ -70,13 +70,7 @@
             <h:panelGroup>  
                 <p:inputTextarea value="#{evaluarExoneracionBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{!evaluarExoneracionBean.editMode}" required="true" label="Observaciones" effectDuration="300"/>  
             </h:panelGroup> 
-            
-              
-            <f:facet name="footer"> 
-            <div align="left">
-            	<p:graphicImage value="#{evaluarExoneracionBean.selectedSolicitud.scImagen}" rendered="#{evaluarExoneracionBean.editMode}"  cache="false"
-            	                width="100%" height="100%"/>
-            </div>
+			 <f:facet name="footer"> 
                 <p:outputPanel rendered="#{evaluarExoneracionBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
 					  <p:commandButton value="Aprobar" 
@@ -94,6 +88,16 @@
               </p:outputPanel>  
           </f:facet> 
       </h:panelGrid>
+      <h:panelGrid id="image"  columns="1">
+      <p:fieldset legend="Ver/Ocultar Solicitud" toggleable="true" toggleSpeed="500" collapsed="true">  
+        		<h:panelGrid columns="1" cellpadding="10">  
+            <div align="left">
+            	<p:graphicImage value="#{evaluarExoneracionBean.selectedSolicitud.scImagen}" rendered="#{evaluarExoneracionBean.editMode}"  cache="false"
+            	                width="100%" height="100%"/>
+            </div>
+        		</h:panelGrid>  
+   	   </p:fieldset> 
+   	   </h:panelGrid>
 	</h:form>
 	</p:dialog>
 	</div>
