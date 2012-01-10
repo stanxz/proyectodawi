@@ -119,4 +119,14 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
+	@Override
+	public CitaDAO getCitaDAO() {
+		// TODO Auto-generated method stub
+		CitaJPADAO srd=new CitaJPADAO();
+		srd.setEntityManagerFactory(emf);
+		
+		return(CitaJPADAO)srd;
+	}
+
+
 }

@@ -53,4 +53,9 @@ public class ApplicationBusinessDelegate {
 		return new SolicitudRetiroDAOService(DAOFactory.JPA);
 	}
 	
+	public CitaService getCitaService(){
+		
+		return new CitaDaoService(DAOFactory.JPA);
+	}
+	
 }
