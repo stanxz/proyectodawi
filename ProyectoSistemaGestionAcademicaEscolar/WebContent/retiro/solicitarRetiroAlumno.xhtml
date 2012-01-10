@@ -57,7 +57,7 @@
 		 <p:fileUpload sizeLimit="1048576" 
            auto="true" widgetVar="uploader" label="Cargar Certificado"
            fileUploadListener="#{alumnoRetiroBean.cargarDocumentoInsertar}"
-           allowTypes="*.doc;" description="Certificados" 
+           allowTypes="*.png;*.jpeg;*.gif;" description="Certificados" 
            update="msgs,dlgForm2:thumbDocInserta,dlgForm2:par,dlgForm2:url" multiple="false" customUI="true" required="true" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 
 		 <p:commandButton value="Generar Cita" 

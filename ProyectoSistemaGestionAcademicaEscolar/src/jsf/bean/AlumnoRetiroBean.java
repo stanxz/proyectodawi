@@ -54,7 +54,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private String prueba;
 	private Motivo motivo = new Motivo();
 	private Boleta boleta = new Boleta();
-	private Boolean btnAdjuntar;
+	private Boolean btnAdjuntar=false;
 	private Boolean btnCita;
 	private Boolean txtBoleta;
 	private Boolean txtObservacion;
