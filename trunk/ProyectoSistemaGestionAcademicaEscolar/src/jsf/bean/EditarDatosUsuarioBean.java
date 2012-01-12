@@ -8,6 +8,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+
 import servicios.ApplicationBusinessDelegate;
 import servicios.PersonaService;
 import servicios.UsuarioService;
@@ -51,6 +54,23 @@ public class EditarDatosUsuarioBean implements Serializable{
 
 	public void setEditMode(boolean editMode) {
 		this.editMode = editMode;
+	}
+	
+	public void cargarImagenActualiza(FileUploadEvent event) {  
+    	
+    	try {
+    		
+    		usuario.getPersonas().setScImagen(new DefaultStreamedContent(event.getFile().getInputstream()));
+    	    
+    	    System.out.println("XD" + event.getFile().getFileName());
+    	    
+    	    byte[] foto = event.getFile().getContents();
+    	    usuario.getPersonas().setFotobin(foto);
+    	    
+    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
+    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+    	  } catch (Exception ex) {
+    	 } 
 	}
 	
 	public void cargaDatos(){
@@ -98,7 +118,8 @@ public class EditarDatosUsuarioBean implements Serializable{
 			tmpPersona.setStrTelefono(usuario.getPersonas().getStrTelefono());
 			tmpPersona.setStrCelular(usuario.getPersonas().getStrCelular());
 			tmpPersona.setStrSexo(usuario.getPersonas().getStrSexo());
-				
+			tmpPersona.setFotobin(usuario.getPersonas().getFotobin());
+			
 			personaService.actulizarPersona(tmpPersona);
 				
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Actulización de Datos","Se actualizaron sus datos correctamente"));

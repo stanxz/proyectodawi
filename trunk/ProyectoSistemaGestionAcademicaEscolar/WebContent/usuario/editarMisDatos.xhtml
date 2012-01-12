@@ -131,7 +131,18 @@
 		            <f:selectItem itemLabel="Masculino" itemValue="1" />          
 		     </h:selectOneMenu>  
             </h:panelGroup> 
-
+            
+            <h:outputText value="Foto" rendered="#{!editarDatosUsuarioBean.editMode}"/>
+            <p:fileUpload sizeLimit="1048576" 
+           auto="true" widgetVar="uploader" label="Cargar Foto"
+           fileUploadListener="#{editarDatosUsuarioBean.cargarImagenActualiza}"
+           allowTypes="*.jpg;*.png;*.gif;" description="Images" 
+           update="msgs,dlgForm:imgFotoActualiza" multiple="false" customUI="true" required="true"
+           rendered="#{editarDatosUsuarioBean.editMode}"/>
+			<h:panelGroup >  
+            <p:graphicImage id="imgFotoActualiza"  value="#{editarDatosUsuarioBean.usuario.personas.scImagen}" cache="false"
+              style="height:50%;width:50%"/>
+  		    </h:panelGroup> 
           <f:facet name="footer"> 
                 <p:outputPanel rendered="#{editarDatosUsuarioBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>

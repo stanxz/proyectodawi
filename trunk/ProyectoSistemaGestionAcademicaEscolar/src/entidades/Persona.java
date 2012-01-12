@@ -5,6 +5,8 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
+import org.primefaces.model.StreamedContent;
+
 
 @Entity
 @Table(name="persona")
@@ -48,6 +50,12 @@ public class Persona implements Serializable {
 	
 	@Transient
 	private Perfil perfil = new Perfil();
+	
+	@Transient
+	private StreamedContent scImagen;
+	
+	@Column(name="foto",columnDefinition="MEDIUMBLOB")
+	private byte[] fotobin;
 	
 	@OneToMany(targetEntity=Usuario.class,mappedBy="personas")
 	private Collection<Usuario> tbUsuarios;
@@ -195,5 +203,23 @@ public class Persona implements Serializable {
 			Collection<AsistenteDireccionAcademica> tbAsistenteDireccionAcademica) {
 		this.tbAsistenteDireccionAcademica = tbAsistenteDireccionAcademica;
 	}
+
+	public StreamedContent getScImagen() {
+		return scImagen;
+	}
+
+	public void setScImagen(StreamedContent scImagen) {
+		this.scImagen = scImagen;
+	}
+
+	public byte[] getFotobin() {
+		return fotobin;
+	}
+
+	public void setFotobin(byte[] fotobin) {
+		this.fotobin = fotobin;
+	}
+	
+	
 	
 }

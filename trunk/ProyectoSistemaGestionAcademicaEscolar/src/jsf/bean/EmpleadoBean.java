@@ -1,5 +1,7 @@
 package jsf.bean;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -7,6 +9,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+
+import org.apache.commons.io.IOUtils;
 
 import servicios.ApplicationBusinessDelegate; 
 import servicios.DistritoService;
@@ -90,6 +95,16 @@ public class EmpleadoBean implements Serializable{
 			}else{
 				
 					System.out.println("Insertando Empleado y Usuario");
+					InputStream stream = 
+						((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/noDisponible.jpg");
+					byte[] foto;
+						try {
+							foto = IOUtils.toByteArray(stream);
+							nuevoEmpleado.setFotobin(foto);
+						} catch (IOException e) {
+							e.printStackTrace();
+						}  		
+					
 					personaService.registrarPersona(nuevoEmpleado);
 					
 					Perfil perfil = new Perfil();

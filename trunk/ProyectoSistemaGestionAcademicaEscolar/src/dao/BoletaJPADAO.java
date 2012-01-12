@@ -5,7 +5,6 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
 import entidades.Boleta;
-import entidades.Persona;
 
 public class BoletaJPADAO implements BoletaDAO {
 

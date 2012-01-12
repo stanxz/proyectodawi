@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
+
 import entidades.Permiso;
 import entidades.Persona;
 import entidades.Usuario;
@@ -27,7 +29,7 @@ public class LogueoBean {
 	private ArrayList<Permiso> funcionalidades;
 	private Permiso funcionalidad;
 	private Persona persona;
-	private Usuario usuario; 
+	private Usuario usuario;
 	public Map<String, Object> lasession;
 	private String cadenausuario,cadenapassword,mensaje,mensaje2,dni;
 	
@@ -35,7 +37,7 @@ public class LogueoBean {
 	public LogueoBean(){
 		System.out.println("Creando LogueoBean...");
 	}
-
+	
 	public String loguearUsuario(){
 		System.out.println("En el loguear usuario - UsuarioBean");
 
