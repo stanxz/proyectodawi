@@ -1,5 +1,7 @@
 package jsf.bean;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -9,6 +11,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.ServletContext;
+
+import org.apache.commons.io.IOUtils;
 
 import entidades.Apoderado;
 import entidades.Distrito;
@@ -96,14 +101,8 @@ public class ApoderadoBean implements Serializable{
 				if(m.getName().startsWith("get"))
 				System.out.println("nuevo Apoderado - " + m.getName() + " : " +  m.invoke(nuevoApoderado));
 			}
-			
-			/*for (Method m : nuevousuario.getClass().getMethods()){
-				if(m.getName().startsWith("get"))
-				System.out.println("nuevo Usuario - "+m.getName() + " : " +  m.invoke(nuevousuario));
-			}*/
-			
-			
-			
+
+
 			System.out.println("consultando apoderado con dni: "+nuevoApoderado.getIntDNI());
 			
 			auxitemporal = apoderadoService.consultaPersona(nuevoApoderado);
@@ -126,6 +125,15 @@ public class ApoderadoBean implements Serializable{
 				tempodis.setIntIdDistrito(codigoDistrito2);
 				System.out.println("1111");
 				nuevoApoderado.setDistritos(tempodis);
+				InputStream stream = 
+					((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/images/noDisponible.jpg");
+				byte[] foto;
+					try {
+						foto = IOUtils.toByteArray(stream);
+						nuevoApoderado.setFotobin(foto);
+					} catch (IOException e) {
+						e.printStackTrace();
+					} 
 				System.out.println("insertando apoderado y su usuario ... ");
 				apoderadoService.registrarPersona(nuevoApoderado);
 				

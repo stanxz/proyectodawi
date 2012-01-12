@@ -1,11 +1,15 @@
 package dao;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import entidades.Alumno;
 import entidades.Apoderado;
@@ -49,6 +53,14 @@ public class PersonaJPADAO implements PersonaDAO {
 		 
 		 for (Persona x : empleados) {	 
 			x.setPerfil(obtienePerfilPersona(x.getStrCodigoPersona()));
+			
+			StreamedContent image;
+			
+			 if(x.getFotobin()!=null){
+				 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getFotobin()));
+				 
+				 x.setScImagen(image);
+			 }
 		 }
 		
 
@@ -231,6 +243,7 @@ public class PersonaJPADAO implements PersonaDAO {
 		entidadPersona.setStrApellidoPaterno(persona.getStrApellidoPaterno());
 		entidadPersona.setStrApellidoMaterno(persona.getStrApellidoMaterno());
 		entidadPersona.setIntDNI(persona.getIntDNI());
+		entidadPersona.setFotobin(persona.getFotobin());
 		
 		Distrito entidadDistrito = new Distrito();
 		entidadDistrito.setIntIdDistrito(persona.getDistritos().getIntIdDistrito());

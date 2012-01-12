@@ -1,11 +1,15 @@
 package dao;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import entidades.Perfil;
 import entidades.Permiso;
@@ -40,6 +44,13 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		em.close();
 		
 		if(entidadUsuario!=null){
+		StreamedContent image;	
+			if(entidadUsuario.getPersonas().getFotobin()!=null){
+				 image = new DefaultStreamedContent(new ByteArrayInputStream(entidadUsuario.getPersonas().getFotobin()));
+
+				 entidadUsuario.getPersonas().setScImagen(image);
+			 }
+			
 			return entidadUsuario;
 		}else{
 			return null;
@@ -60,10 +71,17 @@ public class UsuarioJPADAO implements UsuarioDAO {
 		System.out.println(elusuario.getPersonas().getStrCodigoPersona());
 		
 		entidadUsuario =(Usuario)q.getSingleResult();
-
+		
 		em.close();
 		
 		if(entidadUsuario!=null){
+			StreamedContent image;	
+			if(entidadUsuario.getPersonas().getFotobin()!=null){
+				 image = new DefaultStreamedContent(new ByteArrayInputStream(entidadUsuario.getPersonas().getFotobin()));
+
+				 entidadUsuario.getPersonas().setScImagen(image);
+			 }
+			
 			return entidadUsuario;
 		}else{
 			return null;
