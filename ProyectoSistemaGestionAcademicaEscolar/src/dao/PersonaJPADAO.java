@@ -313,5 +313,48 @@ public class PersonaJPADAO implements PersonaDAO {
 		}
 	}
 
+	@Override
+	public ArrayList<Persona> obtenerTodosEmpleadosXTipo(String tipo)
+			throws Exception {
+		System.out.println("buscando con perfil "+tipo);
+		ArrayList<Persona>listaempleados=new ArrayList<Persona>();
+		em=emf.createEntityManager();
+		Query q =  em.createQuery("SELECT p FROM Persona p " +
+				                     "inner join p.tbUsuarios u " +
+				                     "where u.perfiles.strCodigoPerfil=?1 " +
+				                     "order by p.strApellidoPaterno");
+		q.setParameter(1,tipo);
+		
+		try {
+			//@SuppressWarnings("unchecked")
+			@SuppressWarnings("rawtypes")
+			List lista = q.getResultList();
+			em.close();
+			if(lista!=null && lista.size()>0){
+				if(lista.size()>0){
+					for ( int i=0; i < lista.size(); i++ ) {
+						Persona entidad = (Persona)lista.get(i);
+						listaempleados.add(entidad);
+					}
+				}
+				
+				System.out.println("la bd devolvio una lista de "+listaempleados.size()+" empleados con perfil "+tipo);
+				return listaempleados;
+			}
+			else{
+				System.out.println("la bd devolvio una lista de empleados nula o vacia");
+				return null;
+			}
+		} catch (NullPointerException e) {
+			System.out.println("hay algun objeto nulo");
+			e.printStackTrace();
+			return null;
+		}catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	
+	}
+
 
 }

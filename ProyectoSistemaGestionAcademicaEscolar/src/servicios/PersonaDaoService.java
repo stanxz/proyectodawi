@@ -90,4 +90,11 @@ public class PersonaDaoService implements PersonaService {
 		return personadao.consultaApoderadoxAlumno(a);
 	}
 
+	@Override
+	public ArrayList<Persona> obtenerTodosEmpleadosXTipo(String tipo)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return personadao.obtenerTodosEmpleadosXTipo(tipo);
+	}
+
 }
