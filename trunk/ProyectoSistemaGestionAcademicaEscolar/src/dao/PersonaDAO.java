@@ -28,12 +28,12 @@ public interface PersonaDAO {
 	
 	public void guardaSecretaria(SecretariaAcademica secretaria) throws Exception;
 
-
 	public Persona consultaApoderadoxAlumno(Alumno a) throws Exception;
 
-	
 	public void guardaACA(AsistenteCoordinacionAcademica aca) throws Exception;
 	
 	public void guardaADA(AsistenteDireccionAcademica ada) throws Exception;
+
+	public ArrayList<Persona> obtenerTodosEmpleadosXTipo(String tipo)throws Exception;
 
 }

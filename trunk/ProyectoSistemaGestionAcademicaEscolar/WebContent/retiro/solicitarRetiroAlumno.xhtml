@@ -63,7 +63,9 @@
 		 <p:commandButton value="Generar Cita" 
 		 				rendered="#{!alumnoRetiroBean.btnAdjuntar}" 
 						action="#{citaBean.redericcionaCita}" 
-						title="Genera Nueva Cita" oncomplete="datosDialog.hide()" ajax="false" />
+						title="Genera Nueva Cita" oncomplete="datosDialog.hide()" ajax="false">
+			<f:setPropertyActionListener value="#{alumnoRetiroBean.alumno}" target="#{citaBean.alumnoElegido}" />				
+		 </p:commandButton>
 				
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">

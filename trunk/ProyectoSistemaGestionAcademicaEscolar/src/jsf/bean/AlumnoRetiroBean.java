@@ -274,19 +274,13 @@ public class AlumnoRetiroBean implements Serializable{
 			
 			//NO BORRAR 
 			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
-			
 			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
-			
-			
 			System.out.println("codigo Persona: "+usuario.getPersonas().getStrCodigoPersona());
 			
 			persona = new Persona();
 			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-			//persona.setStrCodigoPersona("PE-18181818");
-			
 			apoderado = new Apoderado();
-			apoderado.setPersonas(persona);
-			
+			apoderado.setPersonas(persona);	
 			
 			alumnosXapoderado = alumnoService.obtenerTodosAlumnosXApoderado(apoderado);
 			
