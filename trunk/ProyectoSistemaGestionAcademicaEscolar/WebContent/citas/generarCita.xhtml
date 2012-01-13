@@ -11,7 +11,7 @@
 <p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 <h:form id="form" style="width: 800px;">  
 <p:panel header="Generar Cita con Asistenta Social">
-<h:panelGrid columns="2">
+<h:panelGrid columns="3">
 
 	<h:outputText value="Asistenta Social" style="font-weight:bold"/>
 	<h:selectOneMenu value="#{citaBean.asistentaElegida}" required="true" 
@@ -23,19 +23,18 @@
 
  	<h:outputText value="Fecha" />  
     <h:panelGroup >  
-                <h:selectOneMenu id="cboNivel"  value="#{alumnoBean.nivelAlumno}" style="font-weight:bold" required="true" label="Nivel" requiredMessage="Seleccione Nivel"> 
-		            <f:selectItem itemLabel="Seleccione Nivel" itemValue="#{0}"/>
-		            <f:selectItem itemLabel="PRIMARIA" itemValue="PRIMARIA"/>
-		            <f:selectItem itemLabel="SECUNDARIA" itemValue="SECUNDARIA" />
-		            <p:ajax update="cboGrado" listener="#{alumnoBean.cargaComboListadoGrado}" />    
+                <h:selectOneMenu id="cboFechas"  value="#{citaBean.fechaCita}" style="font-weight:bold" required="true" label="Fecha" requiredMessage="Seleccione Fecha de Cita"> 
+		            <f:selectItem itemLabel="Seleccione Fecha" itemValue="#{0}"/>
+
+		            <p:ajax update="cboHorasDisponibles" listener="#{citaBean.cargaComboListadoHorasDisponibles}" />    
 		        </h:selectOneMenu> *  
     </h:panelGroup>
             
     <h:outputText value="Hora" />  
     <h:panelGroup>  
-                <h:selectOneMenu id="cboGrado" value="#{alumnoBean.gradoAlumno}" style="font-weight:bold" required="true"  label="Grado" requiredMessage="Seleccione Grado"> 
-		             <f:selectItem itemLabel="Seleccione Grado" itemValue="#{null}" />
-		             <f:selectItems value="#{alumnoBean.listaGrados}" /> 	        
+                <h:selectOneMenu id="cboHorasDisponibles" value="#{citaBean.horaCita}" style="font-weight:bold" required="true"  label="Hora" requiredMessage="Seleccione Hora de Cita"> 
+		             <f:selectItem itemLabel="Seleccione Hora" itemValue="#{null}" />
+		             <f:selectItems value="#{citaBean.listaHorasDisponibles}" /> 	        
 		        </h:selectOneMenu>*  
 	</h:panelGroup>
             
