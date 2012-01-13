@@ -30,6 +30,7 @@ public class CitaBean implements Serializable {
 	private Persona asistentaElegida=new Persona();
 	private ArrayList<Persona> listaAsistentas;
 	private Cita nuevaCita;
+	private String fechaCita, horaCita;
 	
 	
 	public CitaBean(){
@@ -106,6 +107,22 @@ public class CitaBean implements Serializable {
 
 	public void setNuevaCita(Cita nuevaCita) {
 		this.nuevaCita = nuevaCita;
+	}
+
+	public String getFechaCita() {
+		return fechaCita;
+	}
+
+	public void setFechaCita(String fechaCita) {
+		this.fechaCita = fechaCita;
+	}
+
+	public String getHoraCita() {
+		return horaCita;
+	}
+
+	public void setHoraCita(String horaCita) {
+		this.horaCita = horaCita;
 	}
 	
 	
