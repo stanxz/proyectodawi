@@ -31,7 +31,7 @@ public class CitaBean implements Serializable {
 	private ArrayList<Persona> listaAsistentas;
 	private Cita nuevaCita;
 	private String fechaCita, horaCita;
-	
+	private ArrayList<String> listaHorasDisponibles;	
 	
 	public CitaBean(){
 		System.out.println("Creando CitaBean...");
@@ -52,6 +52,31 @@ public class CitaBean implements Serializable {
 			}	
 		}
 		return "/citas/generarCita.xhtml";
+	}
+	
+	public void cargaComboListadoHorasDisponibles(){
+		System.out.println("-------Cargando horas disponibles------");
+		listaHorasDisponibles.add("09:00:00");
+		listaHorasDisponibles.add("09:30:00");
+		listaHorasDisponibles.add("10:00:00");
+		listaHorasDisponibles.add("10:30:00");
+		listaHorasDisponibles.add("11:00:00");
+		listaHorasDisponibles.add("11:30:00");
+		listaHorasDisponibles.add("12:00:00");
+		listaHorasDisponibles.add("12:30:00");
+		listaHorasDisponibles.add("13:00:00");
+		listaHorasDisponibles.add("13:30:00");
+		listaHorasDisponibles.add("14:00:00");
+		listaHorasDisponibles.add("14:30:00");
+		listaHorasDisponibles.add("15:00:00");
+		listaHorasDisponibles.add("15:30:00");
+		listaHorasDisponibles.add("16:00:00");
+		listaHorasDisponibles.add("16:30:00");
+	}
+	
+	
+	public void guardaCita(){
+		System.out.println("guardando cita ... ");
 	}
 
 	public int getIntCodigoAlumno() {
@@ -123,6 +148,14 @@ public class CitaBean implements Serializable {
 
 	public void setHoraCita(String horaCita) {
 		this.horaCita = horaCita;
+	}
+
+	public ArrayList<String> getListaHorasDisponibles() {
+		return listaHorasDisponibles;
+	}
+
+	public void setListaHorasDisponibles(ArrayList<String> listaHorasDisponibles) {
+		this.listaHorasDisponibles = listaHorasDisponibles;
 	}
 	
 	
