@@ -3,9 +3,12 @@ package jsf.bean;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
+import org.primefaces.event.DateSelectEvent;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.PersonaService;
@@ -54,8 +57,11 @@ public class CitaBean implements Serializable {
 		return "/citas/generarCita.xhtml";
 	}
 	
-	public void cargaComboListadoHorasDisponibles(){
+	public void cargaComboListadoHorasDisponibles(DateSelectEvent event){
 		System.out.println("-------Cargando horas disponibles------");
+		Date date=event.getDate();
+		System.out.println("fecha q llega: "+date.toString());
+		listaHorasDisponibles=new ArrayList<String>();
 		listaHorasDisponibles.add("09:00:00");
 		listaHorasDisponibles.add("09:30:00");
 		listaHorasDisponibles.add("10:00:00");

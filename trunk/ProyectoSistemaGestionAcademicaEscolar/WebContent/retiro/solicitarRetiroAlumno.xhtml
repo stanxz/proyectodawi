@@ -49,7 +49,7 @@
 		 </h:selectOneMenu>	
 		 
 		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="true"/>
-		  <p:inputMask  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="#{alumnoRetiroBean.btnAdjuntar}" rendered="true" requiredMessage="Ingrese Nro Boleta" mask="aa999999"/>
+		  <p:inputMask  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" rendered="true" required="true" requiredMessage="Ingrese Nro Boleta" mask="aa999999"/>
 		 
 		 <h:outputText value="Observacion" style="font-weight:bold" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
 		 <p:inputTextarea value="#{alumnoRetiroBean.observacion}" style="width:250px;height:100px;" effectDuration="300" rendered="#{alumnoRetiroBean.btnAdjuntar}" required="#{alumnoRetiroBean.btnAdjuntar}" requiredMessage="Ingrese Observaciones"/>
