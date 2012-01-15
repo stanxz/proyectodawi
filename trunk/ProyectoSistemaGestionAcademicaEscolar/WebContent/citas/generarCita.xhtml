@@ -21,23 +21,33 @@
 		               itemLabel="#{asistenta.strNombre} #{asistenta.strApellidoPaterno} #{asistenta.strApellidoMaterno}" itemValue="#{asistenta.strCodigoPersona}"/>            
 	</h:selectOneMenu>*
 
- 	<h:outputText value="Fecha" />  
+ 	<h:outputText value="Fecha" style="font-weight:bold" /> 
     <h:panelGroup >  
-                <h:selectOneMenu id="cboFechas"  value="#{citaBean.fechaCita}" style="font-weight:bold" required="true" label="Fecha" requiredMessage="Seleccione Fecha de Cita"> 
-		            <f:selectItem itemLabel="Seleccione Fecha" itemValue="#{0}"/>
-
-		            <p:ajax update="cboHorasDisponibles" listener="#{citaBean.cargaComboListadoHorasDisponibles}" />    
-		        </h:selectOneMenu> *  
+			    <p:calendar id="dtFecCita" value="#{citaBean.fechaCita}" pattern="yyyy-MM-dd"  showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="2012-01-15" maxdate="2012-12-31" readOnlyInputText="true" label="Fecha de Cita" >
+			    	<p:ajax update="cboHorasDisponibles" listener="#{citaBean.cargaComboListadoHorasDisponibles}" />
+			    </p:calendar>* 
     </h:panelGroup>
             
-    <h:outputText value="Hora" />  
+    <h:outputText value="Hora" style="font-weight:bold" />  
     <h:panelGroup>  
                 <h:selectOneMenu id="cboHorasDisponibles" value="#{citaBean.horaCita}" style="font-weight:bold" required="true"  label="Hora" requiredMessage="Seleccione Hora de Cita"> 
 		             <f:selectItem itemLabel="Seleccione Hora" itemValue="#{null}" />
 		             <f:selectItems value="#{citaBean.listaHorasDisponibles}" /> 	        
 		        </h:selectOneMenu>*  
 	</h:panelGroup>
-            
+    
+    <f:facet name="footer"> 
+                <p:outputPanel rendered="true" layout="block" style="text-align:center">
+                <h:panelGroup>
+					  <p:commandButton value="Grabar Cita" 
+					  actionListener="#{alumnoRetiroBean.guardaCita}"  
+					  update="msgs" 
+                      image="ui-icon ui-icon-check"
+                       />
+  				</h:panelGroup>
+              </p:outputPanel>  
+    </f:facet>
+          
 </h:panelGrid>
 </p:panel>
 </h:form> 
