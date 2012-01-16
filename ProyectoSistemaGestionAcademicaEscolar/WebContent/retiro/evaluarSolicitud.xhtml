@@ -51,35 +51,35 @@
 			  showEffect="fade" hideEffect="explode" modal="true" width="800" position="top" >
 	<h:form id="dlgForm">
 	  <h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;" >  
-		    <h:outputText value="Codigo Asignatura" style="font-weight:bold"/>  
+		    <h:outputText value="Codigo Solicitud de Retiro" style="font-weight:bold"/>  
             <h:panelGroup>    
-                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.intIdCodigoSolicitudExoneracion}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
+                <p:inputText value="#{evaluarRetiroBean.selectedSolicitud.intIdCodigoSolicitudRetiro}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
             </h:panelGroup>
             
             <h:outputText value="Alumno" style="font-weight:bold"/>  
             <h:panelGroup>    
-                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.alumno.strNombres} #{evaluarExoneracionBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarExoneracionBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30"/>  
+                <p:inputText value="#{evaluarRetiroBean.selectedSolicitud.alumno.strNombres} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
             </h:panelGroup> 
             
-             <h:outputText value="Asignatura" style="font-weight:bold"/>  
+             <h:outputText value="CertificadoAS" style="font-weight:bold"/>  
             <h:panelGroup>  
-                <p:inputText value="#{evaluarExoneracionBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30" />  
+                <!--<p:inputText value="#{evaluarRetiroBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30" />  -->  
             </h:panelGroup>   
             
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
             <h:panelGroup>  
-                <p:inputTextarea value="#{evaluarExoneracionBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarExoneracionBean.editMode}" readonly="#{!evaluarExoneracionBean.editMode}" required="true" label="Observaciones" effectDuration="300"/>  
+                <p:inputTextarea value="#{evaluarRetiroBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarRetiroBean.editMode}" readonly="#{!evaluarRetiroBean.editMode}" required="true" label="Observaciones" effectDuration="300"/>  
             </h:panelGroup> 
 			 <f:facet name="footer"> 
-                <p:outputPanel rendered="#{evaluarExoneracionBean.editMode}" layout="block" style="text-align:center">
+                <p:outputPanel rendered="#{evaluarRetiroBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
 					  <p:commandButton value="Aprobar" 
-					  actionListener="#{evaluarExoneracionBean.apruebaSolicitud}"  
+					  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
 					  update="form:listaSE msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                      <p:commandButton value="Desaprobar" 
-					  actionListener="#{evaluarExoneracionBean.desapruebaSolicitud}"  
+					  actionListener="#{evaluarRetiroBean.desapruebaSolicitud}"  
 					  update="form:listaSE msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
@@ -92,7 +92,7 @@
       <p:fieldset legend="Ver/Ocultar Solicitud" toggleable="true" toggleSpeed="500" collapsed="true">  
         		<h:panelGrid columns="1" cellpadding="10">  
             <div align="left">
-            	<p:graphicImage value="#{evaluarExoneracionBean.selectedSolicitud.scImagen}" rendered="#{evaluarExoneracionBean.editMode}"  cache="false"
+            	<p:graphicImage value="#{evaluarRetiroBean.selectedSolicitud.scImagen}" rendered="#{evaluarRetiroBean.editMode}"  cache="false"
             	                width="100%" height="100%"/>
             </div>
         		</h:panelGrid>  
