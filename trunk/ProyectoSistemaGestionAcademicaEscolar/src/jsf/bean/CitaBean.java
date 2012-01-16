@@ -16,10 +16,12 @@ import org.primefaces.event.DateSelectEvent;
 import servicios.ApplicationBusinessDelegate;
 import servicios.CitaService;
 import servicios.PersonaService;
+import servicios.SolicitudRetiroService;
 import utiles.Constantes;
 import entidades.Alumno;
 import entidades.Cita;
 import entidades.Persona;
+import entidades.SolicitudRetiro;
 
 
 @SessionScoped
@@ -30,6 +32,7 @@ public class CitaBean implements Serializable {
 		
 	 private static PersonaService asistentaService = abd.getPersonaService();
 	 private static CitaService citaService = abd.getCitaService();
+	 private static SolicitudRetiroService retiroService = abd.getRetiroService();
 	// private static DisponibilidadAsistentaService daService = abd.getDisponibilidadAsistentaService();
 		
 	private static final long serialVersionUID = 1L;

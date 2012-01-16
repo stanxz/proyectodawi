@@ -304,14 +304,14 @@ DROP TABLE IF EXISTS `cita`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cita` (
-  `CODCITA` int(11) NOT NULL,
+  `CODCITA` int(11) NOT NULL AUTO_INCREMENT,
   `CODALUMNO` varchar(11) NOT NULL,
   `CODTIPOSERVICIO` int(11) NOT NULL,
   `CODASISTENTASOCIAL` varchar(11) NOT NULL,
   `CORREOPERSONAL` varchar(60) DEFAULT NULL,
   `TLFFIJO` char(8) DEFAULT NULL,
   `TLFCELULAR` char(9) DEFAULT NULL,
-  `FECHAREGISTRO` date DEFAULT NULL,
+  `FECHAREGISTRO` datetime DEFAULT NULL,
   `ESTADO` varchar(15) DEFAULT NULL,
   `CODDISPONIBILIDADAS` char(4) NOT NULL,
   PRIMARY KEY (`CODCITA`),
@@ -323,7 +323,7 @@ CREATE TABLE `cita` (
   CONSTRAINT `CITA_ALUMNO_FK` FOREIGN KEY (`CODALUMNO`) REFERENCES `alumno` (`CODALUMNO`),
   CONSTRAINT `CITA_HORARIO_FK` FOREIGN KEY (`CODASISTENTASOCIAL`, `CODDISPONIBILIDADAS`) REFERENCES `horario` (`CODASISTENTASOCIAL`, `CODDISPONIBILIDADAS`),
   CONSTRAINT `CITA_TIPOSERVICIOAS_FK` FOREIGN KEY (`CODTIPOSERVICIO`) REFERENCES `tiposervicioas` (`CODTIPOSERVICIO`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -332,6 +332,7 @@ CREATE TABLE `cita` (
 
 LOCK TABLES `cita` WRITE;
 /*!40000 ALTER TABLE `cita` DISABLE KEYS */;
+INSERT INTO `cita` (`CODCITA`, `CODALUMNO`, `CODTIPOSERVICIO`, `CODASISTENTASOCIAL`, `CORREOPERSONAL`, `TLFFIJO`, `TLFCELULAR`, `FECHAREGISTRO`, `ESTADO`, `CODDISPONIBILIDADAS`) VALUES (10,'AL-88745521',1,'PE-13131313','rmberrospig@gmail.com',NULL,NULL,'2012-01-25 09:00:00','PENDIENTE','5');
 /*!40000 ALTER TABLE `cita` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -358,7 +359,7 @@ CREATE TABLE `detalleperfil` (
 
 LOCK TABLES `detalleperfil` WRITE;
 /*!40000 ALTER TABLE `detalleperfil` DISABLE KEYS */;
-INSERT INTO `detalleperfil` (`CODPERMISO`, `CODPERFIL`) VALUES ('pm01','pf01'),('pm02','pf01'),('pm03','pf01'),('pm11','pf01'),('pm04','pf02'),('pm11','pf02'),('pm07','pf03'),('pm09','pf03'),('pm11','pf03'),('pm11','pf04'),('pm10','pf05'),('pm11','pf05'),('pm07','pf06'),('pm08','pf06'),('pm09','pf06'),('pm11','pf06'),('pm06','pf07'),('pm11','pf07'),('pm05','pf08'),('pm11','pf08');
+INSERT INTO `detalleperfil` (`CODPERMISO`, `CODPERFIL`) VALUES ('pm02','pf01'),('pm03','pf01'),('pm11','pf01'),('pm04','pf02'),('pm11','pf02'),('pm07','pf03'),('pm09','pf03'),('pm11','pf03'),('pm11','pf04'),('pm10','pf05'),('pm11','pf05'),('pm07','pf06'),('pm08','pf06'),('pm09','pf06'),('pm11','pf06'),('pm06','pf07'),('pm11','pf07'),('pm05','pf08'),('pm11','pf08');
 /*!40000 ALTER TABLE `detalleperfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -574,7 +575,7 @@ CREATE TABLE `permiso` (
 
 LOCK TABLES `permiso` WRITE;
 /*!40000 ALTER TABLE `permiso` DISABLE KEYS */;
-INSERT INTO `permiso` (`CODPERMISO`, `NOMBRE`, `DESCRIPCION`, `ENLACE`) VALUES ('pm01','Solicitar Cita','Usted puede solicitar una cita con la asistenta social del tipo: \\\"Entrevista Personal\\\" en una fecha determinada','citas/solicitarCitaAS.xhtml'),('pm02','Solicitar Retiro','Iniciar tramite para retirar al alumno de la institucion educativa','retiro/solicitarRetiroAlumno.xhtml'),('pm03','Solicitar Exoneracion','Usted puede solicitar la exoneracion de las asignaturas de \\\"Religion\\\" y \\\"Educacion Fisica\\\". NOTA: Consulte el calendario academico para ver la fecha limite de solicitud','exoneracion/generarExoneracionAsignatura.xhtml'),('pm04','Evaluar citas pendientes','Evalue las citas del dia y genere un certificado de lo acontecido','citas/evaluarCitas.xhtml'),('pm05','Evaluar solicitudes de retiro','Evalue los motivos de una determinada solicitud de retiro','retiro/evaluarSolicitud.xhtml'),('pm06','Evaluar solicitudes de exoneracion','Evalue los motivos de una determinada solicitud de exoneracion de asignatura','exoneracion/evaluarSolExon.xhtml'),('pm07','Listar/Mantener Alumno','Usted puede buscar, agregar y/o modificar alumnos','mantenimientos/listadoAlumnos.xhtml'),('pm08','Listar/Mantener Empleado','Usted puede buscar, agregar y/o modificar empleados','mantenimientos/listadoEmpleados.xhtml'),('pm09','Listar/Mantener Asignatura','Usted puede buscar, agregar y/o modificar asignatura','mantenimientos/listadoAsignaturas.xhtml'),('pm10','Generar Reportes','Usted puede generar reportes y visualizarlos','reportes/generaReportes.xhtml'),('pm11','Editar Mis Datos','Usted puede editar sus propios datos desde el lugar donde se encuentre','usuario/editarMisDatos.xhtml');
+INSERT INTO `permiso` (`CODPERMISO`, `NOMBRE`, `DESCRIPCION`, `ENLACE`) VALUES ('pm01','Solicitar Cita','Usted puede solicitar una cita con la asistenta social del tipo: \\\"Entrevista Personal\\\" en una fecha determinada','citas/solicitarCitaAS.xhtml'),('pm02','Solicitar Retiro','Iniciar tramite para retirar al alumno de la institucion educativa','retiro/solicitarRetiroAlumno.xhtml'),('pm03','Solicitar Exoneracion','Usted puede solicitar la exoneracion de las asignaturas de \\\"Religion\\\" y \\\"Educacion Fisica\\\". NOTA: Consulte el calendario academico para ver la fecha limite de solicitud','exoneracion/generarExoneracionAsignatura.xhtml'),('pm04','Evaluar citas pendientes','Evalue las citas del dia y genere un certificado de lo acontecido','citas/listadoCitas.xhtml'),('pm05','Evaluar solicitudes de retiro','Evalue los motivos de una determinada solicitud de retiro','retiro/evaluarSolicitud.xhtml'),('pm06','Evaluar solicitudes de exoneracion','Evalue los motivos de una determinada solicitud de exoneracion de asignatura','exoneracion/evaluarSolExon.xhtml'),('pm07','Listar/Mantener Alumno','Usted puede buscar, agregar y/o modificar alumnos','mantenimientos/listadoAlumnos.xhtml'),('pm08','Listar/Mantener Empleado','Usted puede buscar, agregar y/o modificar empleados','mantenimientos/listadoEmpleados.xhtml'),('pm09','Listar/Mantener Asignatura','Usted puede buscar, agregar y/o modificar asignatura','mantenimientos/listadoAsignaturas.xhtml'),('pm10','Generar Reportes','Usted puede generar reportes y visualizarlos','reportes/generaReportes.xhtml'),('pm11','Editar Mis Datos','Usted puede editar sus propios datos desde el lugar donde se encuentre','usuario/editarMisDatos.xhtml');
 /*!40000 ALTER TABLE `permiso` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -610,7 +611,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` (`CODPERSONA`, `NOMBRES`, `APELLIDOPAT`, `APELLIDOMAT`, `DIRECCION`, `EMAIL`, `TELEFONO`, `CELULAR`, `SEXO`, `DNI`, `IDDISTRITO`, `FOTO`) VALUES ('PE-00000001','Rhandy','Muguruza','Vega','mi casa 765','rmuguruza19@gmail.com','655-4305','972703720',1,1,39,NULL),('PE-10101010','Jorge','Rojas','De la Cruz','mi casa 235','rmuguruza19@gmail.com','346-7554','345678990',1,10101010,1,NULL),('PE-11111111','Rodrigo','Berrospi','Gutierrez',NULL,'rmberrospig@gmail.com',NULL,NULL,1,11111111,2,NULL),('PE-12121212','Carlos','Mendez','Nosequemas',NULL,'angelogaceto6@hotmail.com',NULL,NULL,1,12121212,3,NULL),('PE-13131313','Joe','Guere','Sandioma',NULL,'geraldine85_13@hotmail.com',NULL,NULL,1,13131313,4,NULL),('PE-14141414','Adolfo','Gutierrez','Toguchi',NULL,'rmberrospig@gmail.com',NULL,NULL,1,14141414,5,NULL),('PE-15151515','Gianina','Lujan','Zavaleta',NULL,'jotali333_3@hotmail.com',NULL,NULL,0,15151515,6,NULL),('PE-16161616','Catalina','Gomez','Paredes',NULL,'rmuguruza19@gmail.com',NULL,NULL,0,16161616,7,NULL),('PE-17171717','Raul','Fernandez','Ambolaya',NULL,'jean333_3@hotmail.com',NULL,NULL,1,17171717,8,NULL),('PE-18181818','Juan','Vivanco','Fernandez',NULL,'freddy_16512@hotmail.com',NULL,NULL,1,18181818,9,NULL),('PE-19191919','Juan','Perez','Lopez',NULL,'I710089@cibertec.edu.pe',NULL,NULL,1,19191919,10,NULL),('PE-20202020','Rhandy','Muguruza','Vega','Coop Magdalena Mz C Lote 9 ','rmuguruza19@gmail.com','5555555','999999999',1,20202020,11,NULL),('PE-22222222','Carlos','Alcantara','Villavicencio',NULL,'geraldine8513@gmail.com',NULL,NULL,1,22222222,12,NULL),('PE-33333333','Pedro','Castillo','Ascencios',NULL,'I710089@cibertec.edu.pe',NULL,NULL,1,33333333,13,NULL),('PE-44444444','Ariadna','Ramos','De la Cruz',NULL,'rmberrospig@gmail.com',NULL,NULL,0,44444444,14,NULL),('PE-44853428','Rhandy','Muguruza','Vega','asdgasd g785','rmuguruza19@gmail.com','465-4633','654978561',1,44853428,47,NULL),('PE-55555555','Brenda','Rey','Pacherres',NULL,'yanet.susanivar@gmail.com',NULL,NULL,0,55555555,15,NULL),('PE-66666666','Marilda','Lumbre','Mayuri',NULL,'rmberrospig@gmail.com',NULL,NULL,0,66666666,16,NULL),('PE-77777777','Vilma','Cardenas','Narro',NULL,'geraldine8513@gmail.com',NULL,NULL,0,77777777,17,NULL),('PE-88888888','Edinso','Goicochea','Ascencios',NULL,'luz.guelac@gmail.com',NULL,NULL,1,88888888,18,NULL),('PE-99999999','Yaneth','Susanivar','Porras',NULL,'yanet.susanivar@gmail.com',NULL,NULL,0,99999999,19,NULL);
+INSERT INTO `persona` (`CODPERSONA`, `NOMBRES`, `APELLIDOPAT`, `APELLIDOMAT`, `DIRECCION`, `EMAIL`, `TELEFONO`, `CELULAR`, `SEXO`, `DNI`, `IDDISTRITO`, `FOTO`) VALUES ('PE-00000001','Rhandy','Muguruza','Vega','mi casa 765','rmuguruza19@gmail.com','655-4305','972703720',1,1,39,NULL),('PE-10101010','Jorge','Rojas','De la Cruz','mi casa 235','rmuguruza19@gmail.com','346-7554','345678990',1,10101010,1,NULL),('PE-11111111','Rodrigo','Berrospi','Gutierrez','Av Alisos 973','rmberrospig@gmail.com','456-4587','942123457',1,11111111,2,NULL),('PE-12121212','Carlos','Mendez','Nosequemas',NULL,'angelogaceto6@hotmail.com',NULL,NULL,1,12121212,3,NULL),('PE-13131313','Joe','Guere','Sandioma',NULL,'geraldine85_13@hotmail.com',NULL,NULL,1,13131313,4,NULL),('PE-14141414','Adolfo','Gutierrez','Toguchi',NULL,'rmberrospig@gmail.com',NULL,NULL,1,14141414,5,NULL),('PE-15151515','Gianina','Lujan','Zavaleta',NULL,'jotali333_3@hotmail.com',NULL,NULL,0,15151515,6,NULL),('PE-16161616','Catalina','Gomez','Paredes',NULL,'rmuguruza19@gmail.com',NULL,NULL,0,16161616,7,NULL),('PE-17171717','Raul','Fernandez','Ambolaya',NULL,'jean333_3@hotmail.com',NULL,NULL,1,17171717,8,NULL),('PE-18181818','Juan','Vivanco','Fernandez',NULL,'freddy_16512@hotmail.com',NULL,NULL,1,18181818,9,NULL),('PE-19191919','Juan','Perez','Lopez',NULL,'I710089@cibertec.edu.pe',NULL,NULL,1,19191919,10,NULL),('PE-20202020','Rhandy','Muguruza','Vega','Coop Magdalena Mz C Lote 9 ','rmuguruza19@gmail.com','5555555','999999999',1,20202020,11,NULL),('PE-22222222','Carlos','Alcantara','Villavicencio',NULL,'geraldine8513@gmail.com',NULL,NULL,1,22222222,12,NULL),('PE-33333333','Pedro','Castillo','Ascencios',NULL,'I710089@cibertec.edu.pe',NULL,NULL,1,33333333,13,NULL),('PE-44444444','Ariadna','Ramos','De la Cruz',NULL,'rmberrospig@gmail.com',NULL,NULL,0,44444444,14,NULL),('PE-44853428','Rhandy','Muguruza','Vega','asdgasd g785','rmuguruza19@gmail.com','465-4633','654978561',1,44853428,47,NULL),('PE-55555555','Brenda','Rey','Pacherres',NULL,'yanet.susanivar@gmail.com',NULL,NULL,0,55555555,15,NULL),('PE-66666666','Marilda','Lumbre','Mayuri',NULL,'rmberrospig@gmail.com',NULL,NULL,0,66666666,16,NULL),('PE-77777777','Vilma','Cardenas','Narro',NULL,'geraldine8513@gmail.com',NULL,NULL,0,77777777,17,NULL),('PE-88888888','Edinso','Goicochea','Ascencios',NULL,'luz.guelac@gmail.com',NULL,NULL,1,88888888,18,NULL),('PE-99999999','Yaneth','Susanivar','Porras',NULL,'yanet.susanivar@gmail.com',NULL,NULL,0,99999999,19,NULL);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -782,6 +783,7 @@ CREATE TABLE `tiposervicioas` (
 
 LOCK TABLES `tiposervicioas` WRITE;
 /*!40000 ALTER TABLE `tiposervicioas` DISABLE KEYS */;
+INSERT INTO `tiposervicioas` (`CODTIPOSERVICIO`, `NOMBRE`, `DESCRIPCION`) VALUES (1,'ECONOMICO/FAMILIAR','Cita por Retiro');
 /*!40000 ALTER TABLE `tiposervicioas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -824,4 +826,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2012-01-15 19:32:16
+-- Dump completed on 2012-01-16  3:28:07
