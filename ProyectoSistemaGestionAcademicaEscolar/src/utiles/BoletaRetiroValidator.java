@@ -26,14 +26,9 @@ public class BoletaRetiroValidator implements Validator{
 	public void validate(FacesContext context, UIComponent component, Object value)
 			throws ValidatorException {
 		// TODO Auto-generated method stub
-
         String valor = (String) value;
         System.out.println("valor en el validador: " + valor);
-       // String blCondicion = (String) component.getAttributes().get("parR");
-        
-        //String numeroBoleta = (String) component.getAttributes().get("bolR");
-      //  System.out.println("blCondicion--->" + blCondicion);
-      //  System.out.println("numeroBoleta--->" + numeroBoleta);
+
         Boleta temporal=new Boleta();
         temporal.setStrCodigoBoleta(valor);
         Apoderado apotempo=new Apoderado();
