@@ -197,7 +197,9 @@ public class CitaBean implements Serializable {
 			miciCita.setStrcodasistentasocial(this.asistentaElegida.getStrCodigoPersona());
 			miciCita.setStrcoddisponibilidadas(obtieneCodDA(this.fechaCita,this.horaCita));
 			miciCita.setStrestado(Constantes.CITA_PENDIENTE);
-			//miciCita.set
+			miciCita.setStrMail(this.alumnoElegido.getApoderados().getPersonas().getStrMail());
+			miciCita.setStrtlffijo(this.alumnoElegido.getApoderados().getPersonas().getStrTelefono());
+			miciCita.setTlfcelular(this.alumnoElegido.getApoderados().getPersonas().getStrCelular());
 			
 			System.out.println("consultando citas pendientes para alumno: "+alumnoElegido.getIntDni());
 			Cita citapendiente=citaService.consultaCitaPendiente(this.alumnoElegido.getStrCodigoAlumno());
