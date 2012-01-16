@@ -105,7 +105,7 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			SolicitudExoneracion objExoneracion = null;
 			
 			Query q = em.createQuery("select se from SolicitudExoneracion se " +
-					                 "where se.alumno.strCodigoAlumno=?1" +
+					                 "where se.alumno.strCodigoAlumno=?1 " +
 					                 "and se.asignaturas.intCodigoAsignatura=?2 " +
 					                 "and substring(se.dtFecReg,1,4)=substring(CURRENT_DATE,1,4) " +
 					                 "and (se.strEstado='Pendiente' or se.strEstado='Aprobado')");
