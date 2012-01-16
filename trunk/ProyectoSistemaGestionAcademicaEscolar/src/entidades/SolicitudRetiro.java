@@ -64,6 +64,10 @@ public class SolicitudRetiro implements Serializable{
 	@JoinColumn(name="codalumno")
 	private Alumno alumno;
 	
+	@ManyToOne
+	@JoinColumn(name="codada")
+	private AsistenteDireccionAcademica asistenteDireccion = new AsistenteDireccionAcademica();
+	
 	public int getIntIdCodigoSolicitudRetiro() {
 		return intIdCodigoSolicitudRetiro;
 	}
@@ -166,6 +170,14 @@ public class SolicitudRetiro implements Serializable{
 
 	public void setIntFlagprocesado(int intFlagprocesado) {
 		this.intFlagprocesado = intFlagprocesado;
+	}
+
+	public AsistenteDireccionAcademica getAsistenteDireccion() {
+		return asistenteDireccion;
+	}
+
+	public void setAsistenteDireccion(AsistenteDireccionAcademica asistenteDireccion) {
+		this.asistenteDireccion = asistenteDireccion;
 	}
 	
 	
