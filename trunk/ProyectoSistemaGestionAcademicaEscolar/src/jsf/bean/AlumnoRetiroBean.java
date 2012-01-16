@@ -60,10 +60,10 @@ public class AlumnoRetiroBean implements Serializable{
 	private Boolean txtObservacion;
 	private String observacion;
 	private StreamedContent documento;
-	private SolicitudRetiro misolicitud;
+	private SolicitudRetiro misolicitud=new SolicitudRetiro();
 	private Map<String, Object> misesion;
-	
-	
+	//private StreamedContent image; 
+	private String valor;
 	private Alumno retiroAlumno = new Alumno();
 		
 	public AlumnoRetiroBean() {
@@ -81,7 +81,9 @@ public class AlumnoRetiroBean implements Serializable{
 		sr.setStrEstado("PENDIENTE");
 		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
 		sr.setStrObservacion(observacion);
-		sr.setCertificadobin(misolicitud.getCertificadobin());
+		sr.setAsistenteDireccion(null);
+		if(misolicitud.getCertificadobin()!=null)
+			sr.setCertificadobin(misolicitud.getCertificadobin());
 		
 		Apoderado tempoapo=new Apoderado();
 		Persona tempopersona=new Persona();
@@ -115,6 +117,8 @@ public class AlumnoRetiroBean implements Serializable{
 					}else{
 						System.out.println("registrando Solicitud de Retiro ... ");
 						retiroService.registrarSolictud(sr);
+						System.out.println("actualizando estado de Boleta ... ");
+						boletaService.actualizaCierredeBoleta(miboleta);
 						FacesMessage msg = new FacesMessage("Solicitud de Retiro Registrada","Se guardó Solicitud de Retiro del Alumno "+sr.getAlumno().getStrCodigoAlumno());
 			    	    FacesContext.getCurrentInstance().addMessage(null, msg);
 					}
@@ -173,10 +177,10 @@ public class AlumnoRetiroBean implements Serializable{
 	    	    documento = new DefaultStreamedContent(event.getFile().getInputstream());
 	    	    
 	    	    System.out.println("otra vez el nombre: " + event.getFile().getFileName());
-	    	    misolicitud=new SolicitudRetiro();
+	    	  
 	    	    byte[] foto = event.getFile().getContents();
 	    	    misolicitud.setCertificadobin(foto);
-	    	    
+	    	    valor = "OK";
 	    	    FacesMessage msg = new FacesMessage("Acción Completada!!!", event.getFile().getFileName() + " se cargó.");
 	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
 	    	  } catch (Exception ex) {
@@ -350,6 +354,14 @@ public class AlumnoRetiroBean implements Serializable{
 
 	public void setMisolicitud(SolicitudRetiro misolicitud) {
 		this.misolicitud = misolicitud;
+	}
+
+	public String getValor() {
+		return valor;
+	}
+
+	public void setValor(String valor) {
+		this.valor = valor;
 	}
 
 }
