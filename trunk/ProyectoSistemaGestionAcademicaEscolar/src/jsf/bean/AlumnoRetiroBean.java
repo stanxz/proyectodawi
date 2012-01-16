@@ -139,9 +139,6 @@ public class AlumnoRetiroBean implements Serializable{
 			
 		}
 		
-		
-		
-		//return "hola";		
 	}
 	
 	 public void CargaRetiroAlumno() {  

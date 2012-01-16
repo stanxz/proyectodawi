@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -14,14 +15,20 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.DateSelectEvent;
 
 import servicios.ApplicationBusinessDelegate;
+import servicios.BoletaService;
 import servicios.CitaService;
 import servicios.PersonaService;
 import servicios.SolicitudRetiroService;
 import utiles.Constantes;
 import utiles.EnviaMail;
 import entidades.Alumno;
+import entidades.Apoderado;
+import entidades.Boleta;
 import entidades.Cita;
+import entidades.Motivo;
 import entidades.Persona;
+import entidades.SolicitudRetiro;
+import entidades.Usuario;
 
 
 @SessionScoped
@@ -33,7 +40,8 @@ public class CitaBean implements Serializable {
 	 private static PersonaService asistentaService = abd.getPersonaService();
 	 private static CitaService citaService = abd.getCitaService();
 	 private static SolicitudRetiroService retiroService = abd.getRetiroService();
-	// private static DisponibilidadAsistentaService daService = abd.getDisponibilidadAsistentaService();
+	 private static PersonaService personaService = abd.getPersonaService();
+	 private static BoletaService boletaService = abd.getBoletaService();
 		
 	private static final long serialVersionUID = 1L;
 	private String includedPage;
@@ -45,6 +53,11 @@ public class CitaBean implements Serializable {
 	private Date fechaCita;
 	private String horaCita;
 	private ArrayList<String> listaHorasDisponibles;	
+	private String observacion;
+	private Motivo motivo=new Motivo();
+	private SolicitudRetiro misolicitud=new SolicitudRetiro();
+	private Boleta boleta = new Boleta();
+	private Map<String, Object> misesion;
 	
 	public CitaBean(){
 		System.out.println("Creando CitaBean...");
@@ -209,14 +222,21 @@ public class CitaBean implements Serializable {
 				System.out.println("Existe una cita pendiente para este alumno el dia "+citapendiente.getDtfecharegistro());
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Cita","El Alumno ya presenta una cita pendiente para el dia "+citapendiente.getDtfecharegistro() ));
 			}else{
-				System.out.println("insertando cita ... ");
-				citaService.registrarCita(miciCita);
-				System.out.println("cita insertada ... ");
-				System.out.println("enviando correo ... ");
-				EnviaMail enviador=new EnviaMail();
-				enviador.enviarCorreoRegistroCita(miciCita);
-				FacesMessage msg = new FacesMessage("Cita Registrada","Se guardó Cita del Alumno "+miciCita.getAlumno().getStrCodigoAlumno()+" para el dia "+miciCita.getDtfecharegistro());
-	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+				System.out.println("insertando Solicitud de Retiro ... ");
+				if(guardaSR()==true){
+					System.out.println("insertando cita ... ");
+					citaService.registrarCita(miciCita);
+					System.out.println("cita insertada ... ");
+					System.out.println("enviando correo ... ");
+					EnviaMail enviador=new EnviaMail();
+					enviador.enviarCorreoRegistroCita(miciCita);
+					FacesMessage msg = new FacesMessage("Cita Registrada","Se guardó Cita del Alumno "+miciCita.getAlumno().getStrCodigoAlumno()+" para el dia "+miciCita.getDtfecharegistro());
+		    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+				}else{
+					System.out.println("No se inserta la SR ... no se insertara nada mas ... ");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Cita","Previamente no se pudo insertar la Solicitud de Retiro" ));
+				}
+				
 				
 			}
 			
@@ -226,6 +246,78 @@ public class CitaBean implements Serializable {
 		}
 		
 	}
+	
+	private boolean guardaSR(){
+		boolean flagssss=false;
+		SolicitudRetiro sr=new SolicitudRetiro();
+		sr.setAlumno(alumnoElegido);
+		sr.setIntFlagprocesado(0);
+		sr.setDtFecNac(new java.sql.Date(new java.util.Date().getTime()));
+		sr.setStrEstado("PENDIENTE");
+		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
+		sr.setStrObservacion(observacion);
+		sr.setAsistenteDireccion(null);
+		if(misolicitud.getCertificadobin()!=null)
+			sr.setCertificadobin(misolicitud.getCertificadobin());
+		
+		Apoderado tempoapo=new Apoderado();
+		Persona tempopersona=new Persona();
+		try {
+			System.out.println("consultando apoderado del alumno ... ");
+			tempopersona=personaService.consultaApoderadoxAlumno(alumnoElegido);
+			if(tempopersona!=null){
+				System.out.println("Apoderado encontrado: "+tempopersona.getStrCodigoPersona());
+				tempoapo.setPersonas(tempopersona);
+				
+				System.out.println("Ahora se consultara la boleta: "+boleta.getStrCodigoBoleta());
+				Boleta boletempo=new Boleta();
+				Boleta miboleta=new Boleta();
+				boletempo.setStrCodigoBoleta(boleta.getStrCodigoBoleta());
+				Apoderado apotempo=new Apoderado();
+				Persona persotempo=new Persona();
+				misesion=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+				int numero=((Usuario)misesion.get("b_usuario")).getPersonas().getIntDNI();
+				System.out.println("numerooooo de DNI del apoderado: "+numero);
+				persotempo.setIntDNI(numero);
+				apotempo.setPersonas(persotempo);
+				boletempo.setApoderados(apotempo);
+
+				miboleta=boletaService.obtenerBoleta(boletempo);
+				if(miboleta!=null){
+					System.out.println("Boleta encontrada, se va a consultar si existe alguna solicitud pendiente ... ");
+					SolicitudRetiro temposr=retiroService.buscarSolicitudXAlumnoXAño(sr);
+					if(temposr!=null){
+						System.out.println("Ya existe una solicitud de retiro pendiente");
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","El Alumno "+ sr.getAlumno().getStrCodigoAlumno()+" ya tiene una solicitud de retiro registrada !" ));
+					}else{
+						System.out.println("registrando Solicitud de Retiro ... ");
+						retiroService.registrarSolictud(sr);
+						System.out.println("actualizando estado de Boleta ... ");
+						boletaService.actualizaCierredeBoleta(miboleta);
+						FacesMessage msg = new FacesMessage("Solicitud de Retiro Registrada","Se guardó Solicitud de Retiro del Alumno "+sr.getAlumno().getStrCodigoAlumno());
+			    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+			    	    flagssss=true;
+					}
+					
+				}else{
+					System.out.println("No se encontro la boleta ... ");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","Boleta de Pago No Encontrada" ));
+				}
+				
+			}else{
+				System.out.println("No existe apoderado para el alumno: "+alumnoElegido.getIntDni());
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","No existe apoderado para el alumno "+sr.getAlumno().getStrCodigoAlumno() ));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó la Solicitud de Retiro","Error General: "+e.getMessage()));
+			e.printStackTrace();
+			
+		}
+		
+		return flagssss;
+	}
+	
 
 	private String obtieneCodDA(Date fechaCita2, String horaCita2) {
 		// TODO Auto-generated method stub
@@ -363,6 +455,38 @@ public class CitaBean implements Serializable {
 
 	public void setFechaCita(Date fechaCita) {
 		this.fechaCita = fechaCita;
+	}
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	public Motivo getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(Motivo motivo) {
+		this.motivo = motivo;
+	}
+
+	public SolicitudRetiro getMisolicitud() {
+		return misolicitud;
+	}
+
+	public void setMisolicitud(SolicitudRetiro misolicitud) {
+		this.misolicitud = misolicitud;
+	}
+
+	public Boleta getBoleta() {
+		return boleta;
+	}
+
+	public void setBoleta(Boleta boleta) {
+		this.boleta = boleta;
 	}
 	
 	
