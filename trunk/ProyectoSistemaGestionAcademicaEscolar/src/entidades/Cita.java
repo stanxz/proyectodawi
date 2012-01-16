@@ -1,5 +1,7 @@
 package entidades;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,8 +22,8 @@ public class Cita {
 	@Column(name="codcita")
 	private int intcodcita;
 	
-	@Column(name="codalumno")
-	private String strCodigoAlumno;
+	//@Column(name="codalumno")
+	//private String strCodigoAlumno;
 	
 	@Column(name="codtiposervicio")
 	private int intcodtiposervicio;
@@ -39,7 +41,7 @@ public class Cita {
 	private String tlfcelular;
 	
 	@Column(name="fecharegistro")
-	private java.sql.Date dtfecharegistro;
+	private Timestamp dtfecharegistro;
 	
 	@Column(name="estado")
 	private String strestado;
@@ -67,13 +69,13 @@ public class Cita {
 		this.intcodcita = intcodcita;
 	}
 
-	public String getStrCodigoAlumno() {
+	/*public String getStrCodigoAlumno() {
 		return strCodigoAlumno;
 	}
 
 	public void setStrCodigoAlumno(String strCodigoAlumno) {
 		this.strCodigoAlumno = strCodigoAlumno;
-	}
+	}*/
 
 	public int getIntcodtiposervicio() {
 		return intcodtiposervicio;
@@ -115,12 +117,12 @@ public class Cita {
 		this.tlfcelular = tlfcelular;
 	}
 
-	public java.sql.Date getDtfecharegistro() {
+	public Timestamp getDtfecharegistro() {
 		return dtfecharegistro;
 	}
 
-	public void setDtfecharegistro(java.sql.Date dtfecharegistro) {
-		this.dtfecharegistro = dtfecharegistro;
+	public void setDtfecharegistro(Timestamp timestamp) {
+		this.dtfecharegistro = timestamp;
 	}
 
 	public String getStrestado() {

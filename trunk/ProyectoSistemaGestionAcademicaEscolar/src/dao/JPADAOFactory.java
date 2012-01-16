@@ -129,4 +129,13 @@ public class JPADAOFactory extends DAOFactory {
 	}
 
 
+	@Override
+	public DisponibilidadAsistentaDAO getDisponibilidadAsistentaDAO() {
+		DisponibilidadAsistentaJPADAO srd=new DisponibilidadAsistentaJPADAO();
+		srd.setEntityManagerFactory(emf);
+		System.out.println("JPADAOFactory - bod en memoria: "+srd.toString());
+		return (DisponibilidadAsistentaJPADAO)srd;
+	}
+
+
 }

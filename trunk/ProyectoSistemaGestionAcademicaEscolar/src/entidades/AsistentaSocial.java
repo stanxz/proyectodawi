@@ -22,6 +22,9 @@ public class AsistentaSocial implements Serializable {
 	@Column(name="CONSULTORIO")
 	private String strConsultorio;
 	
+/*	@OneToMany(targetEntity=Horario.class,mappedBy="asistentasocial")
+	private Collection<Horario> tbHorarios;*/
+	
     public AsistentaSocial() {
     }
 
@@ -40,6 +43,14 @@ public class AsistentaSocial implements Serializable {
 	public void setStrConsultorio(String strConsultorio) {
 		this.strConsultorio = strConsultorio;
 	}
-	
+
+	/*public Collection<Horario> getTbHorarios() {
+		return tbHorarios;
+	}
+
+	public void setTbHorarios(Collection<Horario> tbHorarios) {
+		this.tbHorarios = tbHorarios;
+	}
+	*/
     
 }

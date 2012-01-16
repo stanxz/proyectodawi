@@ -24,8 +24,8 @@ public abstract class DAOFactory {
     public abstract SolicitudExoneracionDAO getSolicitudExoneracionDAO();
     public abstract SolicitudRetiroDAO getSolicitudRetiroDAO();
     public abstract BoletaDAO getBoletaDAO();
-    
     public abstract CitaDAO getCitaDAO();
+    public abstract DisponibilidadAsistentaDAO getDisponibilidadAsistentaDAO();
     
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch(whichFactory){
