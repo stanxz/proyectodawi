@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.SolicitudRetiro;
 
@@ -119,6 +121,28 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		  
 		List lista = em.createQuery("SELECT sr FROM SolicitudRetiro sr " +
             						"WHERE sr.strEstado = 'Pendiente'").getResultList();
+		 
+		 if(lista.size()>0){
+				for ( int i=0; i < lista.size(); i++ ) {
+					SolicitudRetiro entidad = (SolicitudRetiro)lista.get(i);
+					solicitudesRetiro.add(entidad);
+				}
+		 }
+
+		em.close();
+		return solicitudesRetiro;
+	}
+
+	@Override
+	public ArrayList<SolicitudRetiro> obtenerSRxADA(
+			AsistenteDireccionAcademica ada) throws Exception {
+		System.out.println("leyendo SRxADA");
+		em = emf.createEntityManager();
+		ArrayList<SolicitudRetiro> solicitudesRetiro = new ArrayList<SolicitudRetiro>();
+		Query q=em.createQuery("SELECT sr FROM SolicitudRetiro sr WHERE sr.strEstado = 'PENDIENTE' OR sr.asistenteDireccion.personas.strCodigoPersona=?1");
+		q.setParameter(1, ada.getPersonas().getStrCodigoPersona());
+		
+		List lista = q.getResultList();
 		 
 		 if(lista.size()>0){
 				for ( int i=0; i < lista.size(); i++ ) {

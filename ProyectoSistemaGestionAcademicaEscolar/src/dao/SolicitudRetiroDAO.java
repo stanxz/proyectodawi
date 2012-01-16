@@ -2,6 +2,7 @@ package dao;
 
 import java.util.ArrayList;
 
+import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.SolicitudRetiro;
 
@@ -13,4 +14,6 @@ public interface SolicitudRetiroDAO {
 	
 	public ArrayList<SolicitudRetiro> obtenerTodasSolicitudes() throws Exception;
 	public ArrayList<SolicitudRetiro> obtenerSolicitudesPendientes() throws Exception;
+	public ArrayList<SolicitudRetiro> obtenerSRxADA(
+			AsistenteDireccionAcademica ada)throws Exception;
 }

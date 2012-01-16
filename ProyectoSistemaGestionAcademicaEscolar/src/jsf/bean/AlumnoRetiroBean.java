@@ -63,6 +63,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private SolicitudRetiro misolicitud;
 	private Map<String, Object> misesion;
 	
+	
 	private Alumno retiroAlumno = new Alumno();
 		
 	public AlumnoRetiroBean() {
@@ -350,6 +351,5 @@ public class AlumnoRetiroBean implements Serializable{
 	public void setMisolicitud(SolicitudRetiro misolicitud) {
 		this.misolicitud = misolicitud;
 	}
-	
-	
+
 }

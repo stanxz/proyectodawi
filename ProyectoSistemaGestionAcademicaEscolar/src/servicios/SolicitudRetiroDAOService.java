@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.DAOFactory;
 import dao.SolicitudRetiroDAO;
 
+import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.SolicitudRetiro;
 
@@ -50,6 +51,13 @@ public class SolicitudRetiroDAOService implements SolicitudRetiroService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return retirodao.obtenerSolicitudesPendientes();
+	}
+
+	@Override
+	public ArrayList<SolicitudRetiro> obtenerSRxADA(
+			AsistenteDireccionAcademica ada) throws Exception {
+		// TODO Auto-generated method stub
+		return retirodao.obtenerSRxADA(ada);
 	}
 
 }
