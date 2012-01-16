@@ -6,6 +6,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.validator.Validator;
 import javax.faces.validator.ValidatorException;
 
+import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Asignatura;
 import entidades.Boleta;
@@ -32,9 +33,12 @@ public class ExoneracionValidatorParte2 implements Validator {
         
         String numeroBoleta = (String) component.getAttributes().get("bol");
         
+        String alumno = (String) component.getAttributes().get("alumno");
+        
         System.out.println("--->" + valor);
         System.out.println("--->" + blCondicion);
         System.out.println("--->" + numeroBoleta);
+        System.out.println("--->" + alumno);
         
         //HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 		
@@ -77,9 +81,12 @@ public class ExoneracionValidatorParte2 implements Validator {
 			    Asignatura tmpAsignatura = new Asignatura();
 		        tmpAsignatura.setIntCodigoAsignatura(valor);
 		        
+		        Alumno tmpAlumno = new Alumno();
+		        tmpAlumno.setStrCodigoAlumno(alumno);
 		        
 		        SolicitudExoneracion tmpExoneracion = new SolicitudExoneracion();
 		        tmpExoneracion.setAsignaturas(tmpAsignatura);
+		        tmpExoneracion.setAlumno(tmpAlumno);
 		        
 		        SolicitudExoneracion condicion = null;
 				try {

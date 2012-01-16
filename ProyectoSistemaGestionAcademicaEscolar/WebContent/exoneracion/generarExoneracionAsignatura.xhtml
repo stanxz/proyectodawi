@@ -35,7 +35,7 @@
 	<h:panelGrid id="display" columns="2" cellpadding="2" style="margin:0 auto;">
 	
 		  <h:outputText value="Codigo Alumno" style="font-weight:bold"/>
-		  <p:inputText  value="#{generarExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
+		  <p:inputText  id="alumno" binding="#{alumno}" value="#{generarExoneracionBean.alumno.strCodigoAlumno}" style="font-weight:bold" disabled="true"/>
 
 		  <h:outputText value="Nombres y Apellidos" style="font-weight:bold"/>
           <p:inputText value="#{generarExoneracionBean.alumno.strNombres} #{generarExoneracionBean.alumno.strApellidoPaterno} #{generarExoneracionBean.alumno.strApellidoMaterno}" style="font-weight:bold" disabled="true"/>
@@ -56,6 +56,7 @@
             <f:validator validatorId="exoneracionValidatorParte2"/>
 	        <f:attribute name="par" value="#{par.value}" />
 	        <f:attribute name="bol" value="#{bol.value}" />
+	        <f:attribute name="alumno" value="#{alumno.value}" />
 		 </h:selectOneMenu>	
 		 
          <p:fileUpload sizeLimit="1048576" 
