@@ -60,7 +60,7 @@
            auto="true" widgetVar="uploader" label="Cargar Certificado"
            fileUploadListener="#{alumnoRetiroBean.cargarDocumentoInsertar}"
            allowTypes="*.png;*.jpg;*.gif;" description="Certificados" 
-           update="msgs,dlgForm:imgFoto,dlgForm:parR" multiple="false" customUI="true" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
+           update="msgs,dlgForm:imgFoto,dlgForm:parR" multiple="false"  customUI="true" rendered="#{alumnoRetiroBean.btnAdjuntar}" />
 		 <p:graphicImage id="imgFoto"  value="#{alumnoRetiroBean.documento}" cache="false"
              style="height:50%;width:50%" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
          <h:inputHidden id="parR" binding="#{parR}" value="#{alumnoRetiroBean.valor}" required="true" requiredMessage="Ingrese Documento Sustentatorio"/>
