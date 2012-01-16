@@ -1,7 +1,5 @@
 package entidades;
 
-import java.io.File;
-import java.io.InputStream;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import org.primefaces.model.StreamedContent;
 
 
 @Entity
@@ -30,16 +30,18 @@ public class SolicitudRetiro implements Serializable{
 	//@Column(name="codalumno")
 	//private Alumno alumno = new Alumno();
 	
-	@Transient
+	/*@Transient
 	private File certificado;
 	@Transient
 	private String certificadoContentType;
 	@Transient
 	private String certificadoFileName;
 	@Transient
-	private InputStream isCertificado;
+	private InputStream isCertificado;*/
+	@Transient
+	private StreamedContent scImagen;
 	
-	@Column(name="docsustentatorio",columnDefinition="MEDIUMBLOB")
+	@Column(name="DOCSUSTENTATORIO",columnDefinition="MEDIUMBLOB")
 	private byte[] certificadobin;
 	
 	@Column(name="motivo")
@@ -84,7 +86,7 @@ public class SolicitudRetiro implements Serializable{
 		this.alumno = alumno;
 	}
 
-	public File getCertificado() {
+	/*public File getCertificado() {
 		return certificado;
 	}
 
@@ -115,7 +117,7 @@ public class SolicitudRetiro implements Serializable{
 	public void setIsCertificado(InputStream isCertificado) {
 		this.isCertificado = isCertificado;
 	}
-
+*/
 	public byte[] getCertificadobin() {
 		return certificadobin;
 	}
@@ -179,9 +181,17 @@ public class SolicitudRetiro implements Serializable{
 	public void setAsistenteDireccion(AsistenteDireccionAcademica asistenteDireccion) {
 		this.asistenteDireccion = asistenteDireccion;
 	}
-	
-	
 
+	public StreamedContent getScImagen() {
+		return scImagen;
+	}
+
+	public void setScImagen(StreamedContent scImagen) {
+		this.scImagen = scImagen;
+	}
+	
+	
+ 
 	
 	
 

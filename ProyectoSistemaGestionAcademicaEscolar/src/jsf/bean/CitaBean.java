@@ -18,10 +18,10 @@ import servicios.CitaService;
 import servicios.PersonaService;
 import servicios.SolicitudRetiroService;
 import utiles.Constantes;
+import utiles.EnviaMail;
 import entidades.Alumno;
 import entidades.Cita;
 import entidades.Persona;
-import entidades.SolicitudRetiro;
 
 
 @SessionScoped
@@ -77,7 +77,6 @@ public class CitaBean implements Serializable {
 		//if(this.horaCita!=null)
 		//System.out.println("hora q llega: "+this.horaCita);
 		if(this.fechaCita!=null && this.asistentaElegida.getStrCodigoPersona()!=null)
-			//cargaArregloCombo();
 			cargaArregloHD(this.asistentaElegida,date);
 		else{
 			System.out.println("Seleccione fecha, hora y asistenta");
@@ -212,9 +211,13 @@ public class CitaBean implements Serializable {
 			}else{
 				System.out.println("insertando cita ... ");
 				citaService.registrarCita(miciCita);
+				System.out.println("cita insertada ... ");
+				System.out.println("enviando correo ... ");
+				EnviaMail enviador=new EnviaMail();
+				enviador.enviarCorreoRegistroCita(miciCita);
 				FacesMessage msg = new FacesMessage("Cita Registrada","Se guardó Cita del Alumno "+miciCita.getAlumno().getStrCodigoAlumno()+" para el dia "+miciCita.getDtfecharegistro());
 	    	    FacesContext.getCurrentInstance().addMessage(null, msg);
-				System.out.println("cita insertada ... ");
+				
 			}
 			
 		} catch (Exception e) {

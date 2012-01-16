@@ -11,6 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import entidades.Alumno;
+import entidades.Cita;
 import entidades.Persona;
 import entidades.Usuario;
 
@@ -163,7 +164,52 @@ public class EnviaMail {
 		   }
 	}
 	
-	
+	public void enviarCorreoRegistroCita(Cita lacita) {
+		// Propiedades de la conexión
+		   Properties props = new Properties();
+		   props.setProperty("mail.smtp.host", "smtp.gmail.com");
+		   props.setProperty("mail.smtp.starttls.enable", "true");
+		   props.setProperty("mail.smtp.port", "587");
+		   props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+		   props.setProperty("mail.smtp.auth", "true");
+
+		   // Preparamos la sesion
+		   Session session = Session.getDefaultInstance(props);
+
+		   // Construimos el mensaje
+		   MimeMessage message = new MimeMessage(session);
+
+		   try {
+			   message.setFrom(new InternetAddress("proylp2@gmail.com"));
+			   message.addRecipient(
+			       Message.RecipientType.TO,
+			       new InternetAddress(lacita.getAlumno().getApoderados().getPersonas().getStrMail()));
+
+			   message.setSubject("SGAE - Registro de Cita Exitoso");
+			   String cuerpomensaje="Estimado "+lacita.getAlumno().getApoderados().getPersonas().getStrNombre()+" "+lacita.getAlumno().getApoderados().getPersonas().getStrApellidoPaterno()+ ", \n\n le enviamos la confirmacion de su registro de Cita con los siguientes datos: ";
+			   
+			   for (Method m : lacita.getClass().getMethods()){
+					if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))||(m.getName().startsWith("getDt"))||(m.getName().startsWith("getTlf"))){
+						cuerpomensaje+="\n" + m.getName().substring(6).toUpperCase() + " : " +  m.invoke(lacita);
+					}
+						
+				}
+			   message.setText(cuerpomensaje);
+
+			   // Lo enviamos.
+			   Transport t = session.getTransport("smtp");
+			   t.connect("proylp2@gmail.com", "cibertec");
+			   t.sendMessage(message, message.getAllRecipients());
+			   // Cierre.
+	           t.close();
+		   } catch (MessagingException e) {
+				e.printStackTrace();
+				System.out.println("error enviando el correo : "+e.getMessage());
+		   }catch(Exception e1){
+			   	e1.printStackTrace();
+				System.out.println("error enviando el correo : "+e1.getMessage());
+		   }
+	}
 	
 	
 

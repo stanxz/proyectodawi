@@ -28,6 +28,13 @@ public class BoletaDaoService implements BoletaService {
 		// TODO Auto-generated method stub
 		boletadao.registrarBoleta(laboleta);
 	}
+
+
+	@Override
+	public void actualizaCierredeBoleta(Boleta miboleta) throws Exception {
+		// TODO Auto-generated method stub
+		boletadao.actualizaCierredeBoleta(miboleta);
+	}
 	
 	
 }
