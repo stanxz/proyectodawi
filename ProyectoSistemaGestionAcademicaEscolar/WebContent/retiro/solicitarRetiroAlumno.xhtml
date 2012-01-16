@@ -63,16 +63,18 @@
            update="msgs,dlgForm:imgFoto,dlgForm:parR" multiple="false"  customUI="true" rendered="#{alumnoRetiroBean.btnAdjuntar}" />
 		 <p:graphicImage id="imgFoto"  value="#{alumnoRetiroBean.documento}" cache="false"
              style="height:50%;width:50%" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
-         <h:inputHidden id="parR" binding="#{parR}" value="#{alumnoRetiroBean.valor}" required="true" requiredMessage="Ingrese Documento Sustentatorio"/>
             
 		 <p:commandButton value="Generar Cita" 
 		 				rendered="#{!alumnoRetiroBean.btnAdjuntar}" 
 						action="#{citaBean.redericcionaCita}" 
-						title="Genera Nueva Cita" oncomplete="datosDialog.hide()" ajax="false">
+						title="Genera Nueva Cita" ajax="false">
 						
-			<f:setPropertyActionListener value="#{alumnoRetiroBean.alumno}" target="#{citaBean.alumnoElegido}" />				
+			<f:setPropertyActionListener value="#{alumnoRetiroBean.alumno}" target="#{citaBean.alumnoElegido}" />
+			<f:setPropertyActionListener value="#{alumnoRetiroBean.observacion}" target="#{citaBean.observacion}" />
+			<f:setPropertyActionListener value="#{alumnoRetiroBean.motivo}" target="#{citaBean.motivo}" />
+			<f:setPropertyActionListener value="#{alumnoRetiroBean.boleta}" target="#{citaBean.boleta}" />				
 		 </p:commandButton>
-				
+		
           <f:facet name="footer"> 
                 <p:outputPanel rendered="true" layout="block" style="text-align:center">
                 <h:panelGroup>
@@ -89,8 +91,18 @@
           </f:facet>  
 
         </h:panelGrid> 
+        
+        
+     <p:confirmDialog message="Desea registrar esta Solicitud de Retiro?"  
+                header="Generacion de Nueva Cita" severity="alert" widgetVar="confirmation">  
+        <p:commandButton value="Si" update="msgs" oncomplete="confirmation.hide(),datosDialog.hide()"  
+                    actionListener="#{alumnoRetiroBean.generaSolicitud}" />  
+        <p:commandButton value="No" onclick="confirmation.hide(),datosDialog.hide()" type="button" />   
+	</p:confirmDialog>
+
        </h:form>
-    </p:dialog>       
+    </p:dialog> 
+    
 </div>
 </ui:define>
 
