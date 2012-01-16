@@ -27,6 +27,18 @@ public class CitaDaoService implements CitaService{
 		 this.citadao.actualizarEstadoCita(cita);
 		
 	}
+
+	@Override
+	public void registrarCita(Cita miciCita) throws Exception {
+		// TODO Auto-generated method stub
+		citadao.registrarCita(miciCita);
+	}
+
+	@Override
+	public Cita consultaCitaPendiente(String strCodigoAlumno) throws Exception {
+		// TODO Auto-generated method stub
+		return citadao.consultaCitaPendiente(strCodigoAlumno);
+	}
 	
 	
 	

@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 
 import entidades.Cita;
+import entidades.Disponibilidadasistentasocial;
 
 
 public class CitaJPADAO implements CitaDAO {
@@ -20,6 +22,7 @@ public class CitaJPADAO implements CitaDAO {
 	}
 	
 	
+	@SuppressWarnings("rawtypes")
 	public ArrayList<Cita> obtenercitas() throws Exception {
 	     em = emf.createEntityManager();
 			
@@ -56,6 +59,39 @@ public class CitaJPADAO implements CitaDAO {
 		
 		em.getTransaction().commit();
 		em.close();
+		
+	}
+
+
+	@Override
+	public void registrarCita(Cita miciCita) throws Exception {
+		// TODO Auto-generated method stub
+		em=emf.createEntityManager();
+
+		em.getTransaction().begin();
+		em.persist(miciCita);
+		em.flush();
+		em.getTransaction().commit();
+		em.close();
+	}
+
+
+	@SuppressWarnings("rawtypes")
+	@Override
+	public Cita consultaCitaPendiente(String strCodigoAlumno) throws Exception {
+		em = emf.createEntityManager();
+		System.out.println("strCodigoAlumno llega al jpadao: " +strCodigoAlumno);
+		List coleccion = new ArrayList<Cita>();
+		Query q = em.createQuery("SELECT c FROM Cita c where c.alumno.strCodigoAlumno=?1 and c.strestado='PENDIENTE' ");
+		q.setParameter(1, strCodigoAlumno);
+		
+		coleccion = q.getResultList();
+		em.close();
+		
+		if (coleccion.size()>0) {
+			return (Cita) coleccion.get(0);
+		}else
+			return null;
 		
 	}
 	
