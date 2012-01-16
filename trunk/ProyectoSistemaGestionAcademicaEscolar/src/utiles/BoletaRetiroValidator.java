@@ -60,7 +60,7 @@ public class BoletaRetiroValidator implements Validator{
 		}
 		
 		if (condicionBoletaRetiro==false) {
-		    throw new ValidatorException(new FacesMessage("No existe boleta de pago o ya fue utilizada en otro trámite"));    
+		    throw new ValidatorException(new FacesMessage("No existe boleta de pago, No le pertenece al Apoderado, o ya fue utilizada en otro trámite"));    
 		}
 		
     
