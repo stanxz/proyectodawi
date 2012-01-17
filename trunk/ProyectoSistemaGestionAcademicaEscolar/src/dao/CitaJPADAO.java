@@ -8,7 +8,6 @@ import javax.persistence.Query;
 
 
 import entidades.Cita;
-import entidades.Disponibilidadasistentasocial;
 
 
 public class CitaJPADAO implements CitaDAO {

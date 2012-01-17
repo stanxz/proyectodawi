@@ -4,6 +4,7 @@ import java.util.Date;
 
 
 
+@SuppressWarnings("serial")
 public class DefaultScheduleEvent implements ScheduleEvent, Serializable{
 
 	  private String id;

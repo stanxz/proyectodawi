@@ -7,6 +7,7 @@ import javax.faces.event.FacesListener;
 import org.primefaces.model.ScheduleEvent;
 
 
+@SuppressWarnings("serial")
 public class ScheduleEntrySelectEvent extends FacesEvent {
 
 	private ScheduleEvent scheduleEvent;
