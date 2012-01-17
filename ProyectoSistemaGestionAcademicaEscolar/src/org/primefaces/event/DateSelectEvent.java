@@ -6,6 +6,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.event.FacesEvent;
 import javax.faces.event.FacesListener;
 
+@SuppressWarnings("serial")
 public class DateSelectEvent extends FacesEvent{
 	
 	 private Date date;

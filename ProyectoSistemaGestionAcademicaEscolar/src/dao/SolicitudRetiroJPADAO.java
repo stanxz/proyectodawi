@@ -47,6 +47,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public SolicitudRetiro buscarSolicitudXAlumnoXAño(SolicitudRetiro sr)
 			throws Exception {
@@ -133,6 +134,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		return solicitudesRetiro;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<SolicitudRetiro> obtenerSRxADA(
 			AsistenteDireccionAcademica ada) throws Exception {

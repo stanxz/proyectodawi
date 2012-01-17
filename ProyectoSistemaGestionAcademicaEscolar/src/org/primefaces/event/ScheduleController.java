@@ -21,10 +21,8 @@ import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
 
 import entidades.Cita;
-import entidades.Distrito;
 
 import servicios.ApplicationBusinessDelegate;
-import servicios.CitaService;
 import servicios.CitaService;
 
 
@@ -139,7 +137,8 @@ public class ScheduleController {
             return calendar;
     }
     
-    private Date previousDay8Pm() {
+    @SuppressWarnings("unused")
+	private Date previousDay8Pm() {
     	
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.AM_PM, Calendar.PM);
@@ -149,6 +148,7 @@ public class ScheduleController {
             return t.getTime();
     }
     
+    @SuppressWarnings("unused")
     private Date previousDay11Pm() {
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.AM_PM, Calendar.PM);
@@ -158,6 +158,7 @@ public class ScheduleController {
             return t.getTime();
     }
     
+    @SuppressWarnings("unused")
     private Date today1Pm() {
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.AM_PM, Calendar.PM);
@@ -166,6 +167,7 @@ public class ScheduleController {
             return t.getTime();
     }
     
+    @SuppressWarnings("unused")
     private Date theDayAfter3Pm() {
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.DATE, t.get(Calendar.DATE));         
@@ -175,6 +177,7 @@ public class ScheduleController {
             return t.getTime();
     }
 
+    @SuppressWarnings("unused")
     private Date today6Pm() {
             Calendar t = (Calendar) today().clone(); 
             t.set(Calendar.AM_PM, Calendar.PM);
@@ -183,6 +186,7 @@ public class ScheduleController {
             return t.getTime();
     }
     
+    @SuppressWarnings("unused")
     private Date nextDay9Am() {
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.AM_PM, Calendar.AM);
@@ -191,7 +195,8 @@ public class ScheduleController {
             
             return t.getTime();
     }
-    
+   
+    @SuppressWarnings("unused")
     private Date nextDay11Am() {
             Calendar t = (Calendar) today().clone();
             t.set(Calendar.AM_PM, Calendar.AM);
@@ -201,6 +206,7 @@ public class ScheduleController {
             return t.getTime();
     }
     
+    @SuppressWarnings("unused")
     private Date fourDaysLater3pm() {
             Calendar t = (Calendar) today().clone(); 
             t.set(Calendar.AM_PM, Calendar.PM);

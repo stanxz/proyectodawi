@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import utiles.Constantes;
 
-import entidades.Alumno;
 import entidades.Boleta;
 
 public class BoletaJPADAO implements BoletaDAO {

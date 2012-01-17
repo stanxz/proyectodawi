@@ -8,6 +8,7 @@ import java.util.UUID;
 
 
 
+@SuppressWarnings("serial")
 public class DefaultScheduleModel implements ScheduleModel, Serializable{
 	
 	  private List<ScheduleEvent> events;
