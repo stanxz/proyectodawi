@@ -15,7 +15,6 @@ import entidades.Persona;
 import entidades.SolicitudRetiro;
 import entidades.Usuario;
 
-@SuppressWarnings("serial")
 @SessionScoped
 @ManagedBean
 public class EvaluarRetiroBean implements Serializable {
