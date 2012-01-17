@@ -21,11 +21,24 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 <p:tooltip global="true"/>
    <p:tabView onTabShow="mymap.checkResize()">  
     <p:tab title="Inicio">
+    <!-- <p:galleria value="#{galleriaBean.images}"  
+            var="image" effect="slide" effectSpeed="1000"  
+            panelWidth="500" panelHeight="250" frameWidth="160" frameHeight="70"  
+            filmstripPosition="top" showCaptions="true" showOverlays="true">  
+  
+    <p:graphicImage value="/images/#{image}" title="#{image}"/>  
+  
+</p:galleria> -->
 
- 	<p:galleria effect="slide" effectSpeed="1000" >
- 	<p:graphicImage value="/images/ima3.jpg" title="ima1" alt="ima3 desc"/>
+<!--<p:galleria value="#{galleriaBean.images}" var="image">  
+    <p:graphicImage value="/images/ima/#{image}" />  
+</p:galleria> --> 
+ 	
+ 	 <p:galleria effect="slide" effectDuration="1000" panelWidth="10" panelHeight="10" 
+ 				frameWidth="20" frameHeight="20" effectSpeed="1000" >
 	 <p:graphicImage value="/images/ima1.jpg" title="ima1" alt="ima1 desc"/>
 	 <p:graphicImage value="/images/ima2.jpg" title="ima1" alt="ima2 desc"/>
+	 <p:graphicImage value="/images/ima3.jpg" title="ima1" alt="ima3 desc"/>
 	 <p:graphicImage value="/images/ima4.jpg" title="ima1" alt="ima4 desc"/> 
  	</p:galleria>
  
@@ -40,7 +53,7 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         a través del hecho educativo, donde buscamos el desarrollo integral del educando, el despliegue de sus potencialidades
         y el desarrollo de capacidades, conocimientos, actitudes y valores esenciales para actuar adecuada y eficazmente
         en los diversos ámbitos de la sociedad. <br />
-         <br></br>
+        <br></br>
         Además, brindamos una educación bilingue(castellano - inglés), como desarrollamos sus habilidades en el campo de 
         la informática, imprescindibles en este siglo XXI como instrumentos indispensables para no estar ajenos a la 
         globalización y comunicación audiovisual, interactiva y virtual.
@@ -51,7 +64,14 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
   
     <p:tab title="Visión"> 
 		<h:panelGrid columns="2" cellpadding="10">
-		<table>
+		<p:growl id="growl" showDetail="true" />  
+  
+	<p:fieldset legend="Nuestra Visión">  
+    <h:panelGrid columns="2" cellpadding="10">  
+
+		<p:graphicImage value="/images/cole5.jpg" height="300" width="300"/>  
+		<!--<p:media value="http://www.youtube.com/v/pnRY4hEzyT0" width="200" height="200" player="flash"/>--> 
+        <table>
 		<tr>
 		<td align="justify">
         Lograr una formacion integral de calidad sustentada en la práctica de valores y virtudes.
@@ -63,16 +83,20 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         que responda eficiente y eficazmente  a las exigencias de un mundo  globalizado y  
         desafíos de nuestra sociedad.
         </td>
-        <td>
-        	<p:graphicImage value="/images/cole1.jpg" height="200" width="300"/>
-        </td>
         </tr>
-        </table>
-        </h:panelGrid> 
+        </table> 
+    </h:panelGrid>  
+	</p:fieldset> 
+    </h:panelGrid> 
     </p:tab>
     
     <p:tab title="Misión">
         <h:panelGrid columns="2" cellpadding="10">
+        <p:growl id="growl" showDetail="true" />  
+
+	<p:fieldset legend="Nuestra Misión">  
+    <h:panelGrid columns="2" cellpadding="10">  
+        <p:graphicImage value="/images/cole4.jpg" height="300" width="250"/>
         <table>
         <tr>
         <td align="justify">
@@ -83,11 +107,11 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         de responsabilidad social.Afianzar la formación integral con sólidos valores cristianos preparándolos para la vida en 
         respuesta a las exigencias y requerimientos del siglo XXI.
         </td>
-        <td>
-        	<p:graphicImage value="/images/cole4.jpg" height="300" width="200"/>
-        </td>
         </tr>
         </table>
+    </h:panelGrid>  
+	</p:fieldset>        
+        
         </h:panelGrid>  
     </p:tab>  
     
