@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
@@ -26,6 +27,7 @@ import entidades.Motivo;
 import entidades.Persona;
 import entidades.Seccionprogramada;
 import entidades.SolicitudExoneracion;
+import entidades.Usuario;
 
 @SuppressWarnings("serial")
 @SessionScoped
@@ -220,16 +222,16 @@ public class GenerarExoneracionBean implements Serializable{
 		try {
 			
 			//NO BORRAR 
-			//HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			
-			//Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
 			
 			
-			//System.out.println(usuario.getPersonas().getStrCodigoPersona());
+			System.out.println(usuario.getPersonas().getStrCodigoPersona());
 			
 			persona = new Persona();
-			//persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
-			persona.setStrCodigoPersona("PE-18181818");
+			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+			//persona.setStrCodigoPersona("PE-18181818");
 			
 			apoderado = new Apoderado();
 			apoderado.setPersonas(persona);
