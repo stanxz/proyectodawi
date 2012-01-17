@@ -1,6 +1,8 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
+
 import javax.persistence.*;
 
 
@@ -25,6 +27,13 @@ public class AsistentaSocial implements Serializable {
 /*	@OneToMany(targetEntity=Horario.class,mappedBy="asistentasocial")
 	private Collection<Horario> tbHorarios;*/
 	
+	@ManyToMany
+	@JoinTable(name="horario",
+			joinColumns={@JoinColumn(name="codasistentasocial")},
+			inverseJoinColumns={@JoinColumn(name="CODDISPONIBILIDADAS")}
+	)
+	private Collection<Perfil> tbDisponibilidadesAsistenta;
+	
     public AsistentaSocial() {
     }
 
@@ -42,6 +51,15 @@ public class AsistentaSocial implements Serializable {
 
 	public void setStrConsultorio(String strConsultorio) {
 		this.strConsultorio = strConsultorio;
+	}
+
+	public Collection<Perfil> getTbDisponibilidadesAsistenta() {
+		return tbDisponibilidadesAsistenta;
+	}
+
+	public void setTbDisponibilidadesAsistenta(
+			Collection<Perfil> tbDisponibilidadesAsistenta) {
+		this.tbDisponibilidadesAsistenta = tbDisponibilidadesAsistenta;
 	}
 
 	/*public Collection<Horario> getTbHorarios() {

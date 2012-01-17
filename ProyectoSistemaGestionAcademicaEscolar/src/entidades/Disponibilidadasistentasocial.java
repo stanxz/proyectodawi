@@ -1,10 +1,14 @@
 package entidades;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 
 /**
@@ -32,6 +36,13 @@ public class Disponibilidadasistentasocial implements Serializable {
 	//@OneToMany(targetEntity=Horario.class,mappedBy="disponibilidadasistentasocial")
 	//private Set<Horario> horarios;
 
+	@ManyToMany
+	@JoinTable(name="horario",
+			joinColumns={@JoinColumn(name="CODDISPONIBILIDADAS")},
+			inverseJoinColumns={@JoinColumn(name="codasistentasocial")}
+	)
+	private Collection<Permiso> tbAsistentas;
+	
     public Disponibilidadasistentasocial() {
     }
 
@@ -65,6 +76,14 @@ public class Disponibilidadasistentasocial implements Serializable {
 
 	public void setHorainicio(String horainicio) {
 		this.horainicio = horainicio;
+	}
+
+	public Collection<Permiso> getTbAsistentas() {
+		return tbAsistentas;
+	}
+
+	public void setTbAsistentas(Collection<Permiso> tbAsistentas) {
+		this.tbAsistentas = tbAsistentas;
 	}
 
 }

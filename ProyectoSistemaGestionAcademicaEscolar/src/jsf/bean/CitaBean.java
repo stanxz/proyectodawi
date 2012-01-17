@@ -151,7 +151,7 @@ public class CitaBean implements Serializable {
 			}
 			
 		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-55555555")){
-			if(eldia==2 || eldia==4 || eldia==5){
+			if(eldia==2 || eldia==4 || eldia==6){
 				listaHorasDisponibles=new ArrayList<String>();
 				listaHorasDisponibles.add("09:00:00");
 				listaHorasDisponibles.add("09:30:00");
@@ -166,7 +166,7 @@ public class CitaBean implements Serializable {
 			}
 			
 		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-66666666")){
-			if(eldia==2 || eldia==4 || eldia==5){
+			if(eldia==2 || eldia==4 || eldia==6){
 				listaHorasDisponibles=new ArrayList<String>();
 				listaHorasDisponibles.add("14:00:00");
 				listaHorasDisponibles.add("14:30:00");
