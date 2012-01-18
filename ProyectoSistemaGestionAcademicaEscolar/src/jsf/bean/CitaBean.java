@@ -93,7 +93,7 @@ public class CitaBean implements Serializable {
 		//if(this.horaCita!=null)
 		//System.out.println("hora q llega: "+this.horaCita);
 		if(this.fechaCita!=null && this.asistentaElegida.getStrCodigoPersona()!=null)
-			cargaArregloHD(this.asistentaElegida,date);
+			cargaArregloHD2(this.asistentaElegida,date);
 		else{
 			this.horaCita="";
 			System.out.println("Seleccione fecha, hora y asistenta");
@@ -110,8 +110,8 @@ public class CitaBean implements Serializable {
 		System.out.println("fecha q llega: "+this.fechaCita);
 		if(this.asistentaElegida.getStrCodigoPersona()!=null)
 		System.out.println("asistenta: "+this.asistentaElegida.getStrCodigoPersona());
-		if(this.horaCita!=null)
-		System.out.println("hora q llega: "+this.horaCita);
+		//if(this.horaCita!=null)
+		//System.out.println("hora q llega: "+this.horaCita);
 		if(this.fechaCita!=null && this.asistentaElegida.getStrCodigoPersona()!=null)
 			//cargaArregloCombo();
 			//cargaArregloHD(this.asistentaElegida,this.fechaCita);
@@ -122,7 +122,7 @@ public class CitaBean implements Serializable {
 		
 	}
 	
-	private void cargaArregloHD(Persona asistentaElegida2, Date date) {
+	/*private void cargaArregloHD(Persona asistentaElegida2, Date date) {
 		// TODO Auto-generated method stub
 		int eldia=date.getDay();
 		if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-13131313")){
@@ -188,7 +188,7 @@ public class CitaBean implements Serializable {
 		}
 		else
 			System.out.println("Asistenta incorrecta ! : "+asistentaElegida2.getStrCodigoPersona());
-	}
+	}*/
 	
 	private void cargaArregloHD2(Persona asistentaElegida2, Date date) {
 		// TODO Auto-generated method stub
@@ -296,7 +296,7 @@ public class CitaBean implements Serializable {
 		try {
 			SimpleDateFormat sd2=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			String cadenafechahora=lafecha+" "+this.horaCita;
-			//System.out.println("cadenafechahora: "+cadenafechahora);
+			System.out.println("cadenafechahora: "+cadenafechahora);
 			Date temporal=sd2.parse(cadenafechahora);
 			System.out.println("***temporal: "+temporal);
 			Long tiempoexacto=temporal.getTime();

@@ -54,8 +54,8 @@ public class AlumnoRetiroBean implements Serializable{
 	private String prueba;
 	private Motivo motivo = new Motivo();
 	private Boleta boleta = new Boleta();
-	private Boolean btnAdjuntar=null;
-	private Boolean btnCita;
+	private Boolean btnAdjuntar;
+	private Boolean btnCita=false;
 	private Boolean txtBoleta;
 	private Boolean txtObservacion;
 	private String observacion;
@@ -63,7 +63,7 @@ public class AlumnoRetiroBean implements Serializable{
 	private SolicitudRetiro misolicitud=new SolicitudRetiro();
 	private Map<String, Object> misesion;
 
-	private String valor;
+	private String valor="";
 	private Alumno retiroAlumno = new Alumno();
 		
 	public AlumnoRetiroBean() {
