@@ -78,7 +78,7 @@ public class ExoneracionValidatorParte2 implements Validator {
 		}
 		
 		if(!boletaCondicion){
-			throw new ValidatorException(new FacesMessage(FacesMessage.SEVERITY_INFO,"Nro Boleta","Ingrese el número de boleta correcto."));
+			throw new ValidatorException(new FacesMessage("No existe boleta de pago, No le pertenece al Apoderado, o ya fue utilizada en otro trámite"));
 		}else{
 			    Asignatura tmpAsignatura = new Asignatura();
 		        tmpAsignatura.setIntCodigoAsignatura(valor);
