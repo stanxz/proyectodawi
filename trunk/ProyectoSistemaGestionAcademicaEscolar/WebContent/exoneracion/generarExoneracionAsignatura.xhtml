@@ -44,7 +44,7 @@
           <p:inputText value="#{generarExoneracionBean.seccionProgramada.intGrado} º #{generarExoneracionBean.seccionProgramada.strSeccion}" style="font-weight:bold" disabled="true"/>
           
           <h:outputText value="Nro Boleta Pago" style="font-weight:bold"/>
-		  <p:inputText id="bol" binding="#{bol}" value="#{generarExoneracionBean.boleta.strTipo}" style="font-weight:bold" required="true" requiredMessage="Ingrese Nro Boleta" maxlength="6"/>
+		  <p:inputText id="bol" binding="#{bol}" value="#{generarExoneracionBean.boleta.strCodigoBoleta}" style="font-weight:bold" required="true" requiredMessage="Ingrese Nro Boleta" maxlength="8"/>
 	
           <h:outputText value="Asignatura" style="font-weight:bold"/>
 		  <h:selectOneMenu value="#{generarExoneracionBean.exoneracion.asignaturas.intCodigoAsignatura}" 

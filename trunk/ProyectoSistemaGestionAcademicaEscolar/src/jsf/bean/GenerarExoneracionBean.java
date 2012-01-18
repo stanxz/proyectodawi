@@ -16,6 +16,7 @@ import org.primefaces.model.StreamedContent;
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.AsignaturaService;
+import servicios.BoletaService;
 import servicios.MatriculaService;
 import servicios.SolicitudExoneracionService;
 import entidades.Alumno;
@@ -39,6 +40,7 @@ public class GenerarExoneracionBean implements Serializable{
 	private static AlumnoService alumnoService = abd.getAlumnoService();
 	private static MatriculaService matriculaService = abd.getMatriculaService();
 	private static AsignaturaService asignaturaService = abd.getAsignaturaService();
+	private static BoletaService boletaService = abd.getBoletaService();
 	private static SolicitudExoneracionService exoneracionService = abd.getExoneracionService();
 	
 	private Alumno alumno;
@@ -110,6 +112,11 @@ public class GenerarExoneracionBean implements Serializable{
 		 
 		 try {
 			exoneracionService.registrarSolictud(exoneracion);
+			Boleta tmpBoleta = new Boleta();
+			System.out.println("Numero Boleta :  " + boleta.getStrCodigoBoleta());
+			tmpBoleta.setStrCodigoBoleta(boleta.getStrCodigoBoleta());
+			boletaService.actualizaCierredeBoleta(tmpBoleta);
+			
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Registro Solicitud de Exoneracion","Solicitud registrada correctamente"));
 		} catch (Exception e) {
 			e.printStackTrace();
