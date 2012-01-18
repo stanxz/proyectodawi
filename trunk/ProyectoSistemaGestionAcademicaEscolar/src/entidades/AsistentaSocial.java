@@ -32,7 +32,7 @@ public class AsistentaSocial implements Serializable {
 			joinColumns={@JoinColumn(name="codasistentasocial")},
 			inverseJoinColumns={@JoinColumn(name="CODDISPONIBILIDADAS")}
 	)
-	private Collection<Perfil> tbDisponibilidadesAsistenta;
+	private Collection<Disponibilidadasistentasocial> tbDisponibilidadesAsistenta;
 	
     public AsistentaSocial() {
     }
@@ -53,14 +53,24 @@ public class AsistentaSocial implements Serializable {
 		this.strConsultorio = strConsultorio;
 	}
 
-	public Collection<Perfil> getTbDisponibilidadesAsistenta() {
+	public Collection<Disponibilidadasistentasocial> getTbDisponibilidadesAsistenta() {
+		return tbDisponibilidadesAsistenta;
+	}
+
+	public void setTbDisponibilidadesAsistenta(
+			Collection<Disponibilidadasistentasocial> tbDisponibilidadesAsistenta) {
+		this.tbDisponibilidadesAsistenta = tbDisponibilidadesAsistenta;
+	}
+
+	
+	/*public Collection<Perfil> getTbDisponibilidadesAsistenta() {
 		return tbDisponibilidadesAsistenta;
 	}
 
 	public void setTbDisponibilidadesAsistenta(
 			Collection<Perfil> tbDisponibilidadesAsistenta) {
 		this.tbDisponibilidadesAsistenta = tbDisponibilidadesAsistenta;
-	}
+	}*/
 
 	/*public Collection<Horario> getTbHorarios() {
 		return tbHorarios;

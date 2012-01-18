@@ -19,9 +19,10 @@ public class DisponibilidadAsistentaDaoService implements
 
 	@Override
 	public Disponibilidadasistentasocial obtenerDisponibilidad(
-			String codAsistenta) throws Exception {
+			String codAsistenta, int eldia) throws Exception {
 		// TODO Auto-generated method stub
-		return dadao.obtenerDisponibilidad(codAsistenta);
+		return dadao.obtenerDisponibilidad(codAsistenta,eldia);
 	}
+
 
 }

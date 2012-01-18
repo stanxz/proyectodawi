@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -19,29 +21,30 @@ public class DisponibilidadAsistentaJPADAO implements
 
 	@Override
 	public Disponibilidadasistentasocial obtenerDisponibilidad(
-			String codAsistenta) throws Exception {
-
+			String codAsistenta, int eldia) throws Exception {
+		 Disponibilidadasistentasocial entidad=new Disponibilidadasistentasocial();
 		
 		em = emf.createEntityManager();
 		
 		System.out.println("codAsistentaq llega al jpadao: " +codAsistenta);
-		
-		//ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
-		
-		Query q = em.createQuery("SELECT d FROM Disponibilidadasistentasocial d where d.coddisponibilidadas=?1");
+
+		Query q = em.createQuery("SELECT d FROM Disponibilidadasistentasocial d INNER JOIN d.tbAsistentas ta where ta.personas.strCodigoPersona=?1 and d.dia=?2");
 		q.setParameter(1, codAsistenta);
+		q.setParameter(2, eldia);
 		
-		Disponibilidadasistentasocial entidad = (Disponibilidadasistentasocial)q.getSingleResult();
-		
-		 /*List lista = q.getResultList();
-		 
+		List lista = q.getResultList();
+		//Disponibilidadasistentasocial entidad = (Disponibilidadasistentasocial)q.getSingleResult();
+		System.out.println("lista de disponibilidades en JPA: "+lista.size());
 		 if(lista.size()>0){
-				for ( int i=0; i < lista.size(); i++ ) {
-					Alumno entidad = (Alumno)lista.get(i);
-					System.out.println("alumno: " + lista.get(i));
-					alumnos.add(entidad);
-				}
-		 }*/
+			  entidad = (Disponibilidadasistentasocial)lista.get(0);
+				/*for ( int i=0; i < lista.size(); i++ ) {
+					Disponibilidadasistentasocial entidad = (Disponibilidadasistentasocial)lista.get(i);
+					System.out.println("codigo Disponibilidadasistentasocial: " + entidad.getCoddisponibilidadas());
+				//	alumnos.add(entidad);
+				}*/
+		 }else {
+			entidad=null;
+		 }
 		 
 		em.close();
 		

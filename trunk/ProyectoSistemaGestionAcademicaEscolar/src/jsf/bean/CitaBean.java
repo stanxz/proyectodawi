@@ -17,6 +17,7 @@ import org.primefaces.event.DateSelectEvent;
 import servicios.ApplicationBusinessDelegate;
 import servicios.BoletaService;
 import servicios.CitaService;
+import servicios.DisponibilidadAsistentaService;
 import servicios.PersonaService;
 import servicios.SolicitudRetiroService;
 import utiles.Constantes;
@@ -25,6 +26,7 @@ import entidades.Alumno;
 import entidades.Apoderado;
 import entidades.Boleta;
 import entidades.Cita;
+import entidades.Disponibilidadasistentasocial;
 import entidades.Motivo;
 import entidades.Persona;
 import entidades.SolicitudRetiro;
@@ -42,7 +44,8 @@ public class CitaBean implements Serializable {
 	 private static SolicitudRetiroService retiroService = abd.getRetiroService();
 	 private static PersonaService personaService = abd.getPersonaService();
 	 private static BoletaService boletaService = abd.getBoletaService();
-		
+	 private static DisponibilidadAsistentaService daservice=abd.getDisponibilidadAsistentaService();
+	 
 	private static final long serialVersionUID = 1L;
 	private String includedPage;
 	private int intCodigoAlumno;
@@ -92,6 +95,7 @@ public class CitaBean implements Serializable {
 		if(this.fechaCita!=null && this.asistentaElegida.getStrCodigoPersona()!=null)
 			cargaArregloHD(this.asistentaElegida,date);
 		else{
+			this.horaCita="";
 			System.out.println("Seleccione fecha, hora y asistenta");
 		}
 		
@@ -110,7 +114,8 @@ public class CitaBean implements Serializable {
 		System.out.println("hora q llega: "+this.horaCita);
 		if(this.fechaCita!=null && this.asistentaElegida.getStrCodigoPersona()!=null)
 			//cargaArregloCombo();
-			cargaArregloHD(this.asistentaElegida,this.fechaCita);
+			//cargaArregloHD(this.asistentaElegida,this.fechaCita);
+			cargaArregloHD2(this.asistentaElegida,this.fechaCita);
 		else{
 			System.out.println("Seleccione fecha, hora y asistenta");
 		}
@@ -185,6 +190,99 @@ public class CitaBean implements Serializable {
 			System.out.println("Asistenta incorrecta ! : "+asistentaElegida2.getStrCodigoPersona());
 	}
 	
+	private void cargaArregloHD2(Persona asistentaElegida2, Date date) {
+		// TODO Auto-generated method stub
+		int eldia=date.getDay();
+		System.out.println("cargaArregloHD2 - asistonta: "+asistentaElegida2.getStrCodigoPersona());
+		System.out.println("cargaArregloHD2 - eldia: "+eldia);
+		try {
+			Disponibilidadasistentasocial midas=daservice.obtenerDisponibilidad(asistentaElegida2.getStrCodigoPersona(),eldia);
+			listaHorasDisponibles=new ArrayList<String>();
+			
+			if(midas!=null){
+				for(int i=Integer.parseInt(midas.getHorainicio());i<Integer.parseInt(midas.getHorafin());i++){
+					if(i<10){
+						listaHorasDisponibles.add("0"+i+":00:00");
+						listaHorasDisponibles.add("0"+i+":30:00");
+					}else {
+						listaHorasDisponibles.add(""+i+":00:00");
+						listaHorasDisponibles.add(""+i+":30:00");
+					}
+				}
+			}else{
+				System.out.println("La disponibilidad no fue encontrada en la BD");
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		/*if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-13131313")){
+			if(eldia==1 || eldia==3 || eldia==5){
+				listaHorasDisponibles=new ArrayList<String>();
+				listaHorasDisponibles.add("09:00:00");
+				listaHorasDisponibles.add("09:30:00");
+				listaHorasDisponibles.add("10:00:00");
+				listaHorasDisponibles.add("10:30:00");
+				listaHorasDisponibles.add("11:00:00");
+				listaHorasDisponibles.add("11:30:00");
+				listaHorasDisponibles.add("12:00:00");
+				listaHorasDisponibles.add("12:30:00");
+			}else{
+				listaHorasDisponibles=new ArrayList<String>();
+			}
+			
+		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-14141414")){
+			if(eldia==1 || eldia==3 || eldia==5){
+				listaHorasDisponibles=new ArrayList<String>();
+				listaHorasDisponibles.add("14:00:00");
+				listaHorasDisponibles.add("14:30:00");
+				listaHorasDisponibles.add("15:00:00");
+				listaHorasDisponibles.add("15:30:00");
+				listaHorasDisponibles.add("16:00:00");
+				listaHorasDisponibles.add("16:30:00");
+				listaHorasDisponibles.add("17:00:00");
+				listaHorasDisponibles.add("17:30:00");
+			}else{
+				listaHorasDisponibles=new ArrayList<String>();
+			}
+			
+		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-55555555")){
+			if(eldia==2 || eldia==4 || eldia==6){
+				listaHorasDisponibles=new ArrayList<String>();
+				listaHorasDisponibles.add("09:00:00");
+				listaHorasDisponibles.add("09:30:00");
+				listaHorasDisponibles.add("10:00:00");
+				listaHorasDisponibles.add("10:30:00");
+				listaHorasDisponibles.add("11:00:00");
+				listaHorasDisponibles.add("11:30:00");
+				listaHorasDisponibles.add("12:00:00");
+				listaHorasDisponibles.add("12:30:00");
+			}else{
+				listaHorasDisponibles=new ArrayList<String>();
+			}
+			
+		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-66666666")){
+			if(eldia==2 || eldia==4 || eldia==6){
+				listaHorasDisponibles=new ArrayList<String>();
+				listaHorasDisponibles.add("14:00:00");
+				listaHorasDisponibles.add("14:30:00");
+				listaHorasDisponibles.add("15:00:00");
+				listaHorasDisponibles.add("15:30:00");
+				listaHorasDisponibles.add("16:00:00");
+				listaHorasDisponibles.add("16:30:00");
+				listaHorasDisponibles.add("17:00:00");
+				listaHorasDisponibles.add("17:30:00");
+			}else{
+				listaHorasDisponibles=new ArrayList<String>();
+			}
+			
+		}
+		else
+			System.out.println("Asistenta incorrecta ! : "+asistentaElegida2.getStrCodigoPersona());*/
+	}
+	
 	public void guardaCita(){
 		System.out.println("guardando cita ... ");
 		System.out.println("fechaCita: "+this.fechaCita);
@@ -198,11 +296,11 @@ public class CitaBean implements Serializable {
 		try {
 			SimpleDateFormat sd2=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			String cadenafechahora=lafecha+" "+this.horaCita;
-			System.out.println("cadenafechahora: "+cadenafechahora);
+			//System.out.println("cadenafechahora: "+cadenafechahora);
 			Date temporal=sd2.parse(cadenafechahora);
 			System.out.println("***temporal: "+temporal);
 			Long tiempoexacto=temporal.getTime();
-			System.out.println("tiempoexacto:"+tiempoexacto);
+			//System.out.println("tiempoexacto:"+tiempoexacto);
 			
 			Cita miciCita=new Cita();
 			miciCita.setAlumno(this.alumnoElegido);
