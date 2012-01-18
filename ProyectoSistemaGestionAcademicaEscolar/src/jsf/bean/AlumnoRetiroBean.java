@@ -62,14 +62,12 @@ public class AlumnoRetiroBean implements Serializable{
 	private StreamedContent documento;
 	private SolicitudRetiro misolicitud=new SolicitudRetiro();
 	private Map<String, Object> misesion;
-	//private StreamedContent image; 
+
 	private String valor;
 	private Alumno retiroAlumno = new Alumno();
 		
 	public AlumnoRetiroBean() {
 		System.out.println("Creado AlumnoRetiroBean...");
-		//sboleta=new Boleta();
-		//btnAdjuntar=true;
 		CargaMotivos();
 	}
 	

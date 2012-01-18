@@ -5,5 +5,5 @@ import entidades.Disponibilidadasistentasocial;
 
 public interface DisponibilidadAsistentaService {
 	
-	public Disponibilidadasistentasocial obtenerDisponibilidad(String codAsistenta) throws Exception;
+	public Disponibilidadasistentasocial obtenerDisponibilidad(String codAsistenta, int eldia) throws Exception;
 }
