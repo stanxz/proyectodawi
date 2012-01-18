@@ -60,12 +60,12 @@
            auto="true" widgetVar="uploader" label="Cargar Certificado"
            fileUploadListener="#{alumnoRetiroBean.cargarDocumentoInsertar}"
            allowTypes="*.png;*.jpg;*.gif;" description="Certificados" 
-           update="msgs,dlgForm:imgFoto,dlgForm:parR" multiple="false"  customUI="true" rendered="#{alumnoRetiroBean.btnAdjuntar}" />
+           update="msgs,dlgForm:imgFoto,dlgForm:parR" multiple="false"  customUI="true" required="true"/>
 		 <p:graphicImage id="imgFoto"  value="#{alumnoRetiroBean.documento}" cache="false"
-             style="height:50%;width:50%" rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
-            
+             style="height:50%;width:50%" />
+         <h:inputHidden id="parR" binding="#{parR}" value="#{alumnoRetiroBean.valor}" required="true" requiredMessage="Ingrese Documento Sustentatorio"/>
 		 <p:commandButton value="Generar Cita" 
-		 				rendered="#{!alumnoRetiroBean.btnAdjuntar}" 
+		 				rendered="#{alumnoRetiroBean.btnCita}" 
 						action="#{citaBean.redericcionaCita}" 
 						title="Genera Nueva Cita" ajax="false">
 						
@@ -91,15 +91,6 @@
           </f:facet>  
 
         </h:panelGrid> 
-        
-        
-     <p:confirmDialog message="Desea registrar esta Solicitud de Retiro?"  
-                header="Generacion de Nueva Cita" severity="alert" widgetVar="confirmation">  
-        <p:commandButton value="Si" update="msgs" oncomplete="confirmation.hide(),datosDialog.hide()"  
-                    actionListener="#{alumnoRetiroBean.generaSolicitud}" />  
-        <p:commandButton value="No" onclick="confirmation.hide(),datosDialog.hide()" type="button" />   
-	</p:confirmDialog>
-
        </h:form>
     </p:dialog> 
     
