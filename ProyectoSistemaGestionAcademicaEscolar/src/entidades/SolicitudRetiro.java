@@ -30,14 +30,6 @@ public class SolicitudRetiro implements Serializable{
 	//@Column(name="codalumno")
 	//private Alumno alumno = new Alumno();
 	
-	/*@Transient
-	private File certificado;
-	@Transient
-	private String certificadoContentType;
-	@Transient
-	private String certificadoFileName;
-	@Transient
-	private InputStream isCertificado;*/
 	@Transient
 	private StreamedContent scImagen;
 	
