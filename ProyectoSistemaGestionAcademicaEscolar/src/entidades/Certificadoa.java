@@ -1,8 +1,13 @@
 package entidades;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
 /**
@@ -16,16 +21,27 @@ public class Certificadoa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int codcertificado;
+	private int intCodcertificado;
 
-    @Lob()
-	private byte[] contenidodoccert;
+	@Column(name="codcita")
+	private int intCodcita;
+	
+	@Column(name="codcita")
+	private String strObservacion;
+	
+	@Column(name="estado")
+	private String strEstado;
+	
+	@Column(name="contenidodoccert")
+	private byte[] contenidodoccertbin;
 
+	@Column(name="docenviado")
 	private int docenviado;
 
-	private String estado;
+	@Column(name="codmotivo")
+	private int codmotivo;
 
-	private String observacion;
+	
 
 	//bi-directional many-to-one association to Cita
    // @ManyToOne
@@ -33,78 +49,72 @@ public class Certificadoa implements Serializable {
 	//private Cita cita;
 
 	//bi-directional many-to-one association to Motivo
-    @ManyToOne
-	private Motivo motivo;
+    //@ManyToOne
+	//private Motivo motivo;
 
 	//bi-directional many-to-one association to Solicitudretiro
-	@OneToMany(mappedBy="certificadoa")
-	private Set<SolicitudRetiro> solicitudretiros;
+	//@OneToMany(mappedBy="certificadoa")
+	//private Set<SolicitudRetiro> solicitudretiros;
 
     public Certificadoa() {
+    	
     }
 
-	public int getCodcertificado() {
-		return this.codcertificado;
+	public int getIntCodcertificado() {
+		return intCodcertificado;
 	}
 
-	public void setCodcertificado(int codcertificado) {
-		this.codcertificado = codcertificado;
+	public void setIntCodcertificado(int intCodcertificado) {
+		this.intCodcertificado = intCodcertificado;
 	}
 
-	public byte[] getContenidodoccert() {
-		return this.contenidodoccert;
+	public int getIntCodcita() {
+		return intCodcita;
 	}
 
-	public void setContenidodoccert(byte[] contenidodoccert) {
-		this.contenidodoccert = contenidodoccert;
+	public void setIntCodcita(int intCodcita) {
+		this.intCodcita = intCodcita;
+	}
+
+	public String getStrObservacion() {
+		return strObservacion;
+	}
+
+	public void setStrObservacion(String strObservacion) {
+		this.strObservacion = strObservacion;
+	}
+
+	public String getStrEstado() {
+		return strEstado;
+	}
+
+	public void setStrEstado(String strEstado) {
+		this.strEstado = strEstado;
+	}
+
+	public byte[] getContenidodoccertbin() {
+		return contenidodoccertbin;
+	}
+
+	public void setContenidodoccertbin(byte[] contenidodoccertbin) {
+		this.contenidodoccertbin = contenidodoccertbin;
 	}
 
 	public int getDocenviado() {
-		return this.docenviado;
+		return docenviado;
 	}
-
+	
 	public void setDocenviado(int docenviado) {
 		this.docenviado = docenviado;
 	}
 
-	public String getEstado() {
-		return this.estado;
+	public int getCodmotivo() {
+		return codmotivo;
 	}
 
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setCodmotivo(int codmotivo) {
+		this.codmotivo = codmotivo;
 	}
 
-	public String getObservacion() {
-		return this.observacion;
-	}
-
-	public void setObservacion(String observacion) {
-		this.observacion = observacion;
-	}
-
-	/*public Cita getCita() {
-		return this.cita;
-	}
-
-	public void setCita(Cita cita) {
-		this.cita = cita;
-	}*/
-	
-	public Motivo getMotivo() {
-		return this.motivo;
-	}
-
-	public void setMotivo(Motivo motivo) {
-		this.motivo = motivo;
-	}
-	
-	public Set<SolicitudRetiro> getSolicitudretiros() {
-		return this.solicitudretiros;
-	}
-
-	public void setSolicitudretiros(Set<SolicitudRetiro> solicitudretiros) {
-		this.solicitudretiros = solicitudretiros;
-	}
-	
+    
 }

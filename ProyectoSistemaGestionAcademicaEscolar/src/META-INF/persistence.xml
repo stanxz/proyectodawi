@@ -26,7 +26,7 @@
 		<class>entidades.Cita</class>
 		<class>entidades.SolicitudRetiro</class>
 		<class>entidades.Disponibilidadasistentasocial</class>
-		<!--<class>entidades.Horario</class>-->
+		<class>entidades.Certificadoa</class>
 		
 		<properties>
 		   <property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
