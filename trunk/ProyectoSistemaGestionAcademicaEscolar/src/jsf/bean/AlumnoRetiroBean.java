@@ -80,8 +80,12 @@ public class AlumnoRetiroBean implements Serializable{
 		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
 		sr.setStrObservacion(observacion);
 		sr.setAsistenteDireccion(null);
-		if(misolicitud.getCertificadobin()!=null)
+		if(misolicitud.getCertificadobin()!=null){
+			System.out.println("certificadobin lleno ... ");
 			sr.setCertificadobin(misolicitud.getCertificadobin());
+		}else{
+			System.out.println("certificadobin vacio");
+		}
 		
 		Apoderado tempoapo=new Apoderado();
 		Persona tempopersona=new Persona();

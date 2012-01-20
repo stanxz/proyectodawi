@@ -13,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.DateSelectEvent;
+import org.primefaces.model.StreamedContent;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.BoletaService;
@@ -59,8 +60,10 @@ public class CitaBean implements Serializable {
 	private String observacion;
 	private Motivo motivo=new Motivo();
 	private SolicitudRetiro misolicitud=new SolicitudRetiro();
+	private SolicitudRetiro lasolicitud=new SolicitudRetiro();
 	private Boleta boleta = new Boleta();
 	private Map<String, Object> misesion;
+	private StreamedContent documento;
 	
 	public CitaBean(){
 		System.out.println("Creando CitaBean...");
@@ -122,73 +125,6 @@ public class CitaBean implements Serializable {
 		
 	}
 	
-	/*private void cargaArregloHD(Persona asistentaElegida2, Date date) {
-		// TODO Auto-generated method stub
-		int eldia=date.getDay();
-		if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-13131313")){
-			if(eldia==1 || eldia==3 || eldia==5){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("09:00:00");
-				listaHorasDisponibles.add("09:30:00");
-				listaHorasDisponibles.add("10:00:00");
-				listaHorasDisponibles.add("10:30:00");
-				listaHorasDisponibles.add("11:00:00");
-				listaHorasDisponibles.add("11:30:00");
-				listaHorasDisponibles.add("12:00:00");
-				listaHorasDisponibles.add("12:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-14141414")){
-			if(eldia==1 || eldia==3 || eldia==5){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("14:00:00");
-				listaHorasDisponibles.add("14:30:00");
-				listaHorasDisponibles.add("15:00:00");
-				listaHorasDisponibles.add("15:30:00");
-				listaHorasDisponibles.add("16:00:00");
-				listaHorasDisponibles.add("16:30:00");
-				listaHorasDisponibles.add("17:00:00");
-				listaHorasDisponibles.add("17:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-55555555")){
-			if(eldia==2 || eldia==4 || eldia==6){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("09:00:00");
-				listaHorasDisponibles.add("09:30:00");
-				listaHorasDisponibles.add("10:00:00");
-				listaHorasDisponibles.add("10:30:00");
-				listaHorasDisponibles.add("11:00:00");
-				listaHorasDisponibles.add("11:30:00");
-				listaHorasDisponibles.add("12:00:00");
-				listaHorasDisponibles.add("12:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-66666666")){
-			if(eldia==2 || eldia==4 || eldia==6){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("14:00:00");
-				listaHorasDisponibles.add("14:30:00");
-				listaHorasDisponibles.add("15:00:00");
-				listaHorasDisponibles.add("15:30:00");
-				listaHorasDisponibles.add("16:00:00");
-				listaHorasDisponibles.add("16:30:00");
-				listaHorasDisponibles.add("17:00:00");
-				listaHorasDisponibles.add("17:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}
-		else
-			System.out.println("Asistenta incorrecta ! : "+asistentaElegida2.getStrCodigoPersona());
-	}*/
 	
 	private void cargaArregloHD2(Persona asistentaElegida2, Date date) {
 		// TODO Auto-generated method stub
@@ -218,69 +154,6 @@ public class CitaBean implements Serializable {
 			e.printStackTrace();
 		}
 		
-		/*if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-13131313")){
-			if(eldia==1 || eldia==3 || eldia==5){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("09:00:00");
-				listaHorasDisponibles.add("09:30:00");
-				listaHorasDisponibles.add("10:00:00");
-				listaHorasDisponibles.add("10:30:00");
-				listaHorasDisponibles.add("11:00:00");
-				listaHorasDisponibles.add("11:30:00");
-				listaHorasDisponibles.add("12:00:00");
-				listaHorasDisponibles.add("12:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-14141414")){
-			if(eldia==1 || eldia==3 || eldia==5){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("14:00:00");
-				listaHorasDisponibles.add("14:30:00");
-				listaHorasDisponibles.add("15:00:00");
-				listaHorasDisponibles.add("15:30:00");
-				listaHorasDisponibles.add("16:00:00");
-				listaHorasDisponibles.add("16:30:00");
-				listaHorasDisponibles.add("17:00:00");
-				listaHorasDisponibles.add("17:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-55555555")){
-			if(eldia==2 || eldia==4 || eldia==6){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("09:00:00");
-				listaHorasDisponibles.add("09:30:00");
-				listaHorasDisponibles.add("10:00:00");
-				listaHorasDisponibles.add("10:30:00");
-				listaHorasDisponibles.add("11:00:00");
-				listaHorasDisponibles.add("11:30:00");
-				listaHorasDisponibles.add("12:00:00");
-				listaHorasDisponibles.add("12:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}else if(asistentaElegida2.getStrCodigoPersona().equalsIgnoreCase("PE-66666666")){
-			if(eldia==2 || eldia==4 || eldia==6){
-				listaHorasDisponibles=new ArrayList<String>();
-				listaHorasDisponibles.add("14:00:00");
-				listaHorasDisponibles.add("14:30:00");
-				listaHorasDisponibles.add("15:00:00");
-				listaHorasDisponibles.add("15:30:00");
-				listaHorasDisponibles.add("16:00:00");
-				listaHorasDisponibles.add("16:30:00");
-				listaHorasDisponibles.add("17:00:00");
-				listaHorasDisponibles.add("17:30:00");
-			}else{
-				listaHorasDisponibles=new ArrayList<String>();
-			}
-			
-		}
-		else
-			System.out.println("Asistenta incorrecta ! : "+asistentaElegida2.getStrCodigoPersona());*/
 	}
 	
 	public void guardaCita(){
@@ -355,8 +228,15 @@ public class CitaBean implements Serializable {
 		sr.setStrMotivo(""+motivo.getIntCodigoMotivo());
 		sr.setStrObservacion(observacion);
 		sr.setAsistenteDireccion(null);
-		if(misolicitud.getCertificadobin()!=null)
-			sr.setCertificadobin(misolicitud.getCertificadobin());
+		
+		if(lasolicitud.getCertificadobin()!=null){
+			System.out.println("certificadobin lleno ... ");
+			
+			sr.setCertificadobin(lasolicitud.getCertificadobin());
+		}else{
+			System.out.println("certificadobin vacio");
+		}
+			
 		
 		Apoderado tempoapo=new Apoderado();
 		Persona tempopersona=new Persona();
@@ -523,14 +403,6 @@ public class CitaBean implements Serializable {
 		this.nuevaCita = nuevaCita;
 	}
 
-	/*public String getFechaCita() {
-		return fechaCita;
-	}
-
-	public void setFechaCita(String fechaCita) {
-		this.fechaCita = fechaCita;
-	}*/
-
 	public String getHoraCita() {
 		return horaCita;
 	}
@@ -585,6 +457,22 @@ public class CitaBean implements Serializable {
 
 	public void setBoleta(Boleta boleta) {
 		this.boleta = boleta;
+	}
+
+	public StreamedContent getDocumento() {
+		return documento;
+	}
+
+	public void setDocumento(StreamedContent documento) {
+		this.documento = documento;
+	}
+
+	public SolicitudRetiro getLasolicitud() {
+		return lasolicitud;
+	}
+
+	public void setLasolicitud(SolicitudRetiro lasolicitud) {
+		this.lasolicitud = lasolicitud;
 	}
 	
 	
