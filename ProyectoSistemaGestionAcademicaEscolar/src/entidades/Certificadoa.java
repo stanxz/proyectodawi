@@ -26,7 +26,7 @@ public class Certificadoa implements Serializable {
 	@Column(name="codcita")
 	private int intCodcita;
 	
-	@Column(name="codcita")
+	@Column(name="observacion")
 	private String strObservacion;
 	
 	@Column(name="estado")
