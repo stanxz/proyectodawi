@@ -19,7 +19,8 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 <h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
 <h:form > 
 <p:tooltip global="true"/>
-   <p:tabView onTabShow="mymap.checkResize()">  
+   <p:tabView onTabShow="mymap.checkResize()"> 
+    
     <p:tab title="Inicio">
     <!-- <p:galleria value="#{galleriaBean.images}"  
             var="image" effect="slide" effectSpeed="1000"  
@@ -33,18 +34,28 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 <!--<p:galleria value="#{galleriaBean.images}" var="image">  
     <p:graphicImage value="/images/ima/#{image}" />  
 </p:galleria> --> 
- 	
- 	 <p:galleria effect="slide" effectDuration="1000" panelWidth="10" panelHeight="10" 
- 				frameWidth="20" frameHeight="20" effectSpeed="1000" >
-	 <p:graphicImage value="/images/ima1.jpg" title="ima1" alt="ima1 desc"/>
-	 <p:graphicImage value="/images/ima2.jpg" title="ima1" alt="ima2 desc"/>
-	 <p:graphicImage value="/images/ima3.jpg" title="ima1" alt="ima3 desc"/>
-	 <p:graphicImage value="/images/ima4.jpg" title="ima1" alt="ima4 desc"/> 
+ 	<table  width="800" align="center"> 
+ 	<tr>
+ 	<td width="800"> 
+ 	 <p:galleria effect="slide" effectDuration="700" style="height:70%;width:85%"
+ 				effectSpeed="1000" border="0" rendered="true">
+	 <p:graphicImage value="/images/ima1.jpg" title="ima1" alt="ima1 desc" />
+	 <p:graphicImage value="/images/ima2.jpg" title="ima1" alt="ima2 desc" />
+	 <p:graphicImage value="/images/ima3.jpg" title="ima1" alt="ima3 desc" />
+	 <p:graphicImage value="/images/ima4.jpg" title="ima1" alt="ima4 desc" />
+	<p:graphicImage value="/images/cole1.jpg" title="ima1" alt="ima5 desc" /> 
+	 <p:graphicImage value="/images/cole2.jpg" title="ima1" alt="ima6 desc" /> 
+	 <p:graphicImage value="/images/cole3.jpg" title="ima1" alt="ima7 desc" /> 
+	 <p:graphicImage value="/images/cole4.jpg" title="ima1" alt="ima8 desc" /> 
+	 <p:graphicImage value="/images/cole5.jpg" title="ima1" alt="ima9 desc" />
  	</p:galleria>
+ 	</td>
+ 	</tr>
+ 	</table>
  
- 
-        <h:panelGrid columns="2" cellpadding="10">        
-        <f:view contentType="text/html">
+        <h:panelGrid columns="2" cellpadding="10">             
+        <table>
+        <tr>
         <td align="justify">
         San Carlos, nuestra intstitución educativa, tiene el compromiso profesional y social de formar permanentemente
         a nuestros educandos en el rconocimiento de ellos, como centro del proceso educativo, de cambio y desarrollo de
@@ -58,7 +69,8 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         la informática, imprescindibles en este siglo XXI como instrumentos indispensables para no estar ajenos a la 
         globalización y comunicación audiovisual, interactiva y virtual.
         </td>
-        </f:view> 
+        </tr>
+        </table>
         </h:panelGrid>  
     </p:tab>  
   
@@ -66,8 +78,7 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 		<h:panelGrid columns="2" cellpadding="10"> 
   
 	<p:fieldset legend="Nuestra Visión">  
-    <h:panelGrid columns="2" cellpadding="10">  
-
+    <h:panelGrid columns="2" cellpadding="10">
 		<p:graphicImage value="/images/cole5.jpg" height="300" width="300"/>  
 		<!--<p:media value="http://www.youtube.com/v/pnRY4hEzyT0" width="200" height="200" player="flash"/>--> 
         <table>
@@ -86,7 +97,8 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         </table> 
     </h:panelGrid>  
 	</p:fieldset> 
-    </h:panelGrid> 
+	
+    </h:panelGrid>     
     </p:tab>
     
     <p:tab title="Misión">
@@ -95,7 +107,7 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 
 	<p:fieldset legend="Nuestra Misión">  
     <h:panelGrid columns="2" cellpadding="10">  
-        <p:graphicImage value="/images/cole4.jpg" height="300" width="250"/>
+        <p:graphicImage value="/images/cole4.jpg" height="350" width="250"/>
         <table>
         <tr>
         <td align="justify">
