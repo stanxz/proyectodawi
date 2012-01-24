@@ -10,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudExoneracionService;
+import utiles.EnviaMail;
 
 import entidades.AsistenteCoordinacionAcademica;
 import entidades.Persona;
@@ -59,7 +60,11 @@ public class EvaluarExoneracionBean implements Serializable{
 		
 		try {
 			exoneracionService.apruebaSolicitudExoneracion(selectedSolicitud);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","Solicitud APROBADA"));
+			
+			EnviaMail enviaMail = new EnviaMail();
+			enviaMail.enviarCorreoEvaluarSolicitudExoneracion(selectedSolicitud, "APROBADA");
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","Solicitud APROBADA, resultado enviado al apoderado"));
 		} catch (Exception e) {
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","ERROR: Evaluación Cancelada"));
@@ -89,7 +94,10 @@ public class EvaluarExoneracionBean implements Serializable{
 		
 		try {
 			exoneracionService.desapruebaSolicitudExoneracion(selectedSolicitud);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","Solicitud DESAPROBADA"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","Solicitud DESAPROBADA, resultado enviado al apoderado"));
+			
+			EnviaMail enviaMail = new EnviaMail();
+			enviaMail.enviarCorreoEvaluarSolicitudExoneracion(selectedSolicitud, "DESAPROBADA");
 		} catch (Exception e) {
 			e.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Evaluación Solicitud de Exoneracion","ERROR: Evaluación Cancelada"));

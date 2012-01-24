@@ -13,6 +13,7 @@ import javax.mail.internet.MimeMessage;
 import entidades.Alumno;
 import entidades.Cita;
 import entidades.Persona;
+import entidades.SolicitudExoneracion;
 import entidades.Usuario;
 
 public class EnviaMail {
@@ -194,6 +195,54 @@ public class EnviaMail {
 					}
 						
 				}
+			   message.setText(cuerpomensaje);
+
+			   // Lo enviamos.
+			   Transport t = session.getTransport("smtp");
+			   t.connect("proylp2@gmail.com", "cibertec");
+			   t.sendMessage(message, message.getAllRecipients());
+			   // Cierre.
+	           t.close();
+		   } catch (MessagingException e) {
+				e.printStackTrace();
+				System.out.println("error enviando el correo : "+e.getMessage());
+		   }catch(Exception e1){
+			   	e1.printStackTrace();
+				System.out.println("error enviando el correo : "+e1.getMessage());
+		   }
+	}
+	
+	public void enviarCorreoEvaluarSolicitudExoneracion(SolicitudExoneracion exoneracion,String estado) {
+		// Propiedades de la conexión
+		   Properties props = new Properties();
+		   props.setProperty("mail.smtp.host", "smtp.gmail.com");
+		   props.setProperty("mail.smtp.starttls.enable", "true");
+		   props.setProperty("mail.smtp.port", "587");
+		   props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+		   props.setProperty("mail.smtp.auth", "true");
+
+		   // Preparamos la sesion
+		   Session session = Session.getDefaultInstance(props);
+
+		   // Construimos el mensaje
+		   MimeMessage message = new MimeMessage(session);
+
+		   try {
+			   message.setFrom(new InternetAddress("proylp2@gmail.com"));
+			   message.addRecipient(
+			       Message.RecipientType.TO,
+			       new InternetAddress(exoneracion.getAlumno().getApoderados().getPersonas().getStrMail()));
+
+			   message.setSubject("SGAE - Trámite Solicitud Exoneración");
+			   String cuerpomensaje="Estimado "+exoneracion.getAlumno().getApoderados().getPersonas().getStrNombre()+" "+exoneracion.getAlumno().getApoderados().getPersonas().getStrApellidoPaterno()+ 
+			   ", \n\n remitimos la respuesta a su solicitud: ";
+			   
+
+				cuerpomensaje+="\n Codigo Solicitud : " + exoneracion.getIntIdCodigoSolicitudExoneracion();
+				cuerpomensaje+="\n Alumno           : " + exoneracion.getAlumno().getStrNombres() + " " + exoneracion.getAlumno().getStrApellidoPaterno();
+				cuerpomensaje+="\n Asignatura       : " + exoneracion.getAsignaturas().getStrNombreAsignatura();
+				cuerpomensaje+="\n Estado           : Solicitud " + estado ; 
+	
 			   message.setText(cuerpomensaje);
 
 			   // Lo enviamos.
