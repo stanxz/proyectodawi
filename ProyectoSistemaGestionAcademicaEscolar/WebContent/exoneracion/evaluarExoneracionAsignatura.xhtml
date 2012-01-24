@@ -8,6 +8,12 @@
 
 	<ui:define name="content">
 	<div align="left">
+	<p:tooltip global="true"/>
+	<p:ajaxStatus onstart="statusDialog2.show();" onsuccess="statusDialog2.hide();"/>  
+    <p:dialog modal="true" widgetVar="statusDialog2" header="Status"   
+        draggable="false" closable="false" resizable="false">  
+    	<p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
+    </p:dialog>   
 	<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
 		<h:form id="form" style="width: 800px;">
 			 <p:dataTable id="listaSE" var="solicitud" value="#{evaluarExoneracionBean.solicitudes}" 
