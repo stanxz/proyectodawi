@@ -31,7 +31,8 @@ public class EvaluarRetiroBean implements Serializable {
 	private ArrayList<SolicitudRetiro> listaSR;
 	private Persona persona;
 	private AsistenteDireccionAcademica ada;
-	private SolicitudRetiro selectedSolicitud,selectedSolicitud2;
+	private SolicitudRetiro selectedSolicitud;
+	private SolicitudRetiro selectedSolicitud2;
 	private Cita loadedCita;
 	private boolean editMode;
 	private boolean bandera=false;
@@ -51,8 +52,6 @@ public class EvaluarRetiroBean implements Serializable {
 						System.out.println("selectedSolicitud2 - "+m.getName().substring(6).toUpperCase() + " : " +  m.invoke(selectedSolicitud2));
 					}	
 				}
-				//System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
-				//System.out.println(nuevoAlumno.getDistritos().getIntIdDistrito());
 			} catch (Exception e) {
 				e.printStackTrace();
 				System.out.println("Error al pintar atributos del selectedSolicitud2");
@@ -72,18 +71,50 @@ public class EvaluarRetiroBean implements Serializable {
 				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				//e.printStackTrace();
+				bandera=false;
+				System.out.println("Cita aun no atendida");
+			}
+		}else{
+			System.out.println("selectedSolicitud2 es nulaaaa");
+		}
+	}
+	
+	public void cargaDatosCitaEvaluada2(){
+		System.out.println("en cargaDatosCitaEvaluada2 ... ");
+		
+		if(selectedSolicitud!=null){
+			try {
+				for (Method m : selectedSolicitud.getClass().getMethods()){
+					if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))){
+						System.out.println("selectedSolicitud - "+m.getName().substring(6).toUpperCase() + " : " +  m.invoke(selectedSolicitud));
+					}	
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("Error al pintar atributos del selectedSolicitud");
+			}
+			
+			System.out.println("cod del alumno en la solicitud: "+selectedSolicitud.getAlumno().getStrCodigoAlumno());
+			
+			try {
+				System.out.println("cargando datos de cita evaluada ... ");
+				loadedCita=retiroService.cargaDatosCitaxEvaluar(selectedSolicitud);
+				if(loadedCita!=null){
+					bandera=true;
+					System.out.println("cita realizada: "+loadedCita.getIntcodcita());
+				}else{
+					bandera=false;
+					System.out.println("Cita aun no atendida");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
 				bandera=false;
 				System.out.println("Cita aun no atendida");
 			}
 		}else{
 			System.out.println("selectedSolicitud es nulaaaa");
 		}
-		
-		
-		
 	}
-	
 	
 	public ArrayList<SolicitudRetiro> getListaSR() {
 

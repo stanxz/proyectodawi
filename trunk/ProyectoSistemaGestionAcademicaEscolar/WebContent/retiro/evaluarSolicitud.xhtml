@@ -42,10 +42,7 @@
                      <f:setPropertyActionListener value="#{solicitud}" target="#{evaluarRetiroBean.selectedSolicitud}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{evaluarRetiroBean.editMode}" /> 
                  </p:commandButton>
-                 <p:commandButton actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" title="Ver Detalle de Cita">  
-                     <f:setPropertyActionListener value="#{solicitud}" target="#{evaluarRetiroBean.selectedSolicitud2}" />  
-                     <f:setPropertyActionListener value="#{true}" target="#{evaluarRetiroBean.editMode}" /> 
-                 </p:commandButton>   
+   
              </h:panelGrid>  
         </p:column>
     </p:dataTable>
@@ -67,7 +64,7 @@
             
              <h:outputText value="CertificadoAS" style="font-weight:bold"/>  
             <h:panelGroup>  
-                <p:inputText value="#{evaluarRetiroBean.selectedSolicitud.asignaturas.strNombreAsignatura}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarExoneracionBean.editMode}" size="30" />  
+                  
             </h:panelGroup>   
             
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
@@ -88,6 +85,8 @@
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+                    <p:commandButton actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
+                 </p:commandButton>
   				</h:panelGroup>
               </p:outputPanel>  
           </f:facet> 
