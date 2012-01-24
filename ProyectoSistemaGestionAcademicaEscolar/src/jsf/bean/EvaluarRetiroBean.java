@@ -1,6 +1,7 @@
 package jsf.bean;
 
 import java.io.Serializable;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 
 import javax.faces.bean.ManagedBean;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudRetiroService;
 import entidades.AsistenteDireccionAcademica;
+import entidades.Cita;
 import entidades.Persona;
 import entidades.SolicitudRetiro;
 import entidades.Usuario;
@@ -29,14 +31,60 @@ public class EvaluarRetiroBean implements Serializable {
 	private ArrayList<SolicitudRetiro> listaSR;
 	private Persona persona;
 	private AsistenteDireccionAcademica ada;
-	private SolicitudRetiro selectedSolicitud;
+	private SolicitudRetiro selectedSolicitud,selectedSolicitud2;
+	private Cita loadedCita;
 	private boolean editMode;
+	private boolean bandera=false;
 	
 	public EvaluarRetiroBean() {
 		// TODO Auto-generated constructor stub
 		System.out.println("creando EvaluarRetiroBean ...");
 	}
 
+	public void cargaDatosCitaEvaluada(){
+		System.out.println("en cargaDatosCitaEvaluada ... ");
+		
+		if(selectedSolicitud2!=null){
+			try {
+				for (Method m : selectedSolicitud2.getClass().getMethods()){
+					if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))){
+						System.out.println("selectedSolicitud2 - "+m.getName().substring(6).toUpperCase() + " : " +  m.invoke(selectedSolicitud2));
+					}	
+				}
+				//System.out.println(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona());
+				//System.out.println(nuevoAlumno.getDistritos().getIntIdDistrito());
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("Error al pintar atributos del selectedSolicitud2");
+			}
+			
+			System.out.println("cod del alumno en la solicitud2: "+selectedSolicitud2.getAlumno().getStrCodigoAlumno());
+			
+			try {
+				System.out.println("cargando datos de cita evaluada ... ");
+				loadedCita=retiroService.cargaDatosCitaxEvaluar(selectedSolicitud2);
+				if(loadedCita!=null){
+					bandera=true;
+					System.out.println("cita realizada: "+loadedCita.getIntcodcita());
+				}else{
+					bandera=false;
+					System.out.println("Cita aun no atendida");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+				bandera=false;
+				System.out.println("Cita aun no atendida");
+			}
+		}else{
+			System.out.println("selectedSolicitud es nulaaaa");
+		}
+		
+		
+		
+	}
+	
+	
 	public ArrayList<SolicitudRetiro> getListaSR() {
 
 		try {
@@ -97,5 +145,31 @@ public class EvaluarRetiroBean implements Serializable {
 	public void setEditMode(boolean editMode) {
 		this.editMode = editMode;
 	}
+
+	public Cita getLoadedCita() {
+		return loadedCita;
+	}
+
+	public void setLoadedCita(Cita loadedCita) {
+		this.loadedCita = loadedCita;
+	}
+
+	public boolean isBandera() {
+		return bandera;
+	}
+
+	public void setBandera(boolean bandera) {
+		this.bandera = bandera;
+	}
+
+	public SolicitudRetiro getSelectedSolicitud2() {
+		return selectedSolicitud2;
+	}
+
+	public void setSelectedSolicitud2(SolicitudRetiro selectedSolicitud2) {
+		this.selectedSolicitud2 = selectedSolicitud2;
+	}
+
+
 	
 }

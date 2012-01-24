@@ -41,6 +41,10 @@
                  <p:commandButton update="dlgForm:display,dlgForm:image" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Solicitud">  
                      <f:setPropertyActionListener value="#{solicitud}" target="#{evaluarRetiroBean.selectedSolicitud}" />  
                      <f:setPropertyActionListener value="#{true}" target="#{evaluarRetiroBean.editMode}" /> 
+                 </p:commandButton>
+                 <p:commandButton actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" title="Ver Detalle de Cita">  
+                     <f:setPropertyActionListener value="#{solicitud}" target="#{evaluarRetiroBean.selectedSolicitud2}" />  
+                     <f:setPropertyActionListener value="#{true}" target="#{evaluarRetiroBean.editMode}" /> 
                  </p:commandButton>   
              </h:panelGrid>  
         </p:column>
@@ -100,6 +104,54 @@
    	   </h:panelGrid>
 	</h:form>
 	</p:dialog>
+	
+	<p:dialog header="Detalle de Cita" widgetVar="carDialog2" resizable="false" id="carDlg2"
+			  showEffect="fade" hideEffect="explode" modal="true" width="800" position="top" >
+	<h:form id="dlgForm2">
+	  <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >
+	    
+	    <c:if test="#{evaluarRetiroBean.bandera==true}">
+
+		    <h:outputText value="Codigo Asistenta" style="font-weight:bold"/>  
+            <h:panelGroup>    
+                  
+            </h:panelGroup>
+            
+            <h:outputText value="Alumno" style="font-weight:bold"/>  
+            <h:panelGroup>    
+              <h:outputText value="#{evaluarRetiroBean.selectedSolicitud.alumno.strNombres} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>    
+            </h:panelGroup>
+            
+             <h:outputText value="Apoderado" style="font-weight:bold"/>  
+            <h:panelGroup>    
+                  
+            </h:panelGroup> 
+            
+             <h:outputText value="Fecha Cita" style="font-weight:bold"/>  
+            <h:panelGroup>  
+                  
+            </h:panelGroup>   
+            
+            <h:outputText value="Observaciones" style="font-weight:bold"/>  
+            <h:panelGroup>  
+                  
+            </h:panelGroup> 
+        </c:if>    
+        <c:otherwise>
+        	<h:outputText value="La cita aun no ha sido evaluada" style="font-weight:bold"/>
+        </c:otherwise>    
+
+			 <f:facet name="footer"> 
+                <p:outputPanel layout="block" style="text-align:center">
+                <h:panelGroup>
+                    <p:commandButton value="Cerrar" onclick="carDialog2.hide()" type="button" image="ui-icon ui-icon-close"/>
+  				</h:panelGroup>
+              </p:outputPanel>  
+          </f:facet> 
+      </h:panelGrid>
+	</h:form>
+	</p:dialog>
+	
 	</div>
 	</ui:define>
 	

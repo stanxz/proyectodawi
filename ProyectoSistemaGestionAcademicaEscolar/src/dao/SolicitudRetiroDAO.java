@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Cita;
 import entidades.SolicitudRetiro;
 
 public interface SolicitudRetiroDAO {
@@ -16,4 +17,5 @@ public interface SolicitudRetiroDAO {
 	public ArrayList<SolicitudRetiro> obtenerSolicitudesPendientes() throws Exception;
 	public ArrayList<SolicitudRetiro> obtenerSRxADA(
 			AsistenteDireccionAcademica ada)throws Exception;
+	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)throws Exception;;
 }
