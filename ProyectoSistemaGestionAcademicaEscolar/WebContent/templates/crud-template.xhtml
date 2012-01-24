@@ -29,7 +29,7 @@ DataTable - Row Selection
 
     <p:layoutUnit position="bottom" height="75">  
        <ui:insert name="footer"></ui:insert>
-    </p:layoutUnit>  
+    </p:layoutUnit>   
 </p:layout>  	
  
  -->
@@ -48,45 +48,57 @@ DataTable - Row Selection
 	</title> 
 <h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
 </h:head>
-<h:body style="background-color: #A8C2D3;">
+<h:body style="background-color: #A8C2D3;"><!-- <h:body style="background-color: #A8C2D3;"> -->
 <div id="container" align="center">
-	<table width="100%">
+
+	<table width="90%" bgcolor="#A8C2D3" border="0.5">
 		<tr>
-		    <td height="100px" width="25px"></td>
-			<td height="100px" width="100px">
+		<td width="50" bgcolor="#A8C2D3"></td> 
+		<td width="50" bgcolor="#A8C2D3"></td> 
+			<td height="50" width="900" bgcolor="white">
 			<div id="header">
 				<ui:insert name="header">
-					<ui:include src="/snippets/header.xhtml" />
+					<ui:include src="/snippets/header.xhtml"/>
 				</ui:insert>
 			</div>
 			</td>
+		<td width="50" bgcolor="#A8C2D3"></td>
+		<td width="50" bgcolor="#A8C2D3"></td>
 		</tr>
+		</table>
+		
+		<table width="90%" border="0.5">
 		<tr>
-		    <td height="400px" width="25px" >
+		<td width="50" bgcolor="#A8C2D3"></td> 
+		    <td height="350" width="200">
 		    <div id="menu">
-				<ui:insert name="menu" >
+				<ui:insert name="menu">
 					<ui:include src="/snippets/menu.xhtml"></ui:include>
 				</ui:insert>
 			</div>    
 		    </td>
-			<td height="400px" width="100px">
+			<td height="350" width="100">
 			<div id="content">
 				<ui:insert name="content"></ui:insert>
 			</div>
 			</td>
+			<td width="50" bgcolor="#A8C2D3"></td> 
 		</tr>
+		</table>
+		
+		<table width="90%" bgcolor="#A8C2D3" border="0.5">
 		<tr>
-		    <td height="100px" width="25px"></td>
-			<td height="100px" width="100px">
+		<td width="50" bgcolor="#A8C2D3"></td> 
+			<td height="100" width="900" bgcolor="white" align="center">
 				<div id="footer">
 					<ui:insert name="footer">
-						<ui:include src="/snippets/footer.xhtml" />
+						<ui:include src="/snippets/footer.xhtml"/>
 					</ui:insert>
 				</div>
 			</td>
+			<td width="50" bgcolor="#A8C2D3"></td> 
 		</tr>
 	</table>
 </div>
-
 </h:body>
 </html>
