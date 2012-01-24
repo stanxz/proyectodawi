@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Cita;
 import entidades.SolicitudRetiro;
 
 public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
@@ -155,6 +156,28 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 
 		em.close();
 		return solicitudesRetiro;
+	}
+
+	@Override
+	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)
+			throws Exception {
+		System.out.println("cargando Cita Evaluada");
+		em = emf.createEntityManager();
+		//ArrayList<Cita> solicitudesRetiro = new ArrayList<Cita>();
+		Query q=em.createQuery("SELECT c FROM Cita c WHERE c.strestado = 'EVALUADA' AND c.alumno.strCodigoAlumno=?1");
+		q.setParameter(1, selectedSolicitud.getAlumno().getStrCodigoAlumno());
+		
+		List lista = q.getResultList();
+		 Cita entidad=new Cita();
+		 if(lista.size()>0){
+				//for ( int i=0; i < lista.size(); i++ ) {
+					 entidad = (Cita)lista.get(0);
+				//	solicitudesRetiro.add(entidad);
+				//}
+		 }
+
+		em.close();
+		return entidad;
 	}
 
 }

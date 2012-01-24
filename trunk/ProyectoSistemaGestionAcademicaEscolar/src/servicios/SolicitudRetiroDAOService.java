@@ -7,6 +7,7 @@ import dao.SolicitudRetiroDAO;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Cita;
 import entidades.SolicitudRetiro;
 
 public class SolicitudRetiroDAOService implements SolicitudRetiroService {
@@ -58,6 +59,13 @@ public class SolicitudRetiroDAOService implements SolicitudRetiroService {
 			AsistenteDireccionAcademica ada) throws Exception {
 		// TODO Auto-generated method stub
 		return retirodao.obtenerSRxADA(ada);
+	}
+
+	@Override
+	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return retirodao.cargaDatosCitaxEvaluar(selectedSolicitud);
 	}
 
 }
