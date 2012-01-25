@@ -3,7 +3,9 @@ package jsf.bean;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudRetiroService;
+import utiles.EnviaMail;
 import entidades.AsistenteDireccionAcademica;
 import entidades.Cita;
 import entidades.Persona;
@@ -36,10 +39,15 @@ public class EvaluarRetiroBean implements Serializable {
 	private Cita loadedCita;
 	private boolean editMode;
 	private boolean bandera=false;
+	public Map<String, Object> estasession;
+	private int numero;
 	
 	public EvaluarRetiroBean() {
 		// TODO Auto-generated constructor stub
 		System.out.println("creando EvaluarRetiroBean ...");
+		estasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
+		numero=((Usuario)estasession.get("b_usuario")).getPersonas().getIntDNI();
+		System.out.println("numero: "+numero);
 	}
 
 	public void cargaDatosCitaEvaluada(){
@@ -113,6 +121,38 @@ public class EvaluarRetiroBean implements Serializable {
 			}
 		}else{
 			System.out.println("selectedSolicitud es nulaaaa");
+		}
+	}
+	
+	public void apruebaSolicitud(){
+		System.out.println("aprobando SR ... ");
+		try {
+			retiroService.apruebaSR(selectedSolicitud);
+			FacesMessage msg = new FacesMessage("Solicitud de Retiro Aprobada","Se aprobó la Solicitud de Retiro con ID "+selectedSolicitud.getIntIdCodigoSolicitudRetiro()+" del Alumno "+selectedSolicitud.getAlumno().getStrNombres()+" "+selectedSolicitud.getAlumno().getStrApellidoPaterno());
+    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+			System.out.println("SR aprobada exitosamente ... enviando correo ... ");
+			EnviaMail enviador=new EnviaMail();
+			enviador.enviarCorreoEvaluacionSR(selectedSolicitud,true);
+		} catch (Exception e) {
+			System.out.println("No se pudo aprobar SR ... "+e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se pudo aprobar la SR","Error: "+e.getMessage() ));
+			//e.printStackTrace();
+		}
+	}
+	
+	public void desapruebaSolicitud(){
+		System.out.println("desaprobando SR ... ");
+		try {
+			retiroService.desapruebaSR(selectedSolicitud);
+			FacesMessage msg = new FacesMessage("Solicitud de Retiro Rechazada","Se rechazó la Solicitud de Retiro con ID "+selectedSolicitud.getIntIdCodigoSolicitudRetiro()+" del Alumno "+selectedSolicitud.getAlumno().getStrNombres()+" "+selectedSolicitud.getAlumno().getStrApellidoPaterno());
+    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+			System.out.println("SR desaprobada exitosamente ... enviando correo ... ");
+			EnviaMail enviador=new EnviaMail();
+			enviador.enviarCorreoEvaluacionSR(selectedSolicitud,false);
+		} catch (Exception e) {
+			System.out.println("No se pudo desaprobar SR ... "+e.getMessage());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se pudo desaprobar la SR","Error: "+e.getMessage() ));
+			//e.printStackTrace();
 		}
 	}
 	
@@ -201,6 +241,20 @@ public class EvaluarRetiroBean implements Serializable {
 		this.selectedSolicitud2 = selectedSolicitud2;
 	}
 
+	public Map<String, Object> getEstasession() {
+		return estasession;
+	}
 
-	
+	public void setEstasession(Map<String, Object> estasession) {
+		this.estasession = estasession;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
 }

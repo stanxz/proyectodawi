@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
+import utiles.Constantes;
+
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.Cita;
@@ -55,18 +57,6 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		System.out.println("Codigo de alumno q llega: "+sr.getAlumno().getStrCodigoAlumno());
 		SolicitudRetiro entidadSR=new SolicitudRetiro();
 		em = emf.createEntityManager();
-		//Date fechahoy=new java.sql.Date(new java.util.Date().getTime());
-		/*Calendar ahoraCal = Calendar.getInstance();
-		//System.out.println("*** getclass: "+ahoraCal.getClass());
-		System.out.println("1*** gettime: "+ahoraCal.getTime());
-		int año=ahoraCal.get(Calendar.YEAR);
-		System.out.println("el anioooo: "+año);
-		ahoraCal.set(año, 3, 1);
-		System.out.println("2*** gettime: "+ahoraCal.getTime());
-		Date fechamenor=new java.sql.Date(ahoraCal.getTimeInMillis());
-		ahoraCal.set(año, 11, 1);
-		System.out.println("3*** gettime: "+ahoraCal.getTime());
-		Date fechamayor=new java.sql.Date(ahoraCal.getTimeInMillis());*/
 		
 		Query q=em.createQuery("SELECT sr FROM SolicitudRetiro sr " +
 				"WHERE sr.strEstado='PENDIENTE' AND sr.alumno.strCodigoAlumno=?1");
@@ -178,6 +168,52 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 
 		em.close();
 		return entidad;
+	}
+
+	@Override
+	public void apruebaSR(SolicitudRetiro selectedSolicitud) throws Exception {
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2. ejecuta las operaciones 
+		//2.1 busca Empleado por llave primaria
+		SolicitudRetiro entidadSR = em.find(SolicitudRetiro.class, selectedSolicitud.getIntIdCodigoSolicitudRetiro());
+		entidadSR.setStrEstado(Constantes.ESTADOSR_APROBADO);
+		//2.3 actualiza Empleado
+		em.merge(entidadSR);
+		em.flush();
+				
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	
+	}
+
+	@Override
+	public void desapruebaSR(SolicitudRetiro selectedSolicitud)
+			throws Exception {
+		// TODO Auto-generated method stub
+
+		em=emf.createEntityManager();
+
+		//1.inicia la transacción
+		em.getTransaction().begin();
+
+		//2. ejecuta las operaciones 
+		//2.1 busca Empleado por llave primaria
+		SolicitudRetiro entidadSR = em.find(SolicitudRetiro.class, selectedSolicitud.getIntIdCodigoSolicitudRetiro());
+		entidadSR.setStrEstado(Constantes.ESTADOSR_RECHAZADO);
+		//2.3 actualiza Empleado
+		em.merge(entidadSR);
+		em.flush();
+				
+		//3.ejecuta commit a la transacción
+		em.getTransaction().commit();
+		em.close();
+	
+	
 	}
 
 }

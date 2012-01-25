@@ -17,5 +17,7 @@ public interface SolicitudRetiroDAO {
 	public ArrayList<SolicitudRetiro> obtenerSolicitudesPendientes() throws Exception;
 	public ArrayList<SolicitudRetiro> obtenerSRxADA(
 			AsistenteDireccionAcademica ada)throws Exception;
-	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)throws Exception;;
+	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)throws Exception;
+	public void apruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
+	public void desapruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
 }

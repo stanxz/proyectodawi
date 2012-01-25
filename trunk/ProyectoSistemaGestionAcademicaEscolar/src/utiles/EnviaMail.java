@@ -14,6 +14,7 @@ import entidades.Alumno;
 import entidades.Cita;
 import entidades.Persona;
 import entidades.SolicitudExoneracion;
+import entidades.SolicitudRetiro;
 import entidades.Usuario;
 
 public class EnviaMail {
@@ -258,6 +259,58 @@ public class EnviaMail {
 			   	e1.printStackTrace();
 				System.out.println("error enviando el correo : "+e1.getMessage());
 		   }
+	}
+
+	public void enviarCorreoEvaluacionSR(SolicitudRetiro selectedSolicitud,
+			boolean b) {
+
+		// Propiedades de la conexión
+		   Properties props = new Properties();
+		   props.setProperty("mail.smtp.host", "smtp.gmail.com");
+		   props.setProperty("mail.smtp.starttls.enable", "true");
+		   props.setProperty("mail.smtp.port", "587");
+		   props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+		   props.setProperty("mail.smtp.auth", "true");
+
+		   // Preparamos la sesion
+		   Session session = Session.getDefaultInstance(props);
+
+		   // Construimos el mensaje
+		   MimeMessage message = new MimeMessage(session);
+
+		   try {
+			   message.setFrom(new InternetAddress("proylp2@gmail.com"));
+			   message.addRecipient(
+			       Message.RecipientType.TO,
+			       new InternetAddress(selectedSolicitud.getAlumno().getApoderados().getPersonas().getStrMail()));
+
+			   message.setSubject("SGAE - Trámite Solicitud Retiro");
+			   String cuerpomensaje="Estimado "+selectedSolicitud.getAlumno().getApoderados().getPersonas().getStrNombre()+" "+selectedSolicitud.getAlumno().getApoderados().getPersonas().getStrApellidoPaterno()+ 
+			   ", \n\n remitimos la respuesta a su solicitud: ";
+			   
+
+				cuerpomensaje+="\n Codigo Solicitud : " + selectedSolicitud.getIntIdCodigoSolicitudRetiro();
+				cuerpomensaje+="\n Alumno           : " + selectedSolicitud.getAlumno().getStrNombres() + " " + selectedSolicitud.getAlumno().getStrApellidoPaterno();
+			 if(b==true)
+				cuerpomensaje+="\n Estado           : Solicitud de Retiro APROBADA"; 
+			 else
+				cuerpomensaje+="\n Estado           : Solicitud de Retiro RECHAZADA";	
+			   message.setText(cuerpomensaje);
+
+			   // Lo enviamos.
+			   Transport t = session.getTransport("smtp");
+			   t.connect("proylp2@gmail.com", "cibertec");
+			   t.sendMessage(message, message.getAllRecipients());
+			   // Cierre.
+	           t.close();
+		   } catch (MessagingException e) {
+				e.printStackTrace();
+				System.out.println("error enviando el correo : "+e.getMessage());
+		   }catch(Exception e1){
+			   	e1.printStackTrace();
+				System.out.println("error enviando el correo : "+e1.getMessage());
+		   }
+	
 	}
 	
 	
