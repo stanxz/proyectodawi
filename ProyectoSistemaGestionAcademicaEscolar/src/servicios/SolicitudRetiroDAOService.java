@@ -68,4 +68,17 @@ public class SolicitudRetiroDAOService implements SolicitudRetiroService {
 		return retirodao.cargaDatosCitaxEvaluar(selectedSolicitud);
 	}
 
+	@Override
+	public void apruebaSR(SolicitudRetiro selectedSolicitud) throws Exception {
+		// TODO Auto-generated method stub
+		retirodao.apruebaSR(selectedSolicitud);
+	}
+
+	@Override
+	public void desapruebaSR(SolicitudRetiro selectedSolicitud)
+			throws Exception {
+		// TODO Auto-generated method stub
+		retirodao.desapruebaSR(selectedSolicitud);
+	}
+
 }

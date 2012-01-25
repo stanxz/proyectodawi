@@ -7,4 +7,7 @@ public class Constantes {
 	 public static final int TIPOSERVICIO_RETIRO = 1;
 	 
 	 public static final String ESTADOBOLETA_CERRADO = "CERRADO";
+	 
+	 public static final String ESTADOSR_APROBADO = "APROBADO";
+	 public static final String ESTADOSR_RECHAZADO = "RECHAZADO";
 }

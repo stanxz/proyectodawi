@@ -9,6 +9,11 @@
 	<ui:define name="content">
 	<div align="left">
 	<p:growl id="msgs" showDetail="true" sticky="false" life="10000"/>
+			<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>  
+		    <p:dialog modal="true" widgetVar="statusDialog" header="Status"   
+		        draggable="false" closable="false" resizable="false">  
+		    	<p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
+		    </p:dialog>
 		<h:form id="form" style="width: 800px;">
 			 <p:dataTable id="listaSR" var="solicitud" value="#{evaluarRetiroBean.listaSR}" 
     widgetVar="solicitudesTable" emptyMessage="No hay Solicitudes de Retiro a listar" 
@@ -62,11 +67,6 @@
                 <p:inputText value="#{evaluarRetiroBean.selectedSolicitud.alumno.strNombres} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
             </h:panelGroup> 
             
-             <h:outputText value="CertificadoAS" style="font-weight:bold"/>  
-            <h:panelGroup>  
-                  
-            </h:panelGroup>   
-            
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
             <h:panelGroup>  
                 <p:inputTextarea value="#{evaluarRetiroBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarRetiroBean.editMode}" readonly="#{!evaluarRetiroBean.editMode}" required="true" label="Observaciones" effectDuration="300"/>  
@@ -76,12 +76,12 @@
                 <h:panelGroup>
 					  <p:commandButton value="Aprobar" 
 					  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
-					  update="form:listaSE msgs" 
+					  update="form:listaSR msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                      <p:commandButton value="Desaprobar" 
 					  actionListener="#{evaluarRetiroBean.desapruebaSolicitud}"  
-					  update="form:listaSE msgs" 
+					  update="form:listaSR msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
