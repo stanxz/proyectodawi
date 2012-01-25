@@ -51,52 +51,44 @@ DataTable - Row Selection
 <h:body style="background-color: #A8C2D3;"><!-- <h:body style="background-color: #A8C2D3;"> -->
 <div id="container" align="center">
 
-	<table width="90%" bgcolor="#A8C2D3" border="0.5">
+	<table width="1025" border="0" style="border-color: blue">
 		<tr>
-		<td width="50" bgcolor="#A8C2D3"></td> 
-		<td width="50" bgcolor="#A8C2D3"></td> 
-			<td height="50" width="900" bgcolor="white">
+			<td height="160" width="1025" bgcolor="white">
 			<div id="header">
 				<ui:insert name="header">
 					<ui:include src="/snippets/header.xhtml"/>
 				</ui:insert>
 			</div>
 			</td>
-		<td width="50" bgcolor="#A8C2D3"></td>
-		<td width="50" bgcolor="#A8C2D3"></td>
 		</tr>
-		</table>
+	</table>
 		
-		<table width="90%" border="0.5">
+	<table width="80%" border="0" style="border-color: blue">
 		<tr>
-		<td width="50" bgcolor="#A8C2D3"></td> 
-		    <td height="350" width="200">
+		    <td height="300" width="300">
 		    <div id="menu">
 				<ui:insert name="menu">
 					<ui:include src="/snippets/menu.xhtml"></ui:include>
 				</ui:insert>
 			</div>    
 		    </td>
-			<td height="350" width="100">
+			<td height="300" width="200">
 			<div id="content">
 				<ui:insert name="content"></ui:insert>
 			</div>
 			</td>
-			<td width="50" bgcolor="#A8C2D3"></td> 
 		</tr>
-		</table>
+	</table>
 		
-		<table width="90%" bgcolor="#A8C2D3" border="0.5">
+	<table width="1025" border="0" style="border-color: blue">
 		<tr>
-		<td width="50" bgcolor="#A8C2D3"></td> 
-			<td height="100" width="900" bgcolor="white" align="center">
+			<td height="100" width="1025" bgcolor="white" align="center">
 				<div id="footer">
 					<ui:insert name="footer">
 						<ui:include src="/snippets/footer.xhtml"/>
 					</ui:insert>
-				</div>
+				</div> 
 			</td>
-			<td width="50" bgcolor="#A8C2D3"></td> 
 		</tr>
 	</table>
 </div>
