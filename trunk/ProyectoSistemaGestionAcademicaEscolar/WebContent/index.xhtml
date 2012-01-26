@@ -126,7 +126,21 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         </h:panelGrid>  
     </p:tab>  
     
-    <p:tab title="Contáctenos">  
+    <p:tab title="Contáctenos">
+    <table>
+    <tr>
+    <td width="300">
+    <h:graphicImage value="/images/buscar.jpg" height="100" width="100"></h:graphicImage><br></br>
+    <font size="4" style="font-style: italic; color: blue;">Encuéntranos en:</font><br></br>
+    Av. Brasil Nro 2 <br></br>
+    Breña, Lima - Perú<br></br>
+    informes@sancarlos.com<br></br>
+    <br />   
+    <br />
+    <font size="4" style="font-style: italic; color: blue;">Teléfonos:</font><br></br>
+    550 1170 / 550 3263 <br></br>
+    </td>
+    <td>
    		<div align="center">
 	 		<f:view contentType="text/html">
        			<p:gmap 
@@ -134,9 +148,13 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
        			center="-12.051276302138568,-77.05594340515137" zoom="15" type="ROADMAP"   
        			style="width:600px;height:400px"  
        		 	model="#{mapBean.simpleModel}" /> 
-    		</f:view> 
-
-		</div>  
+    		</f:view>
+		</div>
+	</td>
+	<td width="100">
+	</td>
+	</tr> 
+	</table>   
     </p:tab>  
 
     <p:tab title="Intranet">
