@@ -99,6 +99,19 @@
                       oncomplete="onEditComplete(args)"/>
                     </c:if>
                     <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
+                        <c:if test="#{evaluarRetiroBean.bandera=='false'}">
+						  <p:commandButton value="Aprobar" 
+						  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
+						  update="form:listaSR msgs" 
+	                      image="ui-icon ui-icon-check"
+	                      oncomplete="onEditComplete(args)" disabled="true"/>
+	                      <p:commandButton value="Desaprobar" 
+						  actionListener="#{evaluarRetiroBean.desapruebaSolicitud}"  
+						  update="form:listaSR msgs" 
+	                      image="ui-icon ui-icon-check"
+	                      oncomplete="onEditComplete(args)" disabled="true"/>
+	                    </c:if>
+	                    <c:if test="#{evaluarRetiroBean.bandera=='true'}">
 						  <p:commandButton value="Aprobar" 
 						  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
 						  update="form:listaSR msgs" 
@@ -109,6 +122,7 @@
 						  update="form:listaSR msgs" 
 	                      image="ui-icon ui-icon-check"
 	                      oncomplete="onEditComplete(args)" />
+	                    </c:if>    
                     </c:if>  
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
                     <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==1}">
@@ -116,7 +130,7 @@
                     </p:commandButton>
                     </c:if>
                     <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
-                    <p:commandButton actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
+                    <p:commandButton update="dlgForm:display" actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
                     </p:commandButton>
                     </c:if>
   				</h:panelGroup>
