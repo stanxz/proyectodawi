@@ -130,7 +130,7 @@
                     </p:commandButton>
                     </c:if>
                     <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
-                    <p:commandButton update="dlgForm:display" actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
+                    <p:commandButton update="dlgForm:display dlgForm2:display2" actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
                     </p:commandButton>
                     </c:if>
   				</h:panelGroup>
@@ -141,7 +141,7 @@
       <p:fieldset legend="Ver/Ocultar Documento Sustentatorio" toggleable="true" toggleSpeed="500" collapsed="true">  
         		<h:panelGrid columns="1" cellpadding="10">  
             <div align="left">
-            	<p:graphicImage value="#{evaluarRetiroBean.selectedSolicitud.scImagen}" rendered="#{evaluarRetiroBean.editMode}"  cache="false"
+            	<p:graphicImage value="#{evaluarRetiroBean.selectedSolicitud.scImagen}" rendered="true"  cache="false"
             	                width="100%" height="100%"/>
             </div>
         		</h:panelGrid>  
