@@ -65,7 +65,19 @@
             <h:outputText value="Alumno" style="font-weight:bold"/>  
             <h:panelGroup>    
                 <p:inputText value="#{evaluarRetiroBean.selectedSolicitud.alumno.strNombres} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
-            </h:panelGroup> 
+            </h:panelGroup>
+            
+            <h:outputText value="Motivo" style="font-weight:bold"/>
+            <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==1}">
+            <h:panelGroup>    
+                <p:inputText value="SALUD" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
+            </h:panelGroup>
+            </c:if>  
+            <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
+            <h:panelGroup>    
+                <p:inputText value="ECONOMICO/FAMILIAR" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>  
+            </h:panelGroup>
+            </c:if> 
             
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
             <h:panelGroup>  
@@ -113,7 +125,7 @@
 
 		    <h:outputText value="Codigo Asistenta" style="font-weight:bold"/>  
             <h:panelGroup>    
-                  
+              <h:outputText value="#{evaluarRetiroBean.loadedCita.strcodasistentasocial}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>    
             </h:panelGroup>
             
             <h:outputText value="Alumno" style="font-weight:bold"/>  
@@ -121,14 +133,14 @@
               <h:outputText value="#{evaluarRetiroBean.selectedSolicitud.alumno.strNombres} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoPaterno} #{evaluarRetiroBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>    
             </h:panelGroup>
             
-             <h:outputText value="Apoderado" style="font-weight:bold"/>  
+            <h:outputText value="Apoderado" style="font-weight:bold"/>  
             <h:panelGroup>    
-                  
+            	<h:outputText value="#{evaluarRetiroBean.loadedCita.alumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/>      
             </h:panelGroup> 
             
-             <h:outputText value="Fecha Cita" style="font-weight:bold"/>  
+            <h:outputText value="Fecha Cita" style="font-weight:bold"/>  
             <h:panelGroup>  
-                  
+              <h:outputText value="#{evaluarRetiroBean.loadedCita.dtfecharegistro}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/> 
             </h:panelGroup>   
             
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
@@ -136,9 +148,9 @@
                   
             </h:panelGroup> 
         </c:if>    
-        <c:otherwise>
-        	<h:outputText value="La cita aun no ha sido evaluada" style="font-weight:bold"/>
-        </c:otherwise>    
+        <c:if test="#{evaluarRetiroBean.bandera==false}">
+        	<h:outputText value="La cita aun no ha sido atendida" style="font-weight:bold"/>
+        </c:if>    
 
 			 <f:facet name="footer"> 
                 <p:outputPanel layout="block" style="text-align:center">
