@@ -81,11 +81,12 @@
             
             <h:outputText value="Observaciones" style="font-weight:bold"/>  
             <h:panelGroup>  
-                <p:inputTextarea value="#{evaluarRetiroBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarRetiroBean.editMode}" readonly="#{!evaluarRetiroBean.editMode}" required="true" label="Observaciones" effectDuration="300"/>  
+                <p:inputTextarea value="#{evaluarRetiroBean.selectedSolicitud.strObservacion}" style="font-weight:bold;width:290px;height:100px;" rendered="#{evaluarRetiroBean.editMode}" readonly="#{!evaluarRetiroBean.editMode}" label="Observaciones" effectDuration="300"/>  
             </h:panelGroup> 
 			 <f:facet name="footer"> 
                 <p:outputPanel rendered="#{evaluarRetiroBean.editMode}" layout="block" style="text-align:center">
                 <h:panelGroup>
+                	<c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==1}">
 					  <p:commandButton value="Aprobar" 
 					  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
 					  update="form:listaSR msgs" 
@@ -96,15 +97,34 @@
 					  update="form:listaSR msgs" 
                       image="ui-icon ui-icon-check"
                       oncomplete="onEditComplete(args)"/>
+                    </c:if>
+                    <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
+						  <p:commandButton value="Aprobar" 
+						  actionListener="#{evaluarRetiroBean.apruebaSolicitud}"  
+						  update="form:listaSR msgs" 
+	                      image="ui-icon ui-icon-check"
+	                      oncomplete="onEditComplete(args)"/>
+	                      <p:commandButton value="Desaprobar" 
+						  actionListener="#{evaluarRetiroBean.desapruebaSolicitud}"  
+						  update="form:listaSR msgs" 
+	                      image="ui-icon ui-icon-check"
+	                      oncomplete="onEditComplete(args)" />
+                    </c:if>  
                     <p:commandButton value="Cancelar" onclick="carDialog.hide()" type="button" image="ui-icon ui-icon-close"/>
+                    <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==1}">
+                    <p:commandButton oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita" disabled="true">  
+                    </p:commandButton>
+                    </c:if>
+                    <c:if test="#{evaluarRetiroBean.selectedSolicitud.strMotivo==2}">
                     <p:commandButton actionListener="#{evaluarRetiroBean.cargaDatosCitaEvaluada2}" oncomplete="carDialog2.show()" image="ui-icon ui-icon-note" value="Ver Detalle de Cita" title="Ver Detalle de Cita">  
-                 </p:commandButton>
+                    </p:commandButton>
+                    </c:if>
   				</h:panelGroup>
               </p:outputPanel>  
           </f:facet> 
       </h:panelGrid>
       <h:panelGrid id="image"  columns="1">
-      <p:fieldset legend="Ver/Ocultar Solicitud" toggleable="true" toggleSpeed="500" collapsed="true">  
+      <p:fieldset legend="Ver/Ocultar Documento Sustentatorio" toggleable="true" toggleSpeed="500" collapsed="true">  
         		<h:panelGrid columns="1" cellpadding="10">  
             <div align="left">
             	<p:graphicImage value="#{evaluarRetiroBean.selectedSolicitud.scImagen}" rendered="#{evaluarRetiroBean.editMode}"  cache="false"
@@ -121,7 +141,7 @@
 	<h:form id="dlgForm2">
 	  <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >
 	    
-	    <c:if test="#{evaluarRetiroBean.bandera==true}">
+	      <c:if test="#{evaluarRetiroBean.bandera=='true'}">
 
 		    <h:outputText value="Codigo Asistenta" style="font-weight:bold"/>  
             <h:panelGroup>    
@@ -147,10 +167,10 @@
             <h:panelGroup>  
                   
             </h:panelGroup> 
-        </c:if>    
-        <c:if test="#{evaluarRetiroBean.bandera==false}">
+       </c:if>    
+        <c:if test="#{evaluarRetiroBean.bandera=='false'}">
         	<h:outputText value="La cita aun no ha sido atendida" style="font-weight:bold"/>
-        </c:if>    
+        </c:if>
 
 			 <f:facet name="footer"> 
                 <p:outputPanel layout="block" style="text-align:center">
