@@ -15,14 +15,25 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
 <h:outputStylesheet library="css" name="misEstilosLogin.css" target="head"/>
 <script src="http://maps.google.com/maps/api/js?sensor=true"  type="text/javascript"/>
 </h:head>
-<h:body style="background-color: #A8C2D3;">
-<h1 align="center">I.E.P &quot;SAN CARLOS&quot;</h1>
-<h:form > 
+
+<h:body style="background-color: #00CCFF;">
+<!--  <h1 align="center">I.E.P &quot;SAN CARLOSsss&quot;</h1>-->
+	<table  style="background-color: #00CCFF" width="100%">
+	<tr>
+	<td align="center">
+	<h:graphicImage value="/images/1.jpg" height="60" width="70"></h:graphicImage>
+	<div id="effect596642" style="height: 100 ;width:400">
+		<script type="text/javascript" src="http://www.effectgenerator.com/1.0.7/effect.php?id=596642&amp;replace=effect596642"></script>
+	</div>
+	</td>
+	</tr>
+	</table>
+	      
+<h:form> 
 <p:tooltip global="true"/>
    <p:tabView onTabShow="mymap.checkResize()"> 
     
     <p:tab title="Inicio">
-    
  	<table align="center"> 
  	<tr>
  	<td width="700"> 
@@ -33,7 +44,7 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
  	</tr>
  	</table>
  
-        <h:panelGrid columns="2" cellpadding="10">             
+    <h:panelGrid columns="2" cellpadding="10">             
         <table>
         <tr>
         <td align="justify">
@@ -53,7 +64,7 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
         </td>
         </tr>
         </table>
-        </h:panelGrid>  
+    </h:panelGrid>  
     </p:tab>  
   
     <p:tab title="Visión"> 
@@ -61,8 +72,6 @@ primefaces 3.0RC2 = xmlns:p="http://primefaces.org/ui"
   
 	<p:fieldset legend="Nuestra Visión">  
     <h:panelGrid columns="2" cellpadding="10">
-		<!--<p:media value="http://www.youtube.com/v/pnRY4hEzyT0" width="200" height="200" player="flash"/>--> 
-		
         <table>
 		<tr>
 		<td>
