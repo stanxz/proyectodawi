@@ -50,7 +50,7 @@ public class EvaluarRetiroBean implements Serializable {
 		System.out.println("numero: "+numero);
 	}
 
-	public void cargaDatosCitaEvaluada(){
+	/*public void cargaDatosCitaEvaluada(){
 		System.out.println("en cargaDatosCitaEvaluada ... ");
 		
 		if(selectedSolicitud2!=null){
@@ -85,7 +85,7 @@ public class EvaluarRetiroBean implements Serializable {
 		}else{
 			System.out.println("selectedSolicitud2 es nulaaaa");
 		}
-	}
+	}*/
 	
 	public void cargaDatosCitaEvaluada2(){
 		System.out.println("en cargaDatosCitaEvaluada2 ... ");

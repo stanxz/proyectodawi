@@ -154,7 +154,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		System.out.println("cargando Cita Evaluada");
 		em = emf.createEntityManager();
 		//ArrayList<Cita> solicitudesRetiro = new ArrayList<Cita>();
-		Query q=em.createQuery("SELECT c FROM Cita c WHERE c.strestado = 'EVALUADA' AND c.alumno.strCodigoAlumno=?1");
+		Query q=em.createQuery("SELECT c FROM Cita c WHERE c.strestado = 'ATENDIDO' AND c.alumno.strCodigoAlumno=?1");
 		q.setParameter(1, selectedSolicitud.getAlumno().getStrCodigoAlumno());
 		
 		List lista = q.getResultList();
