@@ -1,12 +1,14 @@
 package servicios;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import dao.DAOFactory;
 import dao.SolicitudRetiroDAO;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Certificadoa;
 import entidades.Cita;
 import entidades.SolicitudRetiro;
 
@@ -79,6 +81,13 @@ public class SolicitudRetiroDAOService implements SolicitudRetiroService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		retirodao.desapruebaSR(selectedSolicitud);
+	}
+
+	@Override
+	public ArrayList<Certificadoa> obtenerCertificadosXAlumno(String elfiltro)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return retirodao.obtenerCertificadosXAlumno(elfiltro);
 	}
 
 }

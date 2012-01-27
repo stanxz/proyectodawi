@@ -27,7 +27,7 @@ public class CitaJPADAO implements CitaDAO {
 			
 			ArrayList<Cita> lista = new ArrayList<Cita>();
 			
-		List coleccion = em.createQuery("SELECT d FROM Cita  d where d.strestado='1' ORDER BY d.intcodcita").getResultList();
+		List coleccion = em.createQuery("SELECT d FROM Cita  d where d.strestado='PENDIENTE' ORDER BY d.intcodcita").getResultList();
 /*			List coleccion = em.createQuery("SELECT d FROM Cita  d INNER JOIN d.alumno c  where   c.strCodigoAlumno = d.strCodigoAlumno and " +
 					" d.strestado='1' ORDER BY d.intcodcita").getResultList();	*/
 			if (coleccion.size()>0) {
