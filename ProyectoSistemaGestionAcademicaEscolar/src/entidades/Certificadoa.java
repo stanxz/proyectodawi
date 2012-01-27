@@ -21,6 +21,7 @@ public class Certificadoa implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="codcertificado")
 	private int intCodcertificado;
 
 	@Column(name="codcita")

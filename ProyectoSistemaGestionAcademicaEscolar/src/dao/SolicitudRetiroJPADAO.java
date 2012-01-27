@@ -11,6 +11,7 @@ import utiles.Constantes;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Certificadoa;
 import entidades.Cita;
 import entidades.SolicitudRetiro;
 
@@ -213,6 +214,53 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		em.getTransaction().commit();
 		em.close();
 	
+	
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public ArrayList<Certificadoa> obtenerCertificadosXAlumno(String elfiltro)
+			throws Exception {
+
+		System.out.println("leyendo elfiltro: "+elfiltro);
+		em = emf.createEntityManager();
+		//ArrayList<SolicitudRetiro> solicitudesRetiro = new ArrayList<SolicitudRetiro>();
+		Query q=em.createQuery("SELECT c FROM Cita c WHERE c.alumno.strCodigoAlumno=?1 AND c.strestado='ATENDIDO'");
+		q.setParameter(1, elfiltro);
+		
+		List lista = q.getResultList();
+		List listatemp;
+		ArrayList<Certificadoa> lista2 = new ArrayList<Certificadoa>();
+		 if(lista.size()>0){
+			 System.out.println("lista de citas relacionadas tiene "+lista.size()+" items");
+				for ( int i=0; i < lista.size(); i++ ) {
+					Query query=em.createQuery("SELECT ca FROM Certificadoa ca WHERE ca.intCodcita=?1");
+					query.setParameter(1, ((Cita)(lista.get(i))).getIntcodcita());
+					listatemp=query.getResultList();
+					if(listatemp.size()>0){
+						System.out.println("agregando "+listatemp.size()+" items de la listatemp");
+						for(int j=0;j<listatemp.size();j++){
+							lista2.add((Certificadoa) listatemp.get(j));
+						}
+						System.out.println("tamaño de lista2: "+lista2.size());
+						//lista2.addAll(listatemp);
+					}
+					else{
+						lista2=null;
+						System.out.println("listatemp vacia - iteracion: "+i);
+					}
+				}
+		 }else{
+			 lista2=null;
+			 System.out.println("lista de citas relacionadas, vacia");
+		 }
+
+		em.close();
+		
+		if(lista2.size()>0)
+			return lista2;
+		else
+			return null;
 	
 	}
 

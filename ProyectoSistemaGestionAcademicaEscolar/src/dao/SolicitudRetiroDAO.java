@@ -1,9 +1,11 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
+import entidades.Certificadoa;
 import entidades.Cita;
 import entidades.SolicitudRetiro;
 
@@ -20,4 +22,5 @@ public interface SolicitudRetiroDAO {
 	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)throws Exception;
 	public void apruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
 	public void desapruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
+	public ArrayList<Certificadoa> obtenerCertificadosXAlumno(String elfiltro)throws Exception;
 }
