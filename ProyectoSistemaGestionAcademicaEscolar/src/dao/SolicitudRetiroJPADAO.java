@@ -1,11 +1,15 @@
 package dao;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
+
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 import utiles.Constantes;
 
@@ -144,6 +148,14 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 					solicitudesRetiro.add(entidad);
 				}
 		 }
+		 
+		 for (SolicitudRetiro x : solicitudesRetiro) {
+			 StreamedContent image;
+			 
+			 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getCertificadobin()));
+			 
+			 x.setScImagen(image);
+		}
 
 		em.close();
 		return solicitudesRetiro;
