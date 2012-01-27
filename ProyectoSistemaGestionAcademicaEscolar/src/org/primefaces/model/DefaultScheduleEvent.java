@@ -1,4 +1,5 @@
 package org.primefaces.model;
+import java.awt.Color;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -114,11 +115,43 @@ public class DefaultScheduleEvent implements ScheduleEvent, Serializable{
       }
       
       //atrbtos de cita
-      
+      private String codAlu; 
       private int codCita;
       private Date fecReg;
       private String stado;
+      private String observacion;
       
+      //pra carga de archivo
+      private UploadedFile file;
+
+    public UploadedFile getFile() {
+  		return file;
+  	}
+
+  	public void setFile(UploadedFile file) {
+  		this.file = file;
+  	}
+      
+      
+
+	public String getObservacion() {
+		return observacion;
+	}
+
+	
+
+	public void setObservacion(String observacion) {
+		this.observacion = observacion;
+	}
+
+	public String getCodAlu() {
+		return codAlu;
+	}
+
+	public void setCodAlu(String codAlu) {
+		this.codAlu = codAlu;
+	}
+
 	public int getCodCita() {
 		return codCita;
 	}
@@ -143,20 +176,36 @@ public class DefaultScheduleEvent implements ScheduleEvent, Serializable{
 		this.stado = stado;
 	}
 	
-	   public DefaultScheduleEvent(String title, int codCita, Date fecReg,Date startDate,Date endDate,
-				 String stado) { 
+	   public DefaultScheduleEvent(String title,String codAlu,int codCita, Date fecReg,Date startDate,Date endDate,
+				 String stado,String observacion) { 
 			super();
 			this.title = title;
+			this.codAlu=codAlu;
 			this.codCita = codCita;
 			this.fecReg = fecReg;
 			this.startDate = startDate;
 			this.endDate = endDate;
 			this.stado = stado;
+			this.observacion=observacion;
+			
 			
 		}
       
-      
-      
+      //constructor pra la cargga d archivo
+	   public DefaultScheduleEvent(String title,String codAlu,int codCita, Date fecReg,Date startDate,Date endDate,
+				 String stado,String observacion,UploadedFile file) { 
+			super();
+			this.title = title;
+			this.codAlu=codAlu;
+			this.codCita = codCita;
+			this.fecReg = fecReg;
+			this.startDate = startDate;
+			this.endDate = endDate;
+			this.stado = stado;
+			this.observacion=observacion;
+			this.file=file;
+			
+		}
       
       
       

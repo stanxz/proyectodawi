@@ -2,6 +2,8 @@ package org.primefaces.event;
 
 import javax.faces.bean.ManagedBean;
 
+import java.awt.Color;
+import java.awt.color.ColorSpace;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -19,11 +21,16 @@ import org.primefaces.model.DefaultScheduleModel;
 import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleEvent;
 import org.primefaces.model.ScheduleModel;
+import org.primefaces.model.UploadedFile;
 
+import entidades.Alumno;
+import entidades.Certificadoa;
 import entidades.Cita;
 
 import servicios.ApplicationBusinessDelegate;
+import servicios.CertificadoasService;
 import servicios.CitaService;
+import sun.security.x509.CertException;
 
 
 @ManagedBean
@@ -38,9 +45,10 @@ public class ScheduleController {
     private ScheduleEvent event = new DefaultScheduleEvent();
     private ArrayList<Cita> citas;
   
-  
+    ArrayList<Cita> aux;
     
     public static CitaService citaService = abd.getCitaService();
+    public static CertificadoasService certService=abd.getCertificadoasService();
  
     private String theme;
 
@@ -51,16 +59,11 @@ public class ScheduleController {
 	public ScheduleController() {  
     	System.out.println("ENTRA AQUI");
     	
-   
-    	//
-    	
     	System.out.println(event.getStartDate());
     	
     	
         eventModel = new DefaultScheduleModel();  
    
-
-        
         listarcitas();
      
        
@@ -84,23 +87,41 @@ public class ScheduleController {
 	void listarcitas(){
 		try {
 			citas= citaService.obtenercitas();
+			if(citas!=null){
+				
+				//aux.addAll(citas);
 			eventModel.clear();
+			}else
+			      System.out.println("citas es nullo");
+			      
+			
+			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.out.println("try cath enter");
 			e.printStackTrace();
 		}
 		
 		   for(Cita x : citas){
+	        	Color cc=new Color(255,255,255);
 	        	
 		     /*  eventModel.addEvent(new DefaultScheduleEvent(x.getStrCodigoAlumno()+"dd", x.getDtfecharegistro(),
 		    		  x.getDtfecharegistro(), x.getIntcodcita(), x.getStrestado())); 	*/ 
+	        //	private UploadedFile file; 
+	        	
 		       System.out.println("ScheduleController.listarcitas()"+x.getIntcodcita());
 		       eventModel.addEvent(new DefaultScheduleEvent(x.getAlumno().getStrNombres() + " " +
-		    		   x.getAlumno().getStrApellidoPaterno(),x.getIntcodcita(),
-		    		     x.getDtfecharegistro(),x.getDtfecharegistro(),x.getDtfecharegistro(),
-		    		     x.getStrestado().equals("1")?"generado":"atendido")); 
+		    		   x.getAlumno().getStrApellidoPaterno(),
+		    		   x.getAlumno().getStrCodigoAlumno(),
+		    		   x.getIntcodcita(),
+		    		   x.getDtfecharegistro(),
+		    		   x.getDtfecharegistro(),
+		    		   x.getDtfecharegistro(),
+		    		   x.getStrestado(),
+		    		   "")
+		            ); 
 		       
 		       
+		       //.equals("1")?"generado":"atendido"
 		        }
 		
 		
@@ -228,7 +249,7 @@ public class ScheduleController {
         if(event.getId() == null)  {
         //	eventModel.addEvent(event);  
         /*	System.out.println("nombre distrito :"+event.getTitle());*/
-         	
+        	System.out.println("++++++++++++++++++ID=NULL+++++++++++++++++");
         }
             
         else  {
@@ -237,11 +258,32 @@ public class ScheduleController {
         	System.out.println("cod distrito:"+event.getIddis());
         	System.out.println("nombre distrito:"+event.getTitle());
   */
-                   try {
+        	System.out.println("++++++++++++++++++UPDATE+++++++++++++++++");
+        	try {
 		    
                 	   Cita cita= new Cita();
                 	   cita.setIntcodcita(event.getCodCita());
+                	   
+                	   Certificadoa certificado=new Certificadoa();
+                	   certificado.setIntCodcita(event.getCodCita());
+                	   certificado.setStrObservacion(event.getObservacion());
+                	   certificado.setStrEstado("GENERADO");
+                	   certificado.setDocenviado(0);
+                	   certificado.setCodmotivo(2);
+                	   
+                	   /*UploadedFile v=event.getFile();*/
+             /*   	   for (Cita y : citas) {
+                		   if (y.getIntcodcita()==event.getCodCita()) {
+							Alumno x=new Alumno();
+							x.setStrCodigoAlumno(y.getAlumno().getStrCodigoAlumno());
+							cita.setAlumno(x);
+						}
+						
+					}*/
+                	   
+                	 
                 	   citaService.actualizarEstadoCita(cita);
+                	   certService.insertarCertificado(certificado);
                 	   listarcitas();
 	             } catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -287,4 +329,6 @@ public class ScheduleController {
     public void setTheme(String theme) {
             this.theme = theme;
     }
+    
+    
 }

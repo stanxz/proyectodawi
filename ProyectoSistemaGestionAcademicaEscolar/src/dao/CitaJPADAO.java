@@ -43,6 +43,14 @@ public class CitaJPADAO implements CitaDAO {
 	
 	@Override
 	public void actualizarEstadoCita(Cita cita) throws Exception {
+		System.out.println("CitaJPADAO.codCita()"+cita.getIntcodcita());
+		System.out.println("CitaJPADAO.codalunno"+cita.getAlumno().getStrCodigoAlumno());
+		System.out.println("CitaJPADAO.codper()"+cita.getAlumno().getApoderados().getPersonas().getStrCodigoPersona());
+		System.out.println("CitaJPADAO.servcio()"+cita.getIntcodtiposervicio());
+		System.out.println("CitaJPADAO.codasist"+cita.getStrcodasistentasocial());
+		
+		
+		
 		
 		em = emf.createEntityManager();
 		
@@ -50,7 +58,7 @@ public class CitaJPADAO implements CitaDAO {
 		
 		Cita entidadCita = em.find(Cita.class, cita.getIntcodcita());
 		
-		entidadCita.setStrestado("2");
+		entidadCita.setStrestado("ATENDIDO");
 		
 		
 		em.merge(entidadCita);
@@ -60,6 +68,22 @@ public class CitaJPADAO implements CitaDAO {
 		em.close();
 		
 	}
+
+
+
+	@Override
+	public void insertarCita(Cita cita) throws Exception {
+		
+		em=emf.createEntityManager();
+
+		em.getTransaction().begin();
+		em.persist(cita);
+		em.flush();
+		em.getTransaction().commit();
+		em.close();
+			
+	}
+
 
 
 	@Override
@@ -93,6 +117,9 @@ public class CitaJPADAO implements CitaDAO {
 			return null;
 		
 	}
+
+	
+	
 	
 	
 

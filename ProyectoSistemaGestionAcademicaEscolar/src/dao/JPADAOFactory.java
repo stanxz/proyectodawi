@@ -127,6 +127,12 @@ public class JPADAOFactory extends DAOFactory {
 		
 		return(CitaJPADAO)srd;
 	}
+	
+	public CertificadoDAO getCertificadoDAO(){
+		CertificadoJPADAO srd=new CertificadoJPADAO();
+		srd.setEntityManagerFactory(emf);
+		return(CertificadoJPADAO)srd;
+	}
 
 
 	@Override

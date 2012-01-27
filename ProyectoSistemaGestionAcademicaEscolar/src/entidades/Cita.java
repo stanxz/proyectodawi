@@ -1,6 +1,11 @@
 package entidades;
 
+
+import java.awt.Color;
+import java.util.Collection;
+
 import java.sql.Timestamp;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +14,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import javax.persistence.Transient;
+
 import javax.persistence.Table;
 
 @Entity
@@ -48,7 +56,9 @@ public class Cita {
 	@Column(name="coddisponibilidadas")
 	private String strcoddisponibilidadas;
 	
-    @ManyToOne
+
+
+	@ManyToOne
 	@JoinColumn(name="CODALUMNO")
     private Alumno alumno=new Alumno();
 
