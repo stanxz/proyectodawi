@@ -12,8 +12,8 @@
   <h:form style="width: 600px; ">  
       
         <p:ajaxStatus style="height:24px;display:block;">  
-            <f:facet name="start">  
-                <h:graphicImage value="../design/ajaxloading.gif" />  
+            <f:facet name="start" >  
+                   <h:graphicImage value="../design/ajaxloading.gif" />  
             </f:facet>  
           
             <f:facet name="complete">  
@@ -30,27 +30,35 @@
                     eventMoveListener="#{scheduleController.onEventMove}" 
                     eventResizeListener="#{scheduleController.onEventResize}"  
                     onEventMoveUpdate="messages" onEventResizeUpdate="messages"  
-                     onDateSelectUpdate="eventDetails" onDateSelectComplete="eventDialog.show()"  
+                   
                 onEventSelectUpdate="eventDetails" onEventSelectComplete="eventDialog.show()"> 
         </p:schedule>  
       
 
   
       <p:dialog widgetVar="eventDialog" header="Liberar Cita" 
-      showEffect="clip" hideEffect="explode" resizable="true"> 
+      showEffect="clip" hideEffect="explode" resizable="true" > 
  
             <h:panelGrid id="eventDetails" columns="2">  
-            <h:outputLabel for="title" value="cod alumno :"  />  
+            <h:outputLabel for="codc" value="Cita :" />  
+            <p:inputText id="codc" value="#{scheduleController.event.codCita}" disabled="true"/> 
+            <h:outputLabel for="cod" value="Codigo :"  />  
+            <p:inputText id="cod" value="#{scheduleController.event.codAlu}" disabled="true" /> 
+            <h:outputLabel for="title" value="Alumno :"  />  
             <p:inputText id="title" value="#{scheduleController.event.title}" disabled="true" /> 
-            <h:outputLabel for="cod" value="cod cita :" />  
-            <p:inputText id="cod" value="#{scheduleController.event.codCita}" disabled="true"/> 
-            <h:outputLabel for="from" value="From :" />  
+           
+            <h:outputLabel for="from" value="FechaRegistro:" />  
             <p:inputMask id="from" mask="99/99/9999"  
                 value="#{scheduleController.event.fecReg}" disabled="true">  
                 <f:convertDateTime pattern="dd/MM/yyyy" />  
             </p:inputMask>  
-            <h:outputLabel for="estado" value="estado :" />  
+            <h:outputLabel for="estado" value="Estado :" />  
             <p:inputText id="estado" value="#{scheduleController.event.stado}" disabled="true" /> 
+            <h:outputLabel for="obser" value="Observacion :" />  
+            
+            <p:inputTextarea rows="5" cols="23" value="#{scheduleController.event.observacion}"  />
+           
+            
             <p:commandButton  value="Liberar"  
                     oncomplete="myschedule.update();eventDialog.hide()"  
                     actionListener="#{scheduleController.addEvent}" 

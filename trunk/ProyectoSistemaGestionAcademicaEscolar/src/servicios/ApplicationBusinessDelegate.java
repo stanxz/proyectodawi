@@ -57,6 +57,10 @@ public class ApplicationBusinessDelegate {
 		
 		return new CitaDaoService(DAOFactory.JPA);
 	}
+
+    public CertificadoasService getCertificadoasService(){
+    	return new CertificadoasDaoService(DAOFactory.JPA);
+    }
 	
 	public DisponibilidadAsistentaService getDisponibilidadAsistentaService(){
 		

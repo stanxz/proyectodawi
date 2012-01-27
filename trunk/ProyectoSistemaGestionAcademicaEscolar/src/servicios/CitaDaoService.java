@@ -28,6 +28,14 @@ public class CitaDaoService implements CitaService{
 		
 	}
 
+
+	@Override
+	public void insertarCita(Cita cita) throws Exception {
+		this.citadao.insertarCita(cita);
+		
+	}
+
+
 	@Override
 	public void registrarCita(Cita miciCita) throws Exception {
 		// TODO Auto-generated method stub
@@ -39,6 +47,7 @@ public class CitaDaoService implements CitaService{
 		// TODO Auto-generated method stub
 		return citadao.consultaCitaPendiente(strCodigoAlumno);
 	}
+
 	
 	
 	
