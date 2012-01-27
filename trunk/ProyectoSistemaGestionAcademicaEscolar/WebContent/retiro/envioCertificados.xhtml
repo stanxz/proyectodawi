@@ -63,7 +63,7 @@
     </p:dataTable>
    </h:form>
 	
-	<p:dialog header="Detalle de Cita" widgetVar="carDialog2" resizable="false" id="carDlg2"
+	<p:dialog header="Detalle de Certificado" widgetVar="carDialog2" resizable="false" id="carDlg2"
 			  showEffect="fade" hideEffect="explode" modal="true" width="800" position="top" >
 	<h:form id="dlgForm2">
 	  <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >
@@ -71,26 +71,6 @@
             <h:panelGroup>    
               <h:outputText value="#{enviaCertificadosBean.loadedCita.strcodasistentasocial}" style="font-weight:bold" rendered="#{enviaCertificadosBean.editMode}" readonly="#{enviaCertificadosBean.editMode}" size="30"/>    
             </h:panelGroup>
-            
-            <h:outputText value="Apoderado" style="font-weight:bold"/>  
-            <h:panelGroup>    
-              <h:outputText value="#{enviaCertificadosBean.selectedSolicitud.alumno.strNombres} #{enviaCertificadosBean.selectedSolicitud.alumno.strApellidoPaterno} #{enviaCertificadosBean.selectedSolicitud.alumno.strApellidoMaterno}" style="font-weight:bold" rendered="#{enviaCertificadosBean.editMode}" readonly="#{enviaCertificadosBean.editMode}" size="30"/>    
-            </h:panelGroup>
-            
-            <h:outputText value="Apoderado" style="font-weight:bold"/>  
-            <h:panelGroup>    
-            	<h:outputText value="#{enviaCertificadosBean.loadedCita.alumno.apoderados.personas.strCodigoPersona}" style="font-weight:bold" rendered="#{enviaCertificadosBean.editMode}" readonly="#{enviaCertificadosBean.editMode}" size="30"/>      
-            </h:panelGroup> 
-            
-            <h:outputText value="Fecha Cita" style="font-weight:bold"/>  
-            <h:panelGroup>  
-              <h:outputText value="#{enviaCertificadosBean.loadedCita.dtfecharegistro}" style="font-weight:bold" rendered="#{evaluarRetiroBean.editMode}" readonly="#{evaluarRetiroBean.editMode}" size="30"/> 
-            </h:panelGroup>   
-            
-            <h:outputText value="Observaciones" style="font-weight:bold"/>  
-            <h:panelGroup>  
-                  
-            </h:panelGroup> 
 
 			 <f:facet name="footer"> 
                 <p:outputPanel layout="block" style="text-align:center">
