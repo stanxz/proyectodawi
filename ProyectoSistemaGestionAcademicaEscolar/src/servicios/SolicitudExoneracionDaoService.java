@@ -5,8 +5,10 @@ import java.util.ArrayList;
 
 import dao.DAOFactory;
 import dao.SolicitudExoneracionDAO;
+import entidades.Alumno;
 import entidades.Boleta;
 import entidades.SolicitudExoneracion;
+import entidades.SolicitudRetiro;
 
 public class SolicitudExoneracionDaoService implements SolicitudExoneracionService {
 	private DAOFactory fabrica = null;
@@ -65,6 +67,13 @@ public class SolicitudExoneracionDaoService implements SolicitudExoneracionServi
 			throws Exception {
 		// TODO Auto-generated method stub
 		exoneraciondao.desapruebaSolicitudExoneracion(exoneracion);
+	}
+
+	@Override
+	public SolicitudRetiro verificarExistenciaSR(Alumno alumno)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return exoneraciondao.verificarExistenciaSR(alumno);
 	}
 
 

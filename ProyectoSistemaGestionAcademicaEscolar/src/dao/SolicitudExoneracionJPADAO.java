@@ -12,8 +12,10 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import entidades.Actividad;
+import entidades.Alumno;
 import entidades.Boleta;
 import entidades.SolicitudExoneracion;
+import entidades.SolicitudRetiro;
 
 public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 	
@@ -222,6 +224,38 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 				
 		em.getTransaction().commit();
 		em.close();
+		
+	}
+	
+	public  SolicitudRetiro  verificarExistenciaSR(Alumno  alumno) throws Exception {
+		
+		System.out.println("Codigo de alumno q llega: "+ alumno.getStrCodigoAlumno());
+
+		try {
+			em = emf.createEntityManager();
+			
+			em.getTransaction().begin();
+			
+			Query  q = em.createQuery("SELECT sr FROM SolicitudRetiro sr " +
+			"WHERE (sr.strEstado='APROBADO' OR sr.strEstado='PENDIENTE') AND sr.alumno.strCodigoAlumno=?1");
+			q.setParameter(1, alumno.getStrCodigoAlumno());
+			
+			SolicitudRetiro tmpSR = new SolicitudRetiro();
+			tmpSR= (SolicitudRetiro) q.getSingleResult();
+			
+			if(tmpSR!=null){
+				em.close();
+				return tmpSR;
+			}else{
+				em.close();
+				return null;
+			}			
+		} catch (Exception e) {
+			em.close();
+			return null;
+		}finally{
+			em.close();
+		}
 		
 	}
 
