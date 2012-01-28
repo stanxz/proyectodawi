@@ -2,8 +2,10 @@ package servicios;
 
 import java.util.ArrayList;
 
+import entidades.Alumno;
 import entidades.Boleta;
 import entidades.SolicitudExoneracion;
+import entidades.SolicitudRetiro;
 
 
 public interface SolicitudExoneracionService {
@@ -16,4 +18,5 @@ public interface SolicitudExoneracionService {
 	public ArrayList<SolicitudExoneracion> obtenerSolicitudes() throws Exception;
 	public void apruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception;
 	public void desapruebaSolicitudExoneracion(SolicitudExoneracion exoneracion) throws Exception;
+	public  SolicitudRetiro  verificarExistenciaSR(Alumno  alumno) throws Exception;
 }
