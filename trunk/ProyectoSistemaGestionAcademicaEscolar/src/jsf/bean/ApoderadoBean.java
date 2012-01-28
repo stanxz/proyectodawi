@@ -143,7 +143,7 @@ public class ApoderadoBean implements Serializable{
 				nuevousuario.setPerfiles(p);
 				
 				System.out.println("idlogin de usuario: "+nuevousuario.getIntIdLogin());
-				//System.out.println("codpersona de usuario: "+nuevousuario.getPersonas().getStrCodigoPersona());
+				
 				System.out.println("contrasena de usuario: "+nuevousuario.getStrContrasena());
 				System.out.println("perfil de usuario: "+nuevousuario.getPerfiles().getStrCodigoPerfil());
 				
