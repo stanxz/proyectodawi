@@ -195,6 +195,8 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		//2.1 busca Empleado por llave primaria
 		SolicitudRetiro entidadSR = em.find(SolicitudRetiro.class, selectedSolicitud.getIntIdCodigoSolicitudRetiro());
 		entidadSR.setStrEstado(Constantes.ESTADOSR_APROBADO);
+		entidadSR.setAsistenteDireccion(selectedSolicitud.getAsistenteDireccion());
+		
 		//2.3 actualiza Empleado
 		em.merge(entidadSR);
 		em.flush();
@@ -219,6 +221,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		//2.1 busca Empleado por llave primaria
 		SolicitudRetiro entidadSR = em.find(SolicitudRetiro.class, selectedSolicitud.getIntIdCodigoSolicitudRetiro());
 		entidadSR.setStrEstado(Constantes.ESTADOSR_RECHAZADO);
+		entidadSR.setAsistenteDireccion(selectedSolicitud.getAsistenteDireccion());
 		//2.3 actualiza Empleado
 		em.merge(entidadSR);
 		em.flush();
