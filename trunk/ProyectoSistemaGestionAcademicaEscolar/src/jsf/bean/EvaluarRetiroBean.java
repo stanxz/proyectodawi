@@ -9,6 +9,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudRetiroService;
@@ -34,19 +35,23 @@ public class EvaluarRetiroBean implements Serializable {
 	private Persona persona;
 	private AsistenteDireccionAcademica ada;
 	private SolicitudRetiro selectedSolicitud;
-	private SolicitudRetiro selectedSolicitud2;
 	private Cita loadedCita;
 	private boolean editMode;
 	private boolean bandera=false;
 	public Map<String, Object> estasession;
+	private String nombre,apellido;
 	private int numero;
 	
 	public EvaluarRetiroBean() {
 		// TODO Auto-generated constructor stub
 		System.out.println("creando EvaluarRetiroBean ...");
 		estasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
-		numero=((Usuario)estasession.get("b_usuario")).getPersonas().getIntDNI();
-		System.out.println("numero: "+numero);
+		numero =((Usuario)estasession.get("b_usuario")).getPersonas().getIntDNI();
+		nombre =((Usuario)estasession.get("b_usuario")).getPersonas().getStrNombre();
+		apellido=((Usuario)estasession.get("b_usuario")).getPersonas().getStrApellidoPaterno();
+		
+		System.out.println("Nombre : "+ nombre + " " + apellido);
+		System.out.println("DNI    : "+numero);
 	}
 
 	/*public void cargaDatosCitaEvaluada(){
@@ -125,7 +130,25 @@ public class EvaluarRetiroBean implements Serializable {
 	
 	public void apruebaSolicitud(){
 		System.out.println("aprobando SR ... ");
+		
+		//NO BORRAR 
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		
+		Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+		
+		
+		System.out.println(usuario.getPersonas().getStrCodigoPersona());
+		
+		persona = new Persona();
+		persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+		
+		ada = new AsistenteDireccionAcademica();
+		ada.setPersonas(persona);
+		
+		selectedSolicitud.setAsistenteDireccion(ada);
+		
 		try {
+					
 			retiroService.apruebaSR(selectedSolicitud);
 			FacesMessage msg = new FacesMessage("Solicitud de Retiro Aprobada","Se aprobó la Solicitud de Retiro con ID "+selectedSolicitud.getIntIdCodigoSolicitudRetiro()+" del Alumno "+selectedSolicitud.getAlumno().getStrNombres()+" "+selectedSolicitud.getAlumno().getStrApellidoPaterno());
     	    FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -141,6 +164,23 @@ public class EvaluarRetiroBean implements Serializable {
 	
 	public void desapruebaSolicitud(){
 		System.out.println("desaprobando SR ... ");
+		
+		//NO BORRAR 
+		HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		
+		Usuario usuario = (Usuario)session.getAttribute("b_usuario");
+		
+		
+		System.out.println(usuario.getPersonas().getStrCodigoPersona());
+		
+		persona = new Persona();
+		persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
+		
+		ada = new AsistenteDireccionAcademica();
+		ada.setPersonas(persona);
+		
+		selectedSolicitud.setAsistenteDireccion(ada);
+		
 		try {
 			retiroService.desapruebaSR(selectedSolicitud);
 			FacesMessage msg = new FacesMessage("Solicitud de Retiro Rechazada","Se rechazó la Solicitud de Retiro con ID "+selectedSolicitud.getIntIdCodigoSolicitudRetiro()+" del Alumno "+selectedSolicitud.getAlumno().getStrNombres()+" "+selectedSolicitud.getAlumno().getStrApellidoPaterno());
@@ -231,14 +271,6 @@ public class EvaluarRetiroBean implements Serializable {
 		this.bandera = bandera;
 	}
 
-	public SolicitudRetiro getSelectedSolicitud2() {
-		return selectedSolicitud2;
-	}
-
-	public void setSelectedSolicitud2(SolicitudRetiro selectedSolicitud2) {
-		this.selectedSolicitud2 = selectedSolicitud2;
-	}
-
 	public Map<String, Object> getEstasession() {
 		return estasession;
 	}
@@ -255,4 +287,21 @@ public class EvaluarRetiroBean implements Serializable {
 		this.numero = numero;
 	}
 
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	
+	
 }
