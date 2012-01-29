@@ -231,6 +231,8 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 		
 		System.out.println("Codigo de alumno q llega: "+ alumno.getStrCodigoAlumno());
 
+		SolicitudRetiro tmpSR = null;
+		
 		try {
 			em = emf.createEntityManager();
 			
@@ -240,14 +242,11 @@ public class SolicitudExoneracionJPADAO implements SolicitudExoneracionDAO{
 			"WHERE (sr.strEstado='APROBADO' OR sr.strEstado='PENDIENTE') AND sr.alumno.strCodigoAlumno=?1");
 			q.setParameter(1, alumno.getStrCodigoAlumno());
 			
-			SolicitudRetiro tmpSR = new SolicitudRetiro();
-			tmpSR= (SolicitudRetiro) q.getSingleResult();
+			tmpSR = (SolicitudRetiro) q.getSingleResult();
 			
 			if(tmpSR!=null){
-				em.close();
 				return tmpSR;
 			}else{
-				em.close();
 				return null;
 			}			
 		} catch (Exception e) {

@@ -125,6 +125,14 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 					solicitudesRetiro.add(entidad);
 				}
 		 }
+		 
+		 for (SolicitudRetiro x : solicitudesRetiro) {
+			 StreamedContent image;
+			 
+			 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getCertificadobin()));
+			 
+			 x.setScImagen(image);
+		}
 
 		em.close();
 		return solicitudesRetiro;
@@ -148,19 +156,12 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 					solicitudesRetiro.add(entidad);
 				}
 		 }
-		 
-		 for (SolicitudRetiro x : solicitudesRetiro) {
-			 StreamedContent image;
-			 
-			 image = new DefaultStreamedContent(new ByteArrayInputStream(x.getCertificadobin()));
-			 
-			 x.setScImagen(image);
-		}
 
 		em.close();
 		return solicitudesRetiro;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public Cita cargaDatosCitaxEvaluar(SolicitudRetiro selectedSolicitud)
 			throws Exception {
@@ -229,7 +230,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 	
 	}
 
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings("rawtypes")
 	@Override
 	public ArrayList<Certificadoa> obtenerCertificadosXAlumno(String elfiltro)
 			throws Exception {
@@ -241,7 +242,7 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		q.setParameter(1, elfiltro);
 		
 		List lista = q.getResultList();
-		List listatemp;
+		List listatemp = null;
 		ArrayList<Certificadoa> lista2 = new ArrayList<Certificadoa>();
 		 if(lista.size()>0){
 			 System.out.println("lista de citas relacionadas tiene "+lista.size()+" items");

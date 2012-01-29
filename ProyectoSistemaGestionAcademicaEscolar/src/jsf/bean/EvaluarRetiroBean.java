@@ -9,7 +9,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpSession;
 
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudRetiroService;
@@ -161,14 +160,14 @@ public class EvaluarRetiroBean implements Serializable {
 		try {
 			
 			//NO BORRAR 
-			HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+			/*HttpSession session = (HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true);
 			Usuario usuario = (Usuario)session.getAttribute("b_usuario");
 			System.out.println("codigo Persona: "+usuario.getPersonas().getStrCodigoPersona());
 			
 			persona = new Persona();
 			persona.setStrCodigoPersona(usuario.getPersonas().getStrCodigoPersona());
 			ada = new AsistenteDireccionAcademica();
-			ada.setPersonas(persona);	
+			ada.setPersonas(persona);	*/
 			
 			//listaSR = retiroService.obtenerSRxADA(ada);
 			listaSR = retiroService.obtenerSolicitudesPendientes();
@@ -178,7 +177,6 @@ public class EvaluarRetiroBean implements Serializable {
 		}
 		return listaSR;
 	
-		//return listaSRPendientes;
 	}
 
 	public void setListaSR(ArrayList<SolicitudRetiro> listaSR) {
