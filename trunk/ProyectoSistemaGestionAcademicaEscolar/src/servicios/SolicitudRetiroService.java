@@ -1,7 +1,6 @@
 package servicios;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;

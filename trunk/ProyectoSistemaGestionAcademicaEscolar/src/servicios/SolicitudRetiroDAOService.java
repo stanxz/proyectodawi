@@ -1,7 +1,6 @@
 package servicios;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import dao.DAOFactory;
 import dao.SolicitudRetiroDAO;

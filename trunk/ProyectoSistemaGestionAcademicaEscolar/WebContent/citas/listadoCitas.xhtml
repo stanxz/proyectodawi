@@ -7,9 +7,9 @@
 	template="/templates/crud-template.xhtml">
 
 <ui:define name="content">
-<div align="center">
+<div align="left">
 
-  <h:form style="width: 600px; ">  
+  <h:form style="width: 400px; ">  
       
         <p:ajaxStatus style="height:24px;display:block;">  
             <f:facet name="start" >  
@@ -37,7 +37,7 @@
 
   
       <p:dialog widgetVar="eventDialog" header="Liberar Cita" 
-      showEffect="clip" hideEffect="explode" resizable="true" > 
+      showEffect="clip" hideEffect="explode" resizable="false"  width="400"> 
  
             <h:panelGrid id="eventDetails" columns="2">  
             <h:outputLabel for="codc" value="Cita :" />  
