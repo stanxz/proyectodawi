@@ -248,10 +248,12 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		List listatemp = null;
 		ArrayList<Certificadoa> lista2 = new ArrayList<Certificadoa>();
 		 if(lista.size()>0){
+			
 			 System.out.println("lista de citas relacionadas tiene "+lista.size()+" items");
 				for ( int i=0; i < lista.size(); i++ ) {
 					Query query=em.createQuery("SELECT ca FROM Certificadoa ca WHERE ca.intCodcita=?1");
 					query.setParameter(1, ((Cita)(lista.get(i))).getIntcodcita());
+					
 					listatemp=query.getResultList();
 					if(listatemp.size()>0){
 						System.out.println("agregando "+listatemp.size()+" items de la listatemp");
@@ -262,12 +264,14 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 						//lista2.addAll(listatemp);
 					}
 					else{
-						lista2=null;
+						lista2.clear();
 						System.out.println("listatemp vacia - iteracion: "+i);
 					}
+					lista.clear();
+					listatemp.clear();
 				}
 		 }else{
-			 lista2=null;
+			 lista2.clear();
 			 System.out.println("lista de citas relacionadas, vacia");
 		 }
 

@@ -27,7 +27,7 @@
   		<div align="right">
             <p:outputPanel>  
                 <h:outputText value="Ingrese Codigo de Alumno:" />
-                <p:inputText  value="#{enviaCertificadosBean.elfiltro}" style="width:150px" />
+                <p:inputMask  value="#{enviaCertificadosBean.elfiltro}" style="width:150px" mask="aa-99999999"/>
                 <p:commandButton  actionListener="#{enviaCertificadosBean.cargaCertificados}" value="Buscar" update="form:listaCertificados" image="ui-icon ui-icon-search"/>  
             </p:outputPanel>  
         </div>
@@ -47,12 +47,13 @@
             <h:outputText value="Econ-Fam"/>  
         </p:column>
         
-        <p:column style="width:100px">  
+      <!--  <p:column style="width:100px">  
              <h:panelGrid columns="3" styleClass="actions" cellpadding="2">  
-                 <p:commandButton update="dlgForm:display,dlgForm:image" oncomplete="carDialog.show()" image="ui-icon ui-icon-search" title="Ver Certificado">  
+                 <p:commandButton update="dlgForm:display,dlgForm:image" oncomplete="carDialog2.show()" image="ui-icon ui-icon-search" title="Ver Certificado">
+                 	<f:setPropertyActionListener value="#{certificado}" target="#{enviaCertificadosBean.selectedCerti}" />  
                  </p:commandButton>
              </h:panelGrid>  
-        </p:column>
+        </p:column>  -->
         
         <f:facet name="footer">  
          <div align="left">
@@ -69,7 +70,7 @@
 	  <h:panelGrid id="display2" columns="2" cellpadding="2" style="margin:0 auto;" >
 		    <h:outputText value="Codigo Asistenta" style="font-weight:bold"/>  
             <h:panelGroup>    
-              <h:outputText value="#{enviaCertificadosBean.loadedCita.strcodasistentasocial}" style="font-weight:bold" rendered="#{enviaCertificadosBean.editMode}" readonly="#{enviaCertificadosBean.editMode}" size="30"/>    
+              <h:outputText value="#{enviaCertificadosBean.selectedCerti.strcodasistentasocial}" style="font-weight:bold" rendered="#{enviaCertificadosBean.editMode}" readonly="#{enviaCertificadosBean.editMode}" size="30"/>    
             </h:panelGroup>
 
 			 <f:facet name="footer"> 

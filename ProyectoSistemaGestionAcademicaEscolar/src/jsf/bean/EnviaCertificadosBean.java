@@ -45,7 +45,7 @@ public class EnviaCertificadosBean  implements Serializable {
 	public void cargaCertificados() {
 		try {
 			System.out.println("elfiltro: "+elfiltro);
-			
+			listaCertificados=new ArrayList<Certificadoa>();
 			listaCertificados = retiroService.obtenerCertificadosXAlumno(elfiltro);
 			System.out.println("listaCertificados cargada - tamaño: "+listaCertificados.size());
 		}catch (NullPointerException ne){
