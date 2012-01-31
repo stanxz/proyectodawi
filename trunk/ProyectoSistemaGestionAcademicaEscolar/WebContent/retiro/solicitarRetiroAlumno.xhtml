@@ -50,7 +50,7 @@
 		 </h:selectOneMenu>	
 		 
 		  <h:outputText value="Nro Boleta Pago" style="font-weight:bold" rendered="true"/>
-		  <p:inputMask  value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" rendered="true" required="true" requiredMessage="Ingrese Nro Boleta" mask="aa999999">
+		  <p:inputMask  id="bol" value="#{alumnoRetiroBean.boleta.strCodigoBoleta}" style="font-weight:bold" rendered="true" required="true" requiredMessage="Ingrese Nro Boleta" mask="aa999999">
 		  	<f:validator validatorId="boletaRetiroValidator"/>
 		  </p:inputMask>
 		 
