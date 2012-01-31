@@ -54,9 +54,9 @@
             </p:inputMask>  
             <h:outputLabel for="estado" value="Estado :" />  
             <p:inputText id="estado" value="#{scheduleController.event.stado}" disabled="true" /> 
-            <h:outputLabel for="obser" value="Observacion :" style="font-weight:bold;width:290px;height:100px;"/>  
+            <h:outputLabel for="obser" value="Observacion :"/>  
             
-            <p:inputTextarea rows="5" cols="23" value="#{scheduleController.event.observacion}"  />
+            <p:inputTextarea style="font-weight:bold;width:200px;height:100px;" value="#{scheduleController.event.observacion}" effectDuration="300" />
            
             
             <p:commandButton  value="Liberar"  
