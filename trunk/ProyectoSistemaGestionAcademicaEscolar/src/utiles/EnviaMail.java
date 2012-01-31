@@ -11,6 +11,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import entidades.Alumno;
+import entidades.Certificadoa;
 import entidades.Cita;
 import entidades.Persona;
 import entidades.SolicitudExoneracion;
@@ -310,6 +311,56 @@ public class EnviaMail {
 			   	e1.printStackTrace();
 				System.out.println("error enviando el correo : "+e1.getMessage());
 		   }
+	
+	}
+
+	public void enviarCorreoCertificado(Certificadoa certificadoa, Alumno elalumno) {
+
+
+		// Propiedades de la conexión
+		   Properties props = new Properties();
+		   props.setProperty("mail.smtp.host", "smtp.gmail.com");
+		   props.setProperty("mail.smtp.starttls.enable", "true");
+		   props.setProperty("mail.smtp.port", "587");
+		   props.setProperty("mail.smtp.user", "proylp2@gmail.com");
+		   props.setProperty("mail.smtp.auth", "true");
+
+		   // Preparamos la sesion
+		   Session session = Session.getDefaultInstance(props);
+
+		   // Construimos el mensaje
+		   MimeMessage message = new MimeMessage(session);
+
+		   try {
+			   message.setFrom(new InternetAddress("proylp2@gmail.com"));
+			   message.addRecipient(
+			       Message.RecipientType.TO,
+			       new InternetAddress(elalumno.getApoderados().getPersonas().getStrMail()));
+
+			   message.setSubject("SGAE - Envio de Certificados");
+			   String cuerpomensaje="Estimado "+elalumno.getApoderados().getPersonas().getStrNombre()+" "+elalumno.getApoderados().getPersonas().getStrApellidoPaterno()+ 
+			   ", \n\n remitimos su Certificado de Asistencia Social: ";
+			   
+
+				cuerpomensaje+="\n Codigo Certificado : " + certificadoa.getIntCodcertificado();
+				cuerpomensaje+="\n Alumno           : " + elalumno.getStrNombres() + " " + elalumno.getStrApellidoPaterno()+" "+elalumno.getStrApellidoMaterno();
+	
+			   message.setText(cuerpomensaje);
+
+			   // Lo enviamos.
+			   Transport t = session.getTransport("smtp");
+			   t.connect("proylp2@gmail.com", "cibertec");
+			   t.sendMessage(message, message.getAllRecipients());
+			   // Cierre.
+	           t.close();
+		   } catch (MessagingException e) {
+				e.printStackTrace();
+				System.out.println("error enviando el correo : "+e.getMessage());
+		   }catch(Exception e1){
+			   	e1.printStackTrace();
+				System.out.println("error enviando el correo : "+e1.getMessage());
+		   }
+	
 	
 	}
 	
