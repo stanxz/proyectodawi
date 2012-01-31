@@ -1,6 +1,5 @@
 package dao;
 
-import java.security.cert.Certificate;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
