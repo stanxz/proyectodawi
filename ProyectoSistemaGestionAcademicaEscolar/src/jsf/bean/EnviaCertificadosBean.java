@@ -12,6 +12,7 @@ import org.primefaces.event.UnselectEvent;
 import servicios.AlumnoService;
 import servicios.ApplicationBusinessDelegate;
 import servicios.SolicitudRetiroService;
+import utiles.EnviaMail;
 import entidades.Alumno;
 import entidades.Certificadoa;
 
@@ -26,6 +27,7 @@ public class EnviaCertificadosBean  implements Serializable {
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	private static SolicitudRetiroService retiroService = abd.getRetiroService();
 	private static AlumnoService alumnoService = abd.getAlumnoService();
+	EnviaMail enviador=new EnviaMail();
 	
 	private boolean editMode;
 	private String elfiltro;
@@ -73,6 +75,7 @@ public class EnviaCertificadosBean  implements Serializable {
 							String correodestino=elalumno.getApoderados().getPersonas().getStrMail();
 							System.out.println("enviando certificado a "+correodestino);
 							//aki va el envio de certificado por correo
+							enviador.enviarCorreoCertificado(selectedCertificados[k],elalumno);
 						}
 					}
 				}
