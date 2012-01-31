@@ -2,7 +2,6 @@ package dao;
 import java.util.ArrayList;
 
 
-import entidades.Alumno;
 import entidades.Cita;
 
 
