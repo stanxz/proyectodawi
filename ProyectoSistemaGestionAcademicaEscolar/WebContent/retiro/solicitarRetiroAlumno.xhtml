@@ -84,10 +84,10 @@
 					  actionListener="#{alumnoRetiroBean.generaSolicitud}"  
 					  update="msgs" 
                       image="ui-icon ui-icon-check"
-                      disabled="#{!alumnoRetiroBean.btnAdjuntar}"
+                      rendered="#{alumnoRetiroBean.btnAdjuntar}"
                       oncomplete="datosDialog.hide()"/>
                     <p:commandButton value="Cancelar" onclick="datosDialog.hide()" type="button" image="ui-icon ui-icon-close" 
-                    disabled="#{!alumnoRetiroBean.btnAdjuntar}"/>
+                    rendered="#{alumnoRetiroBean.btnAdjuntar}"/>
   				</h:panelGroup>
               </p:outputPanel>  
           </f:facet>  
