@@ -162,11 +162,10 @@ public class AlumnoBean implements Serializable{
 		mattempo.setAlumno(nuevoAlumno);
 		mattempo.setDtFecMat(new Date(c2.getTimeInMillis()));
 		mattempo.setSeccionprogramada(sbuscada);
-		
+		//aki
 		Calendarioacademico calendatempo=new Calendarioacademico();
-		calendatempo.setStrCodcalendario("2011");
+		calendatempo.setStrCodcalendario("2012");
 		mattempo.setCalendarioacademico(calendatempo);
-		//sptempo.setTbMatriculas();
 		
 		try {
 			for (Method m : nuevoAlumno.getClass().getMethods()){
@@ -187,24 +186,31 @@ public class AlumnoBean implements Serializable{
 				System.out.println("Alumno "+tempoalumno.getStrCodigoAlumno()+"("+tempoalumno.getStrNombres()+" "+tempoalumno.getStrApellidoPaterno()+") ya existe !!");
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno ya se encuentra registrado: " + tempoalumno.getStrNombres() + " " + tempoalumno.getStrApellidoPaterno()));
 			}else{
-				alumnoService.registrarAlumno(nuevoAlumno);
-				matriculaService.registrarMatricula(mattempo);
-				System.out.println("Se registro al alumno .... cargando apoderado ... ");
-				String cadena= nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3);
-				System.out.println("cadena: "+cadena);
-				Persona temporal=new Persona();
-				Persona apoderadobuscado=new Persona();
-				temporal.setIntDNI(Integer.parseInt(cadena));
-				apoderadobuscado=apoderadoService.consultaApoderado(apoderadobuscado);
-				System.out.println("enviando correo al apoderado ... ");
-				EnviaMail enviador=new EnviaMail();				
-				enviador.enviarCorreoRegisroAl(nuevoAlumno,apoderadobuscado);
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
-				System.out.println("Se registro el Alumno con exito");
-				nuevoAlumno =  new Alumno();
-			}
-			
-			
+				//validacion de q el dni del alumno y el apoderado q se registran no sean el mismo SOLO al mismo tiempo
+				System.out.println("dni apoderado: "+nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3));
+				System.out.println("dni alumno: "+nuevoAlumno.getIntDni());
+				if(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3).equalsIgnoreCase(""+nuevoAlumno.getIntDni())){
+					System.out.println("Alumno "+nuevoAlumno.getStrCodigoAlumno()+"("+nuevoAlumno.getStrNombres()+" "+nuevoAlumno.getStrApellidoPaterno()+") tiene el mismo DNI de su apoderado [DNI Apoderado:"+nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3)+"] ... ");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El alumno y su apoderado tienen el mismo dni.\n DNI del alumno:" + nuevoAlumno.getIntDni() + ".\nDNI del apoderado: " + nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3)));
+				}else{
+					System.out.println("pasoooooo");
+					alumnoService.registrarAlumno(nuevoAlumno);
+					matriculaService.registrarMatricula(mattempo);
+					System.out.println("Se registro al alumno .... cargando apoderado ... ");
+					String cadena= nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3);
+					System.out.println("cadena: "+cadena);
+					Persona temporal=new Persona();
+					Persona apoderadobuscado=new Persona();
+					temporal.setIntDNI(Integer.parseInt(cadena));
+					apoderadobuscado=apoderadoService.consultaApoderado(temporal);
+					System.out.println("enviando correo al apoderado: "+apoderadobuscado.getIntDNI());
+					EnviaMail enviador=new EnviaMail();				
+					enviador.enviarCorreoRegisroAl(nuevoAlumno,apoderadobuscado);
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Alumno Insertado correctamente: " + nuevoAlumno.getStrNombres() + " " + nuevoAlumno.getStrApellidoPaterno()));
+					System.out.println("Se registro el Alumno con exito");
+					nuevoAlumno =  new Alumno();
+				}	
+			}		
 		} catch (Exception e) {
 			System.out.println("Error registrando el alumno: "+e.getMessage());
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se insertó al alumno","No se insertó el apoderado: "+e.getMessage()));

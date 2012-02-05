@@ -9,6 +9,11 @@
 <ui:define name="content">
 <div align="center">
 <p:growl id="msgs" showDetail="true" sticky="false" life="8000"/>
+<p:ajaxStatus onstart="statusDialog.show();" onsuccess="statusDialog.hide();"/>  
+		    <p:dialog modal="true" widgetVar="statusDialog" header="Status"   
+		        draggable="false" closable="false" resizable="false">  
+		    	<p:graphicImage value="/resources/images/ajaxloadingbar.gif" />  
+		    </p:dialog>
 <h:form id="form" style="width: 800px;"> 
     <p:dataTable id="listaalumnos" var="alumno" value="#{alumnoBean.alumnos}" 
     emptyMessage="No hay alumnos a listar" widgetVar="alumnosTable"
