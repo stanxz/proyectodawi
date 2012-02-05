@@ -191,7 +191,7 @@ public class AlumnoBean implements Serializable{
 				System.out.println("dni alumno: "+nuevoAlumno.getIntDni());
 				if(nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3).equalsIgnoreCase(""+nuevoAlumno.getIntDni())){
 					System.out.println("Alumno "+nuevoAlumno.getStrCodigoAlumno()+"("+nuevoAlumno.getStrNombres()+" "+nuevoAlumno.getStrApellidoPaterno()+") tiene el mismo DNI de su apoderado [DNI Apoderado:"+nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3)+"] ... ");
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El alumno y su apoderado tienen el mismo dni.\n DNI del alumno:" + nuevoAlumno.getIntDni() + ".\nDNI del apoderado: " + nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3)));
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("El alumno y su apoderado tienen el mismo dni. DNI del alumno:" + nuevoAlumno.getIntDni() + ". DNI del apoderado: " + nuevoAlumno.getApoderados().getPersonas().getStrCodigoPersona().substring(3)));
 				}else{
 					System.out.println("pasoooooo");
 					alumnoService.registrarAlumno(nuevoAlumno);
