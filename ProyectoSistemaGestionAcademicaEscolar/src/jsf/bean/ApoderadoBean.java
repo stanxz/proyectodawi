@@ -40,13 +40,14 @@ public class ApoderadoBean implements Serializable{
 	 private String mensaje,usuarioapoderado,passapoderado;
 	 private Usuario nuevousuario;
 	 private ArrayList<Distrito> listadistritos2;
-	 private int eldniApoderado, codigoDistrito2;
+	 private int eldniApoderado, codigoDistrito2,eldniAlumno;
 	 
 	public ApoderadoBean() {
 		System.out.println("Creado ApoderadoBean...");
 		this.mensaje="";
 		nuevoApoderado=new Persona();
 		CargarDistritos();
+		//System.out.println("AAAAA dni del alumno q llega: "+eldniAlumno);
 	}
 	 
 	public void buscaApoderado(ActionEvent evento){
@@ -87,14 +88,11 @@ public class ApoderadoBean implements Serializable{
 	public void registraApoderado() {  
 		System.out.println("en el registraApoderado");
 		Persona auxitemporal = null;
-		
+		//System.out.println("BBBBBB dni del alumno q llega: "+eldniAlumno);
 		//Llena datos que iran a la tabla usuario
 		Perfil p = new Perfil();
 		p.setStrCodigoPerfil("pf01");
 
-		
-		
-		
 		try {
 			//reflexion: se invocan los emtodos 
 			for (Method m : nuevoApoderado.getClass().getMethods()){
@@ -264,6 +262,14 @@ public class ApoderadoBean implements Serializable{
 
 	public void setListadistritos2(ArrayList<Distrito> listadistritos2) {
 		this.listadistritos2 = listadistritos2;
+	}
+
+	public int getEldniAlumno() {
+		return eldniAlumno;
+	}
+
+	public void setEldniAlumno(int eldniAlumno) {
+		this.eldniAlumno = eldniAlumno;
 	}
 	
 	
