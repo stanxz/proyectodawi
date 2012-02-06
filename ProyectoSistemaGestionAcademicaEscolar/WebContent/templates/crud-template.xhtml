@@ -41,6 +41,15 @@ DataTable - Row Selection
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.prime.com.tr/ui">    
 <h:head>
+<script type="text/javascript">
+if (window.history) {
+        function noBack(){window.history.forward()}
+        noBack();
+        window.onload=noBack;
+        window.onpageshow=function(evt){if(evt.persisted)noBack()}
+        window.onunload=function(){void(0)}
+}
+</script>
 	<title>
 	<ui:insert name="title">
 			I.E.P &quot;SAN CARLOS&quot;
