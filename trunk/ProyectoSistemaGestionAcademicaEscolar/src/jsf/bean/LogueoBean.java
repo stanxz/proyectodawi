@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
-
-import entidades.Permiso;
-import entidades.Persona;
-import entidades.Usuario;
 import servicios.ApplicationBusinessDelegate;
 import servicios.PersonaService;
 import servicios.UsuarioService;
 import utiles.EnviaMail;
+import entidades.Permiso;
+import entidades.Persona;
+import entidades.Usuario;
 
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class LogueoBean {
-
 	
 	private static ApplicationBusinessDelegate abd = new ApplicationBusinessDelegate();
 	
@@ -36,6 +35,20 @@ public class LogueoBean {
 	
 	public LogueoBean(){
 		System.out.println("Creando LogueoBean...");
+	}
+	
+	public String destruirSesion(){
+		System.out.println("en el destructor de sesiones ... ");
+
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession)facesContext.getExternalContext().getSession(false);
+		if (session != null)
+		{
+			session.invalidate(); //CERRAR SESION
+		}
+
+		System.out.println("redireccionando al index .... ");
+		return "index";
 	}
 	
 	public String loguearUsuario(){
@@ -57,11 +70,7 @@ public class LogueoBean {
 				//ponemos al usuario en sesion
 				lasession=FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 				lasession.put("b_usuario", userauxi);
-				/*Persona pauxi=personaService.consultaPersona(userauxi);
-				System.out.println("nombre: "+pauxi.getStrNombre()+" "+pauxi.getStrApellidoPaterno());
-				System.out.println("sexo: "+pauxi.getStrSexo());
-				lasession.put("b_persona", pauxi);
-				*/
+
 				System.out.println("Nombre--> " + userauxi.getPersonas().getStrNombre() + " " + userauxi.getPersonas().getStrApellidoPaterno());
 				System.out.println("Sexo  -->"  + userauxi.getPersonas().getStrSexo());
 				
