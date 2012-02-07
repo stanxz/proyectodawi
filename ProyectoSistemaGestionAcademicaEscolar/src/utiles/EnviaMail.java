@@ -1,14 +1,22 @@
 package utiles;
 
+import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Properties;
 
+import javax.activation.DataHandler;
+import javax.activation.DataSource;
+import javax.activation.FileDataSource;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
+import javax.mail.util.ByteArrayDataSource;
 
 import entidades.Alumno;
 import entidades.Certificadoa;
@@ -347,7 +355,31 @@ public class EnviaMail {
 				cuerpomensaje+="\n Codigo Certificado : " + certificadoa.getIntCodcertificado();
 				cuerpomensaje+="\n Alumno           : " + elalumno.getStrNombres() + " " + elalumno.getStrApellidoPaterno()+" "+elalumno.getStrApellidoMaterno();
 	
-			   message.setText(cuerpomensaje);
+				
+				if(certificadoa.getContenidodoccertbin()!=null){
+					System.out.println("correo con adjunto ...");
+					//primara parte del mensaje, adjunto el texto del mail
+                    MimeBodyPart messageBodyPart = new MimeBodyPart();
+                    //fill message
+                    messageBodyPart.setText(cuerpomensaje);
+                    Multipart multipart = new MimeMultipart();
+                    multipart.addBodyPart(messageBodyPart);
+
+                    //segunda parte del mensaje, adjunto el archivo
+                    messageBodyPart = new MimeBodyPart();
+                   // File file= new File("");
+                    DataSource source =  new ByteArrayDataSource(certificadoa.getContenidodoccertbin(), "hola");
+                    messageBodyPart.setDataHandler(new DataHandler(source));
+                    messageBodyPart.setFileName("Certificado Asistencia Social");
+                    multipart.addBodyPart(messageBodyPart);
+                    message.setContent(multipart);  
+                    
+				}else{
+					System.out.println("No hay adjunto, mensaje simple ...");
+					message.setText(cuerpomensaje);
+				}
+				
+			   
 
 			   // Lo enviamos.
 			   Transport t = session.getTransport("smtp");

@@ -71,9 +71,11 @@ public class EnviaCertificadosBean  implements Serializable {
 			Alumno elalumno;
 			try {
 				elalumno = alumnoService.obtenerAlumno(temporal);
+				System.out.println(":D");
 				if(elalumno!=null){
 					if(selectedCertificados.length>0){
 						for(int k=0;k<selectedCertificados.length;k++){
+							System.out.println("enviando certificados del alumno "+elalumno.getIntDni());
 							String correodestino=elalumno.getApoderados().getPersonas().getStrMail();
 							System.out.println("enviando certificados a "+correodestino);
 							//aki va el envio de certificado por correo
@@ -82,6 +84,10 @@ public class EnviaCertificadosBean  implements Serializable {
 				    	    FacesContext.getCurrentInstance().addMessage(null, msg);
 				    	    listaCertificados.clear();
 						}
+					}
+					else{
+						System.out.println("El alumno "+elalumno.getStrNombres()+" "+elalumno.getStrApellidoPaterno()+" no tiene certificados");
+						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"El alumno no tiene certificados","El Alumno "+ temporal.getStrCodigoAlumno()+" no tiene registrados certificados de Asistencia Social" ));
 					}
 				}
 				else{
