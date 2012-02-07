@@ -4,8 +4,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.primefaces.event.UnselectEvent;
 
@@ -73,22 +75,27 @@ public class EnviaCertificadosBean  implements Serializable {
 					if(selectedCertificados.length>0){
 						for(int k=0;k<selectedCertificados.length;k++){
 							String correodestino=elalumno.getApoderados().getPersonas().getStrMail();
-							System.out.println("enviando certificado a "+correodestino);
+							System.out.println("enviando certificados a "+correodestino);
 							//aki va el envio de certificado por correo
 							enviador.enviarCorreoCertificado(selectedCertificados[k],elalumno);
+							FacesMessage msg = new FacesMessage("Certificados Enviados","Se envió el certificado de Asistencia Social del alumno "+elalumno.getStrNombres()+" "+elalumno.getStrApellidoPaterno());
+				    	    FacesContext.getCurrentInstance().addMessage(null, msg);
+				    	    listaCertificados.clear();
 						}
 					}
 				}
 				else{
 					System.out.println("elalumno es nulo");
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se envió los Certificados","El Alumno "+ temporal.getStrCodigoAlumno()+" no se encuentra registrado en la BD !" ));
 				}
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error:","Hubo un error al enviar los certificados: "+e.getMessage() ));
+				//e.printStackTrace();
 			}	
 		}
 		else{
 			System.out.println("el filtro es nulo o vacio");
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Error: No se envió los Certificados","Ingrese un código de Alumno" ));
 		}
 		
 	}
