@@ -20,7 +20,7 @@
 <h:outputText value="Elija una Asistenta y una Fecha para visualizar los posibles horarios." />
 <h:panelGrid columns="3">
 	<h:outputText value="Fecha" style="font-weight:bold" /> 
-	<p:calendar id="dtFecCita" value="#{citaBean.fechaCita}" pattern="yyyy-MM-dd"  showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="2012-01-15" maxdate="2012-12-31" readOnlyInputText="true" label="Fecha de Cita"  onSelectUpdate="cboHorasDisponibles" selectListener="#{citaBean.cargaComboListadoHorasDisponibles}">
+	<p:calendar id="dtFecCita" value="#{citaBean.fechaCita}" pattern="yyyy-MM-dd"  showOn="button" required="true" requiredMessage="Seleccione un Fecha"  navigator="true" mindate="2012-02-08" maxdate="2012-12-01" readOnlyInputText="true" label="Fecha de Cita"  onSelectUpdate="cboHorasDisponibles" selectListener="#{citaBean.cargaComboListadoHorasDisponibles}">
 	</p:calendar>*
 	  
 	<h:outputText value="Asistenta Social" style="font-weight:bold"/>

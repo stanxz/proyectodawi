@@ -13,6 +13,7 @@ import org.primefaces.model.StreamedContent;
 
 import utiles.Constantes;
 
+import entidades.Alumno;
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.Certificadoa;
@@ -282,6 +283,39 @@ public class SolicitudRetiroJPADAO implements SolicitudRetiroDAO {
 		else
 			return null;
 	
+	}
+
+	@Override
+	public SolicitudRetiro verificarExistenciaSR(Alumno tmpAlumno)
+			throws Exception {
+		
+		System.out.println("Codigo de alumno q llega: "+ tmpAlumno.getStrCodigoAlumno());
+
+		SolicitudRetiro tmpSR = null;
+		
+		try {
+			em = emf.createEntityManager();
+			
+			em.getTransaction().begin();
+			
+			Query  q = em.createQuery("SELECT sr FROM SolicitudRetiro sr " +
+			"WHERE (sr.strEstado='APROBADO' OR sr.strEstado='PENDIENTE') AND sr.alumno.strCodigoAlumno=?1");
+			q.setParameter(1, tmpAlumno.getStrCodigoAlumno());
+			
+			tmpSR = (SolicitudRetiro) q.getSingleResult();
+			
+			if(tmpSR!=null){
+				return tmpSR;
+			}else{
+				return null;
+			}			
+		} catch (Exception e) {
+			em.close();
+			return null;
+		}finally{
+			em.close();
+		}
+		
 	}
 
 }

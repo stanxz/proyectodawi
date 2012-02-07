@@ -2,6 +2,7 @@ package servicios;
 
 import java.util.ArrayList;
 
+import entidades.Alumno;
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.Certificadoa;
@@ -21,4 +22,5 @@ public interface SolicitudRetiroService {
 	public void apruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
 	public void desapruebaSR(SolicitudRetiro selectedSolicitud)throws Exception;
 	public ArrayList<Certificadoa> obtenerCertificadosXAlumno(String elfiltro)throws Exception;
+	public SolicitudRetiro verificarExistenciaSR(Alumno tmpAlumno)throws Exception;
 }
