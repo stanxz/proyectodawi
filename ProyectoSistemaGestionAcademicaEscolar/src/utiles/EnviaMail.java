@@ -379,7 +379,6 @@ public class EnviaMail {
 					message.setText(cuerpomensaje);
 				}
 				
-			   
 
 			   // Lo enviamos.
 			   Transport t = session.getTransport("smtp");
