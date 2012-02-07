@@ -192,8 +192,10 @@ public class EnviaMail {
 			   String cuerpomensaje="Estimado "+lacita.getAlumno().getApoderados().getPersonas().getStrNombre()+" "+lacita.getAlumno().getApoderados().getPersonas().getStrApellidoPaterno()+ ", \n\n le enviamos la confirmacion de su registro de Cita con los siguientes datos: ";
 			   
 			   for (Method m : lacita.getClass().getMethods()){
-					if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))||(m.getName().startsWith("getDt"))||(m.getName().startsWith("getTlf"))){
+					if((m.getName().startsWith("getStr"))||(m.getName().startsWith("getInt"))||(m.getName().startsWith("getTlf"))){
 						cuerpomensaje+="\n" + m.getName().substring(6).toUpperCase() + " : " +  m.invoke(lacita);
+					}else if(m.getName().startsWith("getDt")){
+						cuerpomensaje+="\n" + m.getName().substring(5).toUpperCase() + " : " +  m.invoke(lacita);
 					}
 						
 				}
