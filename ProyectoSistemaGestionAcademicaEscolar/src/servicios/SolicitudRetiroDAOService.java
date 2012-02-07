@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dao.DAOFactory;
 import dao.SolicitudRetiroDAO;
 
+import entidades.Alumno;
 import entidades.AsistenteDireccionAcademica;
 import entidades.Boleta;
 import entidades.Certificadoa;
@@ -87,6 +88,13 @@ public class SolicitudRetiroDAOService implements SolicitudRetiroService {
 			throws Exception {
 		// TODO Auto-generated method stub
 		return retirodao.obtenerCertificadosXAlumno(elfiltro);
+	}
+
+	@Override
+	public SolicitudRetiro verificarExistenciaSR(Alumno tmpAlumno)
+			throws Exception {
+		// TODO Auto-generated method stub
+		return retirodao.verificarExistenciaSR(tmpAlumno);
 	}
 
 }

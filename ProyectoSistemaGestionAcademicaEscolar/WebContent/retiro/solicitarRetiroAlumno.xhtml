@@ -15,9 +15,11 @@
 <h:outputText value="Alumno" style="font-weight:bold"/>
 <h:selectOneMenu value="#{alumnoRetiroBean.retiroAlumno.strCodigoAlumno}" required="true" 
                  requiredMessage="Seleccione un Alumno">
-	<f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
-	<f:selectItems value="#{alumnoRetiroBean.alumnosXapoderado}" var="alumno"
-	               itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>            
+				<f:selectItem itemLabel="Seleccione Alumno" itemValue="#{null}"/>
+				<f:selectItems value="#{alumnoRetiroBean.alumnosXapoderado}" var="alumno"
+				               itemLabel="#{alumno.strNombres} #{alumno.strApellidoPaterno} #{alumno.strApellidoMaterno}" itemValue="#{alumno.strCodigoAlumno}"/>
+			<f:validator validatorId="retiroValidator"/>
+	      <f:attribute name="codigo" value="#{codigo.value}" />	                           
 </h:selectOneMenu>
 <p:commandButton value="Cargar" actionListener="#{alumnoRetiroBean.CargaRetiroAlumno}"  
                  update="msgs dlgForm:display" oncomplete="cargaDatosRetiro(args)"/>
