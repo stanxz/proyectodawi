@@ -272,7 +272,7 @@
           <h:panelGrid id="display3" columns="2" cellpadding="2" style="margin:0 auto;" >  
             <h:outputText value="DNI de Apoderado" />  
             <h:panelGroup>
-            	<p:inputMask id="txtCodigoApoderado2" value="#{apoderadoBean.eldniApoderado}" mask="99999999" style="font-weight:bold" required="true" onkeyup="ocultarBoton1()"/>
+            	<p:inputMask id="txtCodigoApoderado2" value="#{apoderadoBean.eldniApoderado}" mask="99999999" style="font-weight:bold" required="true" onkeyup="ocultarBoton1()" requiredMessage="Ingrese un DNI"/>
                 <p:commandButton id="btnBuscadorApoderado"
 					  actionListener="#{apoderadoBean.buscaApoderado}"  
 					  update="dlgForm3" 
