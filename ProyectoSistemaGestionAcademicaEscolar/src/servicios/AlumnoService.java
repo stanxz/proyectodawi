@@ -14,7 +14,6 @@ public interface AlumnoService {
 	  public void actualizarAlumno(Alumno alumno) throws Exception;
 	  public void inhabilitarAlumno(Alumno alumno) throws Exception;
 	  public Alumno obtenerAlumno(Alumno alumno) throws Exception;
-	  
 	  public ArrayList<Calendarioacademico> getListaAniosAcademicos() throws Exception;
 	
 }
